@@ -1,0 +1,269 @@
+h1,h2,h3,h4,h5,h6,p,ul,li{
+    padding: 0;
+    margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
+
+li{
+    list-style: none;
+}
+
+div,span,p,li,img,a{
+    -webkit-tap-highlight-color: rgba(0,0,0,0)
+}
+
+img{
+    display: block;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+#test {
+    width: 2rem;
+    height: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: pink;
+}
+
+
+/* 提示框 */
+
+.mt-prompt {
+    width: 4rem;
+    height: auto;
+    padding: 10px 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    margin-left: -2rem;
+    border-radius: 6px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    z-index: 999;
+}
+
+
+/* 确认框 */
+
+.mt-confirm {
+    width: 280px;
+    height: auto;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    margin-left: -140px;
+    background: #fff;
+    border-radius: 10px;
+    z-index: 99;
+}
+
+
+/* 确认框标题 */
+
+.mt-confirm-title {
+    padding: 20px 0 16px 0;
+    color: #439ef9;
+    text-align: center;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+
+/* 确认框文案 */
+
+.mt-confirm-p {
+    padding: 0 9px 18px;
+    font-size: 16px;
+    color: #565656;
+    text-align: center;
+}
+
+
+/* 确认框按钮区域 */
+
+.mt-button-area {
+    border-top: 1px solid #e3e3e3;
+}
+
+
+/* 确认框2个按钮样式 */
+
+.mt-btn-num-2 .mt-btn {
+    width: 50%;
+    float: left;
+}
+
+.mt-btn-num-2 .mt-btn+.mt-btn {
+    border-left: 1px solid #eee;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+
+/* 确认框3个按钮样式 */
+
+.mt-btn-num-3 .mt-btn {
+    width: 33.33333%;
+    float: left;
+}
+
+.mt-btn-num-3 .mt-btn+.mt-btn {
+    border-left: 1px solid #eee;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+
+/* 确认框按钮通用样式 */
+
+.mt-btn {
+    text-align: center;
+    font-size: 16px;
+    color: gray;
+    height: 48px;
+    line-height: 48px;
+}
+
+
+/* 遮罩层 */
+
+.mt-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 89;
+}
+
+
+/* 预加载组件样式 */
+
+.mt-pre-loading {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background: #e84c3d;
+}
+
+.mt-pre-loading .mt-pre-loading-ele {
+    width: 1.6rem;
+    height: 1.6rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 0.2rem #fff;
+}
+
+.mt-pre-loading .mt-pre-loading-des {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 3.5rem;
+    color: #fff;
+}
+
+.mt-pre-loading .mt-pre-loading-ele:before,
+.mt-pre-loading .mt-pre-loading-ele:after {
+    position: absolute;
+    content: "";
+    background: #e84c3d;
+    width: 0.82rem;
+    height: 1.62rem;
+}
+
+.mt-pre-loading .mt-pre-loading-ele:before {
+    left: -0.01rem;
+    -webkit-transform-origin: 0.8rem 0.8rem;
+    transform-origin: 0.8rem 0.8rem;
+    -webkit-animation: loading 2s infinite ease 1.5s;
+    animation: loading 2s infinite ease 1.5s;
+}
+
+.mt-pre-loading .mt-pre-loading-ele:after {
+    right: -0.01rem;
+    -webkit-transform-origin: 0rem 0.8rem;
+    transform-origin: 0rem 0.8rem;
+    -webkit-animation: loading 2s infinite ease;
+    animation: loading 2s infinite ease;
+}
+
+@keyframes loading {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes loading {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+/* 自定义动画 */
+
+.anim-init {
+    transform: scale(0.4);
+    -webkit-transform: scale(0.4);
+    opacity: 0;
+}
+
+.anim-big {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+}
+
+
+/*通用*/
+
+.hide {
+    display: none;
+}
+
+.btn-blue {
+    color: #439ef9;
+}
+
+
+/* 自定义弹框显示动画必须要有anim-conf */
+
+.anim-conf {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    -webkit-transition: opacity 0.4s ease, transform 0.4s ease;
+}
