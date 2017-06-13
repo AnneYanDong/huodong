@@ -188,10 +188,11 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 return false;
             }
         },
+        //1~36数字
         checkNum2: function (month) {
             var month = month;
             // var re = /^[0-9]*[1-9][0-9]*$/;console.log("约束",month)
-            var re = /^(1|2|3|4|5|6|7|8|9)$|^[1,2]{1}\d{1}$|^3(1|2|3|4|5|6)$/;
+            var re = /^(1|2|3|4|5|6|7|8|9)$|^[1,2]{1}\d{1}$|^3(0|1|2|3|4|5|6)$/;
             if (month == "") {
                 $(".interest").html("");
                 $(".money").html("");
