@@ -21,7 +21,7 @@ fis.match("*.css",{
 	optimizer: fis.plugin('clean-css')
 })
 
-fis.match("css/{basicFullPage,mtool}.css",{
+fis.match("css/{basicFullPage,mtool,rule-btn}.css",{
 	url: "/act$0"
 })
 
