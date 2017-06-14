@@ -39,7 +39,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"],function($
             clearTimeout(timer);
             timer = setTimeout(function() {
                 oPreLoading.hide();
-                _this.init();
+                // _this.init();
             }, 500);
             /*图片预加载*/
             ct.Tool.imgPreLoad({
@@ -62,10 +62,25 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"],function($
 			// oP.show("出错请重试");
 			console.log("初始化成功！");
 
+            _this.pushMsg();
+
             //点击规则按钮
             _this.openRule();
             _this.closeRule();
+            _this.withdraw();
 		},
+
+        pushMsg: function() {
+            var customerTpl = $('#tpl-customer').html();
+            var customerHtml = juicer(customerTpl,customerJson);
+            $('.msg').append(customerHtml).addClass('animation');
+        },
+        withdraw: function() {
+            $('.apply-wrap').on('click','.withdraw',function(){
+                console.log('点击提款');
+                window.location.href = 'https://b.jianbing.com/business/home/h5/xianjin/index.php';
+            })
+        },
 
         // 打开规则
         openRule: function() {
@@ -75,6 +90,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"],function($
 
                 var ruleTpl = $('#tpl-rule').html();
                 var resRuleHtml = juicer(ruleTpl,ruleJson);
+                // juicer.register("msg_show",msgs);
                 $('body').append(resRuleHtml);
                 $(".rule").fadeIn();
             })
@@ -98,6 +114,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"],function($
             "有任何问题请咨询51公积金客服热线4008635151或看购客服热线4006776501。",
             "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利"
        ]
+    }
+    var customerJson = {
+        customer: [
+            "G48444",
+            // "G58455",
+            // "G68466",
+            // "G78477",
+        ]
     }
 	run.start();
 });
