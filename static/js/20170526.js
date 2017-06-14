@@ -123,12 +123,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     if (now == "page0") {
                         $(".page1 .btn").on("click", function() {
                             if (!_this.status.login) { //未登录跳转登录页
-                                oP.show("请登陆app参与活动");
-                                setTimeout(function () {
+                                // oP.show("请登陆app参与活动");
                                     if (Bridge) {
                                         Bridge.action("login");
                                     }
-                                },1000)
                             }
                             if (_this.status.weChat == true) { //微信端打开
                                 oP.show("请登陆app参与活动");

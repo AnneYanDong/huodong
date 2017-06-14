@@ -90,14 +90,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 success: function (d) {
                     if (!!d.success) {
                         if (d.ret.login == false) {
-                            timer = setTimeout(function () {
-                                oP.show("请登录app参与活动");
-                                timer = setTimeout(function () {
-                                    if (Bridge) {
-                                        Bridge.action("login");
-                                    }
-                                }, 1500)
-                            }, 200);
+                            if (Bridge) {
+                                Bridge.action("login");
+                            }
                         } else {
                             if (d.ret.have == true) {
                                 oUrl = d.ret.url;

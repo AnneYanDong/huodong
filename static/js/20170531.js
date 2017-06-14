@@ -170,6 +170,11 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             d = d.ret;
                             var timer = null;
                             clearTimeout(timer);
+                            if (d.ret.login == false) {
+                                if (Bridge) {
+                                    Bridge.action("login");
+                                }
+                            }
                             if (d.type == 1) {
                                 window.location.href = d.url;
                             } else if (d.type == 2) {
