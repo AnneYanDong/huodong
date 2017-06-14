@@ -20,11 +20,30 @@
 	background: url('../img/20170614_content_new_02.png') no-repeat center;
 	background-size: contain;
 }
+@keyframes msg_play {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
 .content .msg {
-	// position: absolute;
-	// top: 1.27rem;
 	background-color: #982a24;
 	height: .65rem;
+	line-height: .65rem;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.content .msg span {
+	animation: msg_play infinite 10s;
+	font-size: .26rem;
+	color: #fff;
+	font-weight: bold;
+	display: block;
+	transition: transform 5s linear;
 }
 .content .rule-btn {
 	position: absolute;
@@ -43,26 +62,18 @@
 
 .content .apply-wrap {
     position: absolute;
-    bottom: 1.54rem;
+    bottom: 1.3rem;
     transform: translateX(-50%);
     left: 50%;
 }
 .content .apply {
-	// position: absolute;
-	// bottom: 2.89rem;
 	font-size: .28rem;
 	font-weight: bold;
 	color: #f7601d;
 	text-align: center;
     padding-bottom: .2rem;
- //    transform: translateX(-50%);
- //    left: 50%;
 }
 .content .withdraw {
-	// position: absolute;
-	// bottom: 1.5rem;
- //    transform: translateX(-50%);
- //    left: 50%;
     border: none;
     font-size: .36rem;
     color: #ffe8e1;
