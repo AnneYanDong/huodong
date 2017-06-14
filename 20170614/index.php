@@ -30,15 +30,15 @@
     <!-- 引入require.js和设置文件js的入口 -->
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     </head>
-    <body>
+    <body  bp="页面" title="页面">
         <div class="wp hide">
             <div class="wp-inner">
                 <div class="content">
                     <div class="msg"></div>
-                    <div class="rule-btn">规则</div>
+                    <div class="rule-btn" bp="规则" title="规则">规则</div>
                     <div class="apply-wrap">
                         <div class="apply"><span>申请就送，机会人人有</span></div>
-                        <div class="withdraw">立即提款</div></div>
+                        <div class="withdraw" bp="立即提款" title="立即提款">立即提款</div></div>
                     </div>
             </div>
             <div class="mask hide"></div>
@@ -46,7 +46,7 @@
     </body>
     <script type="text/template" id="tpl-customer">
             {@each customer as item,index}
-            <span>恭喜用户${item}获得电影票通用券</span>
+                <span>${item}  </span>
             {@/each}
     </script>
     <script type="text/template" id="tpl-rule">
@@ -60,4 +60,10 @@
                 <div class="btn-close"></div>
             </div>
     </script>
+    <!-- <script>
+        var msgs = function(data) {
+            console.log(data);
+            return data;
+        }
+    </script> -->
 </html>
