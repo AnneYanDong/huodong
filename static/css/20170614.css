@@ -1,0 +1,89 @@
+@import url('basicFullPage.css');
+@import url('mtool.css');
+@import url('rule-btn.css');
+.wp {
+	width: 100%;
+	height: 100%;
+	background-color: #ffefaa;
+}
+.wp-inner {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background: #d53432;
+	// background: url('../img/20170614_jkd_inner_bg_02.png') no-repeat center;
+	// background-size: cover;
+}
+.content {
+	width: 100%;
+	height: 100%;
+	background: url('../img/20170614_content_new_02.png') no-repeat center;
+	background-size: contain;
+}
+@keyframes msg_play {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+.content .msg {
+	background-color: #982a24;
+	height: .65rem;
+	line-height: .65rem;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.content .msg span {
+	animation: msg_play infinite 10s;
+	font-size: .26rem;
+	color: #fff;
+	font-weight: bold;
+	display: block;
+	transition: transform 5s linear;
+}
+.content .rule-btn {
+	position: absolute;
+	top: .78rem;
+	right: 0;
+	font-size: .26rem;
+	font-weight: bold;
+	color: #fff0c0;
+	background-color: #ff691f;
+	width: .97rem;
+	height: .46rem;
+	line-height: .46rem;
+	text-align: center;
+	border-radius: .3rem 0 0 .3rem;
+}
+
+.content .apply-wrap {
+    position: absolute;
+    bottom: 1.3rem;
+    transform: translateX(-50%);
+    left: 50%;
+}
+.content .apply {
+	font-size: .28rem;
+	font-weight: bold;
+	color: #f7601d;
+	text-align: center;
+    padding-bottom: .2rem;
+}
+.content .withdraw {
+    border: none;
+    font-size: .36rem;
+    color: #ffe8e1;
+    width: 5.89rem;
+    height: 1.09rem;
+    line-height: 1.09rem;
+    background-color: #ff793d;
+    padding: .4rem auto;
+    text-align: center;
+    border-radius: .60rem;
+    font-weight: bold;
+    box-shadow: 0rem .2rem .2rem #ffc7a7;
+}
