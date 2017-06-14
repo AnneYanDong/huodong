@@ -44,6 +44,11 @@
             <div class="mask hide"></div>
         </div>
     </body>
+    <script type="text/template" id="tpl-customer">
+            {@each customer as item,index}
+            <span>恭喜用户${item}获得电影票通用券</span>
+            {@/each}
+    </script>
     <script type="text/template" id="tpl-rule">
             <div class="rule">
                 <h6>活动规则</h6>
@@ -54,5 +59,5 @@
                 </ul>
                 <div class="btn-close"></div>
             </div>
-        </script>
+    </script>
 </html>
