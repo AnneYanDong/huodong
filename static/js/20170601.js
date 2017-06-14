@@ -145,12 +145,10 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     $(".mt-mask").addClass("hide");
                 } else {
                     if (_this.status.login == false) {
-                        oP.show("请登陆app参与活动");
-                        setTimeout(function () {
+                        // oP.show("请登陆app参与活动");
                             if (Bridge) {
                                 Bridge.action("login");
                             }
-                        }, 1000)
                     } else {
                         $(".redEnvelope img").remove();
                         $(".redEnvelope").append("<img src='//r.51gjj.com/act/release/img/20170601_notPull.png'/><div class='accept' bp='收下奖励' title='收下奖励'></div>");

@@ -55,37 +55,42 @@
 	},
 
 	"20170523": {
-		"js": ["r.51gjj.com/act/release/js/20170523_89a7d3f.js"],
+		"js": ["r.51gjj.com/act/release/js/20170523_9229452.js"],
 		"css": ["r.51gjj.com/act/release/css/20170523_37d4d2c.css"]
 	},
 
 	"20170526": {
-		"js": ["r.51gjj.com/act/release/js/20170526_cea2379.js"],
+		"js": ["r.51gjj.com/act/release/js/20170526_584804f.js"],
 		"css": ["r.51gjj.com/act/release/css/20170526_2c2d4d3.css"]
 	},
 
 	"20170531": {
-		"js": ["r.51gjj.com/act/release/js/20170531_062c311.js"],
+		"js": ["r.51gjj.com/act/release/js/20170531_9fe5cd9.js"],
 		"css": ["r.51gjj.com/act/release/css/20170531_044bdec.css"]
 	},
 
 	"20170601": {
-		"js": ["r.51gjj.com/act/release/js/20170601_2a766ab.js"],
+		"js": ["r.51gjj.com/act/release/js/20170601_9f68cd4.js"],
 		"css": ["r.51gjj.com/act/release/css/20170601_1d7520b.css"]
 	},
 
 	"20170605": {
-		"js": ["r.51gjj.com/act/release/js/20170605_cba9063.js"],
+		"js": ["r.51gjj.com/act/release/js/20170605_e790692.js"],
 		"css": ["r.51gjj.com/act/release/css/20170605_c8dd3ad.css"]
 	},
 
 	"20170606": {
-		"js": ["r.51gjj.com/act/release/js/20170606_ec45965.js"],
+		"js": ["r.51gjj.com/act/release/js/20170606_db8d444.js"],
 		"css": ["r.51gjj.com/act/release/css/20170606_b9ccbaf.css"]
 	},
 
 	"20170608": {
-		"js": ["r.51gjj.com/act/release/js/20170608_0a03e54.js"],
+		"js": ["r.51gjj.com/act/release/js/20170608_9a568a3.js"],
 		"css": ["r.51gjj.com/act/release/css/20170608_a5d392f.css"]
+	},
+
+	"20170614": {
+		"js": ["r.51gjj.com/act/release/js/20170614_563d309.js"],
+		"css": ["r.51gjj.com/act/release/css/20170614_abe6f3d.css"]
 	}
 }

@@ -376,12 +376,10 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 oP.show(d.msg || "出错请重试");
                             }
                         } else if (d.code == 1) {
-                            oP.show(d.msg);
-                            setTimeout(function () {
+                            // oP.show(d.msg);
                                 if (Bridge) {
                                     Bridge.action("login");
                                 }
-                            }, 1000)
                         } else {
                             oP.show(d.msg || "出错请重试");
                         }
