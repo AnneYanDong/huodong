@@ -1,5 +1,5 @@
 <?php 
-    $title = "福利金人人有份"; // 配置标题的，必须
+    $title = "大节难逃 领“拦路红包”"; // 配置标题的，必须
     include "../public/v1/header.php";
 ?>
 <?php
@@ -17,11 +17,11 @@
     <style>
         /* 加载动画颜色配置 */
         .loading-bg-color {
-            background: #ffefa9;
+            background: #873eff;
         }
 
         .loading-ele-color:after, .loading-ele-color:before {
-            background: #ffefa9 !important;
+            background: #873eff !important;
         }
     </style>
     <script>
@@ -32,7 +32,7 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>bg_new.jpg" alt="">
+            <img data-src="<?php echo $imgUrl; ?>bg5.jpg" alt="">
             <div class="redEnvelope addMove"></div>
             <div class="apply" bp="申请即获100元京东E卡" title="申请即获100元京东E卡"></div>
             <div class="look" bp="查看我的红包" title="查看我的红包"></div>

@@ -17,11 +17,11 @@
     <style>
         /* 加载动画颜色配置 */
         .loading-bg-color {
-            background: #ffefa9;
+            background: #d43032;
         }
 
         .loading-ele-color:after, .loading-ele-color:before {
-            background: #ffefa9 !important;
+            background: #d43032 !important;
         }
     </style>
     <script>
@@ -30,7 +30,7 @@
     <!-- 引入require.js和设置文件js的入口 -->
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     </head>
-    <body  bp="页面" title="页面">
+    <body>
         <div class="wp hide">
             <div class="wp-inner">
                 <div class="content">

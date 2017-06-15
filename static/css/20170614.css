@@ -4,7 +4,7 @@
 .wp {
 	width: 100%;
 	height: 100%;
-	background-color: #ffefaa;
+	background-color: #d43032;
 }
 .wp-inner {
 	width: 100%;
@@ -137,4 +137,7 @@
     border-radius: .60rem;
     font-weight: bold;
     box-shadow: 0rem .2rem .2rem #ffc7a7;
+}
+.awards-info .single-info span {
+    padding-right: .3rem;
 }
