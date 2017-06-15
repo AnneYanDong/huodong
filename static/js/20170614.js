@@ -86,11 +86,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
 		},
 
         pushMsg: function() {
-            // juicer.register('show_msg',msgs);
-            // var customerTpl = $('#tpl-customer').html();
-            // var customerHtml = juicer(customerTpl,customerJson);
-            // $('.awards-info').append(customerHtml);
-
             var oLottery = $("#lottery");
             oLottery[0].style.width = $(".content").width() + "px";
             var singleInfo = $(".single-info");
@@ -113,20 +108,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
                     drag: false,
                     scrollamount: 30
             });
-
-            // var spans = $('.msg span');
-            // var len = spans.length;
-            // var index = 0;
-            // $('.msg span').hide();
-            // $('.msg span')[0].style.display = 'block';
-            // setInterval(function(){
-            //     console.log("index:", index);
-            //     $('.msg').show();
-            //     spans[index].style.display = 'none';
-            //     ++ index;
-            //     index = (index == len ? 0 : index);
-            //     spans[index].style.display = 'block';
-            // },6000);
         },
         withdraw: function() {
             $('.apply-wrap').on('click','.withdraw',function(){
@@ -168,13 +149,5 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
             "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利"
        ]
     }
-    // var customerJson = {
-    //     customer: [
-    //         "恭喜用户131****8262获得电影票通用券",
-    //         "用户159****2546完成提款",
-    //         "恭喜用户152****8456获得电影票通用券",
-    //         "用户134****5962完成提款",
-    //     ]
-    // }
 	run.start();
 });

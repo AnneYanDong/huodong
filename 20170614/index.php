@@ -48,11 +48,6 @@
             <div class="mask hide"></div>
         </div>
     </body>
-    <!-- <script type="text/template" id="tpl-customer">
-            {@each customer as item,index}
-                <p class="single-info">${item}  </p>
-            {@/each}
-    </script> -->
     <script type="text/template" id="tpl-rule">
             <div class="rule">
                 <h6>活动规则</h6>

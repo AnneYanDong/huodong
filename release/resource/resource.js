@@ -90,7 +90,7 @@
 	},
 
 	"20170614": {
-		"js": ["r.51gjj.com/act/release/js/20170614_563d309.js"],
-		"css": ["r.51gjj.com/act/release/css/20170614_abe6f3d.css"]
+		"js": ["r.51gjj.com/act/release/js/20170614_fb789c0.js"],
+		"css": ["r.51gjj.com/act/release/css/20170614_cbf360b.css"]
 	}
 }
