@@ -191,3 +191,6 @@
     font-weight: bold;
     box-shadow: 0rem .2rem .2rem #ffc7a7;
 }
+.awards-info .single-info span {
+    padding-right: .3rem;
+}

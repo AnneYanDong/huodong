@@ -30,12 +30,13 @@
     <!-- 引入require.js和设置文件js的入口 -->
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     </head>
-    <body  bp="页面" title="页面">
+    <body>
         <div class="wp hide">
             <div class="wp-inner">
                 <div class="content">
                     <div id="lottery">
                         <div class="awards-info">
+                            <p class="single-info"></p>
                         </div>
                     </div>
                     <div class="rule-btn" bp="规则" title="规则">规则</div>
