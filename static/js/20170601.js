@@ -103,8 +103,11 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         _this.status.weChat = d.ret.weChat;
                         if (d.ret.have == false || _this.status.weChat == true) { 
                             $(".mt-mask").removeClass("hide");
-                            $(".redEnvelope").css("display", "flex");
-                            $(".redEnvelope").append("<img src='//r.51gjj.com/act/release/img/20170601_redPacket.png'/>");
+                            $(".redEnvelope").css("display", "block");
+                            $(".redEnvelope").append("<img class='red' src='//r.51gjj.com/act/release/img/20170601_redPacket.png'/>");
+                            if ($(".redEnvelope .red").length > 0) {
+                                $(".redEnvelope .red").addClass("imgTop");
+                            }
                         } else if (d.ret.have == true) {
                             $(".wp").css("-webkit-overflow-scrolling","touch");
                         }

@@ -149,6 +149,7 @@ body {
     display: none;
     z-index: 999;
     align-items: center;
+    vertical-align: middle;
 }
 
 .addMove {
@@ -207,6 +208,7 @@ body {
     /*height: 6.32rem;*/
     width: 100%;
     position: absolute;
+    vertical-align: middle;
 }
 
 .redEnvelope .accept {
@@ -215,4 +217,8 @@ body {
     width: 100%;
     height: 1.1rem;
     z-index: 1000;
+}
+
+.imgTop {
+    margin-top: .9rem;
 }
