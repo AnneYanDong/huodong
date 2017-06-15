@@ -1,5 +1,5 @@
 <?php 
-    $title = "福利金人人有份"; // 配置标题的，必须
+    $title = "大劫难逃 领“拦路红包"; // 配置标题的，必须
     include "../public/v1/header.php";
 ?>
 <?php
@@ -7,11 +7,11 @@
     $obj = new Resource; // 实例化获取资源类
     $res = $obj->getResStr($actDate); // 获取指定的活动资源，返回数组，array("css"=> "..", "js"=>"。。")
     $origin = $_SERVER['HTTP_HOST'];
-    if (preg_match('/b\.jianbing\.com/', $origin) || preg_match('/kaifa\.jianbing\.com/', $origin)) {
-        $imgUrl = '//r.51gjj.com/act/release/img/' . $actDate . '_';
-    } else {
+    // if (preg_match('/b\.jianbing\.com/', $origin) || preg_match('/kaifa\.jianbing\.com/', $origin)) {
+    //     $imgUrl = '//r.51gjj.com/act/release/img/' . $actDate . '_';
+    // } else {
         $imgUrl = '../static/img/' . $actDate . '_';
-    };
+    // };
 ?>
     <link rel="stylesheet" href="<?php echo $res['css'] ?>">
     <style>
@@ -32,7 +32,7 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>bg_new.jpg" alt="">
+            <img data-src="<?php echo $imgUrl; ?>bg3.jpg" alt="">
             <div class="redEnvelope addMove"></div>
             <div class="apply" bp="申请即获100元京东E卡" title="申请即获100元京东E卡"></div>
             <div class="look" bp="查看我的红包" title="查看我的红包"></div>

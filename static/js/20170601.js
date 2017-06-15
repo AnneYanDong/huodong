@@ -104,7 +104,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         if (d.ret.have == false || _this.status.weChat == true) {
                             $(".mt-mask").removeClass("hide");
                             $(".redEnvelope").css("display", "block");
-                            $(".redEnvelope").append("<img src='//r.51gjj.com/act/release/img/20170601_pullDown.png'/>");
+                            $(".redEnvelope").append("<img src='//r.51gjj.com/act/release/img/20170601_redPacket.png'/>");
                         }
                         oUrl_1 = d.ret.url_1;
                         oUrl_2 = d.ret.url_2;
@@ -151,7 +151,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             }
                     } else {
                         $(".redEnvelope img").remove();
-                        $(".redEnvelope").append("<img src='//r.51gjj.com/act/release/img/20170601_notPull.png'/><div class='accept' bp='收下奖励' title='收下奖励'></div>");
+                        // $(".redEnvelope").append("<img src='//r.51gjj.com/act/release/img/20170601_receive.png'/><div class='accept' bp='收下奖励' title='收下奖励'></div>");
                     }
                 }
             })
@@ -243,7 +243,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         Bridge.action('ShareTimeline', {
                             "title": "中国人口日——“我就是红利”",
                             'desc': "福利金人人有份，百元京东卡申请就送！",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170601_share.png",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170601_share_1.png",
                             "link": "http://" + host + "/act/home/huodong/20170601/"
                         });
                     }
