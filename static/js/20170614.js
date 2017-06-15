@@ -117,6 +117,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
                 oSpan.text(customer[i]);
                 oSpan.appendTo(singleInfo);
             }
+            $('.single-info').liMarquee({
+                hoverstop: false,
+                drag: false,
+                scrollamount: 30
+            });
         },
         withdraw: function () {
             $('.apply-wrap').on('click', '.withdraw', function () {
