@@ -75,9 +75,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
             var awardsInfo = $(".awards-info");
             var  customer = [
             "恭喜用户131****8262获得电影票通用券",
-            "用户159****2546完成提款",
+            "恭喜用户159****2546完成提款",
             "恭喜用户152****8456获得电影票通用券",
-            "用户134****5962完成提款",
+            "恭喜用户139****7522完成提款",
+            "恭喜用户182****3575获得电影票通用券",
+            "恭喜用户187****9234完成提款",
+            "恭喜用户187****7532获得电影票通用券",
+            "恭喜用户159****2546完成提款"
         ]
             for (var i = 0; i < customer.length; i++) {console.log(customer.length)
                 var oSpan = $("<span>");
@@ -87,7 +91,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
             singleInfo.liMarquee({
                 hoverstop: false,
                 drag: false,
-                scrollamount: 30
+                scrollamount: 50
             });
         },
 

@@ -17,11 +17,11 @@
     <style>
         /* 加载动画颜色配置 */
         .loading-bg-color {
-            background: #ffefa9;
+            background: #d43032;
         }
 
         .loading-ele-color:after, .loading-ele-color:before {
-            background: #ffefa9 !important;
+            background: #d43032 !important;
         }
     </style>
     <script>
