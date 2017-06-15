@@ -1,6 +1,6 @@
 //引入配置对象
 require.config(requireConfig);
-require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"],function($,fastClick,fullpage,ct,Bridge,juicer) {
+require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"],function($,fastClick,fullpage,ct,Bridge,juicer, liMarquee) {
 	var oMask = $(".mask");
 	/*oP和oM的作用是在body元素的最下方默认生成两个div，一个是提示框，一个是遮罩层*/
     var oP = Object.create(ct.Prompt); //提示框对象
@@ -62,33 +62,39 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"],function($
 			// oP.show("出错请重试");
 			console.log("初始化成功！");
 
-            _this.pushMsg();
-
             //点击规则按钮
             _this.openRule();
             _this.closeRule();
+
             _this.withdraw();
+            _this.pushMsg();
 		},
 
         pushMsg: function() {
             // juicer.register('show_msg',msgs);
             var customerTpl = $('#tpl-customer').html();
             var customerHtml = juicer(customerTpl,customerJson);
-            $('.msg').append(customerHtml);
+            $('.awards-info').append(customerHtml);
 
-            var spans = $('.msg span');
-            var len = spans.length;
-            var index = 0;
-            $('.msg span').hide();
-            $('.msg span')[0].style.display = 'block';
-            setInterval(function(){
-                console.log("index:", index);
-                $('.msg').show();
-                spans[index].style.display = 'none';
-                ++ index;
-                index = (index == len ? 0 : index);
-                spans[index].style.display = 'block';
-            },6000);
+            $('.single-info').liMarquee({
+                    hoverstop: false,
+                    drag: false,
+                    scrollamount: 30
+            });
+
+            // var spans = $('.msg span');
+            // var len = spans.length;
+            // var index = 0;
+            // $('.msg span').hide();
+            // $('.msg span')[0].style.display = 'block';
+            // setInterval(function(){
+            //     console.log("index:", index);
+            //     $('.msg').show();
+            //     spans[index].style.display = 'none';
+            //     ++ index;
+            //     index = (index == len ? 0 : index);
+            //     spans[index].style.display = 'block';
+            // },6000);
         },
         withdraw: function() {
             $('.apply-wrap').on('click','.withdraw',function(){
