@@ -69,30 +69,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
                 }
             })
 
-            var oLottery = $("#lottery");
-            oLottery[0].style.width = $(".content").width() + "px";
-            var singleInfo = $(".single-info");
-            var awardsInfo = $(".awards-info");
-            var  customer = [
-            "恭喜用户131****8262获得电影票通用券",
-            "恭喜用户159****2546完成提款",
-            "恭喜用户152****8456获得电影票通用券",
-            "恭喜用户139****7522完成提款",
-            "恭喜用户182****3575获得电影票通用券",
-            "恭喜用户187****9234完成提款",
-            "恭喜用户187****7532获得电影票通用券",
-            "恭喜用户159****2546完成提款"
-        ]
-            for (var i = 0; i < customer.length; i++) {console.log(customer.length)
-                var oSpan = $("<span>");
-                oSpan.text(customer[i]);
-                oSpan.appendTo(singleInfo);
-            }
-            singleInfo.liMarquee({
-                hoverstop: false,
-                drag: false,
-                scrollamount: 50
-            });
         },
 
 
@@ -103,39 +79,44 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
             // oP.show("出错请重试");
             console.log("初始化成功！");
 
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: ct.Tool.url("/app/request/activity"),
+                data: JSON.stringify({
+                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    tag: "进入页面" + projectName
+                }),
+                success: function (d) {
+                    if (d.success == true) {
+
+                    }
+                }
+            });
+
+            _this.pushMsg();
             //点击规则按钮
             _this.openRule();
             _this.closeRule();
 
             _this.withdraw();
-            // _this.pushMsg();
-        },
-
-        pushMsg: function () {
-            // juicer.register('show_msg',msgs);
-            var customerTpl = $('#tpl-customer').html();
-            var customerHtml = juicer(customerTpl, customerJson);
-            $('.awards-info').append(customerHtml);
-
-            $('.single-info').liMarquee({
-                hoverstop: false,
-                drag: false,
-                scrollamount: 30
-            });
-
-            // var spans = $('.msg span');
-            // var len = spans.length;
-            // var index = 0;
-            // $('.msg span').hide();
-            // $('.msg span')[0].style.display = 'block';
-            // setInterval(function(){
-            //     console.log("index:", index);
-            //     $('.msg').show();
-            //     spans[index].style.display = 'none';
-            //     ++ index;
-            //     index = (index == len ? 0 : index);
-            //     spans[index].style.display = 'block';
-            // },6000);
+		},
+        pushMsg: function() {
+            var oLottery = $("#lottery");
+            oLottery[0].style.width = $(".content").width() + "px";
+            var singleInfo = $(".single-info");
+            var awardsInfo = $(".awards-info");
+            var  customer = [
+            "恭喜用户131****8262获得电影票通用券",
+            "用户159****2546完成提款",
+            "恭喜用户152****8456获得电影票通用券",
+            "用户134****5962完成提款",
+            ]
+            for (var i = 0; i < customer.length; i++) {
+                var oSpan = $("<span>");
+                oSpan.text(customer[i]);
+                oSpan.appendTo(singleInfo);
+            }
         },
         withdraw: function () {
             $('.apply-wrap').on('click', '.withdraw', function () {
@@ -177,13 +158,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
             "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利"
         ]
     }
-    var customerJson = {
-        customer: [
-            "恭喜用户131****8262获得电影票通用券",
-            "用户159****2546完成提款",
-            "恭喜用户152****8456获得电影票通用券",
-            "用户134****5962完成提款",
-        ]
-    }
-    run.start();
+	run.start();
+
 });

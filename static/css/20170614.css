@@ -11,8 +11,6 @@
 	height: 100%;
 	position: relative;
 	background: #d53432;
-	// background: url('../img/20170614_jkd_inner_bg_02.png') no-repeat center;
-	// background-size: cover;
 }
 .content {
 	width: 100%;
@@ -20,33 +18,8 @@
 	background: url('https://r.51gjj.com/act/release/img/20170614_content_new_02.png') no-repeat center;
 	background-size: contain;
 }
-// @keyframes msg_play {
-// 	from {
-// 		transform: translateX(100%);
-// 	}
-// 	to {
-// 		transform: translateX(-100%);
-// 	}
-// }
-// .content .msg {
-// 	background-color: #982a24;
-// 	height: .65rem;
-// 	line-height: .65rem;
-//     position: fixed;
-//     width: 100%;
-//     left: 0;
-//     top: 0;
-// }
-// .content .msg span {
-// 	animation: msg_play infinite 10s;
-// 	font-size: .26rem;
-// 	color: #fff;
-// 	font-weight: bold;
-// 	display: block;
-// 	transition: transform 1s linear;
-// }
 .content .awards-info{
-  	display: block;
+  display: block;
  	background-color: #982a24;
 	height: .65rem;
 	line-height: .65rem;
@@ -55,7 +28,7 @@
 	left: 0;
 	top: 0;
 }
-.single-info{
+.content .single-info{
   height: 0.65rem;
   font-size: 0.28rem;
   line-height: 0.65rem;
@@ -66,11 +39,14 @@
   width: 100%;
   z-index: 99;
 }
+.awards-info .single-info span{
+    padding-right: .55rem;
+}
 /*跑马灯*/
 .str_wrap {
     overflow: hidden;
     zoom:1;
-    // position: relative;
+    position: relative;
     -moz-user-select: none;
     -khtml-user-select: none;
     user-select: none;
@@ -119,35 +95,6 @@
 .noStop .str_move {
     cursor: inherit;
 }
-.content .awards-info{
-  line-height: 1.06remm;
-}
-.content .single-info{
-  float: left;
-  padding-left: .32rem;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-.awards-info .single-info div{
-	display: inline-block !important;
-    padding-right: 0.3rem;
-    height: .65rem;  //这个影响了规则按钮
-}
-#lottery{
-  position: fixed;
-  height: 0.65rem;
-  /*background: #7c776d;*/
-  background: #982a24;
-  // opacity: 0.5;
-  width: 100%;
-  z-index: 999;
-}
-// #skip {
-//   position: fixed;
-//   top: 5.28rem;
-//   width: 100%;
-//   height: 1.6rem;
-// }
 
 .content .rule-btn {
 	position: absolute;
