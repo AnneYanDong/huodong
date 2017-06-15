@@ -70,8 +70,8 @@
 	},
 
 	"20170601": {
-		"js": ["r.51gjj.com/act/release/js/20170601_c42b213.js"],
-		"css": ["r.51gjj.com/act/release/css/20170601_79f4fa0.css"]
+		"js": ["r.51gjj.com/act/release/js/20170601_49b6a2c.js"],
+		"css": ["r.51gjj.com/act/release/css/20170601_b4d6abe.css"]
 	},
 
 	"20170605": {

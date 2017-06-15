@@ -1,14 +1,15 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
 body {
-    -webkit-overflow-scrolling: touch;
+    /*-webkit-overflow-scrolling: touch;*/
 }
 .wp {
     overflow: auto!important;
+
 }
 
 .wp-inner {
-    background: #ffefa9;
+    background: #873eff;
     position: relative;
 }
 
@@ -140,13 +141,13 @@ body {
 .content .redEnvelope {
     position: absolute;
     width: 5.9rem;
-    height: 6.32rem;
+    height: 7.8rem;
     /*top: 3.5rem;*/
     top: -7rem;
     margin-left: -2.95rem;
     left: 50%;
     display: none;
-    z-index: 99;
+    z-index: 999;
 }
 
 .addMove {
@@ -176,8 +177,8 @@ body {
         transform: translateY(8rem);
     }
     100% {
-        -webkit-transform: translateY(10rem);
-        transform: translateY(10rem);
+        -webkit-transform: translateY(9rem);
+        transform: translateY(9rem);
     }
 }
 
@@ -195,13 +196,13 @@ body {
         transform: translateY(8rem);
     }
     100% {
-        -webkit-transform: translateY(10rem);
-        transform: translateY(10rem);
+        -webkit-transform: translateY(9rem);
+        transform: translateY(9rem);
     }
 }
 
 .redEnvelope img {
-    z-index: 99;
+    z-index: 999;
     /*height: 6.32rem;*/
     width: 100%;
     position: absolute;
@@ -209,8 +210,8 @@ body {
 
 .redEnvelope .accept {
     position: absolute;
-    top: 4.2rem;
+    top: 5.45rem;
     width: 100%;
     height: 1.1rem;
-    z-index: 100;
+    z-index: 1000;
 }

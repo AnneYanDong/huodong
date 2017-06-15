@@ -101,10 +101,12 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     if (!!d.success) {
                         _this.status.login = d.ret.login;
                         _this.status.weChat = d.ret.weChat;
-                        if (d.ret.have == false || _this.status.weChat == true) {
+                        if (d.ret.have == false || _this.status.weChat == true) { 
                             $(".mt-mask").removeClass("hide");
                             $(".redEnvelope").css("display", "block");
                             $(".redEnvelope").append("<img src='//r.51gjj.com/act/release/img/20170601_redPacket.png'/>");
+                        } else if (d.ret.have == true) {
+                            $(".wp").css("-webkit-overflow-scrolling","touch");
                         }
                         oUrl_1 = d.ret.url_1;
                         oUrl_2 = d.ret.url_2;
@@ -140,9 +142,10 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             $(document).on("click", ".redEnvelope img", function () {
                 if (_this.status.weChat == true) {
-                    oP.show("本活动需在app参加");
                     $(".redEnvelope").remove();
                     $(".mt-mask").addClass("hide");
+                    oP.show("本活动需在app参加");
+                    $(".wp").css("-webkit-overflow-scrolling","touch");
                 } else {
                     if (_this.status.login == false) {
                         // oP.show("请登陆app参与活动");
@@ -151,7 +154,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             }
                     } else {
                         $(".redEnvelope img").remove();
-                        // $(".redEnvelope").append("<img src='//r.51gjj.com/act/release/img/20170601_receive.png'/><div class='accept' bp='收下奖励' title='收下奖励'></div>");
+                        $(".redEnvelope").append("<img src='//r.51gjj.com/act/release/img/20170601_receive.png'/><div class='accept' bp='收下奖励' title='收下奖励'></div>");
                     }
                 }
             })
@@ -171,8 +174,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     success: function (d) {
                         if (!!d.success) {
                             $(".redEnvelope").remove();
-                            // $(".redEnvelope img").remove();
-                            // $(".redEnvelope accept").remove();
+                            $(".wp").css("-webkit-overflow-scrolling","touch");
                             $(".mt-mask").addClass("hide");
                         } else {
                             oP.show(d.msg || "出错请重试");
