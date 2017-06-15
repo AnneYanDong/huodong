@@ -100,17 +100,21 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
             _this.closeRule();
 
             _this.withdraw();
-		},
-        pushMsg: function() {
+        },
+        pushMsg: function () {
             var oLottery = $("#lottery");
             oLottery[0].style.width = $(".content").width() + "px";
             var singleInfo = $(".single-info");
             var awardsInfo = $(".awards-info");
-            var  customer = [
-            "恭喜用户131****8262获得电影票通用券",
-            "用户159****2546完成提款",
-            "恭喜用户152****8456获得电影票通用券",
-            "用户134****5962完成提款",
+            var customer = [
+                "恭喜用户131****8262获得电影票通用券",
+                "恭喜用户159****2546完成提款",
+                "恭喜用户152****8456获得电影票通用券",
+                "恭喜用户139****7522完成提款",
+                "恭喜用户182****3575获得电影票通用券",
+                "恭喜用户187****9234完成提款",
+                "恭喜用户187****7532获得电影票通用券",
+                "恭喜用户159****2546完成提款"
             ]
             for (var i = 0; i < customer.length; i++) {
                 var oSpan = $("<span>");
@@ -163,6 +167,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
             "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利"
         ]
     }
-	run.start();
+    run.start();
 
 });
