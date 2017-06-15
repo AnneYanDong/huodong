@@ -1,5 +1,5 @@
 <?php 
-    $title = "大劫难逃 领“拦路红包"; // 配置标题的，必须
+    $title = "大节难逃 领“拦路红包”"; // 配置标题的，必须
     include "../public/v1/header.php";
 ?>
 <?php
@@ -32,7 +32,7 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>bg3.jpg" alt="">
+            <img data-src="<?php echo $imgUrl; ?>bg4.jpg" alt="">
             <div class="redEnvelope addMove"></div>
             <div class="apply" bp="申请即获100元京东E卡" title="申请即获100元京东E卡"></div>
             <div class="look" bp="查看我的红包" title="查看我的红包"></div>

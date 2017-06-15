@@ -1,9 +1,12 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
-
+body {
+    -webkit-overflow-scrolling: touch;
+}
 .wp {
     overflow: auto!important;
 }
+
 .wp-inner {
     background: #ffefa9;
     position: relative;
@@ -25,7 +28,7 @@
     text-align: center;
     position: absolute;
     width: 1rem;
-    height: .56rem;
+    height: .86rem;
     top: 0.14rem;
     right: .1rem;
 }
@@ -111,9 +114,11 @@
     left: 50%;
     margin-left: -0.4rem;
 }
+
 .mt-prompt {
     position: fixed;
 }
+
 .content .apply {
     position: absolute;
     width: 5rem;
@@ -122,6 +127,7 @@
     top: 14.6rem;
     left: 50%;
 }
+
 .content .look {
     width: 1.9rem;
     height: .46rem;
@@ -129,19 +135,20 @@
     top: 15.75rem;
     margin-left: -.95rem;
     left: 50%;
-
 }
+
 .content .redEnvelope {
     position: absolute;
     width: 5.9rem;
     height: 6.32rem;
     /*top: 3.5rem;*/
-    top:  -7rem;
+    top: -7rem;
     margin-left: -2.95rem;
     left: 50%;
     display: none;
     z-index: 99;
 }
+
 .addMove {
     -webkit-animation-name: moving;
     animation-name: moving;
@@ -154,25 +161,52 @@
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
+
 @keyframes moving {
-  0% {-webkit-transform: translateY(-1rem);transform: translateY(-1rem);}
-  40% {-webkit-transform: translateY(4rem);transform: translateY(4rem);}
-  80% {-webkit-transform: translateY(8rem);transform: translateY(8rem);}
-  100% {-webkit-transform: translateY(10rem);transform: translateY(10rem);}
+    0% {
+        -webkit-transform: translateY(-1rem);
+        transform: translateY(-1rem);
+    }
+    40% {
+        -webkit-transform: translateY(4rem);
+        transform: translateY(4rem);
+    }
+    80% {
+        -webkit-transform: translateY(8rem);
+        transform: translateY(8rem);
+    }
+    100% {
+        -webkit-transform: translateY(10rem);
+        transform: translateY(10rem);
+    }
 }
 
 @-webkit-keyframes moving {
-  0% {-webkit-transform: translateY(-1rem);transform: translateY(-1rem);}
-  40% {-webkit-transform: translateY(4rem);transform: translateY(4rem);}
-  80% {-webkit-transform: translateY(8rem);transform: translateY(8rem);}
-  100% {-webkit-transform: translateY(10rem);transform: translateY(10rem);}
+    0% {
+        -webkit-transform: translateY(-1rem);
+        transform: translateY(-1rem);
+    }
+    40% {
+        -webkit-transform: translateY(4rem);
+        transform: translateY(4rem);
+    }
+    80% {
+        -webkit-transform: translateY(8rem);
+        transform: translateY(8rem);
+    }
+    100% {
+        -webkit-transform: translateY(10rem);
+        transform: translateY(10rem);
+    }
 }
+
 .redEnvelope img {
     z-index: 99;
-    height: 6.32rem;
+    /*height: 6.32rem;*/
     width: 100%;
     position: absolute;
 }
+
 .redEnvelope .accept {
     position: absolute;
     top: 4.2rem;
