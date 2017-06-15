@@ -36,6 +36,7 @@
                 <div class="content">
                     <div id="lottery">
                         <div class="awards-info">
+                            <p class="single-info"></p>
                         </div>
                     </div>
                     <div class="rule-btn" bp="规则" title="规则">规则</div>
@@ -47,11 +48,11 @@
             <div class="mask hide"></div>
         </div>
     </body>
-    <script type="text/template" id="tpl-customer">
+    <!-- <script type="text/template" id="tpl-customer">
             {@each customer as item,index}
                 <p class="single-info">${item}  </p>
             {@/each}
-    </script>
+    </script> -->
     <script type="text/template" id="tpl-rule">
             <div class="rule">
                 <h6>活动规则</h6>
