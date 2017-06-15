@@ -15,7 +15,8 @@
 .content {
 	width: 100%;
 	height: 100%;
-	background: url('https://r.51gjj.com/act/release/img/20170614_content_new_02.png') no-repeat center;
+	/*background: url('https://r.51gjj.com/act/release/img/20170614_content_new_02.png') no-repeat center;*/
+    background: url('https://r.51gjj.com/act/release/img/20170614_bg.jpg') no-repeat center;
 	background-size: contain;
 }
 .content .awards-info{

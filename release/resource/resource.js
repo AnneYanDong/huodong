@@ -90,7 +90,12 @@
 	},
 
 	"20170614": {
-		"js": ["r.51gjj.com/act/release/js/20170614_fb789c0.js"],
-		"css": ["r.51gjj.com/act/release/css/20170614_cbf360b.css"]
+		"js": ["r.51gjj.com/act/release/js/20170614_2d703f0.js"],
+		"css": ["r.51gjj.com/act/release/css/20170614_3795c4e.css"]
+	},
+
+	"20170615": {
+		"js": ["r.51gjj.com/act/release/js/20170615_5a723ea.js"],
+		"css": ["r.51gjj.com/act/release/css/20170615_3041355.css"]
 	}
 }
