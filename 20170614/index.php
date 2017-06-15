@@ -34,7 +34,10 @@
         <div class="wp hide">
             <div class="wp-inner">
                 <div class="content">
-                    <div class="msg"></div>
+                    <div id="lottery">
+                        <div class="awards-info">
+                        </div>
+                    </div>
                     <div class="rule-btn" bp="规则" title="规则">规则</div>
                     <div class="apply-wrap">
                         <div class="apply"><span>申请就送，机会人人有</span></div>
@@ -46,7 +49,7 @@
     </body>
     <script type="text/template" id="tpl-customer">
             {@each customer as item,index}
-                <span>${item}  </span>
+                <p class="single-info">${item}  </p>
             {@/each}
     </script>
     <script type="text/template" id="tpl-rule">
@@ -60,10 +63,4 @@
                 <div class="btn-close"></div>
             </div>
     </script>
-    <!-- <script>
-        var msgs = function(data) {
-            console.log(data);
-            return data;
-        }
-    </script> -->
 </html>
