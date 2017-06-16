@@ -100,7 +100,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     if (now == "page0") {
                         $(".page1 .gift").on("click", function() {
                             oM.show();
-                            $(".page1 .content").append('<div class="tipMsg"><img src="../static/img/20170615_msg.png"></div>')
+                            $(".wp").append('<div class="tipMsg"><img src="../static/img/20170615_msg.png"><div class="receive"></div></div>');
+                            $(".receive").on("click",function () {
+                                console.log(4545);
+                                $(".tipMsg").remove();
+                                $(".mt-mask").css("display","none");
+                                _this.fullPageObj.moveTo(1, true);
+                            })
                             // _this.fullPageObj.moveTo(1, true);
                         });
 

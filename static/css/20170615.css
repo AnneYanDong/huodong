@@ -1,14 +1,16 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
 .page1 {
-  background: #fff;
+  background: #15164c;
   background-size: cover;
   background-position: center;
 }
+
 .page1 .content img {
   width: 100%;
 }
-.page1 .content .gift {
+
+.wp .gift {
   position: absolute;
   top: 10.6rem;
   width: 5.48rem;
@@ -16,7 +18,8 @@
   margin-left: -2.74rem;
   left: 50%;
 }
-.page1 .content .tipMsg {
+
+.wp .tipMsg {
   position: absolute;
   top: 50%;
   height: 8.18rem;
@@ -24,16 +27,29 @@
   margin-left: -3rem;
   left: 50%;
   margin-top: -4.09rem;
+  z-index: 99;
 }
-.page1 .content .tipMsg img {
-    z-index: 99;
+
+.tipMsg .receive {
+  width: 3.6rem;
+  height: .8rem;
+  position: absolute;
+  top: 6.8rem;
+  margin-left: -1.8rem;
+  left: 50%;
 }
+
+.wp .tipMsg img {
+  width: 100%;
+}
+
 .rule-btn {
   font-size: .32rem;
   color: #fff;
   text-align: center;
   margin-top: .48rem;
 }
+
 .rule-btn .icon-process {
   display: inline-block;
   width: .32rem;
@@ -44,6 +60,7 @@
   margin-left: 5px;
   vertical-align: bottom;
 }
+
 .rule {
   background: #fff;
   width: 6.22rem;
@@ -59,6 +76,7 @@
   -webkit-box-sizing: border-box;
   z-index: 99;
 }
+
 .rule h6 {
   margin: 0;
   margin-bottom: .4rem;
@@ -66,6 +84,7 @@
   color: #d3921b;
   text-align: center;
 }
+
 .rule ul {
   list-style-type: none;
   padding: 0;
@@ -73,6 +92,7 @@
   max-height: 6rem;
   overflow-y: scroll;
 }
+
 .rule ul li {
   position: relative;
   font-size: 12px;
@@ -81,12 +101,14 @@
   margin-bottom: 5px;
   color: #868686;
 }
+
 .rule ul li span {
   position: absolute;
   left: 0px;
   top: 0;
   font-style: normal;
 }
+
 .rule .btn-close {
   position: absolute;
   background: url("https://r.51gjj.com/act/images/20160818_close.png") no-repeat;
@@ -97,13 +119,14 @@
   left: 50%;
   margin-left: -0.4rem;
 }
+
 .mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    background: transparent;
-    z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: transparent;
+  z-index: 99;
 }
