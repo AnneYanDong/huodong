@@ -39,8 +39,7 @@
             <div class="rule-btn"></div>
         </div>
     </div>
-    <div class="redEnvelope addMove"></div>
-    <div class="mask hide"></div>
+    <!--<div class="mask hide"></div>-->
 </div>
 <div class="rule zm-customer-confirm hide">
     <h6>活动规则</h6>
@@ -54,6 +53,7 @@
     </ul>
     <div class="btn-close"></div>
 </div>
+<div class="redEnvelope addMove"></div>
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     <script>
         var indexData = {
