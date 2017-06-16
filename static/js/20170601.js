@@ -101,7 +101,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     if (!!d.success) {
                         _this.status.login = d.ret.login;
                         _this.status.weChat = d.ret.weChat;
-                        if (d.ret.have == false || _this.status.weChat == true) { 
+                        if (d.ret.have == false || _this.status.weChat == true) {
                             $(".mt-mask").removeClass("hide");
                             $(".redEnvelope").css("display", "block");
                             $(".redEnvelope").append("<img class='red' src='//r.51gjj.com/act/release/img/20170601_redPacket.png'/>");
@@ -109,7 +109,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".redEnvelope .red").addClass("imgTop");
                             }
                         } else if (d.ret.have == true) {
-                            $(".wp").css("-webkit-overflow-scrolling","touch");
+                            $(".wp").css("-webkit-overflow-scrolling", "touch");
                         }
                         oUrl_1 = d.ret.url_1;
                         oUrl_2 = d.ret.url_2;
@@ -144,17 +144,35 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         pullDown: function () {
             var _this = this;
             $(document).on("click", ".redEnvelope img", function () {
+                // $.ajax({
+                //     type: "POST",
+                //     dataType: "JSON",
+                //     url: "/act/act170601/get_status",
+                //     success: function (d) {
+                //         if (!!d.success) {
+                //             _this.status.login = d.ret.login;
+                //             _this.status.weChat = d.ret.weChat;
+                //             oUrl_1 = d.ret.url_1;
+                //             oUrl_2 = d.ret.url_2;
+                //         } else {
+                //             oP.show(d.msg || "出错请重试");
+                //             if (d.code) {
+                //                 _this.status.code = d.code;
+                //             }
+                //         }
+                //     }
+                // })
                 if (_this.status.weChat == true) {
                     $(".redEnvelope").remove();
                     $(".mt-mask").addClass("hide");
                     oP.show("本活动需在app参加");
-                    $(".wp").css("-webkit-overflow-scrolling","touch");
+                    $(".wp").css("-webkit-overflow-scrolling", "touch");
                 } else {
                     if (_this.status.login == false) {
                         // oP.show("请登陆app参与活动");
-                            if (Bridge) {
-                                Bridge.action("login");
-                            }
+                        if (Bridge) {
+                            Bridge.action("login");
+                        }
                     } else {
                         $(".redEnvelope img").remove();
                         $(".redEnvelope").append("<img src='//r.51gjj.com/act/release/img/20170601_receive.png'/><div class='accept' bp='收下奖励' title='收下奖励'></div>");
@@ -177,7 +195,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     success: function (d) {
                         if (!!d.success) {
                             $(".redEnvelope").remove();
-                            $(".wp").css("-webkit-overflow-scrolling","touch");
+                            $(".wp").css("-webkit-overflow-scrolling", "touch");
                             $(".mt-mask").addClass("hide");
                         } else {
                             oP.show(d.msg || "出错请重试");

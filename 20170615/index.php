@@ -37,21 +37,12 @@
                 <div class="content">
                   <img class="bgImg" data-src="<?php echo $imgUrl; ?>bg_one.jpg" alt="">
                   <div class="gift" bp="拆礼包" title="拆礼包"></div>
+                  <div class="rule-btn"></div>
                 </div>
             </div>
             <div class="page page2">
                 <div class="content">
-                    <h6 class="t1">选择信用卡额度</h6>
-                    <ul class="choose">
-                        <li class="grayscale animated" data-loan-type="1" title="OneToFive" bp="OneToFive">
-                            <div class="left">1~5万</div>
-                            <div class="right"><span class="choose-icon"></span></div>
-                        </li>
-                        <li class="grayscale animated" data-loan-type="2" title="SixToThirty" bp="SixToThrity">
-                            <div class="left">6~30万</div>
-                            <div class="right"><span class="choose-icon"></span></div>
-                        </li>
-                    </ul>
+                   <img data-src="<?php echo $imgUrl; ?>bg_two.jpg" alt="">
                 </div>
             </div>
         </div>
