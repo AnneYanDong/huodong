@@ -121,7 +121,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         pullDown: function () {
             $(".page1").on("click", ".gift", function () {
                 oM.show();
-                $(".wp").append('<div class="tipMsg"><img src="../static/img/20170615_msg.png"><div class="receive" bp="收下" title="收下"></div></div>');
+                $(".wp").append('<div class="tipMsg"><img src="http://r.51gjj.com/act/release/img/20170615_msg.png"><div class="receive" bp="收下" title="收下"></div></div>');
             })
         },
 
