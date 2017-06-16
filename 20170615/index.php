@@ -40,13 +40,27 @@
                   <div class="rule-btn"></div>
                 </div>
             </div>
-            <div class="page page2">
+            <div class="page page2 hide">
                 <div class="content">
                    <img data-src="<?php echo $imgUrl; ?>bg_two.jpg" alt="">
+                   <div class="looking" bp="查看红包" title="查看红包"></div>
+                   <div class="apply" bp="立即申请" title="立即申请"></div>
+                   <div class="rule-btn"></div>
                 </div>
             </div>
         </div>
         <div class="mask hide"></div>
+        <div class="rule zm-customer-confirm hide">
+    <h6>活动规则</h6>
+    <ul>
+        <li><span>1.</span>活动期间6月16日-6月22日，通过活动页面按钮申请光大智能商务金卡即可获得88、188、288随机现金（该权益与信用卡定制活动权益不可重复领取）；</li>
+        <li><span>2.</span>审批通过后请尽快前往网点完成面签，获得卡片后通过电话完成激活，即可通过活动页面“查看红包”找到对应奖品，填写支付宝和手机号以领取；</li>
+        <li><span>3.</span>本次活动仅限之前未成功申请过该业务的用户，且同一用户不可重复领取同一奖励，活动权益需在7月12日24时前完成领取，过期自动失效；</li>
+        <li><span>4.</span>有任何疑问或者帮助可联系客服4008635151；</li>
+        <li><span>5.</span>活动最终解释权归杭州煎饼网络技术有限公司所有。</li>
+    </ul>
+    <div class="btn-close"></div>
+</div>
     </div>
     <script>
         var indexData = {

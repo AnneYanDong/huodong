@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function($, fastClick, fullpage, ct, Bridge, juicer) {
+require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function ($, fastClick, fullpage, ct, Bridge, juicer) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -15,15 +15,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
     var run = {
         status: {
             login: false,
-            msg: ""
-        },
-        charge: {
-            loan: null,
-            type: null,
-            pay: null
+            oUrl_1: "",
+            oUrl_2: ""
         },
 
-        start: function() {
+        start: function () {
             var _this = this;
 
             /*解决移动端click点击300延迟*/
@@ -44,336 +40,168 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
             /*图片预加载*/
             ct.Tool.imgPreLoad({
-                callback: function() {
+                callback: function () {
                     this.hintLog("图片加载完成");
                     var timer = null;
                     clearTimeout(timer);
-                    timer = setTimeout(function() {
+                    timer = setTimeout(function () {
                         oPreLoading.hide();
                         _this.init();
                     }, 500)
                 }
             })
 
-            ct.Ajax.do({
-                url: indexData.ajaxUrl || "test.php",
-                // requestDataType: "json",
-                data: {
-                    action: "status",
-                    test: "look",
-                    num: 1
-                },
-                success: function(d) {
-                    if (d.errcode == 0) {
-                        _this.status.login = true;
-                    } else {
-                        _this.status.msg = d.errmsg || "出错请重试";
-                        oP.show(d.errmsg || "出错请重试");
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: ct.Tool.url("/app/request/activity"),
+                data: JSON.stringify({
+                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    tag: "进入页面" + projectName
+                }),
+                success: function (d) {
+                    if (d.success == true) {
+
                     }
                 }
             })
         },
 
-        init: function() {
+        init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
-            _this.fullPageObj = _this.fullpage();
-            _this.apply();
+            _this.render();
+            _this.pullDown();
+            _this.receive();
+            _this.skip();
             _this.openRule();
             _this.closeRule();
+            _this.share();
         },
 
-        fullpage: function() {
+        render: function () {
             var _this = this;
-            var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
-                start: 0,
-                beforeChange: function(e) {
-                    var now = "page" + e.next;
-                    _this.changeState(now);
-                    // if (e.next < e.cur) {
-                    //     return false;
-                    // }
-                },
-                afterChange: function(e) {
-                    _this.fullPageObj.stop();
-                    var now = "page" + e.cur;
-                    if (now == "page0") {
-                        $(".page1 .gift").on("click", function() {
-                            oM.show();
-                            $(".wp").append('<div class="tipMsg"><img src="../static/img/20170615_msg.png"><div class="receive"></div></div>');
-                            $(".receive").on("click",function () {
-                                console.log(4545);
-                                $(".tipMsg").remove();
-                                $(".mt-mask").css("display","none");
-                                _this.fullPageObj.moveTo(1, true);
-                            })
-                            // _this.fullPageObj.moveTo(1, true);
-                        });
 
-
-                        $(".process").on("click", function() {
-                            console.log(local.origin + "shequ/discovery/index.php?route=account/business&type=3")
-                            window.location.href = local.origin + "shequ/discovery/index.php?route=account/business&type=3";
-                        })
-
-                        _this.respondState(now);
-                    }
-
-                    if (now == "page1") {
-                        $(".page1 li").removeClass("rotate").addClass("grayscale");
-
-                        $(".page2 li").on("click", function() {
-                            oMask.show();
-                            var ele = $(this);
-                            if (ele.hasClass("rotate")) {
-                                oMask.hide();
-                                _this.fullPageObj.moveTo(2, true);
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                // url: "test.php",
+                url: "/act/act170615/get_status",
+                success: function (d) {
+                    if (!!d.success) {
+                        if (d.ret.weChat == true) {
+                            timer = setTimeout(function () {
+                                oP.show("本活动需在app参加");
+                                timer = setTimeout(function () {
+                                    window.location.href = "http://d.51gjj.com/";
+                                }, 1500)
+                            }, 200);
+                        } else {
+                            if (d.ret.login == false) {
+                                if (Bridge) {
+                                    Bridge.action("login");
+                                }
                             } else {
-                                ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
-                                var timer = null;
-                                clearTimeout(timer);
-                                timer = setTimeout(function() {
-                                    ele.addClass("rotate");
-                                    clearTimeout(timer);
-                                    timer = setTimeout(function() {
-                                        _this.fullPageObj.moveTo(2, true);
-                                        oMask.hide();
-                                    }, 1200)
-                                }, 200)
+                                _this.status.oUrl_1 = d.ret.url_1;
+                                _this.status.oUrl_2 = d.ret.url_2;
+                                console.debug(_this.status.oUrl_2)
+                                if (d.ret.have == true) {
+                                    $(".page1").addClass("hide");
+                                    $(".page2").removeClass("hide");
+                                }
                             }
-                            _this.charge.loan = $(this).data("loan-type");
-                        })
-
-
-                        _this.respondState(now, 0, true);
-                    }
-
-                    if (now == "page2") {
-                        $(".page2 li").removeClass("rotate").addClass("grayscale");
-                        $(".page3 li").on("click", function() {
-                            oMask.show();
-                            var ele = $(this);
-                            ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
-                            var timer = null;
-                            clearTimeout(timer);
-                            timer = setTimeout(function() {
-                                ele.addClass("rotate");
-                                clearTimeout(timer);
-                                timer = setTimeout(function() {
-                                    console.log(_this.charge)
-                                    if (_this.cardType(_this.charge) == "continue") {
-                                        var d = null;
-                                        if (_this.charge.type == 1) {
-                                            var tpl = $("#tpl-choose-pf").html();
-                                        } else {
-                                            var tpl = $("#tpl-choose-gd").html();
-                                        }
-                                        var resHtml = juicer(tpl, d)
-                                    } else {
-                                        var d = cardJson[_this.cardType(_this.charge)];
-                                        console.log(d);
-                                        var tpl = $("#tpl-card").html();
-                                        var resHtml = juicer(tpl, d);
-
-                                        juicer.register("index_add", indexFn);
-                                        var ruleTpl = $("#tpl-rule").html();
-                                        var resRuleHtml = juicer(ruleTpl, d);
-                                        console.log(resRuleHtml);
-                                    }
-                                    $(".page4 .content").html("").append(resHtml);
-                                    $(".rule").remove();
-                                    $("body").append(resRuleHtml);
-                                    oMask.hide();
-                                    _this.fullPageObj.moveTo(3, true);
-                                }, 1200)
-                            }, 200)
-
-                            _this.charge.type = $(this).data("card-type");
-                        })
-                        _this.respondState(now, 1, true, function() {
-                            _this.charge.loan = null;
-                        });
-                    }
-
-                    if (now == "page3") {
-                        $(".page3 li").removeClass("rotate").addClass("grayscale");
-                        if ($(".page4 .next")) {
-                            $(".next li").on("click", function() {
-                                oMask.show();
-                                var ele = $(this);
-                                ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
-                                var timer = null;
-                                clearTimeout(timer);
-                                timer = setTimeout(function() {
-
-                                    ele.addClass("rotate");
-                                    clearTimeout(timer);
-                                    timer = setTimeout(function() {
-                                        console.log(_this.charge)
-                                        if (_this.cardType(_this.charge) == "continue") {
-                                            console.log("错了")
-                                            return false;
-                                        } else {
-                                            var d = cardJson[_this.cardType(_this.charge)];
-                                            console.log(d);
-                                            var tpl = $("#tpl-card").html();
-                                            var resHtml = juicer(tpl, d);
-
-                                            juicer.register("index_add", indexFn);
-                                            var ruleTpl = $("#tpl-rule").html();
-                                            var resRuleHtml = juicer(ruleTpl, d);
-                                        }
-                                        $(".page5 .content").html("").append(resHtml);
-                                        $(".rule").remove();
-                                        $("body").append(resRuleHtml);
-                                        oMask.hide();
-                                        _this.fullPageObj.moveTo(4, true);
-                                    }, 1200)
-                                }, 200)
-                                _this.charge.pay = $(this).data("pay");
-                            })
                         }
-                        _this.respondState(now, 2, true);
-                    }
-
-                    if (now == "page4") {
-                        $(".page4 li").removeClass("rotate").addClass("grayscale");
-                        _this.charge.pay = null;
-                        _this.respondState(now, 3, true);
+                    } else {
+                        oP.show(d.msg || "出错请重试");
                     }
                 }
-            });
-            return fullpage;
+            })
         },
 
-        // 走后台跳转申请
-        apply: function() {
-            $(".page4,.page5").on("click", ".apply", function() {
-                console.log("...")
-                var type = $(this).data("link");
-                ct.Ajax.do({
-                    url: indexData.ajaxUrl || "test.php",
-                    data: {
-                        action: "apply",
-                        type: type
-                    },
-                    success: function(d) {
-                        if (d.errcode == 0) {
-                            window.location.href = d.url;
+        pullDown: function () {
+            $(".page1").on("click", ".gift", function () {
+                oM.show();
+                $(".wp").append('<div class="tipMsg"><img src="../static/img/20170615_msg.png"><div class="receive" bp="收下" title="收下"></div></div>');
+            })
+        },
+
+        receive: function () {
+            $(document).on("click", ".receive", function () {
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    // url: "test.php",
+                    url: "/act/act170615/get_prize",
+                    success: function (d) {
+                        if (!!d.success) {
+                            $(".tipMsg").remove();
+                            $(".mt-mask").css("display", "none");
+                            window.location.href = d.ret.url;
                         } else {
-                            oP.show(d.errmsg || "出错请重试");
+                            oP.show(d.msg || "出错请重试");
                         }
                     }
                 })
             })
         },
-
-        changeState: function(page) {
-            window.history.pushState && window.history.pushState({
-                title: page
-            }, page, "index.php#page=" + page); // 塞入新的历史
-        },
-
-        // 返回。
-        respondState: function(page, to, isAnim, fn) {
+        skip: function () {
             var _this = this;
-            var app = ct.Tool.userAgent();
-            if (Bridge && app.isGjj) {
-                Bridge.onBack(function() {
-                    if (page == "page0") {
-                        return false;
-                    } else {
-                        if (isAnim) {
-                            _this.fullPageObj.moveTo(to, true);
-                        } else {
-                            _this.fullPageObj.moveTo(to);
-                        }
-                        if (fn) {
-                            fn();
-                        }
-                        return true;
-                    }
-                })
-            } else {
-                window.onpopstate = function() {
-                    if (isAnim) {
-                        console.log(_this.fullPageObj)
-                        _this.fullPageObj.moveTo(to, true);
-                    } else {
-                        _this.fullPageObj.moveTo(to);
-                    }
-                    if (fn) {
-                        fn();
-                    }
-                }
-            }
+            $(".page2 .looking").on("click", function () {
+                window.location.href = _this.status.oUrl_2;
+            });
+            $(".page2 .apply").on("click", function () {
+                window.location.href = _this.status.oUrl_1;
+            })
         },
 
         // 打开规则
-        openRule: function() {
-            $(".content").on("click", ".rule-btn", function() {
+        openRule: function () {
+            $(".content").on("click", ".rule-btn", function () {
                 oM.show();
                 $(".rule").fadeIn();
             })
         },
 
         // 关闭规则
-        closeRule: function() {
-            $("body").on("click", ".btn-close", function() {
-                $(".rule").fadeOut(function() {
+        closeRule: function () {
+            $("body").on("click", ".btn-close", function () {
+                $(".rule").fadeOut(function () {
                     oM.hide();
                 })
             })
         },
 
-        cardType: function(obj) {
-            var data = null;
-
-            if (!obj) {
-                return false;
+        //分享按钮：
+        share: function () {
+            var u = navigator.userAgent;
+            var app = {
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/),
+                isAndroid: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1 || u.indexOf("android") > -1,
+                isiOS: /[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                webApp: -1 == u.indexOf("Safari"),
+                weixin: u.indexOf("MicroMessenger") > -1,
+                isGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u) || /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isAndroidGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isiOSGjj: /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isGjjFdjsq: /^android\/[\w\W]+client\/[\w\W]+category\/51fdjsq$/.test(u)
+            };
+            var host = window.location.host;
+            if (app.isGjj && Bridge) {
+                Bridge.action('quickIcon', {
+                    thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
+                    onclick: function () {
+                        Bridge.action('ShareTimeline', {
+                            "title": "【父亲节快乐】这些年收获了很多祝福和礼物，但其实…",
+                            'desc': "给的再多，不如懂你，点击领取父亲节专属礼包！",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170615_wxshare.png",
+                            "link": "http://" + host + "/act/home/huodong/20170615/"
+                        });
+                    }
+                })
             }
-            if (obj.loan == 1) { // 1-5
-                if (obj.type == 1) { // 浦发是1
-                    if (!obj.pay) {
-                        return "continue";
-                    } else if (obj.pay == 1) { // 4000+
-                        return "mk"
-                    } else if (obj.pay == 2) { // 4000-
-                        return "cx";
-                    }
-                } else if (obj.type == 2) { // 光大是2
-                    if (!obj.pay) {
-                        return "continue";
-                    } else if (obj.pay == 1) { // 2500+
-                        return "lt"
-                    } else if (obj.pay == 2) { // 2500-
-                        return "znsw";
-                    }
-                } else { // 兴业是3
-                    return "lxjy";
-                }
-            } else if (obj.loan == 2) { // 6-30
-                if (obj.type == 1) { // 浦发
-                    if (!obj.pay) {
-                        return "continue";
-                    } else if (obj.pay == 1) { // 4000+
-                        return "mk"
-                    } else if (obj.pay == 2) { // 4000-
-                        return "cx";
-                    }
-                } else if (obj.type == 2) { // 光大
-                    if (!obj.pay) {
-                        return "continue";
-                    } else if (obj.pay == 1) { // 2500+
-                        return "lt"
-                    } else if (obj.pay == 2) { // 2500-
-                        return "znsw";
-                    }
-                } else { // 兴业
-                    return "lxy"
-                }
-            }
+            return this;
         },
+
     }
 
 

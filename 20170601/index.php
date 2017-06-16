@@ -33,12 +33,13 @@
     <div class="wp-inner">
         <div class="content">
             <img data-src="<?php echo $imgUrl; ?>bg5.jpg" alt="">
-            <div class="redEnvelope addMove"></div>
+            <!--<div class="redEnvelope addMove"></div>-->
             <div class="apply" bp="申请即获100元京东E卡" title="申请即获100元京东E卡"></div>
             <div class="look" bp="查看我的红包" title="查看我的红包"></div>
             <div class="rule-btn"></div>
         </div>
     </div>
+    <div class="redEnvelope addMove"></div>
     <div class="mask hide"></div>
 </div>
 <div class="rule zm-customer-confirm hide">

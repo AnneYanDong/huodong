@@ -4,12 +4,12 @@
 		"ret"=>array(
             "url_1"=>"http://www.baidu.com",
 			"url_2"=>"http://www.baidu.com",
-			"have"=>false,
-			"login"=>true,
-			"weChat"=>false
+			"have"=>true,
+                    "success"=>true,
+		"login"=>true,
+		"weChat"=>false
         ),
-        "success"=>true,
-		
+        "success"=>true
 		// "code"=>1,
 		// "msg"=>"活动下线喽"
 	);
