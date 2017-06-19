@@ -113,6 +113,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         }
                     } else {
                         oP.show(d.msg || "出错请重试");
+                        $(".page1").unbind();
                     }
                 }
             })
