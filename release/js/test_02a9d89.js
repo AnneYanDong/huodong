@@ -1,1 +1,0 @@
-require.config(requireConfig),require(["jquery","FullPage"],function(r){r(".box").css({backgroundColor:"pink"})});
