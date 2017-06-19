@@ -162,7 +162,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         apply: function () {
             $(".content").on("click", ".apply", function () {
                 $.ajax({
-                    url: ct.Tool.url("/act/act170510/get_status"),
+                    // url: ct.Tool.url("/act/act170510/get_status"),
+                    url: "/act/act170510/get_status",
                     type: "POST",
                     dataType: "json",
                     success: function (d) {
@@ -170,29 +171,32 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             d = d.ret;
                             var timer = null;
                             clearTimeout(timer);
-                            if (d.ret.login == false) {
+                            if (d.weChat == true) {
+                                window.location.href = d.url;
+                            } else if (d.login == false) {
                                 if (Bridge) {
                                     Bridge.action("login");
                                 }
-                            }
-                            if (d.type == 1) {
-                                window.location.href = d.url;
-                            } else if (d.type == 2) {
-                                timer = setTimeout(function () {
-                                    oP.show("您可获得266元现金，快去激活您的卡片吧~");
-                                    timer = setTimeout(function () {
-                                        window.location.href = d.url;
-                                    }, 1500)
-                                }, 200);
-                            } else if (d.type == 3) {
-                                timer = setTimeout(function () {
-                                    oP.show("您已拥有大额现金券，快去激活您的卡片吧~");
-                                    timer = setTimeout(function () {
-                                        window.location.href = d.url;
-                                    }, 1500)
-                                }, 200);
                             } else {
-                                oP.show(d.msg || "出错请重试");
+                                if (d.type == 1) {
+                                    window.location.href = d.url;
+                                } else if (d.type == 2) {
+                                    timer = setTimeout(function () {
+                                        oP.show("您可获得266元现金，快去激活您的卡片吧~");
+                                        timer = setTimeout(function () {
+                                            window.location.href = d.url;
+                                        }, 1500)
+                                    }, 200);
+                                } else if (d.type == 3) {
+                                    timer = setTimeout(function () {
+                                        oP.show("您已拥有大额现金券，快去激活您的卡片吧~");
+                                        timer = setTimeout(function () {
+                                            window.location.href = d.url;
+                                        }, 1500)
+                                    }, 200);
+                                } else {
+                                    oP.show(d.msg || "出错请重试");
+                                }
                             }
                         } else if (d.code == 1) {
                             oP.show(d.msg || "出错请重试");

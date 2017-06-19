@@ -45,7 +45,7 @@
 	},
 
 	"20170513": {
-		"js": ["r.51gjj.com/act/release/js/20170513_9322050.js"],
+		"js": ["r.51gjj.com/act/release/js/20170513_c55e1ea.js"],
 		"css": ["r.51gjj.com/act/release/css/20170513_288f230.css"]
 	},
 
@@ -65,7 +65,7 @@
 	},
 
 	"20170531": {
-		"js": ["r.51gjj.com/act/release/js/20170531_b3dd471.js"],
+		"js": ["r.51gjj.com/act/release/js/20170531_658b6bf.js"],
 		"css": ["r.51gjj.com/act/release/css/20170531_044bdec.css"]
 	},
 

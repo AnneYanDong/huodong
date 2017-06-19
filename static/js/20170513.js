@@ -81,57 +81,17 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
-            // _this.openRule();
-            // _this.closeRule();
-            _this.render();
             _this.apply();
             // _this.share()
         },
 
-        render: function () {
-            // var _this = this;
-            // $.ajax({
-            // url: "https://kaifa.jianbing.com/act/act170413/get_status",
-            // url: ct.Tool.url("/act/act170413/get_status"),
-            //     url: "test.php",
-            //     type: "POST",
-            //     dataType: "json",
-            //     success: function (d) {   
-            //         if (d.success) {
-            //             oUrl = d.ret.url;
-            //         } else if(d.code == 1){
-            //             oP.show(d.msg || "出错请重试");
-            //         }
-            //     }
-            // })
-        },
-
-        // 打开规则
-        openRule: function () {
-            $(".content").on("click", ".rule-btn", function () {
-                oM.show();
-                $(".rule").fadeIn();
-            })
-        },
-
-        // 关闭规则
-        closeRule: function () {
-            $("body").on("click", ".btn-close", function () {
-                $(".rule").fadeOut(function () {
-                    oM.hide();
-                })
-            })
-        },
-
-
-
         //立即申请
         apply: function () {
-            $(document).on("click",".apply", function () {
-                 $.ajax({
+            $(document).on("click", ".apply", function () {
+                $.ajax({
                     // url: ct.Tool.url("/act/act170513/get_status"),
-                    url:"/act/act170513/get_status",
-                    
+                    url: "/act/act170513/get_status",
+
                     type: "POST",
                     dataType: "json",
                     data: {},
@@ -140,23 +100,29 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             d = d.ret;
                             var timer = null;
                             clearTimeout(timer);
-                            if (d.order == false) {
-                                oP.show("您不符合领券要求，去看看其他吧~");
-                            } else if (d.order == true) {
-                                timer = setTimeout(function () {
-                                    oP.show("成功领取，立即申请享受奖励~");
+                            if (d.login == false) {
+                                if (Bridge) {
+                                    Bridge.action("login");
+                                }
+                            } else {
+                                if (d.order == false) {
+                                    oP.show("您不符合领券要求，去看看其他吧~");
+                                } else if (d.order == true) {
                                     timer = setTimeout(function () {
-                                        window.location.href = d.url;
-                                    }, 1500)
-                                }, 200);
-                            }  else {
-                                oP.show(d.msg || "出错请重试");
+                                        oP.show("成功领取，立即申请享受奖励~");
+                                        timer = setTimeout(function () {
+                                            window.location.href = d.url;
+                                        }, 1500)
+                                    }, 200);
+                                } else {
+                                    oP.show(d.msg || "出错请重试");
+                                }
                             }
-                        } else if (d.code == 1){
+                        } else if (d.code == 1) {
                             oP.show(d.msg || "出错请重试");
                         }
                     },
-                    error:function(XMLHttpRequest, textStatus, errorThrown){
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert(XMLHttpRequest.status);
                         alert(XMLHttpRequest.readyState);
                         alert(textStatus);
