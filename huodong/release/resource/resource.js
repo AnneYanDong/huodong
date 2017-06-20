@@ -15,7 +15,7 @@
 	},
 
 	"20170411": {
-		"js": ["r.51gjj.com/act/release/js/20170411_f9e4dc6.js"],
+		"js": ["r.51gjj.com/act/release/js/20170411_3b14da2.js"],
 		"css": ["r.51gjj.com/act/release/css/20170411_b670ca2.css"]
 	},
 
