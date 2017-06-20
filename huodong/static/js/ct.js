@@ -65,6 +65,7 @@ define(["jquery"], function($) {
         },
 
         viewPortInfo: function() {
+            //这个是针对移动web做的兼容,页面可见区域的大小
             var deviceWidth, deviceHeight;
             if (window.innerWidth == undefined) { // IE6,7,8 没有innerWidth
                 deviceWidth = document.documentElement.clientWidth;
@@ -226,7 +227,7 @@ define(["jquery"], function($) {
         })
     }
 
-    // 获取地址栏某个参数
+    // 获取地址栏某个参数(查询字符串)
     Tool.getUrlData = function(search) {
         var _this = this;
         var obj = {};
