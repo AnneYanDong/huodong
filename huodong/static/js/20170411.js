@@ -94,9 +94,27 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
+            _this.render();
             _this.apply();
             _this.openRule();
             _this.closeRule();
+        },
+
+        render: function () {
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "/act/act170411/get_status",
+                success: function (d) {
+                    if (!!d.success) {
+                        if (d.ret.login == false) {
+                            if (Bridge) {
+                                Bridge.action("login")
+                            }
+                        }
+                    }
+                }
+            })
         },
         // 走后台跳转申请
         apply: function () {
