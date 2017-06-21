@@ -30,7 +30,7 @@
 	    	width: 2.44rem;
 	    	height: .49rem;
 	    }
-	    .banner-part-one .look-increase {
+	    .banner-part-one .look-increase a{
 	    	text-align: center;
 	    	color: #fff;
 	    	font-size: .4rem;
@@ -102,7 +102,7 @@
 		<div class="banner-part-one">
 			<img class="bg" src="../static/img/zl_cp_lp2.png">
 			<img class="logo-lp" src="../static/img/logo_lp_cp_03.png">
-			<div class="look-increase">马上查看涨幅</div>
+			<div class="look-increase"><a href="javascript:;" id="appAddr">马上查看涨幅</a></div>
 		</div>
 		<div class="cnzz">
             <span>浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家</span>
@@ -120,11 +120,11 @@
 	            return false;
 	        }
 	    }
-	    var lookIncrease = document.getElementsByClassName('look-increase')[0];
+	    var appAddr = document.getElementById('appAddr');
 	    // var otherDown = document.getElementById("other-down");
 	    if (is_weixn()) {
 	        var wxurl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.balance6game.housingfund';
-	        lookIncrease.href = wxurl;
+	        appAddr.href = wxurl;
 	    } else {
 	        var place_name = window.location.search;
 	        if (place_name) {
@@ -166,14 +166,14 @@
 	            //https://itunes.apple.com/app/apple-store/id908573399?pt=83635804&ct=aaa&mt=8
 	            //"https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?mt=8";
 	            // appAddr.href = "https://itunes.apple.com/app/apple-store/id908573399?pt=83635804&ct=" + place_name + "&mt=8";
-	            lookIncrease.href = "https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?ls=1&mt=8";
+	            appAddr.href = "https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?ls=1&mt=8";
 	        } else {
-	            lookIncrease.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
+	            appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
 	        }
 	    }
 
-	    lookIncrease.onclick = function() {
-	        _czc.push(['_trackEvent', 'page', 'db', lookIncrease.href.substr(27, 20), '1', 'lookIncrease']);
+	    appAddr.onclick = function() {
+	        _czc.push(['_trackEvent', 'page', 'db', appAddr.href.substr(27, 20), '1', 'appAddr']);
 	        return true;
 	    };
 	</script>
