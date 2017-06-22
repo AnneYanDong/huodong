@@ -293,9 +293,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
         },
 
         changeState: function(page) {
+            var dataArr = window.location.search.slice(1);console.log(dataArr);
             window.history.pushState && window.history.pushState({
                 title: page
-            }, page, "index.php#page=" + page); // 塞入新的历史
+            }, page, "index.php?"+dataArr+"#page=" + page); // 塞入新的历史
         },
 
         // 返回。
