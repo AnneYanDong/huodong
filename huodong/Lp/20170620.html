@@ -126,17 +126,19 @@
 	        var wxurl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.balance6game.housingfund';
 	        appAddr.href = wxurl;
 	    } else {
-	        var place_name = window.location.search;
+	        var place_name = window.location.search;  //URL查询字符串
 	        if (place_name) {
-	            place_name = place_name.match(/[?&]p=([^&]+)/);
+	            place_name = place_name.match(/[?&]p=([^&]+)/); //获取参数，匹配?p=''或者&p='',''里面的内容去掉&号
+                console.log("匹配place_name:",place_name);
 	            if (place_name) {
-	                place_name = decodeURIComponent(place_name[1]);
+	                place_name = decodeURIComponent(place_name[1]);  //解码，因为获取的参数一般都进行了编码
+	                console.log("解码place_name:",place_name);
 	            }
 	        }
 	        if (!place_name) {
-	            place_name = window.location.hash;
+	            place_name = window.location.hash;  //URL的hash值
 	            if (place_name) {
-	                place_name = place_name.substr(1);
+	                place_name = place_name.substr(1); //不要hash值前面的#号
 	            }
 	        }
 	        if (!place_name) {
