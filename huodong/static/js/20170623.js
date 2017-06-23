@@ -74,6 +74,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
 
         init: function () {
             var _this = this;
+            $('.wp').removeClass('hide');
 
             // $.ajax({
             //     type: "POST",
