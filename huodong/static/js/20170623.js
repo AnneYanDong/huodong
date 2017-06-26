@@ -128,9 +128,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             clearTimeout(timer);
                             if (d.ret.weChat == true) {
                                 timer = setTimeout(function () {
-                                    oP.show("本活动需在app参加");
+                                    oP.show("登录51公积金管家APP领取奖品");
                                     timer = setTimeout(function () {
-                                        window.location.href = "http://d.51gjj.com/";
+                                        window.location.href = d.ret.url;
                                     }, 1500);
                                 }, 200);
                             } else {
