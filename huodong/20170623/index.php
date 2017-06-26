@@ -25,6 +25,12 @@
         }
     </style>
     <script>
+        //加载test.php假接口
+        var indexData = {
+            ajaxUrl: "<?php echo 'test.php'; ?>"
+        };
+    </script>
+    <script>
        var projectName = "<?php echo $actDate ?>";
     </script>
     <!-- 引入require.js和设置文件js的入口 -->
@@ -34,9 +40,9 @@
         <div class="wp hide">
             <div class="wp-inner">
                 <div class="content">
-                    <img data-src="<?php echo $imgUrl; ?>xfd_btn_bg_02.jpg" alt="">
+                    <img data-src="<?php echo $imgUrl; ?>xfd_btn_bg_02.jpg" alt="" />
                     <div class="rule-btn" bp="规则" title="规则"></div>
-                    <div class="btn">马上领取</div>
+                    <div class="btn" bp="马上领取" title="马上领取">马上领取</div>
                     <div class="warning"><span>*最终贷款利率以银行最终审批结果为准</span></div>
                 </div>
             <div class="mask hide"></div>
