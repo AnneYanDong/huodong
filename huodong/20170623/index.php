@@ -3,7 +3,7 @@
     include "../public/v1/header.php";
 ?>
 <?php
-    $actDate = "20170626"; // 配置图片的，必须
+    $actDate = "20170623"; // 配置图片的，必须
     $obj = new Resource; // 实例化获取资源类
     $res = $obj->getResStr($actDate); // 获取指定的活动资源，返回数组，array("css"=> "..", "js"=>"。。")
     $origin = $_SERVER['HTTP_HOST'];
@@ -25,6 +25,12 @@
         }
     </style>
     <script>
+        //加载test.php假接口
+        var indexData = {
+            ajaxUrl: "<?php echo 'test.php'; ?>"
+        };
+    </script>
+    <script>
        var projectName = "<?php echo $actDate ?>";
     </script>
     <!-- 引入require.js和设置文件js的入口 -->
@@ -34,9 +40,13 @@
         <div class="wp hide">
             <div class="wp-inner">
                 <div class="content">
-                    <div class="rule-btn" bp="规则" title="规则">规则</div>
-            </div>
+                    <img data-src="<?php echo $imgUrl; ?>xfd_btn_bg_02.jpg" alt="" />
+                    <div class="rule-btn" bp="规则" title="规则"></div>
+                    <div class="btn" bp="马上领取" title="马上领取">马上领取</div>
+                    <div class="warning"><span>*最终贷款利率以银行最终审批结果为准</span></div>
+                </div>
             <div class="mask hide"></div>
+            </div>
         </div>
     </body>
     <script type="text/template" id="tpl-rule">
