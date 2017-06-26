@@ -115,8 +115,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
-                    url: ct.Tool.url("/act/act170623/get_prize"),  //这个到时候换成鑫福贷活动的接口
-                    // url: "/act/act170623/get_prize",
+                    // url: ct.Tool.url("/act/act170623/get_prize"),  //这个到时候换成鑫福贷活动的接口
+                    url: "/act/act170623/get_prize",
                     data: JSON.stringify({
                         place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
                         tag: "进入页面" + projectName
@@ -129,9 +129,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             clearTimeout(timer);
                             if (d.ret.weChat == true) {
                                 timer = setTimeout(function () {
-                                    oP.show("本活动需在app参加");
+                                    oP.show("登录51公积金管家APP领取奖品");
                                     timer = setTimeout(function () {
-                                        window.location.href = "http://d.51gjj.com/";
+                                        window.location.href = d.ret.url;
                                     }, 1500);
                                 }, 200);
                             } else {
