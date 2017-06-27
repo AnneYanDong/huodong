@@ -72,45 +72,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
         receive: function() {
             $('.content').on('click','.btn',function(){
-                //这个是模拟的假请求
-                // ct.Ajax.do({
-                //     url: indexData.ajaxUrl || "test.php",  //用test.php来模拟接口
-                //     data: {},
-                //     success: function(d) {
-                //          if (d.success == true) {
-                //             var timer = null;
-                //             clearTimeout(timer);
-                //             if (d.ret.weChat == true) {
-                //                 timer = setTimeout(function () {
-                //                     oP.show("本活动需在app参加");
-                //                     timer = setTimeout(function () {
-                //                         window.location.href = "http://d.51gjj.com/";
-                //                     }, 1500)
-                //                 }, 200);
-                //             } else {
-                //                 if (d.ret.login == false) {
-                //                     if (Bridge) {
-                //                         Bridge.action("login");
-                //                     }
-                //                 } else {
-                //                     if (d.ret.have == false) {
-                //                         window.location.href = d.ret.url;
-                //                     } else {
-                //                         timer = setTimeout(function () {
-                //                             oP.show("您已领取,直接去体验吧");
-                //                             timer = setTimeout(function () {
-                //                                 window.location.href = d.ret.url;
-                //                             }, 1500);
-                //                         }, 200);
-                //                     }
-                //                 }
-                //             }
-                //         }else {
-                //             oP.show("出错了请重试");
-                //         }
-                //     }
-                // });
-
                 /*下面这个是真正的请求真接口，别删*/
                 $.ajax({
                     type: "POST",
@@ -135,20 +96,30 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                     }, 1500);
                                 }, 200);
                             } else {
-                                if (d.ret.login == false) {
-                                    if (Bridge) {
-                                        Bridge.action("login");
-                                    }
-                                } else {
-                                    if (d.ret.have == false) {
-                                        window.location.href = d.ret.url;
-                                    } else {
+                                if (d.ret.qq == true) {
+                                    console.log('qq');
+                                    timer = setTimeout(function () {
+                                        oP.show("登录51公积金管家APP领取奖品");
                                         timer = setTimeout(function () {
-                                            oP.show("您已领取,直接去体验吧");
+                                            window.location.href = d.ret.url;
+                                        }, 1500);
+                                    }, 200);
+                                } else {
+                                    if (d.ret.login == false) {
+                                        if (Bridge) {
+                                            Bridge.action("login");
+                                        }
+                                    } else {
+                                        if (d.ret.have == false) {
+                                            window.location.href = d.ret.url;
+                                        } else {
                                             timer = setTimeout(function () {
-                                                window.location.href = d.ret.url;
-                                            }, 1500);
-                                        }, 200);
+                                                oP.show("您已领取,直接去体验吧");
+                                                timer = setTimeout(function () {
+                                                    window.location.href = d.ret.url;
+                                                }, 1500);
+                                            }, 200);
+                                        }
                                     }
                                 }
                             }
@@ -156,9 +127,58 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             oP.show("出错了请重试");
                         }
                     }
-                })
+                });
             });
         },
+                //这个是模拟的假请求
+                // ct.Ajax.do({
+                //     url: indexData.ajaxUrl || "test.php",  //用test.php来模拟接口
+                //     data: {},
+                //     success: function (d) {
+                //         console.log(d);
+                //         //判断用户有没有领取补贴
+                //         if (d.success == true) {
+                //             var timer = null;
+                //             clearTimeout(timer);
+                //             if (d.ret.weChat == true) {
+                //                 timer = setTimeout(function () {
+                //                     oP.show("登录51公积金管家APP领取奖品");
+                //                     timer = setTimeout(function () {
+                //                         window.location.href = d.ret.url;
+                //                     }, 1500);
+                //                 }, 200);
+                //             } else {
+                //                 if (d.ret.qq == true) {
+                //                     timer = setTimeout(function () {
+                //                         oP.show("登录51公积金管家APP领取奖品");
+                //                         timer = setTimeout(function () {
+                //                             window.location.href = d.ret.url;
+                //                         }, 1500);
+                //                     }, 200);
+                //                 } else {
+                //                     if (d.ret.login == false) {
+                //                         if (Bridge) {
+                //                             Bridge.action("login");
+                //                         }
+                //                     } else {
+                //                         if (d.ret.have == false) {
+                //                             window.location.href = d.ret.url;
+                //                         } else {
+                //                             timer = setTimeout(function () {
+                //                                 oP.show("您已领取,直接去体验吧");
+                //                                 timer = setTimeout(function () {
+                //                                     window.location.href = d.ret.url;
+                //                                 }, 1500);
+                //                             }, 200);
+                //                         }
+                //                     }
+                //                 }
+                //             }
+                //         }else {
+                //             oP.show("出错了请重试");
+                //         }
+                //     }
+                // });
         openRule: function () {
             $(".content").on("click", ".rule-btn", function (event) {
                 oM.show();
