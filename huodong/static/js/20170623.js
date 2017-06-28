@@ -108,12 +108,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //                             oP.show("您已经申请过该活动业务,试试其它活动~");
                 //                         } else if (d.ret.type == 2) {
                 //                             oP.show("您暂不符合活动条件,试试其他活动~");
-                //                             // timer = setTimeout(function () {
-                //                             //     oP.show("您可获得266元现金，快去激活您的卡片吧~");
-                //                             //     timer = setTimeout(function () {
-                //                             //         window.location.href = d.url;
-                //                             //     }, 1500)
-                //                             // }, 200);
                 //                         } else if (d.ret.type == 3) {
                 //                             timer = setTimeout(function () {
                 //                                 oP.show("您已成功领取红包,申请即领~");
@@ -179,7 +173,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                             timer = setTimeout(function () {
                                                 oP.show("您已成功领取红包,申请即领~");
                                                 timer = setTimeout(function () {
-                                                    window.location.href = d.url;
+                                                    window.location.href = d.ret.url;
                                                 }, 1500)
                                             }, 200);
                                         } else {
@@ -196,7 +190,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
 
             });
         },
-                
+
         openRule: function () {
             $(".content").on("click", ".rule-btn", function (event) {
                 oM.show();
