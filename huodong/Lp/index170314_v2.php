@@ -75,13 +75,13 @@
 <body>
     <div class="container">
         <div class="banner-part-one">
-            <img class="bg" src="//r.51gjj.com/act/images/shichang/20170315_v1_muge.jpg" alt="bg">
+            <img class="bg" src="//r.51gjj.com/act/images/shichang/20170314_v2.jpg" alt="bg">
             <div class="btn-down">
                 <a href="javascript:;" id="appAddr"></a>
             </div>
         </div>
         <div class="cnzz">
-            浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金借款
+            浙ICP备12029882号©2014-2016&nbsp;&nbsp;51公积金借款
             <script type="text/javascript">
             var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
             document.write(unescape("%3Cspan id='cnzz_stat_icon_1256135023'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256135023%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
