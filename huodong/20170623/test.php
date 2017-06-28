@@ -4,7 +4,8 @@
             "url"=>"http://www.baidu.com",
             "login" => true,
             "weChat" => false,
-            "have"=>true
+            "have"=>true,
+            "type"=>3
         ),
         "success"=>true,
 	);
