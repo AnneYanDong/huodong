@@ -116,7 +116,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                             oP.show("您暂不符合活动条件,试试其他活动~");
                                         } else if (d.ret.type == 3) {
                                             timer = setTimeout(function () {
-                                                oP.show("您已成功领取红包,申请即领~");
+                                                oP.show("您已成功领取红包~");
                                                 timer = setTimeout(function () {
                                                     window.location.href = d.ret.url;
                                                 }, 1500)
