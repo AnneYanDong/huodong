@@ -72,61 +72,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
         receive: function() {
             $('.content').on('click','.btn',function(){
-
-                //这个是模拟的假请求
-                // ct.Ajax.do({
-                //     url: indexData.ajaxUrl || "test.php",  //用test.php来模拟接口
-                //     data: {},
-                //     success: function (d) {
-                //         console.log(d);
-                //         //判断用户有没有领取补贴
-                //         if (d.success == true) {
-                //             var timer = null;
-                //             clearTimeout(timer);
-                //             if (d.ret.weChat == true) {
-                //                 timer = setTimeout(function () {
-                //                     oP.show("登录51公积金管家APP领取奖品");
-                //                     timer = setTimeout(function () {
-                //                         window.location.href = d.ret.url;
-                //                     }, 1500);
-                //                 }, 200);
-                //             } else {
-                //                 if (d.ret.qq == true) {
-                //                     timer = setTimeout(function () {
-                //                         oP.show("登录51公积金管家APP领取奖品");
-                //                         timer = setTimeout(function () {
-                //                             window.location.href = d.ret.url;
-                //                         }, 1500);
-                //                     }, 200);
-                //                 } else {
-                //                     if (d.ret.login == false) {
-                //                         if (Bridge) {
-                //                             Bridge.action("login");
-                //                         }
-                //                     } else {
-                //                         if (d.ret.type == 1) {
-                //                             oP.show("您已经申请过该活动业务,试试其它活动~");
-                //                         } else if (d.ret.type == 2) {
-                //                             oP.show("您暂不符合活动条件,试试其他活动~");
-                //                         } else if (d.ret.type == 3) {
-                //                             timer = setTimeout(function () {
-                //                                 oP.show("您已成功领取红包,申请即领~");
-                //                                 timer = setTimeout(function () {
-                //                                     window.location.href = d.ret.url;
-                //                                 }, 1500)
-                //                             }, 200);
-                //                         } else {
-                //                             oP.show(d.msg || "出错请重试");
-                //                         }
-                //                     }
-                //                 }
-                //             }
-                //         }else {
-                //             oP.show("出错了请重试");
-                //         }
-                //     }
-                // });
-
                 /*下面这个是真正的请求真接口，别删*/
                 $.ajax({
                     type: "POST",
@@ -177,17 +122,16 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                                 }, 1500)
                                             }, 200);
                                         } else {
-                                            oP.show(d.msg || "出错请重试");
+                                            oP.show(d.msg || "出错请重试1");
                                         }
                                     }
                                 }
                             }
                         }else {
-                            oP.show("出错了请重试");
+                            oP.show(d.msg || "出错请重试2");
                         }
                     }
                 });
-
             });
         },
 
