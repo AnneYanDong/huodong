@@ -7,11 +7,11 @@
     $obj = new Resource; // 实例化获取资源类
     $res = $obj->getResStr($actDate); // 获取指定的活动资源，返回数组，array("css"=> "..", "js"=>"。。")
     $origin = $_SERVER['HTTP_HOST'];
-    // if (preg_match('/b\.jianbing\.com/', $origin) || preg_match('/kaifa\.jianbing\.com/', $origin)) {
-    //     $imgUrl = '//r.51gjj.com/act/release/img/' . $actDate . '_';
-    // } else {
+    if (preg_match('/b\.jianbing\.com/', $origin) || preg_match('/kaifa\.jianbing\.com/', $origin)) {
+        $imgUrl = '//r.51gjj.com/act/release/img/' . $actDate . '_';
+    } else {
         $imgUrl = '../static/img/' . $actDate . '_';
-    // };
+    };
 ?>
     <link rel="stylesheet" href="<?php echo $res['css'] ?>">
     <style>
