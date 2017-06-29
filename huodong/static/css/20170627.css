@@ -129,7 +129,7 @@
     /*transform: skew(-8deg);
     -ms-transform: skew(-8deg);
     -webkit-transform: skew(-8deg);*/
-    letter-spacing: 0.32rem;
+    letter-spacing: 0.365rem;
     text-indent: 0.1rem;
     font-family: Microsoft YaHei;
     font-weight: 600;
@@ -142,29 +142,29 @@
     }
     .seal30 {
         position: absolute;
-        top: 4.7rem;
+        top: 4.98rem;
         left: 2.7rem;
         width: 1.73rem;
         height: 0.96rem;
-        background: url("../img/20170627_seal.png");
+        background: url("https://r.51gjj.com/act/release/img/20170627_seal.png");
         background-size: 100%;
     }
     .seal50 {
         position: absolute;
-        top: 6.45rem;
+        top: 6.68rem;
         left: 2.7rem;
         width: 1.73rem;
         height: 0.96rem;
-        background: url("../img/20170627_seal.png");
+        background: url("https://r.51gjj.com/act/release/img/20170627_seal.png");
         background-size: 100%;
     }
     .seal70 {
         position: absolute;
-        top: 8.23rem;
+        top: 8.36rem;
         left: 2.7rem;
         width: 1.73rem;
         height: 0.96rem;
-        background: url("../img/20170627_seal.png");
+        background: url("https://r.51gjj.com/act/release/img/20170627_seal.png");
         background-size: 100%;
     }
     .money30 {
