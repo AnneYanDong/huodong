@@ -32,7 +32,7 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>bg.jpg" alt="">
+            <img data-src="<?php echo $imgUrl; ?>bg1.jpg" alt="">
             <div class="data timer count-title" id="count-number" data-from="999" data-to="150" data-speed="1000"></div>
             <div class="prize money30"><span>+</span>30元</div>
             <div class="prize money50"><span>+</span>50元</div>
