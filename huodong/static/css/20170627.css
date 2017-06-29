@@ -137,7 +137,8 @@
     .content .prize {
         position: absolute;
         font-size: 0.6rem;
-        right: 12%;
+        right: 10%;
+        color: #e54833;
     }
     .seal30 {
         position: absolute;
