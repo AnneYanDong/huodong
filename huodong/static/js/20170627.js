@@ -158,7 +158,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     }, 200)
                                 } else if (d.res.type == 5) {
                                     timer = setTimeout(function () {
-                                        oP.show("您已成功领取");
+                                        oP.show("已成功参加活动，立即享受优惠");
                                         timer = setTimeout(function () {
                                             window.location.href = d.res.url;
                                         }, 1000)
