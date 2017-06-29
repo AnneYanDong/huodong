@@ -72,67 +72,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
         receive: function() {
             $('.content').on('click','.btn',function(){
-
-                //这个是模拟的假请求
-                // ct.Ajax.do({
-                //     url: indexData.ajaxUrl || "test.php",  //用test.php来模拟接口
-                //     data: {},
-                //     success: function (d) {
-                //         console.log(d);
-                //         //判断用户有没有领取补贴
-                //         if (d.success == true) {
-                //             var timer = null;
-                //             clearTimeout(timer);
-                //             if (d.ret.weChat == true) {
-                //                 timer = setTimeout(function () {
-                //                     oP.show("登录51公积金管家APP领取奖品");
-                //                     timer = setTimeout(function () {
-                //                         window.location.href = d.ret.url;
-                //                     }, 1500);
-                //                 }, 200);
-                //             } else {
-                //                 if (d.ret.qq == true) {
-                //                     timer = setTimeout(function () {
-                //                         oP.show("登录51公积金管家APP领取奖品");
-                //                         timer = setTimeout(function () {
-                //                             window.location.href = d.ret.url;
-                //                         }, 1500);
-                //                     }, 200);
-                //                 } else {
-                //                     if (d.ret.login == false) {
-                //                         if (Bridge) {
-                //                             Bridge.action("login");
-                //                         }
-                //                     } else {
-                //                         if (d.ret.type == 1) {
-                //                             oP.show("您已经申请过该活动业务,试试其它活动~");
-                //                         } else if (d.ret.type == 2) {
-                //                             oP.show("您暂不符合活动条件,试试其他活动~");
-                //                             // timer = setTimeout(function () {
-                //                             //     oP.show("您可获得266元现金，快去激活您的卡片吧~");
-                //                             //     timer = setTimeout(function () {
-                //                             //         window.location.href = d.url;
-                //                             //     }, 1500)
-                //                             // }, 200);
-                //                         } else if (d.ret.type == 3) {
-                //                             timer = setTimeout(function () {
-                //                                 oP.show("您已成功领取红包,申请即领~");
-                //                                 timer = setTimeout(function () {
-                //                                     window.location.href = d.ret.url;
-                //                                 }, 1500)
-                //                             }, 200);
-                //                         } else {
-                //                             oP.show(d.msg || "出错请重试");
-                //                         }
-                //                     }
-                //                 }
-                //             }
-                //         }else {
-                //             oP.show("出错了请重试");
-                //         }
-                //     }
-                // });
-
                 /*下面这个是真正的请求真接口，别删*/
                 $.ajax({
                     type: "POST",
@@ -177,26 +116,25 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                             oP.show("您暂不符合活动条件,试试其他活动~");
                                         } else if (d.ret.type == 3) {
                                             timer = setTimeout(function () {
-                                                oP.show("您已成功领取红包,申请即领~");
+                                                oP.show("您已成功领取红包~");
                                                 timer = setTimeout(function () {
-                                                    window.location.href = d.url;
+                                                    window.location.href = d.ret.url;
                                                 }, 1500)
                                             }, 200);
                                         } else {
-                                            oP.show(d.msg || "出错请重试");
+                                            oP.show(d.msg || "出错请重试1");
                                         }
                                     }
                                 }
                             }
                         }else {
-                            oP.show("出错了请重试");
+                            oP.show(d.msg || "出错请重试2");
                         }
                     }
                 });
-
             });
         },
-                
+
         openRule: function () {
             $(".content").on("click", ".rule-btn", function (event) {
                 oM.show();
@@ -254,7 +192,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
     var ruleJson = {
         rule: [
             "活动仅限于6月28日至奖品发完期间首次申请鑫福贷的用户；",
-            "完成申请可获得15元现金红包，成功放款可获得115元现金红包。为了您能够顺利拿到奖励，请申请业务后及时关注“我的奖品”提示；",
+            "完成申请可获得15元现金红包，成功放款可获得100元现金红包。为了您能够顺利拿到奖励，请申请业务后及时关注“我的奖品”提示；",
             "成功领取后将在7个工作日内发放到您的支付宝账户，领取时请填写正确的个人支付宝账户；",
             "关于活动有任何疑问请咨询官方客服热线4008635151；",
             "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"

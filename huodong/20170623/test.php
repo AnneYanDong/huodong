@@ -3,9 +3,10 @@
 		"ret"=>array(
             "url"=>"http://www.baidu.com",
             "login" => true,
-            "weChat" => false,
+            "weChat" => true,
+            "qq"=>false,
             "have"=>true,
-            "type"=>3
+            "type"=>1
         ),
         "success"=>true,
 	);
