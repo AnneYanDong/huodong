@@ -297,7 +297,7 @@ define(["jquery"], function($) {
     }
 
     /* 常用的UI组件 */
-    // 组件对象，Widget的[[Prototype]]关联到Common（父类）
+    // 组件对象，Widget的[[Prototype]]关联到Common（父类）,实现继承
     var Widget = Object.create(Common);
     Widget.init = function() {
         this.ele = null;
@@ -331,7 +331,7 @@ define(["jquery"], function($) {
     }
 
 
-    // 提示框对象
+    // 提示框对象，创建Prompt对象实例，并指定它的原型对象，意思就是实例对象Prompt创建以后有一个_ptoto_内部属性指向实例对象Prompt的原型对象Widget.prototype,也就是Prompt._proto_ == Widget.prototype
     var Prompt = Object.create(Widget);
     Prompt.timer = null;
     Prompt.create = function() {

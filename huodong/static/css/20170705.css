@@ -1,0 +1,31 @@
+@import url('basicFullPage.css');
+@import url('mtool.css');
+.wp {
+    overflow: auto!important;
+}
+.wp-inner {
+    background: #45b7ff;
+}
+
+.wp-inner img {
+    width: 100%;
+}
+.content {
+	position: relative;
+}
+.content .btn {
+    border: none;
+    font-size: .30rem;
+    color: #fff;
+    width: 6.0rem;
+    height: .70rem;
+    line-height: .70rem;
+    background-color: #ec2d31;
+    padding: .25rem auto;
+    text-align: center;
+    border-radius: .10rem;
+    position: absolute;
+    bottom: .91rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
