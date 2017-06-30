@@ -52,7 +52,21 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         _this.init();
                     }, 500)
                 }
-            })
+            }),
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: ct.Tool.url("/app/request/activity"),
+                data: JSON.stringify({
+                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    tag: "进入页面" + projectName
+                }),
+                success: function (d) {
+                    if (d.success == true) {
+
+                    }
+                }
+            });
         },
 
 
@@ -78,10 +92,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     dataType: "JSON",
                     // url: ct.Tool.url("/act/act170623/get_prize"),
                     url: "/act/act170623/get_prize",  //这个到时候换成鑫福贷活动的接口
-                    data: JSON.stringify({
-                        place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
-                        tag: "进入页面" + projectName
-                    }),
                     success: function (d) {
                         console.log(d);
                         //判断用户有没有领取补贴
