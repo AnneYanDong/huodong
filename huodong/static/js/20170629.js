@@ -51,7 +51,21 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         _this.init();
                     }, 500)
                 }
-            })
+            }),
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: ct.Tool.url("/app/request/activity"),
+                data: JSON.stringify({
+                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    tag: "进入页面" + projectName
+                }),
+                success: function (d) {
+                    if (d.success == true) {
+
+                    }
+                }
+            });
         },
 
 
@@ -121,10 +135,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     dataType: "JSON",
                     // url: ct.Tool.url("/act/act170629/get_status"),
                     url: "/act/act170629/get_status",  //这个到时候换成鑫福贷活动的接口
-                    data: JSON.stringify({
-                        place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
-                        tag: "进入页面" + projectName
-                    }),
                     success: function (d) {
                         console.log(d);
                         if (d.success == true) {
