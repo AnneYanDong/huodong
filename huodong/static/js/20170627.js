@@ -122,11 +122,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     url: "/act/act170627/get_status",
                     success: function (d) {
                         if (!!d.succ) {
-                            if (d.res.login == false) {
-                                if (Bridge) {
-                                    Bridge.action("login");
-                                }
-                            } else {
+                            if (d.res.login == true || d.res.is_weChat == true) {
                                 if (d.res.type == 1) {
                                     timer = setTimeout(function () {
                                         oP.show("您已有金e贷优惠券，先去使用吧");
@@ -166,6 +162,12 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 } else {
                                     oP.show(d.msg || "出错请重试");
                                 }
+                            } else if (d.res.login == false) {
+                                if (Bridge) {
+                                    Bridge.action("login");
+                                }
+                            } else {
+                                oP.show(d.msg || "出错请重试");
                             }
                         } else {
                             oP.show(d.msg || "出错请重试");
