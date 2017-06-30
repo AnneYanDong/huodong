@@ -75,7 +75,7 @@
 <body>
     <div class="container">
         <div class="banner-part-one">
-            <img class="bg" src="//r.51gjj.com/act/images/shichang/20170314_v2.jpg" alt="bg">
+            <img class="bg" src="//r.51gjj.com/act/images/shichang/20170314_v2_bg.jpg" alt="bg">
             <div class="btn-down">
                 <a href="javascript:;" id="appAddr"></a>
             </div>

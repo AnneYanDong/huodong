@@ -107,5 +107,15 @@
 	"20170627": {
 		"js": ["r.51gjj.com/act/release/js/20170627_cd41038.js"],
 		"css": ["r.51gjj.com/act/release/css/20170627_8846a6f.css"]
+	},
+
+	"20170629": {
+		"js": ["r.51gjj.com/act/release/js/20170629_8690faf.js"],
+		"css": ["r.51gjj.com/act/release/css/20170629_6280bc0.css"]
+	},
+
+	"20170705": {
+		"js": ["r.51gjj.com/act/release/js/20170705_519b280.js"],
+		"css": ["r.51gjj.com/act/release/css/20170705_d570ed6.css"]
 	}
 }
