@@ -7,11 +7,11 @@
     $obj = new Resource; // 实例化获取资源类
     $res = $obj->getResStr($actDate); // 获取指定的活动资源，返回数组，array("css"=> "..", "js"=>"。。")
     $origin = $_SERVER['HTTP_HOST'];
-    // if (preg_match('/b\.jianbing\.com/', $origin) || preg_match('/kaifa\.jianbing\.com/', $origin)) {
-    //     $imgUrl = '//r.51gjj.com/act/release/img/' . $actDate . '_';
-    // } else {
+    if (preg_match('/b\.jianbing\.com/', $origin) || preg_match('/kaifa\.jianbing\.com/', $origin)) {
+        $imgUrl = '//r.51gjj.com/act/release/img/' . $actDate . '_';
+    } else {
         $imgUrl = '../static/img/' . $actDate . '_';
-    // };
+    };
 ?>
     <link rel="stylesheet" href="<?php echo $res['css'] ?>">
     <style>
@@ -32,11 +32,11 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>bg.jpg" alt="">
-            <div class="data timer count-title" id="count-number" data-from="-99" data-to="150" data-speed="1200">000</div>
-            <div class="prize money30"><span>+</span>30</div>
-            <div class="prize money50"><span>+</span>50</div>
-            <div class="prize money70"><span>+</span>70</div>
+            <img data-src="<?php echo $imgUrl; ?>bg1.jpg" alt="">
+            <div class="data timer count-title" id="count-number" data-from="999" data-to="150" data-speed="1000"></div>
+            <div class="prize money30"><span>+</span>30元</div>
+            <div class="prize money50"><span>+</span>50元</div>
+            <div class="prize money70"><span>+</span>70元</div>
             <div class="receive" bp="立即领钱" title="立即领钱"></div>
             <div class="rule-btn"></div>
         </div>

@@ -6,6 +6,7 @@
 			"url_2"=>"http://www.baidu.com",
 			"type"=>4,
 		    "login"=>true,
+			"light"=>true
         ),
         "succ"=>true
 		// "code"=>1,

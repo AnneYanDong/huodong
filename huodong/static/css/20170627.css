@@ -1,4 +1,4 @@
-@import url('basicFullPage.css');
+    @import url('basicFullPage.css');
 @import url('mtool.css');
 .wp {
     overflow: auto!important;
@@ -113,112 +113,69 @@
     margin-left: -2.85rem;
     left: 50%;
 }
+
 .data {
     color: #ffffff;
     font-weight: blod;
-    font-size: 0.6rem;
+    font-size: 1rem;
     line-height: 0.6rem;
     position: absolute;
-    top: 3.11rem;
-    left: 4.43rem;
-    transform: skew(-8deg);
+    top: 3.6rem;
+    width: 2.6rem;
+    height: 0.97rem;
+    line-height: 0.97rem;
+    left: 50%;
+    margin-left: -1.3rem;
+    /*transform: skew(-8deg);
     -ms-transform: skew(-8deg);
-    -webkit-transform: skew(-8deg);
-    letter-spacing: 0.14rem;
-    text-indent: 0.05rem;
+    -webkit-transform: skew(-8deg);*/
+    letter-spacing: 0.365rem;
+    text-indent: 0.1rem;
+    font-family: Microsoft YaHei;
+    font-weight: 600;
 }
-
-.data-set {
-    margin-right: 0.08rem;
-    text-align: center;
-    width: 0.41rem;
-        height: 0.6rem;
-    position: relative;
-    float: left;
-    transform: skew(-8deg);
-    -ms-transform: skew(-8deg);
-    /* IE 9 */
-    -webkit-transform: skew(-8deg);
-    /* Safari and Chrome */
-}
-
-.data-set img {
-    -moz-animation: rotate 0.6s  linear;
-    -webkit-animation: rotate 0.6s  linear;
-    animation: rotate 0.6s  linear;
-    /*transform: rotateY(360deg);
-    -ms-transform: rotateY(360deg);
-    -webkit-transform: rotateY(360deg);*/
-}
-
-@-moz-keyframes rotate {
-    0% {
-        -moz-transform: rotateX(0deg);
+    .content .prize {
+        position: absolute;
+        font-size: 0.6rem;
+        right: 10%;
+        color: #e54833;
     }
-    100% {
-        -moz-transform: rotateX(360deg);
+    .seal30 {
+        position: absolute;
+        top: 4.98rem;
+        left: 2.7rem;
+        width: 1.73rem;
+        height: 0.96rem;
+        background: url("https://r.51gjj.com/act/release/img/20170627_seal.png");
+        background-size: 100%;
     }
-}
-
-@-webkit-keyframes rotate {
-    0% {
-        -webkit-transform: rotateX(0deg);
+    .seal50 {
+        position: absolute;
+        top: 6.68rem;
+        left: 2.7rem;
+        width: 1.73rem;
+        height: 0.96rem;
+        background: url("https://r.51gjj.com/act/release/img/20170627_seal.png");
+        background-size: 100%;
     }
-    100% {
-        -webkit-transform: rotateX(360deg);
+    .seal70 {
+        position: absolute;
+        top: 8.36rem;
+        left: 2.7rem;
+        width: 1.73rem;
+        height: 0.96rem;
+        background: url("https://r.51gjj.com/act/release/img/20170627_seal.png");
+        background-size: 100%;
     }
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotateX(0deg);
+    .money30 {
+        top: 5.38rem;
     }
-    100% {
-        transform: rotateX(360deg);
+    .money50 {
+        top: 7.1rem;
     }
-}
-.prize {
-    color: #ff5959;
-    font-size: 0.6rem;
-    position: absolute;
-    right: 16%;
-}
-.seal30 {
-    position: absolute;
-    top: 4.7rem;
-    left: 2.7rem;
-    width: 1.73rem;
-    height: 0.96rem;
-    background: url("../img/20170627_seal.png");
-    background-size: 100%;
-}
-.seal50 {
-    position: absolute;
-    top: 6.45rem;
-    left: 2.7rem;
-    width: 1.73rem;
-    height: 0.96rem;
-    background: url("../img/20170627_seal.png");
-    background-size: 100%;
-}
-.seal70 {
-    position: absolute;
-    top: 8.23rem;
-    left: 2.7rem;
-    width: 1.73rem;
-    height: 0.96rem;
-    background: url("../img/20170627_seal.png");
-    background-size: 100%;
-}
-.money30 {
-    top: 5.15rem;
-}
-.money50 {
-    top: 6.95rem;
-}
-.money70 {
-    top: 8.75rem;
-}
-.prize span {
-    font-size: 0.4rem;
-}
+    .money70 {
+        top: 8.8rem;
+    }
+    .prize span {
+        font-size: 0.4rem;
+    }
