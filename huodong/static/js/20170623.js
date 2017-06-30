@@ -43,16 +43,30 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             }, 500);
             /*图片预加载*/
             ct.Tool.imgPreLoad({
-                callback: function () {
-                    this.hintLog("图片加载完成");
-                    var timer = null;
-                    clearTimeout(timer);
-                    timer = setTimeout(function () {
-                        oPreLoading.hide();
-                        _this.init();
-                    }, 500)
-                }
-            })
+                    callback: function () {
+                        this.hintLog("图片加载完成");
+                        var timer = null;
+                        clearTimeout(timer);
+                        timer = setTimeout(function () {
+                            oPreLoading.hide();
+                            _this.init();
+                        }, 500)
+                    }
+                }),
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: ct.Tool.url("/app/request/activity"),
+                    data: JSON.stringify({
+                        place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                        tag: "进入页面" + projectName
+                    }),
+                    success: function (d) {
+                        if (d.success == true) {
+
+                        }
+                    }
+                })
         },
 
 
@@ -70,18 +84,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             //分享
             _this.share();
         },
-        receive: function() {
-            $('.content').on('click','.btn',function(){
+        receive: function () {
+            $('.content').on('click', '.btn', function () {
                 /*下面这个是真正的请求真接口，别删*/
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
                     // url: ct.Tool.url("/act/act170623/get_prize"),
-                    url: "/act/act170623/get_prize",  //这个到时候换成鑫福贷活动的接口
-                    data: JSON.stringify({
-                        place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
-                        tag: "进入页面" + projectName
-                    }),
+                    url: "/act/act170623/get_prize", //这个到时候换成鑫福贷活动的接口
                     success: function (d) {
                         console.log(d);
                         //判断用户有没有领取补贴
@@ -127,7 +137,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                     }
                                 }
                             }
-                        }else {
+                        } else {
                             oP.show(d.msg || "出错请重试2");
                         }
                     }
