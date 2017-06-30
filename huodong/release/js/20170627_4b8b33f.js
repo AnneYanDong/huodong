@@ -122,52 +122,59 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     url: "/act/act170627/get_status",
                     success: function (d) {
                         if (!!d.succ) {
-                            if (d.res.login == true || d.res.is_weChat == true) {
-                                if (d.res.type == 1) {
+                            if (d.res.is_weChat == true) {
+                                timer = setTimeout(function () {
+                                    oP.show("已成功参加活动，立即享受优惠");
                                     timer = setTimeout(function () {
-                                        oP.show("您已有金e贷优惠券，先去使用吧");
-                                        timer = setTimeout(function () {
-                                            window.location.href = d.res.url;
-                                        }, 1000)
-                                    }, 200)
-                                } else if (d.res.type == 2) {
-                                    timer = setTimeout(function () {
-                                        oP.show("已成功参加活动，立即享受优惠");
-                                        timer = setTimeout(function () {
-                                            window.location.href = d.res.url;
-                                        }, 1000)
-                                    }, 200)
-                                } else if (d.res.type == 3) {
-                                    timer = setTimeout(function () {
-                                        oP.show("您已申请过，看看其他");
-                                        timer = setTimeout(function () {
-                                            window.location.href = d.res.url;
-                                        }, 1000)
-                                    }, 200)
-                                } else if (d.res.type == 4) {
-                                    timer = setTimeout(function () {
-                                        $(".prize").css("color", "#2e2e2e");
-                                        $(".content").append('<div class="seal30"></div><div class="seal50"></div><div class="seal70"></div>')
-                                        timer = setTimeout(function () {
-                                            window.location.href = d.res.url;
-                                        }, 1000)
-                                    }, 200)
-                                } else if (d.res.type == 5) {
-                                    timer = setTimeout(function () {
-                                        oP.show("已成功参加活动，立即享受优惠");
-                                        timer = setTimeout(function () {
-                                            window.location.href = d.res.url;
-                                        }, 1000)
-                                    }, 200)
-                                } else {
-                                    oP.show(d.msg || "出错请重试");
-                                }
-                            } else if (d.res.login == false) {
-                                if (Bridge) {
-                                    Bridge.action("login");
-                                }
+                                        window.location.href = d.res.url;
+                                    }, 1000)
+                                }, 200)
                             } else {
-                                oP.show(d.msg || "出错请重试");
+                                if (d.res.login == false) {
+                                    if (Bridge) {
+                                        Bridge.action("login");
+                                    }
+                                } else {
+                                    if (d.res.type == 1) {
+                                        timer = setTimeout(function () {
+                                            oP.show("您已有金e贷优惠券，先去使用吧");
+                                            timer = setTimeout(function () {
+                                                window.location.href = d.res.url;
+                                            }, 1000)
+                                        }, 200)
+                                    } else if (d.res.type == 2) {
+                                        timer = setTimeout(function () {
+                                            oP.show("已成功参加活动，立即享受优惠");
+                                            timer = setTimeout(function () {
+                                                window.location.href = d.res.url;
+                                            }, 1000)
+                                        }, 200)
+                                    } else if (d.res.type == 3) {
+                                        timer = setTimeout(function () {
+                                            oP.show("您已申请过，看看其他");
+                                            timer = setTimeout(function () {
+                                                window.location.href = d.res.url;
+                                            }, 1000)
+                                        }, 200)
+                                    } else if (d.res.type == 4) {
+                                        timer = setTimeout(function () {
+                                            $(".prize").css("color", "#2e2e2e");
+                                            $(".content").append('<div class="seal30"></div><div class="seal50"></div><div class="seal70"></div>')
+                                            timer = setTimeout(function () {
+                                                window.location.href = d.res.url;
+                                            }, 1000)
+                                        }, 200)
+                                    } else if (d.res.type == 5) {
+                                        timer = setTimeout(function () {
+                                            oP.show("已成功参加活动，立即享受优惠");
+                                            timer = setTimeout(function () {
+                                                window.location.href = d.res.url;
+                                            }, 1000)
+                                        }, 200)
+                                    } else {
+                                        oP.show(d.msg || "出错请重试");
+                                    }
+                                }
                             }
                         } else {
                             oP.show(d.msg || "出错请重试");
