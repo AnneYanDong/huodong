@@ -108,10 +108,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         if (!!d.success) {
                             if (d.ret.weChat == true) {
                                 timer = setTimeout(function () {
-                                    oP.show("本活动需在app参加");
-                                    timer = setTimeout(function () {
-                                        window.location.href = "http://d.51gjj.com/";
-                                    }, 1500)
+                                    window.location.href = d.ret.url;
                                 }, 200);
                             } else {
                                 if (d.ret.login == false) {
