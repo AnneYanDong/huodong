@@ -142,7 +142,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             clearTimeout(timer);
                             if (d.ret.weChat == true) {
                                 timer = setTimeout(function () {
-                                    oP.show("登录51公积金管家APP领取奖品");
+                                    oP.show("成功参加活动，立即享受优惠~");
                                     timer = setTimeout(function () {
                                         window.location.href = d.ret.url;
                                     }, 1500);
@@ -151,7 +151,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                 if (d.ret.qq == true) {
                                     console.log('qq');
                                     timer = setTimeout(function () {
-                                        oP.show("登录51公积金管家APP领取奖品");
+                                        oP.show("成功参加活动，立即享受优惠~");
                                         timer = setTimeout(function () {
                                             window.location.href = d.ret.url;
                                         }, 1500);
@@ -166,6 +166,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                             oP.show("您暂不符合活动参与条件,试试其它活动~");
                                         } else {
                                             timer = setTimeout(function () {
+                                                oP.show("成功参加活动，立即享受优惠~");
                                                 timer = setTimeout(function () {
                                                     window.location.href = d.ret.url;
                                                 }, 1500)

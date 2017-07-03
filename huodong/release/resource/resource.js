@@ -110,7 +110,7 @@
 	},
 
 	"20170629": {
-		"js": ["r.51gjj.com/act/release/js/20170629_f267a6a.js"],
+		"js": ["r.51gjj.com/act/release/js/20170629_2e1259d.js"],
 		"css": ["r.51gjj.com/act/release/css/20170629_6280bc0.css"]
 	},
 
