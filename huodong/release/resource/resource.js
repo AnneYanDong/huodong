@@ -117,5 +117,10 @@
 	"20170705": {
 		"js": ["r.51gjj.com/act/release/js/20170705_180cad7.js"],
 		"css": ["r.51gjj.com/act/release/css/20170705_d570ed6.css"]
+	},
+
+	"20170703": {
+		"js": ["r.51gjj.com/act/release/js/20170703_66f7103.js"],
+		"css": ["r.51gjj.com/act/release/css/20170703_c22e6b1.css"]
 	}
 }
