@@ -5,9 +5,9 @@
             "login" => true,
             "weChat" => false,
             "qq"=>false,
-            "have"=>true,
-            "type"=>1,
-            "order"=>true
+            "have_new"=>true,
+            "apply"=>false,
+            "gift_price"=>0
         ),
         "success"=>true,
 	);

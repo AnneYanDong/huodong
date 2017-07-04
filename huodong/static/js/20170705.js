@@ -121,14 +121,18 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                             Bridge.action("login");
                                         }
                                     } else {
-                                        if (d.ret.order == false) {
-                                            oP.show("您暂不符合活动参与条件,试试其它活动~");
-                                        } else {
+                                        if (d.ret.have_new == true) {
+                                            oP.show("已领券，去体验吧~");
+                                            // 跳弹窗，点弹窗的按钮，跳转链接
+                                        } else if(d.ret.apply == true){
+                                            oP.show("暂不符合要求，去看看其他业务吧~");
                                             timer = setTimeout(function () {
                                                 timer = setTimeout(function () {
                                                     window.location.href = d.ret.url;
                                                 }, 1500)
                                             }, 200);
+                                        } else {
+                                            // 跳弹窗，点弹窗的按钮，跳转链接
                                         }
                                     }
                                 }
