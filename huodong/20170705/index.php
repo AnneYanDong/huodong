@@ -17,11 +17,11 @@
     <style>
         /* 加载动画颜色配置 */
         .loading-bg-color {
-            background: #001356;
+            background: #8619a4;
         }
 
         .loading-ele-color:after, .loading-ele-color:before {
-            background: #001356 !important;
+            background: #8619a4 !important;
         }
     </style>
      <script>
@@ -41,11 +41,27 @@
             <div class="wp-inner">
                 <div class="content">
                     <!-- <?php echo $imgUrl; ?>后面图片的命名必须是20170705_jhd_bg.jpg -->
-                    <img data-src="<?php echo $imgUrl; ?>jhd_bg.jpg" alt="bg" />
-                    <div class="btn" bp="马上领取" title="马上领取">马上领取</div>
+                    <img class="bonus-bg" data-src="<?php echo $imgUrl; ?>jyd_nobonus_bg.png" alt="bg" />
+                    <img class="bonus-shake" data-src="<?php echo $imgUrl; ?>yhb_hand.png" alt="摇红包" />
+                    <img class="bonus1 hide" data-src="<?php echo $imgUrl; ?>bonus1.png" alt="红包1" />
+                    <img class="bonus2 hide" data-src="<?php echo $imgUrl; ?>bonus2.png" alt="红包2" />
+                    <img class="bonus3 hide" data-src="<?php echo $imgUrl; ?>bonus3.png" alt="红包3" />
+                    <div class="btn" bp="马上领取" title="马上领取"></div>
+                    <div class="rule-btn" bp="规则" title="规则"></div>
                 </div>
             <div class="mask hide"></div>
             </div>
         </div>
     </body>
+    <script type="text/template" id="tpl-rule">
+            <div class="rule">
+                <h6>活动规则</h6>
+                <ul>
+                    {@each rule as item,index}
+                    <li><span>${Number(index)+1}、</span>${item}</li>
+                    {@/each}
+                </ul>
+                <div class="btn-close"></div>
+            </div>
+    </script>
 </html>

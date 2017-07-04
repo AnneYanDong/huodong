@@ -40,8 +40,8 @@
         <div class="wp hide">
             <div class="wp-inner">
                 <div class="content">
-                    <img data-src="<?php echo $imgUrl; ?>yrd_bg_02.jpg" alt="bg" />
-                    <div class="btn" bp="马上领取" title="马上领取">马上领取</div>
+                    <img data-src="<?php echo $imgUrl; ?>yrd_bg.png" alt="bg" />
+                    <div class="btn" bp="马上领取" title="马上领取"></div>
                 </div>
             <div class="mask hide"></div>
             </div>
