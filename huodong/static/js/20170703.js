@@ -156,13 +156,13 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".ticketMoney:nth-child(1)").append('<img src="http://r.51gjj.com/act/release/img/20170703_seal.png" class="seal">');
                                 $(".ticketMoney:nth-child(2)").addClass("grayscale");
                                 $(".ticketMoney:nth-child(3)").addClass("grayscale");
-                                if (d.$ticketStatus_100) {
+                                if (d.ticketStatus_100) {
                                     $(".rob100").addClass("grey");
                                 } else {
                                     $(".rob100").addClass("grey");
                                     $(".rob100").text("").text("抢完");
                                 }
-                                if (d.$ticketStatus_50) {
+                                if (d.ticketStatus_50) {
                                     $(".rob50").addClass("grey");
                                 } else {
                                     $(".rob50").addClass("grey");
@@ -178,13 +178,13 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".ticketMoney:nth-child(2)").append('<img src="http://r.51gjj.com/act/release/img/20170703_seal.png" class="seal">');
                                 $(".ticketMoney:nth-child(1)").addClass("grayscale");
                                 $(".ticketMoney:nth-child(3)").addClass("grayscale");
-                                if (d.$ticketStatus_200) {
+                                if (d.ticketStatus_200) {
                                     $(".rob200").addClass("grey");
                                 } else {
                                     $(".rob200").addClass("grey");
                                     $(".rob200").text("").text("抢完");
                                 }
-                                if (d.$ticketStatus_50) {
+                                if (d.ticketStatus_50) {
                                     $(".rob50").addClass("grey");
                                 } else {
                                     $(".rob50").addClass("grey");
@@ -200,13 +200,13 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".ticketMoney:nth-child(3)").append('<img src="http://r.51gjj.com/act/release/img/20170703_seal.png" class="seal">');
                                 $(".ticketMoney:nth-child(1)").addClass("grayscale");
                                 $(".ticketMoney:nth-child(2)").addClass("grayscale");
-                                if (d.$ticketStatus_200) {
+                                if (d.ticketStatus_200) {
                                     $(".rob200").addClass("grey");
                                 } else {
                                     $(".rob200").addClass("grey");
                                     $(".rob200").text("").text("抢完");
                                 }
-                                if (d.$ticketStatus_100) {
+                                if (d.ticketStatus_100) {
                                     $(".rob100").addClass("grey");
                                 } else {
                                     $(".rob100").addClass("grey");
@@ -217,19 +217,19 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".ticket_50").html("<img src='" + imgSrc + "ticket_50.png'><div class='ticket_close'></div><div class='skip'></div>");
                                 $(".ticket_50").fadeIn();
                             } else {
-                                if (d.$ticketStatus_50) {
+                                if (d.ticketStatus_50) {
                                     console.log("有50元券")
                                 } else {
                                     $(".rob50").addClass("grey");
                                     $(".rob50").text("").text("抢完");
                                     $(".ticketMoney:nth-child(3)").addClass("grayscale");
                                 }
-                                if (d.$ticketStatus_100) {} else {
+                                if (d.ticketStatus_100) {} else {
                                     $(".rob100").addClass("grey");
                                     $(".rob100").text("").text("抢完");
                                     $(".ticketMoney:nth-child(2)").addClass("grayscale");
                                 }
-                                if (d.$ticketStatus_200) {} else {
+                                if (d.ticketStatus_200) {} else {
                                     $(".rob200").addClass("grey");
                                     $(".rob200").text("").text("抢完");
                                     $(".ticketMoney:nth-child(1)").addClass("grayscale");

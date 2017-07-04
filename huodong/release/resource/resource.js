@@ -120,7 +120,7 @@
 	},
 
 	"20170703": {
-		"js": ["r.51gjj.com/act/release/js/20170703_5bedcf9.js"],
+		"js": ["r.51gjj.com/act/release/js/20170703_674e3f3.js"],
 		"css": ["r.51gjj.com/act/release/css/20170703_8385817.css"]
 	}
 }
