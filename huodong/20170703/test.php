@@ -3,10 +3,10 @@
 
 	echo '{"ret":{
 				"$ticketStatus_50": true,
-				"$ticketStatus_100": true,
-				"$ticketStatus_200": true,
+				"$ticketStatus_100": false,
+				"$ticketStatus_200": false,
 				"allowRob": true,
-				"UserTicket": 4,
+				"UserTicket": 3,
 				"robCondition": true,
 				"url": "https://www.baidu.com/",
 				"info":[

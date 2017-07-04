@@ -129,6 +129,7 @@
     left: 50%;
     margin-left: -0.4rem;
 }
+
 .content .oneDay {
     font-size: 0.4rem;
     width: 3.16rem;
@@ -137,7 +138,7 @@
     -ms-transform: skewY(-7deg);
     -webkit-transform: skewY(-7deg);
     position: absolute;
-    top: 3.5rem ;
+    top: 3.5rem;
     line-height: 0.7rem;
     margin-left: 0.7rem;
     background: #95d723;
@@ -146,6 +147,7 @@
     color: #ffffff;
     z-index: 5;
 }
+
 .content .timeClock {
     width: 4rem;
     height: 0.7rem;
@@ -155,7 +157,7 @@
     -ms-transform: skewY(-7deg);
     -webkit-transform: skewY(-7deg);
     position: absolute;
-    top: 3.2rem ;
+    top: 3.2rem;
     background: #fab600;
     border-radius: 0.35rem;
     text-indent: 0.18rem;
@@ -163,38 +165,52 @@
     z-index: 6;
     margin-left: 2.8rem;
 }
+
 .timeClock img {
     width: 0.47rem;
     height: 0.49rem;
     padding-left: 1.5rem;
     margin-top: .1rem;
 }
+
 .timeClock span:first-child {
     position: absolute;
+    font-weight: 600;
 }
+
 .timeClock span:last-child {
     position: absolute;
     top: 0;
     left: 1.9rem;
     font-weight: 600;
 }
+
+.gray {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+
 .content .tickets {
     width: 5.6rem;
     height: 1.9rem;
     position: absolute;
-    top: 7rem;
+    top: 6.5rem;
     left: 50%;
     margin-left: -2.8rem;
 }
+
 .tickets .ticketMoney {
     width: 1.66rem;
     display: inline-block;
+    height: 1.9rem;
+    z-index: 999;
 }
+
 .ticketMoney .rob {
     width: 1.72rem;
     height: 0.55rem;
     background: #ff653c;
-    font-size: 0.38rem;
+    font-size: 0.36rem;
     text-align: center;
     line-height: 0.55rem;
     color: #ffffff;
@@ -202,11 +218,12 @@
     position: absolute;
     border-radius: 0.3rem;
 }
+
 .content .list {
     width: 5.9rem;
     height: 1.4rem;
     position: absolute;
-    top: 10.3rem;
+    top: 9.3rem;
     left: 50%;
     margin-left: -2.95rem;
     background: #ff653c;
@@ -214,17 +231,22 @@
     border: 5px solid #ffa200;
     border-radius: 0.7rem;
 }
+
 .list ul li {
     height: 0.4rem;
     line-height: 0.4rem;
     font-size: 0.28rem;
     text-align: center;
     color: #ffffff;
-}
-.list ul li:nth-of-type(odd) {
-    opacity: 0.28;
     font-weight: 500;
 }
+
+
+/*.list ul li:nth-of-type(odd) {
+    opacity: 0.28;
+    font-weight: 500;
+}*/
+
 .apply {
     position: absolute;
     width: 6.9rem;
@@ -232,40 +254,58 @@
     margin-left: -3.45rem;
     left: 50%;
 }
+
 .apply1 {
-    top: 13.87rem;
-    background: url("http://r.51gjj.com/act/release/img/20170703_toApply1.png") no-repeat;
+    top: 12.65rem;
+    background: url("http://r.51gjj.com/act/release/img/20170703_toApply1copy.png") no-repeat;
     background-size: 100%;
 }
+
 .apply2 {
-    top: 16.37rem;
-    background: url("http://r.51gjj.com/act/release/img/20170703_toApply2.png") no-repeat;
+    top: 15.2rem;
+    background: url("http://r.51gjj.com/act/release/img/20170703_toApply2copy.png") no-repeat;
     background-size: 100%;
 }
+
 .apply3 {
-    top: 18.87rem;
-    background: url("http://r.51gjj.com/act/release/img/20170703_toApply3.png") no-repeat;
+    top: 17.7rem;
+    background: url("http://r.51gjj.com/act/release/img/20170703_toApply3copy.png") no-repeat;
     background-size: 100%;
 }
+
 .myTicket {
     font-size: 0.28rem;
     text-align: center;
     width: 100%;
     position: absolute;
-    top: 21.45rem;
+    top: 20.27rem;
     color: #c6e7ff;
     line-height: 0.4rem;
 }
+
 .myTicket span {
     border-bottom: 1px solid #c6e7ff;
 }
+
 .grey {
-    background: #7e7e7e!important; 
+    background: #7e7e7e!important;
 }
+.ticketMoney .seal {
+    position: absolute;
+    width: 1.65rem;
+    top: 0;
+    z-index: 9;
+}
+.grayscale {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+
 .str_move {
     height: 200px;
     min-height: 160px;
 }
+
 #lottery {
     position: fixed;
     height: 0.55rem;

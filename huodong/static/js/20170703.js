@@ -14,8 +14,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
     var myDay = new Date().getDay();
 
-    // var imgSrc = "//r.51gjj.com/act/release/img/20170523_";
-    var imgSrc = "../static/img/20170703_";
+    var imgSrc = "//r.51gjj.com/act/release/img/20170703_";
+    // var imgSrc = "../static/img/20170703_";
     var oUrl;
     var oGiftCode;
 
@@ -71,31 +71,31 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                // url: "/act/act170406/get_status",
-                url: "test.php",
+                url: "/act/act170406/get_status",
+                // url: "test.php",
                 data: JSON.stringify({
                     action: "status"
                 }),
                 success: function (d) {
                     console.log("滚动条*************************")
-                    // oUrl = d.ret.url;
-                    
+                    oUrl = d.ret.url;
+
                     if (d.success == true) {
                         console.log(111)
                         if (d.ret.info) {
                             var info = d.ret.info;
                             for (var i = 0; i < info.length; i++) {
                                 var oSpan = $("<li>");
-                                oSpan.text(info[i].name);
+                                oSpan.text(info[i]);
                                 oSpan.appendTo(list);
                             }
-                                $(".list").liMarquee({
-                                    hoverstop: false,
-                                    drag: false,
-                                    scrollamount: 30,
-                                    direction: 'up',
-                                    runshort: true
-                                });
+                            $(".list").liMarquee({
+                                hoverstop: false,
+                                drag: false,
+                                scrollamount: 30,
+                                direction: 'up',
+                                runshort: true
+                            });
 
                         }
                     } else {
@@ -115,8 +115,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             _this.openRule();
             _this.closeRule();
             _this.timeDown();
-            // _this.render();
+            _this.render();
             _this.robTicket();
+            _this.skipLoan();
             _this.close_tip();
             _this.apply();
             _this.lookTicket();
@@ -131,8 +132,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
 
             $.ajax({
-                // url: "/act/act170406/get_status",
-                url: "test.php",
+                url: "/act/act170406/get_status",
+                // url: "test.php",
                 type: "POST",
                 dataType: "json",
                 data: JSON.stringify({
@@ -140,19 +141,28 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 }),
                 success: function (d) {
                     console.log(1111);
+
                     if (d.success == true) {
+                        if (d.isLogin == false) {
+                            if (Bridge) {
+                                Bridge.action("login");
+                            }
+                        }
                         var d = d.ret;
                         if (d.UserTicket) {
                             if (d.UserTicket == 1) {
                                 $(".rob200").addClass("grey");
-                                $(".rob200").text("").text("已抢");
-                                if (d.$ticketStatus_100) {
+                                $(".rob200").text("").text("已领取");
+                                $(".ticketMoney:nth-child(1)").append('<img src="http://r.51gjj.com/act/release/img/20170703_seal.png" class="seal">');
+                                $(".ticketMoney:nth-child(2)").addClass("grayscale");
+                                $(".ticketMoney:nth-child(3)").addClass("grayscale");
+                                if (d.ticketStatus_100) {
                                     $(".rob100").addClass("grey");
                                 } else {
                                     $(".rob100").addClass("grey");
                                     $(".rob100").text("").text("抢完");
                                 }
-                                if (d.$ticketStatus_50) {
+                                if (d.ticketStatus_50) {
                                     $(".rob50").addClass("grey");
                                 } else {
                                     $(".rob50").addClass("grey");
@@ -164,14 +174,17 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".ticket_50").fadeIn();
                             } else if (d.UserTicket == 2) {
                                 $(".rob100").addClass("grey");
-                                $(".rob100").text("").text("已抢");
-                                if (d.$ticketStatus_200) {
+                                $(".rob100").text("").text("已领取");
+                                $(".ticketMoney:nth-child(2)").append('<img src="http://r.51gjj.com/act/release/img/20170703_seal.png" class="seal">');
+                                $(".ticketMoney:nth-child(1)").addClass("grayscale");
+                                $(".ticketMoney:nth-child(3)").addClass("grayscale");
+                                if (d.ticketStatus_200) {
                                     $(".rob200").addClass("grey");
                                 } else {
                                     $(".rob200").addClass("grey");
                                     $(".rob200").text("").text("抢完");
                                 }
-                                if (d.$ticketStatus_50) {
+                                if (d.ticketStatus_50) {
                                     $(".rob50").addClass("grey");
                                 } else {
                                     $(".rob50").addClass("grey");
@@ -183,14 +196,17 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".ticket_50").fadeIn();
                             } else if (d.UserTicket == 3) {
                                 $(".rob50").addClass("grey");
-                                $(".rob50").text("").text("已抢");
-                                if (d.$ticketStatus_200) {
+                                $(".rob50").text("").text("已领取");
+                                $(".ticketMoney:nth-child(3)").append('<img src="http://r.51gjj.com/act/release/img/20170703_seal.png" class="seal">');
+                                $(".ticketMoney:nth-child(1)").addClass("grayscale");
+                                $(".ticketMoney:nth-child(2)").addClass("grayscale");
+                                if (d.ticketStatus_200) {
                                     $(".rob200").addClass("grey");
                                 } else {
                                     $(".rob200").addClass("grey");
                                     $(".rob200").text("").text("抢完");
                                 }
-                                if (d.$ticketStatus_100) {
+                                if (d.ticketStatus_100) {
                                     $(".rob100").addClass("grey");
                                 } else {
                                     $(".rob100").addClass("grey");
@@ -201,16 +217,22 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".ticket_50").html("<img src='" + imgSrc + "ticket_50.png'><div class='ticket_close'></div><div class='skip'></div>");
                                 $(".ticket_50").fadeIn();
                             } else {
-                                if (d.$ticketStatus_50) {
+                                if (d.ticketStatus_50) {
                                     console.log("有50元券")
                                 } else {
                                     $(".rob50").addClass("grey");
+                                    $(".rob50").text("").text("抢完");
+                                    $(".ticketMoney:nth-child(3)").addClass("grayscale");
                                 }
-                                if (d.$ticketStatus_100) {} else {
+                                if (d.ticketStatus_100) {} else {
                                     $(".rob100").addClass("grey");
+                                    $(".rob100").text("").text("抢完");
+                                    $(".ticketMoney:nth-child(2)").addClass("grayscale");
                                 }
-                                if (d.$ticketStatus_200) {} else {
+                                if (d.ticketStatus_200) {} else {
                                     $(".rob200").addClass("grey");
+                                    $(".rob200").text("").text("抢完");
+                                    $(".ticketMoney:nth-child(1)").addClass("grayscale");
                                 }
                             }
                         }
@@ -226,12 +248,13 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
         robTicket: function () {
             var _this = this;
-            $(".rob200").on("click", function () {
+            $(".tickets .ticketMoney:nth-child(1)").on("click", function () {
+                console.log("200元")
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    // url: "/act/act170406/get_rob",
-                    url: "test.php",
+                    url: "/act/act170406/get_rob",
+                    // url: "test.php",
                     data: JSON.stringify({
                         "type": 1
                     }),
@@ -241,17 +264,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             console.debug("条件", d.allowRob, d.UserTicket)
                             if (d.allowRob == true && d.UserTicket === 4) {
                                 oM.show();
-                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_200.png'><div class='ticket_close'></div><div class='skip'></div>");
+                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_200.png'><div class='ticket_close'></div><div class='skip' bp='200元去申请' title='200元去申请'></div>");
                                 $(".ticket_50").fadeIn();
                                 _this.render();
                             } else {
                                 oP.show(d.msg || "出错请重试");
                             }
                         } else if (d.code == 1) {
-                            // oP.show(d.msg);
-                            if (Bridge) {
-                                Bridge.action("login");
-                            }
+                            oP.show(d.msg);
                         } else {
                             oP.show(d.msg || "出错请重试");
                         }
@@ -265,12 +285,13 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     }
                 })
             })
-            $(".rob100").on("click", function () {
+            $(".tickets .ticketMoney:nth-child(2)").on("click", function () {
+                console.log("100元")
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    // url: "/act/act170406/get_rob",
-                    url: "test.php",
+                    url: "/act/act170406/get_rob",
+                    // url: "test.php",
                     data: JSON.stringify({
                         "type": 2
                     }),
@@ -280,17 +301,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             console.debug("条件", d.allowRob, d.UserTicket)
                             if (d.allowRob == true && d.UserTicket === 4) {
                                 oM.show();
-                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_100.png'><div class='ticket_close'></div><div class='skip'></div>");
+                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_100.png'><div class='ticket_close'></div><div class='skip' bp='100元去申请' title='100元去申请'></div>");
                                 $(".ticket_50").fadeIn();
                                 _this.render();
                             } else {
                                 oP.show(d.msg || "出错请重试");
                             }
                         } else if (d.code == 1) {
-                            // oP.show(d.msg);
-                            if (Bridge) {
-                                Bridge.action("login");
-                            }
+                            oP.show(d.msg);
                         } else {
                             oP.show(d.msg || "出错请重试");
                         }
@@ -300,12 +318,13 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     }
                 })
             })
-            $(".rob50").on("click", function () {
+            $(".tickets .ticketMoney:nth-child(3)").on("click", function () {
+                console.log("50元")
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    // url: "/act/act170406/get_rob",
-                    url: "test.php",
+                    url: "/act/act170406/get_rob",
+                    // url: "test.php",
                     data: JSON.stringify({
                         "type": 3
                     }),
@@ -315,17 +334,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             console.debug("条件", d.allowRob, d.UserTicket)
                             if (d.allowRob == true && d.UserTicket === 4) {
                                 oM.show();
-                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_50.png'><div class='ticket_close'></div><div class='skip'></div>");
+                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_50.png'><div class='ticket_close'></div><div class='skip' bp='50元去申请' title='50元去申请'></div>");
                                 $(".ticket_50").fadeIn();
                                 _this.render();
                             } else {
                                 oP.show(d.msg || "出错请重试");
                             }
                         } else if (d.code == 1) {
-                            // oP.show(d.msg);
-                            if (Bridge) {
-                                Bridge.action("login");
-                            }
+                            oP.show(d.msg);
                         } else {
                             oP.show(d.msg || "出错请重试");
                         }
@@ -335,6 +351,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     }
                 })
             })
+        },
+
+        //随机跳转金鑫贷或金盈贷
+        skipLoan: function () {
+            $(".ticket_50").on("click", ".skip", function () {
+                console.debug("点击随机跳转")
+                window.location.href = oUrl;
+            });
         },
 
         // 走后台跳转申请
@@ -349,8 +373,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     type: "POST",
                     dataType: "JSON",
                     // url: "https://b.jianbing.com/act/act/act170406/get_url",
-                    // url: "/act/act170406/get_url",
-                    url: "test.php",
+                    url: "/act/act170406/get_url",
+                    // url: "test.php",
                     data: JSON.stringify({
                         "type": 1
                     }),
@@ -474,10 +498,10 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
                     onclick: function () {
                         Bridge.action('ShareTimeline', {
-                            "title": "抵息券X元 ",
-                            'desc': "领券后完成活动页面任一业务申请并放款，还款时可直接抵扣，不可提前还款。【金薪贷】首月还款减免。【金花贷】首月还款减免，100元券借款5000元及以上可用，200元券借款10000元及以上可用。【金盈贷】分月减免，50元券分3个月减免，100元券、200元券分4个月减免。",
+                            "title": "我获得了200元还款金！",
+                            'desc': "公积金定制贷款，今天申请立减200元还款金。",
                             "thumb": "https://r.51gjj.com/act/release/img/20170523_share.png",
-                            "link": "https://" + host + "/act/home/huodong/20170523/"
+                            "link": "https://" + host + "/act/home/huodong/20170703/"
                         });
                     }
                 })
