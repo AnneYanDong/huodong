@@ -6,6 +6,7 @@
     $actDate = "20170703"; // 配置图片的，必须
     $obj = new Resource; // 实例化获取资源类
     $res = $obj->getResStr($actDate); // 获取指定的活动资源，返回数组，array("css"=> "..", "js"=>"。。")
+
     $origin = $_SERVER['HTTP_HOST'];
     if (preg_match('/b\.jianbing\.com/', $origin) || preg_match('/kaifa\.jianbing\.com/', $origin)) {
         $imgUrl = '//r.51gjj.com/act/release/img/' . $actDate . '_';
@@ -32,7 +33,7 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>bg.jpg" alt="">
+            <img data-src="<?php echo $imgUrl; ?>bg1.jpg" alt="">
             <div class="rule-btn"></div>
             <div class="oneDay">仅此一天</div>
             <div class="timeClock">
@@ -43,25 +44,25 @@
             <div class="tickets">
                 <div class="ticketMoney">
                     <img data-src="<?php echo $imgUrl ?>ticket200.png">
-                    <div class="rob rob200">秒抢</div>
+                    <div class="rob rob200" bp="200秒抢" title="200秒抢">秒抢</div>
                 </div>
                 <div class="ticketMoney">
                     <img data-src="<?php echo $imgUrl ?>ticket100.png">
-                    <div class="rob rob100">秒抢</div>
+                    <div class="rob rob100" bp="100秒抢" title="100秒抢">秒抢</div>
                 </div>
                 <div class="ticketMoney">
                     <img data-src="<?php echo $imgUrl ?>ticket50.png">
-                    <div class="rob rob50">秒抢</div>
+                    <div class="rob rob50" bp="50秒抢" title="50秒抢">秒抢</div>
                 </div>
             </div>
             <div class="list">
                 <ul>
                 </ul>
             </div>
-            <div class="apply apply1"></div>
-            <div class="apply apply2"></div>
-            <div class="apply apply3"></div>
-            <div class="myTicket"><span>我的优惠券</span></div>
+            <div class="apply apply1" bp="利息最低" title="利息最低"></div>
+            <div class="apply apply2" bp="门槛最低" title="门槛最低"></div>
+            <div class="apply apply3" bp="放款最快" title="放款最快"></div>
+            <div class="myTicket" bp="我的优惠券" title="我的优惠券"><span>我的优惠券</span></div>
         </div>
     </div>
 </div>
