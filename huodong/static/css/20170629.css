@@ -8,8 +8,9 @@
 }
 
 .wp-inner img {
-    width: 100%;
-    height: inherit;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
 }
 .content {
 	position: relative;
