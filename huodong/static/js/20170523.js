@@ -154,12 +154,12 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         if (d.UserTicket) {
                             if (d.UserTicket == 1) {
                                 $("#imgId_200").attr('src', imgSrc + 'done_200.png');
-                                if (d.$ticketStatus_100) {
+                                if (d.ticketStatus_100) {
                                     $("#imgId_100").attr('src', imgSrc + 'doGrey_100.png');
                                 } else {
                                     $("#imgId_100").attr('src', imgSrc + 'none_100.png');
                                 }
-                                if (d.$ticketStatus_50) {
+                                if (d.ticketStatus_50) {
                                     $("#imgId_50").attr('src', imgSrc + 'doGrey_50.png');
                                 } else {
                                     $("#imgId_50").attr('src', imgSrc + 'none_50.png');
@@ -170,12 +170,12 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".ticket_50").fadeIn();
                             } else if (d.UserTicket == 2) {
                                 $("#imgId_100").attr('src', imgSrc + 'done_100.png');
-                                if (d.$ticketStatus_200) {
+                                if (d.ticketStatus_200) {
                                     $("#imgId_200").attr('src', imgSrc + 'doGrey_200.png');
                                 } else {
                                     $("#imgId_200").attr('src', imgSrc + 'none_200.png');
                                 }
-                                if (d.$ticketStatus_50) {
+                                if (d.ticketStatus_50) {
                                     $("#imgId_50").attr('src', imgSrc + 'doGrey_50.png');
                                 } else {
                                     $("#imgId_50").attr('src', imgSrc + 'none_50.png');
@@ -186,12 +186,12 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".ticket_50").fadeIn();
                             } else if (d.UserTicket == 3) {
                                 $("#imgId_50").attr('src', imgSrc + 'done_50.png');
-                                if (d.$ticketStatus_200) {
+                                if (d.ticketStatus_200) {
                                     $("#imgId_200").attr('src', imgSrc + 'doGrey_200.png');
                                 } else {
                                     $("#imgId_200").attr('src', imgSrc + 'none_200.png');
                                 }
-                                if (d.$ticketStatus_100) {
+                                if (d.ticketStatus_100) {
                                     $("#imgId_100").attr('src', imgSrc + 'doGrey_100.png');
                                 } else {
                                     $("#imgId_100").attr('src', imgSrc + 'none_100.png');
@@ -201,17 +201,17 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 $(".ticket_50").html("<img src='" + imgSrc + "ticket_50.png'><div class='ticket_close'></div><div id='skip'></div>");
                                 $(".ticket_50").fadeIn();
                             } else {
-                                if (d.$ticketStatus_50) {
+                                if (d.ticketStatus_50) {
                                     $("#imgId_50").attr('src', imgSrc + 'do_50.png');
                                 } else {
                                     $("#imgId_50").attr('src', imgSrc + 'none_50.png');
                                 }
-                                if (d.$ticketStatus_100) {
+                                if (d.ticketStatus_100) {
                                     $("#imgId_100").attr('src', imgSrc + 'do_100.png');
                                 } else {
                                     $("#imgId_100").attr('src', imgSrc + 'none_100.png');
                                 }
-                                if (d.$ticketStatus_200) {
+                                if (d.ticketStatus_200) {
                                     $("#imgId_200").attr('src', imgSrc + 'do_200.png');
                                 } else {
                                     $("#imgId_200").attr('src', imgSrc + 'none_200.png');

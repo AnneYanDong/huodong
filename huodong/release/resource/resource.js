@@ -55,7 +55,7 @@
 	},
 
 	"20170523": {
-		"js": ["r.51gjj.com/act/release/js/20170523_9229452.js"],
+		"js": ["r.51gjj.com/act/release/js/20170523_c01430b.js"],
 		"css": ["r.51gjj.com/act/release/css/20170523_37d4d2c.css"]
 	},
 
