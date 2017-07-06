@@ -64,7 +64,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    background: url("<?php echo $imgUrl; ?>bonus_raining.png") no-repeat;
+    background: url("http://r.51gjj.com/act/release/img/20170705_bonus_raining.png") no-repeat;
     background-size: 1.65rem 1.90rem;
     background-position: 0px -1px;
 }

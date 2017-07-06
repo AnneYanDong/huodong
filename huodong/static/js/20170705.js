@@ -197,7 +197,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //                                 bTimer = setInterval(bonusRaining,30);
                 //                                 function bonusRaining() {
                 //                                     $(".bonus-rain").show();
-                //                                     console.log("定时器回调");
                 //                                     /*随机生成初始位置*/
                 //                                     var rp=parseInt(Math.random()*300+300);
                 //                                     var left=parseInt(Math.random()*1600+000);
@@ -273,7 +272,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             var timer = null;
                             clearTimeout(timer);
                             timer = setTimeout(function () {
-                                oP.show("登录51公积金管家APP领取");
+                                // oP.show("登录51公积金管家APP领取");
                                 timer = setTimeout(function () {
                                     window.location.href = d.ret.url;
                                 }, 1500);

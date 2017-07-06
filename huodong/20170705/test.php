@@ -7,7 +7,7 @@
             "qq"=>false,
             "have_new"=>false, //false就为未领券
             "apply"=>false, //未申请才能领券
-            "gift_price"=>30
+            "gift_price"=>50
         ),
         "success"=>true,
 	);
