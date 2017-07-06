@@ -53,6 +53,25 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     }, 500)
                 }
             }),
+            /*ct.Ajax.do({
+                url: indexData.ajaxUrl || "test.php",
+                success: function(d) {
+                    console.log("初始化请求：",_this);
+                    if(d.success == true) {
+                        console.log(d);
+                        if (d.ret.have_new == true) {
+                            timer = setTimeout(function () {
+                                timer = setTimeout(function () {
+                                    oM.show();
+                                    _this.tpShow(d);
+                                }, 500);
+                            }, 200);
+                        }
+                    } else {
+                        oP.show(d.msg || "出错了请重试");
+                    }
+                }
+            });*/
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
@@ -62,38 +81,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     tag: "进入页面" + projectName
                 }),
                 success: function(d) {
+                    console.log("初始化请求：",_this);
                     if(d.success == true) {
                         console.log(d);
-                        var img = new Image();
-                        function tpShow() {
-                            $(".bonus-rain").fadeOut();
-                            /*动态加载图片*/
-                            var price = d.ret.gift_price;
-                            img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
-                            img.src = "../static/img/20170705_bonus_"  + price + ".png";
-                            img.alt = "弹屏" + price;
-                            var imgContainer = $(".tp-img-container")[0];
-                            imgContainer.appendChild(img);
-
-                            $(".tp-img-container").fadeIn();
-                            $(".tp-apply").show();
-                            $(".content").on("click",".tp-img-container",function(){
-                                $(".bonus-rain").fadeOut();
-                                _this.tpHide();
-                            });
-                            $(".content").on("click",".tp-apply",function(){
-                                // oP.show("已领券，去体验吧~");
-                                timer = setTimeout(function () {
-                                    _this.tpHide();
-                                    window.location.href = d.ret.url;
-                                }, 1500);
-                            });
-                        }
                         if (d.ret.have_new == true) {
                             timer = setTimeout(function () {
                                 timer = setTimeout(function () {
                                     oM.show();
-                                    tpShow();
+                                    _this.tpShow(d);
                                 }, 500);
                             }, 200);
                         }
@@ -102,6 +97,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     }
                 }
             });
+
         },
 
         init: function () {
@@ -119,57 +115,143 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             _this.share();
         },
 
+        tpShow: function(d) {
+            console.log("tpShow:",this);
+            var _this = this;
+            var img = new Image();
+            /*动态加载图片*/
+            var price = d.ret.gift_price;
+            img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
+            img.src = "../static/img/20170705_bonus_"  + price + ".png";
+            img.alt = "弹屏" + price;
+            var imgContainer = $(".tp-img-container")[0];
+            imgContainer.appendChild(img);
+
+            $(".tp-img-container").fadeIn();
+            $(".tp-apply").show();
+            $(".content").on("click",".tp-img-container",function(){
+                $(".bonus-rain").fadeOut();
+                _this.tpHide();
+            });
+            $(".content").on("click",".tp-apply",function(){
+                timer = setTimeout(function () {
+                    _this.tpHide();
+                    window.location.href = d.ret.url;
+                }, 1500);
+            });
+        },
+        toApp: function(d) {
+            var timer = null;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                timer = setTimeout(function () {
+                    window.location.href = d.ret.url;
+                }, 1500);
+            }, 200);
+        },
+        bonusRaining: function() {
+            $(".bonus-rain").show();
+            /*随机生成初始位置*/
+            var rp=parseInt(Math.random()*300+300);
+            var left=parseInt(Math.random()*1600+000);
+            var top=parseInt(Math.random()*10+(-10));
+            // console.log(rp + "," + left + "," +　top);
+
+            $('.bonus-rain').prepend('<div class="dd"></div>');
+            $('.bonus-rain').children('div').eq(0).css({'left':left,'top':top});
+            $('.bonus-rain').children('div').eq(0).animate({'left':(left - rp),'top':$(window).height()+20},1000);
+        },
+
+        shakeHand: function() {
+            var timer = null;
+            clearTimeout(timer);
+            $(".bonus-shake").addClass("hand-shake");
+            $(".bonus1").fadeOut();
+            $(".bonus2").fadeOut();
+            $(".bonus3").fadeOut();
+        },
+        tpHide: function () {
+            oM.hide();
+            $(".tp-img-container").fadeOut();
+            $(".tp-apply").hide();
+            $(".bonus-shake").removeClass("hand-shake");
+            $(".bonus1").fadeIn();
+            $(".bonus2").fadeIn();
+            $(".bonus3").fadeIn();
+        },
+
         grabBonus: function() {
             var _this = this;
             console.log(_this);
-            var img = new Image();
 
             $('.content').on('click','.btn',function(){
-                // ct.Ajax.do({
-                //     url: indexData.ajaxUrl || "test.php",
+                ct.Ajax.do({
+                    url: indexData.ajaxUrl || "test.php",
+                    success: function (d) {
+                        var bTimer = null;
+                        console.log(d);
+                        if (d.success == true) {
+                            if (d.ret.weChat == true) {
+                                _this.toApp(d);
+                            } else {
+                                if (d.ret.qq == true) {
+                                    _this.toApp(d);
+                                } else {
+                                    if (d.ret.login == false) {
+                                        if (Bridge) {
+                                            Bridge.action("login");
+                                        }
+                                    } else {
+                                        if (d.ret.have_new == true) {
+                                            timer = setTimeout(function () {
+                                                timer = setTimeout(function () {
+                                                    window.location.href = d.ret.url;
+                                                }, 500);
+                                            }, 200);
+                                        } else {
+                                            if(d.ret.apply == true) {
+                                                oP.show("暂不符合要求，去看看其他业务吧~");
+                                                timer = setTimeout(function () {
+                                                    timer = setTimeout(function () {
+                                                        window.location.href = d.ret.url;
+                                                    }, 1000)
+                                                }, 200);
+                                            } else {
+                                                _this.shakeHand();
+                                                bTimer = setInterval(_this.bonusRaining,30);
+                                                timer = setTimeout(function () {
+                                                    timer = setTimeout(function () {
+                                                        oM.show();
+                                                        _this.tpShow(d);
+                                                        clearInterval(bTimer);
+                                                    }, 1000)
+                                                }, 200);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }else {
+                            oP.show(d.msg || "出错了请重试");
+                        }
+                    }
+                });
+
+                /*下面这个是真正的请求真接口，别删*/
+                // $.ajax({
+                //     type: "POST",
+                //     dataType: "JSON",
+                //     // url: ct.Tool.url("/act/act170705/get_status"),
+                //     url: "/act/act170705/get_status",
                 //     success: function (d) {
                 //         var bTimer = null;
                 //         console.log(d);
-                //         function tpShow() {
-                //             /*动态加载图片*/
-                //             var price = d.ret.gift_price;
-                //             img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
-                //             img.src = "../static/img/20170705_bonus_"  + price + ".png";
-                //             img.alt = "弹屏" + price;
-                //             var imgContainer = $(".tp-img-container")[0];
-                //             imgContainer.appendChild(img);
-
-                //             $(".tp-img-container").fadeIn();
-                //             // $(".tp-close").show();
-                //             $(".tp-apply").show();
-                //             $(".content").on("click",".tp-img-container",function(){
-                //                 $(".bonus-rain").fadeOut();
-                //                 _this.tpHide();
-                //             });
-                //             $(".content").on("click",".tp-apply",function(){
-                //                 // oP.show("已领券，去体验吧~");
-                //                 timer = setTimeout(function () {
-                //                     _this.tpHide();
-                //                     window.location.href = d.ret.url;
-                //                 }, 1500);
-                //             });
-                //         }
-                //         function toApp() {
-                //             var timer = null;
-                //             clearTimeout(timer);
-                //             timer = setTimeout(function () {
-                //                 oP.show("登录51公积金管家APP领取");
-                //                 timer = setTimeout(function () {
-                //                     window.location.href = d.ret.url;
-                //                 }, 1500);
-                //             }, 200);
-                //         }
                 //         if (d.success == true) {
                 //             if (d.ret.weChat == true) {
-                //                 toApp();
+                //                 _this.toApp(d);
                 //             } else {
                 //                 if (d.ret.qq == true) {
-                //                     toApp();
+                //                     _this.toApp(d);
                 //                 } else {
                 //                     if (d.ret.login == false) {
                 //                         if (Bridge) {
@@ -192,38 +274,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //                                 }, 200);
                 //                             } else {
                 //                                 _this.shakeHand();
-                //                                 // _this.raining();
-                //                                 // var a = 0;
-                //                                 bTimer = setInterval(bonusRaining,30);
-                //                                 function bonusRaining() {
-                //                                     $(".bonus-rain").show();
-                //                                     /*随机生成初始位置*/
-                //                                     var rp=parseInt(Math.random()*300+300);
-                //                                     var left=parseInt(Math.random()*1600+000);
-                //                                     var top=parseInt(Math.random()*10+(-10));
-                //                                     // console.log(rp + "," + left + "," +　top);
-
-                //                                     $('.bonus-rain').prepend('<div class="dd"></div>');
-                //                                     $('.bonus-rain').children('div').eq(0).css({'left':left,'top':top});
-                //                                     $('.bonus-rain').children('div').eq(0).animate({'left':(left - rp),'top':$(window).height()+20},1000);
-                //                                 }
+                //                                 bTimer = setInterval(_this.bonusRaining,30);
                 //                                 timer = setTimeout(function () {
                 //                                     timer = setTimeout(function () {
                 //                                         oM.show();
-                //                                         tpShow();
+                //                                         _this.tpShow(d);
                 //                                         clearInterval(bTimer);
                 //                                     }, 1000)
                 //                                 }, 200);
-
-                //                                 // $(document).on('touchstart', '.dd', function(){
-                //                                 //     $(this).css("background-position","0 -100px");
-                //                                 //     a += 10;
-                //                                 //     if(a == d.ret.gift_price){
-                //                                 //         oM.show();
-                //                                 //         tpShow();
-                //                                 //         clearInterval(bTimer);
-                //                                 //     }
-                //                                 // });
                 //                             }
                 //                         }
                 //                     }
@@ -234,163 +292,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //         }
                 //     }
                 // });
-
-                /*下面这个是真正的请求真接口，别删*/
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    // url: ct.Tool.url("/act/act170705/get_status"),
-                    url: "/act/act170705/get_status",
-                    success: function (d) {
-                        var bTimer = null;
-                        console.log(d);
-                        function tpShow() {
-                            /*动态加载图片*/
-                            var price = d.ret.gift_price;
-                            img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
-                            img.src = "../static/img/20170705_bonus_"  + price + ".png";
-                            img.alt = "弹屏" + price;
-                            var imgContainer = $(".tp-img-container")[0];
-                            imgContainer.appendChild(img);
-
-                            $(".tp-img-container").fadeIn();
-                            // $(".tp-close").show();
-                            $(".tp-apply").show();
-                            $(".content").on("click",".tp-img-container",function(){
-                                $(".bonus-rain").fadeOut();
-                                _this.tpHide();
-                            });
-                            $(".content").on("click",".tp-apply",function(){
-                                // oP.show("已领券，去体验吧~");
-                                timer = setTimeout(function () {
-                                    _this.tpHide();
-                                    window.location.href = d.ret.url;
-                                }, 1500);
-                            });
-                        }
-                        function toApp() {
-                            var timer = null;
-                            clearTimeout(timer);
-                            timer = setTimeout(function () {
-                                // oP.show("登录51公积金管家APP领取");
-                                timer = setTimeout(function () {
-                                    window.location.href = d.ret.url;
-                                }, 1500);
-                            }, 200);
-                        }
-                        if (d.success == true) {
-                            if (d.ret.weChat == true) {
-                                toApp();
-                            } else {
-                                if (d.ret.qq == true) {
-                                    toApp();
-                                } else {
-                                    if (d.ret.login == false) {
-                                        if (Bridge) {
-                                            Bridge.action("login");
-                                        }
-                                    } else {
-                                        if (d.ret.have_new == true) {
-                                            timer = setTimeout(function () {
-                                                timer = setTimeout(function () {
-                                                    window.location.href = d.ret.url;
-                                                }, 1000);
-                                            }, 200);
-                                        } else {
-                                            if(d.ret.apply == true) {
-                                                oP.show("暂不符合要求，去看看其他业务吧~");
-                                                timer = setTimeout(function () {
-                                                    timer = setTimeout(function () {
-                                                        window.location.href = d.ret.url;
-                                                    }, 1500)
-                                                }, 200);
-                                            } else {
-                                                _this.shakeHand();
-                                                // _this.raining();
-                                                // var a = 0;
-                                                bTimer = setInterval(bonusRaining,30);
-                                                function bonusRaining() {
-                                                    $(".bonus-rain").show();
-                                                    /*随机生成初始位置*/
-                                                    var rp=parseInt(Math.random()*300+300);
-                                                    var left=parseInt(Math.random()*1600+000);
-                                                    var top=parseInt(Math.random()*10+(-10));
-                                                    // console.log(rp + "," + left + "," +　top);
-
-                                                    $('.bonus-rain').prepend('<div class="dd"></div>');
-                                                    $('.bonus-rain').children('div').eq(0).css({'left':left,'top':top});
-                                                    $('.bonus-rain').children('div').eq(0).animate({'left':(left - rp),'top':$(window).height()+20},1000);
-                                                }
-                                                timer = setTimeout(function () {
-                                                    timer = setTimeout(function () {
-                                                        oM.show();
-                                                        tpShow();
-                                                        clearInterval(bTimer);
-                                                    }, 1000)
-                                                }, 200);
-
-                                                // $(document).on('touchstart', '.dd', function(){
-                                                //     $(this).css("background-position","0 -100px");
-                                                //     a += 10;
-                                                //     if(a == d.ret.gift_price){
-                                                //         oM.show();
-                                                //         tpShow();
-                                                //         clearInterval(bTimer);
-                                                //     }
-                                                // });
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }else {
-                            oP.show(d.msg || "出错了请重试");
-                        }
-                    }
-                });
             });
-        },
-
-        shakeHand: function() {
-            var timer = null;
-            clearTimeout(timer);
-            $(".bonus-shake").addClass("hand-shake");
-            $(".bonus1").fadeOut();
-            $(".bonus2").fadeOut();
-            $(".bonus3").fadeOut();
-        },
-        raining: function() {
-            // $(".bonus-rain1").show().addClass("bonus-r1");
-            // timer = setTimeout(function(){
-            //     $(".bonus-rain1").fadeOut();
-            //     timer = setTimeout(function(){
-            //         $(".bonus-rain2").show().addClass("bonus-r2");
-            //         timer = setTimeout(function(){
-            //             $(".bonus-rain2").fadeOut();
-            //         },500);
-            //         timer = setTimeout(function(){
-            //             $(".bonus-rain3").show().addClass("bonus-r3");
-            //             timer = setTimeout(function(){
-            //                 $(".bonus-rain3").fadeOut();
-            //             },500);
-            //             timer = setTimeout(function(){
-            //                 $(".bonus-rain4").show().addClass("bonus-r4");
-            //                 timer = setTimeout(function(){
-            //                     $(".bonus-rain4").fadeOut();
-            //                 },500);
-            //             },500);
-            //         },500);
-            //     },500);
-            // },10);
-        },
-        tpHide: function () {
-            oM.hide();
-            $(".tp-img-container").fadeOut();
-            $(".tp-apply").hide();
-            $(".bonus-shake").removeClass("hand-shake");
-            $(".bonus1").fadeIn();
-            $(".bonus2").fadeIn();
-            $(".bonus3").fadeIn();
         },
 
         openRule: function () {
