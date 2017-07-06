@@ -1,5 +1,5 @@
 <?php
-    $title = "金盈贷-一起来抢红包雨"; // 配置标题的，必须
+    $title = "一起来抢红包雨"; // 配置标题的，必须
     include "../public/v1/header.php";
 ?>
 <?php
@@ -55,7 +55,6 @@
                     <div class="tp-img-container hide"></div>
                     <div class="btn" bp="马上领取" title="马上领取"></div>
                     <div class="rule-btn" bp="规则" title="规则"></div>
-                    <!-- <div class="tp-close hide"></div> -->
                     <div class="tp-apply hide"></div>
                 </div>
                 <div class="mask hide"></div>

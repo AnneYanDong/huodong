@@ -114,7 +114,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             });
         },
 
-
         init: function () {
             var _this = this;
             $('.wp').removeClass('hide');
@@ -129,14 +128,104 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             //分享
             _this.share();
         },
+
         grabBonus: function() {
+            var _this = this;
+            console.log(_this);
             var img = new Image();
 
             $('.content').on('click','.btn',function(){
-                // ct.Ajax.do({
-                //     url: indexData.ajaxUrl || "test.php",
+                ct.Ajax.do({
+                    url: indexData.ajaxUrl || "test.php",
+                    success: function (d) {
+                        var bTimer = null;
+                        console.log(d);
+                        function tpShow() {
+                            $(".bonus-rain").fadeOut();
+                            /*动态加载图片*/
+                            var price = d.ret.gift_price;
+                            img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
+                            img.src = "../static/img/20170705_bonus_"  + price + ".png";
+                            img.alt = "弹屏" + price;
+                            var imgContainer = $(".tp-img-container")[0];
+                            imgContainer.appendChild(img);
+
+                            $(".tp-img-container").fadeIn();
+                            // $(".tp-close").show();
+                            $(".tp-apply").show();
+                            $(".content").on("click",".tp-img-container",function(){
+                                $(".bonus-rain").fadeOut();
+                                _this.tpHide();
+                            });
+                            $(".content").on("click",".tp-apply",function(){
+                                // oP.show("已领券，去体验吧~");
+                                timer = setTimeout(function () {
+                                    _this.tpHide();
+                                    window.location.href = d.ret.url;
+                                }, 1500);
+                            });
+                        }
+                        if (d.success == true) {
+                            if (d.ret.weChat == true) {
+                                _this.toApp();
+                            } else {
+                                if (d.ret.qq == true) {
+                                    _this.toApp();
+                                } else {
+                                    if (d.ret.login == false) {
+                                        if (Bridge) {
+                                            Bridge.action("login");
+                                        }
+                                    } else {
+                                        if (d.ret.have_new == true) {
+                                            timer = setTimeout(function () {
+                                                timer = setTimeout(function () {
+                                                    window.location.href = d.ret.url;
+                                                }, 1000);
+                                            }, 200);
+                                            $(".content").on("click",".btn",function(){
+                                                timer = setTimeout(function () {
+                                                    window.location.href = d.ret.url;
+                                                }, 1500);
+                                            });
+                                        } else {
+                                            if(d.ret.apply == true) {
+                                                oP.show("暂不符合要求，去看看其他业务吧~");
+                                                timer = setTimeout(function () {
+                                                    timer = setTimeout(function () {
+                                                        window.location.href = d.ret.url;
+                                                    }, 1500)
+                                                }, 200);
+                                            } else {
+                                                _this.shakeHand();
+                                                _this.raining();
+                                                timer = setTimeout(function () {
+                                                    clearInterval(bTimer);
+                                                    timer = setTimeout(function () {
+                                                        // 跳弹窗，点弹窗的按钮，跳转链接
+                                                        $(".bonus-rain").fadeOut();
+                                                        oM.show();
+                                                        tpShow();
+                                                    }, 2000);
+                                                }, 200);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }else {
+                            oP.show(d.msg || "出错了请重试");
+                        }
+                    }
+                });
+
+                /*下面这个是真正的请求真接口，别删*/
+                // $.ajax({
+                //     type: "POST",
+                //     dataType: "JSON",
+                //     // url: ct.Tool.url("/act/act170705/get_status"),
+                //     url: "/act/act170705/get_status",
                 //     success: function (d) {
-                //         var bTimer = null;
                 //         console.log(d);
                 //         function toApp() {
                 //             var timer = null;
@@ -157,22 +246,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //             $(".bonus3").fadeOut();
                 //         }
                 //         function raining() {
-                //             // $(".bonus-rain").show();
-                //             // console.log("红包雨来了");
-                //             // // var b = 0;
-                //             // btimer = setInterval(bonusRaining,40);
-                //             // function bonusRaining() {
-
-                //             //     $(".bonus-rain").show();
-                //             //     console.log("定时器回调");
-                //             //     /*随机生成初始位置*/
-                //             //     var rp=parseInt(Math.random()*300+300);
-                //             //     var left=parseInt(Math.random()*1600+000);
-                //             //     var top=parseInt(Math.random()*10+(-10));
-                //             //     $('.bonus-rain').prepend('<div class="dd"></div>');
-                //             //     $('.bonus-rain').children('div').eq(0).css({'left':left,'top':top});
-                //             //     $('.bonus-rain').children('div').eq(0).animate({'left':left-rp,'top':$(window).height()+20},3000);
-                //             // }
+                //             $(".bonus-rain").fadeIn();
                 //             $(".bonus-rain1").show().addClass("bonus-r1");
                 //             timer = setTimeout(function(){
                 //                 $(".bonus-rain1").fadeOut();
@@ -266,10 +340,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //                                 shakeHand();
                 //                                 raining();
                 //                                 timer = setTimeout(function () {
-                //                                     clearInterval(bTimer);
                 //                                     timer = setTimeout(function () {
                 //                                         // 跳弹窗，点弹窗的按钮，跳转链接
-                //                                         $(".bonus-rain").fadeOut();
                 //                                         oM.show();
                 //                                         tpShow();
                 //                                     }, 2000);
@@ -284,145 +356,79 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //         }
                 //     }
                 // });
-
-                /*下面这个是真正的请求真接口，别删*/
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    // url: ct.Tool.url("/act/act170705/get_status"),
-                    url: "/act/act170705/get_status",
-                    success: function (d) {
-                        console.log(d);
-                        function toApp() {
-                            var timer = null;
-                            clearTimeout(timer);
-                            timer = setTimeout(function () {
-                                oP.show("登录51公积金管家APP领取");
-                                timer = setTimeout(function () {
-                                    window.location.href = d.ret.url;
-                                }, 1500);
-                            }, 200);
-                        }
-                        function shakeHand() {
-                            var timer = null;
-                            clearTimeout(timer);
-                            $(".bonus-shake").addClass("hand-shake");
-                            $(".bonus1").fadeOut();
-                            $(".bonus2").fadeOut();
-                            $(".bonus3").fadeOut();
-                        }
-                        function raining() {
-                            $(".bonus-rain").fadeIn();
-                            $(".bonus-rain1").show().addClass("bonus-r1");
-                            timer = setTimeout(function(){
-                                $(".bonus-rain1").fadeOut();
-                                timer = setTimeout(function(){
-                                    $(".bonus-rain2").show().addClass("bonus-r2");
-                                    timer = setTimeout(function(){
-                                        $(".bonus-rain2").fadeOut();
-                                    },500);
-                                    timer = setTimeout(function(){
-                                        $(".bonus-rain3").show().addClass("bonus-r3");
-                                        timer = setTimeout(function(){
-                                            $(".bonus-rain3").fadeOut();
-                                        },500);
-                                        timer = setTimeout(function(){
-                                            $(".bonus-rain4").show().addClass("bonus-r4");
-                                            timer = setTimeout(function(){
-                                                $(".bonus-rain4").fadeOut();
-                                            },500);
-                                        },500);
-                                    },500);
-                                },500);
-                            },500);
-                        }
-                        function tpShow() {
-                            $(".bonus-rain").fadeOut();
-                            /*动态加载图片*/
-                            var price = d.ret.gift_price;
-                            img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
-                            img.src = "../static/img/20170705_bonus_"  + price + ".png";
-                            img.alt = "弹屏" + price;
-                            var imgContainer = $(".tp-img-container")[0];
-                            imgContainer.appendChild(img);
-
-                            $(".tp-img-container").fadeIn();
-                            // $(".tp-close").show();
-                            $(".tp-apply").show();
-                            $(".content").on("click",".tp-img-container",function(){
-                                $(".bonus-rain").fadeOut();
-                                tpHide();
-                            });
-                            $(".content").on("click",".tp-apply",function(){
-                                oP.show("已领券，去体验吧~");
-                                timer = setTimeout(function () {
-                                    tpHide();
-                                    window.location.href = d.ret.url;
-                                }, 1500);
-                            });
-                        }
-                        function tpHide() {
-                            oM.hide();
-                            $(".tp-img-container").fadeOut();
-                            // $(".tp-close").hide();
-                            $(".tp-apply").hide();
-                            $(".bonus-shake").removeClass("hand-shake");
-                            $(".bonus1").fadeIn();
-                            $(".bonus2").fadeIn();
-                            $(".bonus3").fadeIn();
-                        }
-                        if (d.success == true) {
-                            if (d.ret.weChat == true) {
-                                toApp();
-                            } else {
-                                if (d.ret.qq == true) {
-                                    toApp();
-                                } else {
-                                    if (d.ret.login == false) {
-                                        if (Bridge) {
-                                            Bridge.action("login");
-                                        }
-                                    } else {
-                                        if (d.ret.have_new == true) {
-                                            timer = setTimeout(function () {
-                                                timer = setTimeout(function () {
-                                                    window.location.href = d.ret.url;
-                                                }, 1000);
-                                            }, 200);
-                                            $(".content").on("click",".btn",function(){
-                                                timer = setTimeout(function () {
-                                                    window.location.href = d.ret.url;
-                                                }, 1500);
-                                            });
-                                        } else {
-                                            if(d.ret.apply == true) {
-                                                oP.show("暂不符合要求，去看看其他业务吧~");
-                                                timer = setTimeout(function () {
-                                                    timer = setTimeout(function () {
-                                                        window.location.href = d.ret.url;
-                                                    }, 1500)
-                                                }, 200);
-                                            } else {
-                                                shakeHand();
-                                                raining();
-                                                timer = setTimeout(function () {
-                                                    timer = setTimeout(function () {
-                                                        // 跳弹窗，点弹窗的按钮，跳转链接
-                                                        oM.show();
-                                                        tpShow();
-                                                    }, 2000);
-                                                }, 200);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }else {
-                            oP.show(d.msg || "出错了请重试");
-                        }
-                    }
-                });
             });
+        },
+
+        toApp: function() {
+            var timer = null;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                oP.show("登录51公积金管家APP领取");
+                timer = setTimeout(function () {
+                    window.location.href = d.ret.url;
+                }, 1500);
+            }, 200);
+        },
+
+        shakeHand: function() {
+            var timer = null;
+            clearTimeout(timer);
+            $(".bonus-shake").addClass("hand-shake");
+            $(".bonus1").fadeOut();
+            $(".bonus2").fadeOut();
+            $(".bonus3").fadeOut();
+        },
+
+        raining: function() {
+            // $(".bonus-rain").show();
+            // console.log("红包雨来了");
+            // // var b = 0;
+            // btimer = setInterval(bonusRaining,40);
+            // function bonusRaining() {
+
+            //     $(".bonus-rain").show();
+            //     console.log("定时器回调");
+            //     /*随机生成初始位置*/
+            //     var rp=parseInt(Math.random()*300+300);
+            //     var left=parseInt(Math.random()*1600+000);
+            //     var top=parseInt(Math.random()*10+(-10));
+            //     $('.bonus-rain').prepend('<div class="dd"></div>');
+            //     $('.bonus-rain').children('div').eq(0).css({'left':left,'top':top});
+            //     $('.bonus-rain').children('div').eq(0).animate({'left':left-rp,'top':$(window).height()+20},3000);
+            // }
+            $(".bonus-rain1").show().addClass("bonus-r1");
+            timer = setTimeout(function(){
+                $(".bonus-rain1").fadeOut();
+                timer = setTimeout(function(){
+                    $(".bonus-rain2").show().addClass("bonus-r2");
+                    timer = setTimeout(function(){
+                        $(".bonus-rain2").fadeOut();
+                    },500);
+                    timer = setTimeout(function(){
+                        $(".bonus-rain3").show().addClass("bonus-r3");
+                        timer = setTimeout(function(){
+                            $(".bonus-rain3").fadeOut();
+                        },500);
+                        timer = setTimeout(function(){
+                            $(".bonus-rain4").show().addClass("bonus-r4");
+                            timer = setTimeout(function(){
+                                $(".bonus-rain4").fadeOut();
+                            },500);
+                        },500);
+                    },500);
+                },500);
+            },10);
+        },
+
+
+        tpHide: function () {
+            oM.hide();
+            $(".tp-img-container").fadeOut();
+            $(".tp-apply").hide();
+            $(".bonus-shake").removeClass("hand-shake");
+            $(".bonus1").fadeIn();
+            $(".bonus2").fadeIn();
+            $(".bonus3").fadeIn();
         },
 
         openRule: function () {
@@ -467,10 +473,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
                     onclick: function () {
                         Bridge.action('ShareTimeline', {
-                            "title": "送你115元高温补贴",
-                            'desc': "51鑫福贷申请即可获得15元，放款再得100元",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170623_wxshare.png",
-                            "link": "http://" + host + "/act/home/huodong/20170623/"
+                            "title": "5万元3分钟到账，抢最高300元抵息",
+                            'desc': "30-300元抵息人人有份",
+                            /*这里的图片等下要改一下*/
+                            "thumb": "https://r.51gjj.com/act/release/img/20170705_bonus.png",
+                            "link": "http://" + host + "/act/home/huodong/20170705/"
                         });
                     }
                 })
