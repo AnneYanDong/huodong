@@ -46,11 +46,11 @@
                     <img class="bonus1" data-src="<?php echo $imgUrl; ?>bonus11.png" alt="红包1" />
                     <img class="bonus2" data-src="<?php echo $imgUrl; ?>bonus22.png" alt="红包2" />
                     <img class="bonus3" data-src="<?php echo $imgUrl; ?>bonus3.png" alt="红包3" />
-                    <div class="bonus-rain">
-                        <img class="bonus-rain1 hide" data-src="<?php echo $imgUrl; ?>bonus_rain.png" alt="红包雨" />
+                    <div class="bonus-rain hide">
+                        <!-- <img class="bonus-rain1 hide" data-src="<?php echo $imgUrl; ?>bonus_rain.png" alt="红包雨" />
                         <img class="bonus-rain2 hide" data-src="<?php echo $imgUrl; ?>bonus_rain.png" alt="红包雨" />
                         <img class="bonus-rain3 hide" data-src="<?php echo $imgUrl; ?>bonus_rain.png" alt="红包雨" />
-                        <img class="bonus-rain4 hide" data-src="<?php echo $imgUrl; ?>bonus_rain.png" alt="红包雨" />
+                        <img class="bonus-rain4 hide" data-src="<?php echo $imgUrl; ?>bonus_rain.png" alt="红包雨" /> -->
                     </div>
                     <div class="tp-img-container hide"></div>
                     <div class="btn" bp="马上领取" title="马上领取"></div>

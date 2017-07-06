@@ -4,10 +4,10 @@
             "url"=>"http://www.baidu.com",
             "login" => true,
             "weChat" => false,
-            "qq"=>true,
+            "qq"=>false,
             "have_new"=>false, //false就为未领券
             "apply"=>false, //未申请才能领券
-            "gift_price"=>80
+            "gift_price"=>30
         ),
         "success"=>true,
 	);

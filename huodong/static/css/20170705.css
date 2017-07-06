@@ -46,16 +46,17 @@
     bottom: 3.32rem;
 }
 .content .bonus-rain {
-    // width: 100%;
-    // min-height:100%;
-    // position: relative;
-    // overflow: hidden;
-     width: 6rem;
-    height: 9rem;
+    width: 100%;
+    min-height:100%;
     position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 0;
+    overflow: hidden;
+    // width: 6rem;
+    // height: 9rem;
+    // position: absolute;
+    // top: 10%;
+    // left: 50%;
+    // transform: translateX(-50%);
 }
 .content .bonus-rain > div{
     width: 1.65rem;
@@ -63,8 +64,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-image: url("../img/20170705_bonus_rain.png") no-repeat;
-    background-size: 155px 215px;
+    background: url("<?php echo $imgUrl; ?>bonus_raining.png") no-repeat;
+    background-size: 1.65rem 1.90rem;
     background-position: 0px -1px;
 }
 .content .bonus-rain1 {

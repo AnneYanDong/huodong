@@ -131,7 +131,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //         var bTimer = null;
                 //         console.log(d);
                 //         function tpShow() {
-                //             $(".bonus-rain").fadeOut();
                 //             /*动态加载图片*/
                 //             var price = d.ret.gift_price;
                 //             img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
@@ -183,11 +182,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //                                     window.location.href = d.ret.url;
                 //                                 }, 1000);
                 //                             }, 200);
-                //                             $(".content").on("click",".btn",function(){
-                //                                 timer = setTimeout(function () {
-                //                                     window.location.href = d.ret.url;
-                //                                 }, 1500);
-                //                             });
                 //                         } else {
                 //                             if(d.ret.apply == true) {
                 //                                 oP.show("暂不符合要求，去看看其他业务吧~");
@@ -198,16 +192,39 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //                                 }, 200);
                 //                             } else {
                 //                                 _this.shakeHand();
-                //                                 _this.raining();
+                //                                 // _this.raining();
+                //                                 // var a = 0;
+                //                                 bTimer = setInterval(bonusRaining,30);
+                //                                 function bonusRaining() {
+                //                                     $(".bonus-rain").show();
+                //                                     console.log("定时器回调");
+                //                                     /*随机生成初始位置*/
+                //                                     var rp=parseInt(Math.random()*300+300);
+                //                                     var left=parseInt(Math.random()*1600+000);
+                //                                     var top=parseInt(Math.random()*10+(-10));
+                //                                     // console.log(rp + "," + left + "," +　top);
+
+                //                                     $('.bonus-rain').prepend('<div class="dd"></div>');
+                //                                     $('.bonus-rain').children('div').eq(0).css({'left':left,'top':top});
+                //                                     $('.bonus-rain').children('div').eq(0).animate({'left':(left - rp),'top':$(window).height()+20},1000);
+                //                                 }
                 //                                 timer = setTimeout(function () {
-                //                                     clearInterval(bTimer);
                 //                                     timer = setTimeout(function () {
-                //                                         // 跳弹窗，点弹窗的按钮，跳转链接
-                //                                         $(".bonus-rain").fadeOut();
                 //                                         oM.show();
                 //                                         tpShow();
-                //                                     }, 2000);
+                //                                         clearInterval(bTimer);
+                //                                     }, 1000)
                 //                                 }, 200);
+
+                //                                 // $(document).on('touchstart', '.dd', function(){
+                //                                 //     $(this).css("background-position","0 -100px");
+                //                                 //     a += 10;
+                //                                 //     if(a == d.ret.gift_price){
+                //                                 //         oM.show();
+                //                                 //         tpShow();
+                //                                 //         clearInterval(bTimer);
+                //                                 //     }
+                //                                 // });
                 //                             }
                 //                         }
                 //                     }
@@ -229,7 +246,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         var bTimer = null;
                         console.log(d);
                         function tpShow() {
-                            $(".bonus-rain").fadeOut();
                             /*动态加载图片*/
                             var price = d.ret.gift_price;
                             img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
@@ -291,16 +307,38 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                                 }, 200);
                                             } else {
                                                 _this.shakeHand();
-                                                _this.raining();
+                                                // _this.raining();
+                                                // var a = 0;
+                                                bTimer = setInterval(bonusRaining,30);
+                                                function bonusRaining() {
+                                                    $(".bonus-rain").show();
+                                                    /*随机生成初始位置*/
+                                                    var rp=parseInt(Math.random()*300+300);
+                                                    var left=parseInt(Math.random()*1600+000);
+                                                    var top=parseInt(Math.random()*10+(-10));
+                                                    // console.log(rp + "," + left + "," +　top);
+
+                                                    $('.bonus-rain').prepend('<div class="dd"></div>');
+                                                    $('.bonus-rain').children('div').eq(0).css({'left':left,'top':top});
+                                                    $('.bonus-rain').children('div').eq(0).animate({'left':(left - rp),'top':$(window).height()+20},1000);
+                                                }
                                                 timer = setTimeout(function () {
-                                                    clearInterval(bTimer);
                                                     timer = setTimeout(function () {
-                                                        // 跳弹窗，点弹窗的按钮，跳转链接
-                                                        $(".bonus-rain").fadeOut();
                                                         oM.show();
                                                         tpShow();
-                                                    }, 2000);
+                                                        clearInterval(bTimer);
+                                                    }, 1000)
                                                 }, 200);
+
+                                                // $(document).on('touchstart', '.dd', function(){
+                                                //     $(this).css("background-position","0 -100px");
+                                                //     a += 10;
+                                                //     if(a == d.ret.gift_price){
+                                                //         oM.show();
+                                                //         tpShow();
+                                                //         clearInterval(bTimer);
+                                                //     }
+                                                // });
                                             }
                                         }
                                     }
@@ -322,49 +360,30 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             $(".bonus2").fadeOut();
             $(".bonus3").fadeOut();
         },
-
         raining: function() {
-            // $(".bonus-rain").show();
-            // console.log("红包雨来了");
-            // // var b = 0;
-            // btimer = setInterval(bonusRaining,40);
-            // function bonusRaining() {
-
-            //     $(".bonus-rain").show();
-            //     console.log("定时器回调");
-            //     /*随机生成初始位置*/
-            //     var rp=parseInt(Math.random()*300+300);
-            //     var left=parseInt(Math.random()*1600+000);
-            //     var top=parseInt(Math.random()*10+(-10));
-            //     $('.bonus-rain').prepend('<div class="dd"></div>');
-            //     $('.bonus-rain').children('div').eq(0).css({'left':left,'top':top});
-            //     $('.bonus-rain').children('div').eq(0).animate({'left':left-rp,'top':$(window).height()+20},3000);
-            // }
-            $(".bonus-rain1").show().addClass("bonus-r1");
-            timer = setTimeout(function(){
-                $(".bonus-rain1").fadeOut();
-                timer = setTimeout(function(){
-                    $(".bonus-rain2").show().addClass("bonus-r2");
-                    timer = setTimeout(function(){
-                        $(".bonus-rain2").fadeOut();
-                    },500);
-                    timer = setTimeout(function(){
-                        $(".bonus-rain3").show().addClass("bonus-r3");
-                        timer = setTimeout(function(){
-                            $(".bonus-rain3").fadeOut();
-                        },500);
-                        timer = setTimeout(function(){
-                            $(".bonus-rain4").show().addClass("bonus-r4");
-                            timer = setTimeout(function(){
-                                $(".bonus-rain4").fadeOut();
-                            },500);
-                        },500);
-                    },500);
-                },500);
-            },10);
+            // $(".bonus-rain1").show().addClass("bonus-r1");
+            // timer = setTimeout(function(){
+            //     $(".bonus-rain1").fadeOut();
+            //     timer = setTimeout(function(){
+            //         $(".bonus-rain2").show().addClass("bonus-r2");
+            //         timer = setTimeout(function(){
+            //             $(".bonus-rain2").fadeOut();
+            //         },500);
+            //         timer = setTimeout(function(){
+            //             $(".bonus-rain3").show().addClass("bonus-r3");
+            //             timer = setTimeout(function(){
+            //                 $(".bonus-rain3").fadeOut();
+            //             },500);
+            //             timer = setTimeout(function(){
+            //                 $(".bonus-rain4").show().addClass("bonus-r4");
+            //                 timer = setTimeout(function(){
+            //                     $(".bonus-rain4").fadeOut();
+            //                 },500);
+            //             },500);
+            //         },500);
+            //     },500);
+            // },10);
         },
-
-
         tpHide: function () {
             oM.hide();
             $(".tp-img-container").fadeOut();
