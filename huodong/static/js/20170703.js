@@ -170,7 +170,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 }
                                 //显示中奖弹框200元
                                 oM.show();
-                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_200.png'><div class='ticket_close'></div><div class='skip'></div>");
+                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_200.png'><div class='ticket_close'></div><div class='skip' bp='200元去申请' title='200元去申请'></div>");
                                 $(".ticket_50").fadeIn();
                             } else if (d.UserTicket == 2) {
                                 $(".rob100").addClass("grey");
@@ -192,7 +192,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 }
                                 //显示中奖弹框100元
                                 oM.show();
-                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_100.png'><div class='ticket_close'></div><div class='skip'></div>");
+                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_100.png'><div class='ticket_close'></div><div class='skip' bp='100元去申请' title='100元去申请'></div>");
                                 $(".ticket_50").fadeIn();
                             } else if (d.UserTicket == 3) {
                                 $(".rob50").addClass("grey");
@@ -214,7 +214,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 }
                                 //显示中奖弹框50元
                                 oM.show();
-                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_50.png'><div class='ticket_close'></div><div class='skip'></div>");
+                                $(".ticket_50").html("<img src='" + imgSrc + "ticket_50.png'><div class='ticket_close'></div><div class='skip' bp='50元去申请' title='50元去申请'></div>");
                                 $(".ticket_50").fadeIn();
                             } else {
                                 if (d.ticketStatus_50) {
