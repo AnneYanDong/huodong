@@ -56,13 +56,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: ct.Tool.url("/app/request/activity"),
+                url: "/act/act170705/get_judge",
                 data: JSON.stringify({
                     place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
                     tag: "进入页面" + projectName
                 }),
                 success: function(d) {
                     if(d.success == true) {
+                        console.log(d);
                         var img = new Image();
                         function tpShow() {
                             $(".bonus-rain").fadeOut();
@@ -75,36 +76,25 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             imgContainer.appendChild(img);
 
                             $(".tp-img-container").fadeIn();
-                            // $(".tp-close").show();
                             $(".tp-apply").show();
                             $(".content").on("click",".tp-img-container",function(){
                                 $(".bonus-rain").fadeOut();
-                                tpHide();
+                                _this.tpHide();
                             });
                             $(".content").on("click",".tp-apply",function(){
-                                oP.show("已领券，去体验吧~");
+                                // oP.show("已领券，去体验吧~");
                                 timer = setTimeout(function () {
-                                    tpHide();
+                                    _this.tpHide();
                                     window.location.href = d.ret.url;
                                 }, 1500);
                             });
-                        }
-                        function tpHide() {
-                            oM.hide();
-                            $(".tp-img-container").fadeOut();
-                            // $(".tp-close").hide();
-                            $(".tp-apply").hide();
-                            $(".bonus-shake").removeClass("hand-shake");
-                            $(".bonus1").fadeIn();
-                            $(".bonus2").fadeIn();
-                            $(".bonus3").fadeIn();
                         }
                         if (d.ret.have_new == true) {
                             timer = setTimeout(function () {
                                 timer = setTimeout(function () {
                                     oM.show();
                                     tpShow();
-                                }, 1000);
+                                }, 500);
                             }, 200);
                         }
                     } else {
@@ -135,141 +125,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             var img = new Image();
 
             $('.content').on('click','.btn',function(){
-                ct.Ajax.do({
-                    url: indexData.ajaxUrl || "test.php",
-                    success: function (d) {
-                        var bTimer = null;
-                        console.log(d);
-                        function tpShow() {
-                            $(".bonus-rain").fadeOut();
-                            /*动态加载图片*/
-                            var price = d.ret.gift_price;
-                            img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
-                            img.src = "../static/img/20170705_bonus_"  + price + ".png";
-                            img.alt = "弹屏" + price;
-                            var imgContainer = $(".tp-img-container")[0];
-                            imgContainer.appendChild(img);
-
-                            $(".tp-img-container").fadeIn();
-                            // $(".tp-close").show();
-                            $(".tp-apply").show();
-                            $(".content").on("click",".tp-img-container",function(){
-                                $(".bonus-rain").fadeOut();
-                                _this.tpHide();
-                            });
-                            $(".content").on("click",".tp-apply",function(){
-                                // oP.show("已领券，去体验吧~");
-                                timer = setTimeout(function () {
-                                    _this.tpHide();
-                                    window.location.href = d.ret.url;
-                                }, 1500);
-                            });
-                        }
-                        if (d.success == true) {
-                            if (d.ret.weChat == true) {
-                                _this.toApp();
-                            } else {
-                                if (d.ret.qq == true) {
-                                    _this.toApp();
-                                } else {
-                                    if (d.ret.login == false) {
-                                        if (Bridge) {
-                                            Bridge.action("login");
-                                        }
-                                    } else {
-                                        if (d.ret.have_new == true) {
-                                            timer = setTimeout(function () {
-                                                timer = setTimeout(function () {
-                                                    window.location.href = d.ret.url;
-                                                }, 1000);
-                                            }, 200);
-                                            $(".content").on("click",".btn",function(){
-                                                timer = setTimeout(function () {
-                                                    window.location.href = d.ret.url;
-                                                }, 1500);
-                                            });
-                                        } else {
-                                            if(d.ret.apply == true) {
-                                                oP.show("暂不符合要求，去看看其他业务吧~");
-                                                timer = setTimeout(function () {
-                                                    timer = setTimeout(function () {
-                                                        window.location.href = d.ret.url;
-                                                    }, 1500)
-                                                }, 200);
-                                            } else {
-                                                _this.shakeHand();
-                                                _this.raining();
-                                                timer = setTimeout(function () {
-                                                    clearInterval(bTimer);
-                                                    timer = setTimeout(function () {
-                                                        // 跳弹窗，点弹窗的按钮，跳转链接
-                                                        $(".bonus-rain").fadeOut();
-                                                        oM.show();
-                                                        tpShow();
-                                                    }, 2000);
-                                                }, 200);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }else {
-                            oP.show(d.msg || "出错了请重试");
-                        }
-                    }
-                });
-
-                /*下面这个是真正的请求真接口，别删*/
-                // $.ajax({
-                //     type: "POST",
-                //     dataType: "JSON",
-                //     // url: ct.Tool.url("/act/act170705/get_status"),
-                //     url: "/act/act170705/get_status",
+                // ct.Ajax.do({
+                //     url: indexData.ajaxUrl || "test.php",
                 //     success: function (d) {
+                //         var bTimer = null;
                 //         console.log(d);
-                //         function toApp() {
-                //             var timer = null;
-                //             clearTimeout(timer);
-                //             timer = setTimeout(function () {
-                //                 oP.show("登录51公积金管家APP领取");
-                //                 timer = setTimeout(function () {
-                //                     window.location.href = d.ret.url;
-                //                 }, 1500);
-                //             }, 200);
-                //         }
-                //         function shakeHand() {
-                //             var timer = null;
-                //             clearTimeout(timer);
-                //             $(".bonus-shake").addClass("hand-shake");
-                //             $(".bonus1").fadeOut();
-                //             $(".bonus2").fadeOut();
-                //             $(".bonus3").fadeOut();
-                //         }
-                //         function raining() {
-                //             $(".bonus-rain").fadeIn();
-                //             $(".bonus-rain1").show().addClass("bonus-r1");
-                //             timer = setTimeout(function(){
-                //                 $(".bonus-rain1").fadeOut();
-                //                 timer = setTimeout(function(){
-                //                     $(".bonus-rain2").show().addClass("bonus-r2");
-                //                     timer = setTimeout(function(){
-                //                         $(".bonus-rain2").fadeOut();
-                //                     },500);
-                //                     timer = setTimeout(function(){
-                //                         $(".bonus-rain3").show().addClass("bonus-r3");
-                //                         timer = setTimeout(function(){
-                //                             $(".bonus-rain3").fadeOut();
-                //                         },500);
-                //                         timer = setTimeout(function(){
-                //                             $(".bonus-rain4").show().addClass("bonus-r4");
-                //                             timer = setTimeout(function(){
-                //                                 $(".bonus-rain4").fadeOut();
-                //                             },500);
-                //                         },500);
-                //                     },500);
-                //                 },500);
-                //             },500);
-                //         }
                 //         function tpShow() {
                 //             $(".bonus-rain").fadeOut();
                 //             /*动态加载图片*/
@@ -285,25 +145,25 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //             $(".tp-apply").show();
                 //             $(".content").on("click",".tp-img-container",function(){
                 //                 $(".bonus-rain").fadeOut();
-                //                 tpHide();
+                //                 _this.tpHide();
                 //             });
                 //             $(".content").on("click",".tp-apply",function(){
-                //                 oP.show("已领券，去体验吧~");
+                //                 // oP.show("已领券，去体验吧~");
                 //                 timer = setTimeout(function () {
-                //                     tpHide();
+                //                     _this.tpHide();
                 //                     window.location.href = d.ret.url;
                 //                 }, 1500);
                 //             });
                 //         }
-                //         function tpHide() {
-                //             oM.hide();
-                //             $(".tp-img-container").fadeOut();
-                //             // $(".tp-close").hide();
-                //             $(".tp-apply").hide();
-                //             $(".bonus-shake").removeClass("hand-shake");
-                //             $(".bonus1").fadeIn();
-                //             $(".bonus2").fadeIn();
-                //             $(".bonus3").fadeIn();
+                //         function toApp() {
+                //             var timer = null;
+                //             clearTimeout(timer);
+                //             timer = setTimeout(function () {
+                //                 oP.show("登录51公积金管家APP领取");
+                //                 timer = setTimeout(function () {
+                //                     window.location.href = d.ret.url;
+                //                 }, 1500);
+                //             }, 200);
                 //         }
                 //         if (d.success == true) {
                 //             if (d.ret.weChat == true) {
@@ -337,11 +197,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //                                     }, 1500)
                 //                                 }, 200);
                 //                             } else {
-                //                                 shakeHand();
-                //                                 raining();
+                //                                 _this.shakeHand();
+                //                                 _this.raining();
                 //                                 timer = setTimeout(function () {
+                //                                     clearInterval(bTimer);
                 //                                     timer = setTimeout(function () {
                 //                                         // 跳弹窗，点弹窗的按钮，跳转链接
+                //                                         $(".bonus-rain").fadeOut();
                 //                                         oM.show();
                 //                                         tpShow();
                 //                                     }, 2000);
@@ -356,18 +218,100 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //         }
                 //     }
                 // });
-            });
-        },
 
-        toApp: function() {
-            var timer = null;
-            clearTimeout(timer);
-            timer = setTimeout(function () {
-                oP.show("登录51公积金管家APP领取");
-                timer = setTimeout(function () {
-                    window.location.href = d.ret.url;
-                }, 1500);
-            }, 200);
+                /*下面这个是真正的请求真接口，别删*/
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    // url: ct.Tool.url("/act/act170705/get_status"),
+                    url: "/act/act170705/get_status",
+                    success: function (d) {
+                        var bTimer = null;
+                        console.log(d);
+                        function tpShow() {
+                            $(".bonus-rain").fadeOut();
+                            /*动态加载图片*/
+                            var price = d.ret.gift_price;
+                            img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
+                            img.src = "../static/img/20170705_bonus_"  + price + ".png";
+                            img.alt = "弹屏" + price;
+                            var imgContainer = $(".tp-img-container")[0];
+                            imgContainer.appendChild(img);
+
+                            $(".tp-img-container").fadeIn();
+                            // $(".tp-close").show();
+                            $(".tp-apply").show();
+                            $(".content").on("click",".tp-img-container",function(){
+                                $(".bonus-rain").fadeOut();
+                                _this.tpHide();
+                            });
+                            $(".content").on("click",".tp-apply",function(){
+                                // oP.show("已领券，去体验吧~");
+                                timer = setTimeout(function () {
+                                    _this.tpHide();
+                                    window.location.href = d.ret.url;
+                                }, 1500);
+                            });
+                        }
+                        function toApp() {
+                            var timer = null;
+                            clearTimeout(timer);
+                            timer = setTimeout(function () {
+                                oP.show("登录51公积金管家APP领取");
+                                timer = setTimeout(function () {
+                                    window.location.href = d.ret.url;
+                                }, 1500);
+                            }, 200);
+                        }
+                        if (d.success == true) {
+                            if (d.ret.weChat == true) {
+                                toApp();
+                            } else {
+                                if (d.ret.qq == true) {
+                                    toApp();
+                                } else {
+                                    if (d.ret.login == false) {
+                                        if (Bridge) {
+                                            Bridge.action("login");
+                                        }
+                                    } else {
+                                        if (d.ret.have_new == true) {
+                                            timer = setTimeout(function () {
+                                                timer = setTimeout(function () {
+                                                    window.location.href = d.ret.url;
+                                                }, 1000);
+                                            }, 200);
+                                        } else {
+                                            if(d.ret.apply == true) {
+                                                oP.show("暂不符合要求，去看看其他业务吧~");
+                                                timer = setTimeout(function () {
+                                                    timer = setTimeout(function () {
+                                                        window.location.href = d.ret.url;
+                                                    }, 1500)
+                                                }, 200);
+                                            } else {
+                                                _this.shakeHand();
+                                                _this.raining();
+                                                timer = setTimeout(function () {
+                                                    clearInterval(bTimer);
+                                                    timer = setTimeout(function () {
+                                                        // 跳弹窗，点弹窗的按钮，跳转链接
+                                                        $(".bonus-rain").fadeOut();
+                                                        oM.show();
+                                                        tpShow();
+                                                    }, 2000);
+                                                }, 200);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }else {
+                            oP.show(d.msg || "出错了请重试");
+                        }
+                    }
+                });
+            });
         },
 
         shakeHand: function() {
@@ -475,8 +419,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         Bridge.action('ShareTimeline', {
                             "title": "5万元3分钟到账，抢最高300元抵息",
                             'desc': "30-300元抵息人人有份",
-                            /*这里的图片等下要改一下*/
-                            "thumb": "https://r.51gjj.com/act/release/img/20170705_bonus.png",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170705_wxfx_jyd.png",
                             "link": "http://" + host + "/act/home/huodong/20170705/"
                         });
                     }
