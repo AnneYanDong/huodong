@@ -42,14 +42,23 @@
                 <div class="content">
                     <!-- <?php echo $imgUrl; ?>后面图片的命名必须是20170705_jhd_bg.jpg -->
                     <img class="bonus-bg" data-src="<?php echo $imgUrl; ?>jyd_nobonus_bg.png" alt="bg" />
-                    <img class="bonus-shake" data-src="<?php echo $imgUrl; ?>yhb_hand.png" alt="摇红包" />
-                    <img class="bonus1 hide" data-src="<?php echo $imgUrl; ?>bonus1.png" alt="红包1" />
-                    <img class="bonus2 hide" data-src="<?php echo $imgUrl; ?>bonus2.png" alt="红包2" />
-                    <img class="bonus3 hide" data-src="<?php echo $imgUrl; ?>bonus3.png" alt="红包3" />
+                    <img class="bonus-shake" data-src="<?php echo $imgUrl; ?>shake_hand_03.png" alt="摇红包" />
+                    <img class="bonus1" data-src="<?php echo $imgUrl; ?>bonus1.png" alt="红包1" />
+                    <img class="bonus2" data-src="<?php echo $imgUrl; ?>bonus2.png" alt="红包2" />
+                    <img class="bonus3" data-src="<?php echo $imgUrl; ?>bonus3.png" alt="红包3" />
+                    <div class="bonus-rain">
+                        <img class="bonus-rain1 hide" data-src="<?php echo $imgUrl; ?>bonus_rain.png" alt="红包雨" />
+                        <img class="bonus-rain2 hide" data-src="<?php echo $imgUrl; ?>bonus_rain.png" alt="红包雨" />
+                        <img class="bonus-rain3 hide" data-src="<?php echo $imgUrl; ?>bonus_rain.png" alt="红包雨" />
+                        <img class="bonus-rain4 hide" data-src="<?php echo $imgUrl; ?>bonus_rain.png" alt="红包雨" />
+                    </div>
+                    <div class="tp-img-container hide"></div>
                     <div class="btn" bp="马上领取" title="马上领取"></div>
                     <div class="rule-btn" bp="规则" title="规则"></div>
+                    <!-- <div class="tp-close hide"></div> -->
+                    <div class="tp-apply hide"></div>
                 </div>
-            <div class="mask hide"></div>
+                <div class="mask hide"></div>
             </div>
         </div>
     </body>

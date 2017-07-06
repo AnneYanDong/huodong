@@ -5,9 +5,9 @@
             "login" => true,
             "weChat" => false,
             "qq"=>false,
-            "have_new"=>true,
-            "apply"=>false,
-            "gift_price"=>0
+            "have_new"=>false, //false就为未领券
+            "apply"=>false, //未申请才能领券
+            "gift_price"=>80
         ),
         "success"=>true,
 	);
