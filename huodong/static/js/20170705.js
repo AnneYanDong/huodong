@@ -122,7 +122,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             /*动态加载图片*/
             var price = d.ret.gift_price;
             img.dataset.src = "<?php echo $imgUrl; ?>bonus_" + price + ".png";
-            img.src = "../static/img/20170705_bonus_"  + price + ".png";
+            img.src = "http://r.51gjj.com/act/release/img/20170705_bonus_"  + price + ".png";
             img.alt = "弹屏" + price;
             var imgContainer = $(".tp-img-container")[0];
             imgContainer.appendChild(img);

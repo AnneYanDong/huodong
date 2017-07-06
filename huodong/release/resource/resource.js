@@ -115,7 +115,7 @@
 	},
 
 	"20170705": {
-		"js": ["r.51gjj.com/act/release/js/20170705_e09d734.js"],
+		"js": ["r.51gjj.com/act/release/js/20170705_c49c16f.js"],
 		"css": ["r.51gjj.com/act/release/css/20170705_0d700bb.css"]
 	},
 
