@@ -185,64 +185,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             console.log(_this);
 
             $('.content').on('click','.btn',function(){
-                ct.Ajax.do({
-                    url: indexData.ajaxUrl || "test.php",
-                    success: function (d) {
-                        var bTimer = null;
-                        console.log(d);
-                        if (d.success == true) {
-                            if (d.ret.weChat == true) {
-                                _this.toApp(d);
-                            } else {
-                                if (d.ret.qq == true) {
-                                    _this.toApp(d);
-                                } else {
-                                    if (d.ret.login == false) {
-                                        if (Bridge) {
-                                            Bridge.action("login");
-                                        }
-                                    } else {
-                                        if (d.ret.have_new == true) {
-                                            timer = setTimeout(function () {
-                                                timer = setTimeout(function () {
-                                                    window.location.href = d.ret.url;
-                                                }, 500);
-                                            }, 200);
-                                        } else {
-                                            if(d.ret.apply == true) {
-                                                oP.show("暂不符合要求，去看看其他业务吧~");
-                                                timer = setTimeout(function () {
-                                                    timer = setTimeout(function () {
-                                                        window.location.href = d.ret.url;
-                                                    }, 1000)
-                                                }, 200);
-                                            } else {
-                                                _this.shakeHand();
-                                                bTimer = setInterval(_this.bonusRaining,30);
-                                                timer = setTimeout(function () {
-                                                    timer = setTimeout(function () {
-                                                        oM.show();
-                                                        _this.tpShow(d);
-                                                        clearInterval(bTimer);
-                                                    }, 1000)
-                                                }, 200);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }else {
-                            oP.show(d.msg || "出错了请重试");
-                        }
-                    }
-                });
-
-                /*下面这个是真正的请求真接口，别删*/
-                // $.ajax({
-                //     type: "POST",
-                //     dataType: "JSON",
-                //     // url: ct.Tool.url("/act/act170705/get_status"),
-                //     url: "/act/act170705/get_status",
+                // ct.Ajax.do({
+                //     url: indexData.ajaxUrl || "test.php",
                 //     success: function (d) {
                 //         var bTimer = null;
                 //         console.log(d);
@@ -262,7 +206,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //                             timer = setTimeout(function () {
                 //                                 timer = setTimeout(function () {
                 //                                     window.location.href = d.ret.url;
-                //                                 }, 1000);
+                //                                 }, 500);
                 //                             }, 200);
                 //                         } else {
                 //                             if(d.ret.apply == true) {
@@ -270,7 +214,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //                                 timer = setTimeout(function () {
                 //                                     timer = setTimeout(function () {
                 //                                         window.location.href = d.ret.url;
-                //                                     }, 1500)
+                //                                     }, 1000)
                 //                                 }, 200);
                 //                             } else {
                 //                                 _this.shakeHand();
@@ -292,6 +236,62 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //         }
                 //     }
                 // });
+
+                /*下面这个是真正的请求真接口，别删*/
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    // url: ct.Tool.url("/act/act170705/get_status"),
+                    url: "/act/act170705/get_status",
+                    success: function (d) {
+                        var bTimer = null;
+                        console.log(d);
+                        if (d.success == true) {
+                            if (d.ret.weChat == true) {
+                                _this.toApp(d);
+                            } else {
+                                if (d.ret.qq == true) {
+                                    _this.toApp(d);
+                                } else {
+                                    if (d.ret.login == false) {
+                                        if (Bridge) {
+                                            Bridge.action("login");
+                                        }
+                                    } else {
+                                        if (d.ret.have_new == true) {
+                                            timer = setTimeout(function () {
+                                                timer = setTimeout(function () {
+                                                    window.location.href = d.ret.url;
+                                                }, 1000);
+                                            }, 200);
+                                        } else {
+                                            if(d.ret.apply == true) {
+                                                oP.show("暂不符合要求，去看看其他业务吧~");
+                                                timer = setTimeout(function () {
+                                                    timer = setTimeout(function () {
+                                                        window.location.href = d.ret.url;
+                                                    }, 1500)
+                                                }, 200);
+                                            } else {
+                                                _this.shakeHand();
+                                                bTimer = setInterval(_this.bonusRaining,30);
+                                                timer = setTimeout(function () {
+                                                    timer = setTimeout(function () {
+                                                        oM.show();
+                                                        _this.tpShow(d);
+                                                        clearInterval(bTimer);
+                                                    }, 1000)
+                                                }, 200);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }else {
+                            oP.show(d.msg || "出错了请重试");
+                        }
+                    }
+                });
             });
         },
 
