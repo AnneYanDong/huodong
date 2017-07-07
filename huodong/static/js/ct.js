@@ -582,6 +582,7 @@ define(["jquery"], function($) {
         return this;
     }
     Ajax.setConfig = function(option) {
+        /*默认配置参数*/
         var config = {
             method: "POST",
             requestDataType: "string",
@@ -592,6 +593,7 @@ define(["jquery"], function($) {
             success: function() {},
             fail: function() {}
         }
+        /*扩展配置参数*/
         this.config = this.extend({}, config, option);
         this.config.method = this.config.method.toUpperCase();
         this.config.requestDataType = this.config.requestDataType.toUpperCase();
