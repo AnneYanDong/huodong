@@ -50,7 +50,7 @@
                     <div class="tp-img-container hide"></div>
                     <div class="btn" bp="马上领取" title="马上领取"></div>
                     <div class="rule-btn" bp="规则" title="规则"></div>
-                    <div class="tp-apply hide"></div>
+                    <div class="tp-apply hide" bp="使用抵息券" title="使用抵息券"></div>
                 </div>
                 <div class="mask hide"></div>
             </div>
