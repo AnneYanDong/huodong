@@ -72,16 +72,26 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     }
                 }
             });*/
+            /*埋点请求*/
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "/act/act170705/get_judge",
+                url: ct.Tool.url("/app/request/activity"),
                 data: JSON.stringify({
                     place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
                     tag: "进入页面" + projectName
                 }),
+                success: function (d) {
+                    if (d.success == true) {
+
+                    }
+                }
+            })
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "/act/act170705/get_judge",
                 success: function(d) {
-                    console.log("初始化请求：",_this);
                     if(d.success == true) {
                         console.log(d);
                         if (d.ret.have_new == true) {
