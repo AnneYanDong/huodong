@@ -36,7 +36,7 @@
     <!-- 引入require.js和设置文件js的入口 -->
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     </head>
-    <body>
+    <body bp="页面" title="页面">
         <div class="wp hide">
             <div class="wp-inner">
                 <div class="content">
