@@ -14,11 +14,12 @@
 	},
 	"activity": {
 		"js": [
-			__uri("../js/lib/vue2.2.6.min.js"),
+			__uri("../js/lib/vue2.2.6.js"),
 			__uri("../js/lib/axios.min.js"),
 			__uri("../js/lib/swipeSlide.min.js"),
 			__uri("../js/lib/dropload.js"),
-			__uri("../js/activity.js?24")
+			__uri("../js/activity.js"),
+			__uri("../js/lib/LArea.min.js")
 		],
 		"css": [
 			__uri("../css/activity.css?21"),
