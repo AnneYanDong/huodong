@@ -98,6 +98,30 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             var timer = null;
             clearTimeout(timer);
+            $('.content').on('click', '.apply1', function () {
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    // url: "test.php",
+                    url: "/act/act170605/get_prize",
+                    success: function (d) {
+                        console.log(_this);
+                        _this.doAjax(d);
+                    }
+                })
+            });
+            $('.content').on('click', '.apply2', function () {
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    // url: "test.php",
+                    url: "/act/act170605/get_prize",
+                    success: function (d) {
+                        console.log(_this);
+                        _this.doAjax(d);
+                    }
+                })
+            });
             $('.content').on('click', '.receive', function () {
                 $.ajax({
                     type: "POST",
@@ -105,40 +129,45 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     // url: "test.php",
                     url: "/act/act170605/get_prize",
                     success: function (d) {
-                        if (!!d.success) {
-                            if (d.ret.weChat == true) {
-                                timer = setTimeout(function () {
-                                    window.location.href = d.ret.url;
-                                }, 200);
-                            } else {
-                                if (d.ret.login == false) {
-                                    if (Bridge) {
-                                        Bridge.action("login");
-                                    }
-                                } else {
-                                    if (d.ret.match == true) {
-                                        timer = setTimeout(function () {
-                                            oP.show("已领券，去体验吧");
-                                            timer = setTimeout(function () {
-                                                window.location.href = d.ret.url;
-                                            }, 1500)
-                                        }, 200);
-                                    } else {
-                                        timer = setTimeout(function () {
-                                            oP.show("暂不符合要求，看看其他业务吧");
-                                            timer = setTimeout(function () {
-                                                window.location.href = d.ret.url;
-                                            }, 1500)
-                                        }, 200);
-                                    }
-                                }
-                            }
-                        } else {
-                            oP.show(d.msg || "出错请重试");
-                        }
+                        console.log(_this);
+                        _this.doAjax(d);
                     }
                 })
-            })
+            });
+        },
+
+        doAjax: function(d) {
+            if (!!d.success) {
+                if (d.ret.weChat == true) {
+                    timer = setTimeout(function () {
+                        window.location.href = d.ret.url;
+                    }, 200);
+                } else {
+                    if (d.ret.login == false) {
+                        if (Bridge) {
+                            Bridge.action("login");
+                        }
+                    } else {
+                        if (d.ret.match == true) {
+                            timer = setTimeout(function () {
+                                oP.show("已领券，去体验吧");
+                                timer = setTimeout(function () {
+                                    window.location.href = d.ret.url;
+                                }, 1500)
+                            }, 200);
+                        } else {
+                            timer = setTimeout(function () {
+                                oP.show("暂不符合要求，看看其他业务吧");
+                                timer = setTimeout(function () {
+                                    window.location.href = d.ret.url;
+                                }, 1500)
+                            }, 200);
+                        }
+                    }
+                }
+            } else {
+                oP.show(d.msg || "出错请重试");
+            }
         },
 
         //分享按钮：
