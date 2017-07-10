@@ -204,7 +204,7 @@ define(["jquery"], function($) {
         return this;
     }
 
-    // 统计点击情况
+    // 统计按钮的点击情况
     Tool.buryPoint = function(url) {
         var _this = this;
         $("body").on("click", "[bp]", function() {
@@ -600,6 +600,7 @@ define(["jquery"], function($) {
         this.config.responseDataType = this.config.responseDataType.toUpperCase();
         return this;
     }
+    /*这里我居然都看得懂*/
     Ajax.do = function(option) {
         var _this = this;
         this.createXhrObj();
@@ -615,7 +616,7 @@ define(["jquery"], function($) {
         if (config.before && this.isFunction(config.before)) {
             config.before();
         }
-        var timestamp = new Date().getTime(); // 防止ajax请求缓存
+        var timestamp = new Date().getTime(); // 防止ajax请求缓存,时间戳
         if (config.method == "GET") {
             xhr.open("GET", config.url + "?" + this.formateData(config.data) + "&timestamp=" + timestamp, config.async);
             xhr.send();
@@ -647,6 +648,7 @@ define(["jquery"], function($) {
             }
         }
     }
+    /*这里是不是对数据进行编码会更好？*/
     Ajax.formateData = function(data) {
         var dataArr = [];
         for (var k in data) {
