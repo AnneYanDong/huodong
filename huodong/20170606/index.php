@@ -34,7 +34,7 @@
         <div class="content">
             <img data-src="<?php echo $imgUrl; ?>bg.png" alt="">
             <div class="loan">
-                <input type="tel" placeholder="填入2~9整数" maxlength="1" />
+                <input type="tel" placeholder="填入2~9整数" maxlength="1"  bp="输入框"  title="输入框"/>
             </div>
             <div class="result"></div>
             <div class="receive" bp="立即领取" title="立即领取"></div>
