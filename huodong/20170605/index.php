@@ -1,5 +1,5 @@
 <?php 
-    $title = "金花贷申请有礼活动"; // 配置标题的，必须
+    $title = "申请有礼 提款免息"; // 配置标题的，必须
     include "../public/v1/header.php";
 ?>
 <?php
