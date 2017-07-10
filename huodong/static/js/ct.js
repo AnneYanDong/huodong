@@ -65,6 +65,7 @@ define(["jquery"], function($) {
         },
 
         viewPortInfo: function() {
+            //这个是针对移动web做的兼容,页面可见区域的大小
             var deviceWidth, deviceHeight;
             if (window.innerWidth == undefined) { // IE6,7,8 没有innerWidth
                 deviceWidth = document.documentElement.clientWidth;
@@ -226,7 +227,7 @@ define(["jquery"], function($) {
         })
     }
 
-    // 获取地址栏某个参数
+    // 获取地址栏某个参数(查询字符串)
     Tool.getUrlData = function(search) {
         var _this = this;
         var obj = {};
@@ -296,7 +297,7 @@ define(["jquery"], function($) {
     }
 
     /* 常用的UI组件 */
-    // 组件对象，Widget的[[Prototype]]关联到Common（父类）
+    // 组件对象，Widget的[[Prototype]]关联到Common（父类）,实现继承
     var Widget = Object.create(Common);
     Widget.init = function() {
         this.ele = null;
@@ -330,7 +331,7 @@ define(["jquery"], function($) {
     }
 
 
-    // 提示框对象
+    // 提示框对象，创建Prompt对象实例，并指定它的原型对象，意思就是实例对象Prompt创建以后有一个_ptoto_内部属性指向实例对象Prompt的原型对象Widget.prototype,也就是Prompt._proto_ == Widget.prototype
     var Prompt = Object.create(Widget);
     Prompt.timer = null;
     Prompt.create = function() {
@@ -581,6 +582,7 @@ define(["jquery"], function($) {
         return this;
     }
     Ajax.setConfig = function(option) {
+        /*默认配置参数*/
         var config = {
             method: "POST",
             requestDataType: "string",
@@ -591,6 +593,7 @@ define(["jquery"], function($) {
             success: function() {},
             fail: function() {}
         }
+        /*扩展配置参数*/
         this.config = this.extend({}, config, option);
         this.config.method = this.config.method.toUpperCase();
         this.config.requestDataType = this.config.requestDataType.toUpperCase();

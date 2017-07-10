@@ -1,0 +1,324 @@
+@import url('basicFullPage.css');
+@import url('mtool.css');
+@import url('marquee.css');
+.wp {
+    overflow: auto!important;
+    background: #0c91ee;
+    -webkit-overflow-scrolling: touch;
+}
+
+.wp-inner {
+    background: #0c91ee;
+    position: relative;
+}
+
+.wp-inner img {
+    width: 100%;
+}
+
+.rule-btn {
+    position: absolute;
+    top: 0;
+    right: 0.2rem;
+    height: 1rem;
+    width: 0.9rem;
+}
+
+.rule-btn .icon-process {
+    display: inline-block;
+    width: .32rem;
+    height: .32rem;
+    background: url("http://r.51gjj.com/act/release/img/20170313_right_arrow.png") no-repeat;
+    background-size: .31rem .31rem;
+    position: relative;
+    margin-left: 5px;
+    vertical-align: bottom;
+}
+
+.rule {
+    background: #fff;
+    display: none;
+    width: 6.03rem;
+    padding: .5rem .36rem;
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    font-size: 12px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    border-radius: 5px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    z-index: 99;
+}
+
+.ticket_50 {
+    display: none;
+    width: 6rem;
+    position: fixed;
+    top: 2.8rem;
+    left: 50%;
+    font-size: 12px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    border-radius: 5px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    z-index: 99;
+}
+
+.ticket_50 a {
+    width: 6rem;
+    position: fixed;
+    height: 1.55rem;
+    display: inline-block;
+    bottom: 0;
+}
+
+.ticket_close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 1rem;
+    width: 1.22rem;
+}
+
+.ticket_50 img {
+    width: 100%;
+}
+
+.rule h6 {
+    margin: 0;
+    margin-bottom: .4rem;
+    font-size: 24px;
+    color: #d3921b;
+    text-align: center;
+}
+
+.rule ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 6rem;
+    overflow-y: scroll;
+}
+
+.rule ul li {
+    position: relative;
+    font-size: 12px;
+    line-height: 18px;
+    padding-left: 16px;
+    margin-bottom: 5px;
+    color: #868686;
+}
+
+.rule ul li span {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    font-style: normal;
+}
+
+.rule .btn-close {
+    position: absolute;
+    background: url("https://r.51gjj.com/act/images/20160818_close.png") no-repeat;
+    background-size: 100%;
+    width: .8rem;
+    height: .8rem;
+    bottom: -1rem;
+    left: 50%;
+    margin-left: -0.4rem;
+}
+
+.content .oneDay {
+    font-size: 0.4rem;
+    width: 3.16rem;
+    height: 0.7rem;
+    transform: skewY(-7deg);
+    -ms-transform: skewY(-7deg);
+    -webkit-transform: skewY(-7deg);
+    position: absolute;
+    top: 3.5rem;
+    line-height: 0.7rem;
+    margin-left: 0.7rem;
+    background: #95d723;
+    border-radius: 0.35rem;
+    text-indent: 0.3rem;
+    color: #ffffff;
+    z-index: 5;
+}
+
+.content .timeClock {
+    width: 4rem;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    font-size: 0.4rem;
+    transform: skewY(-7deg);
+    -ms-transform: skewY(-7deg);
+    -webkit-transform: skewY(-7deg);
+    position: absolute;
+    top: 3.2rem;
+    background: #fab600;
+    border-radius: 0.35rem;
+    text-indent: 0.18rem;
+    color: #bc5800;
+    z-index: 6;
+    margin-left: 2.8rem;
+}
+
+.timeClock img {
+    width: 0.47rem;
+    height: 0.49rem;
+    padding-left: 1.5rem;
+    margin-top: .1rem;
+}
+
+.timeClock span:first-child {
+    position: absolute;
+    font-weight: 600;
+}
+
+.timeClock span:last-child {
+    position: absolute;
+    top: 0;
+    left: 1.9rem;
+    font-weight: 600;
+}
+
+.gray {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+
+.content .tickets {
+    width: 5.6rem;
+    height: 1.9rem;
+    position: absolute;
+    top: 6.5rem;
+    left: 50%;
+    margin-left: -2.8rem;
+}
+
+.tickets .ticketMoney {
+    width: 1.66rem;
+    display: inline-block;
+    height: 1.9rem;
+    z-index: 999;
+}
+
+.ticketMoney .rob {
+    width: 1.72rem;
+    height: 0.55rem;
+    background: #ff653c;
+    font-size: 0.36rem;
+    text-align: center;
+    line-height: 0.55rem;
+    color: #ffffff;
+    bottom: 0;
+    position: absolute;
+    border-radius: 0.3rem;
+}
+
+.content .list {
+    width: 5.9rem;
+    height: 1.4rem;
+    position: absolute;
+    top: 9.3rem;
+    left: 50%;
+    margin-left: -2.95rem;
+    background: #ff653c;
+    box-sizing: border-box;
+    border: 5px solid #ffa200;
+    border-radius: 0.7rem;
+}
+
+.list ul li {
+    height: 0.4rem;
+    line-height: 0.4rem;
+    font-size: 0.28rem;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+
+/*.list ul li:nth-of-type(odd) {
+    opacity: 0.28;
+    font-weight: 500;
+}*/
+
+.apply {
+    position: absolute;
+    width: 6.9rem;
+    height: 2.37rem;
+    margin-left: -3.45rem;
+    left: 50%;
+}
+
+.apply1 {
+    top: 12.65rem;
+    background: url("http://r.51gjj.com/act/release/img/20170703_toApply1copy.png") no-repeat;
+    background-size: 100%;
+}
+
+.apply2 {
+    top: 15.2rem;
+    background: url("http://r.51gjj.com/act/release/img/20170703_toApply2copy.png") no-repeat;
+    background-size: 100%;
+}
+
+.apply3 {
+    top: 17.7rem;
+    background: url("http://r.51gjj.com/act/release/img/20170703_toApply3copy.png") no-repeat;
+    background-size: 100%;
+}
+
+.myTicket {
+    font-size: 0.28rem;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 20.27rem;
+    color: #c6e7ff;
+    line-height: 0.4rem;
+}
+
+.myTicket span {
+    border-bottom: 1px solid #c6e7ff;
+}
+
+.grey {
+    background: #7e7e7e!important;
+}
+.ticketMoney .seal {
+    position: absolute;
+    width: 1.65rem;
+    top: 0;
+    z-index: 9;
+}
+.grayscale {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+
+.str_move {
+    height: 200px;
+    min-height: 160px;
+}
+
+#lottery {
+    position: fixed;
+    height: 0.55rem;
+    /*background: #7c776d;*/
+    background: black;
+    opacity: 0.5;
+    width: 100%;
+    z-index: 999;
+}
+
+.skip {
+    position: fixed;
+    top: 5.48rem;
+    width: 100%;
+    height: 1.6rem;
+}

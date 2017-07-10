@@ -25,12 +25,13 @@
                 "fastClick": ["//r.51gjj.com/act/release/js/lib/fastclick.min","lib/fastclick.min"],
                 "juicer": ["//r.51gjj.com/act/release/js/lib/juicer-min","lib/juicer-min"],
                 "dataStatistics": ["//r.51gjj.com/act/release/js/lib/jquery.dataStatistics","lib/jquery.dataStatistics"],
-                "ct": ["./business_act/static/js/ct"],
+                "ct": ["./huodong/static/js/ct"],
                 "marquee": ["//r.51gjj.com/act/release/js/lib/jquery.liMarquee.min", "lib/jquery.liMarquee"],
                 "Vue-dev": ["//r.51gjj.com/act/release/js/lib/vue2.2.6", "lib/vue2.2.6"],
                 "Vue": ["//r.51gjj.com/act/release/js/lib/vue2.2.6.min", "lib/vue2.2.6.min"],
                 "Vue-build": ["//r.51gjj.com/act/release/js/lib/vue2.2.6.min", "lib/vue2.2.6.min"],
-                "axios": ["//r.51gjj.com/act/release/js/lib/axios.min","lib/axios.min"]
+                "axios": ["//r.51gjj.com/act/release/js/lib/axios.min","lib/axios.min"],
+                "number": ["//r.51gjj.com/act/release/js/lib/number","lib/number"]
             },
 
             "shim": {
@@ -62,6 +63,9 @@
                     "deps": ["jquery"]
                 },
                 "marquee":{
+                    "deps": ["jquery"]
+                },
+                "number":{
                     "deps": ["jquery"]
                 }
             }
