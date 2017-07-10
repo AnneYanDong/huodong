@@ -72,7 +72,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     }
                 }
             });*/
-            /*埋点请求*/
+            /*这个是页面的埋点请求，按钮的埋点是通过[bp]属性，不一样*/
             $.ajax({
                 type: "POST",
                 dataType: "JSON",

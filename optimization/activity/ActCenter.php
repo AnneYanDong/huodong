@@ -203,10 +203,7 @@
 			<div class="prompt-header">
 				<!-- <span class="close"></span> -->
 			</div>
-			<div class="form">
-				<input class="form-input" v-model="userInfo.name" placeholder="请填写您的姓名"><input class="form-input" v-model="userInfo.phone" placeholder="请填写您的手机号码" v-show="singlePrize.button.confirmInfoType !== 1"><input class="form-input" v-model="userInfo.alipay" placeholder="请填写您的支付宝账号" v-show="singlePrize.button.confirmInfoType === 1"><input class="form-input" v-model="userInfo.address" placeholder="请填写您的收货地址"  v-show="singlePrize.button.confirmInfoType === 3">
-				<button class="form-sure" @click="gotrender">确认</button>
-			</div>
+			<div class="form"><input class="form-input" v-model="userInfo.name" placeholder="请填写您的姓名"><input class="form-input" v-model="userInfo.phone" placeholder="请填写您的手机号码" v-show="singlePrize.button.confirmInfoType !== 1"><input class="form-input" v-model="userInfo.alipay" placeholder="请填写您的支付宝账号" v-show="singlePrize.button.confirmInfoType === 1"><input class="form-input" v-model="userInfo.address" placeholder="请填写您的收货地址"  v-show="singlePrize.button.confirmInfoType === 3"><input id="city-select" class="form-input" v-model="userInfo.city" placeholder="请先选择城市"  v-show="singlePrize.button.confirmInfoType === 3"><button class="form-sure" @click="gotrender">确认</button></div>
 		</div>			
 	</div>
 	</transition>
