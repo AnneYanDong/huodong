@@ -32,11 +32,19 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>jhd_bg2.gif" alt="">
-            <div class="apply1" bp="申请成功" title="申请成功"></div>
-            <div class="apply2" bp="提款成功" title="提款成功"></div>
-            <div class="receive" bp="立即领取" title="立即领取"></div>
-            <div class="rule-btn"></div>
+            <img class="title" data-src="<?php echo $imgUrl; ?>jhd2_title.png" alt="title">
+            <img class="tv" data-src="<?php echo $imgUrl; ?>jhd2_tv.png" alt="title">
+            <div class="wrap-apply">
+                <img class="gif" data-src="<?php echo $imgUrl; ?>jhd2_tv.gif" alt="gif">
+                <div class="apply apply1" bp="申请成功" title="申请成功"></div>
+                <div class="apply apply2" bp="提款成功" title="提款成功"></div>
+            </div>
+            <div class="receive" bp="立即领取" title="立即领取">
+                <div class=" circle circle1"></div>
+                立即领取
+                <div class="circle circle2"></div>
+            </div>
+            <div class="rule-btn gradient" bp="规则" title="规则">规则</div>
         </div>
     </div>
     <div class="mask hide"></div>
