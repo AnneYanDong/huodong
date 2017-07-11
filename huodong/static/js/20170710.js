@@ -86,8 +86,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "test.php",
-                // url: "/act/act170710/get_status",
+                // url: "test.php",
+                url: "/act/act170710/get_status",
                 success: function (d) {
                     if (!!d.success) {
                         _this.status.login = d.ret.login;
@@ -98,6 +98,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         if (d.ret.have == true) {
                             $(".page2").removeClass("hide");
                             oP.show("您已领取过红包");
+                            $(".apply").addClass("addShake");
                         } else {
                             $(".page1").removeClass("hide");
                             $(".page1 img").addClass("addFadeIn");
@@ -146,6 +147,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             if (!!d.success) {
                                 $(".prize").remove();
                                 $(".mt-mask").css("display", "none");
+                                $(".apply").addClass("addShake");
                             } else {
                                 oP.show(d.msg || "出错请重试");
                             }

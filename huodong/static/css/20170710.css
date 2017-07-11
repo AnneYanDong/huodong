@@ -96,6 +96,7 @@
   -o-animation: moving 200ms ease-in 1;
   -ms-animation: moving 200ms ease-in 1;
 }
+
 @keyframes moving {
   0% {
     top: -2rem;
@@ -104,6 +105,7 @@
     top: 3rem;
   }
 }
+
 @-webkit-keyframes moving {
   0% {
     top: -2rem;
@@ -139,6 +141,59 @@
     top: 3rem;
   }
 }
+
+.addShake {
+  animation: shake 2200ms ease-in 0s infinite;
+  -webkit-animation: shake 2200ms ease-in 0s infinite;
+}
+
+@keyframes shake {
+  0% {
+    left: 3.9rem;
+  }
+  5% {
+    left: 4.1rem;
+  }
+  10% {
+    left: 3.9rem;
+  }
+  15% {
+    left: 4.1rem;
+  }
+  20% {
+    left: 3.9rem;
+  }
+  25%,
+  100% {
+    left: 4rem;
+  }
+}
+
+@-webkit-keyframes shake
+/*Safari and Chrome*/
+
+{
+  0% {
+    left: 3.9rem;
+  }
+  5% {
+    left: 4.1rem;
+  }
+  10% {
+    left: 3.9rem;
+  }
+  15% {
+    left: 4.1rem;
+  }
+  20% {
+    left: 3.9rem;
+  }
+  25%,
+  100% {
+    left: 4rem;
+  }
+}
+
 .page1 .content img {
   width: 100%;
 }
@@ -185,10 +240,16 @@
 
 .page2 .content .apply {
   position: absolute;
+  background: url(https://r.51gjj.com/act/release/img/20170710_xy_btn.png) no-repeat;
+  background-size: 100%;
   width: 3.2rem;
   height: .8rem;
   top: 10.6rem;
   left: 4rem;
+  color: #fff;
+  font-size: 0.36rem;
+  line-height: 0.78rem;
+  text-align: center;
 }
 
 .rule-btn {
