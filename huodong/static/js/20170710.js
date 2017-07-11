@@ -15,6 +15,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
     var run = {
         status: {
             login: false,
+            weChat: false,
             oUrl_1: "",
             oUrl_2: ""
         },
@@ -71,33 +72,40 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             var _this = this;
             $(".wp").removeClass("hide");
             _this.render();
-            // _this.pullDown();
-            // _this.receive();
-            // _this.skip();
-            // _this.openRule();
-            // _this.closeRule();
-            // _this.share();
+            _this.pullDown();
+            _this.receive();
+            _this.skip();
+            _this.openRule();
+            _this.closeRule();
+            _this.share();
         },
 
         render: function () {
             var _this = this;
-
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "test.php",
-                // url: "/act/act170615/get_status",
+                // url: "test.php",
+                url: "/act/act170710/get_status",
                 success: function (d) {
                     if (!!d.success) {
+                        _this.status.login = d.ret.login;
+                        console.debug(_this.status.login)
+                        _this.status.weChat = d.ret.weChat;
+                        _this.status.oUrl_1 = d.ret.url_1;
+                        _this.status.oUrl_2 = d.ret.url_2;
                         if (d.ret.have == true) {
                             $(".page2").removeClass("hide");
+                            oP.show("您已领取过红包");
                         } else {
-                            $(".page1").fadeIn(2000);
+                            $(".page1").removeClass("hide");
+                            $(".page1 img").addClass("addFadeIn");
                             setTimeout(function () {
-                                $(".page1").fadeOut(2000);
-                            },1000);
-                            $(".page2").removeClass("hide");
-                            $(".page2 .content").append('<div class="redPackets addDown"><img data-src="/img/20170710_redPackets.png"></div>')
+                                $(".page1").addClass("hide");
+                                $(".page2").removeClass("hide");
+                                oM.show();
+                                $(".page2").append('<div class="redPackets"><img src="../static/img/20170710_redPackets.png"></div>');
+                            }, 5000)
                         }
                     } else {
                         oP.show(d.msg || "出错请重试");
@@ -108,31 +116,45 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
 
         pullDown: function () {
-            $(".page1").on("click", ".gift", function () {
+            $(".page2").on("click", ".redPackets img", function () {
                 oM.show();
-                $(".wp").append('<div class="tipMsg"><img src="http://r.51gjj.com/act/release/img/20170615_msg.png"><div class="receive" bp="收下" title="收下"></div></div>');
+                $(".redPackets").remove();
+                $(".page2").append('<div class="prize"><img src="../static/img/20170710_money.png"><div class="receive" bp="收下" title="收下"></div></div>');
             })
         },
 
         receive: function () {
+            var _this = this;
             $(document).on("click", ".receive", function () {
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    // url: "test.php",
-                    url: "/act/act170615/get_prize",
-                    success: function (d) {
-                        if (!!d.success) {
-                            $(".tipMsg").remove();
-                            $(".mt-mask").css("display", "none");
-                            window.location.href = d.ret.url;
-                        } else {
-                            oP.show(d.msg || "出错请重试");
-                        }
+                if (_this.status.weChat == true) {
+                    oP.show("本活动需在app参加");
+                    timer = setTimeout(function () {
+                        window.location.href = "http://d.51gjj.com/";
+                    }, 1500)
+                }
+                if (_this.status.login == false) {
+                    if (Bridge) {
+                        Bridge.action("login");
                     }
-                })
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        dataType: "JSON",
+                        // url: "test.php",
+                        url: "/act/act170615/get_prize",
+                        success: function (d) {
+                            if (!!d.success) {
+                                $(".prize").remove();
+                                $(".mt-mask").css("display", "none");
+                            } else {
+                                oP.show(d.msg || "出错请重试");
+                            }
+                        }
+                    })
+                }
             })
         },
+
         skip: function () {
             var _this = this;
             $(".page2 .looking").on("click", function () {
@@ -180,10 +202,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
                     onclick: function () {
                         Bridge.action('ShareTimeline', {
-                            "title": "【父亲节快乐】这些年收获了很多祝福和礼物，但其实…",
-                            'desc': "给的再多，不如懂你，点击领取父亲节专属礼包！",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170615_wxshare.png",
-                            "link": "http://" + host + "/act/home/huodong/20170615/"
+                            "title": "7.14银色情人节 这个节日我赞助",
+                            'desc': "真情红包，真爱相送，点击领取258元现金红包！",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170710_wxshare.png",
+                            "link": "http://" + host + "/act/home/huodong/20170710/"
                         });
                     }
                 })

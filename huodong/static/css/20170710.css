@@ -1,53 +1,162 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
-.page1 {
-  background: #15164c;
-  background-size: cover;
-  background-position: center;
+.wp {
+  overflow: scroll;
 }
-.page2 {
-  background: #15164c;
+
+.wp-inner {
+  background: #0f0d0d;
+  position: relative;
+  height: 100%;
 }
+
+.addFadeIn {
+  animation: fadeIn 5s linear 1;
+  -webkit-animation: fadeIn 5s linear 1;
+  -moz-animation: fadeIn 5s linear 1;
+  -o-animation: fadeIn 5s linear 1;
+  -ms-animation: fadeIn 5s linear 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .page1 .content img {
   width: 100%;
 }
 
-.page2 .content img {
+.page2 img {
   width: 100%;
 }
-.page2 .content .redPackets {
+
+.page2 .redPackets {
   width: 4.86rem;
   height: 6.28rem;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  z-index: 99;
 }
-.addDown {
-    -webkit-animation-name: down;
-    animation-name: down;
-    -webkit-animation-duration: 260ms;
-    animation-duration: 260ms;
-    animation-iteration-count: infinite;
-    -webkit-animation-iteration-count: infinite;
-    animation-timing-function: ease;
-    -webkit-animation-timing-function: ease;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-transform-origin:  0 100%;;
-    transform-origin:  0 100%;
 
+.page2 .prize {
+  width: 6.01rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
 }
+
+.receive {
+  position: absolute;
+  width: 4.85rem;
+  height: 1.4rem;
+  top: 5.1rem;
+  margin-left: -2.6rem;
+  left: 50%;
+}
+
+.page2 .content .looking {
+  position: absolute;
+  width: 3.2rem;
+  height: .8rem;
+  top: 11.75rem;
+  left: 0.3rem;
+}
+
+.page2 .content .apply {
+  position: absolute;
+  width: 3.2rem;
+  height: .8rem;
+  top: 11.75rem;
+  left: 4rem;
+}
+
 .rule-btn {
-  font-size: .32rem;
-  color: #fff;
+  font-size: .2rem;
+  color: #dbdbdb;
   text-align: center;
   /*margin-top: .48rem;*/
   position: absolute;
   top: .2rem;
-  width: 1rem;
+  width: 1.5rem;
   height: .5rem;
   right: 0;
+  line-height: 0.5rem;
+  margin-right: 0.3rem;
 }
 
 .rule-btn .icon-process {
@@ -130,6 +239,7 @@
   background: transparent;
   z-index: 99;
 }
+
 .hide {
   display: none;
 }
