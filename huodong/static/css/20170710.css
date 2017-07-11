@@ -1,9 +1,5 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
-.wp {
-  overflow: scroll;
-}
-
 .wp-inner {
   background: #0f0d0d;
   position: relative;
@@ -11,11 +7,11 @@
 }
 
 .addFadeIn {
-  animation: fadeIn 5s linear 1;
-  -webkit-animation: fadeIn 5s linear 1;
-  -moz-animation: fadeIn 5s linear 1;
-  -o-animation: fadeIn 5s linear 1;
-  -ms-animation: fadeIn 5s linear 1;
+  animation: fadeIn 4s linear 1;
+  -webkit-animation: fadeIn 4s linear 1;
+  -moz-animation: fadeIn 4s linear 1;
+  -o-animation: fadeIn 4s linear 1;
+  -ms-animation: fadeIn 4s linear 1;
 }
 
 @keyframes fadeIn {
@@ -93,6 +89,56 @@
   }
 }
 
+.addMove {
+  animation: moving 200ms ease-in 1;
+  -webkit-animation: moving 200ms ease-in 1;
+  -moz-animation: moving 200ms ease-in 1;
+  -o-animation: moving 200ms ease-in 1;
+  -ms-animation: moving 200ms ease-in 1;
+}
+@keyframes moving {
+  0% {
+    top: -2rem;
+  }
+  100% {
+    top: 3rem;
+  }
+}
+@-webkit-keyframes moving {
+  0% {
+    top: -2rem;
+  }
+  100% {
+    top: 3rem;
+  }
+}
+
+@-moz-keyframes moving {
+  0% {
+    top: -2rem;
+  }
+  100% {
+    top: 3rem;
+  }
+}
+
+@-o-keyframes moving {
+  0% {
+    top: -2rem;
+  }
+  100% {
+    top: 3rem;
+  }
+}
+
+@-ms-keyframes moving {
+  0% {
+    top: -2rem;
+  }
+  100% {
+    top: 3rem;
+  }
+}
 .page1 .content img {
   width: 100%;
 }
@@ -112,7 +158,7 @@
 }
 
 .page2 .prize {
-  width: 6.01rem;
+  width: 5.61rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -125,7 +171,7 @@
   width: 4.85rem;
   height: 1.4rem;
   top: 5.1rem;
-  margin-left: -2.6rem;
+  margin-left: -2.46rem;
   left: 50%;
 }
 
@@ -133,7 +179,7 @@
   position: absolute;
   width: 3.2rem;
   height: .8rem;
-  top: 11.75rem;
+  top: 10.6rem;
   left: 0.3rem;
 }
 
@@ -141,7 +187,7 @@
   position: absolute;
   width: 3.2rem;
   height: .8rem;
-  top: 11.75rem;
+  top: 10.6rem;
   left: 4rem;
 }
 

@@ -38,13 +38,13 @@
             <div class="wp-inner">
                 <div class="page page1 hide">
                     <div class="content">
-                        <img class="bgImg" data-src="<?php echo $imgUrl; ?>bg_one.jpg" alt="">
+                        <img class="bgImg" data-src="<?php echo $imgUrl; ?>love_bg_one.jpg" alt="">
                     </div>
                 </div>
                 <div class="page page2 hide">
                     <div class="content">
                         <!--<div class="redPackets"><img data-src="<?php echo $imgUrl; ?>redPackets.png"></div>-->
-                        <img data-src="<?php echo $imgUrl; ?>bg_two.jpg" alt="">
+                        <img data-src="<?php echo $imgUrl; ?>love_bg_two.jpg" alt="">
                         <div class="looking" bp="查看红包" title="查看红包"></div>
                         <div class="apply" bp="牵手兴业拿红包" title="牵手兴业拿红包"></div>
                         <div class="rule-btn">规则</div>
