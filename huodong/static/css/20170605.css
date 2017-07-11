@@ -153,7 +153,7 @@
     border-radius: .8rem;
     box-shadow:0 -.1rem 0 #8b58ff;
 }
- .content .animation {
+.content .animation {
     animation: shake 400ms linear 2;
 }
 .content .circle {

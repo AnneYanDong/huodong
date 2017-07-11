@@ -85,9 +85,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     $(".receive").removeClass("animation");
                     timer = setInterval(function(){
                         $(".receive").addClass("animation");
-                    },7000);
-                },3500);
-            },2000);
+                    },2000);
+                },1500);
+            },1000);
         },
 
         // 打开规则
