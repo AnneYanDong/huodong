@@ -75,8 +75,8 @@
 	},
 
 	"20170605": {
-		"js": ["r.51gjj.com/act/release/js/20170605_1d428d3.js"],
-		"css": ["r.51gjj.com/act/release/css/20170605_4f212b4.css"]
+		"js": ["r.51gjj.com/act/release/js/20170605_ff9b655.js"],
+		"css": ["r.51gjj.com/act/release/css/20170605_2e17c7d.css"]
 	},
 
 	"20170606": {
