@@ -71,10 +71,23 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
+            _this.showAnimation();
             _this.openRule();
             _this.closeRule();
             _this.apply();
             _this.share();
+        },
+        showAnimation: function() {
+            var timer = null;
+            timer = setTimeout(function(){
+                $(".receive").addClass("animation");
+                timer = setInterval(function(){
+                    $(".receive").removeClass("animation");
+                    timer = setInterval(function(){
+                        $(".receive").addClass("animation");
+                    },7000);
+                },3500);
+            },2000);
         },
 
         // 打开规则
@@ -98,38 +111,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             var timer = null;
             clearTimeout(timer);
-            $('.content').on('click', '.apply1', function () {
+            $('.content').on('click', '.apply1,.apply2,.receive', function () {
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
                     // url: "test.php",
                     url: "/act/act170605/get_prize",
                     success: function (d) {
-                        console.log(_this);
-                        _this.doAjax(d);
-                    }
-                })
-            });
-            $('.content').on('click', '.apply2', function () {
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    // url: "test.php",
-                    url: "/act/act170605/get_prize",
-                    success: function (d) {
-                        console.log(_this);
-                        _this.doAjax(d);
-                    }
-                })
-            });
-            $('.content').on('click', '.receive', function () {
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    // url: "test.php",
-                    url: "/act/act170605/get_prize",
-                    success: function (d) {
-                        console.log(_this);
+                        console.log(d);
                         _this.doAjax(d);
                     }
                 })
@@ -137,7 +126,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         },
 
         doAjax: function(d) {
-            if (!!d.success) {
+            if (d.success == true) {
                 if (d.ret.weChat == true) {
                     timer = setTimeout(function () {
                         window.location.href = d.ret.url;
