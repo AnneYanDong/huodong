@@ -44,7 +44,7 @@
                 立即领取
                 <div class="circle circle2"></div>
             </div>
-            <div class="rule-btn gradient">规则</div>
+            <div class="rule-btn gradient" bp="规则" title="规则">规则</div>
         </div>
     </div>
     <div class="mask hide"></div>
