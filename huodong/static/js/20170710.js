@@ -15,6 +15,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
     var run = {
         status: {
             login: false,
+            weChat: false,
             oUrl_1: "",
             oUrl_2: ""
         },
@@ -90,6 +91,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     if (!!d.success) {
                         _this.status.login = d.ret.login;
                         console.debug(_this.status.login)
+                        _this.status.weChat = d.ret.weChat;
                         _this.status.oUrl_1 = d.ret.url_1;
                         _this.status.oUrl_2 = d.ret.url_2;
                         if (d.ret.have == true) {
