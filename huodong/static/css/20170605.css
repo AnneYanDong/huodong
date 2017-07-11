@@ -152,7 +152,9 @@
     background-color: #6623ff;
     border-radius: .8rem;
     box-shadow:0 -.1rem 0 #8b58ff;
-    animation: shake 300ms 2;
+}
+ .content .animation {
+    animation: shake 400ms linear 2;
 }
 .content .circle {
     width: .24rem;
@@ -195,15 +197,15 @@
         left: 50%;
         transform: translateX(-50%);
     }
-    15% {
+    33% {
         left: 35%;
         transform: translateX(-35%);
     }
-    30% {
+    50% {
         left: 50%;
         transform: translateX(-50%);
     }
-    45% {
+    61% {
         left: 65%;
         transform: translateX(-65%);
     }
@@ -212,7 +214,7 @@
         transform: translateX(-50%);
     }
 }
- @-webkit-keyframes shake {
+ /* @-webkit-keyframes shake {
     0% {
         left: 50%;
         transform: translateX(-50%);
@@ -233,4 +235,4 @@
         left: 50%;
         transform: translateX(-50%);
     }
-} 
+ }  */

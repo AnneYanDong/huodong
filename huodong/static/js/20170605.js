@@ -71,10 +71,23 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
+            _this.showAnimation();
             _this.openRule();
             _this.closeRule();
             _this.apply();
             _this.share();
+        },
+        showAnimation: function() {
+            var timer = null;
+            timer = setTimeout(function(){
+                $(".receive").addClass("animation");
+                timer = setInterval(function(){
+                    $(".receive").removeClass("animation");
+                    timer = setInterval(function(){
+                        $(".receive").addClass("animation");
+                    },7000);
+                },3500);
+            },2000);
         },
 
         // 打开规则
