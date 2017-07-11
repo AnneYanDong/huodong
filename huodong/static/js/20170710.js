@@ -86,8 +86,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                // url: "test.php",
-                url: "/act/act170710/get_status",
+                url: "test.php",
+                // url: "/act/act170710/get_status",
                 success: function (d) {
                     if (!!d.success) {
                         _this.status.login = d.ret.login;
