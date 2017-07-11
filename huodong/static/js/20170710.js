@@ -16,6 +16,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         status: {
             login: false,
             weChat: false,
+            qq: false,
             oUrl_1: "",
             oUrl_2: ""
         },
@@ -85,13 +86,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                // url: "test.php",
-                url: "/act/act170710/get_status",
+                url: "test.php",
+                // url: "/act/act170710/get_status",
                 success: function (d) {
                     if (!!d.success) {
                         _this.status.login = d.ret.login;
-                        console.debug(_this.status.login)
                         _this.status.weChat = d.ret.weChat;
+                        _this.status.qq = d.ret.qq;
                         _this.status.oUrl_1 = d.ret.url_1;
                         _this.status.oUrl_2 = d.ret.url_2;
                         if (d.ret.have == true) {
@@ -104,8 +105,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                 $(".page1").addClass("hide");
                                 $(".page2").removeClass("hide");
                                 oM.show();
-                                $(".page2").append('<div class="redPackets"><img src="../static/img/20170710_redPackets.png"></div>');
-                            }, 5000)
+                                $(".page2").append('<div class="redPackets addMove"><img src="http://r.51gjj.com/act/release/img/20170710_redPackets.png"></div>');
+                            }, 4000)
                         }
                     } else {
                         oP.show(d.msg || "出错请重试");
@@ -119,18 +120,17 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             $(".page2").on("click", ".redPackets img", function () {
                 oM.show();
                 $(".redPackets").remove();
-                $(".page2").append('<div class="prize"><img src="../static/img/20170710_money.png"><div class="receive" bp="收下" title="收下"></div></div>');
+                $(".page2").append('<div class="prize"><img src="http://r.51gjj.com/act/release/img/20170710_prize.png"><div class="receive" bp="收下" title="收下"></div></div>');
             })
         },
 
         receive: function () {
             var _this = this;
             $(document).on("click", ".receive", function () {
-                if (_this.status.weChat == true) {
+                if (_this.status.weChat == true || _this.status.qq) {
                     oP.show("本活动需在app参加");
-                    timer = setTimeout(function () {
-                        window.location.href = "http://d.51gjj.com/";
-                    }, 1500)
+                    $(".prize").remove();
+                    $(".mt-mask").css("display", "none");
                 }
                 if (_this.status.login == false) {
                     if (Bridge) {
@@ -158,10 +158,32 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         skip: function () {
             var _this = this;
             $(".page2 .looking").on("click", function () {
-                window.location.href = _this.status.oUrl_2;
+                if (_this.status.weChat == true) {
+                    var timer = null;
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        oP.show("在app中参与才能获得奖励哦");
+                        timer = setTimeout(function () {
+                            window.location.href = _this.status.oUrl_1;
+                        }, 1500)
+                    }, 200)
+                } else {
+                    window.location.href = _this.status.oUrl_2;
+                }
             });
             $(".page2 .apply").on("click", function () {
-                window.location.href = _this.status.oUrl_1;
+                if (_this.status.weChat == true) {
+                    var timer = null;
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        oP.show("在app中参与才能获得奖励哦");
+                        timer = setTimeout(function () {
+                            window.location.href = _this.status.oUrl_1;
+                        }, 1500)
+                    }, 200)
+                } else {
+                    window.location.href = _this.status.oUrl_1;
+                }
             })
         },
 

@@ -92,7 +92,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 })
             })
         },
-        render() {
+        render: function () {
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
