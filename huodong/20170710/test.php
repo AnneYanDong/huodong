@@ -4,10 +4,11 @@
 		"ret"=>array(
             "url_1"=>"http://www.baidu.com",
 			"url_2"=>"http://www.baidu.com",
-			"have"=>false,
+			"have"=>true,
             "success"=>true,
 			"login"=>true,
-			"weChat"=>false
+			"weChat"=>false,
+			"prize"=>"178"
         ),
         "success"=>true
 		// "code"=>1,
