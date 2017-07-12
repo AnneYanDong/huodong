@@ -17,6 +17,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             login: false,
             weChat: false,
             qq: false,
+            prize: "",
             oUrl_1: "",
             oUrl_2: ""
         },
@@ -95,8 +96,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         _this.status.qq = d.ret.qq;
                         _this.status.oUrl_1 = d.ret.url_1;
                         _this.status.oUrl_2 = d.ret.url_2;
+                        _this.status.prize = d.ret.prize;
                         if (d.ret.have == true) {
                             $(".page2").removeClass("hide");
+                            $(".page2 .content").append('<div class="prizeMoney"><img src="http://r.51gjj.com/act/release/img/20170710_prize_' + _this.status.prize + '.png"></div>');
                             oP.show("您已领取过红包");
                             $(".apply").addClass("addShake");
                         } else {
@@ -105,6 +108,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             setTimeout(function () {
                                 $(".page1").addClass("hide");
                                 $(".page2").removeClass("hide");
+                                $(".page2 .content").append('<div class="prizeMoney"><img src="http://r.51gjj.com/act/release/img/20170710_prize_' + _this.status.prize + '.png"></div>');
                                 oM.show();
                                 $(".page2").append('<div class="redPackets addMove"><img src="http://r.51gjj.com/act/release/img/20170710_redPackets.png"></div>');
                             }, 4000)
@@ -118,10 +122,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
 
         pullDown: function () {
+            var _this = this;
             $(".page2").on("click", ".redPackets img", function () {
                 oM.show();
                 $(".redPackets").remove();
-                $(".page2").append('<div class="prize"><img src="http://r.51gjj.com/act/release/img/20170710_prize.png"><div class="receive" bp="收下" title="收下"></div></div>');
+                console.log(_this.status.prize)
+                $(".page2").append('<div class="prize"><img src="http://r.51gjj.com/act/release/img/20170710_redPackets_' + _this.status.prize + '.png"><div class="receive" bp="收下" title="收下"></div></div>');
             })
         },
 

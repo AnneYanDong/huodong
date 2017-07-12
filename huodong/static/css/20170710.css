@@ -220,7 +220,17 @@
   transform: translate(-50%, -50%);
   z-index: 99;
 }
-
+.prizeMoney {
+  position: absolute;
+  width: 5.77rem;
+  height: 1.66rem;
+  margin-left: -2.83rem;
+  left: 50%;
+  top: 3.4rem;
+}
+.prizeMoney img {
+  width: 100%;
+}
 .receive {
   position: absolute;
   width: 4.85rem;

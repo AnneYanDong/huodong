@@ -44,7 +44,7 @@
                 <div class="page page2 hide">
                     <div class="content">
                         <!--<div class="redPackets"><img data-src="<?php echo $imgUrl; ?>redPackets.png"></div>-->
-                        <img data-src="<?php echo $imgUrl; ?>love_bg_two1.jpg" alt="">
+                        <img data-src="<?php echo $imgUrl; ?>love_bg_two2.jpg" alt="">
                         <div class="looking" bp="查看红包" title="查看红包"></div>
                         <div class="apply" bp="牵手兴业拿红包" title="牵手兴业拿红包"></div>
                         <div class="rule-btn">规则</div>
