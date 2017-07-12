@@ -111,7 +111,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             var timer = null;
             clearTimeout(timer);
-            $('.content').on('click', '.apply1,.apply2,.receive', function () {
+            $('.content').on('click', '.apply1,.apply2,.receive', function (event) {
+                console.log(event.target);
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
