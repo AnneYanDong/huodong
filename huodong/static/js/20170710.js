@@ -17,7 +17,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             login: false,
             weChat: false,
             qq: false,
-            prize: "",
+            prize: "178",
             oUrl_1: "",
             oUrl_2: "",
             type: ""
@@ -126,44 +126,47 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             var _this = this;
             $(".page2").on("click", ".redPackets img", function () {
                 if (_this.status.weChat == true || _this.status.qq == true) {
-                    oP.show("本活动需在app参加");
-                    $(".prize").remove();
-                    $(".mt-mask").css("display", "none");
-                }
-                if (_this.status.login == false) {
-                    if (Bridge) {
-                        Bridge.action("login");
-                    }
+                    oP.show("在app中参与才能获得奖励哦");
+                    // $(".prize").remove();
+                    // $(".mt-mask").css("display", "none");
+                    $(".redPackets").remove();
+                    $(".page2").append('<div class="prize"><img src="http://r.51gjj.com/act/release/img/20170710_redPackets_' + _this.status.prize + '.png"><div class="receive" bp="收下" title="收下"></div></div>');
                 } else {
-                    $.ajax({
-                        type: "POST",
-                        dataType: "JSON",
-                        // url: "test.php",
-                        url: "/act/act170710/get_prize",
-                        success: function (d) {
-                            if (!!d.success) {
-                                _this.status.type = d.ret.type;
-                                _this.status.prize = d.ret.prize;
-                                if (d.ret.type == 1) {
-                                    oP.show("您已申请活动业务,暂不符合参与条件,试试其他!");
-                                    $(".redPackets").remove();
-                                    oM.hide();
-                                } else if (d.ret.type == 2) {
-                                    oP.show(" 您已经参加了该业务的其他优惠活动,不要太贪心哦!");
-                                    $(".redPackets").remove();
-                                    oM.hide();
-                                } else if (d.ret.type == 3) {
-                                    $(".redPackets").remove();
-                                    console.log(_this.status.prize);
-                                    $(".page2").append('<div class="prize"><img src="http://r.51gjj.com/act/release/img/20170710_redPackets_' + _this.status.prize + '.png"><div class="receive" bp="收下" title="收下"></div></div>');
-                                    $(".page2 .content .prizeMoney").remove();
-                                    $(".page2 .content").append('<div class="prizeMoney"><img src="http://r.51gjj.com/act/release/img/20170710_prize_' + _this.status.prize + '.png"></div>');
-                                }
-                            } else {
-                                oP.show(d.msg || "出错请重试");
-                            }
+                    if (_this.status.login == false) {
+                        if (Bridge) {
+                            Bridge.action("login");
                         }
-                    })
+                    } else {
+                        $.ajax({
+                            type: "POST",
+                            dataType: "JSON",
+                            // url: "test.php",
+                            url: "/act/act170710/get_prize",
+                            success: function (d) {
+                                if (!!d.success) {
+                                    _this.status.type = d.ret.type;
+                                    _this.status.prize = d.ret.prize;
+                                    if (d.ret.type == 1) {
+                                        oP.show("您已申请活动业务,暂不符合参与条件,试试其他!");
+                                        $(".redPackets").remove();
+                                        oM.hide();
+                                    } else if (d.ret.type == 2) {
+                                        oP.show(" 您已经参加了该业务的其他优惠活动,不要太贪心哦!");
+                                        $(".redPackets").remove();
+                                        oM.hide();
+                                    } else if (d.ret.type == 3) {
+                                        $(".redPackets").remove();
+                                        console.log(_this.status.prize);
+                                        $(".page2").append('<div class="prize"><img src="http://r.51gjj.com/act/release/img/20170710_redPackets_' + _this.status.prize + '.png"><div class="receive" bp="收下" title="收下"></div></div>');
+                                        $(".page2 .content .prizeMoney").remove();
+                                        $(".page2 .content").append('<div class="prizeMoney"><img src="http://r.51gjj.com/act/release/img/20170710_prize_' + _this.status.prize + '.png"></div>');
+                                    }
+                                } else {
+                                    oP.show(d.msg || "出错请重试");
+                                }
+                            }
+                        })
+                    }
                 }
             })
         },
@@ -184,9 +187,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     var timer = null;
                     clearTimeout(timer);
                     timer = setTimeout(function () {
-                        oP.show("在app中参与才能获得奖励哦");
+                        oP.show("本活动需在app参加");
                         timer = setTimeout(function () {
-                            window.location.href = _this.status.oUrl_1;
+                            window.location.href = "http://d.51gjj.com/";
                         }, 1500)
                     }, 200)
                 } else {
@@ -204,7 +207,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     var timer = null;
                     clearTimeout(timer);
                     timer = setTimeout(function () {
-                        oP.show("在app中参与才能获得奖励哦");
+                        oP.show("本活动需在app参加");
                         timer = setTimeout(function () {
                             window.location.href = _this.status.oUrl_1;
                         }, 1500)
@@ -212,7 +215,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 } else {
                     if (_this.status.type == 1) {
                         oP.show("您已申请活动业务,暂不符合参与条件,试试其他!");
-                    } else if(_this.status.type == 2) {
+                    } else if (_this.status.type == 2) {
                         oP.show(" 您已经参加了该业务的其他优惠活动,不要太贪心哦!");
                     } else {
                         window.location.href = _this.status.oUrl_1;
