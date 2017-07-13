@@ -17,74 +17,57 @@
     <style>
         /* 加载动画颜色配置 */
         .loading-bg-color {
-            background: #272c42;
+            background: #c8c8c8;
         }
 
         .loading-ele-color:after, .loading-ele-color:before {
-            background: #272c42 !important;
+            background: #c8c8c8 !important;
         }
     </style>
     <script>
-       var projectName = "<?php echo $actDate ?>"; 
+       var projectName = "<?php echo $actDate ?>";
     </script>
     </head>
     <body>
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>bg3.jpg" alt="">
-            <div class="apply" bp="立即拥有" title="立即拥有"></div>
-                <!--<div class="text location1">指定日特价手调饮品和挂耳咖啡</div>
-                <div class="text location2">人均额度30万，尊享白金礼遇</div>
-                <div class="text location3">无限次法律咨询</div>-->
-                <div class="text location1">
-                    <ul>
-                        <li>酒店住两晚送一晚</li>
-                        <li style="color:#ffe404">人均额度30万</li>
-                        <li>尊享白金礼遇</li>
-                        <!--<li>特价手调饮品和挂耳咖啡</li>
-                        <li>机场1元停车</li>
-                        <li>商场免费停车</li>
-                        <li>环球旅行及医疗救援服务</li>
-                        <li>无限次法律咨询</li>
-                        <li>奕欧来畅购有“礼”</li>-->
-                    </ul>
-                </div>
-                <div class="text location2">
-                    <ul>
-                        <!--<li>酒店住两晚送一晚</li>
-                        <li>人均额度30万</li>
-                        <li>尊享白金礼遇</li>-->
-                        <li>特价手调饮品和挂耳咖啡</li>
-                        <li>机场1元停车</li>
-                        <li style="color:#ffe404">商场免费停车</li>
-                        <!--<li>环球旅行及医疗救援服务</li>
-                        <li>无限次法律咨询</li>
-                        <li>奕欧来畅购有“礼”</li>-->
-                    </ul>
-                </div>
-                <div class="text location3">
-                    <ul>
-                        <!--<li>酒店住两晚送一晚</li>
-                        <li>人均额度30万</li>
-                        <li>尊享白金礼遇</li>
-                        <li>特价手调饮品和挂耳咖啡</li>
-                        <li>机场1元停车</li>
-                        <li>商场免费停车</li>-->
-                        <li>环球旅行及医疗救援服务</li>
-                        <li>无限次法律咨询</li>
-                        <li>奕欧来畅购有“礼”</li>
-                    </ul>
-                </div>
-            <div class="rule-btn"></div>
+            <img class="title" data-src="<?php echo $imgUrl; ?>bsk_title.png" alt="title" />
+            <div class="bank-wrap">
+                <img class="bank" data-src="<?php echo $imgUrl; ?>bsk_bank11.png" alt="bank" />
+                <div class="bank_bg1"></div>
+                <div class="bank_bg2"></div>
+            </div>
+            <!-- 用来挂浮动文字 -->
+            <div class="float-text">
+               <ul>
+                   <div class="location1">
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon1.png"><span>1-5折随机商圈折扣</span></li>
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon2.png"><span>外卖/团购立减</span></li>
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon3.png"><span>人均额度30万</span></li>
+                   </div>
+                   <div class="location2">
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon4.png"><span>酒店住两晚送一晚</span></li>
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon5.png"><span>特价手调饮品</span></li>
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon6.png"><span>商场免费停车</span></li>
+                   </div>
+                   <div class="location3">
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon6.png"><span>机场1元停车</span></li>
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon8.png"><span>10元看电影 30元看话剧</span></li>
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon9.png"><span>消费获免费流量</span></li>
+                   </div>
+               </ul>
+            </div>
+            <img class="gold" data-src="<?php echo $imgUrl; ?>bsk_gold.png" alt="免息金" />
+            <div class="apply gradient" bp="立即拥有" title="立即拥有">立即拥有</div>
+            <div class="rule-btn">活动规则</div>
         </div>
     </div>
-    <div class="mask hide"></div>
 </div>
-<div class="rule zm-customer-confirm hide">
+<div class="rule hide">
     <h6>活动规则</h6>
     <ul>
-        <li><span>1.</span>活动期间（5月15日－奖品发完）完成申请可获得58元现金红包，成功激活信用卡可再得258元现金红包。为了您能够顺利拿到奖励，请申请业务后及时关注“我的奖品”；</li>
+        <li><span>1.</span>活动期间（7月13日－奖品发完）完成申请可获得58元现金红包，成功激活信用卡可再得258元现金红包。为了您能够顺利拿到奖励，请申请业务后及时关注“我的奖品”；</li>
         <li><span>2.</span>活动之前已成功申请且已激活卡片的用户无法获得该活动奖励；</li>
         <li><span>3.</span>若活动之前已领取过浦发业务的318红包券，则不可获得本活动的红包券；</li>
         <li><span>4.</span>奖品存在有效期，自获得日起58元的现金红包5天后失效，258元的现金红包10天后失效，请尽快领取；</li>
@@ -93,9 +76,6 @@
         <li><span>7.</span>本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。</li>
     </ul>
     <div class="btn-close"></div>
-</div>
-<div class="ticket_50 zm-customer-confirm hide">
-    <div class="ticket_close"></div>
 </div>
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     <script>

@@ -25,6 +25,13 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             type: null,
             pay: null
         },
+       /* floatText: {
+            src: ["<?php echo $imgUrl; ?>bsk_float_icon.png","../img/20170531_bsk_float_icon.png",
+            "../img/20170531_bsk_float_icon.png","../img/20170531_bsk_float_icon.png",
+            "../img/20170531_bsk_float_icon.png","../img/20170531_bsk_float_icon.png",
+            "../img/20170531_bsk_float_icon.png","../img/20170531_bsk_float_icon.png","../img/20170531_bsk_float_icon.png"],
+            text: ["text1","text2","text3","text4","text5","text6","text7","text8","text9"]
+        },*/
 
         start: function () {
             var _this = this;
@@ -81,30 +88,46 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
-            _this.openRule();
-            _this.closeRule();
             _this.render();
             _this.apply();
             _this.share()
+            _this.openRule();
+            _this.closeRule();
         },
 
         render: function () {
             var _this = this;
+            // console.log("render->",_this);
+            // console.log("第一个浮动文字的icon",_this.floatText.src[0]);
+            // console.log("第一个浮动文字的文本",_this.floatText.text[0]);
+
+            // $(".float-text").empty();
+            // $(".float-text").append("<ul></ul>");
+            // var len = _this.floatText.src.length;
+            // console.log("长度：",len);
+            // for (var i = 0; i <= len - 1; i++) {
+            //     $(".float-text ul").append("<li><img/></li>");
+            //     console.log($(".float-text ul li"));
+            //     var imgs = $("li img");
+            //     var spans = $("li span");
+            //     imgs[i].setdata.src = _this.floatText.src[i];
+            // }
+
             $('.location1').liMarquee({
                 direction: "left",
-                scrollamount: 58,
+                scrollamount: 50,
                 hoverstop: false,
                 drag: false,
             });
             $('.location2').liMarquee({
                 direction: "left",
-                scrollamount: 30,
+                scrollamount: 40,
                 hoverstop: false,
                 drag: false,
             });
             $('.location3').liMarquee({
                 direction: "left",
-                scrollamount: 50,
+                scrollamount: 30,
                 hoverstop: false,
                 drag: false,
             });
@@ -162,10 +185,10 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         apply: function () {
             $(".content").on("click", ".apply", function () {
                 $.ajax({
-                    // url: ct.Tool.url("/act/act170510/get_status"),
-                    url: "/act/act170510/get_status",
+                    url: "test.php",
+                    // url: "/act/act170510/get_status",
                     type: "POST",
-                    dataType: "json",
+                    dataType: "JSON",
                     success: function (d) {
                         if (d.success) {
                             d = d.ret;
@@ -208,5 +231,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             });
         },
     }
+    
     run.start();
 })
