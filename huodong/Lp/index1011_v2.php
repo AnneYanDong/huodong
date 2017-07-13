@@ -180,7 +180,7 @@
                         <input type="text" placeholder="请输入验证码" class="JS-code" maxlength="10">
                         <div class="get-code JS-get-code">获取验证码</div>
                     </div>
-                    <div class="search-btn search-btn-absolute search-btn-not-active"></div>
+                    <div id="search-btn" class="search-btn search-btn-absolute search-btn-not-active"></div>
                 </div>
                 <div class="company" style="background: #1e1e1f;">
                     <p>浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家</p>
@@ -203,11 +203,25 @@
                     <p>杭州煎饼网络技术有限公司</p> 
                 </div>
             </div>
+            <div tt-data-click="" tt-data-convert_id="63400005490" tt-data-eventtype="download_start"></div>
         </div>
     </div>
     <script src="js/main_v2.min.js?v=1499945866"></script>
     <script>
-        _taq.push({convert_id:"63400005490", event_type:"button"});
+       $(function(){
+            $("#search-btn").click(function(){
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {username:$("#user_name").val(),useraddress:$("#user_address").val()},
+                    url: "",
+                    success: function (data) {
+                        _taq.push({convert_id:"63400005490", event_type:"download_start"});
+                    }
+                })
+            })
+       });
+
         //判断渠道
         function is_weixn() {
             var ua = navigator.userAgent.toLowerCase();
