@@ -188,7 +188,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             d = d.ret;
                             var timer = null;
                             clearTimeout(timer);
-                            if (d.weChat == true) {
+                            if (d.weChat == true || d.qq == true) {
                                 window.location.href = d.url;
                             } else if (d.login == false) {
                                 if (Bridge) {
@@ -199,7 +199,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     window.location.href = d.url;
                                 } else if (d.type == 2) {
                                     timer = setTimeout(function () {
-                                        oP.show("您可获得266元现金，快去激活您的卡片吧~");
+                                        oP.show("您可获得316元现金，快去激活您的卡片吧~");
                                         timer = setTimeout(function () {
                                             window.location.href = d.url;
                                         }, 1500)
