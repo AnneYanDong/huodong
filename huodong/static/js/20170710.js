@@ -156,6 +156,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                     $(".redPackets").remove();
                                     console.log(_this.status.prize);
                                     $(".page2").append('<div class="prize"><img src="http://r.51gjj.com/act/release/img/20170710_redPackets_' + _this.status.prize + '.png"><div class="receive" bp="收下" title="收下"></div></div>');
+                                    $(".page2 .content .prizeMoney").remove();
+                                    $(".page2 .content").append('<div class="prizeMoney"><img src="http://r.51gjj.com/act/release/img/20170710_prize_' + _this.status.prize + '.png"></div>');
                                 }
                             } else {
                                 oP.show(d.msg || "出错请重试");
