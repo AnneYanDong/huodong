@@ -4,8 +4,9 @@
 		"ret"=>array(
             "url_1"=>"http://www.baidu.com",
 			"url_2"=>"http://www.baidu.com",
-			"have"=>true,
+			"have"=>false,
             "success"=>true,
+			"type"=>3,
 			"login"=>true,
 			"weChat"=>false,
 			"prize"=>"178"
