@@ -179,8 +179,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         apply: function () {
             $(".content").on("click", ".apply", function () {
                 $.ajax({
-                    url: "test.php",
-                    // url: "/act/act170510/get_status",
+                    // url: "test.php",
+                    url: "/act/act170510/get_status",
                     type: "POST",
                     dataType: "JSON",
                     success: function (d) {
