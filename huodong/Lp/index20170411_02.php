@@ -219,7 +219,7 @@
                     <a class="bottom-down-app" href="javascript:;" id="appAddr"></a>
                 </div>
             </div>
-            <div tt-data-click="" tt-data-convert_id="63400005490" tt-data-eventtype="download_start"></div>
+            <div tt-data-click="" tt-data-convert_id="63400334620" tt-data-eventtype="download_start"></div>
         </div>
     </div>
     <script src="js/main_v2.min.js?v=1499946152"></script>
@@ -232,7 +232,7 @@
                      data: {username:$("#user_name").val(),useraddress:$("#user_address").val()},
                      url: "",
                      success: function (data) {
-                         _taq.push({convert_id:"63400005490", event_type:"download_start"});
+                         _taq.push({convert_id:"63400334620", event_type:"download_start"});
                      }
                  })
              })
