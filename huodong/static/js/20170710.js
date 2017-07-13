@@ -148,7 +148,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         type: "POST",
                         dataType: "JSON",
                         // url: "test.php",
-                        url: "/act/act170615/get_prize",
+                        url: "/act/act170710/get_prize",
                         success: function (d) {
                             if (!!d.success) {
                                 $(".prize").remove();
