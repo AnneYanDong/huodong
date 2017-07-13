@@ -164,9 +164,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
                     onclick: function () {
                         Bridge.action('ShareTimeline', {
-                            "title": "为足球喝彩",
-                            'desc': "两分钟拿58元现金红包",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170510_share.png",
+                            "title": "你刷卡我免息",
+                            'desc': "送你316元免息金",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170531_wxfx.png",
                             "link": "http://" + host + "/act/home/huodong/20170531/"
                         });
                     }

@@ -1,5 +1,5 @@
 <?php 
-    $title = "畅享生活"; // 配置标题的，必须
+    $title = "尊享白金权益"; // 配置标题的，必须
     include "../public/v1/header.php";
 ?>
 <?php
