@@ -34,7 +34,7 @@
         <div class="content">
             <img class="title" data-src="<?php echo $imgUrl; ?>bsk_title.png" alt="title" />
             <div class="bank-wrap">
-                <img class="bank" data-src="<?php echo $imgUrl; ?>bsk_bank11.png" alt="bank" />
+                <img class="bank" data-src="<?php echo $imgUrl; ?>bsk_bank.png" alt="bank" />
                 <div class="bank_bg1"></div>
                 <div class="bank_bg2"></div>
             </div>
@@ -42,25 +42,25 @@
             <div class="float-text">
                <ul>
                    <div class="location1">
-                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon1.png"><span>1-5折随机商圈折扣</span></li>
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon1.png"><span style="color: #ee6f42">1-5折随机商圈折扣</span></li>
                        <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon2.png"><span>外卖/团购立减</span></li>
                        <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon3.png"><span>人均额度30万</span></li>
-                   </div>
-                   <div class="location2">
                        <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon4.png"><span>酒店住两晚送一晚</span></li>
                        <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon5.png"><span>特价手调饮品</span></li>
-                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon6.png"><span>商场免费停车</span></li>
                    </div>
-                   <div class="location3">
-                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon6.png"><span>机场1元停车</span></li>
-                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon8.png"><span>10元看电影 30元看话剧</span></li>
+                   <div class="location2">
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon6.png"><span>商场免费停车</span></li>
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon6.png"><span style="color: #ee6f42">机场1元停车</span></li>
+                       <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon8.png"><span style="color: #ee6f42">10元看电影 30元看话剧</span></li>
                        <li><img data-src="<?php echo $imgUrl; ?>bsk_float_icon9.png"><span>消费获免费流量</span></li>
                    </div>
                </ul>
             </div>
-            <img class="gold" data-src="<?php echo $imgUrl; ?>bsk_gold.png" alt="免息金" />
-            <div class="apply gradient" bp="立即拥有" title="立即拥有">立即拥有</div>
-            <div class="rule-btn">活动规则</div>
+            <div class="footer">
+                <img class="gold" data-src="<?php echo $imgUrl; ?>bsk_gold.png" alt="免息金" />
+                <div class="apply gradient" bp="立即拥有" title="立即拥有">立即拥有</div>
+                <div class="rule-btn">活动规则</div>
+            </div>
         </div>
     </div>
 </div>

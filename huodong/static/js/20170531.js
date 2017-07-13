@@ -125,12 +125,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 hoverstop: false,
                 drag: false,
             });
-            $('.location3').liMarquee({
-                direction: "left",
-                scrollamount: 30,
-                hoverstop: false,
-                drag: false,
-            });
         },
 
         // 打开规则
