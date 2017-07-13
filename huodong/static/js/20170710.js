@@ -143,6 +143,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         success: function (d) {
                             if (!!d.success) {
                                 _this.status.type = d.ret.type;
+                                _this.status.prize = d.ret.prize;
                                 if (d.ret.type == 1) {
                                     oP.show("您已申请活动业务,暂不符合参与条件,试试其他!");
                                     $(".redPackets").remove();
