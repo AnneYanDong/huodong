@@ -101,7 +101,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         if (d.ret.have == true) {
                             $(".page2").removeClass("hide");
                             $(".page2 .content").append('<div class="prizeMoney"><img src="http://r.51gjj.com/act/release/img/20170710_prize_' + _this.status.prize + '.png"></div>');
-                            oP.show("您已领取过红包");
+                            // oP.show("您已领取过红包");
                             $(".apply").addClass("addShake");
                         } else {
                             $(".page1").removeClass("hide");
@@ -143,6 +143,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         success: function (d) {
                             if (!!d.success) {
                                 _this.status.type = d.ret.type;
+                                _this.status.prize = d.ret.prize;
                                 if (d.ret.type == 1) {
                                     oP.show("您已申请活动业务,暂不符合参与条件,试试其他!");
                                     $(".redPackets").remove();
@@ -155,6 +156,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                     $(".redPackets").remove();
                                     console.log(_this.status.prize);
                                     $(".page2").append('<div class="prize"><img src="http://r.51gjj.com/act/release/img/20170710_redPackets_' + _this.status.prize + '.png"><div class="receive" bp="收下" title="收下"></div></div>');
+                                    $(".page2 .content .prizeMoney").remove();
+                                    $(".page2 .content").append('<div class="prizeMoney"><img src="http://r.51gjj.com/act/release/img/20170710_prize_' + _this.status.prize + '.png"></div>');
                                 }
                             } else {
                                 oP.show(d.msg || "出错请重试");
