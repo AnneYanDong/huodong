@@ -6,117 +6,35 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
     <meta name="format-detection" content="telephone=no">
     <title>51公积金管家</title>
-    <link rel="stylesheet" href="https://r.51gjj.com/act/css/initial.css">
+    <link rel="stylesheet" href="css/style_v1.css">
     <style>
-    .container {
-        width: 100%;
-        height: auto;
-        background: #fff;
-    }
-    
-    .container .bg {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-    
-    .banner-part-one {
-        position: relative;
-    }
-    
-    .banner-part-one .btn-down {
-        width: 3.5rem;
-        height: .68rem;
-        background: transparent;
-        position: absolute;
-        top: 3.3rem;
-        left: 0.5rem;
-    }
-    
-    .banner-part-one .btn-down a {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    
-    .banner-part-two {
-        position: relative;
-    }
-    
-    .cnzz {
-        width: 100%;
-        font-size: 10px;
-        text-align: center;
-        color: #868686;
-        box-sizing: border-box;
-        -ms-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webikt-box-sizing: border-box;
-        padding-bottom: 1.5rem;
-        background: #f2f2f2;
-    }
-    
-    .cnzz img {
-        position: relative;
-        top: 2px;
-    }
-    
-    .bottom-float {
-        width: 100%;
-        height: 1.28rem;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        background: rgba(0, 0, 0, 0.6);
-    }
-    
-    .bottom-float .bottom-down-app {
-        width: 3.86rem;
-        height: .88rem;
-        line-height: .88rem;
-        text-align: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: -1.98rem;
-        margin-top: -0.44rem;
-        background: #ff4754;
-        color: #fff;
-        border-radius: 4px;
-    }
-    
-    .banner-part-one .btn-down {
-        width: 2.22rem;
-        height: .54rem;
-        background: transparent;
-        position: absolute;
-        top: 10.76rem;
-        left: 4.1rem;
-    }
-    
-    .banner-part-one .btn-down a {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    
-    .bottom-float,
-    .cnzz {
-        display: none;
-    }
-    
-    #other-down {
-        position: absolute;
-        width: 4.18rem;
-        height: 1.1rem;
-        top: 4rem;
-        left: 50%;
-        margin-left: -2.09rem;
-    }
+        .banner-part-one .btn-down{
+            width: 2.8rem;
+            height: .7rem;
+            background: transparent;
+            position: absolute;
+            top: 10.76rem;
+            left: 4.1rem;
+        }
+        .banner-part-one .btn-down a{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .bottom-float,.cnzz{
+            display: none;
+        }
+        #other-down{
+            position: absolute;
+            width: 4.18rem;
+            height: 1.1rem;
+            top: 4rem;
+            left: 50%;
+            margin-left: -2.09rem;
+        }
+
     </style>
     <script>
     function setFont(d, c) {
@@ -157,7 +75,7 @@
 <body>
     <div class="container">
         <div class="banner-part-one">
-            <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170315_v1_new_1.jpg" alt="bg">
+            <img class="bg" src="//r.51gjj.com/act/images/shichang/20170315_v1_new.jpg" alt="bg">
             <div class="btn-down">
                 <a href="javascript:;" id="appAddr"></a>
             </div>
@@ -226,9 +144,9 @@
         if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
             //https://itunes.apple.com/app/apple-store/id908573399?pt=83635804&ct=aaa&mt=8
             //"https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?mt=8";
-            appAddr.href = "https://lnk0.com/s80oE5";
+            appAddr.href = "https://lnk0.com/9ksw5c";
         } else {
-            appAddr.href = "https://lnk0.com/sQJdc8";
+            appAddr.href = "https://lnk0.com/EF9wJl";
         }
     }
 

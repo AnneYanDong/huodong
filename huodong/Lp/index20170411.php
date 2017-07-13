@@ -1,49 +1,3 @@
-<?php
-    $version = time();
-    $imgUrl = "//r.51gjj.com/act/images/downPage/";
-    // $imgUrl = "img/20161207/";
-
-    if (isset($_REQUEST['channel'])) {
-        require_once "base.php";
-        define('EVENT_HELPER_TAG','JB_EVENT_HELPER_TAG');
-
-        class EventHelper{
-
-            function trigger($event,$place_cid = 0,$user_sid = 0){
-                if(empty($event) || gettype($event)!='string'){
-                    return;
-                }
-                $sql = "SELECT cid FROM cfg_event_tag where name = ?";
-                $tag = getDB()->CacheGetOneInt($sql,$event);
-                if (empty($tag)) {
-                    getDB()->CacheGetOneInt(-1,$sql,$event);
-                    getDB()->Execute("INSERT INTO cfg_event_tag (name) VALUES (?)",$event);
-                    $tag = getDB()->Insert_ID();
-                }
-                $params = array('tag'=>$tag);
-                $params['time'] = time();
-                $params['place_cid'] = $place_cid;
-                $params['user_sid'] = $user_sid;
-                getMem()->rPush(EVENT_HELPER_TAG,json_encode($params));
-            }
-        }
-        $place = $_REQUEST['channel'];
-        $place_cid = getDB()->CacheGetOneInt("select cid from cfg_place where place = ?",$place);
-        if (isset($_COOKIE['JBGUEST'])) {
-            $guest_user_sid = $_COOKIE['JBGUEST'];
-        }else{
-            $guest_user_sid = time()-strtotime("2016-06-30");
-            $guest_user_sid .= rand(0,1000);
-            setcookie("JBGUEST",$guest_user_sid,time()+3600*24*365);
-        }
-        $eventHelper = new EventHelper();
-        if ($place_cid != 0) {
-            $eventHelper->trigger('H5落地页入口',$place_cid,$guest_user_sid);
-        }else{
-            $eventHelper->trigger($place.' H5落地页入口',0,$guest_user_sid);
-        }
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,8 +9,9 @@
     <style>
         .user-info{
             position: relative;
-            background: #fffaf1;
-            padding: .4rem 0;
+            background: #f8f7f5;
+            padding-top: 0.1rem;
+            height: 4.4rem;
         }
         .user-info input{
             border: none;
@@ -64,7 +19,7 @@
         }
         .input-wrap{
             height: 1.35rem;
-            width: 6rem;
+            width: 6.26rem;
             text-align: center;
             padding: 0 10px;
             background: #fff;
@@ -133,6 +88,7 @@
             text-align: center;
             line-height: 1.08rem;
             color: #fff;
+            font-size: 0.34rem;
         }
         .prompt{
             color: #9c9c9c;
@@ -153,7 +109,7 @@
         }
         .bottom-float a{
             position: absolute;
-            top: 0;
+            top: 0.25rem;
             left: 0;
             right: 0;
             bottom: 0;
@@ -206,13 +162,30 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ta, s);
         })(window);
     </script>;
+    <script type="text/javascript">;
+        (function(root) {
+            root._tt_config = true;
+            var ta = document.createElement('script'); ta.type = 'text/javascript'; ta.async = true;
+            ta.src = document.location.protocol + '//' + 's3.pstatp.com/bytecom/resource/track_log/src/toutiao-track-log.js';
+            ta.onerror = function () {
+                var request = new XMLHttpRequest();
+                var web_url = window.encodeURIComponent(window.location.href);
+                var js_url  = ta.src;
+                var url = '//ad.toutiao.com/link_monitor/cdn_failed?web_url=' + web_url + '&js_url=' + js_url + '&convert_id=63400005490';
+                request.open('GET', url, true);
+                request.send(null);
+            }
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ta, s);
+        })(window);
+    </script>;
+
 </head>
 <body>
     <div class="container">
         <div class="box">
             <div class="section section-one">
                 <div class="banner-part-one">
-                    <img class="bg" src="<?php echo $imgUrl; ?>20161207_2bg1.jpg" alt="bg">
+                    <img class="bg" src="//r.51gjj.com/act/images/shichang/20170411_loadTop_1.jpg" alt="bg">
                 </div>
                 <div class="user-info">
                     <div class="phone input-wrap">
@@ -223,14 +196,14 @@
                         <div class="get-code JS-get-code">获取验证码</div>
                     </div>
                     <div class="search-btn search-btn-not-active">
-                        免费申请
+                        免费领取
                     </div>
 <!--                     <div class="prompt">
                         老用户请使用<a href="gjj51://">APP登录</a>
                     </div> -->
                 </div>
                 <div class="banner-part-two">
-                    <img class="bg" src="<?php echo $imgUrl; ?>20161207_2bg1_2.jpg" alt="bg">
+                    <img class="bg" src="//r.51gjj.com/act/images/shichang/20170411_loan.png" alt="bg">
                 </div>
                 <div class="cnzz">
                     浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金借款
@@ -241,16 +214,16 @@
                 </div>
             </div>
             <div class="section section-two" style="background: #fff">
-                <img src="<?php echo $imgUrl; ?>20161207_2bg2.jpg" alt="down_banner">
+                <img src="//r.51gjj.com/act/images/shichang/20170411_success_1.jpg" alt="down_banner">
                 <div class="bottom-float">
                     <a class="bottom-down-app" href="javascript:;" id="appAddr"></a>
                 </div>
             </div>
         </div>
-        <div tt-data-click tt-data-convertid="59085605100" tt-data-eventtype="form"></div>
     </div>
-    <script src="js/main_v2.min.js?v=<?php echo $version; ?>"></script>
+    <script src="js/main_v2.min.js?v=1499946152"></script>
     <script>
+        _taq.push({convert_id:"63400005490", event_type:"button"});
         //判断渠道
         function is_weixn() {
             var ua = navigator.userAgent.toLowerCase();
@@ -301,11 +274,17 @@
                 language: (navigator.browserLanguage || navigator.language).toLowerCase()
             };
 
+            // if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+            //     appAddr.href = "https://itunes.apple.com/us/app/51gong-ji-jin-jie-kuan-gong/id1079260326?pt=83635804&ct=" + place_name + "&mt=8";
+            // } else {
+            //     appAddr.href = 'http://apk.51gjj.com/jk/51jk_' + place_name + '.apk';
+            // }
             if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-                appAddr.href = "https://itunes.apple.com/us/app/51gong-ji-jin-jie-kuan-gong/id1079260326?pt=83635804&ct=" + place_name + "&mt=8";
+                appAddr.href = "https://itunes.apple.com/app/apple-store/id908573399?pt=83635804&ct=" + place_name + "&mt=8";
             } else {
-                appAddr.href = 'http://apk.51gjj.com/jk/51jk_' + place_name + '.apk';
+                appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
             }
+
         }
 
         appAddr.onclick = function() {
