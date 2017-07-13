@@ -88,8 +88,8 @@
     }
     
     .banner-part-one .btn-down {
-        width: 2.22rem;
-        height: .54rem;
+        width: 2.78rem;
+        height: .68rem;
         background: transparent;
         position: absolute;
         top: 10.76rem;
@@ -152,12 +152,32 @@
     var _czc = _czc || [];
     _czc.push(["_setAccount", "1256135023"]);
     </script>
+    <script type="text/javascript">
+        (function (root) {
+            root._tt_config = true;
+            var ta = document.createElement('script');
+            ta.type = 'text/javascript';
+            ta.async = true;
+            ta.src = document.location.protocol + '//' + 's3.pstatp.com/bytecom/resource/track_log/src/toutiao-track-log.js';
+            ta.onerror = function () {
+                var request = new XMLHttpRequest();
+                var web_url = window.encodeURIComponent(window.location.href);
+                var js_url = ta.src;
+                var url = '//ad.toutiao.com/link_monitor/cdn_failed?web_url = ' + web_url + ' & js_url = ' + js_url + ' & convert_id = 59535377555 ';
+                request.open('GET', url, true);
+                request.send(null);
+            }
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ta, s);
+        })(window);
+    </script>
+
 </head>
 
 <body>
     <div class="container">
         <div class="banner-part-one">
-            <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170315_v1_new_1.jpg" alt="bg">
+            <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170428bg7.jpg" alt="bg">
             <div class="btn-down">
                 <a href="javascript:;" id="appAddr"></a>
             </div>
@@ -170,6 +190,7 @@
             </script>
         </div>
         <a id="other-down"></a>
+        <div tt-data-click tt-data-convertid="59535377555" tt-data-eventtype="button"></div>
     </div>
     <script>
     //判断渠道
@@ -224,11 +245,10 @@
         };
 
         if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-            //https://itunes.apple.com/app/apple-store/id908573399?pt=83635804&ct=aaa&mt=8
-            //"https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?mt=8";
-            appAddr.href = "https://lnk0.com/s80oE5";
+            // appAddr.href = "https://itunes.apple.com/cn/app/id1166783929?ct=" + place_name + "&mt=8";
+            appAddr.href = "https://lnk0.com/9ksw5c";
         } else {
-            appAddr.href = "https://lnk0.com/sQJdc8";
+            appAddr.href = "https://lnk0.com/EF9wJl";
         }
     }
 
