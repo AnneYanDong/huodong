@@ -101,7 +101,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         if (d.ret.have == true) {
                             $(".page2").removeClass("hide");
                             $(".page2 .content").append('<div class="prizeMoney"><img src="http://r.51gjj.com/act/release/img/20170710_prize_' + _this.status.prize + '.png"></div>');
-                            oP.show("您已领取过红包");
+                            // oP.show("您已领取过红包");
                             $(".apply").addClass("addShake");
                         } else {
                             $(".page1").removeClass("hide");
