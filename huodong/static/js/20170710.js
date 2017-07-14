@@ -20,6 +20,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             prize: "178",
             oUrl_1: "",
             oUrl_2: "",
+            oUrl_3: "",
             type: ""
         },
 
@@ -97,6 +98,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         _this.status.qq = d.ret.qq;
                         _this.status.oUrl_1 = d.ret.url_1;
                         _this.status.oUrl_2 = d.ret.url_2;
+                        _this.status.oUrl_3 = d.ret.url_3;
                         _this.status.prize = d.ret.prize;
                         if (d.ret.have == true) {
                             $(".page2").removeClass("hide");
@@ -182,10 +184,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
 
         skip: function () {
             var _this = this;
+            var timer = null;
+            clearTimeout(timer);
             $(".page2 .looking").on("click", function () {
                 if (_this.status.weChat == true || _this.status.qq == true) {
-                    var timer = null;
-                    clearTimeout(timer);
                     timer = setTimeout(function () {
                         oP.show("本活动需在app参加");
                         timer = setTimeout(function () {
@@ -194,7 +196,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     }, 200)
                 } else {
                     if (_this.status.type == 1) {
-                        oP.show("您已申请活动业务,暂不符合参与条件,试试其他!");
+                        timer = setTimeout(function () {
+                            oP.show("您已申请活动业务,暂不符合参与条件,试试其他!");
+                            timer = setTimeout(function () {
+                                window.location.href = _this.status.oUrl_3;
+                            }, 1500)
+                        }, 200)
                     } else if (_this.status.type == 2) {
                         oP.show(" 您已经参加了该业务的其他优惠活动,不要太贪心哦!");
                     } else {
@@ -214,7 +221,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     }, 200)
                 } else {
                     if (_this.status.type == 1) {
-                        oP.show("您已申请活动业务,暂不符合参与条件,试试其他!");
+                        timer = setTimeout(function () {
+                            oP.show("您已申请活动业务,暂不符合参与条件,试试其他!");
+                            timer = setTimeout(function () {
+                                window.location.href = _this.status.oUrl_3;
+                            }, 1500)
+                        }, 200)
                     } else if (_this.status.type == 2) {
                         oP.show(" 您已经参加了该业务的其他优惠活动,不要太贪心哦!");
                     } else {
