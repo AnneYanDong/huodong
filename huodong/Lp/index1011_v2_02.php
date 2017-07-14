@@ -93,7 +93,7 @@
             left: 50%;
             transform: translateX(-50%);
             -webkit-transform: translateX(-50%);
-            background: transparent;            
+            background: transparent;
         }
         .bottom-float a{
             position: absolute;
@@ -116,6 +116,7 @@
         }
     </style>
     <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
     <script>
         function setFont(d, c) {
             var b = {},

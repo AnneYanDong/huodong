@@ -223,6 +223,7 @@
         </div>
     </div>
     <script src="js/main_v2.min.js?v=1499946152"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
     <script>
         $(function(){
              $("#search-btn").click(function(){
