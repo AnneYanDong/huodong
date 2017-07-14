@@ -8,7 +8,7 @@
             "success"=>true,
 			"type"=>3,
 			"login"=>true,
-			"weChat"=>false,
+			"weChat"=>true,
 			"prize"=>"178"
         ),
         "success"=>true
