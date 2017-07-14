@@ -172,7 +172,7 @@
                 var request = new XMLHttpRequest();
                 var web_url = window.encodeURIComponent(window.location.href);
                 var js_url  = ta.src;
-                var url = '//ad.toutiao.com/link_monitor/cdn_failed?web_url=' + web_url + '&js_url=' + js_url + '&convert_id=63400005490';
+                var url = '//ad.toutiao.com/link_monitor/cdn_failed?web_url=' + web_url + '&js_url=' + js_url + '&convert_id=63400334620';
                 request.open('GET', url, true);
                 request.send(null);
             }
