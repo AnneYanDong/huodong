@@ -6,6 +6,7 @@
     <meta name="format-detection" content="telephone=no">
     <title>51公积金借款</title>
     <link rel="stylesheet" href="css/public.css">
+    <script src="https://r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
     <style>
         .user-info{
             position: relative;
@@ -224,7 +225,7 @@
     </div>
     <script src="js/main_v2.min.js?v=1499946152"></script>
     <script>
-        $(function(){
+     
              $("#search-btn").click(function(){
                  $.ajax({
                      type: "POST",
@@ -236,7 +237,7 @@
                      }
                  })
              })
-        });
+     
         //判断渠道
         function is_weixn() {
             var ua = navigator.userAgent.toLowerCase();

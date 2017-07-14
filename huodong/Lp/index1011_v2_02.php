@@ -6,6 +6,7 @@
     <meta name="format-detection" content="telephone=no">
     <title>你的公积金有多少钱？除了买房还能干啥？</title>
     <link rel="stylesheet" href="css/public.css">
+    <script src="https://r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
     <style>
         .user-info{
             position: absolute;
@@ -93,7 +94,7 @@
             left: 50%;
             transform: translateX(-50%);
             -webkit-transform: translateX(-50%);
-            background: transparent;            
+            background: transparent;
         }
         .bottom-float a{
             position: absolute;
@@ -116,6 +117,7 @@
         }
     </style>
     <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
         function setFont(d, c) {
             var b = {},
@@ -208,7 +210,7 @@
     </div>
     <script src="js/main_v2.min.js?v=1499945866"></script>
     <script>
-       $(function(){
+    
             $("#search-btn").click(function(){
                 $.ajax({
                     type: "POST",
@@ -220,7 +222,7 @@
                     }
                 })
             })
-       });
+     
 
         //判断渠道
         function is_weixn() {
