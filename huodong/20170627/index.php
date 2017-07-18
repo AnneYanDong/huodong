@@ -37,7 +37,7 @@
             <div class="prize money30"><span>+</span>30元</div>
             <div class="prize money50"><span>+</span>50元</div>
             <div class="prize money70"><span>+</span>70元</div>
-            <div class="receive" bp="立即领钱" title="立即领钱"></div>
+            <div class="receive goLogin" bp="立即领钱" title="立即领钱"></div>
             <div class="rule-btn"></div>
         </div>
     </div>
@@ -46,7 +46,7 @@
 <div class="rule zm-customer-confirm hide">
     <h6>活动规则</h6>
     <ul>
-        <li><span>1.</span>通过活动页面，完成指定步骤可以获得相应金额，金额在放款后一次性抵扣；</li>
+        <li><span>1.</span>通过活动页面，领券后完成指定步骤可以获得相应金额，金额在放款后一次性抵扣；</li>
         <li><span>2.</span>每个用户只有1次免息优惠，已经有金e贷拒必赔券的用户不可享受该奖励；</li>
         <li><span>3.</span>有任何问题请咨询官方客服热线4008635151；</li>
         <li><span>4.</span>本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。</li>
