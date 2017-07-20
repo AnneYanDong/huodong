@@ -93,7 +93,7 @@
             left: 50%;
             transform: translateX(-50%);
             -webkit-transform: translateX(-50%);
-            background: transparent;            
+            background: transparent;
         }
         .bottom-float a{
             position: absolute;
@@ -207,7 +207,8 @@
             <div tt-data-click="" tt-data-convert_id="63400005490" tt-data-eventtype="download_start"></div>
         </div>
     </div>
-    <script src="js/main_v2.min.js?v=1499945866"></script>
+    <!-- <script src="https://r.51gjj.com/act/release/js/main_v2.js"></script> -->
+    <script src="https://r.51gjj.com/act/release/js/main_v2.js"></script>
     <script>
       
             $("#search-btn").click(function(){

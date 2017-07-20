@@ -40,7 +40,7 @@
         <div class="wp hide">
             <div class="wp-inner">
                 <div class="content">
-                    <img data-src="<?php echo $imgUrl; ?>yrd_bg1.png" alt="bg" />
+                    <img data-src="<?php echo $imgUrl; ?>yrd_update_bg.png" alt="bg" />
                     <div class="btn" bp="马上领取" title="马上领取"></div>
                 </div>
             <div class="mask hide"></div>
