@@ -77,12 +77,12 @@
                             </div>
                             <div class="right"><span class="choose-icon"></span></div>
                         </li>
-                        <!--<li class="grayscale animated" data-card-type="2" title="光大" bp="光大">
+                        <li class="grayscale animated" data-card-type="2" title="光大" bp="光大">
                             <div class="left">
                                 <span class="credit-card-icon icon-guangda"></span>
                             </div>
                             <div class="right"><span class="choose-icon"></span></div>
-                        </li>-->
+                        </li>
                         <li class="grayscale animated" data-card-type="3" title="兴业" bp="兴业">
                             <div class="left">
                                 <span class="credit-card-icon icon-xingye"></span>
