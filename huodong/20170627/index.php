@@ -37,7 +37,7 @@
             <div class="prize money30"><span>+</span>30元</div>
             <div class="prize money50"><span>+</span>50元</div>
             <div class="prize money70"><span>+</span>70元</div>
-            <div class="receive goLogin" bp="立即领钱" title="立即领钱"></div>
+            <div class="receive" bp="立即领钱" title="立即领钱"></div>
             <div class="rule-btn"></div>
         </div>
     </div>

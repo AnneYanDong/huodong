@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee", "number"], function ($, fastClick, LuckyCard, ct, Bridge, juicer, liMarquee, number) {
+require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee", "number","goDownload"], function ($, fastClick, LuckyCard, ct, Bridge, juicer, liMarquee, number,goDownload) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -26,9 +26,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
             /*设置HTML的font-size*/
             ct.Tool.setFont();
-            ct.Tool.handleBottomStatusBar();
+            // ct.Tool.handleBottomStatusBar();
             window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
-            window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
+            // window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
 
             /*整体预加载动画*/
             var oPreLoading = Object.create(ct.PreLodingUi);
