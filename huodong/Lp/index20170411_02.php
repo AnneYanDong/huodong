@@ -223,7 +223,8 @@
             <div tt-data-click="" tt-data-convert_id="63400334620" tt-data-eventtype="download_start"></div>
         </div>
     </div>
-    <script src="js/main_v2.min.js?v=1499946152"></script>
+    <!-- <script src="js/main_v2.min.js?v=1499946152"></script> -->
+    <script src="https://r.51gjj.com/act/release/js/main_v2.js"></script>
     <script>
        
              $("#search-btn").click(function(){
