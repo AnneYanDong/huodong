@@ -14,6 +14,7 @@
     };
 ?>
     <link rel="stylesheet" href="<?php echo $res['css'] ?>">
+    <link rel="stylesheet" type="text/css" href="//r.51gjj.com/act/static/css/goDownload.css">
     <style>
         /* 加载动画颜色配置 */
         .loading-bg-color {
@@ -27,6 +28,7 @@
     <script>
        var projectName = "<?php echo $actDate ?>"; 
     </script>
+    <script src="//r.51gjj.com/act/static/js/lib/callApp.js"></script>
     </head>
     <body>
 <div class="wp hide">

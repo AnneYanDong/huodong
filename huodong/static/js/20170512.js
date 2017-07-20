@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee"], function ($, fastClick, LuckyCard, ct, Bridge, juicer, liMarquee) {
+require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee", "goDownload"], function ($, fastClick, LuckyCard, ct, Bridge, juicer, liMarquee,goDownload) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -160,7 +160,21 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=43&from=activity_?from=activity_20170512";
             });
             $(".content").on("click", "#platinum", function () {
-                window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=1&from=activity_?from=activity_20170512";
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "test.php",
+                    // url: "/act/act170512/get_status",
+                    success: function (d) {
+                        console.log(d);
+                        if (d.success == true) {
+                            switch(d.ret) {
+                                case is_weChat:
+                            }
+                        }
+                    }
+                })
+                // window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=1&from=activity_?from=activity_20170512";
             });
         },
     }
