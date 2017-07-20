@@ -106,7 +106,7 @@
 
 	"20170627": {
 		"js": ["r.51gjj.com/act/release/js/20170627_c70020a.js"],
-		"css": ["r.51gjj.com/act/release/css/20170627_d168da7.css"]
+		"css": ["r.51gjj.com/act/release/css/20170627_18d88e2.css"]
 	},
 
 	"20170629": {

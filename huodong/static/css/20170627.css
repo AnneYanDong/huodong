@@ -1,5 +1,6 @@
-    @import url('basicFullPage.css');
+@import url('basicFullPage.css');
 @import url('mtool.css');
+@import url('goDownload.css');
 .wp {
     overflow: auto!important;
 }
