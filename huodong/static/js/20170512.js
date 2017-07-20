@@ -163,18 +163,30 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
-                    url: "test.php",
-                    // url: "/act/act170512/get_status",
+                    // url: "test.php",
+                    url: "/act/act170512/get_status",
                     success: function (d) {
                         console.log(d);
                         if (d.success == true) {
-                            switch(d.ret) {
-                                case is_weChat:
+                            var d = d.ret;
+                            if (d.is_weChat || d.is_qq) {
+                                window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=1&from=activity_?from=activity_20170512";
+                            } else {
+                                if (!d.login) {
+                                    if (Bridge) {
+                                        Bridge.action("login");
+                                    }
+                                } else {
+                                    if (d.jump) {
+                                        window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=1&from=activity_?from=activity_20170512";
+                                    } else {
+                                        oP.show("您暂不符合该卡申请资格，可尝试申请智能金卡");
+                                    }
+                                }
                             }
                         }
                     }
                 })
-                // window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=1&from=activity_?from=activity_20170512";
             });
         },
     }
