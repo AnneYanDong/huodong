@@ -32,7 +32,7 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>bg2.png" alt="">
+            <img data-src="<?php echo $imgUrl; ?>update_bg.png" alt="">
             <div class="btnWrap">
                 <div class="apply" id="gold" bp="光大金金卡" title="光大金金卡"></div>
             </div>
