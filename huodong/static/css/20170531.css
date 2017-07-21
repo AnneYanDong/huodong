@@ -3,7 +3,7 @@
 .wp-inner {
     background: url("//r.51gjj.com/act/release/img/20170531_bsk_bg.png") no-repeat center center fixed; 
     // background: url("../img/20170531_bsk_bg.png") no-repeat center center fixed;
-    background-size: contain;
+    background-size: cover;
     position: relative;
 }
 .content img {

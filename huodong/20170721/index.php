@@ -30,35 +30,24 @@
         // 埋点后缀用
         var projectName = "<?php echo $actDate ?>";
     </script>
+    <script src="js/main.min.js"></script>
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     </head>
 
     <body>
-        <div class="wp hide">
+        <div class="out-wrap hide">
             <div class="wp-inner">
                 <div class="content">
-                    <img class="title" data-src="<?php echo $imgUrl; ?>title.png" alt="title" />
-                    <img class="person" data-src="<?php echo $imgUrl; ?>person.png" alt="person" />
-                    <div class="btn1">幸运转出来</div>
-                    <img class="turntable" data-src="<?php echo $imgUrl; ?>turntable.png" alt="turntable" />
-                    <img class="arrow" data-src="<?php echo $imgUrl; ?>arrow.png" alt="arrow" />
+                  <img class="bg" data-src="<?php echo $imgUrl; ?>update_bg.png" alt="title" />
+                  <div class="btn1" bp="幸运转出来" title="幸运转出来">幸运转出来</div>
+                  <div class="btn2" bp="邀请好友" title="邀请好友"></div>
+                  <img class="turntable" data-src="<?php echo $imgUrl; ?>turntable.png" alt="turntable" />
+                  <img class="prize_btn" data-src="<?php echo $imgUrl; ?>prize_btn.png" alt="抽奖" />
+                  <div class="triangle"></div>
+                  <div class="ellipse"></div>
+                  <!-- <img class="arrow" bp="转盘箭头" title="转盘箭头" data-src="<?php echo $imgUrl; ?>arrow_02.png" alt="arrow" /> -->
                 </div>
             </div>
-            <div class="mask hide"></div>
-            <!-- <div class="rule zm-customer-confirm hide">
-                <h6>活动规则</h6>
-                <ul>
-                    <li><span>1.</span>活动期间7月14日-7月20日，通过活动页面按钮申请兴业精英系列即可获得相应权益；</li>
-                    <li><span>2.</span>拆开红包后点击“收下”，奖品即发放至您的账户，完成申请并开卡后即可领取；</li>
-                    <li><span>3.</span>请在7月20日活动结束前完成申请，超出时间未申请奖品自动失效；</li>
-                    <li><span>4.</span>开卡后，请尽快通过活动页面“查看红包”找到对应奖品填写支付宝和姓名；</li>
-                    <li><span>5.</span>本次活动仅限之前未成功申请过该业务的用户，且同一用户不可重复领取同一奖励，如您的账户中还有该业务未失效的同类型奖品，则本次活动不予发奖；</li>
-                    <li><span>6.</span>活动权益需在8月10日24时前完成领取，过期自动失效；</li>
-                    <li><span>7.</span>有任何疑问或者帮助可联系客服4008635151；</li>
-                    <li><span>8.</span>活动最终解释权归杭州煎饼网络技术有限公司所有。</li>
-                </ul>
-                <div class="btn-close"></div>
-            </div> -->
         </div>
     </body>
 

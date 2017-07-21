@@ -1,10 +1,5 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
-.wp-inner {
-    /* background: url("//r.51gjj.com/act/release/img/20170721_bg.png") no-repeat center center fixed; */ 
-    background: url("../img/20170721_bg.png") no-repeat center center fixed #47daeb;
-    background-size: contain;
-}
 .content {
   position: relative;
 }
@@ -13,103 +8,61 @@
     left: 50%;
     transform: translateX(-50%);
 }
-.content img.title {
-  width: 3.5rem;
-  height: 2.37rem;
-  top: .2rem;
-  left: 55%;
+.content img.bg {
+  width: 100%;
+  height: auto;
 }
-.content img.person {
-  width: 1.60rem;
-  height: 1.36rem;
-  top: 1.6rem;
-  left: 1.8rem;
+.content .btn1 {
+  font-size: .22rem;
+  color: #127a8c;
+  text-align: center;
+  width: 2.73rem;
+  height: .36rem;
+  line-height: .36rem;
+  position: absolute;
+  top: 4.3rem;
+  transform: translateX(-50%);
+  left: 50%;
+  border-radius: .5rem;
+  border: 1px solid #127a8c;
+  background: #bdf5fc;
+  box-shadow: 0.01rem 0.04rem 0 0.05rem #127a8c;
+}
+.content .btn2 {
+   width: 3.73rem;
+   height: .56rem;
+   position: absolute;
+   top: 10.2rem;
+   transform: translateX(-50%);
+   left: 50%;
 }
 .content img.turntable {
   width: 4.02rem;
   height: 4.02rem;
-  top: 4.17rem;
+  top: 5.3rem;
+}
+.content img.prize_btn {
+  width: .63rem;
+  height: .63rem;
+  top: 6.9rem;
+  // animation: turning 1s infinite linear;
+  // transform-origin: 50% .2rem;
+}
+.content .triangle {
+  border-left: .1rem solid transparent;
+  border-right: .1rem solid transparent;
+  border-bottom: .5rem solid red;
+  position: absolute;
+  top: 6.5rem;
+  left: 48.6%;
+  animation: turning 1s infinite linear;
+  transform-origin: 50% .2rem;
 }
 .content img.arrow {
-  width: .63rem;
-  height: .96rem;
-  top: 5.4rem;
+  width: .25rem;
+  height: .55rem;
+  top: 6.9rem;
 }
-.content img.rule {
-  width: 5.79rem;
-  height: 5.42rem;
-  top: 1.09rem;
-}
-
-.rule-btn {
-  font-size: .2rem;
-  color: #dbdbdb;
-  text-align: center;
-  /*margin-top: .48rem;*/
-  position: absolute;
-  top: .2rem;
-  width: 1.5rem;
-  height: .5rem;
-  right: 0;
-  line-height: 0.5rem;
-  margin-right: 0.3rem;
-}
-
-.rule {
-  background: #fff;
-  width: 6.22rem;
-  padding: .5rem .36rem;
-  position: absolute;
-  top: 1.5rem;
-  left: 50%;
-  font-size: 12px;
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  border-radius: 5px;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  z-index: 99;
-}
-
-.rule h6 {
-  margin: 0;
-  margin-bottom: .4rem;
-  font-size: 24px;
-  color: #d3921b;
-  text-align: center;
-}
-
-.rule ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  max-height: 6rem;
-  overflow-y: scroll;
-}
-
-.rule ul li {
-  position: relative;
-  font-size: 12px;
-  line-height: 18px;
-  padding-left: 16px;
-  margin-bottom: 5px;
-  color: #868686;
-}
-
-.rule ul li span {
-  position: absolute;
-  left: 0px;
-  top: 0;
-  font-style: normal;
-}
-
-.rule .btn-close {
-  position: absolute;
-  background: url("https://r.51gjj.com/act/images/20160818_close.png") no-repeat;
-  background-size: 100%;
-  width: .8rem;
-  height: .8rem;
-  bottom: -1rem;
-  left: 50%;
-  margin-left: -0.4rem;
+@keyframes turning {
+  to {transform: rotate(45deg);}
 }

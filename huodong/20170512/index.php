@@ -32,8 +32,6 @@
     </head>
     <body>
 <div class="wp hide">
-   <!--  <div class="left-side"><img data-src="<?php echo $imgUrl; ?>left_side_02.png" alt="left_side"></div>
-    <div class="right-side"><img data-src="<?php echo $imgUrl; ?>right_side_03.png" alt="right_side"></div> -->
     <div class="wp-inner">
         <div class="content">
             <img data-src="<?php echo $imgUrl; ?>update_bg.png" alt="">

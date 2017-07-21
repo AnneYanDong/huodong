@@ -26,10 +26,10 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
             /*设置HTML的font-size*/
             ct.Tool.setFont();
-            ct.Tool.handleBottomStatusBar();
+            // ct.Tool.handleBottomStatusBar();
             window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
-            window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
-            window.onresize = ct.Tool.debounce(ct.Tool.setFont)
+            // window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
+            // window.onresize = ct.Tool.debounce(ct.Tool.setFont)
 
             /*整体预加载动画*/
             var oPreLoading = Object.create(ct.PreLodingUi);
@@ -71,28 +71,49 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
         init: function () {
             var _this = this;
-            $(".wp").removeClass("hide");
+            $(".out-wrap").removeClass("hide");
+
+            _this.raffle();
             _this.share();
             console.log("送积分活动！");
         },
 
-        // receive: function () {
-        //     var _this = this;
-        //     var timer = null;
-        //     clearTimeout(timer);
-        //     $('.wp .content').on('click', '.receive', function () {
-        //         $.ajax({
-        //             type: "POST",
-        //             dataType: "JSON",
-        //             url: "test.php",
-        //             // url: "/act/act160817/get_prize",
-        //             success: function (d) {
-        //                 console.log(d);
-        //             }
-        //         })
+        raffle: function () {
+            var _this = this;
+            var timer = null;
+            clearTimeout(timer);
+            $('.wp-inner .content').on('click', '.arrow', function () {
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "test.php",
+                    // url: "/act/act160817/get_prize",
+                    success: function (d) {
+                        console.log(d);
+                        if (d.success) {
+                            var d = d.ret;
+                            if (!d.login) {
+                                oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
+                                if (Bridge) {
+                                    Bridge.action("login");
+                                }
+                            } else {
+                                d.prize_num++;
+                                console.log(d.prize_num);
+                                if (d.prize_num > 1) {
+                                    oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
+                                } else {
+                                    //开始抽奖
+                                    
+                                }
+                            }
+                        }
+                    }
+                })
 
-        //     })
-        // },
+            })
+        },
+
         //分享按钮：
         share: function () {
             var u = navigator.userAgent;
