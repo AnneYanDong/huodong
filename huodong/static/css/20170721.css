@@ -2,28 +2,38 @@
 @import url('mtool.css');
 .wp-inner {
     /* background: url("//r.51gjj.com/act/release/img/20170721_bg.png") no-repeat center center fixed; */ 
-    background: url("../img/20170721_bg.png") no-repeat center center fixed;
-    background-size: cover;
+    background: url("../img/20170721_bg.png") no-repeat center center fixed #47daeb;
+    background-size: contain;
+}
+.content {
+  position: relative;
 }
 .content img {
-    position: relative;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 .content img.title {
-  width: 3.90rem;
-  height: 2.77rem;
-  top: .26rem;
+  width: 3.5rem;
+  height: 2.37rem;
+  top: .2rem;
+  left: 55%;
+}
+.content img.person {
+  width: 1.60rem;
+  height: 1.36rem;
+  top: 1.6rem;
+  left: 1.8rem;
 }
 .content img.turntable {
   width: 4.02rem;
   height: 4.02rem;
-  top: 1.09rem;
+  top: 4.17rem;
 }
 .content img.arrow {
   width: .63rem;
   height: .96rem;
-  top: -1.6rem;
+  top: 5.4rem;
 }
 .content img.rule {
   width: 5.79rem;

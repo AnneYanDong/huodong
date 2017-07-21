@@ -165,7 +165,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     } else {
                                         oP.show("您暂不符合该卡申请资格，可尝试申请智能金卡");
                                         timer = setTimeout(function(){
-                                            window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=1&from=activity_?from=activity_20170512";
+                                            window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=43&from=activity_?from=activity_20170512";
                                         },2000);
                                     }
                                 }

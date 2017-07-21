@@ -38,6 +38,8 @@
             <div class="wp-inner">
                 <div class="content">
                     <img class="title" data-src="<?php echo $imgUrl; ?>title.png" alt="title" />
+                    <img class="person" data-src="<?php echo $imgUrl; ?>person.png" alt="person" />
+                    <div class="btn1">幸运转出来</div>
                     <img class="turntable" data-src="<?php echo $imgUrl; ?>turntable.png" alt="turntable" />
                     <img class="arrow" data-src="<?php echo $imgUrl; ?>arrow.png" alt="arrow" />
                 </div>
