@@ -81,16 +81,20 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
-            // _this.openRule();
-            // _this.closeRule();
-            _this.apply();
-            _this.share()
+            _this.openRule();
+            _this.closeRule();
+            _this.share();
+            console.log("周末提款机");
         },
 
-        // 打开规则
-        openRule: function () {
-            $(".content").on("click", ".rule-btn", function () {
+       openRule: function () {
+            $(".content").on("click", ".rule-btn", function (event) {
                 oM.show();
+
+                var ruleTpl = $('#tpl-rule').html();
+                var resRuleHtml = juicer(ruleTpl, ruleJson);
+                // juicer.register("msg_show",msgs);
+                $('body').append(resRuleHtml);
                 $(".rule").fadeIn();
             })
         },
@@ -134,47 +138,16 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             }
             return this;
         },
-
-        //立即申请
-        apply: function () {
-            $(".content").on("click", "#gold", function () {
-                window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=43&from=activity_?from=activity_20170512";
-            });
-            $(".content").on("click", "#platinum", function () {
-                var timer = null;
-                clearTimeout(timer);
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    url: "test.php",
-                    // url: "/act/act170512/get_status",
-                    success: function (d) {
-                        console.log(d);
-                        if (d.success == true) {
-                            var d = d.ret;
-                            if (d.is_weChat || d.is_qq) {
-                                window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=1&from=activity_?from=activity_20170512";
-                            } else {
-                                if (!d.login) {
-                                    if (Bridge) {
-                                        Bridge.action("login");
-                                    }
-                                } else {
-                                    if (d.jump) {
-                                        window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=1&from=activity_?from=activity_20170512";
-                                    } else {
-                                        oP.show("您暂不符合该卡申请资格，可尝试申请智能金卡");
-                                        timer = setTimeout(function(){
-                                            window.location.href = "https://b.jianbing.com/shequ/discovery/index.php?route=bankx/index&bank_id=1&from=activity_?from=activity_20170512";
-                                        },2000);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                })
-            });
-        },
+    }
+    
+    var ruleJson = {
+        rule: [
+            "活动仅限于6月28日至奖品发完期间首次申请鑫福贷的用户；",
+            "完成申请可获得15元现金红包，成功放款可获得100元现金红包。为了您能够顺利拿到奖励，请申请业务后及时关注“我的奖品”提示；",
+            "成功领取后将在7个工作日内发放到您的支付宝账户，领取时请填写正确的个人支付宝账户；",
+            "关于活动有任何疑问请咨询官方客服热线4008635151；",
+            "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"
+        ]
     }
     run.start();
 })

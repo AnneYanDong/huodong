@@ -1,0 +1,105 @@
+@import url('basicFullPage.css');
+@import url('mtool.css');
+.wp-inner {
+    /* background: url("//r.51gjj.com/act/release/img/20170721_bg.png") no-repeat center center fixed; */ 
+    background: url("../img/20170721_bg.png") no-repeat center center fixed;
+    background-size: cover;
+}
+.content img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.content img.title {
+  width: 3.90rem;
+  height: 2.77rem;
+  top: .26rem;
+}
+.content img.turntable {
+  width: 4.02rem;
+  height: 4.02rem;
+  top: 1.09rem;
+}
+.content img.arrow {
+  width: .63rem;
+  height: .96rem;
+  top: -1.6rem;
+}
+.content img.rule {
+  width: 5.79rem;
+  height: 5.42rem;
+  top: 1.09rem;
+}
+
+.rule-btn {
+  font-size: .2rem;
+  color: #dbdbdb;
+  text-align: center;
+  /*margin-top: .48rem;*/
+  position: absolute;
+  top: .2rem;
+  width: 1.5rem;
+  height: .5rem;
+  right: 0;
+  line-height: 0.5rem;
+  margin-right: 0.3rem;
+}
+
+.rule {
+  background: #fff;
+  width: 6.22rem;
+  padding: .5rem .36rem;
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  font-size: 12px;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-radius: 5px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  z-index: 99;
+}
+
+.rule h6 {
+  margin: 0;
+  margin-bottom: .4rem;
+  font-size: 24px;
+  color: #d3921b;
+  text-align: center;
+}
+
+.rule ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: 6rem;
+  overflow-y: scroll;
+}
+
+.rule ul li {
+  position: relative;
+  font-size: 12px;
+  line-height: 18px;
+  padding-left: 16px;
+  margin-bottom: 5px;
+  color: #868686;
+}
+
+.rule ul li span {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  font-style: normal;
+}
+
+.rule .btn-close {
+  position: absolute;
+  background: url("https://r.51gjj.com/act/images/20160818_close.png") no-repeat;
+  background-size: 100%;
+  width: .8rem;
+  height: .8rem;
+  bottom: -1rem;
+  left: 50%;
+  margin-left: -0.4rem;
+}
