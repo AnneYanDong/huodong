@@ -11,9 +11,7 @@
     background-color: #151130;
 } 
 .wp-inner img {
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
+    width: 100%;
 }
 
 .wp-inner .btn_sub {
@@ -124,7 +122,7 @@
     margin: 0 auto;
 }
 .btnWrap {
-    top: 8.56rem;
+    top: 9.56rem;
     display: inline;
     position: absolute;
     min-height: .6rem;

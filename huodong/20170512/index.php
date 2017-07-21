@@ -31,7 +31,7 @@
     <script src="//r.51gjj.com/act/static/js/lib/callApp.js"></script>
     </head>
     <body>
-<div class="wp hide">
+<div class="outer hide">
     <div class="wp-inner">
         <div class="content">
             <img data-src="<?php echo $imgUrl; ?>update_bg.png" alt="">
