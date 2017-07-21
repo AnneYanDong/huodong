@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee", "goDownload"], function ($, fastClick, LuckyCard, ct, Bridge, juicer, liMarquee,goDownload) {
+require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee"], function ($, fastClick, LuckyCard, ct, Bridge, juicer, liMarquee) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);

@@ -40,7 +40,7 @@
 	},
 
 	"20170512": {
-		"js": ["r.51gjj.com/act/release/js/20170512_0ebf1b1.js"],
+		"js": ["r.51gjj.com/act/release/js/20170512_1215acd.js"],
 		"css": ["r.51gjj.com/act/release/css/20170512_2d05ef4.css"]
 	},
 
