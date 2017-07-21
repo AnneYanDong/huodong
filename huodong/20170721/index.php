@@ -40,7 +40,6 @@
                     <img class="title" data-src="<?php echo $imgUrl; ?>title.png" alt="title" />
                     <img class="turntable" data-src="<?php echo $imgUrl; ?>turntable.png" alt="turntable" />
                     <img class="arrow" data-src="<?php echo $imgUrl; ?>arrow.png" alt="arrow" />
-                    <img class="rule hide" data-src="<?php echo $imgUrl; ?>rule.png" alt="rule" />
                 </div>
             </div>
             <div class="mask hide"></div>

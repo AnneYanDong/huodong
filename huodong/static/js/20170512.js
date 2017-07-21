@@ -146,8 +146,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
-                    url: "test.php",
-                    // url: "/act/act170512/get_status",
+                    // url: "test.php",
+                    url: "/act/act170512/get_status",
                     success: function (d) {
                         console.log(d);
                         if (d.success == true) {
