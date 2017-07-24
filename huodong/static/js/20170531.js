@@ -180,8 +180,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $(".content").on("click", ".apply", function () {
                 $.ajax({
                     /*同一域名下的不同文件夹是可以访问到*/
-                    url: "test.php", 
-                    // url: "/act/act170510/get_status",
+                    // url: "test.php",
+                    url: "/act/act170510/get_status",
                     type: "POST",
                     dataType: "JSON",
                     success: function (d) {

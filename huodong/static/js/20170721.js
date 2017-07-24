@@ -82,7 +82,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             var timer = null;
             clearTimeout(timer);
-            $('.wp-inner .content').on('click', '.arrow', function () {
+            $('.wp-inner .content').on('click', '.turntable,.arrow', function () {
+                console.log("-----------");
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
@@ -98,13 +99,12 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     Bridge.action("login");
                                 }
                             } else {
-                                d.prize_num++;
                                 console.log(d.prize_num);
                                 if (d.prize_num > 1) {
                                     oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
                                 } else {
                                     //开始抽奖
-                                    
+
                                 }
                             }
                         }
