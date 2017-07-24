@@ -41,11 +41,9 @@
                   <img class="bg" data-src="<?php echo $imgUrl; ?>update_bg.png" alt="title" />
                   <div class="btn1" bp="幸运转出来" title="幸运转出来">幸运转出来</div>
                   <div class="btn2" bp="邀请好友" title="邀请好友"></div>
-                  <img class="turntable" data-src="<?php echo $imgUrl; ?>turntable.png" alt="turntable" />
-                  <img class="prize_btn" data-src="<?php echo $imgUrl; ?>prize_btn.png" alt="抽奖" />
-                  <div class="triangle"></div>
-                  <div class="ellipse"></div>
-                  <!-- <img class="arrow" bp="转盘箭头" title="转盘箭头" data-src="<?php echo $imgUrl; ?>arrow_02.png" alt="arrow" /> -->
+                  <img class="turntable" data-src="<?php echo $imgUrl; ?>turntable_03.png" alt="turntable" />
+                  <div class="ellipse-shadow"></div>
+                  <img class="arrow" bp="转盘箭头" title="转盘箭头" data-src="<?php echo $imgUrl; ?>arrow.png" alt="arrow" />
                 </div>
             </div>
         </div>
