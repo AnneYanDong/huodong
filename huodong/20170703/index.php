@@ -33,7 +33,7 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>bg1.jpg" alt="">
+            <img data-src="<?php echo $imgUrl; ?>bg2.jpg" alt="">
             <div class="rule-btn"></div>
             <div class="oneDay">仅此一天</div>
             <div class="timeClock">
@@ -69,7 +69,7 @@
         <div class="rule zm-customer-confirm hide">
             <h6>活动规则</h6>
             <ul>
-                <li><span>1.</span>活动为周三00：00-24：00全天举行，秒券10点开始，秒完即止，券可用于活动全场业务。</li>
+                <li><span>1.</span>活动为周三00：00-24：00全天举行，秒完即止，券可用于活动全场业务。</li>
                 <li><span>2.</span>全场通用券使用明细：【金薪贷】首月还款减免。【金花贷】首月还款减免，100元券借款5000元及以上可用，200元券借款10000元及以上可用。【金盈贷】50元券首月还款立减，100元券分2个月减免，200元券分4个月减免。提前还款不享受优惠。</li>
                 <li><span>3.</span>当日通过活动页面申请的前100名用户可额外获得价值30元的腾讯视频会员一个月。奖品将于3日内发放到用户账户中。</li>
                 <li><span>4.</span>每人限抢1张大额券，只可用于未申请或未完成申请过的业务。抢到的优惠券会发放到“我的奖品”中。请及时关注并在有效期7天内使用。若您已有金薪贷、金盈贷、金花贷业务优惠券，则不能享受此次优惠。</li>

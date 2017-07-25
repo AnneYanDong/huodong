@@ -261,8 +261,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     success: function (d) {
                         if (d.success == true) {
                             var d = d.ret;
-                            console.debug("条件", d.allowRob, d.UserTicket)
-                            if (d.allowRob == true && d.UserTicket === 4) {
+                            console.debug("条件", d.UserTicket)
+                            if (d.UserTicket === 4) {
                                 oM.show();
                                 $(".ticket_50").html("<img src='" + imgSrc + "ticket_200.png'><div class='ticket_close'></div><div class='skip' bp='200元去申请' title='200元去申请'></div>");
                                 $(".ticket_50").fadeIn();
@@ -298,8 +298,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     success: function (d) {
                         if (d.success == true) {
                             var d = d.ret;
-                            console.debug("条件", d.allowRob, d.UserTicket)
-                            if (d.allowRob == true && d.UserTicket === 4) {
+                            console.debug("条件", d.UserTicket)
+                            if (d.UserTicket === 4) {
                                 oM.show();
                                 $(".ticket_50").html("<img src='" + imgSrc + "ticket_100.png'><div class='ticket_close'></div><div class='skip' bp='100元去申请' title='100元去申请'></div>");
                                 $(".ticket_50").fadeIn();
@@ -331,8 +331,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     success: function (d) {
                         if (d.success == true) {
                             var d = d.ret;
-                            console.debug("条件", d.allowRob, d.UserTicket)
-                            if (d.allowRob == true && d.UserTicket === 4) {
+                            console.debug("条件",d.UserTicket)
+                            if (d.UserTicket === 4) {
                                 oM.show();
                                 $(".ticket_50").html("<img src='" + imgSrc + "ticket_50.png'><div class='ticket_close'></div><div class='skip' bp='50元去申请' title='50元去申请'></div>");
                                 $(".ticket_50").fadeIn();
