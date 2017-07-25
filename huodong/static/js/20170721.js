@@ -74,6 +74,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $(".out-wrap").removeClass("hide");
 
             _this.raffle();
+            _this.shareToFriend();
             _this.share();
             console.log("送积分活动！");
         },
@@ -83,7 +84,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var timer = null;
             clearTimeout(timer);
             $('.wp-inner .content').on('click', '.turntable,.arrow', function () {
-                console.log("-----------");
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
@@ -99,12 +99,18 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     Bridge.action("login");
                                 }
                             } else {
-                                console.log(d.prize_num);
-                                if (d.prize_num > 1) {
-                                    oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
+                                //判断是新用户还是老用户
+                                if (!d.isNew) {
+                                    oP.show("亲爱滴老朋友，这里是新人专区哦");
                                 } else {
-                                    //开始抽奖
-
+                                    //判断用户的抽奖次数
+                                    if (d.prize_num > 0) {
+                                        $('.turntable').addClass('turning');
+                                        d.prize_num--;
+                                    } else {
+                                        $('.turntable').removeClass('turning');
+                                        oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
+                                    }
                                 }
                             }
                         }
@@ -112,6 +118,27 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 })
 
             })
+        },
+        shareToFriend: function(){
+            $('.wp-inner .content').on('click','.btn2',function(){
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "test.php",
+                    // url: "/act/act160817/get_prize",
+                    success: function (d) {
+                        console.log(d);
+                        if (d.success) {
+                            var d = d.ret;
+                            _this.share();
+                            d.prize_num++;
+                            return d.prize_num;
+                        } else {
+                            oP.show(d.msg || "出错了请重试");
+                        }
+                    }
+                })
+            });
         },
 
         //分享按钮：
@@ -134,10 +161,10 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
                     onclick: function () {
                         Bridge.action('ShareTimeline', {
-                            "title": "史无前例",
-                            'desc': "广发鑫秒贷放肆八折",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170608_wxshare.png",
-                            "link": "http://" + host + "/act/home/huodong/20170608/"
+                            "title": "转盘抽奖",
+                            'desc': "查公积金送积分",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170721_share.png",
+                            "link": "http://" + host + "/act/home/huodong/20170721/"
                         });
                     }
                 })

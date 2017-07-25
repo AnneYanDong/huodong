@@ -17,11 +17,11 @@
     <style>
         /* 加载动画颜色配置 */
         .loading-bg-color {
-            background: #8619a4;
+            background: #f3de4a;
         }
 
         .loading-ele-color:after, .loading-ele-color:before {
-            background: #8619a4 !important;
+            background: #f3de4a !important;
         }
     </style>
      <script>
@@ -40,11 +40,54 @@
         <div class="wp hide">
             <div class="wp-inner">
                 <div class="content">
-                    <!-- <?php echo $imgUrl; ?>后面图片的命名必须是20170705_jhd_bg.jpg -->
-                  <!--   <img class="bonus-bg" data-src="<?php echo $imgUrl; ?>jyd_nobonus_bg.png" alt="bg" />
-                    <div class="btn" bp="马上领取" title="马上领取"></div> -->
-                    <div class="rule-btn" bp="规则" title="规则">规则</div>
+                    <img class="title1" data-src="<?php echo $imgUrl; ?>title1.png" alt="title" />
+                    <img class="title2 hide" data-src="<?php echo $imgUrl; ?>title2.png" alt="title" />
+                    <img class="title3" data-src="<?php echo $imgUrl; ?>title2_02.png" alt="title" />
+                    <img class="gift2" data-src="<?php echo $imgUrl; ?>gift2.png" alt="gift2" />
+                    <div class="atm-group">
+                        <img class="atm" data-src="<?php echo $imgUrl; ?>atm.png" alt="atm" />
+                        <img class="worm" data-src="<?php echo $imgUrl; ?>worm.gif" alt="worm" />
+                        <img class="star1" data-src="<?php echo $imgUrl; ?>star.png" alt="star" />
+                        <img class="star2" data-src="<?php echo $imgUrl; ?>star.png" alt="star" />
+                        <img class="gold-group" data-src="<?php echo $imgUrl; ?>gold.png" alt="gold-group" />
+                        <div class="atm-title"><span>ATM</span></div>
+                        <div class="atm-content">
+                            <div class="atm-total">
+                                <div class="atm-total-title"><span>-&nbsp;取款金额&nbsp;-</span></div>
+                                <div class="atm-total-input"><input type="tel" placeholder="最高80000" maxlength=5/><span>元</span></div>
+                            </div>
+                            <div class="atm-usage">
+                                <div class="atm-total-title2"><span>-&nbsp;用途&nbsp;-</span></div>
+                                <ul>
+                                    <div class="div div1"></div>
+                                    <div class="div div2"></div>
+                                    <div class="div div3"></div>
+                                    <div class="div div4"></div>
+                                    <li class="btn label-btn1" data-purpose="btn1">装修</li>
+                                    <li class="btn label-btn2" data-purpose="btn2">旅游</li>
+                                    <li class="btn label-btn3" data-purpose="btn3">消费</li>
+                                    <li class="btn label-btn4" data-purpose="btn4">其他</li>
+                                </ul>
+                            </div>
+                            <div class="shadow-box"></div>
+                            <button class="withdraw-btn" bp="马上提取" title="马上提取">马上提取</button>
+                            <div class="finger-box hide"><img class="finger" data-src="<?php echo $imgUrl; ?>finger.png" alt="finger" /></div>
+                        </div>
+                        <div class="output-money"></div>
+                        <div class="dynamic-money">
+                             <img class="money1 hide" data-src="<?php echo $imgUrl; ?>money.png" alt="money" />
+                             <img class="money2 hide" data-src="<?php echo $imgUrl; ?>money.png" alt="money" />
+                             <img class="money3 hide" data-src="<?php echo $imgUrl; ?>money.png" alt="money" />
+                             <img class="money4 hide" data-src="<?php echo $imgUrl; ?>money.png" alt="money" />
+                        </div>
+                    </div>
                 </div>
+
+                <img class="eye2" data-src="<?php echo $imgUrl; ?>weired_eye.png" alt="eye2" />
+                <img class="gift1" data-src="<?php echo $imgUrl; ?>gift1.png" alt="gift1" />
+                <img class="eye" data-src="<?php echo $imgUrl; ?>weired_eye.png" alt="eye" />
+                <img class="light" data-src="<?php echo $imgUrl; ?>rule_light.png" alt="light" />
+                <div class="rule-btn" bp="规则" title="规则">提现规则</div>
                 <div class="mask hide"></div>
             </div>
         </div>

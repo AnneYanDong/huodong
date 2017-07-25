@@ -40,9 +40,12 @@
   width: 4.52rem;
   height: 4.52rem;
   top: 4.9rem;
-  left: 20%;
-  animation: turning 1s infinite linear;
+  /* left: 20%; */
   z-index:2;
+}
+.content .turning {
+  left: 20%;
+  animation: turning 500ms infinite linear;
 }
 .content .ellipse-shadow {
   width: 5rem;

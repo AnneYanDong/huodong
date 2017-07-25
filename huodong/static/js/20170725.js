@@ -15,6 +15,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var myDay = new Date().getDay();
     var app = null;
     var oUrl = null;
+    var counter = 0;
     var run = {
         status: {
             login: false,
@@ -71,8 +72,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     tag: "进入页面" + projectName
                 }),
                 success: function (d) {
-                    if (d.success == true) {
-
+                    if (d.success) {
+                        //这里判断用户有没有领券
                     }
                 }
             })
@@ -81,14 +82,107 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
+            _this.sendCustLabel();
+            _this.checkWithDrawAmount();
+            _this.withDraw();
+
+            var timer = null;
+            clearInterval(timer);
             _this.openRule();
             _this.closeRule();
             _this.share();
             console.log("周末提款机");
         },
+        showMoney: function() {
+            var visible = counter % 5;
+            if (visible === 0) {
+                for(var i = 0; i < 4; i++) {
+                    $(".dynamic-money .money" + (i + 1)).addClass("hide");
+                }
+            } else {
+                for(var j = 0; j < visible; j++) {
+                    $(".dynamic-money .money" + (j + 1)).removeClass("hide");
+                }
+            }
+            counter++;
+        },
+        checkAmount: function (withdrawal) {
+            var withdrawal = withdrawal;
+            var _this = this;
+            var re = /^[1-7]{1}\d{0,4}$|^[8-9]{1}\d{0,3}$|^8(0)(0)(0)(0)$/;
+            if (re.test(withdrawal)) {
+                return true;
+            } else {
+                oP.show("取款金额请输入1~80000整数");
+                return false;
+            }
+        },
+        checkWithDrawAmount: function() {
+            var _this = this;
+            $(".atm-total-input input").keyup(function(){
+                var amount = Number($(this).val());
+                _this.checkAmount(amount);
+                timer = setTimeout(function(){
+                    $(".atm-content .finger-box").show().addClass("hint");
+                },2000);
+            });
+        },
+        sendCustLabel: function() {
+            var _this = this;
+            $(".atm-content ul").on("click","li.btn",function(){
+                var that = this;
+                var purpose = $(that).data("purpose");
+                console.log(purpose);
+                $(this).addClass("down");
+                timer = setTimeout(function(){
+                    $(that).removeClass("active").addClass("up");
+                    $(".atm-content ul div").addClass("bgColor");
+                },300);
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    data: JSON.stringify({purpose: "purpose"}),
+                    url: "test.php",
+                    success: function(d){
+                        if (d.success) {
+                            console.log("purpose发送成功");
+                        } else {
+                            oP.show("出错了请重试");
+                        }
+                    }
+                });
+            });
+        },
+        withDraw: function(){
+            var _this = this;
+            $(".atm-content").on("click",".withdraw-btn",function(){
+                $(".atm-content .finger-box").fadeOut();
+                if(!$(".atm-total-input input").val()) {
+                    oP.show("请输入取款金额");
+                    return;
+                }
+                var amount = $(".atm-total-input input").val();
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    data: JSON.stringify({amount: "amount"}),
+                    url: "test.php",
+                    success: function(d){
+                        if (d.success) {
+                            console.log(amount);
+                            console.log(d.ret.amount);
+                            timer = setInterval(_this.showMoney,500);
+                        } else {
+                            oP.show("出错了请重试");
+                        }
+                    }
+                });
+            });
+        },
+
 
        openRule: function () {
-            $(".content").on("click", ".rule-btn", function (event) {
+            $(".wp-inner").on("click", ".rule-btn", function (event) {
                 oM.show();
 
                 var ruleTpl = $('#tpl-rule').html();
@@ -128,10 +222,10 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
                     onclick: function () {
                         Bridge.action('ShareTimeline', {
-                            "title": "烂世，别妨碍我的生活！",
-                            'desc': "年轻小资消费搭档or成家立业必然选择，这次你的选择？",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170512_share1.png",
-                            "link": "http://" + host + "/act/home/huodong/20170512/"
+                            "title": "抢个红包过周末",
+                            'desc': "利息5折、现金、实物...",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170725_share.png",
+                            "link": "http://" + host + "/act/home/huodong/20170725/"
                         });
                     }
                 })
@@ -142,10 +236,11 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     
     var ruleJson = {
         rule: [
-            "活动仅限于6月28日至奖品发完期间首次申请鑫福贷的用户；",
-            "完成申请可获得15元现金红包，成功放款可获得100元现金红包。为了您能够顺利拿到奖励，请申请业务后及时关注“我的奖品”提示；",
-            "成功领取后将在7个工作日内发放到您的支付宝账户，领取时请填写正确的个人支付宝账户；",
-            "关于活动有任何疑问请咨询官方客服热线4008635151；",
+            "每周六、日，通过活动页面完成申请或放款将获得特定奖励，同个业务奖励只能领取一次。",
+            "领券后申请金优贷，每日前100名将获得精美定制笔记本一份；领券后申请金卡贷并放款，享受当月利息下调5折优惠；领券后申请金安贷24小时未放款，获得超时赔付50元现金；领券后申请金花贷并放款，获得50元无门槛抵息券。",
+            "此活动针对从未申请过金花贷、金优贷、金卡贷、金安贷业务的新用户，一个用户至多领取到这4个业务对应的奖励。",
+            "抵息券将在首月还款直接减免，逾期、提前还款将不享受此优惠；现金/实物奖励将在用户信息完整后7个工作日内打款/寄出，请确认收款/收货信息 准确性。",
+            "有任何疑问或者帮助可联系客服4008635151。",
             "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"
         ]
     }
