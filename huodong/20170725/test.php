@@ -5,8 +5,7 @@
             "login" => true,
             "is_weChat" => false,
             "is_qq"=>false,
-            "type" => 0,
-            "amount" => 66666
+            "type" => 3
         ),
     "success"=>true,
   );

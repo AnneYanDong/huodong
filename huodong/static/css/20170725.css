@@ -320,6 +320,29 @@
 .atm-content .hint {
   animation: move 1s infinite ease-in-out;
 }
+.content .tp-hide1,.tp-hide2,.tp-hide3,.tp-hide4 {
+  height: 100%;
+  position: relative;
+  z-index: 99;
+}
+.content .tp-jy,.tp-jh,.tp-jk,.tp-ja {
+  width: 6.33rem;
+  height: 7.66rem;
+  position: relative;
+  z-index: 99;
+  top: .5rem;
+  left: 47%;
+  transform: translateX(-50%);
+}
+.content .tp-apply-btn {
+  width: 3.06rem;
+  height: 1.18rem;
+  position: relative;
+  z-index: 200;
+  top: 6.1rem;
+  left: 49.4%;
+  transform: translateX(-50%);
+}
 @keyframes move {
   0%,100%{
     transform: translate(.2rem,.2rem);

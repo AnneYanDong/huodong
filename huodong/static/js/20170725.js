@@ -15,6 +15,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var myDay = new Date().getDay();
     var app = null;
     var oUrl = null;
+    var purpose = [];
     var counter = 0;
     var run = {
         status: {
@@ -26,7 +27,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             type: null,
             pay: null
         },
-
         start: function () {
             var _this = this;
 
@@ -48,7 +48,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             }).build();
 
             app = ct.Tool.userAgent();
-            console.log(app);
 
             /*图片预加载*/
             ct.Tool.imgPreLoad({
@@ -73,7 +72,30 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 }),
                 success: function (d) {
                     if (d.success) {
-                        //这里判断用户有没有领券
+
+                    }
+                }
+            })
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: ct.Tool.url("/act/act170725/get_status"),
+                success: function (d) {
+                    if (d.success) {
+                        var d = d.ret;
+                        if(d.is_weChat || d.is_qq) {
+                            window.location.href = d.url;
+                        } else {
+                            if (!d.login) {
+                                if (Bridge) {
+                                    Bridge.action("login");
+                                }
+                            } else {
+                                if (d.type === 0) {
+                                    return;
+                                }
+                            }
+                        }
                     }
                 }
             })
@@ -81,8 +103,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
         init: function () {
             var _this = this;
+            console.log(_this);
             $(".wp").removeClass("hide");
-            _this.sendCustLabel();
             _this.checkWithDrawAmount();
             _this.withDraw();
 
@@ -124,40 +146,31 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 _this.checkAmount(amount);
                 timer = setTimeout(function(){
                     $(".atm-content .finger-box").show().addClass("hint");
-                },2000);
+                },500);
             });
         },
-        sendCustLabel: function() {
+        getCustLabel: function() {
             var _this = this;
             $(".atm-content ul").on("click","li.btn",function(){
                 var that = this;
-                var purpose = $(that).data("purpose");
-                console.log(purpose);
+                var btn = $(that).data('purpose');
+                purpose.push(btn);
                 $(this).addClass("down");
                 timer = setTimeout(function(){
                     $(that).removeClass("active").addClass("up");
                     $(".atm-content ul div").addClass("bgColor");
                 },300);
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    data: JSON.stringify({purpose: "purpose"}),
-                    url: "test.php",
-                    success: function(d){
-                        if (d.success) {
-                            console.log("purpose发送成功");
-                        } else {
-                            oP.show("出错了请重试");
-                        }
-                    }
-                });
             });
         },
         withDraw: function(){
             var _this = this;
+            _this.getCustLabel();
             $(".atm-content").on("click",".withdraw-btn",function(){
+                timer = setInterval(_this.showMoney,100);
+                console.log(purpose);
                 $(".atm-content .finger-box").fadeOut();
                 if(!$(".atm-total-input input").val()) {
+                    clearInterval(timer);
                     oP.show("请输入取款金额");
                     return;
                 }
@@ -165,13 +178,93 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
-                    data: JSON.stringify({amount: "amount"}),
+                    data: JSON.stringify({amount: "amount",purpose: "purpose"}),
                     url: "test.php",
                     success: function(d){
                         if (d.success) {
-                            console.log(amount);
-                            console.log(d.ret.amount);
-                            timer = setInterval(_this.showMoney,500);
+                            var d = d.ret;
+                            if(d.is_weChat || d.is_qq) {
+                                window.location.href = d.url;
+                            } else {
+                                if (!d.login) {
+                                    if (Bridge) {
+                                        Bridge.action("login");
+                                    }
+                                } else {
+                                    switch(d.type) {
+                                        case 1:
+                                            var timer2 = setTimeout(function(){
+                                                oM.show();
+                                                $(".tp-hide1").fadeIn();
+                                                clearInterval(timer);
+                                                $(".dynamic-money").fadeOut();
+                                                $(".content").on("click",".tp-hide1",function(){
+                                                    $(".content .tp-hide1").fadeOut();
+                                                    oM.hide();
+                                                })
+                                                $(".content").on("click",".tp-apply-btn",function(){
+                                                    window.location.href = d.url;
+                                                });
+                                            },1000);
+                                            break;
+                                        case 2:
+                                            var timer2 = setTimeout(function(){
+                                                oM.show();
+                                                $(".tp-hide2").fadeIn();
+                                                clearInterval(timer);
+                                                $(".dynamic-money").fadeOut();
+                                                $(".content").on("click",".tp-hide2",function(){
+                                                    $(".content .tp-hide1").fadeOut();
+                                                    oM.hide();
+                                                })
+                                                $(".content").on("click",".tp-apply-btn",function(){
+                                                    window.location.href = d.url;
+                                                });
+                                            },1000);
+                                            break;
+                                        case 3:
+                                            var timer2 = setTimeout(function(){
+                                                $(".dynamic-money").fadeOut();
+                                                oM.show();
+                                                $(".tp-hide3").fadeIn();
+                                                $(".content .tp-jk").fadeIn();
+                                                $(".content .tp-apply-btn").fadeIn();
+                                                clearInterval(timer);
+                                                $(".content").on("click",".tp-hide3",function(){
+                                                    $(".content .tp-hide3").fadeOut();
+                                                    $(".content .tp-jk").fadeOut();
+                                                    $(".content .tp-apply-btn").fadeOut();
+                                                    oM.hide();
+                                                })
+                                                $(".content").on("click",".tp-apply-btn",function(){
+                                                    window.location.href = d.url;
+                                                });
+                                            },1000);
+                                            break;
+                                        case 4:
+                                            var timer2 = setTimeout(function(){
+                                                oM.show();
+                                                $(".tp-hide4").fadeIn();
+                                                clearInterval(timer);
+                                                $(".dynamic-money").fadeOut();
+                                                $(".content").on("click",".tp-hide4",function(){
+                                                    $(".content .tp-hide1").fadeOut();
+                                                    oM.hide();
+                                                })
+                                                $(".content").on("click",".tp-apply-btn",function(){
+                                                    window.location.href = d.url;
+                                                });
+                                            },1000);
+                                            break;
+                                        case 5:
+                                            oP.show("暂不符合活动规则，去看看其他");
+                                            break;
+                                        case 6:
+                                            oP.show("提款机余额不足，去试试其他");
+                                            break;
+                                    }
+                                }
+                            }
                         } else {
                             oP.show("出错了请重试");
                         }
@@ -179,9 +272,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 });
             });
         },
-
-
-       openRule: function () {
+        openRule: function () {
             $(".wp-inner").on("click", ".rule-btn", function (event) {
                 oM.show();
 
@@ -192,7 +283,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 $(".rule").fadeIn();
             })
         },
-
         // 关闭规则
         closeRule: function () {
             $("body").on("click", ".btn-close", function () {
@@ -201,7 +291,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 })
             })
         },
-
         //分享按钮：
         share: function () {
             var u = navigator.userAgent;
@@ -233,7 +322,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             return this;
         },
     }
-    
     var ruleJson = {
         rule: [
             "每周六、日，通过活动页面完成申请或放款将获得特定奖励，同个业务奖励只能领取一次。",

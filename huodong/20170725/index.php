@@ -44,6 +44,25 @@
                     <img class="title2 hide" data-src="<?php echo $imgUrl; ?>title2.png" alt="title" />
                     <img class="title3" data-src="<?php echo $imgUrl; ?>title2_02.png" alt="title" />
                     <img class="gift2" data-src="<?php echo $imgUrl; ?>gift2.png" alt="gift2" />
+                    <div class="tp-hide1 hide">
+                        <div class="tp-apply-btn"></div>
+                        <img class="tp-jy" data-src="<?php echo $imgUrl; ?>tp_jy.png" alt="tp_jy" />
+                    </div>
+                    <div class="tp-hide2 hide">
+                        <div class="tp-apply-btn"></div>
+                        <img class="tp-jh" data-src="<?php echo $imgUrl; ?>tp_jh.png" alt="tp_jh" />
+                    </div>
+                    <div class="tp-hide3 hide">
+                        <div class="tp-apply-btn"></div>
+                        <img class="tp-jk" data-src="<?php echo $imgUrl; ?>tp_jk.png" alt="tp_jk" />
+                    </div>
+                    <div class="tp-hide4 hide">
+                        <div class="tp-apply-btn"></div>
+                        <img class="tp-ja" data-src="<?php echo $imgUrl; ?>tp_ja.png" alt="tp_ja" />
+                    </div>
+                    <!-- <img class="tp-jh hide" data-src="<?php echo $imgUrl; ?>tp_jh.png" alt="tp_jh" />
+                    <img class="tp-jk hide" data-src="<?php echo $imgUrl; ?>tp_jk.png" alt="tp_jk" />
+                    <img class="tp-ja hide" data-src="<?php echo $imgUrl; ?>tp_ja.png" alt="tp_ja" /> -->
                     <div class="atm-group">
                         <img class="atm" data-src="<?php echo $imgUrl; ?>atm.png" alt="atm" />
                         <img class="worm" data-src="<?php echo $imgUrl; ?>worm.gif" alt="worm" />
