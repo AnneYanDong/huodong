@@ -182,6 +182,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     // url: "test.php",
                     url: "/act/act170725/get_button",
                     success: function(d){
+                        console.log("get_button请求成功");
                         if (d.success) {
                             var d = d.ret;
                             if(d.is_weChat || d.is_qq) {
@@ -192,6 +193,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                         Bridge.action("login");
                                     }
                                 } else {
+                                    console.log("已登录");
                                     switch(d.type) {
                                         case 1:
                                             var timer1 = setTimeout(function(){
