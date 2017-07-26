@@ -4,9 +4,10 @@
         "url"=>"http://www.baidu.com",
         "login" => true,
         "isNew" => true,
-        "prize_num" => "1", //抽奖次数
-        "prize_name" => "seven", //7积分
-
+        "chance" => 2, //抽奖次数
+        "gift_name" => "7积分",
+        "angle" => "45deg",
+        "chance2" => 2 //剩余的机会
         ),
     "success"=>true,
   );

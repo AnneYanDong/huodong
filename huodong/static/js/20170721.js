@@ -100,15 +100,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
         raffle: function () {
             var _this = this;
-            console.log("raffle",_this);
             var timer = null;
             clearTimeout(timer);
-            $(".content").on("click",".btn2",function(){
-                if(_this.share()) {
-                    totalChance++;
-                    console.log("share",totalChance);
-                }
-            });
+            _this.shareToFriend();
             $('.wp-inner .content').on('click', '.turntable,.arrow', function () {
                 $.ajax({
                     type: "POST",
@@ -130,10 +124,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 } else {
                                     //判断用户的抽奖次数
                                     if (d.chance > 0) {
-                                        // $('.turntable').addClass('turning');
-                                        $('.turntable').animate({transform: "rotate(45deg)"},1000,function(){
+                                        $('.turntable').addClass('turning');
+                                        /*$('.turntable').animate({transform:"rotate(45deg)"},1000,function(){
                                             oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
-                                        })
+                                        })*/
+                                        var timer = setTimeout(function(){
+                                            $(".turntable").css("transform","rotate(45deg)");
+                                            oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
+                                        },3000);
                                     } else {
                                         // $('.turntable').removeClass('turning');
                                         oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
@@ -149,6 +147,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             })
         },
         shareToFriend: function(){
+            var _this = this;
             $('.wp-inner .content').on('click','.btn2',function(){
                 $.ajax({
                     type: "POST",
@@ -157,14 +156,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     // url: "/act/act160817/get_prize",
                     success: function (d) {
                         console.log(d);
-                        if (d.success) {
+                        /*if (d.success) {
                             var d = d.ret;
                             _this.share();
                             d.prize_num++;
                             return d.prize_num;
                         } else {
                             oP.show(d.msg || "出错了请重试");
-                        }
+                        }*/
                     }
                 })
             });
