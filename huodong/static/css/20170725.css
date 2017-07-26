@@ -84,6 +84,17 @@
   transform: translateX(-50%);
   left: 50%;
 }
+.content .text-title {
+  position: relative;
+  top: 2.3rem;
+  left: 26%;
+  font-size: .68rem;
+  color: transparent;
+  animation: changeColor 1.4s infinite;
+  -webkit-text-stroke: .01rem black;
+  -mz-text-stroke: .01rem black;
+  text-stroke: .01rem black;
+}
 .content .atm-group {
   position: absolute;
   top: 3.8rem;
@@ -349,6 +360,14 @@
   }
   50%{
     transform: translate(.2rem,.4rem);
+  }
+}
+@keyframes changeColor {
+  0%,10%,20%,30%,40%,50% {
+    color: #fff;
+  }
+  60%,70%,80%,90%,100% {
+    color: #fd567c;
   }
 }
 

@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee", "goDownload"], function ($, fastClick, LuckyCard, ct, Bridge, juicer, liMarquee,goDownload) {
+require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee"], function ($, fastClick, LuckyCard, ct, Bridge, juicer, liMarquee) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -79,7 +79,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: ct.Tool.url("/act/act170725/get_status"),
+                url: "/act/act170725/get_status",
                 success: function (d) {
                     if (d.success) {
                         var d = d.ret;
@@ -178,8 +178,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
-                    data: JSON.stringify({amount: "amount",purpose: "purpose"}),
-                    url: "test.php",
+                    data: JSON.stringify({money: "amount",purpose: "purpose"}),
+                    // url: "test.php",
+                    url: "/act/act170725/get_button",
                     success: function(d){
                         if (d.success) {
                             var d = d.ret;
@@ -193,13 +194,17 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 } else {
                                     switch(d.type) {
                                         case 1:
-                                            var timer2 = setTimeout(function(){
+                                            var timer1 = setTimeout(function(){
+                                                $(".dynamic-money img").addClass("hide");
                                                 oM.show();
                                                 $(".tp-hide1").fadeIn();
+                                                $(".content .tp-jy").fadeIn();
+                                                $(".content .tp-apply-btn").fadeIn();
                                                 clearInterval(timer);
-                                                $(".dynamic-money").fadeOut();
                                                 $(".content").on("click",".tp-hide1",function(){
                                                     $(".content .tp-hide1").fadeOut();
+                                                    $(".content .tp-jy").fadeOut();
+                                                    $(".content .tp-apply-btn").fadeOut();
                                                     oM.hide();
                                                 })
                                                 $(".content").on("click",".tp-apply-btn",function(){
@@ -209,12 +214,16 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                             break;
                                         case 2:
                                             var timer2 = setTimeout(function(){
+                                                $(".dynamic-money img").addClass("hide");
                                                 oM.show();
                                                 $(".tp-hide2").fadeIn();
+                                                $(".content .tp-jh").fadeIn();
+                                                $(".content .tp-apply-btn").fadeIn();
                                                 clearInterval(timer);
-                                                $(".dynamic-money").fadeOut();
                                                 $(".content").on("click",".tp-hide2",function(){
-                                                    $(".content .tp-hide1").fadeOut();
+                                                    $(".content .tp-hide2").fadeOut();
+                                                    $(".content .tp-jh").fadeOut();
+                                                    $(".content .tp-apply-btn").fadeOut();
                                                     oM.hide();
                                                 })
                                                 $(".content").on("click",".tp-apply-btn",function(){
@@ -223,8 +232,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                             },1000);
                                             break;
                                         case 3:
-                                            var timer2 = setTimeout(function(){
-                                                $(".dynamic-money").fadeOut();
+                                            var timer3 = setTimeout(function(){
+                                                $(".dynamic-money img").addClass("hide");
                                                 oM.show();
                                                 $(".tp-hide3").fadeIn();
                                                 $(".content .tp-jk").fadeIn();
@@ -242,13 +251,17 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                             },1000);
                                             break;
                                         case 4:
-                                            var timer2 = setTimeout(function(){
+                                            var timer4 = setTimeout(function(){
+                                                $(".dynamic-money img").addClass("hide");
                                                 oM.show();
                                                 $(".tp-hide4").fadeIn();
+                                                $(".content .tp-ja").fadeIn();
+                                                $(".content .tp-apply-btn").fadeIn();
                                                 clearInterval(timer);
-                                                $(".dynamic-money").fadeOut();
                                                 $(".content").on("click",".tp-hide4",function(){
-                                                    $(".content .tp-hide1").fadeOut();
+                                                    $(".content .tp-hide4").fadeOut();
+                                                    $(".content .tp-ja").fadeOut();
+                                                    $(".content .tp-apply-btn").fadeOut();
                                                     oM.hide();
                                                 })
                                                 $(".content").on("click",".tp-apply-btn",function(){
