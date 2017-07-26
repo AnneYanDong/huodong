@@ -17,6 +17,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var oUrl = null;
     var oType = "";
     var oMsg = "";
+    var totalChance = 0;
     var run = {
         start: function () {
             var _this = this;
@@ -67,6 +68,24 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     }
                 }
             })
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "test.php",
+                // url: "/act/act170721/get_status",
+                success: function (d) {
+                    if (d.success) {
+                        var d = d.ret;
+                        if (d.is_weChat || d.is_qq) {
+                            window.location.href = d.url;
+                        } else {
+                            if (d.chance <= 0) {
+                                return;
+                            }
+                        }
+                    }
+                }
+            })
         },
 
         init: function () {
@@ -81,38 +100,48 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
         raffle: function () {
             var _this = this;
+            console.log("raffle",_this);
             var timer = null;
             clearTimeout(timer);
+            $(".content").on("click",".btn2",function(){
+                if(_this.share()) {
+                    totalChance++;
+                    console.log("share",totalChance);
+                }
+            });
             $('.wp-inner .content').on('click', '.turntable,.arrow', function () {
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
                     url: "test.php",
-                    // url: "/act/act160817/get_prize",
+                    // url: "/act/act170721/get_prize",
                     success: function (d) {
                         console.log(d);
                         if (d.success) {
                             var d = d.ret;
-                            if (!d.login) {
-                                oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
-                                if (Bridge) {
-                                    Bridge.action("login");
-                                }
+                            if(d.is_qq || d.is_weChat) {
+                                window.location.href = d.url;
                             } else {
-                                //判断是新用户还是老用户
-                                if (!d.isNew) {
-                                    oP.show("亲爱滴老朋友，这里是新人专区哦");
+                                if (!d.login) {
+                                    oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
+                                    if (Bridge) {
+                                        Bridge.action("login");
+                                    }
                                 } else {
                                     //判断用户的抽奖次数
-                                    if (d.prize_num > 0) {
-                                        $('.turntable').addClass('turning');
-                                        d.prize_num--;
+                                    if (d.chance > 0) {
+                                        // $('.turntable').addClass('turning');
+                                        $('.turntable').animate({transform: "rotate(45deg)"},1000,function(){
+                                            oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
+                                        })
                                     } else {
-                                        $('.turntable').removeClass('turning');
+                                        // $('.turntable').removeClass('turning');
                                         oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
                                     }
                                 }
                             }
+                        } else {
+                            oP.show(d.msg || "哎呀，出错了呢");
                         }
                     }
                 })
