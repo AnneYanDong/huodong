@@ -17,6 +17,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var oUrl = null;
     var purpose = [];
     var counter = 0;
+    var timer = null;
+    clearInterval(timer);
     var run = {
         status: {
             login: false,
@@ -81,6 +83,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 dataType: "JSON",
                 url: "/act/act170725/get_status",
                 success: function (d) {
+                    console.log("进入页面的请求d->",d);
                     if (d.success) {
                         var d = d.ret;
                         if(d.is_weChat || d.is_qq) {
@@ -91,9 +94,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     Bridge.action("login");
                                 }
                             } else {
-                                if (d.type === 0) {
-                                    return;
-                                }
+                                console.log("进入页面的已登录状态");
+                                _this.getCustType(d,d.type);
                             }
                         }
                     }
@@ -106,10 +108,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             console.log(_this);
             $(".wp").removeClass("hide");
             _this.checkWithDrawAmount();
-            _this.withDraw();
-
-            var timer = null;
             clearInterval(timer);
+            _this.withDraw();
             _this.openRule();
             _this.closeRule();
             _this.share();
@@ -162,6 +162,86 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 },300);
             });
         },
+        getCustType: function(d,type) {
+            switch(type) {
+                case 1:
+                    var timer1 = setTimeout(function(){
+                        $(".dynamic-money img").addClass("hide");
+                        oM.show();
+                        $(".tp-hide1").fadeIn();
+                        $(".content .tp-jy").fadeIn();
+                        $(".content .tp-apply-btn").fadeIn();
+                        clearInterval(timer);
+                        $(".content").on("click",".tp-hide1",function(){
+                            $(".content .tp-hide1").fadeOut();
+                            $(".content .tp-jy").fadeOut();
+                            $(".content .tp-apply-btn").fadeOut();
+                            oM.hide();
+                        })
+                        $(".content").on("click",".tp-apply-btn",function(){
+                            window.location.href = d.url;
+                        });
+                    },500);
+                    break;
+                case 2:
+                    var timer2 = setTimeout(function(){
+                        $(".dynamic-money img").addClass("hide");
+                        oM.show();
+                        $(".tp-hide2").fadeIn();
+                        $(".content .tp-jh").fadeIn();
+                        $(".content .tp-apply-btn").fadeIn();
+                        clearInterval(timer);
+                        $(".content").on("click",".tp-hide2",function(){
+                            $(".content .tp-hide2").fadeOut();
+                            $(".content .tp-jh").fadeOut();
+                            $(".content .tp-apply-btn").fadeOut();
+                            oM.hide();
+                        })
+                        $(".content").on("click",".tp-apply-btn",function(){
+                            window.location.href = d.url;
+                        });
+                    },1000);
+                    break;
+                case 3:
+                    var timer3 = setTimeout(function(){
+                        $(".dynamic-money img").addClass("hide");
+                        oM.show();
+                        $(".tp-hide3").fadeIn();
+                        $(".content .tp-jk").fadeIn();
+                        $(".content .tp-apply-btn").fadeIn();
+                        clearInterval(timer);
+                        $(".content").on("click",".tp-hide3",function(){
+                            $(".content .tp-hide3").fadeOut();
+                            $(".content .tp-jk").fadeOut();
+                            $(".content .tp-apply-btn").fadeOut();
+                            oM.hide();
+                        })
+                        $(".content").on("click",".tp-apply-btn",function(){
+                            window.location.href = d.url;
+                        });
+                    },1000);
+                    break;
+                case 4:
+                    var timer4 = setTimeout(function(){
+                        $(".dynamic-money img").addClass("hide");
+                        oM.show();
+                        $(".tp-hide4").fadeIn();
+                        $(".content .tp-ja").fadeIn();
+                        $(".content .tp-apply-btn").fadeIn();
+                        clearInterval(timer);
+                        $(".content").on("click",".tp-hide4",function(){
+                            $(".content .tp-hide4").fadeOut();
+                            $(".content .tp-ja").fadeOut();
+                            $(".content .tp-apply-btn").fadeOut();
+                            oM.hide();
+                        })
+                        $(".content").on("click",".tp-apply-btn",function(){
+                            window.location.href = d.url;
+                        });
+                    },1000);
+                    break;
+            }
+        },
         withDraw: function(){
             var _this = this;
             _this.getCustLabel();
@@ -178,7 +258,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
-                    data: JSON.stringify({money: "amount",purpose: "purpose"}),
+                    data: JSON.stringify({"money": amount,"purpose": purpose}),
                     // url: "test.php",
                     url: "/act/act170725/get_button",
                     success: function(d){
@@ -196,89 +276,15 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 } else {
                                     console.log("已登录");
                                     switch(d.type) {
-                                        case 1:
-                                            var timer1 = setTimeout(function(){
-                                                $(".dynamic-money img").addClass("hide");
-                                                oM.show();
-                                                $(".tp-hide1").fadeIn();
-                                                $(".content .tp-jy").fadeIn();
-                                                $(".content .tp-apply-btn").fadeIn();
-                                                clearInterval(timer);
-                                                $(".content").on("click",".tp-hide1",function(){
-                                                    $(".content .tp-hide1").fadeOut();
-                                                    $(".content .tp-jy").fadeOut();
-                                                    $(".content .tp-apply-btn").fadeOut();
-                                                    oM.hide();
-                                                })
-                                                $(".content").on("click",".tp-apply-btn",function(){
-                                                    window.location.href = d.url;
-                                                });
-                                            },1000);
-                                            break;
-                                        case 2:
-                                            var timer2 = setTimeout(function(){
-                                                $(".dynamic-money img").addClass("hide");
-                                                oM.show();
-                                                $(".tp-hide2").fadeIn();
-                                                $(".content .tp-jh").fadeIn();
-                                                $(".content .tp-apply-btn").fadeIn();
-                                                clearInterval(timer);
-                                                $(".content").on("click",".tp-hide2",function(){
-                                                    $(".content .tp-hide2").fadeOut();
-                                                    $(".content .tp-jh").fadeOut();
-                                                    $(".content .tp-apply-btn").fadeOut();
-                                                    oM.hide();
-                                                })
-                                                $(".content").on("click",".tp-apply-btn",function(){
-                                                    window.location.href = d.url;
-                                                });
-                                            },1000);
-                                            break;
-                                        case 3:
-                                            var timer3 = setTimeout(function(){
-                                                $(".dynamic-money img").addClass("hide");
-                                                oM.show();
-                                                $(".tp-hide3").fadeIn();
-                                                $(".content .tp-jk").fadeIn();
-                                                $(".content .tp-apply-btn").fadeIn();
-                                                clearInterval(timer);
-                                                $(".content").on("click",".tp-hide3",function(){
-                                                    $(".content .tp-hide3").fadeOut();
-                                                    $(".content .tp-jk").fadeOut();
-                                                    $(".content .tp-apply-btn").fadeOut();
-                                                    oM.hide();
-                                                })
-                                                $(".content").on("click",".tp-apply-btn",function(){
-                                                    window.location.href = d.url;
-                                                });
-                                            },1000);
-                                            break;
-                                        case 4:
-                                            var timer4 = setTimeout(function(){
-                                                $(".dynamic-money img").addClass("hide");
-                                                oM.show();
-                                                $(".tp-hide4").fadeIn();
-                                                $(".content .tp-ja").fadeIn();
-                                                $(".content .tp-apply-btn").fadeIn();
-                                                clearInterval(timer);
-                                                $(".content").on("click",".tp-hide4",function(){
-                                                    $(".content .tp-hide4").fadeOut();
-                                                    $(".content .tp-ja").fadeOut();
-                                                    $(".content .tp-apply-btn").fadeOut();
-                                                    oM.hide();
-                                                })
-                                                $(".content").on("click",".tp-apply-btn",function(){
-                                                    window.location.href = d.url;
-                                                });
-                                            },1000);
-                                            break;
+                                        case 0:
                                         case 5:
+                                        case 6:
+                                            clearInterval(timer);
+                                            $(".dynamic-money img").addClass("hide");
                                             oP.show("暂不符合活动规则，去看看其他");
                                             break;
-                                        case 6:
-                                            oP.show("提款机余额不足，去试试其他");
-                                            break;
                                     }
+                                    _this.getCustType(d,d.type);
                                 }
                             }
                         } else {
