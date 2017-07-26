@@ -166,12 +166,12 @@
     max-height: 6rem;
     overflow-y: scroll;
 }
-.rule ul li .add-style {
+.rule ul li .add-style-1 {
     font-weight: 600;
     color: #010101;
 }
-.rule ul li .add-style-2 {
-    margin-left: 2rem;
+.rule ul .add-style-2 {
+    padding-left: 1.2rem;
 }
 .rule ul li {
     position: relative;
@@ -195,4 +195,59 @@
     height: 1rem;
     top: -0.5rem;
     right: 0.1rem;
+}
+.list-wrap .number {
+    position: absolute;
+    width: 100%;
+    height: 1.93rem;
+}
+.list-wrap .number .phone {
+    font-size: 0.28rem;
+    position: absolute;
+    left: 4.86rem;
+    z-index: 4;
+}
+.list-wrap .number .invest-money {
+    font-size: 0.28rem;
+    position: absolute;
+    left: 4.86rem;
+    z-index: 4;
+}
+.list-wrap .number span:nth-child(3) {
+    top: 1.15rem;
+}
+.list-wrap .number span:nth-child(2) {
+    top: 0.7rem;
+}
+.list-wrap .tip {
+    width: 100%;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #8a8a8a;
+    bottom: 0;
+    position: absolute;
+    z-index: 3;
+    height: 0.4rem;
+    line-height: 0.4rem;
+}
+.num-1 {
+    top: 2.7rem;
+}
+.num-2 {
+    top: 4.63rem;
+}
+.num-3 {
+    top: 6.56rem;
+}
+.num-4 {
+    top: 8.49rem;
+}
+.num-5 {
+    top: 10.42rem;
+}
+.number img {
+    width: 6.87rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -3.435rem;
 }
