@@ -98,6 +98,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 _this.getCustType(d,d.type);
                             }
                         }
+                    } else {
+                        oP.show(d.msg || "活动尚未开始");
                     }
                 }
             })
@@ -155,28 +157,39 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 var that = this;
                 var btn = $(that).data('purpose');
                 purpose.push(btn);
-                $(this).addClass("down");
+                console.log("purpose:",purpose);
+                $(this).toggleClass("down");
                 timer = setTimeout(function(){
-                    $(that).removeClass("active").addClass("up");
-                    $(".atm-content ul div").addClass("bgColor");
+                    $(that).toggleClass("up");
+                    $(".atm-content ul div").toggleClass("bgColor");
                 },300);
             });
         },
+        backToOrigin: function() {
+            //清空数据,恢复按钮样式
+            $(".atm-total-input input").val("");
+            purpose.length = 0;
+            $(".atm-usage ul li.btn").removeClass("down").removeClass("up").addClass(".btn");
+            $(".atm-usage ul .div").removeClass("bgColor").addClass(".div");
+        },
         getCustType: function(d,type) {
+            var _this = this;
             switch(type) {
                 case 1:
                     var timer1 = setTimeout(function(){
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide1").fadeIn();
-                        $(".content .tp-jy").fadeIn();
+                        $(".content .tp-jk").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
                         clearInterval(timer);
                         $(".content").on("click",".tp-hide1",function(){
                             $(".content .tp-hide1").fadeOut();
-                            $(".content .tp-jy").fadeOut();
+                            $(".content .tp-jk").fadeOut();
                             $(".content .tp-apply-btn").fadeOut();
                             oM.hide();
+                            //清空数据,恢复按钮样式
+                            _this.backToOrigin();
                         })
                         $(".content").on("click",".tp-apply-btn",function(){
                             window.location.href = d.url;
@@ -188,14 +201,16 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide2").fadeIn();
-                        $(".content .tp-jh").fadeIn();
+                        $(".content .tp-jy").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
                         clearInterval(timer);
                         $(".content").on("click",".tp-hide2",function(){
                             $(".content .tp-hide2").fadeOut();
-                            $(".content .tp-jh").fadeOut();
+                            $(".content .tp-jy").fadeOut();
                             $(".content .tp-apply-btn").fadeOut();
                             oM.hide();
+                            //清空数据,恢复按钮样式
+                            _this.backToOrigin();
                         })
                         $(".content").on("click",".tp-apply-btn",function(){
                             window.location.href = d.url;
@@ -207,14 +222,16 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide3").fadeIn();
-                        $(".content .tp-jk").fadeIn();
+                        $(".content .tp-ja").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
                         clearInterval(timer);
                         $(".content").on("click",".tp-hide3",function(){
                             $(".content .tp-hide3").fadeOut();
-                            $(".content .tp-jk").fadeOut();
+                            $(".content .tp-ja").fadeOut();
                             $(".content .tp-apply-btn").fadeOut();
                             oM.hide();
+                            //清空数据,恢复按钮样式
+                            _this.backToOrigin();
                         })
                         $(".content").on("click",".tp-apply-btn",function(){
                             window.location.href = d.url;
@@ -226,14 +243,16 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide4").fadeIn();
-                        $(".content .tp-ja").fadeIn();
+                        $(".content .tp-jh").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
                         clearInterval(timer);
                         $(".content").on("click",".tp-hide4",function(){
                             $(".content .tp-hide4").fadeOut();
-                            $(".content .tp-ja").fadeOut();
+                            $(".content .tp-jh").fadeOut();
                             $(".content .tp-apply-btn").fadeOut();
                             oM.hide();
+                            //清空数据,恢复按钮样式
+                            _this.backToOrigin();
                         })
                         $(".content").on("click",".tp-apply-btn",function(){
                             window.location.href = d.url;
@@ -246,7 +265,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             _this.getCustLabel();
             $(".atm-content").on("click",".withdraw-btn",function(){
-                timer = setInterval(_this.showMoney,100);
                 console.log(purpose);
                 $(".atm-content .finger-box").fadeOut();
                 if(!$(".atm-total-input input").val()) {
@@ -265,6 +283,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         console.log("请求数据->",d);
                         if (d.success) {
                             console.log("get_button请求成功");
+                            timer = setInterval(_this.showMoney,100);
                             var d = d.ret;
                             if(d.is_weChat || d.is_qq) {
                                 window.location.href = d.url;
@@ -278,19 +297,25 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     switch(d.type) {
                                         case 0:
                                         case 5:
-                                        case 6:
                                             clearInterval(timer);
                                             $(".dynamic-money img").addClass("hide");
                                             oP.show("暂不符合活动规则，去看看其他");
+                                            window.location.href = d.url;
+                                            break;
+                                        case 6:
+                                            clearInterval(timer);
+                                            $(".dynamic-money img").addClass("hide");
+                                            oP.show("提款机余额不足，去试试其他");
+                                            window.location.href = d.url;
                                             break;
                                     }
                                     _this.getCustType(d,d.type);
                                 }
                             }
                         } else {
-                            $(".dynamic-money img").fadeOut();
+                            oP.show(d.msg || "出错了请重试");
+                            _this.backToOrigin();
                             console.log("get_button请求,d.success == false");
-                            oP.show("出错了请重试");
                         }
                     }
                 });
