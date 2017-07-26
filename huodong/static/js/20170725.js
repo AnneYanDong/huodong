@@ -182,8 +182,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     // url: "test.php",
                     url: "/act/act170725/get_button",
                     success: function(d){
-                        console.log("get_button请求成功");
                         if (d.success) {
+                            console.log("get_button请求成功");
                             var d = d.ret;
                             if(d.is_weChat || d.is_qq) {
                                 window.location.href = d.url;
@@ -281,6 +281,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 }
                             }
                         } else {
+                            $(".dynamic-money img").addClass("hide");
+                            console.log("get_button请求,d.success == false");
                             oP.show("出错了请重试");
                         }
                     }
