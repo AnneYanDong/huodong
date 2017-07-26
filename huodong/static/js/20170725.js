@@ -155,14 +155,18 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             $(".atm-content ul").on("click","li.btn",function(){
                 var that = this;
-                var btn = $(that).data('purpose');
-                purpose.push(btn);
-                console.log("purpose:",purpose);
                 $(this).toggleClass("down");
                 timer = setTimeout(function(){
                     $(that).toggleClass("up");
                     $(".atm-content ul div").toggleClass("bgColor");
                 },300);
+                var btn = $(that).data('purpose');
+                if ($(that).is(".down")) {
+                    purpose.push(btn);
+                } else {
+                    purpose.pop($(that).data('purpose'));
+                }
+                console.log("purpose:",purpose);
             });
         },
         backToOrigin: function() {
@@ -300,13 +304,17 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                             clearInterval(timer);
                                             $(".dynamic-money img").addClass("hide");
                                             oP.show("暂不符合活动规则，去看看其他");
-                                            window.location.href = d.url;
+                                            var timer = setTimeout(function(){
+                                                window.location.href = d.url;
+                                            },1500);
                                             break;
                                         case 6:
                                             clearInterval(timer);
                                             $(".dynamic-money img").addClass("hide");
                                             oP.show("提款机余额不足，去试试其他");
-                                            window.location.href = d.url;
+                                            var timer = setTimeout(function(){
+                                                window.location.href = d.url;
+                                            },1500);
                                             break;
                                     }
                                     _this.getCustType(d,d.type);
