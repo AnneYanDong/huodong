@@ -41,9 +41,14 @@
             <img class="add-interest" data-src="<?php echo $imgUrl?>interest.png">
             <div class="list-wrap">
                 <img class="list-bg" data-src="<?php echo $imgUrl?>list_bg.png">
+                <div class="number num-1"><img data-src="<?php echo $imgUrl?>num_1.png"><span class="phone">1565555555</span><span class="invest-money">10000.00</span></div>
+                <div class="number num-2"><img data-src="<?php echo $imgUrl?>num_2.png"><span class="phone">1565555555</span><span class="invest-money">10000.00</span></div>
+                <div class="number num-3"><img data-src="<?php echo $imgUrl?>num_3.png"><span class="phone">1565555555</span><span class="invest-money">10000.00</span></div>
+                <div class="number num-4"><img data-src="<?php echo $imgUrl?>num_4.png"><span class="phone">1565555555</span><span class="invest-money">10000.00</span></div>
+                <div class="number num-5"><img data-src="<?php echo $imgUrl?>num_5.png"><span class="phone">1565555555</span><span class="invest-money">10000.00</span></div>
+                <div class="tip">*排名每小时更新一次*</div>
             </div>
-            <div class="total-money">您当前累计投资金额：<span class="money-red">2000</span>元</div>
-            
+            <div class="total-money">您当前累计投资金额：<span class="money-red">2000</span>元</div>      
             <img class="invest-btn" data-src="<?php echo $imgUrl?>go_btn.png">
         </div>
     </div>
@@ -52,9 +57,9 @@
             <img data-src="<?php echo $imgUrl?>rule_img.png">
             <div class="btn-close"></div>
             <ul>
-                <li><span class="add-style">活动时间：</span>8月1日00:00——8月10日 23:59</li>
-                <li><span>活动对象：</span>所有理财用户</li>
-                <li><span>返现说明：</span></li>
+                <li class="add-style-2"><span class="add-style-1">活动时间：</span>8月1日00:00——8月10日 23:59</li>
+                <li class="add-style-2"><span class="add-style-1">活动对象：</span>所有理财用户</li>
+                <li class="add-style-2"><span class="add-style-1">返现说明：</span>&nbsp;</li>
                 <li><span>1.</span>在活动期间内累计投资金额排名前5的用户，可额外获得返现奖励（投资金额一样，按照时间的先后顺序进行排名）</li>
                 <li><span>2.</span>榜单上的明细和累积投资金额将每小时更新一次，最终结果以8月10号23:59分截止时间为准</li>
                 <li><span>3.</span>奖励发放：活动结束后7个工作日内发放到您的理财账户中，会有电话或短信通知您</li>
