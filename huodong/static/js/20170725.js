@@ -271,11 +271,11 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $(".atm-content").on("click",".withdraw-btn",function(){
                 console.log(purpose);
                 $(".atm-content .finger-box").fadeOut();
-                if(!$(".atm-total-input input").val()) {
+                /*if(!$(".atm-total-input input").val()) {
                     clearInterval(timer);
                     oP.show("请输入取款金额");
                     return;
-                }
+                }*/
                 var amount = $(".atm-total-input input").val();
                 $.ajax({
                     type: "POST",
