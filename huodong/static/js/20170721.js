@@ -122,18 +122,19 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                         Bridge.action("login");
                                     }
                                 } else {
+                                    console.log("机会次数",d.chance);
                                     //判断用户的抽奖次数
                                     if (d.chance > 0) {
                                         $('.turntable').addClass('turning');
-                                        /*$('.turntable').animate({transform:"rotate(45deg)"},1000,function(){
-                                            oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
-                                        })*/
-                                        var timer = setTimeout(function(){
-                                            $(".turntable").css("transform","rotate(45deg)");
-                                            oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
-                                        },3000);
+                                        timer = setTimeout(function(){
+                                            console.log("angle->",d.angle);
+                                            $(".turntable").css("transform","rotate("+ d.angle + ")");
+                                            timer = setTimeout(function(){
+                                                oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
+                                                $('.turntable').removeClass('turning');
+                                            },500);
+                                        },2000);
                                     } else {
-                                        // $('.turntable').removeClass('turning');
                                         oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
                                     }
                                 }
