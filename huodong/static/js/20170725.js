@@ -38,9 +38,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             /*设置HTML的font-size*/
             ct.Tool.setFont();
             ct.Tool.handleBottomStatusBar();
-            window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
-            window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
-            // window.onresize = ct.Tool.debounce(ct.Tool.setFont)
+            // window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
+            // window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
+            window.onresize = ct.Tool.debounce(ct.Tool.setFont)
 
             /*整体预加载动画*/
             var oPreLoading = Object.create(ct.PreLodingUi);
@@ -392,7 +392,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             "title": "抢个红包过周末",
                             'desc': "利息5折、现金、实物...",
                             "thumb": "https://r.51gjj.com/act/release/img/20170725_weChat_share.png",
-                            "link": "http://" + host + "/act/home/huodong/20170725/"
+                            "link": "http://" + host + "/act/home/huodong/20170725/index.php"
                         });
                     }
                 })
