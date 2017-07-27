@@ -79,21 +79,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
             // oP.show("出错请重试");
             console.log("初始化成功！");
 
-            $.ajax({
-                type: "POST",
-                dataType: "JSON",
-                url: ct.Tool.url("/app/request/activity"),
-                data: JSON.stringify({
-                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "进入页面" + projectName
-                }),
-                success: function (d) {
-                    if (d.success == true) {
-
-                    }
-                }
-            });
-
             _this.pushMsg();
             //点击规则按钮
             _this.openRule();
