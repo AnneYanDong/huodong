@@ -42,7 +42,7 @@
   height: .34rem;
   position: absolute;
   z-index: 2;
-  top: 12.1rem;
+  top: 11.6rem;
   left: 1.12rem;
 }
 .wp-inner .light {
@@ -141,7 +141,7 @@
 }
 .atm-group .atm-content {
   width: 5.98rem;
-  height: 5.39rem;
+  height: 5.2rem;
   background: #4999f3;
   border-radius: .5rem;
   position: absolute;
@@ -156,7 +156,7 @@
   position: absolute;
   z-index: 4;
   border-radius: .2rem;
-  top: 7rem;
+  top: 6.7rem;
   left: 2rem;
 }
 .atm-content .atm-total-title span{
@@ -173,11 +173,14 @@
   color: #ea5b87;
   font-size: .61rem;
   position: absolute;
-  top: .93rem;
+  top: 1rem;
   right: 1rem;
   font-weight: bold;
 }
 .atm-content .atm-total-input input{
+  border-radius: .5rem;
+  border: none;
+  box-shadow: 0 0 0 1px #fff;
   width: 4.88rem;
   height: .8rem;
   line-height: .8rem;
@@ -188,6 +191,7 @@
   left: 50%;
   top: .83rem;
   color: #ea5b87;
+  outline: none;
 }
 input[type="tel"]::-webkit-input-placeholder{color:#eee;opacity:1;}/* WebKit browsers */
 input[type="tel"]:-moz-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox 4 to 18 */
@@ -226,7 +230,6 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
   height: 1.2rem;
   position: absolute;
   top: 2.2rem;
-  /* left: 6%; */
 }
 .atm-usage ul li {
   display: inline-block;
@@ -244,10 +247,7 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
 }
 .atm-usage ul .bgColor {
   background: #efd940;
-} 
-/* .atm-usage ul li.label-btn {
-  animation: btnState 500ms 1;
-} */
+}
 .atm-usage ul .div {
   display: inline-block;
   width: 1.1rem;
@@ -257,7 +257,6 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
   box-shadow: 0 0 0 0.05rem black;
   position: absolute;
   top: .64rem;
-  /* z-index: -1; */
 }
 .atm-usage ul .div1 {
   left: 5%;
@@ -286,6 +285,7 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
   top: 3.8rem;
   box-shadow: 0 0.14rem 0 0 #da5276;
   border: none;
+  outline: none;
 }
 .atm-content .shadow-box {
   width: 4.278rem;
@@ -387,34 +387,4 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
     color: #fd567c;
   }
 }
-/* .atm-usage ul li.down {
-  position: relative;
-  top: 2px;
-  box-shadow: 0 0.05rem 0 0.1rem black;
-}
-.atm-usage ul li.up {
-  position: relative;
-  top: -1px;
-  color: red;
-  box-shadow: 0 0.01rem 0 0.04rem black;
-}
-.atm-usage ul .bgColor {
-  background: #efd940;
-} */
-/* @keyframes btnState {
-  0%,20%,40% {
-    position: relative;
-    top: 2px;
-    box-shadow: 0 0.05rem 0 0.1rem black;
-  }
-  50%,60%,70% {
-    position: relative;
-    top: -1px;
-    color: red;
-    box-shadow: 0 0.01rem 0 0.04rem black;
-  }
-  80%,90%,100% {
-    background: #efd940;
-  }
-} */
 
