@@ -291,7 +291,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             "title": "史无前例",
                             'desc': "广发鑫秒贷放肆八折",
                             "thumb": "https://r.51gjj.com/act/release/img/20170608_wxshare.png",
-                            "link": "http://" + host + "/act/home/huodong/20170608/"
+                            "link": "https://" + host + "/act/home/huodong/20170608/"
                         });
                     }
                 })

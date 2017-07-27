@@ -34,6 +34,7 @@
     <div class="wp-inner">
         <img data-src="<?php echo $imgUrl?>bg_pattern_top.png">
         <img class="pattern-bottom" data-src="<?php echo $imgUrl?>bg_pattern_bottom.png">
+        <div class="total-money">您当前累计投资金额：<span class="money-red">2000</span>元</div>      
         <div class="content">
             <img class="rule-btn" data-src="<?php echo $imgUrl?>rule_btn.png">
             <img class="main-title" data-src="<?php echo $imgUrl?>main_title.png">
@@ -48,7 +49,6 @@
                 <div class="number num-5"><img data-src="<?php echo $imgUrl?>num_5.png"><span class="phone">1565555555</span><span class="invest-money">10000.00</span></div>
                 <div class="tip">*排名每小时更新一次*</div>
             </div>
-            <div class="total-money">您当前累计投资金额：<span class="money-red">2000</span>元</div>      
             <img class="invest-btn" data-src="<?php echo $imgUrl?>go_btn.png">
         </div>
     </div>

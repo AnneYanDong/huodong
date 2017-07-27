@@ -12,7 +12,7 @@
     position: relative;
     background-image : radial-gradient(#e7c024 20%, transparent 0),
     radial-gradient(#e7c024 20%, transparent 0);
-    background-size: 0.1rem 0.1rem;
+    background-size: 10px 10px;
     height: 25.2rem;
 }
 
