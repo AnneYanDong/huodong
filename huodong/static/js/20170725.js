@@ -109,6 +109,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             console.log(_this);
             $(".wp").removeClass("hide");
+            /*timer = setInterval(_this.changeText,1400);*/
             _this.checkWithDrawAmount();
             clearInterval(timer);
             _this.withDraw();
@@ -130,6 +131,16 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             }
             counter++;
         },
+      /*  changeText: function() {
+            if ($(".title3").is("hide") && !$(".title2").is("hide")) {
+                $(".title3").addClass("hide");
+                $(".title2").removeClass("hide");
+            }
+            if (!$(".title3").is("hide") && $(".title2").is("hide")) {
+                $(".title3").removeClass("hide");
+                $(".title2").addClass("hide");
+            }
+        },*/
         checkAmount: function (withdrawal) {
             var withdrawal = withdrawal;
             var _this = this;
@@ -146,7 +157,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $(".atm-total-input input").keyup(function(){
                 var amount = Number($(this).val());
                 _this.checkAmount(amount);
-                timer = setTimeout(function(){
+                setTimeout(function(){
                     $(".atm-content .finger-box").show().addClass("hint");
                 },500);
             });
@@ -156,7 +167,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $(".atm-content ul").on("click","li.btn",function(){
                 var that = this;
                 $(this).toggleClass("down");
-                timer = setTimeout(function(){
+                setTimeout(function(){
                     $(that).toggleClass("up");
                     $(".atm-content ul div").toggleClass("bgColor");
                 },300);
@@ -170,23 +181,28 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             });
         },
         backToOrigin: function() {
+            var _this = this;
             //清空数据,恢复按钮样式
             $(".atm-total-input input").val("");
             purpose.length = 0;
             $(".atm-usage ul li.btn").removeClass("down").removeClass("up").addClass(".btn");
             $(".atm-usage ul .div").removeClass("bgColor").addClass(".div");
+            console.log(timer);
+            clearInterval(timer);
+            $(".dynamic-money img").addClass("hide");
         },
         getCustType: function(d,type) {
             var _this = this;
+            console.log("判断type之前删除的timer",timer);
             switch(type) {
                 case 1:
-                    var timer1 = setTimeout(function(){
+                    setTimeout(function(){
+                        clearInterval(timer);
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide1").fadeIn();
                         $(".content .tp-jk").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
-                        clearInterval(timer);
                         $(".content").on("click",".tp-hide1",function(){
                             $(".content .tp-hide1").fadeOut();
                             $(".content .tp-jk").fadeOut();
@@ -198,16 +214,16 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         $(".content").on("click",".tp-apply-btn",function(){
                             window.location.href = d.url;
                         });
-                    },500);
+                    },1000);
                     break;
                 case 2:
-                    var timer2 = setTimeout(function(){
+                    setTimeout(function(){
+                        clearInterval(timer);
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide2").fadeIn();
                         $(".content .tp-jy").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
-                        clearInterval(timer);
                         $(".content").on("click",".tp-hide2",function(){
                             $(".content .tp-hide2").fadeOut();
                             $(".content .tp-jy").fadeOut();
@@ -222,13 +238,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     },1000);
                     break;
                 case 3:
-                    var timer3 = setTimeout(function(){
+                    setTimeout(function(){
+                        clearInterval(timer);
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide3").fadeIn();
                         $(".content .tp-ja").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
-                        clearInterval(timer);
+                        $(".dynamic-money img").addClass("hide");
                         $(".content").on("click",".tp-hide3",function(){
                             $(".content .tp-hide3").fadeOut();
                             $(".content .tp-ja").fadeOut();
@@ -243,13 +260,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     },1000);
                     break;
                 case 4:
-                    var timer4 = setTimeout(function(){
+                    setTimeout(function(){
+                        clearInterval(timer);
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide4").fadeIn();
                         $(".content .tp-jh").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
-                        clearInterval(timer);
+                        $(".dynamic-money img").addClass("hide");
                         $(".content").on("click",".tp-hide4",function(){
                             $(".content .tp-hide4").fadeOut();
                             $(".content .tp-jh").fadeOut();
@@ -271,11 +289,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $(".atm-content").on("click",".withdraw-btn",function(){
                 console.log(purpose);
                 $(".atm-content .finger-box").fadeOut();
-                /*if(!$(".atm-total-input input").val()) {
-                    clearInterval(timer);
-                    oP.show("请输入取款金额");
-                    return;
-                }*/
                 var amount = $(".atm-total-input input").val();
                 $.ajax({
                     type: "POST",
@@ -286,8 +299,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     success: function(d){
                         console.log("请求数据->",d);
                         if (d.success) {
-                            console.log("get_button请求成功");
-                            timer = setInterval(_this.showMoney,100);
                             var d = d.ret;
                             if(d.is_weChat || d.is_qq) {
                                 window.location.href = d.url;
@@ -298,32 +309,43 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     }
                                 } else {
                                     console.log("已登录");
-                                    switch(d.type) {
-                                        case 0:
-                                        case 5:
-                                            clearInterval(timer);
-                                            $(".dynamic-money img").addClass("hide");
-                                            oP.show("暂不符合活动规则，去看看其他");
-                                            var timer = setTimeout(function(){
-                                                window.location.href = d.url;
-                                            },1500);
-                                            break;
-                                        case 6:
-                                            clearInterval(timer);
-                                            $(".dynamic-money img").addClass("hide");
-                                            oP.show("提款机余额不足，去试试其他");
-                                            var timer = setTimeout(function(){
-                                                window.location.href = d.url;
-                                            },1500);
-                                            break;
-                                    }
-                                    _this.getCustType(d,d.type);
+                                    // if(!$(".atm-total-input input").val()) {
+                                    //     clearInterval(timer);
+                                    //     $(".dynamic-money img").addClass("hide");
+                                    //     oP.show("提款机余额不足，去试试其他");
+                                    //     var timer = setTimeout(function(){
+                                    //                 window.location.href = d.url;
+                                    //     },1500);
+                                        // _this.getCustType();
+                                    // } else {
+                                        timer = setInterval(_this.showMoney,100);
+                                        switch(d.type) {
+                                            case 0:
+                                            case 5:
+                                                clearInterval(timer);
+                                                $(".dynamic-money img").addClass("hide");
+                                                oP.show("暂不符合活动规则，去看看其他");
+                                                setTimeout(function(){
+                                                    window.location.href = d.url;
+                                                },1500);
+                                                break;
+                                            case 6:
+                                                clearInterval(timer);
+                                                $(".dynamic-money img").addClass("hide");
+                                                oP.show("提款机余额不足，去试试其他");
+                                                setTimeout(function(){
+                                                    window.location.href = d.url;
+                                                },1500);
+                                                break;
+                                        }
+                                        _this.getCustType(d,d.type);
+                                    // }
                                 }
                             }
                         } else {
                             oP.show(d.msg || "出错了请重试");
                             _this.backToOrigin();
-                            console.log("get_button请求,d.success == false");
+                            console.log("get_button请求失败,d.success == false");
                         }
                     }
                 });

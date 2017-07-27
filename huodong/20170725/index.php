@@ -43,7 +43,7 @@
                     <img class="title1" data-src="<?php echo $imgUrl; ?>title1.png" alt="title" />
                     <!-- <img class="title2 hide" data-src="<?php echo $imgUrl; ?>title2.png" alt="title" />
                     <img class="title3" data-src="<?php echo $imgUrl; ?>title2_02.png" alt="title" /> -->
-                    <h2 class="text-title">24小时无休</h2>
+                    <!-- <h2 class="text-title">24小时无休</h2> -->
                     <img class="gift2" data-src="<?php echo $imgUrl; ?>gift2.png" alt="gift2" />
                     <div class="tp-hide1 hide">
                         <div class="tp-apply-btn" bp="弹屏按钮" title="弹屏按钮"></div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="atm-group">
                         <img class="atm" data-src="<?php echo $imgUrl; ?>atm.png" alt="atm" />
-                        <img class="worm" data-src="<?php echo $imgUrl; ?>worm.gif" alt="worm" />
+                        <img class="worm" data-src="<?php echo $imgUrl; ?>worm2.gif" alt="worm" />
                         <img class="star1" data-src="<?php echo $imgUrl; ?>star.png" alt="star" />
                         <img class="star2" data-src="<?php echo $imgUrl; ?>star.png" alt="star" />
                         <img class="gold-group" data-src="<?php echo $imgUrl; ?>gold.png" alt="gold-group" />
