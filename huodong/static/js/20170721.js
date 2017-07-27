@@ -71,16 +71,23 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "test.php",
-                // url: "/act/act170721/get_status",
+                // url: "test.php",
+                url: "/act/act170721/get_status",
                 success: function (d) {
                     if (d.success) {
                         var d = d.ret;
                         if (d.is_weChat || d.is_qq) {
                             window.location.href = d.url;
                         } else {
-                            if (d.chance <= 0) {
-                                return;
+                            if (!d.login) {
+                                oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
+                                if (Bridge) {
+                                    Bridge.action("login");
+                                }
+                            } else {
+                                if (d.chance <= 0) {
+                                    oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
+                                }
                             }
                         }
                     }
@@ -94,7 +101,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
             _this.raffle();
             _this.shareToFriend();
-            _this.share();
             console.log("送积分活动！");
         },
 
@@ -107,8 +113,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
-                    url: "test.php",
-                    // url: "/act/act170721/get_prize",
+                    // url: "test.php",
+                    url: "/act/act170721/get_prize",
                     success: function (d) {
                         console.log(d);
                         if (d.success) {
@@ -128,7 +134,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                         $('.turntable').addClass('turning');
                                         timer = setTimeout(function(){
                                             console.log("angle->",d.angle);
-                                            $(".turntable").css("transform","rotate("+ d.angle + ")");
+                                            $(".turntable").css("transform","rotate("+ d.angle + "deg)");
                                             timer = setTimeout(function(){
                                                 oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
                                                 $('.turntable').removeClass('turning');
@@ -150,21 +156,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         shareToFriend: function(){
             var _this = this;
             $('.wp-inner .content').on('click','.btn2',function(){
+                _this.share();
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
-                    url: "test.php",
-                    // url: "/act/act160817/get_prize",
+                    // url: "test.php",
+                    url: "/act/act170721/get_prize",
                     success: function (d) {
                         console.log(d);
-                        /*if (d.success) {
-                            var d = d.ret;
-                            _this.share();
-                            d.prize_num++;
-                            return d.prize_num;
-                        } else {
-                            oP.show(d.msg || "出错了请重试");
-                        }*/
                     }
                 })
             });

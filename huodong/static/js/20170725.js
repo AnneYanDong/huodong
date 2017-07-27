@@ -89,14 +89,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         if(d.is_weChat || d.is_qq) {
                             window.location.href = d.url;
                         } else {
-                            if (!d.login) {
-                                if (Bridge) {
-                                    Bridge.action("login");
-                                }
-                            } else {
+                            // if (!d.login) {
+                            //     if (Bridge) {
+                            //         Bridge.action("login");
+                            //     }
+                            // } else {
                                 console.log("进入页面的已登录状态");
                                 _this.getCustType(d,d.type);
-                            }
+                            // }
                         }
                     } else {
                         oP.show(d.msg || "活动尚未开始");
@@ -109,6 +109,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             console.log(_this);
             $(".wp").removeClass("hide");
+            /*timer = setInterval(_this.changeText,1400);*/
             _this.checkWithDrawAmount();
             clearInterval(timer);
             _this.withDraw();
@@ -130,6 +131,16 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             }
             counter++;
         },
+      /*  changeText: function() {
+            if ($(".title3").is("hide") && !$(".title2").is("hide")) {
+                $(".title3").addClass("hide");
+                $(".title2").removeClass("hide");
+            }
+            if (!$(".title3").is("hide") && $(".title2").is("hide")) {
+                $(".title3").removeClass("hide");
+                $(".title2").addClass("hide");
+            }
+        },*/
         checkAmount: function (withdrawal) {
             var withdrawal = withdrawal;
             var _this = this;
@@ -137,7 +148,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             if (re.test(withdrawal)) {
                 return true;
             } else {
-                oP.show("取款金额请输入1~80000整数");
+                oP.show("请输入1~80000整数");
                 return false;
             }
         },
@@ -146,7 +157,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $(".atm-total-input input").keyup(function(){
                 var amount = Number($(this).val());
                 _this.checkAmount(amount);
-                timer = setTimeout(function(){
+                setTimeout(function(){
                     $(".atm-content .finger-box").show().addClass("hint");
                 },500);
             });
@@ -156,7 +167,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $(".atm-content ul").on("click","li.btn",function(){
                 var that = this;
                 $(this).toggleClass("down");
-                timer = setTimeout(function(){
+                setTimeout(function(){
                     $(that).toggleClass("up");
                     $(".atm-content ul div").toggleClass("bgColor");
                 },300);
@@ -170,23 +181,27 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             });
         },
         backToOrigin: function() {
+            var _this = this;
             //清空数据,恢复按钮样式
             $(".atm-total-input input").val("");
             purpose.length = 0;
             $(".atm-usage ul li.btn").removeClass("down").removeClass("up").addClass(".btn");
             $(".atm-usage ul .div").removeClass("bgColor").addClass(".div");
+            console.log(timer);
+            clearInterval(timer);
+            $(".dynamic-money img").addClass("hide");
         },
         getCustType: function(d,type) {
             var _this = this;
             switch(type) {
                 case 1:
-                    var timer1 = setTimeout(function(){
+                    setTimeout(function(){
+                        clearInterval(timer);
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide1").fadeIn();
                         $(".content .tp-jk").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
-                        clearInterval(timer);
                         $(".content").on("click",".tp-hide1",function(){
                             $(".content .tp-hide1").fadeOut();
                             $(".content .tp-jk").fadeOut();
@@ -198,16 +213,16 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         $(".content").on("click",".tp-apply-btn",function(){
                             window.location.href = d.url;
                         });
-                    },500);
+                    },1000);
                     break;
                 case 2:
-                    var timer2 = setTimeout(function(){
+                    setTimeout(function(){
+                        clearInterval(timer);
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide2").fadeIn();
                         $(".content .tp-jy").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
-                        clearInterval(timer);
                         $(".content").on("click",".tp-hide2",function(){
                             $(".content .tp-hide2").fadeOut();
                             $(".content .tp-jy").fadeOut();
@@ -222,13 +237,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     },1000);
                     break;
                 case 3:
-                    var timer3 = setTimeout(function(){
+                    setTimeout(function(){
+                        clearInterval(timer);
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide3").fadeIn();
                         $(".content .tp-ja").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
-                        clearInterval(timer);
+                        $(".dynamic-money img").addClass("hide");
                         $(".content").on("click",".tp-hide3",function(){
                             $(".content .tp-hide3").fadeOut();
                             $(".content .tp-ja").fadeOut();
@@ -243,13 +259,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     },1000);
                     break;
                 case 4:
-                    var timer4 = setTimeout(function(){
+                    setTimeout(function(){
+                        clearInterval(timer);
                         $(".dynamic-money img").addClass("hide");
                         oM.show();
                         $(".tp-hide4").fadeIn();
                         $(".content .tp-jh").fadeIn();
                         $(".content .tp-apply-btn").fadeIn();
-                        clearInterval(timer);
+                        $(".dynamic-money img").addClass("hide");
                         $(".content").on("click",".tp-hide4",function(){
                             $(".content .tp-hide4").fadeOut();
                             $(".content .tp-jh").fadeOut();
@@ -271,11 +288,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $(".atm-content").on("click",".withdraw-btn",function(){
                 console.log(purpose);
                 $(".atm-content .finger-box").fadeOut();
-                /*if(!$(".atm-total-input input").val()) {
-                    clearInterval(timer);
-                    oP.show("请输入取款金额");
-                    return;
-                }*/
                 var amount = $(".atm-total-input input").val();
                 $.ajax({
                     type: "POST",
@@ -286,8 +298,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     success: function(d){
                         console.log("请求数据->",d);
                         if (d.success) {
-                            console.log("get_button请求成功");
-                            timer = setInterval(_this.showMoney,100);
                             var d = d.ret;
                             if(d.is_weChat || d.is_qq) {
                                 window.location.href = d.url;
@@ -298,32 +308,43 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     }
                                 } else {
                                     console.log("已登录");
-                                    switch(d.type) {
-                                        case 0:
-                                        case 5:
-                                            clearInterval(timer);
-                                            $(".dynamic-money img").addClass("hide");
-                                            oP.show("暂不符合活动规则，去看看其他");
-                                            var timer = setTimeout(function(){
-                                                window.location.href = d.url;
-                                            },1500);
-                                            break;
-                                        case 6:
-                                            clearInterval(timer);
-                                            $(".dynamic-money img").addClass("hide");
-                                            oP.show("提款机余额不足，去试试其他");
-                                            var timer = setTimeout(function(){
-                                                window.location.href = d.url;
-                                            },1500);
-                                            break;
-                                    }
-                                    _this.getCustType(d,d.type);
+                                    // if(!$(".atm-total-input input").val()) {
+                                    //     clearInterval(timer);
+                                    //     $(".dynamic-money img").addClass("hide");
+                                    //     oP.show("提款机余额不足，去试试其他");
+                                    //     var timer = setTimeout(function(){
+                                    //                 window.location.href = d.url;
+                                    //     },1500);
+                                        // _this.getCustType();
+                                    // } else {
+                                        timer = setInterval(_this.showMoney,100);
+                                        switch(d.type) {
+                                            case 0:
+                                            case 5:
+                                                clearInterval(timer);
+                                                $(".dynamic-money img").addClass("hide");
+                                                oP.show("暂不符合活动规则，去看看其他");
+                                                setTimeout(function(){
+                                                    window.location.href = d.url;
+                                                },1500);
+                                                break;
+                                            case 6:
+                                                clearInterval(timer);
+                                                $(".dynamic-money img").addClass("hide");
+                                                oP.show("提款机余额不足，去试试其他");
+                                                setTimeout(function(){
+                                                    window.location.href = d.url;
+                                                },1500);
+                                                break;
+                                        }
+                                        _this.getCustType(d,d.type);
+                                    // }
                                 }
                             }
                         } else {
                             oP.show(d.msg || "出错了请重试");
                             _this.backToOrigin();
-                            console.log("get_button请求,d.success == false");
+                            console.log("get_button请求失败,d.success == false");
                         }
                     }
                 });
@@ -370,7 +391,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         Bridge.action('ShareTimeline', {
                             "title": "抢个红包过周末",
                             'desc': "利息5折、现金、实物...",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170725_share.png",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170725_weChat_share.png",
                             "link": "http://" + host + "/act/home/huodong/20170725/"
                         });
                     }
@@ -382,9 +403,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var ruleJson = {
         rule: [
             "每周六、日，通过活动页面完成申请或放款将获得特定奖励，同个业务奖励只能领取一次。",
-            "领券后申请金优贷，每日前100名将获得精美定制笔记本一份；领券后申请金卡贷并放款，享受当月利息下调5折优惠；领券后申请金安贷24小时未放款，获得超时赔付50元现金；领券后申请金花贷并放款，获得50元无门槛抵息券。",
+            "领券后申请金优贷，每日前100名将获得精美定制笔记本一份；领券后申请金卡贷并放款，享受当月利息下调50%；领券后申请金安贷24小时未放款，获得超时赔付50元现金；领券后申请金花贷并放款，获得50元无门槛抵息券。",
             "此活动针对从未申请过金花贷、金优贷、金卡贷、金安贷业务的新用户，一个用户至多领取到这4个业务对应的奖励。",
-            "抵息券将在首月还款直接减免，逾期、提前还款将不享受此优惠；现金/实物奖励将在用户信息完整后7个工作日内打款/寄出，请确认收款/收货信息 准确性。",
+            "抵息券将在首月还款直接减免，逾期、提前还款将不享受此优惠；现金/实物奖励将在用户信息完整后7个工作日内打款/寄出，请确认收款/收货信息准确性。",
             "有任何疑问或者帮助可联系客服4008635151。",
             "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"
         ]

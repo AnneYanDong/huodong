@@ -43,7 +43,7 @@
                     <img class="title1" data-src="<?php echo $imgUrl; ?>title1.png" alt="title" />
                     <!-- <img class="title2 hide" data-src="<?php echo $imgUrl; ?>title2.png" alt="title" />
                     <img class="title3" data-src="<?php echo $imgUrl; ?>title2_02.png" alt="title" /> -->
-                    <h2 class="text-title">24小时无休</h2>
+                    <!-- <h2 class="text-title">24小时无休</h2> -->
                     <img class="gift2" data-src="<?php echo $imgUrl; ?>gift2.png" alt="gift2" />
                     <div class="tp-hide1 hide">
                         <div class="tp-apply-btn" bp="弹屏按钮" title="弹屏按钮"></div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="atm-group">
                         <img class="atm" data-src="<?php echo $imgUrl; ?>atm.png" alt="atm" />
-                        <img class="worm" data-src="<?php echo $imgUrl; ?>worm.gif" alt="worm" />
+                        <img class="worm" data-src="<?php echo $imgUrl; ?>worm2.gif" alt="worm" />
                         <img class="star1" data-src="<?php echo $imgUrl; ?>star.png" alt="star" />
                         <img class="star2" data-src="<?php echo $imgUrl; ?>star.png" alt="star" />
                         <img class="gold-group" data-src="<?php echo $imgUrl; ?>gold.png" alt="gold-group" />
@@ -76,14 +76,10 @@
                             <div class="atm-usage">
                                 <div class="atm-total-title2"><span>-&nbsp;用途&nbsp;-</span></div>
                                 <ul>
-                                    <div class="div div1"></div>
-                                    <div class="div div2"></div>
-                                    <div class="div div3"></div>
-                                    <div class="div div4"></div>
-                                    <li class="btn label-btn1" data-purpose="装修" bp="装修" title="装修">装修</li>
-                                    <li class="btn label-btn2" data-purpose="旅游" bp="旅游" title="旅游">旅游</li>
-                                    <li class="btn label-btn3" data-purpose="消费" bp="消费" title="消费">消费</li>
-                                    <li class="btn label-btn4" data-purpose="其他" bp="其他" title="其他">其他</li>
+                                    <div class="div div1"><li class="btn label-btn1" data-purpose="装修" bp="装修" title="装修">装修</li></div>
+                                    <div class="div div2"><li class="btn label-btn2" data-purpose="旅游" bp="旅游" title="旅游">旅游</li></div>
+                                    <div class="div div3"><li class="btn label-btn3" data-purpose="消费" bp="消费" title="消费">消费</li></div>
+                                    <div class="div div4"><li class="btn label-btn4" data-purpose="其他" bp="其他" title="其他">其他</li></div>
                                 </ul>
                             </div>
                             <div class="shadow-box"></div>
