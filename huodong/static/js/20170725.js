@@ -193,7 +193,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         },
         getCustType: function(d,type) {
             var _this = this;
-            console.log("判断type之前删除的timer",timer);
             switch(type) {
                 case 1:
                     setTimeout(function(){
