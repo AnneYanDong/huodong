@@ -282,6 +282,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         if (d.success) {
                             var d = d.ret;
                             if(d.is_weChat || d.is_qq) {
+                                console.log("微信或qq");
                                 setTimeout(function(){
                                     window.location.href = d.url;
                                 },1500);
