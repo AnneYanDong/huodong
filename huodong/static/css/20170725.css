@@ -20,7 +20,6 @@
   top: .38rem;
   right: 0;
   border-radius: .5rem 0 0 .5rem;
-  border: 1px solid #127a8c;
   background: #fff;
   box-shadow: 0.005rem 0.04rem 0 0.09rem #171507;
 }
@@ -72,7 +71,7 @@
   width: 5.34rem;
   height: 1.80rem;
   position: absolute;
-  top: .6rem;
+  top: .4rem;
   transform: translateX(-50%);
   left: 50%;
 }
@@ -97,7 +96,7 @@
 }
 .content .atm-group {
   position: absolute;
-  top: 3.8rem;
+  top: 3.4rem;
 }
 .content .atm {
   width: 7.50rem;
@@ -110,7 +109,7 @@
   height: 1.85rem;
   position: absolute;
   left: .37rem;
-  top: -1.4rem;
+  top: -1.3rem;
   z-index: 1;
 }
 .atm-group .atm-title {
@@ -215,25 +214,31 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
   font-weight: bold;
   border-radius: .3rem;
   box-shadow: 0 0 0 0.05rem black;
-  top: 8rem;
+  position: absolute;
+  top: -.1rem;
 }
 .atm-usage ul {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
   width: 100%;
+  height: 1.2rem;
   position: absolute;
   top: 2.2rem;
-  left: 6%;
+  /* left: 6%; */
 }
 .atm-usage ul li {
   display: inline-block;
 }
  .atm-usage ul li.down {
   position: relative;
-  top: 2px;
+  top: -.53rem;
   box-shadow: 0 0.05rem 0 0.1rem black;
 }
 .atm-usage ul li.up {
   position: relative;
-  top: -1px;
+  top: -.64rem;
   color: red;
   box-shadow: 0 0.01rem 0 0.04rem black;
 }
@@ -244,6 +249,7 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
   animation: btnState 500ms 1;
 } */
 .atm-usage ul .div {
+  display: inline-block;
   width: 1.1rem;
   height: .6rem;
   background: #fff;
@@ -251,16 +257,19 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
   box-shadow: 0 0 0 0.05rem black;
   position: absolute;
   top: .64rem;
-  z-index: -1;
+  /* z-index: -1; */
+}
+.atm-usage ul .div1 {
+  left: 5%;
 }
 .atm-usage ul .div2 {
-  left: 23.4%;
+  left: 29%;
 }
 .atm-usage ul .div3 {
-  left: 46.6%;
+  right: 29%;
 }
 .atm-usage ul .div4 {
-  left: 70%;
+  right: 5%;
 }
 .atm-content .withdraw-btn {
   width: 4.27rem;
