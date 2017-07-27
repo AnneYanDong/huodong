@@ -89,14 +89,14 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         if(d.is_weChat || d.is_qq) {
                             window.location.href = d.url;
                         } else {
-                            if (!d.login) {
-                                if (Bridge) {
-                                    Bridge.action("login");
-                                }
-                            } else {
+                            // if (!d.login) {
+                            //     if (Bridge) {
+                            //         Bridge.action("login");
+                            //     }
+                            // } else {
                                 console.log("进入页面的已登录状态");
                                 _this.getCustType(d,d.type);
-                            }
+                            // }
                         }
                     } else {
                         oP.show(d.msg || "活动尚未开始");
@@ -148,7 +148,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             if (re.test(withdrawal)) {
                 return true;
             } else {
-                oP.show("取款金额请输入1~80000整数");
+                oP.show("请输入1~80000整数");
                 return false;
             }
         },
@@ -403,9 +403,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var ruleJson = {
         rule: [
             "每周六、日，通过活动页面完成申请或放款将获得特定奖励，同个业务奖励只能领取一次。",
-            "领券后申请金优贷，每日前100名将获得精美定制笔记本一份；领券后申请金卡贷并放款，享受当月利息下调5折优惠；领券后申请金安贷24小时未放款，获得超时赔付50元现金；领券后申请金花贷并放款，获得50元无门槛抵息券。",
+            "领券后申请金优贷，每日前100名将获得精美定制笔记本一份；领券后申请金卡贷并放款，享受当月利息下调50%；领券后申请金安贷24小时未放款，获得超时赔付50元现金；领券后申请金花贷并放款，获得50元无门槛抵息券。",
             "此活动针对从未申请过金花贷、金优贷、金卡贷、金安贷业务的新用户，一个用户至多领取到这4个业务对应的奖励。",
-            "抵息券将在首月还款直接减免，逾期、提前还款将不享受此优惠；现金/实物奖励将在用户信息完整后7个工作日内打款/寄出，请确认收款/收货信息 准确性。",
+            "抵息券将在首月还款直接减免，逾期、提前还款将不享受此优惠；现金/实物奖励将在用户信息完整后7个工作日内打款/寄出，请确认收款/收货信息准确性。",
             "有任何疑问或者帮助可联系客服4008635151。",
             "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"
         ]
