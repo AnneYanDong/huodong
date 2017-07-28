@@ -38,9 +38,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             /*设置HTML的font-size*/
             ct.Tool.setFont();
             ct.Tool.handleBottomStatusBar();
-            window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
-            window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
-            // window.onresize = ct.Tool.debounce(ct.Tool.setFont)
+            // window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
+            // window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
+            window.onresize = ct.Tool.debounce(ct.Tool.setFont)
 
             /*整体预加载动画*/
             var oPreLoading = Object.create(ct.PreLodingUi);
@@ -78,6 +78,23 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     }
                 }
             })
+        },
+
+        init: function () {
+            var _this = this;
+            console.log(_this);
+            $(".wp").removeClass("hide");
+            _this.checkWithDrawAmount();
+            _this.getCustStatus();
+            clearInterval(timer);
+            _this.withDraw();
+            _this.openRule();
+            _this.closeRule();
+            _this.share();
+            console.log("周末提款机");
+        },
+        getCustStatus: function(){
+            var _this = this;
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
@@ -86,37 +103,12 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     console.log("进入页面的请求d->",d);
                     if (d.success) {
                         var d = d.ret;
-                        if(d.is_weChat || d.is_qq) {
-                            window.location.href = d.url;
-                        } else {
-                            // if (!d.login) {
-                            //     if (Bridge) {
-                            //         Bridge.action("login");
-                            //     }
-                            // } else {
-                                console.log("进入页面的已登录状态");
-                                _this.getCustType(d,d.type);
-                            // }
-                        }
+                        _this.getCustType(d,d.type);
                     } else {
                         oP.show(d.msg || "活动尚未开始");
                     }
                 }
             })
-        },
-
-        init: function () {
-            var _this = this;
-            console.log(_this);
-            $(".wp").removeClass("hide");
-            /*timer = setInterval(_this.changeText,1400);*/
-            _this.checkWithDrawAmount();
-            clearInterval(timer);
-            _this.withDraw();
-            _this.openRule();
-            _this.closeRule();
-            _this.share();
-            console.log("周末提款机");
         },
         showMoney: function() {
             var visible = counter % 5;
@@ -131,16 +123,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             }
             counter++;
         },
-      /*  changeText: function() {
-            if ($(".title3").is("hide") && !$(".title2").is("hide")) {
-                $(".title3").addClass("hide");
-                $(".title2").removeClass("hide");
-            }
-            if (!$(".title3").is("hide") && $(".title2").is("hide")) {
-                $(".title3").removeClass("hide");
-                $(".title2").addClass("hide");
-            }
-        },*/
         checkAmount: function (withdrawal) {
             var withdrawal = withdrawal;
             var _this = this;
@@ -300,7 +282,10 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         if (d.success) {
                             var d = d.ret;
                             if(d.is_weChat || d.is_qq) {
-                                window.location.href = d.url;
+                                console.log("微信或qq");
+                                setTimeout(function(){
+                                    window.location.href = d.url;
+                                },1500);
                             } else {
                                 if (!d.login) {
                                     if (Bridge) {
@@ -308,15 +293,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     }
                                 } else {
                                     console.log("已登录");
-                                    // if(!$(".atm-total-input input").val()) {
-                                    //     clearInterval(timer);
-                                    //     $(".dynamic-money img").addClass("hide");
-                                    //     oP.show("提款机余额不足，去试试其他");
-                                    //     var timer = setTimeout(function(){
-                                    //                 window.location.href = d.url;
-                                    //     },1500);
-                                        // _this.getCustType();
-                                    // } else {
                                         timer = setInterval(_this.showMoney,100);
                                         switch(d.type) {
                                             case 0:
@@ -338,7 +314,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                                 break;
                                         }
                                         _this.getCustType(d,d.type);
-                                    // }
                                 }
                             }
                         } else {
@@ -392,7 +367,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             "title": "抢个红包过周末",
                             'desc': "利息5折、现金、实物...",
                             "thumb": "https://r.51gjj.com/act/release/img/20170725_weChat_share.png",
-                            "link": "http://" + host + "/act/home/huodong/20170725/"
+                            "link": "http://" + host + "/act/home/huodong/20170725/index.php"
                         });
                     }
                 })

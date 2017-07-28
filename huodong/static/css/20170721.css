@@ -44,7 +44,7 @@
   z-index:2;
 }
 .content .turning {
-  animation: turning 3s forwards ease-in-out;
+  animation: turning 4s forwards ease;
 }
 .content .ellipse-shadow {
   width: 5rem;

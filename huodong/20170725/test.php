@@ -3,7 +3,7 @@
     "ret"=>array(
             "url"=>"http://www.baidu.com",
             "login" => true,
-            "is_weChat" => false,
+            "is_weChat" => true,
             "is_qq"=>false,
             "type" => 1
         ),
