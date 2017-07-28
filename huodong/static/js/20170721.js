@@ -136,19 +136,18 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 } else {
                                     console.log("机会次数",d.chance);
                                     //判断用户的抽奖次数
-                                    if (d.chance > 0) {
+                                    if (d.chance <= 0) {
+                                       oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
+                                    } else {
                                         $('.turntable').addClass('turning');
                                         timer = setTimeout(function(){
                                             console.log("angle->",d.angle);
-                                            // $(".turntable").animate({transform:"rotate('+ d.angle +'deg)"},"slow");
                                             $(".turntable").css("transition","transform 1s ease").css("transform","rotate("+ d.angle + "deg)");
                                             timer = setTimeout(function(){
                                                 oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
                                                 $('.turntable').removeClass('turning');
                                             },500);
                                         },3000);
-                                    } else {
-                                        oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
                                     }
                                 }
                             }

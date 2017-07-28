@@ -74,6 +74,7 @@
   top: .4rem;
   transform: translateX(-50%);
   left: 50%;
+  z-index: 100;
 }
 .content .title2,.title3 {
   width: 3.56rem;
@@ -288,7 +289,7 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
   outline: none;
 }
 .atm-content .shadow-box {
-  width: 4.278rem;
+  width: 4.25rem;
   height: 1rem;
   background: #fff;
   border-radius: .5rem;

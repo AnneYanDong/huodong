@@ -269,6 +269,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             _this.getCustLabel();
             $(".atm-content").on("click",".withdraw-btn",function(){
                 console.log(purpose);
+                $(".withdraw-btn").attr("disabled",true);
                 $(".atm-content .finger-box").fadeOut();
                 var amount = $(".atm-total-input input").val();
                 $.ajax({
@@ -280,6 +281,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     success: function(d){
                         console.log("请求数据->",d);
                         if (d.success) {
+                            $(".withdraw-btn").attr("disabled",false);
                             var d = d.ret;
                             if(d.is_weChat || d.is_qq) {
                                 console.log("微信或qq");

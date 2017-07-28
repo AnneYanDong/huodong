@@ -3,9 +3,9 @@
     "ret"=>array(
         "url"=>"http://www.baidu.com",
         "login" => true,
-        "chance" => 2, //抽奖次数
+        "chance" => 0, //抽奖次数
         "gift_name" => "100积分",
-        "angle" =>45
+        "angle" =>70
         ),
     "success"=>true,
   );
