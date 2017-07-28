@@ -224,7 +224,7 @@
         };
 
         if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-            appAddr.href = "https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?ls=1&mt=8";
+            appAddr.href = "https://lnk0.com/pERxBh";
         } else {
             appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
         }

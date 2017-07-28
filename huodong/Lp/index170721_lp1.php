@@ -264,7 +264,7 @@
 
         if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
             // appAddr.href = "https://itunes.apple.com/cn/app/id1166783929?ct=" + place_name + "&mt=8";
-            appAddr.href = "https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?ls=1&mt=8";
+            appAddr.href = "https://lnk0.com/gMxJR1";
         } else {
             appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
         }
