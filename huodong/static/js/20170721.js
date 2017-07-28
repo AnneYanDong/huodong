@@ -86,6 +86,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 // url: "test.php",
                 url: "/act/act170721/get_status",
                 success: function (d) {
+                    console.log(d);
                     if (d.success) {
                         var d = d.ret;
                         if (d.is_weChat || d.is_qq) {
@@ -112,13 +113,12 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             var timer = null;
             clearTimeout(timer);
-            _this.shareToFriend();
             $('.wp-inner .content').on('click', '.turntable,.arrow', function () {
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
-                    // url: "test.php",
-                    url: "/act/act170721/get_prize",
+                    url: "test.php",
+                    // url: "/act/act170721/get_prize",
                     success: function (d) {
                         console.log(d);
                         if (d.success) {
@@ -128,7 +128,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     window.location.href = d.url;
                                 },1500);
                             } else {
-                                if (!d.login) {
+                                if (d.login == false) {
                                     oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
                                     if (Bridge) {
                                         Bridge.action("login");
@@ -140,12 +140,13 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                         $('.turntable').addClass('turning');
                                         timer = setTimeout(function(){
                                             console.log("angle->",d.angle);
-                                            $(".turntable").css("transform","rotate("+ d.angle + "deg)");
+                                            // $(".turntable").animate({transform:"rotate('+ d.angle +'deg)"},"slow");
+                                            $(".turntable").css("transition","transform 1s ease").css("transform","rotate("+ d.angle + "deg)");
                                             timer = setTimeout(function(){
                                                 oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
                                                 $('.turntable').removeClass('turning');
                                             },500);
-                                        },2000);
+                                        },3000);
                                     } else {
                                         oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
                                     }
@@ -175,12 +176,13 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                 window.location.href = d.url;
                             },1500);
                         } else {
-                            if (!d.login) {
+                            if (d.login == false) {
                                 oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
                                 if (Bridge) {
                                     Bridge.action("login");
                                 }
                             }else {
+                                console.log("分享功能");
                                 _this.share(d.invitation_code);
                             }
                         }
@@ -212,7 +214,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             "title": "转盘抽奖",
                             'desc': "查公积金送积分",
                             "thumb": "https://r.51gjj.com/act/release/img/20170721_share.png",
-                            "link": "https://" + host + "/20160714/invite_out_v2.php?c=" + invitation_code;
+                            "link": "https://" + host + "/20160714/invite_out_v2.php?c=" + invitation_code
                         });
                     }
                 })
