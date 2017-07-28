@@ -48,7 +48,7 @@
             <div class="one-step"><img data-src="<?php echo $imgUrl?>four_step.png"></div>
             <div class="bid"><img data-src="<?php echo $imgUrl?>bid.png"></div>
             <div class="question"><img data-src="<?php echo $imgUrl?>question.png"></div>
-            <div class="qrcode"><img data-src="<?php echo $imgUrl?>qrcode.png"></div>
+            <div class="qrcode"><img data-src="<?php echo $imgUrl?>qrcode1.png"></div>
         </div>
     </div>
 </div>
