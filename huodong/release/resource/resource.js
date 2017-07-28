@@ -151,6 +151,6 @@
 
 	"20170727": {
 		"js": ["r.51gjj.com/act/release/js/20170727_6eb75e7.js"],
-		"css": ["r.51gjj.com/act/release/css/20170727_fa303bc.css"]
+		"css": ["r.51gjj.com/act/release/css/20170727_da4ecd5.css"]
 	}
 }
