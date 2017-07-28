@@ -74,21 +74,21 @@ var init = {
                     var _this = this;
 
                     function getBanner() {
-                        return axios.post(ct.packingUrl("/app/banners/get_activity_banners"), JSON.stringify({}));
+                        return axios.post(ct.packingUrl("/app/jiekuan/banners/get_activity_banners"), JSON.stringify({}));
                     }
 
                     function getActType() {
-                        return axios.post(ct.packingUrl("/act/v2/activities/get_act_categories"), JSON.stringify({
+                        return axios.post(ct.packingUrl("/act/jiekuan/activities/get_act_categories"), JSON.stringify({
                             location: "activity_hot"
                         }));
                     }
 
                     function getPrizeList() {
-                        return axios.post(ct.packingUrl("/act/v3/activities/get_gifts"), JSON.stringify({}));
+                        return axios.post(ct.packingUrl("/act/jiekuan/activities/get_gifts"), JSON.stringify({}));
                     }
 
                     function getPrizeRecord() {
-                        return axios.post(ct.packingUrl("/act/v3/activities/record_gifts"), JSON.stringify({
+                        return axios.post(ct.packingUrl("/act/jiekuan/activities/record_gifts"), JSON.stringify({
                             pid: _this.recordPid
                         }));
                     }
@@ -130,11 +130,11 @@ var init = {
                     console.log("renderGetPrize")
 
                     function getPrizeList() {
-                        return axios.post(ct.packingUrl("/act/v3/activities/get_gifts"), JSON.stringify({}));
+                        return axios.post(ct.packingUrl("/act/jiekuan/activities/get_gifts"), JSON.stringify({}));
                     }
 
                     function getPrizeRecord() {
-                        return axios.post(ct.packingUrl("/act/v3/activities/record_gifts"), JSON.stringify({
+                        return axios.post(ct.packingUrl("/act/jiekuan/activities/record_gifts"), JSON.stringify({
 
                         }));
                     }
@@ -209,7 +209,7 @@ var init = {
                     if (type === 0) {
                         window.location.href = item.button.url;
                     } else if (type === 4) {
-                        axios.post(ct.packingUrl("/act/v3/activities/receive_gift"), JSON.stringify({
+                        axios.post(ct.packingUrl("/act/jiekuan/activities/receive_gift"), JSON.stringify({
                             aid: item.aid,
                             gid: item.gid,
                             sid: item.id
@@ -255,7 +255,7 @@ var init = {
                         scrollArea: window,
                         loadDownFn: function(me) {
                             if (_this.showRecord) {
-                                axios.post(ct.packingUrl('/act/v3/activities/record_gifts'), JSON.stringify({
+                                axios.post(ct.packingUrl('/act/jiekuan/activities/record_gifts'), JSON.stringify({
                                     pid: _this.recordPid
                                 })).then(function(r) {
                                     if (r.data.success) {
@@ -313,7 +313,7 @@ var init = {
                 render: function() {
                     var _this = this;
                     var categoryId = ct.getUrlData("id");
-                    axios.post(ct.packingUrl("/act/v2/activities/act_category_list"), JSON.stringify({
+                    axios.post(ct.packingUrl("/act/jiekuan/activities/act_category_list"), JSON.stringify({
                         category_id: categoryId,
                         pid: _this.actListPid
                     })).then(function(r) {
@@ -324,7 +324,7 @@ var init = {
                             var actListWrap = $('.act-list-wrap').dropload({
                                 scrollArea: window,
                                 loadDownFn: function(me) {
-                                    axios.post(ct.packingUrl('/act/v2/activities/act_category_list'), JSON.stringify({
+                                    axios.post(ct.packingUrl('/act/jiekuan/activities/act_category_list'), JSON.stringify({
                                         category_id: categoryId,
                                         pid: _this.actListPid
                                     })).then(function(r) {
@@ -387,7 +387,7 @@ var init = {
                     var isValid = ct.getUrlData("is_valid");
 
                     function getGift() {
-                        return axios.post(ct.packingUrl("/act/v3/activities/get_gift"), JSON.stringify({
+                        return axios.post(ct.packingUrl("/act/jiekuan/activities/get_gift"), JSON.stringify({
                             gid: gid,
                             aid: aid,
                             sid: sid
@@ -396,18 +396,18 @@ var init = {
 
                     function getButton() {
                         if (isValid) {
-                            return axios.post(ct.packingUrl("/act/v3/activities/get_button"), JSON.stringify({
+                            return axios.post(ct.packingUrl("/act/jiekuan/activities/get_record_button "), JSON.stringify({
                                 sid: sid
                             }))
                         } else {
-                            return axios.post(ct.packingUrl("/act/v3/activities/get_button"), JSON.stringify({
+                            return axios.post(ct.packingUrl("/act/jiekuan/activities/get_button"), JSON.stringify({
                                 sid: sid
                             }))
                         }
                     }
 
                     function shipping() {
-                        return axios.post(ct.packingUrl("/act/v3/activities/get_shipping"), JSON.stringify({
+                        return axios.post(ct.packingUrl("/act/jiekuan/activities/get_shipping"), JSON.stringify({
                             sid: sid
                         }))
                     }
@@ -483,7 +483,7 @@ var init = {
                     if (type === 0) {
                         window.location.href = _this.buttonInfo.url;
                     } else if (type === 4) {
-                        axios.post(ct.packingUrl("/act/v3/activities/receive_gift"), JSON.stringify({
+                        axios.post(ct.packingUrl("/act/jiekuan/activities/receive_gift"), JSON.stringify({
                             aid: _this.singlePrize.aid,
                             gid: _this.singlePrize.gid,
                             sid: _this.singlePrize.id
@@ -572,7 +572,7 @@ Vue.component("prize-form", {
         getUserInfo: function() {
             var _this = this;
             this.$nextTick(function() {
-                axios.post(ct.packingUrl("/act/v3/activities/get_user_info"), JSON.stringify({
+                axios.post(ct.packingUrl("/act/jiekuan/activities/get_user_info"), JSON.stringify({
                     sid: _this.singlePrize.id
                 })).then(function(d) {
                     var d = d.data;
@@ -591,7 +591,7 @@ Vue.component("prize-form", {
         gotrender: function() {
             var _this = this;
             console.log("触发领取事件");
-            axios.post(ct.packingUrl("/act/v3/activities/receive_gift"), JSON.stringify({
+            axios.post(ct.packingUrl("/act/jiekuan/activities/receive_gift"), JSON.stringify({
                 aid: _this.singlePrize.aid,
                 gid: _this.singlePrize.gid,
                 sid: _this.singlePrize.id,
