@@ -265,66 +265,71 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             }
         },
         withDraw: function(){
+            var allowClick=true;
+            clearInterval(timer);
             var _this = this;
             _this.getCustLabel();
             $(".atm-content").on("click",".withdraw-btn",function(){
+                allowClick = true;
                 console.log(purpose);
-                $(".withdraw-btn").attr("disabled",true);
+                // $(".withdraw-btn").attr("disabled","true");
                 $(".atm-content .finger-box").fadeOut();
                 var amount = $(".atm-total-input input").val();
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    data: JSON.stringify({"money": amount,"purpose": purpose}),
-                    // url: "test.php",
-                    url: "/act/act170725/get_button",
-                    success: function(d){
-                        console.log("请求数据->",d);
-                        if (d.success) {
-                            $(".withdraw-btn").attr("disabled",false);
-                            var d = d.ret;
-                            if(d.is_weChat || d.is_qq) {
-                                console.log("微信或qq");
-                                setTimeout(function(){
-                                    window.location.href = d.url;
-                                },1500);
-                            } else {
-                                if (!d.login) {
-                                    if (Bridge) {
-                                        Bridge.action("login");
-                                    }
+                if (allowClick) {
+                    allowClick = false;
+                    $.ajax({
+                        type: "POST",
+                        dataType: "JSON",
+                        data: JSON.stringify({"money": amount,"purpose": purpose}),
+                        // url: "test.php",
+                        url: "/act/act170725/get_button",
+                        success: function(d){
+                            console.log("请求数据->",d);
+                            if (d.success) {
+                                var d = d.ret;
+                                if(d.is_weChat || d.is_qq) {
+                                    console.log("微信或qq");
+                                    setTimeout(function(){
+                                        window.location.href = d.url;
+                                    },1500);
                                 } else {
-                                    console.log("已登录");
-                                        timer = setInterval(_this.showMoney,100);
-                                        switch(d.type) {
-                                            case 0:
-                                            case 5:
-                                                clearInterval(timer);
-                                                $(".dynamic-money img").addClass("hide");
-                                                oP.show("暂不符合活动规则，去看看其他");
-                                                setTimeout(function(){
-                                                    window.location.href = d.url;
-                                                },1500);
-                                                break;
-                                            case 6:
-                                                clearInterval(timer);
-                                                $(".dynamic-money img").addClass("hide");
-                                                oP.show("提款机余额不足，去试试其他");
-                                                setTimeout(function(){
-                                                    window.location.href = d.url;
-                                                },1500);
-                                                break;
+                                    if (!d.login) {
+                                        if (Bridge) {
+                                            Bridge.action("login");
                                         }
-                                        _this.getCustType(d,d.type);
+                                    } else {
+                                        console.log("已登录");
+                                            timer = setInterval(_this.showMoney,100);
+                                            switch(d.type) {
+                                                case 0:
+                                                case 5:
+                                                    clearInterval(timer);
+                                                    $(".dynamic-money img").addClass("hide");
+                                                    oP.show("暂不符合活动规则，去看看其他");
+                                                    setTimeout(function(){
+                                                        window.location.href = d.url;
+                                                    },1500);
+                                                    break;
+                                                case 6:
+                                                    clearInterval(timer);
+                                                    $(".dynamic-money img").addClass("hide");
+                                                    oP.show("提款机余额不足，去试试其他");
+                                                    setTimeout(function(){
+                                                        window.location.href = d.url;
+                                                    },1500);
+                                                    break;
+                                            }
+                                            _this.getCustType(d,d.type);
+                                    }
                                 }
+                            } else {
+                                oP.show(d.msg || "出错了请重试");
+                                _this.backToOrigin();
+                                console.log("get_button请求失败,d.success == false");
                             }
-                        } else {
-                            oP.show(d.msg || "出错了请重试");
-                            _this.backToOrigin();
-                            console.log("get_button请求失败,d.success == false");
                         }
-                    }
-                });
+                    });
+                }
             });
         },
         openRule: function () {
