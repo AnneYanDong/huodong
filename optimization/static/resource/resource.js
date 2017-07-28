@@ -25,5 +25,19 @@
 			__uri("../css/activity.css?21"),
 			__uri("../css/lib/dropload.css")
 		]
+	},
+	"jk_activity": {
+		"js": [
+			__uri("../js/lib/vue2.2.6.js"),
+			__uri("../js/lib/axios.min.js"),
+			__uri("../js/lib/swipeSlide.min.js"),
+			__uri("../js/lib/dropload.js"),
+			__uri("../js/jk_activity.js"),
+			__uri("../js/lib/LArea.min.js")
+		],
+		"css": [
+			__uri("../css/activity.css?21"),
+			__uri("../css/lib/dropload.css")
+		]
 	}
 }

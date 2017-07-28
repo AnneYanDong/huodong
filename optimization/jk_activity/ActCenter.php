@@ -2,7 +2,7 @@
 	$title = "";
 	include "../public/v1/header.php";
 	$obj = new Resource;
-	$res = $obj->getResStr("activity");
+	$res = $obj->getResStr("jk_activity");
  ?>
  <?php 
  	echo $res['css'];

@@ -869,6 +869,24 @@ body {
   border-radius: 0px !important;
   margin-top: 22px;
 }
+.prize-form-wrap .getPrizePrompt .form .city-wrap {
+  position: relative;
+}
+.prize-form-wrap .getPrizePrompt .form .city-wrap .arrow {
+  background-image: url(//r.51gjj.com/image/static/ico_list_down.png);
+  background-size: 12px 12px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  margin-top: -6px;
+  display: block;
+  background-size: cover;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  z-index: 1;
+}
 .fade-leave-active {
   transition: opacity .5s;
 }
