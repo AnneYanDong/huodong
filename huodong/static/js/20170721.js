@@ -68,6 +68,18 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     }
                 }
             })
+        },
+
+        init: function () {
+            var _this = this;
+            $(".out-wrap").removeClass("hide");
+
+            _this.getChance();
+            _this.raffle();
+            _this.shareToFriend();
+            console.log("送积分活动！");
+        },
+        getChance: function () {
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
@@ -76,34 +88,24 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 success: function (d) {
                     if (d.success) {
                         var d = d.ret;
-                        if (d.is_weChat || d.is_qq) {
-                            window.location.href = d.url;
-                        } else {
-                            if (!d.login) {
-                                oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
-                                if (Bridge) {
-                                    Bridge.action("login");
-                                }
-                            } else {
+                        // if (d.is_weChat || d.is_qq) {
+                        //     window.location.href = d.url;
+                        // } else {
+                        //     if (!d.login) {
+                        //         oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
+                        //         if (Bridge) {
+                        //             Bridge.action("login");
+                        //         }
+                        //     } else {
                                 if (d.chance <= 0) {
                                     oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
                                 }
-                            }
-                        }
+                            // }
+                        // }
                     }
                 }
             })
         },
-
-        init: function () {
-            var _this = this;
-            $(".out-wrap").removeClass("hide");
-
-            _this.raffle();
-            _this.shareToFriend();
-            console.log("送积分活动！");
-        },
-
         raffle: function () {
             var _this = this;
             var timer = null;
