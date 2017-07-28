@@ -95,7 +95,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         },
         getCustStatus: function(){
             var _this = this;
-            // $(".withdraw-btn").attr("disabled","false");
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
@@ -165,8 +164,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         },
         backToOrigin: function() {
             var _this = this;
+            $(".withdraw-btn").removeAttr("disabled");
             //清空数据,恢复按钮样式
-            // $(".withdraw-btn").attr("disabled","enabled");
             $(".atm-total-input input").val("");
             purpose.length = 0;
             $(".atm-usage ul li.btn").removeClass("down").removeClass("up").addClass(".btn");
@@ -271,67 +270,58 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             var _this = this;
             _this.getCustLabel();
             $(".atm-content").on("click",".withdraw-btn",function(){
-                console.log("----------------------------");
-                // $(".withdraw-btn").attr("disabled","disabled");
+                $(".withdraw-btn").attr("disabled","disabled");
                 console.log(purpose);
                 $(".atm-content .finger-box").fadeOut();
                 var amount = $(".atm-total-input input").val();
-                // if (allowClick == true) {
-                //     return;
-                // } else {
-                    $.ajax({
-                        type: "POST",
-                        dataType: "JSON",
-                        data: JSON.stringify({"money": amount,"purpose": purpose}),
-                        url: "test.php",
-                        // url: "/act/act170725/get_button",
-                        success: function(d){
-                            console.log("请求数据->",d);
-                            if (d.success) {
-                                var d = d.ret;
-                                if(d.is_weChat || d.is_qq) {
-                                    console.log("微信或qq");
-                                    setTimeout(function(){
-                                        window.location.href = d.url;
-                                    },1500);
-                                } else {
-                                    if (!d.login) {
-                                        if (Bridge) {
-                                            Bridge.action("login");
-                                        }
-                                    } else {
-                                        console.log("已登录");
-                                            timer = setInterval(_this.showMoney,100);
-                                            switch(d.type) {
-                                                case 0:
-                                                case 5:
-                                                    clearInterval(timer);
-                                                    $(".dynamic-money img").addClass("hide");
-                                                    oP.show("暂不符合活动规则，去看看其他");
-                                                    setTimeout(function(){
-                                                        window.location.href = d.url;
-                                                    },1500);
-                                                    break;
-                                                case 6:
-                                                    clearInterval(timer);
-                                                    $(".dynamic-money img").addClass("hide");
-                                                    oP.show("提款机余额不足，去试试其他");
-                                                    setTimeout(function(){
-                                                        window.location.href = d.url;
-                                                    },1500);
-                                                    break;
-                                            }
-                                            _this.getCustType(d,d.type);
-                                    }
-                                }
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    data: JSON.stringify({"money": amount,"purpose": purpose}),
+                    // url: "test.php",
+                    url: "/act/act170725/get_button",
+                    success: function(d){
+                        if (d.success) {
+                            var d = d.ret;
+                            if(d.is_weChat || d.is_qq) {
+                                setTimeout(function(){
+                                    window.location.href = d.url;
+                                },1500);
                             } else {
-                                oP.show(d.msg || "出错了请重试");
-                                _this.backToOrigin();
-                                console.log("get_button请求失败,d.success == false");
+                                if (!d.login) {
+                                    if (Bridge) {
+                                        Bridge.action("login");
+                                    }
+                                } else {
+                                        timer = setInterval(_this.showMoney,100);
+                                        switch(d.type) {
+                                            case 0:
+                                            case 5:
+                                                clearInterval(timer);
+                                                $(".dynamic-money img").addClass("hide");
+                                                oP.show("暂不符合活动规则，去看看其他");
+                                                setTimeout(function(){
+                                                    window.location.href = d.url;
+                                                },1500);
+                                                break;
+                                            case 6:
+                                                clearInterval(timer);
+                                                $(".dynamic-money img").addClass("hide");
+                                                oP.show("提款机余额不足，去试试其他");
+                                                setTimeout(function(){
+                                                    window.location.href = d.url;
+                                                },1500);
+                                                break;
+                                        }
+                                        _this.getCustType(d,d.type);
+                                }
                             }
+                        } else {
+                            oP.show(d.msg || "出错了请重试");
+                            _this.backToOrigin();
                         }
-                    });
-                // }
+                    }
+                });
             });
         },
         openRule: function () {
