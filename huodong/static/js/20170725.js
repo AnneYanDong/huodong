@@ -272,6 +272,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $(".atm-content").on("click",".withdraw-btn",function(){
                 allowClick = true;
                 console.log(purpose);
+<<<<<<< HEAD
                 // $(".withdraw-btn").attr("disabled","true");
                 $(".atm-content .finger-box").fadeOut();
                 var amount = $(".atm-total-input input").val();
@@ -292,6 +293,34 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     setTimeout(function(){
                                         window.location.href = d.url;
                                     },1500);
+=======
+                $(".withdraw-btn").attr({
+                        "disabled": "disabled"
+                    });
+                $(".atm-content .finger-box").fadeOut();
+                var amount = $(".atm-total-input input").val();
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    data: JSON.stringify({"money": amount,"purpose": purpose}),
+                    // url: "test.php",
+                    url: "/act/act170725/get_button",
+                    success: function(d){
+                        console.log("请求数据->",d);
+                        if (d.success) {
+                            $(".withdraw-btn").removeAttr("disabled");
+                            var d = d.ret;
+                            if(d.is_weChat || d.is_qq) {
+                                console.log("微信或qq");
+                                setTimeout(function(){
+                                    window.location.href = d.url;
+                                },1500);
+                            } else {
+                                if (!d.login) {
+                                    if (Bridge) {
+                                        Bridge.action("login");
+                                    }
+>>>>>>> c0e968300a891be3853f7a1390e50436a310bc21
                                 } else {
                                     if (!d.login) {
                                         if (Bridge) {

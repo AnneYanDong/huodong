@@ -83,7 +83,7 @@
                                 </ul>
                             </div>
                             <div class="shadow-box"></div>
-                            <button class="withdraw-btn" disabled="false" bp="马上提取" title="马上提取">马上提取</button>
+                            <button class="withdraw-btn" bp="马上提取" title="马上提取">马上提取</button>
                             <div class="finger-box hide"><img class="finger" data-src="<?php echo $imgUrl; ?>finger.png" alt="finger" /></div>
                         </div>
                         <div class="output-money"></div>
