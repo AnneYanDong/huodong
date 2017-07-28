@@ -1,7 +1,9 @@
 @import url('mtool.css');
 @import url('basicFullPage.css');
 .wp {
+    overflow-y: auto;
     background: #ffffff;
+    -webkit-overflow-scrolling: touch;
 }
 
 .wp-inner {
