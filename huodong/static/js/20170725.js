@@ -95,6 +95,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         },
         getCustStatus: function(){
             var _this = this;
+            // $(".withdraw-btn").attr("disabled","false");
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
@@ -165,6 +166,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         backToOrigin: function() {
             var _this = this;
             //清空数据,恢复按钮样式
+            // $(".withdraw-btn").attr("disabled","enabled");
             $(".atm-total-input input").val("");
             purpose.length = 0;
             $(".atm-usage ul li.btn").removeClass("down").removeClass("up").addClass(".btn");
@@ -195,7 +197,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         $(".content").on("click",".tp-apply-btn",function(){
                             window.location.href = d.url;
                         });
-                    },1000);
+                    },500);
                     break;
                 case 2:
                     setTimeout(function(){
@@ -216,7 +218,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         $(".content").on("click",".tp-apply-btn",function(){
                             window.location.href = d.url;
                         });
-                    },1000);
+                    },500);
                     break;
                 case 3:
                     setTimeout(function(){
@@ -238,7 +240,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         $(".content").on("click",".tp-apply-btn",function(){
                             window.location.href = d.url;
                         });
-                    },1000);
+                    },500);
                     break;
                 case 4:
                     setTimeout(function(){
@@ -260,30 +262,29 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         $(".content").on("click",".tp-apply-btn",function(){
                             window.location.href = d.url;
                         });
-                    },1000);
+                    },500);
                     break;
             }
         },
         withDraw: function(){
-            var allowClick=true;
             clearInterval(timer);
             var _this = this;
             _this.getCustLabel();
             $(".atm-content").on("click",".withdraw-btn",function(){
-                allowClick = true;
+                console.log("----------------------------");
+                // $(".withdraw-btn").attr("disabled","disabled");
                 console.log(purpose);
-<<<<<<< HEAD
-                // $(".withdraw-btn").attr("disabled","true");
                 $(".atm-content .finger-box").fadeOut();
                 var amount = $(".atm-total-input input").val();
-                if (allowClick) {
-                    allowClick = false;
+                // if (allowClick == true) {
+                //     return;
+                // } else {
                     $.ajax({
                         type: "POST",
                         dataType: "JSON",
                         data: JSON.stringify({"money": amount,"purpose": purpose}),
-                        // url: "test.php",
-                        url: "/act/act170725/get_button",
+                        url: "test.php",
+                        // url: "/act/act170725/get_button",
                         success: function(d){
                             console.log("请求数据->",d);
                             if (d.success) {
@@ -293,34 +294,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     setTimeout(function(){
                                         window.location.href = d.url;
                                     },1500);
-=======
-                $(".withdraw-btn").attr({
-                        "disabled": "disabled"
-                    });
-                $(".atm-content .finger-box").fadeOut();
-                var amount = $(".atm-total-input input").val();
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    data: JSON.stringify({"money": amount,"purpose": purpose}),
-                    // url: "test.php",
-                    url: "/act/act170725/get_button",
-                    success: function(d){
-                        console.log("请求数据->",d);
-                        if (d.success) {
-                            $(".withdraw-btn").removeAttr("disabled");
-                            var d = d.ret;
-                            if(d.is_weChat || d.is_qq) {
-                                console.log("微信或qq");
-                                setTimeout(function(){
-                                    window.location.href = d.url;
-                                },1500);
-                            } else {
-                                if (!d.login) {
-                                    if (Bridge) {
-                                        Bridge.action("login");
-                                    }
->>>>>>> c0e968300a891be3853f7a1390e50436a310bc21
                                 } else {
                                     if (!d.login) {
                                         if (Bridge) {
@@ -358,7 +331,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             }
                         }
                     });
-                }
+                // }
             });
         },
         openRule: function () {
@@ -413,7 +386,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     }
     var ruleJson = {
         rule: [
-            "每周六、日，通过活动页面完成申请或放款将获得特定奖励，同个业务奖励只能领取一次。",
+            "领券后，通过活动页面完成申请或放款将获得特定奖励，同个业务奖励只能领取一次。",
             "领券后申请金优贷，每日前100名将获得精美定制笔记本一份；领券后申请金卡贷并放款，享受当月利息下调50%；领券后申请金安贷24小时未放款，获得超时赔付50元现金；领券后申请金花贷并放款，获得50元无门槛抵息券。",
             "此活动针对从未申请过金花贷、金优贷、金卡贷、金安贷业务的新用户，一个用户至多领取到这4个业务对应的奖励。",
             "抵息券将在首月还款直接减免，逾期、提前还款将不享受此优惠；现金/实物奖励将在用户信息完整后7个工作日内打款/寄出，请确认收款/收货信息准确性。",
