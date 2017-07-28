@@ -152,5 +152,10 @@
 	"20170727": {
 		"js": ["r.51gjj.com/act/release/js/20170727_6eb75e7.js"],
 		"css": ["r.51gjj.com/act/release/css/20170727_3298640.css"]
+	},
+
+	"20170728": {
+		"js": ["r.51gjj.com/act/release/js/20170728_98bef9b.js"],
+		"css": ["r.51gjj.com/act/release/css/20170728_9b3962b.css"]
 	}
 }
