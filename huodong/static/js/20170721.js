@@ -88,20 +88,22 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 success: function (d) {
                     if (d.success) {
                         var d = d.ret;
-                        // if (d.is_weChat || d.is_qq) {
-                        //     window.location.href = d.url;
-                        // } else {
-                        //     if (!d.login) {
-                        //         oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
-                        //         if (Bridge) {
-                        //             Bridge.action("login");
-                        //         }
-                        //     } else {
+                        if (d.is_weChat || d.is_qq) {
+                            setTimeout(function(){
+                                    window.location.href = d.url;
+                            },1500);
+                        } else {
+                            if (!d.login) {
+                                oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
+                                if (Bridge) {
+                                    Bridge.action("login");
+                                }
+                            } else {
                                 if (d.chance <= 0) {
                                     oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
                                 }
-                            // }
-                        // }
+                            }
+                        }
                     }
                 }
             })
@@ -122,7 +124,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         if (d.success) {
                             var d = d.ret;
                             if(d.is_qq || d.is_weChat) {
-                                window.location.href = d.url;
+                                setTimeout(function(){
+                                    window.location.href = d.url;
+                                },1500);
                             } else {
                                 if (!d.login) {
                                     oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
@@ -158,7 +162,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         shareToFriend: function(){
             var _this = this;
             $('.wp-inner .content').on('click','.btn2',function(){
-                _this.share();
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
@@ -166,6 +169,21 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     url: "/act/act170721/get_prize",
                     success: function (d) {
                         console.log(d);
+                        var d = d.ret;
+                        if(d.is_qq || d.is_weChat) {
+                            setTimeout(function(){
+                                window.location.href = d.url;
+                            },1500);
+                        } else {
+                            if (!d.login) {
+                                oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
+                                if (Bridge) {
+                                    Bridge.action("login");
+                                } else {
+                                    _this.share();
+                                }
+                            }
+                        }
                     }
                 })
             });
