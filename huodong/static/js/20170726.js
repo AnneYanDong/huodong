@@ -66,17 +66,33 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     }
                 }
             })
-            var list = $(".list ul");
-            // $(".list ul").css("max-height", "200px");
         },
 
         init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
+            _this.render();
             _this.openRule();
             _this.closeRule();
         },
-
+        render: function () {
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "/invest2/user/queryUser/tenderRank",
+                success: function (d) {
+                    if (d.resCode == 1) {
+                        $.each(d.resData.topList,function(k,v){
+                            $(".num-"+v.rank+" .phone").text(v.mobilePhone);
+                            $(".num-"+v.rank+" .invest-money").text(v.sumTenderMoney);
+                        })
+                        $(".money-red").text(d.resData.currentUserTenderMoney);
+                    } else {
+                        oP.show(d.resMsg || 暂无数据);
+                    }
+                }
+            })
+        },
         // 打开规则
         openRule: function () {
             $(".content").on("click", ".rule-btn", function () {
