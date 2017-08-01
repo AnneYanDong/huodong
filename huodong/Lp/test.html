@@ -1,51 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>景深</title>
+<title>css制作gif动画</title>
 <meta charset="utf-8">
 <style type="text/css">
-.box{
-width: 400px;
-height: 400px;
-margin: 100px auto;
-position: relative;
-transform-style: preserve-3d;
-/*景深相当于眼睛距离元素的位置距离*/
-perspective: 100px;
-/*眼睛距元素的偏移位置*/
-perspective-origin: 10px 100px;
-}
-img{
-width: 150px;
-height: 200px;
-position: absolute;
-left: 0;
-right: 0;
-bottom: 0;
-top: 0;
-margin: auto;
-transform: rotateX(50deg);
-}
-.shadow_border{border: 1px solid #000;padding: 60px; width:100px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
-border-radius: 8px;
--webkit-box-shadow: #666 0px 0px 10px;
--moz-box-shadow: #666 0px 0px 10px;
-box-shadow: #666 0px 0px 10px;}
-
-/*文字*/
-.shadow_font{text-shadow: #f00 3px 3px 3px;}/*此处阴影用了红色的看上去比较明显，颜色可以根据需要修改，包括阴影的像素值*/
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    background-color: lightblue;
+  }
+  #worm {
+    background:url("../static/img/img.png") no-repeat;
+    height:185px;
+    width:250px;
+    background-position:0 0;
+    -webkit-animation: worm 1s steps(2) infinite;
+    -moz-animation: worm 1s steps(2) infinite;
+    animation: worm 1s steps(2) infinite;
+  }
+  @-webkit-keyframes worm {
+    0% {
+        background-position:0 0;
+    }
+    100% {
+        background-position:-480px 0;
+    }
+  }
+  @-moz-keyframes worm {
+      0% {
+          background-position:0 0;
+      }
+      100% {
+          background-position:-480px 0;
+      }
+  } 
+  @keyframes worm {
+      0% {
+          background-position:0 0;
+      }
+      100% {
+          background-position:-480px 0;
+      }
+  }
 </style>
+
 </head>
 <body>
-
-<div class="shadow_border">
-<span class="shadow_font">阴影</span>
-</div>
-
-<div class="box">
-<img src="../static/img/20170725_money.png">
-</div>
+  <p>
+    <ul>
+      <li>制作gif思路：</li>
+      <li>1、首先把你要进行动画制作的每个图片的状态当做每一帧
+      （像我这里面有两个状态，一个是虫子的手放下去，一个是种子的手抬起来，所以就对应两张切图图片，但是这两张切图图片最好是等宽等高），</li>
+      <li>2、然后用雪碧图合成工具合成雪碧图（我用的是这个：http://developer.51cto.com/art/201504/474506.htm），横向排列（纵向排列也可以），
+         输入合成雪碧图的名称，路径是自动生成你拖图片的本地路径，勾选是否是手机端，点击生成雪碧图。</li>
+      <li>3、布局：就只需要一个空的div,我给这个div一个名为worm的id（这个你自己定）</li>
+      <li>4、写样式：把刚刚生成的雪碧图作为这个空div的背景图，并且设置no-repeat，</li>
+      <li>5、定好宽高，高度，让它只显示第一张图片出来就可以了。</li>
+      <li>6、设置背景图片的位置（一般就是background-position:0 0;）</li>
+      <li>7、定义动画，因为你要显示循环显示第一帧和第二帧，那现在默认显示了第一帧，
+         现在让整张图片往左移动，直到第一帧消失第二帧刚好显示的位置（自己手动调整），
+         这个位置就是动画100%时候要显示的background-position;</li>
+      <li style="font-size: 24px"><strong>完</strong></li>
+      <li><b>【由于我这两张图片的高度不一样，所以会上下跳动】</b></li>
+    </ul>
+  </p>
+  <div id="worm" class="icon"></div>
 </body>
 </html>

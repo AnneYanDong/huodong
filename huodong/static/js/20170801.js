@@ -55,9 +55,23 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 }
             })
 
-            ct.Ajax.do({
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: ct.Tool.url("/app/request/activity"),
+                data: JSON.stringify({
+                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    tag: "进入页面" + projectName
+                }),
+                success: function (d) {
+                    if (d.success) {
+
+                    }
+                }
+            });
+
+       /*     ct.Ajax.do({
                 url: indexData.ajaxUrl || "test.php",
-                // requestDataType: "json",
                 data: {
                     action: "status",
                     test: "look",
@@ -71,16 +85,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                         oP.show(d.errmsg || "出错请重试");
                     }
                 }
-            })
+            })*/
         },
 
         init: function() {
+            console.log("私人订制活动");
             var _this = this;
             $(".wp").removeClass("hide");
             _this.fullPageObj = _this.fullpage();
             _this.apply();
-            _this.openRule();
-            _this.closeRule();
         },
 
         fullpage: function() {
@@ -89,10 +102,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 start: 0,
                 beforeChange: function(e) {
                     var now = "page" + e.next;
-                    _this.changeState(now);
-                    // if (e.next < e.cur) {
-                    //     return false;
-                    // }
+                    _this.changeState(now); //把当前页面在改变之前塞入浏览器历史记录
                 },
                 afterChange: function(e) {
                     _this.fullPageObj.stop();
@@ -301,23 +311,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
                 }
             }
-        },
-
-        // 打开规则
-        openRule: function() {
-            $(".content").on("click", ".rule-btn", function() {
-                oM.show();
-                $(".rule").fadeIn();
-            })
-        },
-
-        // 关闭规则
-        closeRule: function() {
-            $("body").on("click", ".btn-close", function() {
-                $(".rule").fadeOut(function() {
-                    oM.hide();
-                })
-            })
         },
 
         cardType: function(obj) {

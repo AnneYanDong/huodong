@@ -18,6 +18,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var oType = "";
     var oMsg = "";
     var totalChance = 0;
+    var angle = 0;
+    var endAngle = 0;
     var run = {
         start: function () {
             var _this = this;
@@ -117,8 +119,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
-                    url: "test.php",
-                    // url: "/act/act170721/get_prize",
+                    // url: "test.php",
+                    url: "/act/act170721/get_prize",
                     success: function (d) {
                         console.log(d);
                         if (d.success) {
@@ -139,14 +141,19 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                     if (d.chance <= 0) {
                                        oP.show("机会用尽啦，不要太贪心哦，邀请好友一起玩");
                                     } else {
-                                        $('.turntable').addClass('turning');
-                                        timer = setTimeout(function(){
-                                            console.log("angle->",d.angle);
-                                            $(".turntable").css("transition","transform 1s ease").css("transform","rotate("+ d.angle + "deg)");
-                                            timer = setTimeout(function(){
-                                                oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
-                                                $('.turntable').removeClass('turning');
-                                            },500);
+                                        console.log("angle->",d.angle);
+                                        angle = d.angle + 720;
+                                        endAngle += 3;
+                                        if ($(".turntable").css('transform') == "none") {
+                                            $(".turntable").css({
+                                                "transform":"rotate("+ angle + "deg)",
+                                                "transition":"transform 3s ease",
+                                            });
+                                        } else {
+                                            $(".turntable").css("transform","rotate("+ (endAngle * 360 + d.angle) +"deg)");
+                                        }
+                                        setTimeout(function(){
+                                            oP.show("人品爆发，中奖啦！恭喜抽中" + d.gift_name + "!");
                                         },3000);
                                     }
                                 }

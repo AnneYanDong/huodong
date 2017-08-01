@@ -1,0 +1,7 @@
+@import url('basicFullPage.css');
+@import url('mtool.css');
+.page {
+  background: url("http://r.51gjj.com/act/release/img/20170313_normal_bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
