@@ -220,7 +220,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             "title": "转盘抽奖",
                             'desc': "查公积金送积分",
                             "thumb": "https://r.51gjj.com/act/release/img/20170721_share.png",
-                            "link": "https://" + host + "/20160714/invite_out_v2.php?c=" + invitation_code
+                            "link": "https://" + host + "/hd/20160714/invite_out_v2.php?c=" + invitation_code
                         });
                     }
                 })
