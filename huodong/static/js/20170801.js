@@ -69,23 +69,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
                 }
             });
-
-       /*     ct.Ajax.do({
-                url: indexData.ajaxUrl || "test.php",
-                data: {
-                    action: "status",
-                    test: "look",
-                    num: 1
-                },
-                success: function(d) {
-                    if (d.errcode == 0) {
-                        _this.status.login = true;
-                    } else {
-                        _this.status.msg = d.errmsg || "出错请重试";
-                        oP.show(d.errmsg || "出错请重试");
-                    }
-                }
-            })*/
         },
 
         init: function() {
