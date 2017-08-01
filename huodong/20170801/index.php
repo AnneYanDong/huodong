@@ -17,11 +17,11 @@
     <style>
         /* 加载动画颜色配置 */
         .loading-bg-color {
-            background: #627af3;
+            background: #1f1f2f;
         }
 
         .loading-ele-color:after, .loading-ele-color:before {
-            background: #627af3 !important;
+            background: #1f1f2f !important;
         }
     </style>
     <script>
@@ -33,67 +33,84 @@
     <body>
     <div class="wp hide">
         <div class="wp-inner">
-            <div class="page page1">
+            <div class="page1">
                 <div class="content">
-                    <h1 class="t1"><img data-src="<?php echo $imgUrl; ?>page1_title.png" alt=""></h1>
-                    <h6 class="t2">我们与各家银行联合推出信用卡定制服务</h6>
-                    <ul class="t3">
-                        <li>纯公积金授信</li>
-                        <li>最高额度50万</li>
-                        <li>N多权益 超长免息期</li>
-                    </ul>
-                    <div class="btn" title="kaiqidingzhi" bp="kaiqidingzhi">开启定制</div>
-                    <div class="process" title="bankajindu" bp="bankajindu">办卡进度<span class="icon-process"></span></div>
-                </div>
-            </div>
-            <div class="page page2">
-                <div class="content">
-                    <h6 class="t1">选择信用卡额度</h6>
-                    <ul class="choose">
-                        <li class="grayscale animated" data-loan-type="1" title="OneToFive" bp="OneToFive">
-                            <div class="left">1~5万</div>
-                            <div class="right"><span class="choose-icon"></span></div>
+                    <h1 class="title1"><img data-src="<?php echo $imgUrl; ?>page1_title.png" alt="title1"></h1>
+                    <h6 class="title2">为您推荐最适合的贷款</h6>
+                    <ul class="title3">
+                        <h5>您想借多少钱？</h5>
+                        <li bp="1万元以下" title="1万元以下" data-loan-total="1万元以下">
+                            <img data-src="<?php echo $imgUrl; ?>page1_loan1_02.png" alt="1万元以下">
+                            <span>1万元以下</span>
                         </li>
-                        <li class="grayscale animated" data-loan-type="2" title="SixToThirty" bp="SixToThrity">
-                            <div class="left">6~30万</div>
-                            <div class="right"><span class="choose-icon"></span></div>
+                        <li bp="1~3万" title="1~3万" data-loan-total="1~3万">
+                            <img data-src="<?php echo $imgUrl; ?>page1_loan2_02.png" alt="1~3万">
+                            <span>1-3万元</span>
+                        </li>
+                        <li bp="3万元以上" title="3万元以上" data-loan-total="3万元以上">
+                            <img data-src="<?php echo $imgUrl; ?>page1_loan3_02.png" alt="3万元以上">
+                            <span>3万元以上</span>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="page page3">
+            <div class="page2">
                 <div class="content">
-                    <h6 class="t1">选择信用卡发卡行</h6>
-                    <ul class="choose">
-                        <li class="grayscale animated" data-card-type="1" title="pufa" bp="pufa">
-                            <div class="left">
-                                <span class="credit-card-icon icon-pufa"></span>
-                            </div>
-                            <div class="right"><span class="choose-icon"></span></div>
+                    <div class="dial1"><img data-src="<?php echo $imgUrl; ?>page2_top.png" alt="dial"></div>
+                    <ul class="title3">
+                        <h5>您想借多久？</h5>
+                        <li bp="30天以内" title="30天以内" data-loan-time="30天以内">
+                            <img data-src="<?php echo $imgUrl; ?>page1_loan1_02.png" alt="30天以内">
+                            <span>30天以内</span>
                         </li>
-                        <li class="grayscale animated" data-card-type="2" title="guangda" bp="guangda">
-                            <div class="left">
-                                <span class="credit-card-icon icon-guangda"></span>
-                            </div>
-                            <div class="right"><span class="choose-icon"></span></div>
+                        <li bp="1年以内" title="1年以内" data-loan-time="1年以内">
+                            <img data-src="<?php echo $imgUrl; ?>page1_loan2_02.png" alt="1年以内">
+                            <span>1年以内</span>
                         </li>
-                        <li class="grayscale animated" data-card-type="3" title="xingye" bp="xingye">
-                            <div class="left">
-                                <span class="credit-card-icon icon-xingye"></span>
-                            </div>
-                            <div class="right"><span class="choose-icon"></span></div>
+                        <li bp="1年以上" title="1年以上" data-loan-time="1年以上">
+                            <img data-src="<?php echo $imgUrl; ?>page1_loan3_02.png" alt="1年以上">
+                            <span>1年以上</span>
                         </li>
                     </ul>
+                    <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dial"></div>
                 </div>
             </div>
-            <div class="page page4">
+            <div class="page3">
+               <div class="content">
+                   <div class="dial1"><img data-src="<?php echo $imgUrl; ?>page2_top.png" alt="dial"></div>
+                   <ul class="title3">
+                       <h5>可接受放款时间为？</h5>
+                       <li bp="1天以内" title="1天以内" data-loan-release="1天以内">
+                           <img data-src="<?php echo $imgUrl; ?>page1_loan1_02.png" alt="1天以内">
+                           <span>1天以内</span>
+                       </li>
+                       <li bp="1-3天" title="1-3天" data-loan-release="1-3天">
+                           <img data-src="<?php echo $imgUrl; ?>page1_loan2_02.png" alt="1-3天">
+                           <span>1-3天</span>
+                       </li>
+                   </ul>
+                   <div class="tips"><span>tips:申请额度与放款时间正相关哦！</span></div>
+                   <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dial"></div>
+               </div>
+            </div>
+            <div class="page4">
                 <div class="content">
-
+                    <div class="dial1"><img data-src="<?php echo $imgUrl; ?>page2_top.png" alt="dial"></div>
+                    <div class="circle">
+                        <div class="circle-A" data-loan-focus="放款额度高"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="A" bp="A" title="A"></div>
+                        <div class="circle-B" data-loan-focus="审批快"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="B" bp="B" title="B"></div>
+                        <div class="circle-C" data-loan-focus="利息低"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="C" bp="C" title="C"></div>
+                        <div class="circle-D" data-loan-focus="每月还款少"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="D" bp="D" title="D"></div>
+                    </div>
+                    <div class="choose"><img data-src="<?php echo $imgUrl; ?>page4_choose.png" alt="dial"></div>
+                    <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dia2"></div>
                 </div>
             </div>
-            <div class="page page5">
+            <div class="page5">
                 <div class="content">
-
+                    <div class="test-result"><img data-src="<?php echo $imgUrl; ?>page5_test_result.png" alt="test_result"></div>
+                    <div class="final-loan"><img data-src="<?php echo $imgUrl; ?>page5_final_loan.png" alt="final_loan"></div>
+                    <div class="test-btn hide" bp="重新测试" title="重新测试"><span>重新测试</span></div>
                 </div>
             </div>
         </div>

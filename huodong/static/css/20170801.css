@@ -1,7 +1,178 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
-.page {
-  background: url("http://r.51gjj.com/act/release/img/20170313_normal_bg.jpg") no-repeat;
+.wp-inner {
+  text-align: center;
+}
+.page1 {
+  // background: url("http://r.51gjj.com/act/release/img/20170801_page_bg.png") no-repeat;
+  background: url("../img/20170801_page_bg.png") no-repeat;
   background-size: cover;
   background-position: center;
+}
+.page1 .content .title1 img {
+  width: 5.19rem;
+  height: 2.65rem;
+  position: relative;
+  top: .90rem;
+}
+.page1 .content .title2 {
+  font-size: .34rem;
+  color: #fff;
+  letter-spacing: .2rem;
+  position: relative;
+  top: 1rem;
+}
+.title3 {
+  position: relative;
+  top: 1.9rem;
+}
+.title3 h5 {
+  font-size: .45rem;
+  font-weight: 100;
+  color: #fff;
+  letter-spacing: .1rem;
+  padding-bottom: .3rem;
+  padding-left: .4rem;
+}
+.title3:not(:first-child) {
+  display: inline-block;
+  font-size: .40rem;
+  color: #fff;
+}
+.title3:not(:first-child) img{
+  width: 6.00rem;
+  height: 1.60rem;
+  margin-top: .26rem;
+}
+.title3:not(:first-child) span {
+  position: relative;
+  top: -1.15rem;
+  text-shadow: 0 0 0.05rem #0cfa92;
+}
+.content img {
+  margin: 0 auto;
+}
+.page2,.page3,.page4,.page5 {
+  background: #1f2030;
+}
+.page2 .content .dial1 img {
+  width: 5.36rem;
+  height: 1.06rem;
+  position: relative;
+  top: 1rem;
+}
+.page2 .content .dial2 img {
+  width: 5.36rem;
+  height: 1.06rem;
+  position: relative;
+  top: 2rem;
+}
+.page3 .content .dial1 img {
+  width: 5.36rem;
+  height: 1.06rem;
+  position: relative;
+  top: 1rem;
+}
+.page3 .content .dial2 img {
+  width: 5.36rem;
+  height: 1.06rem;
+  position: relative;
+  top: 3.5rem;
+}
+.page3 .content .tips {
+  font-size: .24rem;
+  color: #5d63ce;
+  position: relative;
+  top: 2rem;
+}
+.page4 .content .dial1 img {
+  width: 5.36rem;
+  height: 1.06rem;
+  position: relative;
+  top: 1rem;
+}
+.page4 .content .dial2 img {
+  width: 5.36rem;
+  height: 1.06rem;
+  position: relative;
+  top: 3.5rem;
+}
+.page4 .content .choose img {
+  width: 6.16rem;
+  height: 6.28rem;
+  position: relative;
+  top: 2rem;
+}
+.page4 .content .circle img{
+  display: inline-block;
+  width: 1.80rem;
+  height: 1.78rem;
+  z-index: 2;
+}
+.page4 .content .circle .circle-A img {
+  position: absolute;
+  top: 2.88rem;
+  left: .48rem;
+}
+.page4 .content .circle .circle-B img{
+  position: absolute;
+  top: 2.88rem;
+  right: .48rem;
+}
+.page4 .content .circle .circle-C img{
+  position: absolute;
+  top: 7.75rem;
+  left: .48rem;
+}
+.page4 .content .circle .circle-D img{
+  position: absolute;
+  top: 7.75rem;
+  right: .48rem;
+}
+.page5 .content .test-result img {
+  width: 6.59rem;
+  height: 3.59rem;
+  position: relative;
+  top: .41rem;
+}
+.page5 .content .final-loan img {
+  width: 6.79rem;
+  height: 4.36rem;
+  position: relative;
+  top: 1rem;
+  left: -.2rem;
+}
+.page5 .content .test-btn {
+  position: relative;
+  top: 1.5rem;
+  font-size: .46rem;
+  color: #4c83ff;
+  box-shadow:0 0 2px #6a2ab1,
+             0 0 2px #4c83ff,
+             0 -2px 0 #6a2ab1,
+             0 2px 0 #4c83ff;
+  border-radius: .5rem;
+  width: 6.45rem;
+  height: .84rem;
+  line-height: .84rem;
+  transform: translateX(-50%);
+  left: 50%;
+}
+.page5 .content .test-btn:before {
+  content: url("../img/20170801_page5_left_arrow.png");
+  width: .38rem;
+  height: .29rem;
+  background-size: .38rem .29rem;
+  position: relative;
+  top: .1rem;
+  padding-right: .5rem;
+}
+.page5 .content .test-btn:after {
+  content: url("../img/20170801_page5_right_arrow.png");
+  width: .38rem;
+  height: .29rem;
+  background-size: .38rem .29rem;
+  position: relative;
+  top: .1rem;
+  padding-left: .5rem;
 }

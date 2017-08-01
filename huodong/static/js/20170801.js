@@ -85,7 +85,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 start: 0,
                 beforeChange: function(e) {
                     var now = "page" + e.next;
-                    _this.changeState(now); //把当前页面在改变之前塞入浏览器历史记录
+                    _this.changeState(now); //把当前页面在改变之前塞入浏览器历史
                 },
                 afterChange: function(e) {
                     _this.fullPageObj.stop();
