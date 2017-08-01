@@ -134,7 +134,7 @@
     width: 6.03rem;
     padding: .5rem .36rem;
     position: absolute;
-    top: 1.5rem;
+    top: 2.5rem;
     left: 50%;
     font-size: 12px;
     transform: translateX(-50%);
@@ -171,7 +171,7 @@
     color: #010101;
 }
 .rule ul .add-style-2 {
-    padding-left: 1.2rem;
+    padding-left: 60px;
 }
 .rule ul li {
     position: relative;
@@ -250,4 +250,22 @@
     position: absolute;
     left: 50%;
     margin-left: -3.435rem;
+}
+.buying {
+    position: absolute;
+    width: 4rem;
+    height: 1rem;
+    top: 7.8rem;
+    margin-left: -2rem;
+    left: 50%;
+    z-index: 5;
+}
+.buying-bottom {
+    position: absolute;
+    width: 6rem;
+    top: 23.6rem;
+    height: 1.2rem;
+    margin-left: -3rem;
+    left: 50%;
+    z-index: 5;
 }
