@@ -20,6 +20,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var totalChance = 0;
     var angle = 0;
     var endAngle = 0;
+    var invitation_code;
     var run = {
         start: function () {
             var _this = this;
@@ -89,6 +90,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 url: "/act/act170721/get_status",
                 success: function (d) {
                     console.log(d);
+                    invitation_code = d.ret.invitation_code;
                     if (d.success) {
                         var d = d.ret;
                         if (d.is_weChat || d.is_qq) {
@@ -169,31 +171,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
         shareToFriend: function(){
             var _this = this;
             $('.wp-inner .content').on('click','.btn2',function(){
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    // url: "test.php",
-                    url: "/act/act170721/get_prize",
-                    success: function (d) {
-                        console.log(d);
-                        var d = d.ret;
-                        if(d.is_qq || d.is_weChat) {
-                            setTimeout(function(){
-                                window.location.href = d.url;
-                            },1500);
-                        } else {
-                            if (d.login == false) {
-                                oP.show("亲爱滴，登陆后才能玩耍哦，快去登陆吧~");
-                                if (Bridge) {
-                                    Bridge.action("login");
-                                }
-                            }else {
-                                console.log("分享功能");
-                                _this.share(d.invitation_code);
-                            }
-                        }
-                    }
-                })
+                console.log("分享功能");
+                _this.share(invitation_code);
             });
         },
 
