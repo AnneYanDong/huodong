@@ -1,5 +1,5 @@
 <?php 
-    $title = "私人定制"; // 配置标题的，必须
+    $title = "公积金定制贷款"; // 配置标题的，必须
     include "../public/v1/header.php";
 ?>
 <?php
@@ -17,11 +17,11 @@
     <style>
         /* 加载动画颜色配置 */
         .loading-bg-color {
-            background: #0d0d0d;
+            background: #627af3;
         }
 
         .loading-ele-color:after, .loading-ele-color:before {
-            background: #0d0d0d !important;
+            background: #627af3 !important;
         }
     </style>
     <script>
