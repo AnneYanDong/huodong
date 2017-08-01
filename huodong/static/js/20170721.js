@@ -213,17 +213,17 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             };
             var host = window.location.host;
             if (app.isGjj && Bridge) {
-                Bridge.action('quickIcon', {
-                    thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
-                    onclick: function () {
+                // Bridge.action('quickIcon', {
+                //     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
+                //     onclick: function () {
                         Bridge.action('ShareTimeline', {
                             "title": "转盘抽奖",
                             'desc': "查公积金送积分",
                             "thumb": "https://r.51gjj.com/act/release/img/20170721_share.png",
                             "link": "https://" + host + "/20160714/invite_out_v2.php?c=" + invitation_code
                         });
-                    }
-                })
+                //     }
+                // })
             }
             return this;
         },
