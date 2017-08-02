@@ -11,7 +11,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
     var local = ct.Tool.local();
 
     ct.Tool.buryPoint();
-
     var run = {
         status: {
             login: false,
@@ -76,153 +75,146 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             console.log("私人订制活动");
             var _this = this;
             $(".wp").removeClass("hide");
-            // _this.fullPageObj = _this.fullpage();
-            // _this.apply();
+            _this.fullPageObj = _this.fullpage();
         },
 
         fullpage: function() {
             var _this = this;
+            var loan = [];
+            var total = null;
+            var loanTotal = [];
+            var time = null;
+            var loanTime = [];
+            var release = null;
+            var loanRelease = [];
+            var focus = null;
+            var loanFocus = [];
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
-                start: 0,
+                start: 0,  //默认第一页开始
                 beforeChange: function(e) {
                     console.log("e",e);
                     console.log("e.next",e.next);
-                    var now = "page" + e.next;
+                    var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
                     console.log("now",now);
                     _this.changeState(now); //把当前页面在改变之前塞入浏览器历史
                 },
                 afterChange: function(e) {
                     _this.fullPageObj.stop();
-                    var now = "page" + e.cur;
-                    if (now == "page0") {
-                        $(".page1 li").on("click", function() {
-                            _this.fullPageObj.moveTo(1, true);
+                    var now = "page" + (e.cur + 1);
+                    if (now == "page1") {
+                        //加载到当前页的时候去掉之前加上的动画
+                        $(".page1 li").removeClass("rotating");
+                        $(".page1 li").unbind().on("click", function() {
+                            var ele = $(this);
+                            var timer = null;
+                            clearTimeout(timer);
+                            timer = setTimeout(function() {
+                                ele.addClass("rotating"); //当前li元素添加动画
+                                clearTimeout(timer);
+                                timer = setTimeout(function() {
+                                    _this.fullPageObj.moveTo(1, true);
+                                }, 1200);
+                            }, 200);
+                            total = ele.data("loan-total");
+                            console.log("push语句之前",loanTotal);
+                            loanTotal.push(total);
+                            console.log("点击时loanTotal:",loanTotal);
                         });
-
                         _this.respondState(now);
                     }
 
-                    if (now == "page1") {
-                        // $(".page1 li").removeClass("rotate").addClass("grayscale");
-
-                        $(".page2 li").on("click", function() {
-                            // oMask.show();
-                            // var ele = $(this);
-                            // if (ele.hasClass("rotate")) {
-                            //     oMask.hide();
-                            //     _this.fullPageObj.moveTo(2, true);
-                            // } else {
-                                // ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
+                    if (now == "page2") {
+                        $(".page2 li").unbind().on("click", function() {
+                            var ele = $(this);
                                 var timer = null;
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-                                    // ele.addClass("rotate");
+                                    ele.addClass("rotating"); //当前li元素添加动画
                                     clearTimeout(timer);
                                     timer = setTimeout(function() {
                                         _this.fullPageObj.moveTo(2, true);
                                         // oMask.hide();
                                     }, 1200)
-                                }, 200)
-                            // }
-                            // _this.charge.loan = $(this).data("loan-type");
+                                }, 200);
+                            //把li元素的data属性push到对应数组
+                            time = ele.data("loan-time");
+                            loanTime.push(time);
+                            console.log("点击时time:",loanTime);
                         })
-
-
-                        _this.respondState(now, 0, true);  //app点击返回箭头执行的函数
-                    }
-
-                    if (now == "page2") {
-                        // $(".page2 li").removeClass("rotate").addClass("grayscale");
-                        $(".page3 li").on("click", function() {
-                            // oMask.show();
-                            var ele = $(this);
-                            // ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
-                            var timer = null;
-                            clearTimeout(timer);
-                            timer = setTimeout(function() {
-                                // ele.addClass("rotate");
-                                clearTimeout(timer);
-                                timer = setTimeout(function() {
-                                    // console.log(_this.charge)
-                                    // if (_this.cardType(_this.charge) == "continue") {
-                                    //     var d = null;
-                                    //     if (_this.charge.type == 1) {
-                                    //         var tpl = $("#tpl-choose-pf").html();
-                                    //     } else {
-                                    //         var tpl = $("#tpl-choose-gd").html();
-                                    //     }
-                                    //     var resHtml = juicer(tpl, d)
-                                    // } else {
-                                    //     var d = cardJson[_this.cardType(_this.charge)];
-                                    //     console.log(d);
-                                    //     var tpl = $("#tpl-card").html();
-                                    //     var resHtml = juicer(tpl, d);
-
-                                    //     juicer.register("index_add", indexFn);
-                                    //     var ruleTpl = $("#tpl-rule").html();
-                                    //     var resRuleHtml = juicer(ruleTpl, d);
-                                    //     console.log(resRuleHtml);
-                                    // }
-                                    // $(".page4 .content").html("").append(resHtml);
-                                    // $(".rule").remove();
-                                    // $("body").append(resRuleHtml);
-                                    // oMask.hide();
-                                    _this.fullPageObj.moveTo(3, true);
-                                }, 1200)
-                            }, 200)
-
-                            // _this.charge.type = $(this).data("card-type");
-                        })
-                        _this.respondState(now, 1, true, function() {
-                            // _this.charge.loan = null;
-                        });
+                        _this.respondState(now, 0, true,function(){
+                            console.log("返回第一页");
+                            $(".page1 li").removeClass("rotating");
+                            loanTotal = [];
+                            total = null;
+                            console.log("返回时loanTotal:",loanTotal);
+                        });  //app点击返回箭头执行的函数
                     }
 
                     if (now == "page3") {
-                        // $(".page3 li").removeClass("rotate").addClass("grayscale");
-                        // if ($(".page4 .circle")) {
-                            $(".page4 .circle div").on("click", function() {
-                                // oMask.show();
-                                var ele = $(this);
-                                // ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
-                                var timer = null;
+                        $(".page3 li").unbind().on("click", function() {
+                            var ele = $(this);
+                            var timer = null;
+                            clearTimeout(timer);
+                            timer = setTimeout(function() {
+                                ele.addClass("rotating");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-
-                                    // ele.addClass("rotate");
-                                    clearTimeout(timer);
-                                    timer = setTimeout(function() {
-                                        // console.log(_this.charge)
-                                        // if (_this.cardType(_this.charge) == "continue") {
-                                        //     console.log("错了")
-                                        //     return false;
-                                        // } else {
-                                        //     var d = cardJson[_this.cardType(_this.charge)];
-                                        //     console.log(d);
-                                        //     var tpl = $("#tpl-card").html();
-                                        //     var resHtml = juicer(tpl, d);
-
-                                        //     juicer.register("index_add", indexFn);
-                                        //     var ruleTpl = $("#tpl-rule").html();
-                                        //     var resRuleHtml = juicer(ruleTpl, d);
-                                        // }
-                                        // $(".page5 .content").html("").append(resHtml);
-                                        // $(".rule").remove();
-                                        // $("body").append(resRuleHtml);
-                                        // oMask.hide();
-                                        _this.fullPageObj.moveTo(4, true);
-                                    }, 1200)
-                                }, 200)
-                                // _this.charge.pay = $(this).data("pay");
-                            })
-                        // }
-                        _this.respondState(now, 2, true);
+                                    _this.fullPageObj.moveTo(3, true);
+                                }, 1200)
+                            }, 200)
+                            release = ele.data("loan-release");
+                            loanRelease.push(release);
+                            console.log("点击时loanRelease:",loanRelease);
+                        })
+                        _this.respondState(now, 1, true, function() {
+                            console.log("返回第二页");
+                            $(".page2 li").removeClass("rotating");
+                            loanTime.length = 0;
+                            time = null;
+                            console.log("返回时loanTime:",loanTime);
+                        });
                     }
 
                     if (now == "page4") {
-                        // $(".page4 li").removeClass("rotate").addClass("grayscale");
-                        // _this.charge.pay = null;
-                        _this.respondState(now, 3, true);
+                        console.log(_this);
+                        $(".page4 .circle div").unbind().on("click", function() {
+                            var ele = $(this);
+                            focus = ele.data("loan-focus");
+                            loanFocus.push(focus);
+                            loan.push(loanTotal,loanTime,loanRelease,loanFocus);
+                            console.log("点击时loanFocus:",loanFocus);
+                            console.log("loan:",loan);
+
+                            var timer = null;
+                            clearTimeout(timer);
+                            timer = setTimeout(function() {
+                                ele.addClass("circle-rotating");
+                                clearTimeout(timer);
+                                timer = setTimeout(function() {
+                                    _this.getAnalysisData(loan);
+                                }, 1200)
+                            }, 200)
+                        })
+                        _this.respondState(now, 2, true,function(){
+                            console.log("返回第三页");
+                            $(".page3 li").removeClass("rotating");
+                            loanRelease.length = 0;
+                            release = null;
+                            console.log("返回时loanRelease:",loanRelease);
+                        });
+                    }
+
+                    if (now == "page5") {
+                        //展示分析的頁面
+                        _this.respondState(now, 3, true,function(){
+                            console.log("返回第四页");
+                            $(".page4 .circle div").removeClass("circle-rotating");
+                            loanFocus.length = 0;
+                            focus = null;
+                            loan.length = 0;
+                            console.log("返回时loanFocus:",loanFocus);
+                            $(".page4 .customization-tp").fadeOut();
+                        });
                     }
                 }
             });
@@ -230,25 +222,45 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
         },
 
         // 走后台跳转申请
-        apply: function() {
-            $(".page4,.page5").on("click", ".apply", function() {
-                console.log("...")
-                var type = $(this).data("link");
-                ct.Ajax.do({
-                    url: indexData.ajaxUrl || "test.php",
-                    data: {
-                        action: "apply",
-                        type: type
-                    },
-                    success: function(d) {
-                        if (d.errcode == 0) {
-                            window.location.href = d.url;
-                        } else {
-                            oP.show(d.errmsg || "出错请重试");
-                        }
+        getAnalysisData: function(loan) {
+            var _this = this;
+            console.log("请求：",loan);
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                data: JSON.stringify({"loan":loan}),
+                url: "test.php",
+                // url: "/act/act170725/get_button",
+                success: function(d){
+                    if (d.success) {
+                        var d = d.ret.data;
+                        console.log("d->",d);
+                       if (d.sex == 1) {
+                         // oM.show();
+                         //弹屏男
+                         $(".page4 .customization-tp").fadeIn();
+                         setTimeout(function(){
+                            // oM.hide();
+                            _this.fullPageObj.moveTo(4, true);
+                            
+                         },3000);
+                       }
+                       if (d.sex == 2) {
+                        //弹屏女
+                        $(".page4 .customization-tp .male").hide();
+                        $(".page4 .customization-tp").fadeIn();
+                        $(".page4 .customization-tp .female").show();
+                        setTimeout(function(){
+                           // oM.hide();
+                           _this.fullPageObj.moveTo(4, true);
+                           
+                        },3000);
+                       }
+                    } else {
+                        oP.show(d.msg || "出错了请重试");
                     }
-                })
-            })
+                }
+            });
         },
 
         changeState: function(page) {
@@ -263,7 +275,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             var app = ct.Tool.userAgent();
             if (Bridge && app.isGjj) {
                 Bridge.onBack(function() {
-                    if (page == "page0") {
+                    if (page == "page1") {
                         return false;
                     } else {
                         if (isAnim) {
