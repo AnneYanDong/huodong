@@ -31,6 +31,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
             /*设置HTML的font-size*/
             ct.Tool.setFont();
+            ct.Tool.handleBottomStatusBar();
             window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
             window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
             // window.onresize = ct.Tool.debounce(ct.Tool.setFont)
@@ -75,8 +76,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             console.log("私人订制活动");
             var _this = this;
             $(".wp").removeClass("hide");
-            _this.fullPageObj = _this.fullpage();
-            _this.apply();
+            // _this.fullPageObj = _this.fullpage();
+            // _this.apply();
         },
 
         fullpage: function() {
@@ -84,51 +85,46 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
                 start: 0,
                 beforeChange: function(e) {
+                    console.log("e",e);
+                    console.log("e.next",e.next);
                     var now = "page" + e.next;
+                    console.log("now",now);
                     _this.changeState(now); //把当前页面在改变之前塞入浏览器历史
                 },
                 afterChange: function(e) {
                     _this.fullPageObj.stop();
                     var now = "page" + e.cur;
                     if (now == "page0") {
-                        $(".page1 .btn").on("click", function() {
-                            if (!_this.status.login) {
-                                oP.show(_this.status.msg);
-                                return;
-                            }
+                        $(".page1 li").on("click", function() {
                             _this.fullPageObj.moveTo(1, true);
                         });
-                        $(".process").on("click", function() {
-                            console.log(local.origin + "shequ/discovery/index.php?route=account/business&type=3")
-                            window.location.href = local.origin + "shequ/discovery/index.php?route=account/business&type=3";
-                        })
 
                         _this.respondState(now);
                     }
 
                     if (now == "page1") {
-                        $(".page1 li").removeClass("rotate").addClass("grayscale");
+                        // $(".page1 li").removeClass("rotate").addClass("grayscale");
 
                         $(".page2 li").on("click", function() {
-                            oMask.show();
-                            var ele = $(this);
-                            if (ele.hasClass("rotate")) {
-                                oMask.hide();
-                                _this.fullPageObj.moveTo(2, true);
-                            } else {
-                                ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
+                            // oMask.show();
+                            // var ele = $(this);
+                            // if (ele.hasClass("rotate")) {
+                            //     oMask.hide();
+                            //     _this.fullPageObj.moveTo(2, true);
+                            // } else {
+                                // ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
                                 var timer = null;
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-                                    ele.addClass("rotate");
+                                    // ele.addClass("rotate");
                                     clearTimeout(timer);
                                     timer = setTimeout(function() {
                                         _this.fullPageObj.moveTo(2, true);
-                                        oMask.hide();
+                                        // oMask.hide();
                                     }, 1200)
                                 }, 200)
-                            }
-                            _this.charge.loan = $(this).data("loan-type");
+                            // }
+                            // _this.charge.loan = $(this).data("loan-type");
                         })
 
 
@@ -136,96 +132,96 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page2") {
-                        $(".page2 li").removeClass("rotate").addClass("grayscale");
+                        // $(".page2 li").removeClass("rotate").addClass("grayscale");
                         $(".page3 li").on("click", function() {
-                            oMask.show();
+                            // oMask.show();
                             var ele = $(this);
-                            ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
+                            // ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
                             var timer = null;
                             clearTimeout(timer);
                             timer = setTimeout(function() {
-                                ele.addClass("rotate");
+                                // ele.addClass("rotate");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-                                    console.log(_this.charge)
-                                    if (_this.cardType(_this.charge) == "continue") {
-                                        var d = null;
-                                        if (_this.charge.type == 1) {
-                                            var tpl = $("#tpl-choose-pf").html();
-                                        } else {
-                                            var tpl = $("#tpl-choose-gd").html();
-                                        }
-                                        var resHtml = juicer(tpl, d)
-                                    } else {
-                                        var d = cardJson[_this.cardType(_this.charge)];
-                                        console.log(d);
-                                        var tpl = $("#tpl-card").html();
-                                        var resHtml = juicer(tpl, d);
+                                    // console.log(_this.charge)
+                                    // if (_this.cardType(_this.charge) == "continue") {
+                                    //     var d = null;
+                                    //     if (_this.charge.type == 1) {
+                                    //         var tpl = $("#tpl-choose-pf").html();
+                                    //     } else {
+                                    //         var tpl = $("#tpl-choose-gd").html();
+                                    //     }
+                                    //     var resHtml = juicer(tpl, d)
+                                    // } else {
+                                    //     var d = cardJson[_this.cardType(_this.charge)];
+                                    //     console.log(d);
+                                    //     var tpl = $("#tpl-card").html();
+                                    //     var resHtml = juicer(tpl, d);
 
-                                        juicer.register("index_add", indexFn);
-                                        var ruleTpl = $("#tpl-rule").html();
-                                        var resRuleHtml = juicer(ruleTpl, d);
-                                        console.log(resRuleHtml);
-                                    }
-                                    $(".page4 .content").html("").append(resHtml);
-                                    $(".rule").remove();
-                                    $("body").append(resRuleHtml);
-                                    oMask.hide();
+                                    //     juicer.register("index_add", indexFn);
+                                    //     var ruleTpl = $("#tpl-rule").html();
+                                    //     var resRuleHtml = juicer(ruleTpl, d);
+                                    //     console.log(resRuleHtml);
+                                    // }
+                                    // $(".page4 .content").html("").append(resHtml);
+                                    // $(".rule").remove();
+                                    // $("body").append(resRuleHtml);
+                                    // oMask.hide();
                                     _this.fullPageObj.moveTo(3, true);
                                 }, 1200)
                             }, 200)
 
-                            _this.charge.type = $(this).data("card-type");
+                            // _this.charge.type = $(this).data("card-type");
                         })
                         _this.respondState(now, 1, true, function() {
-                            _this.charge.loan = null;
+                            // _this.charge.loan = null;
                         });
                     }
 
                     if (now == "page3") {
-                        $(".page3 li").removeClass("rotate").addClass("grayscale");
-                        if ($(".page4 .next")) {
-                            $(".next li").on("click", function() {
-                                oMask.show();
+                        // $(".page3 li").removeClass("rotate").addClass("grayscale");
+                        // if ($(".page4 .circle")) {
+                            $(".page4 .circle div").on("click", function() {
+                                // oMask.show();
                                 var ele = $(this);
-                                ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
+                                // ele.siblings().addClass("grayscale").removeClass("animated rotate").end().removeClass("grayscale").addClass("animated");
                                 var timer = null;
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
 
-                                    ele.addClass("rotate");
+                                    // ele.addClass("rotate");
                                     clearTimeout(timer);
                                     timer = setTimeout(function() {
-                                        console.log(_this.charge)
-                                        if (_this.cardType(_this.charge) == "continue") {
-                                            console.log("错了")
-                                            return false;
-                                        } else {
-                                            var d = cardJson[_this.cardType(_this.charge)];
-                                            console.log(d);
-                                            var tpl = $("#tpl-card").html();
-                                            var resHtml = juicer(tpl, d);
+                                        // console.log(_this.charge)
+                                        // if (_this.cardType(_this.charge) == "continue") {
+                                        //     console.log("错了")
+                                        //     return false;
+                                        // } else {
+                                        //     var d = cardJson[_this.cardType(_this.charge)];
+                                        //     console.log(d);
+                                        //     var tpl = $("#tpl-card").html();
+                                        //     var resHtml = juicer(tpl, d);
 
-                                            juicer.register("index_add", indexFn);
-                                            var ruleTpl = $("#tpl-rule").html();
-                                            var resRuleHtml = juicer(ruleTpl, d);
-                                        }
-                                        $(".page5 .content").html("").append(resHtml);
-                                        $(".rule").remove();
-                                        $("body").append(resRuleHtml);
-                                        oMask.hide();
+                                        //     juicer.register("index_add", indexFn);
+                                        //     var ruleTpl = $("#tpl-rule").html();
+                                        //     var resRuleHtml = juicer(ruleTpl, d);
+                                        // }
+                                        // $(".page5 .content").html("").append(resHtml);
+                                        // $(".rule").remove();
+                                        // $("body").append(resRuleHtml);
+                                        // oMask.hide();
                                         _this.fullPageObj.moveTo(4, true);
                                     }, 1200)
                                 }, 200)
-                                _this.charge.pay = $(this).data("pay");
+                                // _this.charge.pay = $(this).data("pay");
                             })
-                        }
+                        // }
                         _this.respondState(now, 2, true);
                     }
 
                     if (now == "page4") {
-                        $(".page4 li").removeClass("rotate").addClass("grayscale");
-                        _this.charge.pay = null;
+                        // $(".page4 li").removeClass("rotate").addClass("grayscale");
+                        // _this.charge.pay = null;
                         _this.respondState(now, 3, true);
                     }
                 }

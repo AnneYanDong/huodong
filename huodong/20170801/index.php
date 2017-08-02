@@ -39,6 +39,8 @@
                     <h6 class="title2">为您推荐最适合的贷款</h6>
                     <ul class="title3">
                         <h5>您想借多少钱？</h5>
+                        <div class="door1"><img data-src="<?php echo $imgUrl; ?>page1_doorA1.png" alt="door"></div>
+                        <div class="door2"><img data-src="<?php echo $imgUrl; ?>page1_doorA2.png" alt="door"></div>
                         <li bp="1万元以下" title="1万元以下" data-loan-total="1万元以下">
                             <img data-src="<?php echo $imgUrl; ?>page1_loan1_02.png" alt="1万元以下">
                             <span>1万元以下</span>
@@ -96,13 +98,15 @@
             <div class="page4">
                 <div class="content">
                     <div class="dial1"><img data-src="<?php echo $imgUrl; ?>page2_top.png" alt="dial"></div>
-                    <div class="circle">
-                        <div class="circle-A" data-loan-focus="放款额度高"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="A" bp="A" title="A"></div>
-                        <div class="circle-B" data-loan-focus="审批快"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="B" bp="B" title="B"></div>
-                        <div class="circle-C" data-loan-focus="利息低"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="C" bp="C" title="C"></div>
-                        <div class="circle-D" data-loan-focus="每月还款少"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="D" bp="D" title="D"></div>
+                    <div class="choose">
+                        <div class="circle">
+                            <div class="circle-A" data-loan-focus="放款额度高"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="A" bp="A" title="A"></div>
+                            <div class="circle-B" data-loan-focus="审批快"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="B" bp="B" title="B"></div>
+                            <div class="circle-C" data-loan-focus="利息低"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="C" bp="C" title="C"></div>
+                            <div class="circle-D" data-loan-focus="每月还款少"><img data-src="<?php echo $imgUrl; ?>page4_circle.png" alt="D" bp="D" title="D"></div>
+                        </div>
+                        <img data-src="<?php echo $imgUrl; ?>page4_choose.png" alt="dial">
                     </div>
-                    <div class="choose"><img data-src="<?php echo $imgUrl; ?>page4_choose.png" alt="dial"></div>
                     <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dia2"></div>
                 </div>
             </div>

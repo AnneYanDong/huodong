@@ -9,11 +9,14 @@
   background-size: cover;
   background-position: center;
 }
+.page1 .content .title1 {
+  position: relative;
+  margin: 0 auto;
+  top: .5rem;
+}
 .page1 .content .title1 img {
   width: 5.19rem;
   height: 2.65rem;
-  position: relative;
-  top: .90rem;
 }
 .page1 .content .title2 {
   font-size: .34rem;
@@ -22,9 +25,31 @@
   position: relative;
   top: 1rem;
 }
+.page1 .title3 .door1 {
+  width: 4.63rem;
+  height: .43rem;
+  position: relative;
+  top: 1rem;
+  left: 1.4rem;
+}
+.page1 .title3 .door1 img{
+  width: 4.63rem;
+  height: .43rem;
+}
+.page1 .title3 .door2 {
+  width: 4.63rem;
+  height: .43rem;
+  position: relative;
+  top: 2rem;
+  left: 1.4rem;
+}
+.page1 .title3 .door2 img{
+  width: 4.63rem;
+  height: .43rem;
+}
 .title3 {
   position: relative;
-  top: 1.9rem;
+  top: 1.7rem;
 }
 .title3 h5 {
   font-size: .45rem;
@@ -55,29 +80,37 @@
 .page2,.page3,.page4,.page5 {
   background: #1f2030;
 }
+.page2 .content .dial1 {
+  position: relative;
+  top: 1rem;
+}
 .page2 .content .dial1 img {
   width: 5.36rem;
   height: 1.06rem;
+}
+.page2 .content .dial2 {
   position: relative;
-  top: 1rem;
+  top: 2rem;
 }
 .page2 .content .dial2 img {
   width: 5.36rem;
   height: 1.06rem;
+}
+.page3 .content .dial1 {
   position: relative;
-  top: 2rem;
+  top: 1rem;
 }
 .page3 .content .dial1 img {
   width: 5.36rem;
   height: 1.06rem;
+}
+.page3 .content .dial2 {
   position: relative;
-  top: 1rem;
+  top: 3.5rem;
 }
 .page3 .content .dial2 img {
   width: 5.36rem;
   height: 1.06rem;
-  position: relative;
-  top: 3.5rem;
 }
 .page3 .content .tips {
   font-size: .24rem;
@@ -85,23 +118,29 @@
   position: relative;
   top: 2rem;
 }
+.page4 .content .dial1 {
+  position: relative;
+  top: 1rem;
+}
 .page4 .content .dial1 img {
   width: 5.36rem;
   height: 1.06rem;
+}
+.page4 .content .dial2 {
   position: relative;
-  top: 1rem;
+  top: 3.5rem;
 }
 .page4 .content .dial2 img {
   width: 5.36rem;
   height: 1.06rem;
+}
+.page4 .content .choose {
   position: relative;
-  top: 3.5rem;
+  top: 2rem;
 }
 .page4 .content .choose img {
   width: 6.16rem;
   height: 6.28rem;
-  position: relative;
-  top: 2rem;
 }
 .page4 .content .circle img{
   display: inline-block;
@@ -109,25 +148,33 @@
   height: 1.78rem;
   z-index: 2;
 }
-.page4 .content .circle .circle-A img {
+.page4 .content .circle .circle-A {
   position: absolute;
-  top: 2.88rem;
+  top: -.2rem;
   left: .48rem;
+  width: 1.80rem;
+  height: 1.78rem;
 }
-.page4 .content .circle .circle-B img{
+.page4 .content .circle .circle-B {
   position: absolute;
-  top: 2.88rem;
-  right: .48rem;
+  top: -.2rem;
+  right: .47rem;
+  width: 1.80rem;
+  height: 1.78rem;
 }
-.page4 .content .circle .circle-C img{
+.page4 .content .circle .circle-C {
   position: absolute;
-  top: 7.75rem;
+  top: 4.65rem;
   left: .48rem;
+  width: 1.80rem;
+  height: 1.78rem;
 }
-.page4 .content .circle .circle-D img{
+.page4 .content .circle .circle-D {
   position: absolute;
-  top: 7.75rem;
-  right: .48rem;
+  top: 4.68rem;
+  right: .47rem;
+  width: 1.80rem;
+  height: 1.78rem;
 }
 .page5 .content .test-result img {
   width: 6.59rem;
