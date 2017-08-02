@@ -33,7 +33,7 @@
     <body>
     <div class="wp hide">
         <div class="wp-inner">
-            <div class="page1">
+            <div class="page page1">
                 <div class="content">
                     <h1 class="title1"><img data-src="<?php echo $imgUrl; ?>page1_title.png" alt="title1"></h1>
                     <h6 class="title2">为您推荐最适合的贷款</h6>
@@ -56,7 +56,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="page2">
+            <div class="page page2">
                 <div class="content">
                     <div class="dial1"><img data-src="<?php echo $imgUrl; ?>page2_top.png" alt="dial"></div>
                     <ul class="title3">
@@ -77,7 +77,7 @@
                     <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dial"></div>
                 </div>
             </div>
-            <div class="page3">
+            <div class="page page3">
                <div class="content">
                    <div class="dial1"><img data-src="<?php echo $imgUrl; ?>page2_top.png" alt="dial"></div>
                    <ul class="title3">
@@ -95,7 +95,7 @@
                    <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dial"></div>
                </div>
             </div>
-            <div class="page4">
+            <div class="page page4">
                 <div class="content">
                     <div class="dial1"><img data-src="<?php echo $imgUrl; ?>page2_top.png" alt="dial"></div>
                     <div class="choose">
@@ -110,7 +110,7 @@
                     <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dia2"></div>
                 </div>
             </div>
-            <div class="page5">
+            <div class="page page5">
                 <div class="content">
                     <div class="test-result"><img data-src="<?php echo $imgUrl; ?>page5_test_result.png" alt="test_result"></div>
                     <div class="final-loan"><img data-src="<?php echo $imgUrl; ?>page5_final_loan.png" alt="final_loan"></div>
