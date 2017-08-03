@@ -41,26 +41,14 @@
                         <h5>您想借多少钱？</h5>
                         <li bp="1万元以下" title="1万元以下" data-loan-total="1万元以下" class="">
                             <img data-src="<?php echo $imgUrl; ?>page1_loan1_02.png" alt="1万元以下">
-                            <!-- <img class="A1" data-src="<?php echo $imgUrl; ?>new_A1.png" alt="1万元以下">
-                            <img class="A2" data-src="<?php echo $imgUrl; ?>new_A2&C2.png" alt="1万元以下">
-                            <img class="A3" data-src="<?php echo $imgUrl; ?>new_leftAC.png" alt="1万元以下">
-                            <img class="A4" data-src="<?php echo $imgUrl; ?>new_rightAC.png" alt="1万元以下"> -->
                             <span>1万元以下</span>
                         </li>
                         <li bp="1~3万" title="1~3万" data-loan-total="1-3万">
                             <img data-src="<?php echo $imgUrl; ?>page1_loan2_02.png" alt="1~3万">
-                             <!-- <img class="B1" data-src="<?php echo $imgUrl; ?>new_B1.png" alt="1万元以下">
-                            <img class="B2" data-src="<?php echo $imgUrl; ?>new_B2.png" alt="1万元以下">
-                            <img class="B3" data-src="<?php echo $imgUrl; ?>new_leftB.png" alt="1万元以下">
-                            <img class="B4" data-src="<?php echo $imgUrl; ?>new_rightB.png" alt="1万元以下"> -->
                             <span>1-3万元</span>
                         </li>
                         <li bp="3万元以上" title="3万元以上" data-loan-total="3万元以上">
                             <img data-src="<?php echo $imgUrl; ?>page1_loan3_02.png" alt="3万元以上">
-                            <!-- <img class="C1" data-src="<?php echo $imgUrl; ?>new_C1.png" alt="1万元以下">
-                            <img class="C2" data-src="<?php echo $imgUrl; ?>new_A2&C2.png" alt="1万元以下">
-                            <img class="C3" data-src="<?php echo $imgUrl; ?>new_leftAC.png" alt="1万元以下">
-                            <img class="C4" data-src="<?php echo $imgUrl; ?>new_rightAC.png" alt="1万元以下"> -->
                             <span>3万元以上</span>
                         </li>
                     </ul>
@@ -124,22 +112,41 @@
                         <img class="tp-circle circle-rotating" data-src="<?php echo $imgUrl; ?>tp_circle.png" alt="tp-circle">
                         <div class="analyzing-title"><div><span>您的定制贷款正在分析中</span></div></div>
                         <div class="analyzing-process">
-                            <div><span>标准化数据采集中</span></div>
-                            <div><span>资料分析配置预备</span></div>
-                            <div><span>用户精准分层设定匹配中</span></div>
-                            <div><span>个性化定制推荐追踪</span></div>
-                            <div><span>深层心理动机探知进行中</span></div>
+                            <div class="span0 hide"><span>标准化数据采集中</span></div>
+                            <div class="span1 hide"><span>资料分析配置预备</span></div>
+                            <div class="span2 hide"><span>用户精准分层设定匹配中</span></div>
+                            <div class="span3 hide"><span>个性化定制推荐追踪</span></div>
+                            <div class="span4 hide"><span>深层心理动机探知进行中</span></div>
                         </div>
                         <div class="scan scaning"><img data-src="<?php echo $imgUrl; ?>page4_scan.png" alt="scan"></div>
                     </div>
-                    <!-- <div><img data-src="<?php echo $imgUrl; ?>male_tp.png" alt="male"></div> -->
                     <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dia2"></div>
                 </div>
             </div>
             <div class="page page5">
                 <div class="content">
-                    <div class="test-result"><img data-src="<?php echo $imgUrl; ?>page5_test_result.png" alt="test_result"></div>
-                    <div class="final-loan"><img data-src="<?php echo $imgUrl; ?>page5_final_loan.png" alt="final_loan"></div>
+                    <div class="test-result">
+                        <img data-src="<?php echo $imgUrl; ?>page5_test_result.png" alt="test_result">
+                        <!-- 挂icon列表 -->
+                        <ul class="icon-box">
+                        </ul>
+                    </div>
+                    <div class="final-loan">
+                        <img class="final-loan" data-src="<?php echo $imgUrl; ?>page5_final_loan.png" alt="final_loan">
+                        <div class="loan-name"></div>
+                        <div class="loan-match"></div>
+                        <div class="loan-amount"></div>
+                        <div class="withdraw"><span>立即</span><span>提款</span></div>
+                        <img class="fingerprint hide" data-src="<?php echo $imgUrl; ?>page5_fingerprint.png" alt="指纹"/>
+                        <div class="finger-box">
+                            <img class="rectangle" data-src="<?php echo $imgUrl; ?>page5_rectangle.png" alt="矩形"/>
+                            <img class="finger move" data-src="<?php echo $imgUrl; ?>page5_finger.png" alt="手指"/>
+                        </div>
+                        <div class="info-box">
+                            <div class="day-rate"></div>
+                            <div class="release-time"></div>
+                        </div>
+                    </div>
                     <div class="test-btn hide" bp="重新测试" title="重新测试"><span>重新测试</span></div>
                 </div>
             </div>
@@ -151,64 +158,25 @@
             ajaxUrl: "<?php echo 'test.php'; ?>"
         };
     </script>
-    <script type="text/template" id="tpl-choose-gd">
-        <div class="next">
-            <h6 class="t1">选择您的公积金缴存基数</h6>
-            <p class="title-des">（即月工资）</p>
-            <ul class="choose">
-                <li class="grayscale" data-pay="1" title="Up2500" bp="Up2500">
-                    <div class="left">2500以上</div>
-                    <div class="right"><span class="choose-icon"></span></div>
-                </li>
-                <li class="grayscale" data-pay="2" title="Down2500" bp="Down2500">
-                    <div class="left">2500以下</div>
-                    <div class="right"><span class="choose-icon"></span></div>
-                </li>
-            </ul>
-        </div>
+
+<!-- 贷款信息开始 -->
+    <script type="text/template" id="tpl-loan-name">
+        <span>${name}</span>
     </script>
-    <script type="text/template" id="tpl-choose-pf">
-        <div class="next">
-            <h6 class="t1">选择您的公积金缴存基数</h6>
-            <p class="title-des">（即月工资）</p>
-            <ul class="choose">
-                <li class="grayscale" data-pay="1" title="Up4000" bp="Up4000">
-                    <div class="left">4000以上</div>
-                    <div class="right"><span class="choose-icon"></span></div>
-                </li>
-                <li class="grayscale" data-pay="2" title="Down4000" bp="Down4000">
-                    <div class="left">4000以下</div>
-                    <div class="right"><span class="choose-icon"></span></div>
-                </li>
-            </ul>
-        </div>
+    <script type="text/template" id="tpl-loan-match">
+        匹配度&nbsp;${match_rate}%<span></span>
     </script>
-    <script type="text/template" id="tpl-card">
-        <div class="card-show">
-            <div class="card">
-                <p class="title">${title}</p>
-                <div class="image"><img src="<?php echo $imgUrl; ?>${img}" alt=""></div>
-                <div class="feature">
-                    <h6 class="fea-title right">权益</h6>
-                    <ul>
-                        {@each qy as item}
-                        <li><span>·</span>${item}</li>
-                        {@/each}
-                    </ul>
-                </div>
-                <div class="feature">
-                    <h6 class="fea-title activity">活动</h6>
-                    <ul>
-                        {@each hd as item}
-                        <li class="orange"><span>·</span>${item}</li>
-                        {@/each}
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="btn apply" data-link="${cardApply}">立即申请</div>
-        <div class="rule-btn">活动规则<span class="icon-process"></span></div>
+    <script type="text/template" id="tpl-loan-amount">
+        额度<span>${max_amount}</span>
     </script>
+    <script type="text/template" id="tpl-day-rate">
+        日费率&nbsp;<span>${day_rate}</span>
+    </script>
+    <script type="text/template" id="tpl-release-time">
+        放款时间&nbsp;<span>${loan_time}</span>
+    </script>
+<!-- 贷款信息结束 -->
+
     <script>
         var indexFn = function (data) {
             return Number(data) + 1;

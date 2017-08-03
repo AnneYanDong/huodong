@@ -198,14 +198,70 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page5") {
-                        var dataObj = data;
+                        //展示分析的頁面
+                        console.log("page5",data);
+                        //动态展示icon
+                        var len = data.show.length;
+                        console.log("len->",len);
+                        for(var i = 0; i < len; i++) {
+                            var oLi = document.createElement("li");
+                            var oImg = document.createElement("img");
+                            var oSpan = document.createElement("span");
+                            oLi.append(oImg);
+                            oLi.append(oSpan);
+                            $(".icon-box").append(oLi);
+                            oSpan.innerHTML = data.show[i];
+                            if (oSpan.innerHTML == "小额度") {
+                                oImg.dataset.src = "<?php echo $imgUrl; ?>page5_xed_icon.png";
+                                oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_xed_icon.png";
+                            }
+                            if (oSpan.innerHTML == "放款快") {
+                                oImg.dataset.src = "<?php echo $imgUrl; ?>page5_fkk_icon.png";
+                                oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_fkk_icon.png";
+                            }
+                            if (oSpan.innerHTML == "分期长") {
+                                oImg.dataset.src = "<?php echo $imgUrl; ?>page5_fqc_icon.png";
+                                oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_fqc_icon.png";
+                            }
+                            if (oSpan.innerHTML == "急用钱") {
+                                oImg.dataset.src = "<?php echo $imgUrl; ?>page5_jyq_icon.png";
+                                oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_jyq_icon.png";
+                            }
+                            if (oSpan.innerHTML == "精明派") {
+                                oImg.dataset.src = "<?php echo $imgUrl; ?>page5_jmp_icon.png";
+                                oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_jmp_icon.png";
+                            }
+                            if (oSpan.innerHTML == "大额度") {
+                                oImg.dataset.src = "<?php echo $imgUrl; ?>page5_ded_icon.png";
+                                oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_ded_icon.png";
+                            }
+                        }
+
+
+                        //定制贷款信息
+                        // loan-name
+                        var loanNameTpl = $("#tpl-loan-name").html();
+                        var loanNameHtml = juicer(loanNameTpl,data);
+                        $(".page5 .loan-name").append(loanNameHtml);
+                        // loan-match
+                        var loanMatchTpl = $("#tpl-loan-match").html();
+                        var loanMatchHtml = juicer(loanMatchTpl,data);
+                        $(".page5 .loan-match").append(loanMatchHtml);
                         $(".page5 .loan-match span").addClass("progress");
-                        $(".page5 .final-loan").unbind().on("click",".finger-box",function(){
-                            setTimeout(function(){
-                                console.log("dataObj",dataObj);
-                                window.location.href = dataObj.url;
-                            },1000);
-                        });
+                        // loan-amount
+                        var loanAmountTpl = $("#tpl-loan-amount").html();
+                        var loanAmountHtml = juicer(loanAmountTpl,data);
+                        $(".page5 .loan-amount").append(loanAmountHtml);
+                        // day-rate
+                        var dayRateTpl = $("#tpl-day-rate").html();
+                        var dayRateHtml = juicer(dayRateTpl,data);
+                        $(".page5 .day-rate").append(dayRateHtml);
+                        // release-time
+                        var releaseTimeTpl = $("#tpl-release-time").html();
+                        var releaseTimeHtml = juicer(releaseTimeTpl,data);
+                        $(".page5 .release-time").append(releaseTimeHtml);
+
+
                         _this.respondState(now, 3, true,function(){
                             console.log("返回第四页");
                             $(".page4 .circle div").removeClass("circle-rotating");
@@ -251,10 +307,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                          //弹屏男
                           $(".page4 .customization-tp").fadeIn();
                           _this.showAnalyzeProcess(0);
-                          //动态展示icon
-                          _this.showIcon();
-                          //定制贷款信息
-                          _this.getLoanInfo();
                           setTimeout(function(){
                              _this.fullPageObj.moveTo(4, true);
                               $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
@@ -266,15 +318,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             $(".page4 .customization-tp").fadeIn();
                             $(".page4 .customization-tp .female").show();
                             _this.showAnalyzeProcess(0);
-                            //动态展示icon
-                            _this.showIcon();
-                            //定制贷款信息
-                            _this.getLoanInfo();
                             setTimeout(function(){
                                _this.fullPageObj.moveTo(4, true);
                                $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
                             },5000);
                        }
+
+                       //显示测试结果
+                       
                     }
                     else {
                         oP.show(d.msg || "出错了请重试");
@@ -324,58 +375,40 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             }
         },
 
-        showIcon: function() {
-            var len = data.show.length;
-            console.log("len->",len);
+        getIconName: function(arr) {
+            var len = arr.length;
             for(var i = 0; i < len; i++) {
-              var oLi = document.createElement("li");
-              var oImg = document.createElement("img");
-              var oSpan = document.createElement("span");
-              oLi.append(oImg);
-              oLi.append(oSpan);
-              $(".icon-box").append(oLi);
-              oSpan.innerHTML = data.show[i];
-              if (oSpan.innerHTML == "小额度") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_xed_icon.png";
-              }
-              if (oSpan.innerHTML == "放款快") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_fkk_icon.png";
-              }
-              if (oSpan.innerHTML == "分期长") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_fqc_icon.png";
-              }
-              if (oSpan.innerHTML == "急用钱") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_jyq_icon.png";
-              }
-              if (oSpan.innerHTML == "精明派") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_jmp_icon.png";
-              }
-              if (oSpan.innerHTML == "大额度") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_ded_icon.png";
-              }
+                if (arr[i] == "小额度") {
+                    return "xed";
+                }
             }
         },
-        getLoanInfo: function() {
-            // loan-name
-            var loanNameTpl = $("#tpl-loan-name").html();
-            var loanNameHtml = juicer(loanNameTpl,data);
-            $(".page5 .loan-name").append(loanNameHtml);
-            // loan-match
-            var loanMatchTpl = $("#tpl-loan-match").html();
-            var loanMatchHtml = juicer(loanMatchTpl,data);
-            $(".page5 .loan-match").append(loanMatchHtml);
-            // loan-amount
-            var loanAmountTpl = $("#tpl-loan-amount").html();
-            var loanAmountHtml = juicer(loanAmountTpl,data);
-            $(".page5 .loan-amount").append(loanAmountHtml);
-            // day-rate
-            var dayRateTpl = $("#tpl-day-rate").html();
-            var dayRateHtml = juicer(dayRateTpl,data);
-            $(".page5 .day-rate").append(dayRateHtml);
-            // release-time
-            var releaseTimeTpl = $("#tpl-release-time").html();
-            var releaseTimeHtml = juicer(releaseTimeTpl,data);
-            $(".page5 .release-time").append(releaseTimeHtml);
+    }
+
+    var iconJson = {
+        "xed": {
+            title: "小额度",
+            img: "xed",
+        },
+        "fkk": {
+            title: "放款快",
+            img: "fkk",
+        },
+        "fqc": {
+            title: "分期长",
+            img: "fqc",
+        },
+        "yjq": {
+            title: "急用钱",
+            img: "jyq",
+        },
+        "jmp": {
+            title: "精明派",
+            img: "jmp",
+        },
+        "ded": {
+            title: "大额度",
+            img: "ded",
         }
     }
 

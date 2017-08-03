@@ -34,11 +34,9 @@
   font-weight: 100;
   color: #fff;
   letter-spacing: .1rem;
-  // padding-bottom: .3rem;
   padding-left: .4rem;
 }
 .title3:not(:first-child) {
-  // display: inline-block;
   font-size: .40rem;
   color: #fff;
 }
@@ -53,49 +51,10 @@
   height: 1.60rem;
   margin-top: .26rem;
 }
-.title3:not(:first-child) .A1,.C1{
-  /* width: 6.00rem;
-  height: 1.60rem;
-  margin-top: .26rem; */
-  width: 5.93rem;
-  height: 1.57rem;
-  position: relative;
-  z-index: 2;
-}
-.title3:not(:first-child) .A2,.C2{
-  width: 4.68rem;
-  height: .86rem;
-  position: relative;
-  top: -1.3rem;
-  left: .5rem;
-}
-.title3:not(:first-child) .A3,.C3{
-  width: 2.33rem;
-  height: .82rem;
-  position: relative;
-  top: -2.14rem;
-  left: -.6rem;
-}
-.title3 .open-left-door {
-  animation: openleftDoor 2s 1 linear;
-}
-.title3:not(:first-child) .A4,.C4{
- width: 2.33rem;
- height: .82rem;
- position: relative;
- top: -2.97rem;
- right: -1.67rem;
-}
-.title3 .open-right-door {
-  animation: openrightDoor 2s 1 linear;
-}
 .title3:not(:first-child) span {
   position: relative;
   top: -1.15rem;
-  text-shadow: 0 0 0.05rem #0cfa92; 
-    //   position: relative;
-    // top: -3.6rem;
-    // text-shadow: 0 0 0.05rem #0cfa92;
+  text-shadow: 0 0 0.05rem #0cfa92;
 }
 .content img {
   margin: 0 auto;
@@ -241,6 +200,9 @@
   left: .5rem;
 }
 .page4 .analyzing-process div {
+  width: 14ch;
+  overflow: hidden;
+  white-space: nowrap;
   width: 5rem;
   height: .25rem;
   line-height: .25rem;
@@ -264,21 +226,158 @@
   overflow: hidden;
   display: inline-block;
   vertical-align: bottom;
-  animation: ellipsis 2s infinite;
+  animation: ellipsis 2s steps(3) infinite;
   content: "\2026";
+  white-space: nowrap;
+}
+.page5 .content .test-result {
+  width: 6.59rem;
+  height: 3.59rem;
+  margin: 0 auto;
+  position: relative;
+  padding-top: .5rem;
 }
 .page5 .content .test-result img {
   width: 6.59rem;
   height: 3.59rem;
-  position: relative;
-  top: .41rem;
 }
-.page5 .content .final-loan img {
+.page5 .icon-box {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 80%;
+  height: 1rem;
+  margin: 0 auto;
+  position: relative;
+  top: -2rem;
+}
+.page5 .content .test-result ul.icon-box li {
+  display: inline-block;
+  width: 1.40rem;
+  text-align: center;
+  font-size: .28rem;
+  color: #fff;
+  padding-right: .3rem;
+}
+.page5 .content .test-result ul.icon-box li img {
+  width: 1rem;
+  height: 1rem;
+  padding-bottom: .1rem;
+}
+.page5 .content .final-loan {
   width: 6.79rem;
   height: 4.36rem;
   position: relative;
-  top: 1rem;
-  left: -.2rem;
+  left: .1rem;
+  padding-top: .4rem;
+}
+.page5 .content .final-loan img.final-loan {
+  width: 6.79rem;
+  height: 4.36rem;
+}
+.page5 .content .final-loan .loan-name {
+  font-size: .36rem;
+  color: #2ee3f6;
+  width: 2.31rem;
+  line-height: .56rem;
+  position: relative;
+  top: -4.22rem;
+  text-align: center;
+  left: 2.5rem;
+}
+.page5 .content .final-loan .loan-match {
+  font-size: .27rem;
+  color: #f5fe00;
+  width: 2.67rem;
+  height: .45rem;
+  border-radius: .5rem;
+  background: #0d132c;
+  line-height: .45rem;
+  position: relative;
+  top: -3.8rem;
+  text-align: center;
+  left: .8rem;
+  z-index: 2;
+}
+.page5 .content .final-loan .loan-match span {
+  display: block;
+  width: 90%;
+  height: .43rem;
+  border-radius: .5rem;
+  position: relative;
+  top: -.43rem;
+  z-index: -2;
+}
+.page5 .content .loan-amount {
+  font-size: .32rem;
+  color: #fff;
+  position: relative;
+  top: -3.4rem;
+  left: -1.4rem;
+}
+.page5 .content .loan-amount span {
+  font-size: .80rem;
+}
+.page5 .content .withdraw {
+  width: 1.17rem;
+  height: 1.17rem;
+  background: -webkit-linear-gradient(top, #bb2df0,#8f34f1); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(bottom,#bb2df0,#8f34f1); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(bottom, #bb2df0,#8f34f1); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to bottom,#bb2df0,#8f34f1); /* 标准的语法 */
+  position: relative;
+  top: -4.5rem;
+  left: 5rem;
+  font-size: .32rem;
+  color: #fff;
+  text-align: center;
+}
+.page5 .content .withdraw span {
+  display: block;
+  position: relative;
+  top: .2rem;
+}
+.page5 .content .info-box {
+  height: .4rem;
+  position: relative;
+  top: -5.6rem;
+  display: block;
+  left: -.3rem;
+}
+.page5 .content .day-rate,.release-time {
+  height: .36rem;
+  box-shadow: 0 0 0 1px #27b79e;
+  font-size: .24rem;
+  color: #27b79e;
+  text-align: center;
+  line-height: .36rem;
+  display: inline-block;
+  position: relative;
+  top: -.67rem;
+  padding: 0 .1rem;
+}
+.page5 .content .fingerprint {
+  width: .72rem;
+  height: .94rem;
+  position: relative;
+  top: -5.6rem;
+  left: 2.2rem;
+}
+.page5 .content .finger-box {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  top: -5.8rem;
+  left: 4.85rem;
+}
+.page5 .content .finger {
+  width: .26rem;
+  height: .38rem;
+}
+.page5 .content .rectangle {
+  width: 1.38rem;
+  height: 1.38rem;
 }
 .page5 .content .test-btn {
   position: relative;
@@ -322,34 +421,6 @@
     transform :rotateX(1800deg);
   }
 }
-/* @keyframes openleftDoor {
-  0% {
-    left: -.6rem;
-  }
-  10%,20%,30%,40% {
-    transform: translateX(-2.3rem);
-  }
-  50%,60%,70%,80%,90% {
-    transform: translateX(-2.4rem);
-  }
-  100% {
-    left: -6rem;
-  }
-}
-@keyframes openrightDoor {
-  0% {
-    right: -1.67rem;
-  }
-  10%,20%,30%,40% {
-    transform: translateX(1.68rem);
-  }
-  50%,60%,70%,80%,90% {
-    transform: translateX(1.69rem);
-  }
-  100% {
-    right: -6rem;
-  }
-} */
 @keyframes circlerotate {
   0% {
     transform: rotate(0deg);
@@ -360,11 +431,16 @@
 }
 @keyframes ellipsis {
     from {
-        width: 2px;
+        width: 3px;
     }
     to {
-        width: 20px;
+        width: 16px;
     }
+}
+@keyframes analyzing {
+  from {
+    width: 0;
+  }
 }
 @keyframes scan {
   0% {
@@ -382,6 +458,48 @@
   100% {
     top: -11rem;
   }
+}
+@keyframes gradient {
+  from {
+    width: 0;
+  }
+  to {
+    width: 2.4rem;
+  }
+}
+@keyframes move {
+  0%,100%{
+    transform: translate(0rem,0rem);
+  }
+  50%{
+    transform: translate(0rem,-.2rem);
+  }
+}
+@keyframes zooming {
+  0%,100%{
+    width: 1.38rem;
+    height: 1.38rem;
+  }
+  50%{
+    width: 1.40rem;
+    height: 1.40rem;
+  }
+}
+.move {
+  animation: move 1s infinite ease-in-out;
+}
+.zooming {
+  animation: zooming 1s infinite ease-in-out;
+}
+.progress {
+   background: -webkit-linear-gradient(left, #584ded,#7d38f1); /* Safari 5.1 - 6.0 */
+   background: -o-linear-gradient(right,#584ded,#7d38f1); /* Opera 11.1 - 12.0 */
+   background: -moz-linear-gradient(right, #584ded,#7d38f1); /* Firefox 3.6 - 15 */
+   background: linear-gradient(to right,#584ded,#7d38f1); /* 标准的语法 */
+   animation: gradient 500ms 1 linear;
+}
+.analyzing {
+  animation: analyzing 5s linear;
 }
 .rotating {
   transition: transform 1s ease;
