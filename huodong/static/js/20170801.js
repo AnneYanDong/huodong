@@ -271,9 +271,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                data: JSON.stringify({loan}),
-                // url: "test.php",
-                url: "/act/act170801/get_button",
+                data: JSON.stringify(loan),
+                url: "test.php",
+                // url: "/act/act170801/get_button",
                 success: function(d){
                     if (d.success) {
                         data = d.ret.data;
