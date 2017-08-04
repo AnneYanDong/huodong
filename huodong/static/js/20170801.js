@@ -11,6 +11,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
     var local = ct.Tool.local();
 
     ct.Tool.buryPoint();
+    var loan = [];
+    var total = [];
+    var loanTotal = [];
+    var time = null;
+    var loanTime = [];
+    var release = null;
+    var loanRelease = [];
+    var focus = null;
+    var loanFocus = [];
     // var counter = 0;
     var run = {
         iconName: [],
@@ -73,15 +82,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
         fullpage: function() {
             var _this = this;
-            var loan = [];
-            var total = [];
-            var loanTotal = [];
-            var time = null;
-            var loanTime = [];
-            var release = null;
-            var loanRelease = [];
-            var focus = null;
-            var loanFocus = [];
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
                 start: 0,  //默认第一页开始
                 beforeChange: function(e) {
@@ -99,6 +99,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             var ele = $(this);
                             ele.attr("disabled","disabled");
                             total = ele.data("loan-total");
+                            loanTotal.length = 0;
                             loanTotal.push(total);
                             console.log("loanTotal",loanTotal);
                             var timer = null;
@@ -133,6 +134,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             }, 200);
                             //把li元素的data属性push到对应数组
                             time = ele.data("loan-time");
+                            loanTime.length = 0;
                             loanTime.push(time);
                             console.log("点击时time:",loanTime);
                         })
@@ -160,6 +162,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 }, 1200)
                             }, 200)
                             release = ele.data("loan-release");
+                            loanRelease.length = 0;
                             loanRelease.push(release);
                         })
                         _this.respondState(now, 1, true, function() {
@@ -175,7 +178,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             var ele = $(this);
                             ele.attr("disabled","disabled");
                             focus = ele.data("loan-focus");
+                            loanFocus.length = 0;
                             loanFocus.push(focus);
+                            loan.length = 0;
                             loan.push(loanTotal,loanTime,loanRelease,loanFocus);
 
                             var timer = null;
@@ -184,7 +189,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 ele.addClass("circle-rotating");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-                                    _this.getAnalysisData(loan);
+                                    _this.getAnalysisData();
                                 }, 1200)
                             }, 200)
                         })
@@ -274,15 +279,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
         },
 
         // 走后台跳转申请
-        getAnalysisData: function(loan) {
+        getAnalysisData: function() {
             var _this = this;
-            console.log("请求：",loan);
+            console.log("请求传递的数据：",loan);
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
                 data: JSON.stringify(loan),
-                url: "test.php",
-                // url: "/act/act170801/get_button",
+                // url: "test.php",
+                url: "/act/act170801/get_button",
                 success: function(d){
                     if (d.success) {
                         data = d.ret.data;
