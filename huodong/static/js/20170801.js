@@ -102,16 +102,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             var timer = null;
                             clearTimeout(timer);
                             timer = setTimeout(function() {
-                                ele.addClass("rotating"); //当前li元素添加动画
+                                ele.addClass("rotating");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(1, true);
                                 }, 1200);
                             }, 200);
                             total = ele.data("loan-total");
-                            console.log("push语句之前",loanTotal);
                             loanTotal.push(total);
-                            console.log("点击时loanTotal:",loanTotal);
                         });
                         _this.respondState(now);
                     }
@@ -122,11 +120,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 var timer = null;
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-                                    ele.addClass("rotating"); //当前li元素添加动画
+                                    ele.addClass("rotating");
                                     clearTimeout(timer);
                                     timer = setTimeout(function() {
                                         _this.fullPageObj.moveTo(2, true);
-                                        // oMask.hide();
                                     }, 1200)
                                 }, 200);
                             //把li元素的data属性push到对应数组
@@ -137,10 +134,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                         _this.respondState(now, 0, true,function(){
                             console.log("返回第一页");
                             $(".page1 li").removeClass("rotating");
-                            loanTotal = [];
+                            loanTotal.length = 0;
                             total = null;
                             console.log("返回时loanTotal:",loanTotal);
-                        });  //app点击返回箭头执行的函数
+                        });
                     }
 
                     if (now == "page3") {
@@ -157,14 +154,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             }, 200)
                             release = ele.data("loan-release");
                             loanRelease.push(release);
-                            console.log("点击时loanRelease:",loanRelease);
                         })
                         _this.respondState(now, 1, true, function() {
                             console.log("返回第二页");
                             $(".page2 li").removeClass("rotating");
                             loanTime.length = 0;
                             time = null;
-                            console.log("返回时loanTime:",loanTime);
                         });
                     }
 
@@ -175,8 +170,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             focus = ele.data("loan-focus");
                             loanFocus.push(focus);
                             loan.push(loanTotal,loanTime,loanRelease,loanFocus);
-                            console.log("点击时loanFocus:",loanFocus);
-                            console.log("loan:",loan);
 
                             var timer = null;
                             clearTimeout(timer);
@@ -193,7 +186,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             $(".page3 li").removeClass("rotating");
                             loanRelease.length = 0;
                             release = null;
-                            console.log("返回时loanRelease:",loanRelease);
                         });
                     }
 
@@ -206,6 +198,35 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 window.location.href = dataObj.url;
                             },1000);
                         });
+                        $(".page5 .content").unbind().on("click",".test-btn",function(){
+                            timer = setTimeout(function() {
+                                _this.fullPageObj.moveTo(0, true);
+                                //清空所有数据
+                                loanTotal.length = 0;
+                                total = null;
+                                loanTime.length = 0;
+                                time = null;
+                                loanRelease.length = 0;
+                                release = null;
+                                loanFocus.length = 0;
+                                focus = null;
+                                loan.length = 0;
+                                //清空样式
+                                $(".page1 li").removeClass("rotating");
+                                $(".page2 li").removeClass("rotating");
+                                $(".page3 li").removeClass("rotating");
+                                $(".page4 .circle div").removeClass("circle-rotating");
+                                $(".page4 .customization-tp").hide();
+                                $(".page5 .loan-match span").removeClass("progress");
+                                $(".page5 .icon-box").html("");
+                                $(".page5 .loan-name").html("");
+                                $(".page5 .loan-match").html("");
+                                $(".page5 .loan-amount").html("");
+                                $(".page5 .day-rate").html("");
+                                $(".page5 .release-time").html("");
+                            }, 500);
+
+                        })
                         _this.respondState(now, 3, true,function(){
                             console.log("返回第四页");
                             $(".page4 .circle div").removeClass("circle-rotating");
@@ -213,7 +234,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             loanFocus.length = 0;
                             focus = null;
                             loan.length = 0;
-                            console.log("返回时loanFocus:",loanFocus);
                             $(".page4 .customization-tp").hide();
                         });
                     }
@@ -240,14 +260,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 type: "POST",
                 dataType: "JSON",
                 data: JSON.stringify({loan}),
-                url: "test.php",
-                // url: "/act/act170725/get_button",
+                // url: "test.php",
+                url: "/act/act170801/get_button",
                 success: function(d){
                     if (d.success) {
                         data = d.ret.data;
                         console.log("data->",data);
                        if (data.sex == 1) {
-                         // oM.show();
                          //弹屏男
                           $(".page4 .customization-tp").fadeIn();
                           _this.showAnalyzeProcess(0);

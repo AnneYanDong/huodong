@@ -157,7 +157,7 @@
 <body>
     <div class="container">
         <div class="banner-part-one">
-            <img class="bg" src="https://r.51gjj.com/act/images/shichang/index170428_bg.png" alt="bg">
+            <img class="bg" src="https://r.51gjj.com/act/images/shichang/index170428_new_bg.png" alt="bg">
             <div class="btn-down">
                 <a href="javascript:;" id="appAddr"></a>
             </div>

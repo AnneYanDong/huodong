@@ -147,7 +147,7 @@
                             <div class="release-time"></div>
                         </div>
                     </div>
-                    <div class="test-btn hide" bp="重新测试" title="重新测试"><span>重新测试</span></div>
+                    <div class="test-btn" bp="重新测试" title="重新测试"><span>重新测试</span></div>
                 </div>
             </div>
         </div>

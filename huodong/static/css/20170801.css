@@ -415,10 +415,10 @@
 }
 @keyframes rotate {
   from {
-    transform: rotateX(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform :rotateX(1800deg);
+    transform :rotate(360deg);
   }
 }
 @keyframes circlerotate {
@@ -503,7 +503,7 @@
 }
 .rotating {
   transition: transform 1s ease;
-  animation: rotate 1s ease;
+  animation: rotate 500ms ease;
 }
 .circle-rotating {
   transition: transform 1s ease;
