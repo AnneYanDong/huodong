@@ -327,6 +327,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
         showIcon: function() {
             var len = data.show.length;
             console.log("len->",len);
+            $(".page5 .icon-box").html("");
             for(var i = 0; i < len; i++) {
               var oLi = document.createElement("li");
               var oImg = document.createElement("img");
@@ -359,22 +360,27 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             // loan-name
             var loanNameTpl = $("#tpl-loan-name").html();
             var loanNameHtml = juicer(loanNameTpl,data);
+            $(".page5 .loan-name").html("");
             $(".page5 .loan-name").append(loanNameHtml);
             // loan-match
             var loanMatchTpl = $("#tpl-loan-match").html();
             var loanMatchHtml = juicer(loanMatchTpl,data);
+            $(".page5 .loan-match").html("");
             $(".page5 .loan-match").append(loanMatchHtml);
             // loan-amount
             var loanAmountTpl = $("#tpl-loan-amount").html();
             var loanAmountHtml = juicer(loanAmountTpl,data);
+            $(".page5 .loan-amount").html("");
             $(".page5 .loan-amount").append(loanAmountHtml);
             // day-rate
             var dayRateTpl = $("#tpl-day-rate").html();
             var dayRateHtml = juicer(dayRateTpl,data);
+            $(".page5 .day-rate").html("");
             $(".page5 .day-rate").append(dayRateHtml);
             // release-time
             var releaseTimeTpl = $("#tpl-release-time").html();
             var releaseTimeHtml = juicer(releaseTimeTpl,data);
+            $(".page5 .release-time").html("");
             $(".page5 .release-time").append(releaseTimeHtml);
         }
     }
