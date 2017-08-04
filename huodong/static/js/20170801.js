@@ -85,8 +85,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
                 start: 0,  //默认第一页开始
                 beforeChange: function(e) {
-                    console.log("e",e);
-                    console.log("e.next",e.next);
                     var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
                     console.log("now",now);
                     _this.changeState(now); //把当前页面在改变之前塞入浏览器历史
@@ -102,7 +100,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             var timer = null;
                             clearTimeout(timer);
                             timer = setTimeout(function() {
-                                ele.addClass("rotating");
+                                // ele.addClass("rotating");
+                                ele.addClass("bounce-out");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(1, true);
@@ -120,7 +119,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 var timer = null;
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-                                    ele.addClass("rotating");
+                                    // ele.addClass("rotating");
+                                    ele.addClass("bounce-out");
                                     clearTimeout(timer);
                                     timer = setTimeout(function() {
                                         _this.fullPageObj.moveTo(2, true);
@@ -146,7 +146,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             var timer = null;
                             clearTimeout(timer);
                             timer = setTimeout(function() {
-                                ele.addClass("rotating");
+                                // ele.addClass("rotating");
+                                ele.addClass("bounce-out");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(3, true);
@@ -193,9 +194,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                         var dataObj = data;
                         $(".page5 .loan-match span").addClass("progress");
                         $(".page5 .final-loan").unbind().on("click",".finger-box",function(){
+                            $(".page5 .finger").addClass("hide").removeClass("move");
+                            $(".page5 .fingerprint").removeClass("hide");
+                            $(".page5 .finger-scan").removeClass("hide").addClass("finger-scaning");
                             setTimeout(function(){
                                 console.log("dataObj",dataObj);
                                 window.location.href = dataObj.url;
+                                $(".page5 .fingerprint").addClass("hide");
+                                $(".page5 .finger-scan").addClass("hide").removeClass("finger-scaning");
                             },1000);
                         });
                         $(".page5 .content").unbind().on("click",".test-btn",function(){
@@ -224,13 +230,19 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 $(".page5 .loan-amount").html("");
                                 $(".page5 .day-rate").html("");
                                 $(".page5 .release-time").html("");
-                            }, 500);
+                                $(".page5 .finger").removeClass("hide").addClass("move");
+                                $(".page5 .fingerprint").addClass("hide");
+                                $(".page5 .finger-scan").addClass("hide").removeClass("finger-scaning");
+                            }, 1500);
 
                         })
                         _this.respondState(now, 3, true,function(){
                             console.log("返回第四页");
                             $(".page4 .circle div").removeClass("circle-rotating");
                             $(".page5 .loan-match span").removeClass("progress");
+                            $(".page5 .finger").removeClass("hide").addClass("move");
+                            $(".page5 .fingerprint").addClass("hide");
+                            $(".page5 .finger-scan").addClass("hide").removeClass("finger-scaning");
                             loanFocus.length = 0;
                             focus = null;
                             loan.length = 0;

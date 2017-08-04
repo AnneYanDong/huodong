@@ -137,10 +137,12 @@
                         <div class="loan-match"></div>
                         <div class="loan-amount"></div>
                         <div class="withdraw"><span>立即</span><span>提款</span></div>
-                        <img class="fingerprint hide" data-src="<?php echo $imgUrl; ?>page5_fingerprint.png" alt="指纹"/>
                         <div class="finger-box">
                             <img class="rectangle" data-src="<?php echo $imgUrl; ?>page5_rectangle.png" alt="矩形"/>
                             <img class="finger move" data-src="<?php echo $imgUrl; ?>page5_finger.png" alt="手指"/>
+                            <img class="finger-scan hide" data-src="<?php echo $imgUrl; ?>finger_scan.png" alt="扫描"/>
+
+                            <img class="fingerprint hide" data-src="<?php echo $imgUrl; ?>page5_fingerprint.png" alt="指纹"/>
                         </div>
                         <div class="info-box">
                             <div class="day-rate"></div>

@@ -4,8 +4,8 @@
   text-align: center;
 }
 .page1 {
-  // background: url("http://r.51gjj.com/act/release/img/20170801_page_bg.png") no-repeat;
-  background: url("../img/20170801_page_bg.png") no-repeat;
+  background: url("http://r.51gjj.com/act/release/img/20170801_page_bg.png") no-repeat;
+  // background: url("../img/20170801_page_bg.png") no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -361,8 +361,7 @@
   width: .72rem;
   height: .94rem;
   position: relative;
-  top: -5.6rem;
-  left: 2.2rem;
+  top: -1.23rem;
 }
 .page5 .content .finger-box {
   width: 1.5rem;
@@ -374,6 +373,13 @@
 .page5 .content .finger {
   width: .26rem;
   height: .38rem;
+}
+.page5 .content .finger-scan {
+  width: 1.38rem;
+  position: relative;
+  top: -1.6rem;
+  left: -.2rem;
+  z-index: 99;
 }
 .page5 .content .rectangle {
   width: 1.38rem;
@@ -396,7 +402,8 @@
   left: 50%;
 }
 .page5 .content .test-btn:before {
-  content: url("../img/20170801_page5_left_arrow.png");
+  // content: url("../img/20170801_page5_left_arrow.png");
+  content: url("http://r.51gjj.com/act/release/img/20170801_page5_left_arrow.png");
   width: .38rem;
   height: .29rem;
   background-size: .38rem .29rem;
@@ -405,7 +412,7 @@
   padding-right: .5rem;
 }
 .page5 .content .test-btn:after {
-  content: url("../img/20170801_page5_right_arrow.png");
+  content: url("http://r.51gjj.com/act/release/img/20170801_page5_right_arrow.png");
   width: .38rem;
   height: .29rem;
   background-size: .38rem .29rem;
@@ -475,6 +482,14 @@
     transform: translate(0rem,-.2rem);
   }
 }
+@keyframes fingerscan {
+  0%,100%{
+    transform: translate(.2rem,.3rem);
+  }
+  50%{
+    transform: translate(.2rem,1.4rem);
+  }
+}
 @keyframes zooming {
   0%,100%{
     width: 1.38rem;
@@ -484,6 +499,24 @@
     width: 1.40rem;
     height: 1.40rem;
   }
+}
+@keyframes bounceout {
+  20% {
+    transform: scale3d(.9, .9, .9);
+  }
+
+  50%, 55% {
+    opacity: 1;
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+}
+.bounce-out {
+  animation: bounceout 600ms ease-in-out;
 }
 .move {
   animation: move 1s infinite ease-in-out;
@@ -512,4 +545,8 @@
 .scaning {
   transition: top 1s linear;
   animation: scan 2s infinite linear;
+}
+.finger-scaning {
+  transition: top 1s linear;
+  animation: fingerscan 2s infinite linear;
 }
