@@ -109,7 +109,7 @@
                         <img class="tp" data-src="<?php echo $imgUrl; ?>page4_tp.png" alt="tp">
                         <img class="male" data-src="<?php echo $imgUrl; ?>page4_male.png" alt="male">
                         <img class="female hide" data-src="<?php echo $imgUrl; ?>page4_female.png" alt="female">
-                        <img class="tp-circle circle-rotating" data-src="<?php echo $imgUrl; ?>tp_circle.png" alt="tp-circle">
+                        <img class="tp-circle circle-rotating2" data-src="<?php echo $imgUrl; ?>tp_circle.png" alt="tp-circle">
                         <div class="analyzing-title"><div><span>您的定制贷款正在分析中</span></div></div>
                         <div class="analyzing-process">
                             <div class="span0 hide"><span>标准化数据采集中</span></div>
@@ -169,7 +169,7 @@
         匹配度&nbsp;${match_rate}%<span></span>
     </script>
     <script type="text/template" id="tpl-loan-amount">
-        额度<span>${max_amount}</span>
+        额度&nbsp;&nbsp;<span>${max_amount}</span>
     </script>
     <script type="text/template" id="tpl-day-rate">
         日费率&nbsp;<span>${day_rate}</span>

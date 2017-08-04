@@ -12,7 +12,8 @@
 .page1 .content .title1 {
   position: relative;
   margin: 0 auto;
-  top: .5rem;
+  top: .9rem;
+  padding-bottom: .1rem;
 }
 .page1 .content .title1 img {
   width: 5.19rem;
@@ -25,37 +26,102 @@
   position: relative;
   top: 1rem;
 }
-.title3 {
+.page1 .title3 {
   position: relative;
-  top: 1.7rem;
+  top: 2rem;
 }
-.title3 h5 {
+.page1 .title3 h5 {
   font-size: .45rem;
   font-weight: 100;
   color: #fff;
   letter-spacing: .1rem;
   padding-left: .4rem;
 }
-.title3:not(:first-child) {
+.page1 .title3:not(:first-child) {
   font-size: .40rem;
   color: #fff;
 }
-.title3 li {
+.page1 .title3 li {
   width: 5.93rem;
   height: 1.57rem;
-  padding-top: .5rem;
+  padding-top: .3rem;
   margin: 0 auto;
 }
-.title3:not(:first-child) img{
+.page1 .title3:not(:first-child) img{
   width: 6.00rem;
   height: 1.60rem;
   margin-top: .26rem;
 }
-.title3:not(:first-child) span {
+.page1 .title3:not(:first-child) span {
   position: relative;
   top: -1.15rem;
   text-shadow: 0 0 0.05rem #0cfa92;
 }
+
+.page2 .title3 {
+  position: relative;
+  top: 1.3rem;
+}
+.page2 .title3 h5 {
+  font-size: .45rem;
+  font-weight: 100;
+  color: #fff;
+  letter-spacing: .1rem;
+  padding-left: .4rem;
+}
+.page2 .title3:not(:first-child) {
+  font-size: .40rem;
+  color: #fff;
+}
+.page2 .title3 li {
+  width: 5.93rem;
+  height: 1.57rem;
+  padding-top: .3rem;
+  margin: 0 auto;
+}
+.page2 .title3:not(:first-child) img{
+  width: 6.00rem;
+  height: 1.60rem;
+  margin-top: .26rem;
+}
+.page2 .title3:not(:first-child) span {
+  position: relative;
+  top: -1.15rem;
+  text-shadow: 0 0 0.05rem #0cfa92;
+}
+
+.page3 .title3 {
+  position: relative;
+  top: 1.5rem;
+}
+.page3 .title3 h5 {
+  font-size: .45rem;
+  font-weight: 100;
+  color: #fff;
+  letter-spacing: .1rem;
+  padding-left: .4rem;
+}
+.page3 .title3:not(:first-child) {
+  font-size: .40rem;
+  color: #fff;
+}
+.page3 .title3 li {
+  width: 5.93rem;
+  height: 1.57rem;
+  padding-top: .3rem;
+  margin: 0 auto;
+}
+.page3 .title3:not(:first-child) img{
+  width: 6.00rem;
+  height: 1.60rem;
+  margin-top: .26rem;
+}
+.page3 .title3:not(:first-child) span {
+  position: relative;
+  top: -1.15rem;
+  text-shadow: 0 0 0.05rem #0cfa92;
+}
+
 .content img {
   margin: 0 auto;
 }
@@ -64,7 +130,7 @@
 }
 .page2 .content .dial1 {
   position: relative;
-  top: 1rem;
+  top: .8rem;
 }
 .page2 .content .dial1 img {
   width: 5.36rem;
@@ -72,7 +138,7 @@
 }
 .page2 .content .dial2 {
   position: relative;
-  top: 3rem;
+  top: 2.1rem;
 }
 .page2 .content .dial2 img {
   width: 5.36rem;
@@ -88,7 +154,7 @@
 }
 .page3 .content .dial2 {
   position: relative;
-  top: 3.5rem;
+  top: 3rem;
 }
 .page3 .content .dial2 img {
   width: 5.36rem;
@@ -102,7 +168,7 @@
 }
 .page4 .content .dial1 {
   position: relative;
-  top: 1rem;
+  top: .8rem;
 }
 .page4 .content .dial1 img {
   width: 5.36rem;
@@ -110,7 +176,7 @@
 }
 .page4 .content .dial2 {
   position: relative;
-  top: 3.5rem;
+  top: 2.5rem;
 }
 .page4 .content .dial2 img {
   width: 5.36rem;
@@ -118,7 +184,7 @@
 }
 .page4 .content .choose {
   position: relative;
-  top: 2rem;
+  top: 1.5rem;
 }
 .page4 .content .choose img {
   width: 6.16rem;
@@ -246,7 +312,7 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  width: 80%;
+  /* width: 80%; */
   height: 1rem;
   margin: 0 auto;
   position: relative;
@@ -263,14 +329,14 @@
 .page5 .content .test-result ul.icon-box li img {
   width: 1rem;
   height: 1rem;
-  padding-bottom: .1rem;
+  padding-bottom: .2rem;
 }
 .page5 .content .final-loan {
   width: 6.79rem;
   height: 4.36rem;
   position: relative;
   left: .1rem;
-  padding-top: .4rem;
+  padding-top: .2rem;
 }
 .page5 .content .final-loan img.final-loan {
   width: 6.79rem;
@@ -278,6 +344,7 @@
 }
 .page5 .content .final-loan .loan-name {
   font-size: .36rem;
+  font-weight: bold;
   color: #2ee3f6;
   width: 2.31rem;
   line-height: .56rem;
@@ -285,6 +352,17 @@
   top: -4.22rem;
   text-align: center;
   left: 2.5rem;
+}
+.page5 .content .final-loan .loan-name span {
+  background: -webkit-linear-gradient(left,#2ee3f6,#8088f9);
+  background: -o-linear-gradient(left,#2ee3f6,#8088f9);
+  background: -moz-linear-gradient(left,#2ee3f6,#8088f9);
+  -webkit-background-clip: text;         /* 规定背景的划分区域 */
+  -o-background-clip: text;         /* 规定背景的划分区域 */
+  -moz-background-clip: text;         /* 规定背景的划分区域 */
+  -webkit-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
+  -o-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
+  -moz-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
 }
 .page5 .content .final-loan .loan-match {
   font-size: .27rem;
@@ -314,7 +392,10 @@
   color: #fff;
   position: relative;
   top: -3.4rem;
-  left: -1.4rem;
+  left: .8rem;
+  width: 3rem;
+  height: auto;
+  text-align: left;
 }
 .page5 .content .loan-amount span {
   font-size: .80rem;
@@ -343,7 +424,7 @@
   position: relative;
   top: -5.6rem;
   display: block;
-  left: -.3rem;
+  left: -.75rem;
 }
 .page5 .content .day-rate,.release-time {
   height: .36rem;
@@ -387,7 +468,7 @@
 }
 .page5 .content .test-btn {
   position: relative;
-  top: 1.5rem;
+  top: 1.2rem;
   font-size: .46rem;
   color: #4c83ff;
   box-shadow:0 0 2px #6a2ab1,
@@ -395,7 +476,7 @@
              0 -2px 0 #6a2ab1,
              0 2px 0 #4c83ff;
   border-radius: .5rem;
-  width: 6.45rem;
+  width: 4.45rem;
   height: .84rem;
   line-height: .84rem;
   transform: translateX(-50%);
@@ -409,7 +490,7 @@
   background-size: .38rem .29rem;
   position: relative;
   top: .1rem;
-  padding-right: .5rem;
+  padding-right: .2rem;
 }
 .page5 .content .test-btn:after {
   content: url("http://r.51gjj.com/act/release/img/20170801_page5_right_arrow.png");
@@ -418,15 +499,7 @@
   background-size: .38rem .29rem;
   position: relative;
   top: .1rem;
-  padding-left: .5rem;
-}
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform :rotate(360deg);
-  }
+  padding-left: .2rem;
 }
 @keyframes circlerotate {
   0% {
@@ -534,13 +607,15 @@
 .analyzing {
   animation: analyzing 5s linear;
 }
-.rotating {
-  transition: transform 1s ease;
-  animation: rotate 500ms ease;
-}
 .circle-rotating {
-  transition: transform 1s ease;
-  animation: circlerotate 2s forwards infinite ease;
+  transition: transform 1s linear;
+  animation: circlerotate 2s forwards infinite linear;
+  /* transform-origin: 56% 55%; */
+}
+.circle-rotating2 {
+  transition: transform 1s linear;
+  animation: circlerotate 2s forwards infinite linear;
+   transform-origin: 56% 55%; 
 }
 .scaning {
   transition: top 1s linear;

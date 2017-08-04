@@ -20,7 +20,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
     var loanRelease = [];
     var focus = null;
     var loanFocus = [];
-    // var counter = 0;
+    var data;
     var run = {
         iconName: [],
 
@@ -77,6 +77,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             console.log("私人订制活动");
             var _this = this;
             $(".wp").removeClass("hide");
+            // _this.isRetest();
             _this.fullPageObj = _this.fullpage();
         },
 
@@ -94,7 +95,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     var now = "page" + (e.cur + 1);
                     if (now == "page1") {
                         //加载到当前页的时候去掉之前加上的动画
-                        $(".page1 li").removeClass("rotating");
+                        $(".page1 li").removeClass("bounce-out");
                         $(".page1 li").unbind().on("click", function() {
                             var ele = $(this);
                             ele.attr("disabled","disabled");
@@ -118,7 +119,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page2") {
-                        $(".page1 li").removeClass("rotating").removeAttr("disabled");;
+                        $(".page1 li").removeClass("bounce-out").removeAttr("disabled");;
                         $(".page2 li").unbind().on("click", function() {
                             var ele = $(this);
                             ele.attr("disabled","disabled");
@@ -140,7 +141,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                         })
                         _this.respondState(now, 0, true,function(){
                             console.log("返回第一页");
-                            $(".page1 li").removeClass("rotating");
+                            $(".page1 li").removeClass("bounce-out");
                             loanTotal.length = 0;
                             total = null;
                             console.log("返回时loanTotal:",loanTotal);
@@ -167,7 +168,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                         })
                         _this.respondState(now, 1, true, function() {
                             console.log("返回第二页");
-                            $(".page2 li").removeClass("rotating").removeAttr("disabled");
+                            $(".page2 li").removeClass("bounce-out").removeAttr("disabled");
                             loanTime.length = 0;
                             time = null;
                         });
@@ -195,7 +196,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                         })
                         _this.respondState(now, 2, true,function(){
                             console.log("返回第三页");
-                            $(".page3 li").removeClass("rotating").removeAttr("disabled");
+                            $(".page3 li").removeClass("bounce-out").removeAttr("disabled");
                             loanRelease.length = 0;
                             release = null;
                         });
@@ -204,7 +205,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     if (now == "page5") {
                         var dataObj = data;
                         $(".page5 .loan-match span").addClass("progress");
-                        $(".page5 .final-loan").unbind().on("click",".finger-box",function(){
+                        $(".page5 .final-loan").unbind().on("click",".final-loan,.finger-box",function(){
                             $(this).attr("disabled","disabled");
                             $(".page5 .finger").addClass("hide").removeClass("move");
                             $(".page5 .fingerprint").removeClass("hide");
@@ -232,9 +233,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 focus = null;
                                 loan.length = 0;
                                 //清空样式
-                                $(".page1 li").removeClass("rotating");
-                                $(".page2 li").removeClass("rotating");
-                                $(".page3 li").removeClass("rotating");
+                                $(".page1 li").removeClass("bounce-out");
+                                $(".page2 li").removeClass("bounce-out");
+                                $(".page3 li").removeClass("bounce-out");
                                 $(".page4 .circle div").removeClass("circle-rotating");
                                 $(".page4 .customization-tp").hide();
                                 $(".page5 .loan-match span").removeClass("progress");
@@ -247,9 +248,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 $(".page5 .finger").removeClass("hide").addClass("move");
                                 $(".page5 .fingerprint").addClass("hide");
                                 $(".page5 .finger-scan").addClass("hide").removeClass("finger-scaning");
-                            }, 1500);
+                            }, 500);
 
-                        })
+                        });
                         _this.respondState(now, 3, true,function(){
                             console.log("返回第四页");
                             $(".page4 .circle div").removeClass("circle-rotating").removeAttr("disabled");
@@ -267,6 +268,26 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             });
             return fullpage;
         },
+        // isRetest: function() {
+        //     var _this = this;
+        //     $.ajax({
+        //         type: "POST",
+        //         dataType: "JSON",
+        //         url: "test.php",
+        //         // url: "/act/act170801/get_status",
+        //         success: function(d) {
+        //             console.log("初始化时发送的请求：",d);
+        //             var display = d.display;
+        //             console.log(display);
+        //             if (display == false) {
+        //                 return;
+        //             } else {
+        //                 $(".page5 .test-btn").show();
+        //                 _this.fullPageObj.moveTo(4, true);
+        //             }
+        //         }
+        //     });
+        // },
         showAnalyzeProcess: function(counter) {
             var _this = this;
             $(".page4 .analyzing-process div.span" + counter).removeClass("hide").addClass("analyzing");
