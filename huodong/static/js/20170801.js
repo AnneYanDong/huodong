@@ -206,6 +206,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                         var dataObj = data;
                         $(".page5 .loan-match span").addClass("progress");
                         $(".page5 .final-loan").unbind().on("click",".final-loan,.finger-box",function(){
+                            $(".page5 .final-loan").attr("bp",dataObj.name);
+                            $(".page5 .final-loan").attr("title",dataObj.name);
+                            $(".page5 .finger-box").attr("bp",dataObj.name);
+                            $(".page5 .finger-box").attr("title",dataObj.name);
                             $(this).attr("disabled","disabled");
                             $(".page5 .finger").addClass("hide").removeClass("move");
                             $(".page5 .fingerprint").removeClass("hide");

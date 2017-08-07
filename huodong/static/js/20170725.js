@@ -322,6 +322,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         }
                     }
                 });
+                $(".withdraw-btn").removeAttr("disabled");
             });
         },
         openRule: function () {

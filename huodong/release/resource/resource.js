@@ -140,7 +140,7 @@
 	},
 
 	"20170725": {
-		"js": ["r.51gjj.com/act/release/js/20170725_5d042b0.js"],
+		"js": ["r.51gjj.com/act/release/js/20170725_719821f.js"],
 		"css": ["r.51gjj.com/act/release/css/20170725_a9a61da.css"]
 	},
 
@@ -160,12 +160,21 @@
 	},
 
 	"20170801": {
+<<<<<<< HEAD
 		"js": ["r.51gjj.com/act/release/js/20170801_02bd7e1.js"],
+=======
+		"js": ["r.51gjj.com/act/release/js/20170801_783e473.js"],
+>>>>>>> c736351f0407a1e66703e8350f14a55aa90063f5
 		"css": ["r.51gjj.com/act/release/css/20170801_ee209fc.css"]
 	},
 
 	"20170807": {
+<<<<<<< HEAD
 		"js": ["r.51gjj.com/act/release/js/20170807_d41d8cd.js"],
 		"css": ["r.51gjj.com/act/release/css/20170807_d41d8cd.css"]
+=======
+		"js": ["r.51gjj.com/act/release/js/20170807_3fac7b7.js"],
+		"css": ["r.51gjj.com/act/release/css/20170807_5de1fdb.css"]
+>>>>>>> c736351f0407a1e66703e8350f14a55aa90063f5
 	}
 }
