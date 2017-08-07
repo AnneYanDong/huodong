@@ -106,7 +106,8 @@
                         <img data-src="<?php echo $imgUrl; ?>page4_choose.png" alt="dial">
                     </div>
                     <div class="customization-tp hide">
-                        <img class="tp" data-src="<?php echo $imgUrl; ?>page4_new_tp.png" alt="tp">
+                        <img class="tp" data-src="<?php echo $imgUrl; ?>page4_new_tp2.png" alt="tp2">
+                        <img class="tp2" data-src="<?php echo $imgUrl; ?>page4_new_tp22.png" alt="tp22">
                         <img class="male" data-src="<?php echo $imgUrl; ?>page4_male.png" alt="male">
                         <img class="female hide" data-src="<?php echo $imgUrl; ?>page4_female.png" alt="female">
                         <img class="tp-circle circle-rotating2" data-src="<?php echo $imgUrl; ?>tp_circle.png" alt="tp-circle">

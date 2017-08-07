@@ -230,29 +230,38 @@
   position: relative;
   top: -5rem;
   margin: 0 auto;
+  z-index: 99;
 }
 .page4 .tp {
   width: 6.95rem;
   height: 8.11rem;
 }
+.page4 .tp2 {
+  width: 3.69rem;
+  height: 1.69rem;
+  position: relative;
+  top: -3.8rem;
+  z-index: 88;
+}
 .page4 .male,.female {
   width: 2.86rem;
   height: 5.58rem;
   position: relative;
-  top: -5.8rem;
+  top: -7.5rem;
+  z-index: 88;
 }
 .page4 .tp-circle {
    width: .37rem;
    height: .35rem;
    position: relative;
-   top: -12.5rem;
+   top: -14.2rem;
    left: -2.5rem;
 }
 .page4 .analyzing-title {
   width: 3.61rem;
   height: .34rem;
   position: relative;
-  top: -12.8rem;
+  top: -14.5rem;
   left: 1.3rem;
   font-size: .28rem;
   color: #fff;
@@ -262,8 +271,9 @@
   width: 3rem;
   height: 1.70rem;
   position: relative;
-  top: -10rem;
+  top: -11.6rem;
   left: .5rem;
+  z-index: 50;
 }
 .page4 .analyzing-process div {
   width: 14ch;
@@ -276,6 +286,7 @@
   color: #3cd4ed;
   text-align: left;
   padding-bottom: .1rem;
+  opacity: .7;
 }
 .page4 .scan {
   width: 3.61rem;
@@ -527,28 +538,28 @@
 }
 @keyframes scan {
   0% {
-      top: -10.8rem;
+      top: -12.2rem;
   }
   15% {
-      top: -11.3rem;
+      top: -12.5rem;
   }
   30% {
-      top: -11.6rem;
+      top: -12.8rem;
   }
   45% {
-      top: -11.3rem;
+      top: -13.2rem;
   }
   60% {
-      top: -11rem;
+      top: -12.8rem;
   }
   75% {
-      top: -10.8rem;
+      top: -12.6rem;
   }
   90% {
-      top: -10.6rem;
+      top: -12.4rem;
   }
   100% {
-      top: -10.8rem;
+      top: -12.2rem;
   }
 }
 @keyframes gradient {
