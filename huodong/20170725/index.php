@@ -87,12 +87,13 @@
                             <div class="finger-box hide"><img class="finger" data-src="<?php echo $imgUrl; ?>finger.png" alt="finger" /></div>
                         </div>
                         <div class="output-money"></div>
-                        <div class="dynamic-money">
+                        <div id="money" class="money"></div>
+                        <!-- <div class="dynamic-money">
                              <img class="money1 hide" data-src="<?php echo $imgUrl; ?>money.png" alt="money" />
                              <img class="money2 hide" data-src="<?php echo $imgUrl; ?>money.png" alt="money" />
                              <img class="money3 hide" data-src="<?php echo $imgUrl; ?>money.png" alt="money" />
                              <img class="money4 hide" data-src="<?php echo $imgUrl; ?>money.png" alt="money" />
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 

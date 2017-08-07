@@ -4,7 +4,7 @@
       "data" => array(
         "name"=>"金盈贷",
         "match_rate"=>95,
-        "max_amount"=>"5万",
+        "max_amount"=>"3000元",
         "day_rate"=>"0.02%",
         "loan_time"=>"1-3天",
         "url"=>"http://www.baidu.com",
