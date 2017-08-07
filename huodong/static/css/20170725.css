@@ -359,16 +359,16 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
   height: 7.66rem;
   position: relative;
   z-index: 99;
-  top: .5rem;
+  top: -5rem;
   left: 47%;
   transform: translateX(-50%);
 }
 .content .tp-apply-btn {
-  width: 3.06rem;
-  height: 1.18rem;
+  width: 5.33rem;
+  height: 7.00rem;
   position: relative;
   z-index: 200;
-  top: 6.1rem;
+  top: 2.6rem;
   left: 49.4%;
   transform: translateX(-50%);
 }

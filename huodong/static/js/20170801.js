@@ -11,7 +11,16 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
     var local = ct.Tool.local();
 
     ct.Tool.buryPoint();
-    // var counter = 0;
+    var loan = [];
+    var total = [];
+    var loanTotal = [];
+    var time = null;
+    var loanTime = [];
+    var release = null;
+    var loanRelease = [];
+    var focus = null;
+    var loanFocus = [];
+    var data;
     var run = {
         iconName: [],
 
@@ -68,25 +77,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             console.log("私人订制活动");
             var _this = this;
             $(".wp").removeClass("hide");
+            // _this.isRetest();
             _this.fullPageObj = _this.fullpage();
         },
 
         fullpage: function() {
             var _this = this;
-            var loan = [];
-            var total = null;
-            var loanTotal = [];
-            var time = null;
-            var loanTime = [];
-            var release = null;
-            var loanRelease = [];
-            var focus = null;
-            var loanFocus = [];
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
                 start: 0,  //默认第一页开始
                 beforeChange: function(e) {
-                    console.log("e",e);
-                    console.log("e.next",e.next);
                     var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
                     console.log("now",now);
                     _this.changeState(now); //把当前页面在改变之前塞入浏览器历史
@@ -96,87 +95,94 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     var now = "page" + (e.cur + 1);
                     if (now == "page1") {
                         //加载到当前页的时候去掉之前加上的动画
-                        $(".page1 li").removeClass("rotating");
+                        $(".page1 li").removeClass("bounce-out");
                         $(".page1 li").unbind().on("click", function() {
                             var ele = $(this);
+                            ele.attr("disabled","disabled");
+                            total = ele.data("loan-total");
+                            loanTotal.length = 0;
+                            loanTotal.push(total);
+                            console.log("loanTotal",loanTotal);
                             var timer = null;
                             clearTimeout(timer);
                             timer = setTimeout(function() {
-                                ele.addClass("rotating"); //当前li元素添加动画
+                                // ele.addClass("rotating");
+                                ele.addClass("bounce-out");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(1, true);
+                                    ele.removeAttr("disabled");
                                 }, 1200);
                             }, 200);
-                            total = ele.data("loan-total");
-                            console.log("push语句之前",loanTotal);
-                            loanTotal.push(total);
-                            console.log("点击时loanTotal:",loanTotal);
                         });
                         _this.respondState(now);
                     }
 
                     if (now == "page2") {
+                        $(".page1 li").removeClass("bounce-out").removeAttr("disabled");;
                         $(".page2 li").unbind().on("click", function() {
                             var ele = $(this);
-                                var timer = null;
+                            ele.attr("disabled","disabled");
+                            var timer = null;
+                            clearTimeout(timer);
+                            timer = setTimeout(function() {
+                                // ele.addClass("rotating");
+                                ele.addClass("bounce-out");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-                                    ele.addClass("rotating"); //当前li元素添加动画
-                                    clearTimeout(timer);
-                                    timer = setTimeout(function() {
-                                        _this.fullPageObj.moveTo(2, true);
-                                        // oMask.hide();
-                                    }, 1200)
-                                }, 200);
+                                    _this.fullPageObj.moveTo(2, true);
+                                }, 1200)
+                            }, 200);
                             //把li元素的data属性push到对应数组
                             time = ele.data("loan-time");
+                            loanTime.length = 0;
                             loanTime.push(time);
                             console.log("点击时time:",loanTime);
                         })
                         _this.respondState(now, 0, true,function(){
                             console.log("返回第一页");
-                            $(".page1 li").removeClass("rotating");
-                            loanTotal = [];
+                            $(".page1 li").removeClass("bounce-out");
+                            loanTotal.length = 0;
                             total = null;
                             console.log("返回时loanTotal:",loanTotal);
-                        });  //app点击返回箭头执行的函数
+                        });
                     }
 
                     if (now == "page3") {
                         $(".page3 li").unbind().on("click", function() {
                             var ele = $(this);
+                            ele.attr("disabled","disabled");
                             var timer = null;
                             clearTimeout(timer);
                             timer = setTimeout(function() {
-                                ele.addClass("rotating");
+                                // ele.addClass("rotating");
+                                ele.addClass("bounce-out");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(3, true);
                                 }, 1200)
                             }, 200)
                             release = ele.data("loan-release");
+                            loanRelease.length = 0;
                             loanRelease.push(release);
-                            console.log("点击时loanRelease:",loanRelease);
                         })
                         _this.respondState(now, 1, true, function() {
                             console.log("返回第二页");
-                            $(".page2 li").removeClass("rotating");
+                            $(".page2 li").removeClass("bounce-out").removeAttr("disabled");
                             loanTime.length = 0;
                             time = null;
-                            console.log("返回时loanTime:",loanTime);
                         });
                     }
 
                     if (now == "page4") {
-                        console.log(_this);
                         $(".page4 .circle div").unbind().on("click", function() {
                             var ele = $(this);
+                            ele.attr("disabled","disabled");
                             focus = ele.data("loan-focus");
+                            loanFocus.length = 0;
                             loanFocus.push(focus);
+                            loan.length = 0;
                             loan.push(loanTotal,loanTime,loanRelease,loanFocus);
-                            console.log("点击时loanFocus:",loanFocus);
-                            console.log("loan:",loan);
 
                             var timer = null;
                             clearTimeout(timer);
@@ -184,36 +190,77 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 ele.addClass("circle-rotating");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-                                    _this.getAnalysisData(loan);
+                                    _this.getAnalysisData();
                                 }, 1200)
                             }, 200)
                         })
                         _this.respondState(now, 2, true,function(){
                             console.log("返回第三页");
-                            $(".page3 li").removeClass("rotating");
+                            $(".page3 li").removeClass("bounce-out").removeAttr("disabled");
                             loanRelease.length = 0;
                             release = null;
-                            console.log("返回时loanRelease:",loanRelease);
                         });
                     }
 
                     if (now == "page5") {
                         var dataObj = data;
                         $(".page5 .loan-match span").addClass("progress");
-                        $(".page5 .final-loan").unbind().on("click",".finger-box",function(){
+                        $(".page5 .final-loan").unbind().on("click",".final-loan,.finger-box",function(){
+                            $(this).attr("disabled","disabled");
+                            $(".page5 .finger").addClass("hide").removeClass("move");
+                            $(".page5 .fingerprint").removeClass("hide");
+                            $(".page5 .finger-scan").removeClass("hide").addClass("finger-scaning");
                             setTimeout(function(){
                                 console.log("dataObj",dataObj);
                                 window.location.href = dataObj.url;
+                                $(".page5 .fingerprint").addClass("hide");
+                                $(".page5 .finger-scan").addClass("hide").removeClass("finger-scaning");
                             },1000);
+                        });
+                        $(".page5 .content").unbind().on("click",".test-btn",function(){
+                            $(".page5 .content .test-btn").attr("disabled","disabled");
+                            timer = setTimeout(function() {
+                                _this.fullPageObj.moveTo(0, true);
+                                $(".page5 .content .test-btn").removeAttr("disabled");
+                                //清空所有数据
+                                loanTotal.length = 0;
+                                total = null;
+                                loanTime.length = 0;
+                                time = null;
+                                loanRelease.length = 0;
+                                release = null;
+                                loanFocus.length = 0;
+                                focus = null;
+                                loan.length = 0;
+                                //清空样式
+                                $(".page1 li").removeClass("bounce-out");
+                                $(".page2 li").removeClass("bounce-out");
+                                $(".page3 li").removeClass("bounce-out");
+                                $(".page4 .circle div").removeClass("circle-rotating");
+                                $(".page4 .customization-tp").hide();
+                                $(".page5 .loan-match span").removeClass("progress");
+                                $(".page5 .icon-box").html("");
+                                $(".page5 .loan-name").html("");
+                                $(".page5 .loan-match").html("");
+                                $(".page5 .loan-amount").html("");
+                                $(".page5 .day-rate").html("");
+                                $(".page5 .release-time").html("");
+                                $(".page5 .finger").removeClass("hide").addClass("move");
+                                $(".page5 .fingerprint").addClass("hide");
+                                $(".page5 .finger-scan").addClass("hide").removeClass("finger-scaning");
+                            }, 500);
+
                         });
                         _this.respondState(now, 3, true,function(){
                             console.log("返回第四页");
-                            $(".page4 .circle div").removeClass("circle-rotating");
+                            $(".page4 .circle div").removeClass("circle-rotating").removeAttr("disabled");
                             $(".page5 .loan-match span").removeClass("progress");
+                            $(".page5 .finger").removeClass("hide").addClass("move");
+                            $(".page5 .fingerprint").addClass("hide");
+                            $(".page5 .finger-scan").addClass("hide").removeClass("finger-scaning");
                             loanFocus.length = 0;
                             focus = null;
                             loan.length = 0;
-                            console.log("返回时loanFocus:",loanFocus);
                             $(".page4 .customization-tp").hide();
                         });
                     }
@@ -221,6 +268,26 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             });
             return fullpage;
         },
+        // isRetest: function() {
+        //     var _this = this;
+        //     $.ajax({
+        //         type: "POST",
+        //         dataType: "JSON",
+        //         url: "test.php",
+        //         // url: "/act/act170801/get_status",
+        //         success: function(d) {
+        //             console.log("初始化时发送的请求：",d);
+        //             var display = d.display;
+        //             console.log(display);
+        //             if (display == false) {
+        //                 return;
+        //             } else {
+        //                 $(".page5 .test-btn").show();
+        //                 _this.fullPageObj.moveTo(4, true);
+        //             }
+        //         }
+        //     });
+        // },
         showAnalyzeProcess: function(counter) {
             var _this = this;
             $(".page4 .analyzing-process div.span" + counter).removeClass("hide").addClass("analyzing");
@@ -233,21 +300,20 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
         },
 
         // 走后台跳转申请
-        getAnalysisData: function(loan) {
+        getAnalysisData: function() {
             var _this = this;
-            console.log("请求：",loan);
+            console.log("请求传递的数据：",loan);
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                data: JSON.stringify({loan}),
-                url: "test.php",
-                // url: "/act/act170725/get_button",
+                data: JSON.stringify(loan),
+                // url: "test.php",
+                url: "/act/act170801/get_button",
                 success: function(d){
                     if (d.success) {
                         data = d.ret.data;
                         console.log("data->",data);
                        if (data.sex == 1) {
-                         // oM.show();
                          //弹屏男
                           $(".page4 .customization-tp").fadeIn();
                           _this.showAnalyzeProcess(0);

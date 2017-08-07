@@ -9,10 +9,11 @@
         "loan_time"=>"1-3天",
         "url"=>"http://www.baidu.com",
         "sex"=>1,
-        "show"=>["小额度","放款快","分期长"],
+        "show"=>["小额度","急用钱","分期长"],
       )
     ),
     "success"=>true,
+    "display" => true
   );
   echo json_encode($ret);
 ?>
