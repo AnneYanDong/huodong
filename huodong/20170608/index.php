@@ -32,7 +32,7 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <img data-src="<?php echo $imgUrl; ?>bg.jpg" alt="">
+            <img data-src="<?php echo $imgUrl; ?>bgImg.jpg" alt="">
             <div class="loan input-1">
                 <span>借款 :</span>
                 <input type="tel" placeholder="最高300000" maxlength="6" />

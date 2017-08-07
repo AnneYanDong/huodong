@@ -114,6 +114,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page1") {
+                        console.log(1);
                         $(".page1 li").removeClass("rotate").addClass("grayscale");
 
                         $(".page2 li").on("click", function() {
