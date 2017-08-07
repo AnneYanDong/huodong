@@ -40,15 +40,15 @@
                     <ul class="title3">
                         <h5>您想借多少钱？</h5>
                         <li bp="1万元以下" title="1万元以下" data-loan-total="1万元以下" class="">
-                            <img data-src="<?php echo $imgUrl; ?>page1_loan1_02.png" alt="1万元以下">
+                            <img data-src="<?php echo $imgUrl; ?>A.png" alt="1万元以下">
                             <span>1万元以下</span>
                         </li>
                         <li bp="1~3万" title="1~3万" data-loan-total="1-3万">
-                            <img data-src="<?php echo $imgUrl; ?>page1_loan2_02.png" alt="1~3万">
+                            <img data-src="<?php echo $imgUrl; ?>B.png" alt="1~3万">
                             <span>1-3万元</span>
                         </li>
                         <li bp="3万元以上" title="3万元以上" data-loan-total="3万元以上">
-                            <img data-src="<?php echo $imgUrl; ?>page1_loan3_02.png" alt="3万元以上">
+                            <img data-src="<?php echo $imgUrl; ?>C.png" alt="3万元以上">
                             <span>3万元以上</span>
                         </li>
                     </ul>
@@ -60,15 +60,15 @@
                     <ul class="title3">
                         <h5>您想借多久？</h5>
                         <li bp="30天以内" title="30天以内" data-loan-time="30天以内">
-                            <img data-src="<?php echo $imgUrl; ?>page1_loan1_02.png" alt="30天以内">
+                            <img data-src="<?php echo $imgUrl; ?>A.png" alt="30天以内">
                             <span>30天以内</span>
                         </li>
                         <li bp="1年以内" title="1年以内" data-loan-time="1年以内">
-                            <img data-src="<?php echo $imgUrl; ?>page1_loan2_02.png" alt="1年以内">
+                            <img data-src="<?php echo $imgUrl; ?>B.png" alt="1年以内">
                             <span>1年以内</span>
                         </li>
                         <li bp="1年以上" title="1年以上" data-loan-time="1年以上">
-                            <img data-src="<?php echo $imgUrl; ?>page1_loan3_02.png" alt="1年以上">
+                            <img data-src="<?php echo $imgUrl; ?>C.png" alt="1年以上">
                             <span>1年以上</span>
                         </li>
                     </ul>
@@ -81,11 +81,11 @@
                    <ul class="title3">
                        <h5>可接受放款时间为？</h5>
                        <li bp="1天以内" title="1天以内" data-loan-release="1天以内">
-                           <img data-src="<?php echo $imgUrl; ?>page1_loan1_02.png" alt="1天以内">
+                           <img data-src="<?php echo $imgUrl; ?>A.png" alt="1天以内">
                            <span>1天以内</span>
                        </li>
                        <li bp="1-3天" title="1-3天" data-loan-release="1-3天">
-                           <img data-src="<?php echo $imgUrl; ?>page1_loan2_02.png" alt="1-3天">
+                           <img data-src="<?php echo $imgUrl; ?>B.png" alt="1-3天">
                            <span>1-3天</span>
                        </li>
                    </ul>
@@ -106,7 +106,7 @@
                         <img data-src="<?php echo $imgUrl; ?>page4_choose.png" alt="dial">
                     </div>
                     <div class="customization-tp hide">
-                        <img class="tp" data-src="<?php echo $imgUrl; ?>page4_tp.png" alt="tp">
+                        <img class="tp" data-src="<?php echo $imgUrl; ?>page4_new_tp.png" alt="tp">
                         <img class="male" data-src="<?php echo $imgUrl; ?>page4_male.png" alt="male">
                         <img class="female hide" data-src="<?php echo $imgUrl; ?>page4_female.png" alt="female">
                         <img class="tp-circle circle-rotating2" data-src="<?php echo $imgUrl; ?>tp_circle.png" alt="tp-circle">
@@ -118,7 +118,7 @@
                             <div class="span3 hide"><span>个性化定制推荐追踪</span></div>
                             <div class="span4 hide"><span>深层心理动机探知进行中</span></div>
                         </div>
-                        <div class="scan scaning"><img data-src="<?php echo $imgUrl; ?>page4_scan.png" alt="scan"></div>
+                        <div class="scan scaning"><img data-src="<?php echo $imgUrl; ?>page4_new_scan.png" alt="scan"></div>
                     </div>
                     <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dia2"></div>
                 </div>

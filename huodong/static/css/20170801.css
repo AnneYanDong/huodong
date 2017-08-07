@@ -283,9 +283,10 @@
   position: relative;
   top: -11rem;
   margin: 0 auto;
+  left: -.38rem;
 }
 .page4 .scan img {
-  width: 3.64rem;
+  width: 4.4rem;
   height: 1.46rem;
 }
 .page4 .customization-tp span:after {
@@ -312,11 +313,11 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  /* width: 80%; */
   height: 1rem;
   margin: 0 auto;
   position: relative;
-  top: -2rem;
+  top: -2.1rem;
+  left: .25rem;
 }
 .page5 .content .test-result ul.icon-box li {
   display: inline-block;
@@ -324,12 +325,12 @@
   text-align: center;
   font-size: .28rem;
   color: #fff;
-  padding-right: .3rem;
+  padding-right: .5rem;
 }
 .page5 .content .test-result ul.icon-box li img {
   width: 1rem;
   height: 1rem;
-  padding-bottom: .2rem;
+  padding-bottom: .3rem;
 }
 .page5 .content .final-loan {
   width: 6.79rem;
@@ -375,7 +376,7 @@
   position: relative;
   top: -3.8rem;
   text-align: center;
-  left: .8rem;
+  left: .9rem;
   z-index: 2;
 }
 .page5 .content .final-loan .loan-match span {
@@ -392,7 +393,7 @@
   color: #fff;
   position: relative;
   top: -3.4rem;
-  left: .8rem;
+  left: .9rem;
   width: 3rem;
   height: auto;
   text-align: left;
@@ -409,7 +410,7 @@
   background: linear-gradient(to bottom,#bb2df0,#8f34f1); /* 标准的语法 */
   position: relative;
   top: -4.5rem;
-  left: 5rem;
+  left: 5.2rem;
   font-size: .32rem;
   color: #fff;
   text-align: center;
@@ -424,7 +425,9 @@
   position: relative;
   top: -5.6rem;
   display: block;
-  left: -.75rem;
+  left: .9rem;
+  width: 6rem;
+  text-align: left;
 }
 .page5 .content .day-rate,.release-time {
   height: .36rem;
@@ -448,8 +451,8 @@
   width: 1.5rem;
   height: 1.5rem;
   position: relative;
-  top: -5.8rem;
-  left: 4.85rem;
+  top: -5.78rem;
+  left: 5.04rem;
 }
 .page5 .content .finger {
   width: .26rem;
@@ -524,19 +527,28 @@
 }
 @keyframes scan {
   0% {
-    top: -11rem;
+      top: -10.8rem;
   }
-  25% {
-    top: -11.3rem;
+  15% {
+      top: -11.3rem;
   }
-  50% {
-    top: -11.7rem;
+  30% {
+      top: -11.6rem;
+  }
+  45% {
+      top: -11.3rem;
+  }
+  60% {
+      top: -11rem;
   }
   75% {
-    top: -11.3rem;
+      top: -10.8rem;
+  }
+  90% {
+      top: -10.6rem;
   }
   100% {
-    top: -11rem;
+      top: -10.8rem;
   }
 }
 @keyframes gradient {

@@ -403,22 +403,22 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
               $(".icon-box").append(oLi);
               oSpan.innerHTML = data.show[i];
               if (oSpan.innerHTML == "小额度") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_xed_icon.png";
+                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_xed.png";
               }
               if (oSpan.innerHTML == "放款快") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_fkk_icon.png";
+                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_fkk.png";
               }
               if (oSpan.innerHTML == "分期长") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_fqc_icon.png";
+                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_fqc.png";
               }
               if (oSpan.innerHTML == "急用钱") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_jyq_icon.png";
+                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_jyq.png";
               }
               if (oSpan.innerHTML == "精明派") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_jmp_icon.png";
+                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_jmp.png";
               }
               if (oSpan.innerHTML == "大额度") {
-                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_page5_ded_icon.png";
+                  oImg.src = "http://r.51gjj.com/act/release/img/20170801_ded.png";
               }
             }
         },
