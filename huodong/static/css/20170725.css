@@ -370,6 +370,20 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
   left: 49.4%;
   transform: translateX(-50%);
 }
+#money {
+  position: absolute;
+  top: 6.7rem;
+  left: 2.6rem;
+  z-index: 4;
+  background: url("http://r.51gjj.com/act/release/img/money_sprites.png");
+  background-size: 8.88rem 1.09rem;
+  width: 2rem;
+  height: 1.09rem;
+  background-position: 8.86rem 1.09rem;
+  -webkit-animation: money_two 1s steps(5) infinite;
+  -moz-animation: money_two 1s steps(5) infinite;
+  animation: money_two 600ms steps(5) forwards infinite;
+}
 @keyframes move {
   0%,100%{
     transform: translate(.2rem,.2rem);
@@ -385,4 +399,22 @@ input[type="tel"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox
   60%,70%,80%,90%,100% {
     color: #fd567c;
   }
+}
+@keyframes money_two {
+  0% {
+      background-position: 8.86rem 1.09rem;
+  }
+  25% {
+      /* background-position: 612px 109px; */
+  }
+  50% {
+      /* background-position: 408px 109px; */
+  }
+  75% {
+      /* background-position: 204px 109px; */
+  }
+  100% {
+      background-position: -2.18rem 1.09rem;
+  }
+
 }

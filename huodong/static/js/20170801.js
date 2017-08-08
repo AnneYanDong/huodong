@@ -81,13 +81,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             _this.fullPageObj = _this.fullpage();
         },
         BuryRequest: function(now) {
+            console.log("页面埋点：",now);
+            var page = now;
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
                 url: ct.Tool.url("/app/request/activity"),
                 data: JSON.stringify({
                     place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "进入页面" + projectName
+                    tag: "进入页面" + page + projectName
                 }),
                 success: function (d) {
                     if (d.success) {
@@ -229,8 +231,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                         $(".page5 .final-loan").unbind().on("click",".final-loan,.finger-box",function(){
                             $(".page5 .final-loan").attr("bp",dataObj.name);
                             $(".page5 .final-loan").attr("title",dataObj.name);
-                            $(".page5 .finger-box").attr("bp",dataObj.name);
-                            $(".page5 .finger-box").attr("title",dataObj.name);
                             $(this).attr("disabled","disabled");
                             $(".page5 .finger").addClass("hide").removeClass("move");
                             $(".page5 .fingerprint").removeClass("hide");
@@ -332,8 +332,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 type: "POST",
                 dataType: "JSON",
                 data: JSON.stringify(loan),
-                url: "test.php",
-                // url: "/act/act170801/get_button",
+                // url: "test.php",
+                url: "/act/act170801/get_button",
                 success: function(d){
                     if (d.success) {
                         data = d.ret.data;
