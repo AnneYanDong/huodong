@@ -278,8 +278,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     type: "POST",
                     dataType: "JSON",
                     data: JSON.stringify({"money": amount,"purpose": purpose}),
-                    url: "test.php",
-                    // url: "/act/act170725/get_button",
+                    // url: "test.php",
+                    url: "/act/act170725/get_button",
                     success: function(d){
                         if (d.success) {
                             var d = d.ret;
@@ -322,7 +322,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         }
                     }
                 });
-                // $(".withdraw-btn").removeAttr("disabled");
+                $(".withdraw-btn").removeAttr("disabled");
             });
         },
         openRule: function () {
