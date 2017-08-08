@@ -5,7 +5,7 @@
             "login" => true,
             "is_weChat" => true,
             "is_qq"=>false,
-            "type" => 1
+            "type" => 0
         ),
     "success"=>true,
   );
