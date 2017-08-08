@@ -38,7 +38,7 @@
         <div class="content">
             <img class="rule-btn" data-src="<?php echo $imgUrl?>rule_btn.png">
             <img class="main-title" data-src="<?php echo $imgUrl?>main_title.png">
-            <div class="act-time">活动时间：<span class="time-day">8.1<div class="time-hour"><div class="time-second">00:00</div></div><span>-</span>8.10</span><div class="time-hour"><div class="time-second">23:59</div></div></div>
+            <div class="act-time">活动时间：<span class="time-day">8.15<div class="time-hour"><div class="time-second">00:00</div></div><span>-</span>8.25</span><div class="time-hour"><div class="time-second">23:59</div></div></div>
             <img class="add-interest" data-src="<?php echo $imgUrl?>interest.png">
             <a class="buying" bp="立即抢购" title="立即抢购" href="/business/home/Invest/h5/account/index.php?page=1"></a>
             <div class="list-wrap">
