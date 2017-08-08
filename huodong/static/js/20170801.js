@@ -57,6 +57,30 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 }
             })
 
+         /*   $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: ct.Tool.url("/app/request/activity"),
+                data: JSON.stringify({
+                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    tag: "进入页面" + projectName
+                }),
+                success: function (d) {
+                    if (d.success) {
+
+                    }
+                }
+            });*/
+        },
+
+        init: function() {
+            console.log("私人订制活动");
+            var _this = this;
+            $(".wp").removeClass("hide");
+            // _this.isRetest();
+            _this.fullPageObj = _this.fullpage();
+        },
+        BuryRequest: function(now) {
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
@@ -73,14 +97,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             });
         },
 
-        init: function() {
-            console.log("私人订制活动");
-            var _this = this;
-            $(".wp").removeClass("hide");
-            // _this.isRetest();
-            _this.fullPageObj = _this.fullpage();
-        },
-
         fullpage: function() {
             var _this = this;
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
@@ -94,6 +110,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     _this.fullPageObj.stop();
                     var now = "page" + (e.cur + 1);
                     if (now == "page1") {
+                        _this.BuryRequest(now);
                         //加载到当前页的时候去掉之前加上的动画
                         $(".page1 li").removeClass("bounce-out");
                         $(".page1 li").unbind().on("click", function() {
@@ -119,6 +136,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page2") {
+                        _this.BuryRequest(now);
                         $(".page1 li").removeClass("bounce-out").removeAttr("disabled");;
                         $(".page2 li").unbind().on("click", function() {
                             var ele = $(this);
@@ -149,6 +167,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page3") {
+                        _this.BuryRequest(now);
                         $(".page3 li").unbind().on("click", function() {
                             var ele = $(this);
                             ele.attr("disabled","disabled");
@@ -175,6 +194,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page4") {
+                        _this.BuryRequest(now);
                         $(".page4 .circle div").unbind().on("click", function() {
                             var ele = $(this);
                             ele.attr("disabled","disabled");
@@ -203,6 +223,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page5") {
+                        _this.BuryRequest(now);
                         var dataObj = data;
                         $(".page5 .loan-match span").addClass("progress");
                         $(".page5 .final-loan").unbind().on("click",".final-loan,.finger-box",function(){
@@ -311,8 +332,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 type: "POST",
                 dataType: "JSON",
                 data: JSON.stringify(loan),
-                // url: "test.php",
-                url: "/act/act170801/get_button",
+                url: "test.php",
+                // url: "/act/act170801/get_button",
                 success: function(d){
                     if (d.success) {
                         data = d.ret.data;

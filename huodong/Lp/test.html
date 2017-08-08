@@ -20,13 +20,24 @@
     -moz-animation: worm 1s steps(2) infinite;
     animation: worm 1s steps(2) infinite;
   }
-  #money {
+ /* #money {
    background: url(../static/img/20170725_dynamic_new_money.png) no-repeat;
        width: 204px;
        height: 89px;
        -webkit-animation: money 1s steps(6) infinite;
        -moz-animation: money 1s steps(6) infinite;
        animation: money 700ms steps(6) infinite;
+  }*/
+
+  #money2 {
+  background: url(../static/img/money_sprites.png);
+  width: 200px;
+  height: 109px;
+  background-position: 886px 109px;
+  -webkit-animation: money_two 1s steps(5) infinite;
+  -moz-animation: money_two 1s steps(5) infinite;
+  animation: money_two 2s steps(5) forwards infinite;
+  /* border: 1px solid red; */
   }
   @-webkit-keyframes worm {
     0% {
@@ -74,6 +85,24 @@
       height: 162px;
     }
   }
+  @keyframes money_two {
+  0% {
+      background-position: 886px 109px;
+  }
+  25% {
+      /* background-position: 612px 109px; */
+  }
+  50% {
+      /* background-position: 408px 109px; */
+  }
+  75% {
+      /* background-position: 204px 109px; */
+  }
+  100% {
+      background-position: -218px 109px;
+  }
+
+  }
 </style>
 
 </head>
@@ -98,5 +127,6 @@
   </p>
   <!-- <div id="worm" class="icon"></div> -->
   <div id="money" class="money"></div>
+  <div id="money2" class="money2"></div>
 </body>
 </html>

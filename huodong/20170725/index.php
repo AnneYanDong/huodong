@@ -41,9 +41,6 @@
             <div class="wp-inner">
                 <div class="content">
                     <img class="title1" data-src="<?php echo $imgUrl; ?>title1.png" alt="title" />
-                    <!-- <img class="title2 hide" data-src="<?php echo $imgUrl; ?>title2.png" alt="title" />
-                    <img class="title3" data-src="<?php echo $imgUrl; ?>title2_02.png" alt="title" /> -->
-                    <!-- <h2 class="text-title">24小时无休</h2> -->
                     <img class="gift2" data-src="<?php echo $imgUrl; ?>gift2.png" alt="gift2" />
                     <div class="tp-hide1 hide">
                         <div class="tp-apply-btn" bp="金卡弹屏" title="金卡弹屏"></div>
