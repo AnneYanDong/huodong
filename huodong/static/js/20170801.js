@@ -131,7 +131,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(1, true);
                                     ele.removeAttr("disabled");
-                                }, 1200);
+                                }, 800);
                             }, 200);
                         });
                         _this.respondState(now);
@@ -151,7 +151,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(2, true);
-                                }, 1200)
+                                }, 800)
                             }, 200);
                             //把li元素的data属性push到对应数组
                             time = ele.data("loan-time");
@@ -181,7 +181,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(3, true);
-                                }, 1200)
+                                }, 800)
                             }, 200)
                             release = ele.data("loan-release");
                             loanRelease.length = 0;
@@ -212,13 +212,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 ele.addClass("circle-rotating");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-                                    _this.getAnalysisData();
-                                }, 1200)
+                                    _this.getAnalysisData(now);
+                                }, 800)
                             }, 200)
                         })
                         _this.respondState(now, 2, true,function(){
                             console.log("返回第三页");
                             $(".page3 li").removeClass("bounce-out").removeAttr("disabled");
+                            $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
                             loanRelease.length = 0;
                             release = null;
                         });
@@ -287,6 +288,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             focus = null;
                             loan.length = 0;
                             $(".page4 .customization-tp").hide();
+                            $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
                         });
                     }
                 }
@@ -318,22 +320,24 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             $(".page4 .analyzing-process div.span" + counter).removeClass("hide").addClass("analyzing");
             console.log("counter:",counter);
             if(counter < 5) {
-                setTimeout(function() {
+                var timer = null;
+                clearTimeout(timer);
+                timer = setTimeout(function() {
                     _this.showAnalyzeProcess(counter + 1);
                 }, 500);
             }
         },
 
         // 走后台跳转申请
-        getAnalysisData: function() {
+        getAnalysisData: function(now) {
             var _this = this;
             console.log("请求传递的数据：",loan);
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
                 data: JSON.stringify(loan),
-                // url: "test.php",
-                url: "/act/act170801/get_button",
+                url: "test.php",
+                // url: "/act/act170801/get_button",
                 success: function(d){
                     if (d.success) {
                         data = d.ret.data;
@@ -347,9 +351,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                           //定制贷款信息
                           _this.getLoanInfo();
                           setTimeout(function(){
-                             _this.fullPageObj.moveTo(4, true);
-                              $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
-                          },5000);
+                            if (now == "page4") {
+                                _this.fullPageObj.moveTo(4, true);
+                                $(".page4 .customization-tp").fadeOut();
+                                $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
+                            }
+                          },2000);
                        }
                        if (data.sex == 2) {
                         //弹屏女
