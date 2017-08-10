@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD:huodong/Lp/index20170807.html
- 
-=======
->>>>>>> 0c23b609d843cb4429fa3767752b115b3d2ecf77:huodong/Lp/index170809_v2.php
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">

@@ -4,11 +4,6 @@ var init = {
         this.getCode();
         this.isInputEnter();
     },
-<<<<<<< HEAD
- 
-=======
-
->>>>>>> 6ff65ba5bc8b6bafcc68789fa630f4dce197a68f
     //点击获取验证码
     getCode: function() {
         var skipTimer = null;
