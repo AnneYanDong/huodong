@@ -119,7 +119,7 @@
             bottom: 0;
         }
     </style>
-    <script src="https://r.51gjj.com/package/zepto.min.js"></script>
+    <script src="//r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
     <script>
         function setFont(d, c) {
             var b = {},
