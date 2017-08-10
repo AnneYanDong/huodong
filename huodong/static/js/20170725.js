@@ -82,11 +82,10 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
         init: function () {
             var _this = this;
-            console.log(_this);
             $(".wp").removeClass("hide");
             _this.checkWithDrawAmount();
             _this.getCustStatus();
-            clearInterval(timer);
+            /*clearInterval(timer);*/
             _this.withDraw();
             _this.openRule();
             _this.closeRule();
@@ -110,7 +109,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 }
             })
         },
-        showMoney: function() {
+     /*   showMoney: function() {
             var visible = counter % 5;
             if (visible === 0) {
                 for(var i = 0; i < 4; i++) {
@@ -122,7 +121,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 }
             }
             counter++;
-        },
+        },*/
         checkAmount: function (withdrawal) {
             var withdrawal = withdrawal;
             var _this = this;
@@ -170,17 +169,21 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             purpose.length = 0;
             $(".atm-usage ul li.btn").removeClass("down").removeClass("up").addClass(".btn");
             $(".atm-usage ul .div").removeClass("bgColor").addClass(".div");
-            console.log(timer);
+           /* console.log(timer);
             clearInterval(timer);
-            $(".dynamic-money img").addClass("hide");
+            $(".dynamic-money img").addClass("hide");*/
+            $("#money").removeClass("money").addClass("hide");
         },
         getCustType: function(d,type) {
+
+            console.log(d);
             var _this = this;
             switch(type) {
                 case 1:
                     setTimeout(function(){
-                        clearInterval(timer);
-                        $(".dynamic-money img").addClass("hide");
+                        /*clearInterval(timer);
+                        $(".dynamic-money img").addClass("hide");*/
+                        $("#money").removeClass("money").addClass("hide");
                         oM.show();
                         $(".tp-hide1").fadeIn();
                         $(".content .tp-jk").fadeIn();
@@ -200,8 +203,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     break;
                 case 2:
                     setTimeout(function(){
-                        clearInterval(timer);
-                        $(".dynamic-money img").addClass("hide");
+                        /*clearInterval(timer);
+                        $(".dynamic-money img").addClass("hide");*/
+                        $("#money").removeClass("money").addClass("hide");
                         oM.show();
                         $(".tp-hide2").fadeIn();
                         $(".content .tp-jy").fadeIn();
@@ -221,8 +225,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     break;
                 case 3:
                     setTimeout(function(){
-                        clearInterval(timer);
-                        $(".dynamic-money img").addClass("hide");
+                        /*clearInterval(timer);
+                        $(".dynamic-money img").addClass("hide");*/
+                        $("#money").removeClass("money").addClass("hide");
                         oM.show();
                         $(".tp-hide3").fadeIn();
                         $(".content .tp-ja").fadeIn();
@@ -243,8 +248,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     break;
                 case 4:
                     setTimeout(function(){
-                        clearInterval(timer);
-                        $(".dynamic-money img").addClass("hide");
+                        /*clearInterval(timer);
+                        $(".dynamic-money img").addClass("hide");*/
+                        $("#money").removeClass("money").addClass("hide");
                         oM.show();
                         $(".tp-hide4").fadeIn();
                         $(".content .tp-jh").fadeIn();
@@ -278,8 +284,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     type: "POST",
                     dataType: "JSON",
                     data: JSON.stringify({"money": amount,"purpose": purpose}),
-                    url: "test.php",
-                    // url: "/act/act170725/get_button",
+                    // url: "test.php",
+                    url: "/act/act170725/get_button",
                     success: function(d){
                         if (d.success) {
                             var d = d.ret;
@@ -293,7 +299,8 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                         Bridge.action("login");
                                     }
                                 } else {
-                                        timer = setInterval(_this.showMoney,100);
+                                        /*timer = setInterval(_this.showMoney,100);*/
+                                        $("#money").removeClass("hide").addClass("money");
                                         switch(d.type) {
                                             case 0:
                                             case 5:
@@ -322,7 +329,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                         }
                     }
                 });
-                // $(".withdraw-btn").removeAttr("disabled");
+                $(".withdraw-btn").removeAttr("disabled");
             });
         },
         openRule: function () {

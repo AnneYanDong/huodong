@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="question"><img data-src="<?php echo $imgUrl?>question_title.png"></div>
-        <div class="question-title"><img data-src="<?php echo $imgUrl?>icon.png">问：什么事银行存管？</div>
+        <div class="question-title"><img data-src="<?php echo $imgUrl?>icon.png">问：什么是银行存管？</div>
         <div class="answer">答：“银行存管”即网络借贷信息中介平台在银行业金融单独设立资金存管专用账户，将用户资金存入该资金存管专用账户，并由银行业金融机构根据出借人、借款人发出的指令和合同约定，对该资金的使用、划付进行管理和监督。</div>
         <div class="question-title"><img data-src="<?php echo $imgUrl?>icon.png">问：存管对投资人有什么意义？
         存不存管的区别在哪里？</div>
@@ -64,7 +64,7 @@
             授权的情况下使用用户资金。
         </div>
         <div class="question-title"><img data-src="<?php echo $imgUrl?>icon.png">问：存管是不是每个注册用户都有专属账户？</div>
-        <div class="answer">答：只有通过身份认真的用户会开存管专户。
+        <div class="answer">答：只有通过身份认证的用户会开存管专户。
         </div>
         <div class="question-title"><img data-src="<?php echo $imgUrl?>icon.png">问：存管费用需要用户来承担吗？</div>
         <div class="answer">答：开通存管账户无需管理费，所有费用由51有钱帮你承担。</div>

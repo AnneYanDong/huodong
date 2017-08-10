@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD:huodong/Lp/index20170807.html
  
+=======
+>>>>>>> 0c23b609d843cb4429fa3767752b115b3d2ecf77:huodong/Lp/index170809_v2.php
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
     <meta name="format-detection" content="telephone=no">
-    <title>你的公积金有多少钱？除了买房还能干啥？</title>
-    <link rel="stylesheet" href="css/public.css"> 
-    <script type="text/javascript" src="//r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
-    <script type="text/javascript" src="js/index20170807.js"></script>
-   
+    <title>51公积金借款</title>
+    <link rel="stylesheet" href="css/public.css">
     <style>
         .user-info{
             position: relative;
@@ -21,7 +21,7 @@
             outline: none;
         }
         .input-wrap{
-            height: .9rem;
+            height: 1.35rem;
             width: 6rem;
             text-align: center;
             padding: 0 10px;
@@ -39,12 +39,12 @@
         }
         .input-wrap input{
             width: 100%;
-            height: 95%;
+            height: 100%;
             margin: 0 auto;
         }
         .code{
             position: relative;
-            overflow: hidden;
+            /*overflow: hidden;*/
         }
         .code:before{
             position: absolute;
@@ -58,13 +58,14 @@
         }
         .code .get-code {
             position: absolute;
-            top: 0rem;
+            /*top: 0rem;*/
+            bottom: 0;
             right: 0;
             width: 1.9rem;
-            height: 0.92rem;
-            line-height: 0.92rem;
+            height: 1.35rem;
+            line-height: 1.35rem;
             z-index: 2;
-            background: #ff8700;
+            background: #fc615f;
             color: #fff;
             text-align: center;
             font-size: 13px;
@@ -82,14 +83,14 @@
         }
 
         .search-btn{
-            background: #fece02;
+            background: #fc615f;
             width: 86%;
-            height: 1rem;
+            height: 1.08rem;
             margin: .4rem auto;
             border-radius: 5px;
             text-align: center;
-            line-height: 1rem;
-            color: #5c3701;
+            line-height: 1.08rem;
+            color: #fff;
         }
         .prompt{
             color: #9c9c9c;
@@ -102,7 +103,7 @@
             width: 80%;
             height: 1.28rem;
             position: absolute;
-            top: 9.4rem;
+            top: 8.4rem;
             left: 50%;
             transform: translateX(-50%);
             -webkit-transform: translateX(-50%);
@@ -115,40 +116,54 @@
             right: 0;
             bottom: 0;
         }
+        .fengxian {
+         text-align: center;
+         width: 100%;
+         height: 1rem;
+         background: #fff;
+         font-size: .096rem;
+         position: relative;
+         top: -.5rem;
+         color: #666665;
+        }
+        .fengxian span {
+            display: block;
+            opacity: .5;
+        }
+        .box {
+            background: #fff;
+        }
     </style>
+    <script src="//r.51gjj.com/package/zepto.min.js"></script>
     <script>
-    function setFont(d, c) {
-        var b = {},
-            a = document,
-            f;
-        b.widthProportion = function() {
-            var e = (a.body && a.body.clientWidth || a.getElementsByTagName("html")[0].offsetWidth || window.innerWidth) / d;
-            // console.log(e);
-            return e
-        };
-        b.changePage = function() {
-            var f = b.widthProportion() * c,
-                obj = a.getElementsByTagName("html")[0];
-            obj.setAttribute("style", "font-size:" + f + "px !important");
-            var style = null;
-            if (window.getComputedStyle) {
-                style = window.getComputedStyle(obj, null);
-                font = style.fontSize;
-                font = Number(font.replace("px", ""));
-                if (font > f) {
-                    var per = font / f;
-                    obj.setAttribute("style", "font-size:" + f / per + "px !important");
+        function setFont(d, c) {
+            var b = {},
+                a = document,
+                f;
+            b.widthProportion = function() {
+                var e = (a.body && a.body.clientWidth || a.getElementsByTagName("html")[0].offsetWidth || window.innerWidth) / d;
+                // console.log(e);
+                return e
+            };
+            b.changePage = function() {
+                var f = b.widthProportion() * c,
+                    obj = a.getElementsByTagName("html")[0];
+                obj.setAttribute("style", "font-size:" + f + "px !important");
+                var style = null;
+                if (window.getComputedStyle) {
+                    style = window.getComputedStyle(obj, null);
+                    font = style.fontSize;
+                    font = Number(font.replace("px", ""));
+                    if (font > f) {
+                        var per = font / f;
+                        obj.setAttribute("style", "font-size:" + f / per + "px !important");
+                    }
                 }
-            }
-        };
-        b.changePage();
-        addEventListener("resize", b.changePage, false);
-    }
-    setFont(750, 100);
-    </script>
-    <script>
-    var _czc = _czc || [];
-    _czc.push(["_setAccount", "1256135023"]);
+            };
+            b.changePage();
+            addEventListener("resize", b.changePage, false);
+        }
+        setFont(750, 100);
     </script>
 </head>
 <body>
@@ -156,7 +171,7 @@
         <div class="box">
             <div class="section section-one">
                 <div class="banner-part-one">
-                    <img class="bg" src="//r.51gjj.com/act/images/20161028v2_2_bg1.jpg"" alt="bg">
+                    <img class="bg" src="https://r.51gjj.com/act/images/20161121_bg1_1.gif" alt="bg">
                 </div>
                 <div class="user-info">
                     <div class="phone input-wrap">
@@ -167,37 +182,37 @@
                         <div class="get-code JS-get-code">获取验证码</div>
                     </div>
                     <div class="search-btn search-btn-not-active">
-                        领取1000元免费借款
+                        免费申请
                     </div>
 <!--                     <div class="prompt">
                         老用户请使用<a href="gjj51://">APP登录</a>
                     </div> -->
                 </div>
                 <div class="banner-part-two">
-                    <img class="bg" src="//r.51gjj.com/act/images/20161028v2_1_bg2.jpg" alt="bg">
-                    <div class="copyright" style="font-size: 11px; color:#333; background: #fff; text-align: center;">
-                        <p style="padding: 5px 0;">杭州煎饼网络技术有限公司 浙ICP备12029872号</p>
-                    </div>
+                    <img class="bg" src="https://r.51gjj.com/act/images/20161121_bg1_2.jpg" alt="bg">
+                </div>
+                <div class="fengxian">
+                    <span>网贷有风险  谨防个人信息泄露</span>
+                    <span>浙ICP备12029872号©2014-2017&nbsp;&nbsp;51公积金管家</span>
+                    <span>杭州木各品牌管理有限公司</span>
                 </div>
                 <div class="cnzz">
-                    浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家
-                   <script type="text/javascript">
+                    浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金借款
+                    <script type="text/javascript">
                     var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
                     document.write(unescape("%3Cspan id='cnzz_stat_icon_1256135023'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256135023%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
                     </script>
-                    <span id="cnzz_stat_icon_1256135023"><a href="http://www.cnzz.com/stat/website.php?web_id=1256135023" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="https://icon.cnzz.com/img/pic.gif"></a></span>
-                    <script src=" https://s95.cnzz.com/z_stat.php?id=1256135023&amp;show=pic" type="text/javascript"></script>
-                    <script src="https://c.cnzz.com/core.php?web_id=1256135023&amp;show=pic&amp;t=z" charset="utf-8" type="text/javascript"></script>
                 </div>
             </div>
             <div class="section section-two" style="background: #fff">
-                <img src="https://r.51gjj.com/act/images/20161028v2_2_bg2.jpg" alt="down_banner">
+                <img src="//r.51gjj.com/act/images/20161121_bg2_1.jpg" alt="down_banner">
                 <div class="bottom-float">
-                    <a class="bottom-down-app" href="" id="appAddr"></a>
+                    <a class="bottom-down-app" href="javascript:;" id="appAddr"></a>
                 </div>
             </div>
         </div>
     </div>
+    <script src="js/main_v2.min.js?v=1502278300"></script>
     <script>
         //判断渠道
         function is_weixn() {
@@ -210,7 +225,7 @@
         }
         var appAddr = document.getElementById('appAddr');
         if (is_weixn()) {
-            var wxurl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.balance6game.housingfund';
+            var wxurl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.balance6game.loanapp';
             appAddr.href = wxurl;
         } else {
             var place_name = window.location.search;
@@ -250,9 +265,17 @@
             };
 
             if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-                appAddr.href = "https://lnk0.com/QxhENd";
+                appAddr.href = "https://lnk0.com/o8UB9o";
+                appAddr.href = "https://lnk0.com/9QhQRd";
+                appAddr.href = "https://lnk0.com/hIpso4";
+                appAddr.href = "https://lnk0.com/UNFRp4";
+                appAddr.href = "https://lnk0.com/QJZNBh";
+                appAddr.href = "https://lnk0.com/wBxJ1c";
+                appAddr.href = "https://lnk0.com/YhcIhs";
+                appAddr.href = "https://lnk0.com/VxVhQ5";
+                appAddr.href = "https://lnk0.com/RlgIB9";
             } else {
-                appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
+                appAddr.href = 'http://apk.51gjj.com/jk/51jk_' + place_name + '.apk';
             }
         }
 
@@ -267,6 +290,5 @@
         var _czc = _czc || [];
         _czc.push(["_setAccount", "1256135023"]);
 </script>
-
-
-</body></html>
+</body>
+</html>

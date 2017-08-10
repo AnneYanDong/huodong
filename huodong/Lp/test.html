@@ -28,6 +28,16 @@
        -moz-animation: money 1s steps(6) infinite;
        animation: money 700ms steps(6) infinite;
   }
+
+  #money2 {
+    background: url("../static/img/money_sprites.png");
+    width: 2.22rem;
+    height: 1.09rem;
+    background-position: 0 0;
+    -webkit-animation: money_two 1s steps(5) infinite;
+    -moz-animation: money_two 1s steps(5) infinite;
+    animation: money_two 700ms steps(5) infinite;
+  }
   @-webkit-keyframes worm {
     0% {
         background-position:0 0;
@@ -74,6 +84,24 @@
       height: 162px;
     }
   }
+  @keyframes money_two {
+    0% {
+      background-position: 0 0;
+    }
+    25% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 0 0;
+    }
+    75% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+
+  }
 </style>
 
 </head>
@@ -98,5 +126,6 @@
   </p>
   <!-- <div id="worm" class="icon"></div> -->
   <div id="money" class="money"></div>
+  <div id="money2" class="money2"></div>
 </body>
 </html>

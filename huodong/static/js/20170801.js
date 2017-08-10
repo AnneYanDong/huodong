@@ -57,7 +57,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 }
             })
 
-            $.ajax({
+         /*   $.ajax({
                 type: "POST",
                 dataType: "JSON",
                 url: ct.Tool.url("/app/request/activity"),
@@ -70,7 +70,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
                     }
                 }
-            });
+            });*/
         },
 
         init: function() {
@@ -79,6 +79,24 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             $(".wp").removeClass("hide");
             // _this.isRetest();
             _this.fullPageObj = _this.fullpage();
+        },
+        BuryRequest: function(now) {
+            console.log("页面埋点：",now);
+            var page = now;
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: ct.Tool.url("/app/request/activity"),
+                data: JSON.stringify({
+                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    tag: "进入页面" + page + projectName
+                }),
+                success: function (d) {
+                    if (d.success) {
+
+                    }
+                }
+            });
         },
 
         fullpage: function() {
@@ -94,6 +112,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     _this.fullPageObj.stop();
                     var now = "page" + (e.cur + 1);
                     if (now == "page1") {
+                        _this.BuryRequest(now);
                         //加载到当前页的时候去掉之前加上的动画
                         $(".page1 li").removeClass("bounce-out");
                         $(".page1 li").unbind().on("click", function() {
@@ -112,13 +131,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(1, true);
                                     ele.removeAttr("disabled");
-                                }, 1200);
+                                }, 800);
                             }, 200);
                         });
                         _this.respondState(now);
                     }
 
                     if (now == "page2") {
+                        _this.BuryRequest(now);
                         $(".page1 li").removeClass("bounce-out").removeAttr("disabled");;
                         $(".page2 li").unbind().on("click", function() {
                             var ele = $(this);
@@ -131,7 +151,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(2, true);
-                                }, 1200)
+                                }, 800)
                             }, 200);
                             //把li元素的data属性push到对应数组
                             time = ele.data("loan-time");
@@ -149,6 +169,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page3") {
+                        _this.BuryRequest(now);
                         $(".page3 li").unbind().on("click", function() {
                             var ele = $(this);
                             ele.attr("disabled","disabled");
@@ -160,7 +181,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
                                     _this.fullPageObj.moveTo(3, true);
-                                }, 1200)
+                                }, 800)
                             }, 200)
                             release = ele.data("loan-release");
                             loanRelease.length = 0;
@@ -175,6 +196,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page4") {
+                        _this.BuryRequest(now);
                         $(".page4 .circle div").unbind().on("click", function() {
                             var ele = $(this);
                             ele.attr("disabled","disabled");
@@ -190,26 +212,26 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 ele.addClass("circle-rotating");
                                 clearTimeout(timer);
                                 timer = setTimeout(function() {
-                                    _this.getAnalysisData();
-                                }, 1200)
+                                    _this.getAnalysisData(now);
+                                }, 800)
                             }, 200)
                         })
                         _this.respondState(now, 2, true,function(){
                             console.log("返回第三页");
                             $(".page3 li").removeClass("bounce-out").removeAttr("disabled");
+                            $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
                             loanRelease.length = 0;
                             release = null;
                         });
                     }
 
                     if (now == "page5") {
+                        _this.BuryRequest(now);
                         var dataObj = data;
                         $(".page5 .loan-match span").addClass("progress");
                         $(".page5 .final-loan").unbind().on("click",".final-loan,.finger-box",function(){
                             $(".page5 .final-loan").attr("bp",dataObj.name);
                             $(".page5 .final-loan").attr("title",dataObj.name);
-                            $(".page5 .finger-box").attr("bp",dataObj.name);
-                            $(".page5 .finger-box").attr("title",dataObj.name);
                             $(this).attr("disabled","disabled");
                             $(".page5 .finger").addClass("hide").removeClass("move");
                             $(".page5 .fingerprint").removeClass("hide");
@@ -266,6 +288,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             focus = null;
                             loan.length = 0;
                             $(".page4 .customization-tp").hide();
+                            $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
                         });
                     }
                 }
@@ -297,14 +320,16 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             $(".page4 .analyzing-process div.span" + counter).removeClass("hide").addClass("analyzing");
             console.log("counter:",counter);
             if(counter < 5) {
-                setTimeout(function() {
+                var timer = null;
+                clearTimeout(timer);
+                timer = setTimeout(function() {
                     _this.showAnalyzeProcess(counter + 1);
                 }, 500);
             }
         },
 
         // 走后台跳转申请
-        getAnalysisData: function() {
+        getAnalysisData: function(now) {
             var _this = this;
             console.log("请求传递的数据：",loan);
             $.ajax({
@@ -326,9 +351,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                           //定制贷款信息
                           _this.getLoanInfo();
                           setTimeout(function(){
-                             _this.fullPageObj.moveTo(4, true);
-                              $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
-                          },5000);
+                            if (now == "page4") {
+                                _this.fullPageObj.moveTo(4, true);
+                                $(".page4 .customization-tp").fadeOut();
+                                $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
+                            }
+                          },2000);
                        }
                        if (data.sex == 2) {
                         //弹屏女

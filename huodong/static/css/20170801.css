@@ -612,7 +612,7 @@
   }
 }
 .bounce-out {
-  animation: bounceout 600ms ease-in-out;
+  animation: bounceout 200ms ease-in-out;
 }
 .move {
   animation: move 1s infinite ease-in-out;
@@ -628,11 +628,10 @@
    animation: gradient 500ms 1 linear;
 }
 .analyzing {
-  animation: analyzing 5s linear;
+  animation: analyzing 500ms linear;
 }
 .circle-rotating {
-  transition: transform 1s linear;
-  animation: circlerotate 2s forwards infinite linear;
+  animation: circlerotate 500ms forwards infinite linear;
   /* transform-origin: 56% 55%; */
 }
 .circle-rotating2 {

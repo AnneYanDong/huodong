@@ -19,6 +19,38 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var oUrl;
     var oGiftCode;
 
+    var u = navigator.userAgent;
+    var app = {
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/),
+        isAndroid: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1 || u.indexOf("android") > -1,
+        isiOS: /[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+        webApp: -1 == u.indexOf("Safari"),
+        weixin: u.indexOf("MicroMessenger") > -1,
+        isGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u) || /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+        isAndroidGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u),
+        isiOSGjj: /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+        isGjjFdjsq: /^android\/[\w\W]+client\/[\w\W]+category\/51fdjsq$/.test(u)
+    };
+
+    function getCookie(cookie_name) {
+        var allcookies = document.cookie;
+        var cookie_pos = allcookies.indexOf(cookie_name); //索引的长度
+        if (cookie_pos != -1) {
+            cookie_pos += cookie_name.length + 1;
+            var cookie_end = allcookies.indexOf(";", cookie_pos);
+
+            if (cookie_end == -1) {
+                cookie_end = allcookies.length;
+            }
+            var value = unescape(allcookies.substring(cookie_pos, cookie_end));
+        }
+        return value;
+    }
+    var invest_uid = getCookie("invest_uid");
+    console.log(invest_uid);
+    var invest_token = getCookie("invest_token");
+    console.log(invest_token);
+
     var run = {
         start: function () {
             var _this = this;
@@ -82,11 +114,17 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 url: "/invest2/user/queryUser/tenderRank",
                 success: function (d) {
                     if (d.resCode == 1) {
-                        $.each(d.resData.topList,function(k,v){
-                            $(".num-"+v.rank+" .phone").text(v.mobilePhone);
-                            $(".num-"+v.rank+" .invest-money").text(v.sumTenderMoney);
+                        $.each(d.resData.topList, function (k, v) {
+                            $(".num-" + v.rank + " .phone").text(v.mobilePhone);
+                            $(".num-" + v.rank + " .invest-money").text(v.sumTenderMoney);
                         })
                         $(".money-red").text(d.resData.currentUserTenderMoney);
+                    } else if (10100 <= d.resCode < 10200) {
+                        if (app.isGjj && Bridge) {
+                            Bridge.action("login");
+                        } else {
+                            window.location.href = "/hs/appgjj/login?return_url=/app/invest/";
+                        }
                     } else {
                         oP.show(d.resMsg || 暂无数据);
                     }
