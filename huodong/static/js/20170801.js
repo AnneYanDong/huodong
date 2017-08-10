@@ -351,11 +351,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                           //定制贷款信息
                           _this.getLoanInfo();
                           setTimeout(function(){
-                            if (now == "page4") {
-                                _this.fullPageObj.moveTo(4, true);
-                                $(".page4 .customization-tp").fadeOut();
-                                $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
-                            }
+                            _this.fullPageObj.moveTo(4, true);
+                            $(".page4 .customization-tp").fadeOut();
+                            $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
                           },2000);
                        }
                        if (data.sex == 2) {
@@ -370,6 +368,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             _this.getLoanInfo();
                             setTimeout(function(){
                                _this.fullPageObj.moveTo(4, true);
+                               $(".page4 .customization-tp").fadeOut();
                                $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
                             },5000);
                        }

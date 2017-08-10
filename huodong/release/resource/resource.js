@@ -140,7 +140,7 @@
 	},
 
 	"20170725": {
-		"js": ["r.51gjj.com/act/release/js/20170725_335a0ad.js"],
+		"js": ["r.51gjj.com/act/release/js/20170725_1e26cf3.js"],
 		"css": ["r.51gjj.com/act/release/css/20170725_2c3ee4b.css"]
 	},
 
@@ -160,7 +160,7 @@
 	},
 
 	"20170801": {
-		"js": ["r.51gjj.com/act/release/js/20170801_7d5cca9.js"],
+		"js": ["r.51gjj.com/act/release/js/20170801_d563966.js"],
 		"css": ["r.51gjj.com/act/release/css/20170801_be03250.css"]
 	},
 
