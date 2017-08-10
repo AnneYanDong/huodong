@@ -307,6 +307,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                                 clearInterval(timer);
                                                 $(".dynamic-money img").addClass("hide");
                                                 oP.show("暂不符合活动规则，去看看其他");
+                                                _this.backToOrigin();
                                                 setTimeout(function(){
                                                     window.location.href = d.url;
                                                 },1500);
@@ -315,6 +316,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                                                 clearInterval(timer);
                                                 $(".dynamic-money img").addClass("hide");
                                                 oP.show("提款机余额不足，去试试其他");
+                                                _this.backToOrigin();
                                                 setTimeout(function(){
                                                     window.location.href = d.url;
                                                 },1500);

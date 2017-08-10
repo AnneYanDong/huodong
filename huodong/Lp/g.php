@@ -1,6 +1,6 @@
 <?php
 
-require_once "base.php";
+require_once "/jianbing/base/act/application/views/huodong/Lp/base.php";
 
 class API{
 
