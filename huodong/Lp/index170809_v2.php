@@ -7,6 +7,12 @@
     <title>51公积金管家</title>
     <link rel="stylesheet" href="css/public.css">
     <style>
+        .slideTop {
+            transform: translateY(-100%);
+            -ms-transform: translateY(-100%);
+            -moz-transform: translateY(-100%);
+            -webkit-transform: translateY(-100%);
+        }
         .user-info{
             position: relative;
             background: #ffffff;
@@ -103,7 +109,7 @@
             left: 50%;
             transform: translateX(-50%);
             -webkit-transform: translateX(-50%);
-            background: transparent;            
+            background: transparent;
         }
         .bottom-float a{
             position: absolute;
@@ -168,7 +174,7 @@
                     </div> -->
                 </div>
                 <div class="banner-part-two">
-                    <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170428_bg7.jpg" alt="bg">
+                    <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170810_bg.png" alt="bg">
                 </div>
                 <div class="cnzz">
                     浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家
@@ -186,7 +192,7 @@
             </div>
         </div>
     </div>
-    <script src="js/main_v2.min.js?v=1502334189"></script>
+    <script src="js/index20170807.js?v=1502334189"></script>
     <script>
         //判断渠道
         function is_weixn() {

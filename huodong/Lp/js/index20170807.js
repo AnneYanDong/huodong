@@ -18,10 +18,9 @@ var init = {
                     url: oUrl,
                     type: "POST",
                     dataType: "JSON",
-                    data:
-                        JSON.stringify({"phone": phoneNum})
-                    ,
+                    data:JSON.stringify({"phone": phoneNum}),
                     success: function(d) {
+                        console.log("JS-GET-CODE",d);
                         if (d.success === true) {
                             _this.alertBox("短信验证码已发送，请注意查收",2000);
                             _this.timeDown($(".JS-get-code"), 60)
@@ -57,7 +56,7 @@ var init = {
                     type: "POST",
                     url: oUrl,
                     dataType: "JSON",
-                    data: 
+                    data:
                      	JSON.stringify({
                      		"phone": phoneNum,
 	                        "code": codeNum,
