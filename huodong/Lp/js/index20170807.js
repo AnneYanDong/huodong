@@ -4,7 +4,7 @@ var init = {
         this.getCode();
         this.isInputEnter();
     },
-
+ 
     //点击获取验证码
     getCode: function() {
         var skipTimer = null;
