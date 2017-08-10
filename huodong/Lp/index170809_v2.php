@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
     <meta name="format-detection" content="telephone=no">
-    <title>51公积金借款</title>
+    <title>51公积金管家</title>
     <link rel="stylesheet" href="css/public.css">
     <style>
         .user-info{
             position: relative;
-            background: #fff;
+            background: #ffffff;
             padding: .4rem 0;
         }
         .user-info input{
@@ -99,7 +99,7 @@
             width: 80%;
             height: 1.28rem;
             position: absolute;
-            top: 8.4rem;
+            top: 8.2rem;
             left: 50%;
             transform: translateX(-50%);
             -webkit-transform: translateX(-50%);
@@ -112,25 +112,8 @@
             right: 0;
             bottom: 0;
         }
-        .fengxian {
-         text-align: center;
-         width: 100%;
-         height: 1rem;
-         background: #fff;
-         font-size: .096rem;
-         position: relative;
-         top: -.5rem;
-         color: #666665;
-        }
-        .fengxian span {
-            display: block;
-            opacity: .5;
-        }
-        .box {
-            background: #fff;
-        }
     </style>
-    <script src="//r.51gjj.com/package/zepto.min.js"></script>
+    <script src="https://r.51gjj.com/package/zepto.min.js"></script>
     <script>
         function setFont(d, c) {
             var b = {},
@@ -167,7 +150,7 @@
         <div class="box">
             <div class="section section-one">
                 <div class="banner-part-one">
-                    <img class="bg" src="https://r.51gjj.com/act/images/20161121_bg1_1.gif" alt="bg">
+                    <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170428bg4.gif" alt="bg">
                 </div>
                 <div class="user-info">
                     <div class="phone input-wrap">
@@ -185,15 +168,10 @@
                     </div> -->
                 </div>
                 <div class="banner-part-two">
-                    <img class="bg" src="https://r.51gjj.com/act/images/20161121_bg1_2.jpg" alt="bg">
-                </div>
-                <div class="fengxian">
-                    <span>网贷有风险  谨防个人信息泄露</span>
-                    <span>浙ICP备12029872号©2014-2017&nbsp;&nbsp;51公积金管家</span>
-                    <span>杭州木各品牌管理有限公司</span>
+                    <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170428_bg7.jpg" alt="bg">
                 </div>
                 <div class="cnzz">
-                    浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金借款
+                    浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家
                     <script type="text/javascript">
                     var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
                     document.write(unescape("%3Cspan id='cnzz_stat_icon_1256135023'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256135023%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
@@ -201,14 +179,14 @@
                 </div>
             </div>
             <div class="section section-two" style="background: #fff">
-                <img src="//r.51gjj.com/act/images/20161121_bg2_1.jpg" alt="down_banner">
+                <img src="https://r.51gjj.com/act/images/shichang/20170428bg6.jpg" alt="down_banner">
                 <div class="bottom-float">
                     <a class="bottom-down-app" href="javascript:;" id="appAddr"></a>
                 </div>
             </div>
         </div>
     </div>
-    <script src="js/main_v2.min.js?v=1502278300"></script>
+    <script src="js/main_v2.min.js?v=1502334189"></script>
     <script>
         //判断渠道
         function is_weixn() {
@@ -261,17 +239,10 @@
             };
 
             if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-                appAddr.href = "https://lnk0.com/o8UB9o";
-                appAddr.href = "https://lnk0.com/9QhQRd";
-                appAddr.href = "https://lnk0.com/hIpso4";
-                appAddr.href = "https://lnk0.com/UNFRp4";
-                appAddr.href = "https://lnk0.com/QJZNBh";
-                appAddr.href = "https://lnk0.com/wBxJ1c";
-                appAddr.href = "https://lnk0.com/YhcIhs";
-                appAddr.href = "https://lnk0.com/VxVhQ5";
-                appAddr.href = "https://lnk0.com/RlgIB9";
+                // appAddr.href = "https://itunes.apple.com/cn/app/id1166783929?ct=" + place_name + "&mt=8";
+                appAddr.href = "https://lnk0.com/VxRdYt";
             } else {
-                appAddr.href = 'http://apk.51gjj.com/jk/51jk_' + place_name + '.apk';
+                appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
             }
         }
 
