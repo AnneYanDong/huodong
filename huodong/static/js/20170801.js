@@ -336,13 +336,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 type: "POST",
                 dataType: "JSON",
                 data: JSON.stringify(loan),
-                // url: "test.php",
-                url: "/act/act170801/get_button",
+                url: "test.php",
+                // url: "/act/act170801/get_button",
                 success: function(d){
                     if (d.success) {
                         data = d.ret.data;
                         console.log("data->",data);
-                       if (data.sex == 1) {
+                       // if (data.sex == 1) {
                          //弹屏男
                           // $(".page4 .customization-tp").fadeIn();
                           // _this.showAnalyzeProcess(0);
@@ -350,28 +350,28 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                           _this.showIcon();
                           //定制贷款信息
                           _this.getLoanInfo();
-                          setTimeout(function(){
+                          // setTimeout(function(){
                             _this.fullPageObj.moveTo(4, true);
                             $(".page4 .customization-tp").fadeOut();
                             $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
-                          },500);
-                       }
-                       if (data.sex == 2) {
+                          // },500);
+                       // }
+                       // if (data.sex == 2) {
                         //弹屏女
                             // $(".page4 .customization-tp .male").hide();
                             // $(".page4 .customization-tp").fadeIn();
                             // $(".page4 .customization-tp .female").show();
                             // _this.showAnalyzeProcess(0);
                             //动态展示icon
-                            _this.showIcon();
-                            //定制贷款信息
-                            _this.getLoanInfo();
-                            setTimeout(function(){
-                               _this.fullPageObj.moveTo(4, true);
-                               $(".page4 .customization-tp").fadeOut();
-                               $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
-                            },5000);
-                       }
+                       //      _this.showIcon();
+                       //      //定制贷款信息
+                       //      _this.getLoanInfo();
+                       //      setTimeout(function(){
+                       //         _this.fullPageObj.moveTo(4, true);
+                       //         $(".page4 .customization-tp").fadeOut();
+                       //         $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
+                       //      },5000);
+                       // }
                     }
                     else {
                         oP.show(d.msg || "出错了请重试");

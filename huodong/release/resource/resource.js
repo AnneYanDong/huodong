@@ -160,7 +160,7 @@
 	},
 
 	"20170801": {
-		"js": ["r.51gjj.com/act/release/js/20170801_7bea72e.js"],
+		"js": ["r.51gjj.com/act/release/js/20170801_210a311.js"],
 		"css": ["r.51gjj.com/act/release/css/20170801_be03250.css"]
 	},
 
