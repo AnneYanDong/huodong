@@ -161,7 +161,7 @@
 
 	"20170801": {
 		"js": ["r.51gjj.com/act/release/js/20170801_b1e065b.js"],
-		"css": ["r.51gjj.com/act/release/css/20170801_be03250.css"]
+		"css": ["r.51gjj.com/act/release/css/20170801_70cabc7.css"]
 	},
 
 	"20170807": {

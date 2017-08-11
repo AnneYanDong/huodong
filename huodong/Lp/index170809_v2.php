@@ -203,27 +203,54 @@
                 return false;
             }
         }
+        //获得查询字符串
+        function getQueryStringArgs() {
+            var qs = location.search.length > 0 ? location.search.substring(1) : 0;
+            var items = qs.length > 0 ? qs.split("&") : [];
+            var item = null,
+                name = null,
+                value = null,
+                len = items.length;
+            var args = {};
+            for(var i = 0; i < len; i ++) {
+                item = items[i].split("=");
+                name = decodeURIComponent(item[0]);
+                value = decodeURIComponent(item[1]);
+
+                if(name.length) {
+                    args[name] = value;
+                }
+            }
+            return args;
+        }
         var appAddr = document.getElementById('appAddr');
         if (is_weixn()) {
             var wxurl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.balance6game.housingfund';
             appAddr.href = wxurl;
         } else {
-            var place_name = window.location.search;
-            if (place_name) {
-                place_name = place_name.match(/[?&]p=([^&]+)/);
-                if (place_name) {
-                    place_name = decodeURIComponent(place_name[1]);
-                }
-            }
-            if (!place_name) {
-                place_name = window.location.hash;
-                if (place_name) {
-                    place_name = place_name.substr(1);
-                }
-            }
-            if (!place_name) {
-                place_name = 'jianbing';
-            }
+
+            // var place_name = window.location.search;
+            // if (place_name) {
+            //     place_name = place_name.match(/[?&]p=([^&]+)/);
+            //     if (place_name) {
+            //         place_name = decodeURIComponent(place_name[1]);
+            //     }
+            // }
+            // if (!place_name) {
+            //     place_name = window.location.hash;
+            //     if (place_name) {
+            //         place_name = place_name.substr(1);
+            //     }
+            // }
+            // if (!place_name) {
+            //     place_name = 'jianbing';
+            // }
+            // var links = [];
+            var args = getQueryStringArgs();
+            var place_name = args["p"];
+            var links_param = args["t"];
+            console.log("place_name=",place_name);
+            console.log("links_param=",links_param);
             var browser = {
                 versions: function() {
                     var u = navigator.userAgent,
@@ -245,49 +272,48 @@
             };
 
             if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-                appAddr.href = "https://lnk0.com/o8UB9o";
-                    /*if (place_name == "xhhuichuan5") {
+                    if (place_name == "xhhuichuan5" && links_param == "xuhang5") {
                         appAddr.href = "https://lnk0.com/o8UB9o";
                     }
-                    if (place_name == "xhhuichuan4") {
+                    if (place_name == "xhhuichuan4" && links_param == "xuhang4") {
                         appAddr.href = "https://lnk0.com/9QhQRd";
                     }
-                    if (place_name == "xhhuichuan3") {
+                    if (place_name == "xhhuichuan3" && links_param == "xuhang3") {
                         appAddr.href = "https://lnk0.com/hIpso4";
                     }
-                    if (place_name == "xhhuichuan2") {
+                    if (place_name == "xhhuichuan2" && links_param == "xuhang2") {
                         appAddr.href = "https://lnk0.com/UNFRp4";
                     }
-                    if (place_name == "xhhuichuan1") {
+                    if (place_name == "xhhuichuan1" && links_param == "xuhang1") {
                         appAddr.href = "https://lnk0.com/QJZNBh";
                     }
-                    if (place_name == "jmtoutiao1") {
+                    if (place_name == "jmtoutiao1" && links_param == "toutiao41") {
                         appAddr.href = "https://lnk0.com/wBxJ1c";
                     }
-                    if (place_name == "jmtoutiao2") {
+                    if (place_name == "jmtoutiao2" && links_param == "toutiao40") {
                         appAddr.href = "https://lnk0.com/YhcIhs";
                     }
-                    if (place_name == "jmtoutiao3") {
+                    if (place_name == "jmtoutiao3" && links_param == "toutiao39") {
                         appAddr.href = "https://lnk0.com/VxVhQ5";
                     }
-                    if (place_name == "jmtoutiao4") {
+                    if (place_name == "jmtoutiao4" && links_param == "toutiao38") {
                         appAddr.href = "https://lnk0.com/RlgIB9";
                     }
-                    if (place_name == "fhxw1") {
+                    if (place_name == "fhxw1" && links_param == "fhxinwen1") {
                         appAddr.href = "https://lnk0.com/M1IBBd";
                     }
-                    if (place_name == "fhxw2") {
+                    if (place_name == "fhxw2" && links_param == "fhxinwen2") {
                         appAddr.href = "https://lnk0.com/10IZx9";
                     }
-                    if (place_name == "fhxw3") {
+                    if (place_name == "fhxw3" && links_param == "fhxinwen3") {
                         appAddr.href = "https://lnk0.com/dgQpco";
                     }
-                    if (place_name == "fhxw4") {
+                    if (place_name == "fhxw4" && links_param == "fhxinwen4") {
                         appAddr.href = "https://lnk0.com/9cApQt";
                     }
-                    if (place_name == "fhxw5") {
+                    if (place_name == "fhxw5" && links_param == "fhxinwen5") {
                         appAddr.href = "https://lnk0.com/lUJNNt";
-                    }*/
+                    }
             } else {
                 appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
             }

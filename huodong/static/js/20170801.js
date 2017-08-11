@@ -347,7 +347,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             // $(".page4 .customization-tp").fadeIn();
                             // _this.showAnalyzeProcess(0);
                             //动态展示icon
-                            _this.showIcon();
+                            _this.showIcon();  //因为原生js与jquery的混用，导致这个方法不能执行，就不能到下一步，所以有的手机就不能跳转
                             //定制贷款信息
                             _this.getLoanInfo();
                             setTimeout(function () {
@@ -425,12 +425,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             console.log("len->", len);
             $(".page5 .icon-box").html("");
             for (var i = 0; i < len; i++) {
+                // 这里是原生js创建的元素，所以在该元素的下面添加子元素的时候就用原生js的方法appendChild()
                 var oLi = document.createElement("li");
                 var oImg = document.createElement("img");
                 var oSpan = document.createElement("span");
                 oLi.appendChild(oImg);
                 oLi.appendChild(oSpan);
-                $(".icon-box").append(oLi);
+                $(".icon-box").append(oLi); //这里前面是用jquery获取的元素，所以用jquery的添加子元素的方法append();
                 oSpan.innerHTML = data.show[i];
                 if (oSpan.innerHTML == "小额度") {
                     oImg.src = "http://r.51gjj.com/act/release/img/20170801_xed.png";
