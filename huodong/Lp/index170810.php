@@ -102,7 +102,7 @@
             left: 50%;
             transform: translateX(-50%);
             -webkit-transform: translateX(-50%);
-            background: transparent;            
+            background: transparent;
         }
         .bottom-float a{
             position: absolute;
@@ -241,9 +241,17 @@
             };
 
             if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-                appAddr.href = "https://itunes.apple.com/app/apple-store/id908573399?pt=83635804&ct=" + place_name + "&mt=8";
+                        appAddr.href = "https://lnk0.com/o8UB9o";
+                        appAddr.href = "https://lnk0.com/9QhQRd";
+                        appAddr.href = "https://lnk0.com/hIpso4";
+                        appAddr.href = "https://lnk0.com/UNFRp4";
+                        appAddr.href = "https://lnk0.com/QJZNBh";
+                        appAddr.href = "https://lnk0.com/wBxJ1c";
+                        appAddr.href = "https://lnk0.com/YhcIhs";
+                        appAddr.href = "https://lnk0.com/VxVhQ5";
+                        appAddr.href = "https://lnk0.com/RlgIB9";
             } else {
-                appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
+                appAddr.href = 'http://apk.51gjj.com/jk/51jk_' + place_name + '.apk';
             }
         }
 
