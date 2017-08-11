@@ -37,17 +37,17 @@
         <div class="total-money">您当前累计投资金额：<span class="money-red">2000</span>元</div>      
         <div class="content">
             <img class="rule-btn" data-src="<?php echo $imgUrl?>rule_btn.png">
-            <img class="main-title" data-src="<?php echo $imgUrl?>main_title.png">
+            <img class="main-title" data-src="<?php echo $imgUrl?>main_title_v2.png">
             <div class="act-time">活动时间：<span class="time-day">8.15<div class="time-hour"><div class="time-second">00:00</div></div><span>-</span>8.25</span><div class="time-hour"><div class="time-second">23:59</div></div></div>
             <img class="add-interest" data-src="<?php echo $imgUrl?>interest_v2.png">
             <a class="buying" bp="立即抢购" title="立即抢购" href="/business/home/Invest/h5/account/index.php?page=1"></a>
             <div class="list-wrap">
                 <img class="list-bg" data-src="<?php echo $imgUrl?>list_bg.png">
-                <div class="number num-1"><img data-src="<?php echo $imgUrl?>num_1.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
-                <div class="number num-2"><img data-src="<?php echo $imgUrl?>num_2.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
-                <div class="number num-3"><img data-src="<?php echo $imgUrl?>num_3.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
-                <div class="number num-4"><img data-src="<?php echo $imgUrl?>num_4.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
-                <div class="number num-5"><img data-src="<?php echo $imgUrl?>num_5.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
+                <div class="number num-1"><img data-src="<?php echo $imgUrl?>num_1_v2.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
+                <div class="number num-2"><img data-src="<?php echo $imgUrl?>num_2_v2.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
+                <div class="number num-3"><img data-src="<?php echo $imgUrl?>num_3_v2.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
+                <div class="number num-4"><img data-src="<?php echo $imgUrl?>num_4_v2.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
+                <div class="number num-5"><img data-src="<?php echo $imgUrl?>num_5_v2.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
                 <!--<div class="tip">*排名每小时更新一次*</div>-->
             </div>
             <img class="invest-btn" data-src="<?php echo $imgUrl?>go_btn.png">
