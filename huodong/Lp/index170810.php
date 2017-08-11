@@ -4,18 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
     <meta name="format-detection" content="telephone=no">
-    <title>51公积金管家</title>
+    <title>你的公积金有多少钱？除了买房还能干啥？</title>
     <link rel="stylesheet" href="css/public.css">
     <style>
-        .slideTop {
-            transform: translateY(-100%);
-            -ms-transform: translateY(-100%);
-            -moz-transform: translateY(-100%);
-            -webkit-transform: translateY(-100%);
-        }
         .user-info{
             position: relative;
-            background: #ffffff;
+            background: #fff;
             padding: .4rem 0;
         }
         .user-info input{
@@ -23,7 +17,7 @@
             outline: none;
         }
         .input-wrap{
-            height: 1.35rem;
+            height: .9rem;
             width: 6rem;
             text-align: center;
             padding: 0 10px;
@@ -41,12 +35,12 @@
         }
         .input-wrap input{
             width: 100%;
-            height: 100%;
+            height: 95%;
             margin: 0 auto;
         }
         .code{
             position: relative;
-            /*overflow: hidden;*/
+            overflow: hidden;
         }
         .code:before{
             position: absolute;
@@ -60,14 +54,13 @@
         }
         .code .get-code {
             position: absolute;
-            /*top: 0rem;*/
-            bottom: 0;
+            top: 0rem;
             right: 0;
             width: 1.9rem;
-            height: 1.35rem;
-            line-height: 1.35rem;
+            height: 0.92rem;
+            line-height: 0.92rem;
             z-index: 2;
-            background: #fc615f;
+            background: #ff8700;
             color: #fff;
             text-align: center;
             font-size: 13px;
@@ -85,14 +78,14 @@
         }
 
         .search-btn{
-            background: #fc615f;
+            background: #fece02;
             width: 86%;
-            height: 1.08rem;
+            height: 1rem;
             margin: .4rem auto;
             border-radius: 5px;
             text-align: center;
-            line-height: 1.08rem;
-            color: #fff;
+            line-height: 1rem;
+            color: #5c3701;
         }
         .prompt{
             color: #9c9c9c;
@@ -105,7 +98,7 @@
             width: 80%;
             height: 1.28rem;
             position: absolute;
-            top: 8.2rem;
+            top: 9.4rem;
             left: 50%;
             transform: translateX(-50%);
             -webkit-transform: translateX(-50%);
@@ -156,7 +149,7 @@
         <div class="box">
             <div class="section section-one">
                 <div class="banner-part-one">
-                    <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170428bg4.gif" alt="bg">
+                    <img class="bg" src="//r.51gjj.com/act/images/20161028v2_2_bg1.jpg" alt="bg">
                 </div>
                 <div class="user-info">
                     <div class="phone input-wrap">
@@ -167,14 +160,17 @@
                         <div class="get-code JS-get-code">获取验证码</div>
                     </div>
                     <div class="search-btn search-btn-not-active">
-                        免费申请
+                        领取1000元免费借款
                     </div>
 <!--                     <div class="prompt">
                         老用户请使用<a href="gjj51://">APP登录</a>
                     </div> -->
                 </div>
                 <div class="banner-part-two">
-                    <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170810_bg.png" alt="bg">
+                    <img class="bg" src="//r.51gjj.com/act/images/20161028v2_1_bg2.jpg" alt="bg">
+                    <div class="copyright" style="font-size: 11px; color:#333; background: #fff; text-align: center;">
+                        <p style="padding: 5px 0;">杭州煎饼网络技术有限公司 浙ICP备12029872号</p>
+                    </div>
                 </div>
                 <div class="cnzz">
                     浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家
@@ -185,7 +181,7 @@
                 </div>
             </div>
             <div class="section section-two" style="background: #fff">
-                <img src="https://r.51gjj.com/act/images/shichang/20170428bg6.jpg" alt="down_banner">
+                <img src="//r.51gjj.com/act/images/20161028v2_2_bg2.jpg" alt="down_banner">
                 <div class="bottom-float">
                     <a class="bottom-down-app" href="javascript:;" id="appAddr"></a>
                 </div>
@@ -205,7 +201,7 @@
         }
         var appAddr = document.getElementById('appAddr');
         if (is_weixn()) {
-            var wxurl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.balance6game.loanapp';
+            var wxurl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.balance6game.housingfund';
             appAddr.href = wxurl;
         } else {
             var place_name = window.location.search;
