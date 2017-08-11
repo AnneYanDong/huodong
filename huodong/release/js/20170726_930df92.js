@@ -115,7 +115,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 success: function (d) {
                     if (d.resCode == 1) {
                         $.each(d.resData.topList, function (k, v) {
-                            $(".num-" + v.rank + " .phone").text(v.mobilePhone.replace(/^(\d{4})\d{4}(\d+)/,"$1****$2"));
+                            $(".num-" + v.rank + " .phone").text(v.mobilePhone.replace(/^(\d{3})\d{4}(\d+)/,"$1****$2"));
                             $(".num-" + v.rank + " .invest-money").text(v.sumTenderMoney);
                         })
                         $(".money-red").text(d.resData.currentUserTenderMoney);
