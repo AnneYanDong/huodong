@@ -119,7 +119,7 @@
             bottom: 0;
         }
     </style>
-    <script src="//r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
+    <script src="https://r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
     <script>
         function setFont(d, c) {
             var b = {},
@@ -245,10 +245,17 @@
             };
 
             if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-                // appAddr.href = "https://itunes.apple.com/cn/app/id1166783929?ct=" + place_name + "&mt=8";
-                appAddr.href = "https://lnk0.com/VxRdYt";
+                        appAddr.href = "https://lnk0.com/o8UB9o";
+                        appAddr.href = "https://lnk0.com/9QhQRd";
+                        appAddr.href = "https://lnk0.com/hIpso4";
+                        appAddr.href = "https://lnk0.com/UNFRp4";
+                        appAddr.href = "https://lnk0.com/QJZNBh";
+                        appAddr.href = "https://lnk0.com/wBxJ1c";
+                        appAddr.href = "https://lnk0.com/YhcIhs";
+                        appAddr.href = "https://lnk0.com/VxVhQ5";
+                        appAddr.href = "https://lnk0.com/RlgIB9";
             } else {
-                appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
+                appAddr.href = 'http://apk.51gjj.com/jk/51jk_' + place_name + '.apk';
             }
         }
 
