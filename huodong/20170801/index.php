@@ -105,7 +105,7 @@
                         </div>
                         <img data-src="<?php echo $imgUrl; ?>page4_choose.png" alt="dial">
                     </div>
-                    <div class="customization-tp hide">
+                    <!-- <div class="customization-tp hide">
                         <img class="tp" data-src="<?php echo $imgUrl; ?>page4_new_tp2.png" alt="tp2">
                         <img class="tp2" data-src="<?php echo $imgUrl; ?>page4_new_tp22.png" alt="tp22">
                         <img class="male" data-src="<?php echo $imgUrl; ?>page4_male.png" alt="male">
@@ -121,7 +121,7 @@
                         </div>
                         <div class="scan scaning"><img data-src="<?php echo $imgUrl; ?>page4_new_scan.png" alt="scan"></div>
                     </div>
-                    <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dia2"></div>
+                    <div class="dial2"><img data-src="<?php echo $imgUrl; ?>page2_bottom.png" alt="dia2"></div> -->
                 </div>
             </div>
             <div class="page page5">
