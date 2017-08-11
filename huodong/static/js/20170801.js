@@ -344,8 +344,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                         console.log("data->",data);
                        if (data.sex == 1) {
                          //弹屏男
-                          $(".page4 .customization-tp").fadeIn();
-                          _this.showAnalyzeProcess(0);
+                          // $(".page4 .customization-tp").fadeIn();
+                          // _this.showAnalyzeProcess(0);
                           //动态展示icon
                           _this.showIcon();
                           //定制贷款信息
@@ -354,14 +354,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             _this.fullPageObj.moveTo(4, true);
                             $(".page4 .customization-tp").fadeOut();
                             $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
-                          },2000);
+                          },500);
                        }
                        if (data.sex == 2) {
                         //弹屏女
-                            $(".page4 .customization-tp .male").hide();
-                            $(".page4 .customization-tp").fadeIn();
-                            $(".page4 .customization-tp .female").show();
-                            _this.showAnalyzeProcess(0);
+                            // $(".page4 .customization-tp .male").hide();
+                            // $(".page4 .customization-tp").fadeIn();
+                            // $(".page4 .customization-tp .female").show();
+                            // _this.showAnalyzeProcess(0);
                             //动态展示icon
                             _this.showIcon();
                             //定制贷款信息

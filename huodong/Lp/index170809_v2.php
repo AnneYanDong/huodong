@@ -205,7 +205,7 @@
         }
         var appAddr = document.getElementById('appAddr');
         if (is_weixn()) {
-            var wxurl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.balance6game.loanapp';
+            var wxurl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.balance6game.housingfund';
             appAddr.href = wxurl;
         } else {
             var place_name = window.location.search;
@@ -245,17 +245,51 @@
             };
 
             if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+                appAddr.href = "https://lnk0.com/o8UB9o";
+                    /*if (place_name == "xhhuichuan5") {
                         appAddr.href = "https://lnk0.com/o8UB9o";
+                    }
+                    if (place_name == "xhhuichuan4") {
                         appAddr.href = "https://lnk0.com/9QhQRd";
+                    }
+                    if (place_name == "xhhuichuan3") {
                         appAddr.href = "https://lnk0.com/hIpso4";
+                    }
+                    if (place_name == "xhhuichuan2") {
                         appAddr.href = "https://lnk0.com/UNFRp4";
+                    }
+                    if (place_name == "xhhuichuan1") {
                         appAddr.href = "https://lnk0.com/QJZNBh";
+                    }
+                    if (place_name == "jmtoutiao1") {
                         appAddr.href = "https://lnk0.com/wBxJ1c";
+                    }
+                    if (place_name == "jmtoutiao2") {
                         appAddr.href = "https://lnk0.com/YhcIhs";
+                    }
+                    if (place_name == "jmtoutiao3") {
                         appAddr.href = "https://lnk0.com/VxVhQ5";
+                    }
+                    if (place_name == "jmtoutiao4") {
                         appAddr.href = "https://lnk0.com/RlgIB9";
+                    }
+                    if (place_name == "fhxw1") {
+                        appAddr.href = "https://lnk0.com/M1IBBd";
+                    }
+                    if (place_name == "fhxw2") {
+                        appAddr.href = "https://lnk0.com/10IZx9";
+                    }
+                    if (place_name == "fhxw3") {
+                        appAddr.href = "https://lnk0.com/dgQpco";
+                    }
+                    if (place_name == "fhxw4") {
+                        appAddr.href = "https://lnk0.com/9cApQt";
+                    }
+                    if (place_name == "fhxw5") {
+                        appAddr.href = "https://lnk0.com/lUJNNt";
+                    }*/
             } else {
-                appAddr.href = 'http://apk.51gjj.com/jk/51jk_' + place_name + '.apk';
+                appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
             }
         }
 

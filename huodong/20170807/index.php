@@ -17,11 +17,11 @@
     <style>
         /* 加载动画颜色配置 */
         .loading-bg-color {
-            background: #1f1f2f;
+            background: #e33d3b;
         }
 
         .loading-ele-color:after, .loading-ele-color:before {
-            background: #1f1f2f !important;
+            background: #e33d3b !important;
         }
     </style>
     <script>
@@ -35,27 +35,32 @@
         <div class="wp-inner">
             <div class="page page1">
                 <div class="content">
-                    <div>111</div>
+                    <div class="title"><img data-src="<?php echo $imgUrl; ?>page1_title.png" alt="title"></div>
+                    <div class="img-gold"><img data-src="<?php echo $imgUrl; ?>page1_$.png" alt="$"></div>
+                    <div class="img-btn"><img data-src="<?php echo $imgUrl; ?>page1_btn.png" alt="btn"></div>
+                    <div class="climb climbing"></div>
+                    <div class="letter lettering"></div>
+                    <div class="gold scrolling"><img data-src="<?php echo $imgUrl; ?>dynamic_gold.png" alt="btn"></div>
                 </div>
             </div>
            <div class="page page2">
                 <div class="content">
-                    
+                    222
                 </div>
             </div>
             <div class="page page3">
                <div class="content">
-                   
+                   3333
                </div>
             </div>
             <div class="page page4">
                 <div class="content">
-                    
+                    444
                 </div>
             </div>
             <div class="page page5">
                 <div class="content">
-                    
+                    5555
                 </div>
             </div>
         </div>

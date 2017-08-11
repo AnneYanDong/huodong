@@ -20,23 +20,22 @@ var init = {
                     dataType: "JSON",
                     data:JSON.stringify({"phone": phoneNum}),
                     success: function(d) {
-                        console.log("JS-GET-CODE",d);
                         if (d.success === true) {
                             _this.alertBox("短信验证码已发送，请注意查收",2000);
                             _this.timeDown($(".JS-get-code"), 60)
                         } else if(d.code == 512){
-                        	_this.alertBox("您已注册，参与活动吧",3000);
+                        	_this.alertBox("您已注册，直接参与吧",1000);
                         	skipTimer = setTimeout(function(){
                                 $(".section").addClass("slideTop");
-                            },3000)
+                            },1500)
                         } else{
                         	$(".JS-get-code").removeClass("timing");
-                        	_this.alertBox(d.errmsg || "出错了，请重试",2000)
+                        	_this.alertBox(d.msg || "出错了，请重试",1000)
                         }
                     },
                     error: function(xhr){
                     	$(".JS-get-code").removeClass("timing");
-                    	_this.alertBox("发生错误" + xhr + "，请重试",2000);
+                    	_this.alertBox("发生错误" + xhr + "，请重试",1000);
                     }
                 })
             }
@@ -66,17 +65,17 @@ var init = {
                         if (d.success === true) { //手机号码验证码都正确，跳转到H5查询
                         	$(".section").addClass("slideTop");
                         }else if (d.code == 512){
-                        	_this.alertBox("您已注册，直接参与活动吧",3000);
+                        	_this.alertBox("您已注册，直接参与吧",1000);
                         	clearTimeout(skipTimer);
                             skipTimer = setTimeout(function(){
                                 $(".section").addClass("slideTop");
-                            },3000)
+                            },1500)
                         }else{
-                        	_this.alertBox(d.errmsg || "出错了，请重试",2000)
+                        	_this.alertBox(d.msg || "出错了，请重试",1000)
                         }
                     },
                     error: function(xhr) {
-                        _this.alertBox("发生错误" + xhr + "，请重试",2000);
+                        _this.alertBox("发生错误" + xhr + "，请重试",1000);
                     }
                 })
             } else {

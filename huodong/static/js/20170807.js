@@ -57,7 +57,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 }
             })
 
-            $.ajax({
+         /*   $.ajax({
                 type: "POST",
                 dataType: "JSON",
                 url: ct.Tool.url("/app/request/activity"),
@@ -70,14 +70,32 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
                     }
                 }
-            });
+            });*/
         },
 
         init: function() {
             console.log("解析你的公积金活动");
             var _this = this;
             $(".wp").removeClass("hide");
-            // _this.fullPageObj = _this.fullpage();
+            _this.fullPageObj = _this.fullpage();
+        },
+        BuryRequest: function(now) {
+            console.log("页面埋点：",now);
+            var page = now;
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: ct.Tool.url("/app/request/activity"),
+                data: JSON.stringify({
+                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    tag: "进入页面" + page + projectName
+                }),
+                success: function (d) {
+                    if (d.success) {
+
+                    }
+                }
+            });
         },
 
         fullpage: function() {
@@ -93,183 +111,49 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     _this.fullPageObj.stop();
                     var now = "page" + (e.cur + 1);
                     if (now == "page1") {
-                        //加载到当前页的时候去掉之前加上的动画
-                        $(".page1 li").removeClass("bounce-out");
-                        $(".page1 li").unbind().on("click", function() {
-                            var ele = $(this);
-                            ele.attr("disabled","disabled");
-                            total = ele.data("loan-total");
-                            loanTotal.length = 0;
-                            loanTotal.push(total);
-                            console.log("loanTotal",loanTotal);
-                            var timer = null;
-                            clearTimeout(timer);
-                            timer = setTimeout(function() {
-                                // ele.addClass("rotating");
-                                ele.addClass("bounce-out");
-                                clearTimeout(timer);
-                                timer = setTimeout(function() {
-                                    _this.fullPageObj.moveTo(1, true);
-                                    ele.removeAttr("disabled");
-                                }, 1200);
-                            }, 200);
-                        });
+                        _this.BuryRequest(now);
+                       
                         _this.respondState(now);
                     }
 
                     if (now == "page2") {
-                        $(".page1 li").removeClass("bounce-out").removeAttr("disabled");;
-                        $(".page2 li").unbind().on("click", function() {
-                            var ele = $(this);
-                            ele.attr("disabled","disabled");
-                            var timer = null;
-                            clearTimeout(timer);
-                            timer = setTimeout(function() {
-                                // ele.addClass("rotating");
-                                ele.addClass("bounce-out");
-                                clearTimeout(timer);
-                                timer = setTimeout(function() {
-                                    _this.fullPageObj.moveTo(2, true);
-                                }, 1200)
-                            }, 200);
-                            //把li元素的data属性push到对应数组
-                            time = ele.data("loan-time");
-                            loanTime.length = 0;
-                            loanTime.push(time);
-                            console.log("点击时time:",loanTime);
-                        })
+                        _this.BuryRequest(now);
+                      
                         _this.respondState(now, 0, true,function(){
                             console.log("返回第一页");
-                            $(".page1 li").removeClass("bounce-out");
-                            loanTotal.length = 0;
-                            total = null;
-                            console.log("返回时loanTotal:",loanTotal);
                         });
                     }
 
                     if (now == "page3") {
-                        $(".page3 li").unbind().on("click", function() {
-                            var ele = $(this);
-                            ele.attr("disabled","disabled");
-                            var timer = null;
-                            clearTimeout(timer);
-                            timer = setTimeout(function() {
-                                // ele.addClass("rotating");
-                                ele.addClass("bounce-out");
-                                clearTimeout(timer);
-                                timer = setTimeout(function() {
-                                    _this.fullPageObj.moveTo(3, true);
-                                }, 1200)
-                            }, 200)
-                            release = ele.data("loan-release");
-                            loanRelease.length = 0;
-                            loanRelease.push(release);
-                        })
+                        _this.BuryRequest(now);
                         _this.respondState(now, 1, true, function() {
                             console.log("返回第二页");
-                            $(".page2 li").removeClass("bounce-out").removeAttr("disabled");
-                            loanTime.length = 0;
-                            time = null;
                         });
                     }
 
                     if (now == "page4") {
-                        $(".page4 .circle div").unbind().on("click", function() {
-                            var ele = $(this);
-                            ele.attr("disabled","disabled");
-                            focus = ele.data("loan-focus");
-                            loanFocus.length = 0;
-                            loanFocus.push(focus);
-                            loan.length = 0;
-                            loan.push(loanTotal,loanTime,loanRelease,loanFocus);
-
-                            var timer = null;
-                            clearTimeout(timer);
-                            timer = setTimeout(function() {
-                                ele.addClass("circle-rotating");
-                                clearTimeout(timer);
-                                timer = setTimeout(function() {
-                                    _this.getAnalysisData();
-                                }, 1200)
-                            }, 200)
-                        })
+                        _this.BuryRequest(now);
                         _this.respondState(now, 2, true,function(){
                             console.log("返回第三页");
-                            $(".page3 li").removeClass("bounce-out").removeAttr("disabled");
-                            loanRelease.length = 0;
-                            release = null;
                         });
                     }
 
                     if (now == "page5") {
-                        var dataObj = data;
-                        $(".page5 .loan-match span").addClass("progress");
-                        $(".page5 .final-loan").unbind().on("click",".final-loan,.finger-box",function(){
-                            $(this).attr("disabled","disabled");
-                            $(".page5 .finger").addClass("hide").removeClass("move");
-                            $(".page5 .fingerprint").removeClass("hide");
-                            $(".page5 .finger-scan").removeClass("hide").addClass("finger-scaning");
-                            setTimeout(function(){
-                                console.log("dataObj",dataObj);
-                                window.location.href = dataObj.url;
-                                $(".page5 .fingerprint").addClass("hide");
-                                $(".page5 .finger-scan").addClass("hide").removeClass("finger-scaning");
-                            },1000);
-                        });
-                        $(".page5 .content").unbind().on("click",".test-btn",function(){
-                            $(".page5 .content .test-btn").attr("disabled","disabled");
-                            timer = setTimeout(function() {
-                                _this.fullPageObj.moveTo(0, true);
-                                $(".page5 .content .test-btn").removeAttr("disabled");
-                                //清空所有数据
-                                loanTotal.length = 0;
-                                total = null;
-                                loanTime.length = 0;
-                                time = null;
-                                loanRelease.length = 0;
-                                release = null;
-                                loanFocus.length = 0;
-                                focus = null;
-                                loan.length = 0;
-                                //清空样式
-                                $(".page1 li").removeClass("bounce-out");
-                                $(".page2 li").removeClass("bounce-out");
-                                $(".page3 li").removeClass("bounce-out");
-                                $(".page4 .circle div").removeClass("circle-rotating");
-                                $(".page4 .customization-tp").hide();
-                                $(".page5 .loan-match span").removeClass("progress");
-                                $(".page5 .icon-box").html("");
-                                $(".page5 .loan-name").html("");
-                                $(".page5 .loan-match").html("");
-                                $(".page5 .loan-amount").html("");
-                                $(".page5 .day-rate").html("");
-                                $(".page5 .release-time").html("");
-                                $(".page5 .finger").removeClass("hide").addClass("move");
-                                $(".page5 .fingerprint").addClass("hide");
-                                $(".page5 .finger-scan").addClass("hide").removeClass("finger-scaning");
-                            }, 500);
-
-                        });
+                        _this.BuryRequest(now);
+                        
                         _this.respondState(now, 3, true,function(){
                             console.log("返回第四页");
-                            $(".page4 .circle div").removeClass("circle-rotating").removeAttr("disabled");
-                            $(".page5 .loan-match span").removeClass("progress");
-                            $(".page5 .finger").removeClass("hide").addClass("move");
-                            $(".page5 .fingerprint").addClass("hide");
-                            $(".page5 .finger-scan").addClass("hide").removeClass("finger-scaning");
-                            loanFocus.length = 0;
-                            focus = null;
-                            loan.length = 0;
-                            $(".page4 .customization-tp").hide();
+                            
                         });
-                    }
+
+                    };
                 }
             });
             return fullpage;
         },
 
         // 走后台跳转申请
-        getAnalysisData: function() {
+        getAnalysisData: function(now) {
             var _this = this;
             console.log("请求传递的数据：",loan);
             $.ajax({
@@ -291,24 +175,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                           //定制贷款信息
                           _this.getLoanInfo();
                           setTimeout(function(){
-                             _this.fullPageObj.moveTo(4, true);
-                              $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
-                          },5000);
-                       }
-                       if (data.sex == 2) {
-                        //弹屏女
-                            $(".page4 .customization-tp .male").hide();
-                            $(".page4 .customization-tp").fadeIn();
-                            $(".page4 .customization-tp .female").show();
-                            _this.showAnalyzeProcess(0);
-                            //动态展示icon
-                            _this.showIcon();
-                            //定制贷款信息
-                            _this.getLoanInfo();
-                            setTimeout(function(){
-                               _this.fullPageObj.moveTo(4, true);
-                               $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
-                            },5000);
+                            _this.fullPageObj.moveTo(4, true);
+                            $(".page4 .customization-tp").fadeOut();
+                            $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
+                          },2000);
                        }
                     }
                     else {
@@ -359,6 +229,5 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             }
         },
     }
-
     run.start();
 })
