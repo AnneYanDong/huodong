@@ -1,4 +1,4 @@
-fis.set("project.ignore", ['node_modules/**', 'output/**', '.git/**', 'fis-conf.js', 'Lp/**', "public/**", "static/img/**", "static/less/**"])
+fis.set("project.ignore", ['node_modules/**', 'output/**', '.git/**', 'fis-conf.js', "img/**", "less/**"])
 
 fis.match("js/(*.js)",{
 	useHash: true,
