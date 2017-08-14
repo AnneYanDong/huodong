@@ -1,1 +1,67 @@
-!function(o){function t(o){o=o.replace(/left|top/g,"0px"),o=o.replace(/right|bottom/g,"100%"),o=o.replace(/([0-9\.]+)(\s|\)|$)/g,"$1px$2");var t=o.match(/(-?[0-9\.]+)(px|\%|em|pt)\s(-?[0-9\.]+)(px|\%|em|pt)/);return[parseFloat(t[1],10),t[2],parseFloat(t[3],10),t[4]]}var n=o.fn.animate;o.fn.animate=function(o){return"background-position"in o&&(o.backgroundPosition=o["background-position"],delete o["background-position"]),"backgroundPosition"in o&&(o.backgroundPosition="("+o.backgroundPosition+")"),n.apply(this,arguments)},o.fx.step.backgroundPosition=function(n){if(!n.bgPosReady){var a=o.css(n.elem,"backgroundPosition");a||(a="0px 0px"),console.log(a),a=t(a),n.start=[a[0],a[2]];var i=t(n.end);n.end=[i[0],i[2]],n.unit=[i[1],i[3]],n.bgPosReady=!0}var e=[];e[0]=(n.end[0]-n.start[0])*n.pos+n.start[0]+n.unit[0],e[1]=(n.end[1]-n.start[1])*n.pos+n.start[1]+n.unit[1],n.elem.style.backgroundPosition=e[0]+" "+e[1]}}(jQuery);
+(function($) {
+//jQuery1.8开始 移除curCSS方法 用css方法代替 所以新版的这里的代码不需要 下面也需要做些调整 如果是1.7及其以下版本 还需要这里的代码
+/*if(!document.defaultView || !document.defaultView.getComputedStyle){
+    var oldCurCSS = jQuery.curCSS;
+    jQuery.curCSS = function(elem, name, force){
+        if(name === 'background-position'){
+            name = 'backgroundPosition';
+        }
+        if(name !== 'backgroundPosition' || !elem.currentStyle || elem.currentStyle[ name ]){
+            return oldCurCSS.apply(this, arguments);
+        }
+        var style = elem.style;
+        if ( !force && style && style[ name ] ){
+            return style[ name ];
+        }
+        return oldCurCSS(elem, 'backgroundPositionX', force) +' '+ oldCurCSS(elem, 'backgroundPositionY', force);
+    };
+}*/
+
+var oldAnim = $.fn.animate;
+$.fn.animate = function(prop){
+    if('background-position' in prop){
+        prop.backgroundPosition = prop['background-position'];
+        delete prop['background-position'];
+    }
+    if('backgroundPosition' in prop){
+        prop.backgroundPosition = '('+ prop.backgroundPosition + ')';
+    }
+    return oldAnim.apply(this, arguments);
+};
+
+function toArray(strg){
+    strg = strg.replace(/left|top/g,'0px');
+    strg = strg.replace(/right|bottom/g,'100%');
+    strg = strg.replace(/([0-9\.]+)(\s|\)|$)/g,"$1px$2");
+    var res = strg.match(/(-?[0-9\.]+)(px|\%|em|pt)\s(-?[0-9\.]+)(px|\%|em|pt)/);
+    return [parseFloat(res[1],10),res[2],parseFloat(res[3],10),res[4]];
+}
+
+$.fx.step.backgroundPosition = function(fx) {
+    if (!fx.bgPosReady) {
+        //var start = $.curCSS(fx.elem,'backgroundPosition');   //jQuery1.7及其以下用curCSS方法
+        var start = $.css(fx.elem,'backgroundPosition');  
+        // console.log(start);  
+
+        if(!start){//FF2 no inline-style fallback
+            start = '0px 0px';
+        }
+
+        console.log(start);
+        start = toArray(start);
+
+        fx.start = [start[0],start[2]];
+
+        var end = toArray(fx.end);
+        fx.end = [end[0],end[2]];
+
+        fx.unit = [end[1],end[3]];
+        fx.bgPosReady = true;
+    }
+
+    var nowPosX = [];
+    nowPosX[0] = ((fx.end[0] - fx.start[0]) * fx.pos) + fx.start[0] + fx.unit[0];
+    nowPosX[1] = ((fx.end[1] - fx.start[1]) * fx.pos) + fx.start[1] + fx.unit[1];
+    fx.elem.style.backgroundPosition = nowPosX[0]+' '+nowPosX[1];
+};
+})(jQuery);

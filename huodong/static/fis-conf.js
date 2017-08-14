@@ -1,38 +1,17 @@
-fis.match("*.{js,css}",{
-	useHash: true
+fis.set("project.ignore", ['node_modules/**', 'output/**', '.git/**', 'fis-conf.js', 'Lp/**', "public/**", "static/img/**", "static/less/**"])
+
+fis.match("js/(*.js)",{
+	useHash: true,
+	optimizer: fis.plugin('uglify-js'),
+	url: 'r.51gjj.com/act/release/js/$1'
 })
 
-fis.match('*.png', {
-  // fis-optimizer-png-compressor 插件进行压缩，已内置
-  optimizer: fis.plugin('png-compressor')
-});
-
-fis.match("js/lib/*.js",{
-	useHash: false
-})
-
-fis.match("*.js",{
-	url: 'r.51gjj.com/act/release$0',
-	optimizer: fis.plugin('uglify-js')
-})
-
-fis.match("*.css",{
-	url: 'r.51gjj.com/act/release$0',
-	optimizer: fis.plugin('clean-css')
+fis.match("css/(*.css)",{
+	useHash: true,
+	optimizer: fis.plugin('clean-css'),
+	url: 'r.51gjj.com/act/release/css/$1'
 })
 
 fis.match("css/{basicFullPage,mtool,rule-btn,marquee}.css",{
 	url: "/act$0"
-})
-
-fis.match("resource/resource.js",{
-	useHash: false,
-    optimizer: null
-})
-
-fis.media('upload').match('*', {
-  deploy: fis.plugin('http-push', {
-    receiver: 'http://kaifa.jianbing.com/res/receiver.php',
-    to: '/oss/hdtest' // 注意这个是指的是测试机器的路径，而非本地机器
-  })
 })

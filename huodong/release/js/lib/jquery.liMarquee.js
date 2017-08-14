@@ -1,1 +1,1309 @@
-!function(t){var o={init:function(o){var e={direction:"left",loop:-1,scrolldelay:0,scrollamount:50,circular:!0,drag:!0,runshort:!0,hoverstop:!0,inverthover:!1,xml:!1};return o&&t.extend(e,o),this.each(function(){var o="mouseenter",i="mouseleave";e.inverthover&&(o="mouseleave",i="mouseenter");var s=e.loop,n=t(this).addClass("str_wrap").data({scrollamount:e.scrollamount}),r=!1,a=n.attr("style");if(a)for(var l=a.split(";"),f=!1,c=0;c<l.length;c++){var h=t.trim(l[c]),u=h.search(/^height/g);-1!=u&&(f=parseFloat(n.css("height")))}var v=function(){n.off("mouseleave"),n.off("mouseenter"),n.off("mousemove"),n.off("mousedown"),n.off("mouseup"),t(".str_move",n).length||n.wrapInner(t("<div>").addClass("str_move"));var a=t(".str_move",n).addClass("str_origin"),l=a.clone().removeClass("str_origin").addClass("str_move_clone"),f=0;e.hoverstop||n.addClass("noStop");var c=function(){l.clone().css({left:"100%",right:"auto",width:a.width()}).appendTo(a),l.css({right:"100%",left:"auto",width:a.width()}).appendTo(a)},h=function(){l.clone().css({top:"100%",bottom:"auto",height:a.height()}).appendTo(a),l.css({bottom:"100%",top:"auto",height:a.height()}).appendTo(a)};if("left"==e.direction)if(n.height(a.outerHeight()),a.width()>n.width()){var u=-a.width();e.circular&&(e.xml||(c(),u=-(a.width()+(a.width()-n.width())))),e.xml&&a.css({left:n.width()});var v=n.width(),d=0,p=function(){var t=Math.abs(u),o=t/n.data("scrollamount")*1e3;return 0!=parseFloat(a.css("left"))&&(t+=n.width(),o=(t-(n.width()-parseFloat(a.css("left"))))/n.data("scrollamount")*1e3),o},m=!1,g=function(){0!=s&&a.stop(!0).animate({left:u},p(),"linear",function(){t(this).css({left:n.width()}),-1==s?m=setTimeout(g,e.scrolldelay):(s--,m=setTimeout(g,e.scrolldelay))})};n.data({moveId:m,moveF:g}),e.inverthover||g(),e.hoverstop&&(n.on(o,function(){t(this).addClass("str_active"),clearTimeout(m),a.stop(!0)}).on(i,function(){t(this).removeClass("str_active"),t(this).off("mousemove"),g()}),e.drag?n.on("mousedown",function(o){e.inverthover&&a.stop(!0);var i,s,l=1,f=o.clientX;return v=a.position().left,d=v-(o.clientX-n.offset().left),t(this).on("mousemove",function(t){r=!0,s=t.clientX,l=s>f?1:-1,f=s,i=d+(t.clientX-n.offset().left),e.circular?(i<-a.width()&&0>l&&(i=0,v=a.position().left,d=v-(t.clientX-n.offset().left)),i>0&&l>0&&(i=-a.width(),v=a.position().left,d=v-(t.clientX-n.offset().left))):(i<-a.width()&&0>l&&(i=n.width(),v=a.position().left,d=v-(t.clientX-n.offset().left)),i>n.width()&&l>0&&(i=-a.width(),v=a.position().left,d=v-(t.clientX-n.offset().left))),a.stop(!0).css({left:i})}).on("mouseup",function(){t(this).off("mousemove"),e.inverthover&&a.trigger("mouseenter"),setTimeout(function(){r=!1},50)}),!1}).on("click",function(){return r?!1:void 0}):n.addClass("no_drag"))}else if(e.runshort){a.css({left:n.width()});var v=n.width(),d=0,w=function(){return f=(a.width()+a.position().left)/n.data("scrollamount")*1e3},T=function(){var o=-a.width();a.animate({left:o},w(),"linear",function(){t(this).css({left:n.width()}),-1==s?setTimeout(T,e.scrolldelay):(s--,setTimeout(T,e.scrolldelay))})};n.data({moveF:T}),e.inverthover||T(),e.hoverstop&&(n.on(o,function(){t(this).addClass("str_active"),a.stop(!0)}).on(i,function(){t(this).removeClass("str_active"),t(this).off("mousemove"),T()}),e.drag?n.on("mousedown",function(o){e.inverthover&&a.stop(!0);var i,s,l=1,f=o.clientX;return v=a.position().left,d=v-(o.clientX-n.offset().left),t(this).on("mousemove",function(t){r=!0,s=t.clientX,l=s>f?1:-1,f=s,i=d+(t.clientX-n.offset().left),i<-a.width()&&0>l&&(i=n.width(),v=a.position().left,d=v-(t.clientX-n.offset().left)),i>n.width()&&l>0&&(i=-a.width(),v=a.position().left,d=v-(t.clientX-n.offset().left)),a.stop(!0).css({left:i})}).on("mouseup",function(){e.inverthover&&a.trigger("mouseenter"),t(this).off("mousemove"),setTimeout(function(){r=!1},50)}),!1}).on("click",function(){return r?!1:void 0}):n.addClass("no_drag"))}else n.addClass("str_static");if("right"==e.direction)if(n.height(a.outerHeight()),n.addClass("str_right"),a.css({left:-a.width(),right:"auto"}),a.width()>n.width()){var u=n.width();a.css({left:0}),e.circular&&(e.xml||(c(),u=a.width()));var _=0;w=function(){var t=n.width(),o=t/n.data("scrollamount")*1e3;return 0!=parseFloat(a.css("left"))&&(t=a.width()+n.width(),o=(t-(a.width()+parseFloat(a.css("left"))))/n.data("scrollamount")*1e3),o};var T=function(){0!=s&&a.animate({left:u},w(),"linear",function(){t(this).css({left:-a.width()}),-1==s?setTimeout(T,e.scrolldelay):(s--,setTimeout(T,e.scrolldelay))})};n.data({moveF:T}),e.inverthover||T(),e.hoverstop&&(n.on(o,function(){t(this).addClass("str_active"),a.stop(!0)}).on(i,function(){t(this).removeClass("str_active"),t(this).off("mousemove"),T()}),e.drag?n.on("mousedown",function(o){e.inverthover&&a.stop(!0);var i,s,l=1,f=o.clientX;return v=a.position().left,_=v-(o.clientX-n.offset().left),t(this).on("mousemove",function(t){r=!0,s=t.clientX,l=s>f?1:-1,f=s,i=_+(t.clientX-n.offset().left),e.circular?(i<-a.width()&&0>l&&(i=0,v=a.position().left,_=v-(t.clientX-n.offset().left)),i>0&&l>0&&(i=-a.width(),v=a.position().left,_=v-(t.clientX-n.offset().left))):(i<-a.width()&&0>l&&(i=n.width(),v=a.position().left,_=v-(t.clientX-n.offset().left)),i>n.width()&&l>0&&(i=-a.width(),v=a.position().left,_=v-(t.clientX-n.offset().left))),a.stop(!0).css({left:i})}).on("mouseup",function(){e.inverthover&&a.trigger("mouseenter"),t(this).off("mousemove"),setTimeout(function(){r=!1},50)}),!1}).on("click",function(){return r?!1:void 0}):n.addClass("no_drag"))}else if(e.runshort){var _=0,w=function(){return f=(n.width()-a.position().left)/n.data("scrollamount")*1e3},T=function(){var o=n.width();a.animate({left:o},w(),"linear",function(){t(this).css({left:-a.width()}),-1==s?setTimeout(T,e.scrolldelay):(s--,setTimeout(T,e.scrolldelay))})};n.data({moveF:T}),e.inverthover||T(),e.hoverstop&&(n.on(o,function(){t(this).addClass("str_active"),a.stop(!0)}).on(i,function(){t(this).removeClass("str_active"),t(this).off("mousemove"),T()}),e.drag?n.on("mousedown",function(o){e.inverthover&&a.stop(!0);var i,s,l=1,f=o.clientX;return v=a.position().left,_=v-(o.clientX-n.offset().left),t(this).on("mousemove",function(t){r=!0,s=t.clientX,l=s>f?1:-1,f=s,i=_+(t.clientX-n.offset().left),i<-a.width()&&0>l&&(i=n.width(),v=a.position().left,_=v-(t.clientX-n.offset().left)),i>n.width()&&l>0&&(i=-a.width(),v=a.position().left,_=v-(t.clientX-n.offset().left)),a.stop(!0).css({left:i})}).on("mouseup",function(){e.inverthover&&a.trigger("mouseenter"),t(this).off("mousemove"),setTimeout(function(){r=!1},50)}),!1}).on("click",function(){return r?!1:void 0}):n.addClass("no_drag"))}else n.addClass("str_static");if("up"==e.direction)if(n.addClass("str_vertical"),a.height()>n.height()){var C=-a.height();e.circular&&(e.xml||(h(),C=-(a.height()+(a.height()-n.height())))),e.xml&&a.css({top:n.height()});var _=0;w=function(){var t=Math.abs(C),o=t/n.data("scrollamount")*1e3;return 0!=parseFloat(a.css("top"))&&(t+=n.height(),o=(t-(n.height()-parseFloat(a.css("top"))))/n.data("scrollamount")*1e3),o};var T=function(){0!=s&&a.animate({top:C},w(),"linear",function(){t(this).css({top:n.height()}),-1==s?setTimeout(T,e.scrolldelay):(s--,setTimeout(T,e.scrolldelay))})};n.data({moveF:T}),e.inverthover||T(),e.hoverstop&&(n.on(o,function(){t(this).addClass("str_active"),a.stop(!0)}).on(i,function(){t(this).removeClass("str_active"),t(this).off("mousemove"),T()}),e.drag?n.on("mousedown",function(o){e.inverthover&&a.stop(!0);var i,s,l=1,f=o.clientY;return strMoveTop=a.position().top,_=strMoveTop-(o.clientY-n.offset().top),t(this).on("mousemove",function(t){r=!0,s=t.clientY,s>f?l=1:f>s&&(l=-1),f=s,i=_+t.clientY-n.offset().top,e.circular?(i<-a.height()&&0>l&&(i=0,strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top)),i>0&&l>0&&(i=-a.height(),strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top))):(i<-a.height()&&0>l&&(i=n.height(),strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top)),i>n.height()&&l>0&&(i=-a.height(),strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top))),a.stop(!0).css({top:i})}).on("mouseup",function(){e.inverthover&&a.trigger("mouseenter"),t(this).off("mousemove"),setTimeout(function(){r=!1},50)}),!1}).on("click",function(){return r?!1:void 0}):n.addClass("no_drag"))}else if(e.runshort){a.css({top:n.height()});var _=0,w=function(){return f=(a.height()+a.position().top)/n.data("scrollamount")*1e3},T=function(){var o=-a.height();a.animate({top:o},w(),"linear",function(){t(this).css({top:n.height()}),-1==s?setTimeout(T,e.scrolldelay):(s--,setTimeout(T,e.scrolldelay))})};n.data({moveF:T}),e.inverthover||T(),e.hoverstop&&(n.on(o,function(){t(this).addClass("str_active"),a.stop(!0)}).on(i,function(){t(this).removeClass("str_active"),t(this).off("mousemove"),T()}),e.drag?n.on("mousedown",function(o){e.inverthover&&a.stop(!0);var i,s,l=1,f=o.clientY;return strMoveTop=a.position().top,_=strMoveTop-(o.clientY-n.offset().top),t(this).on("mousemove",function(t){r=!0,s=t.clientY,s>f?l=1:f>s&&(l=-1),f=s,i=_+t.clientY-n.offset().top,i<-a.height()&&0>l&&(i=n.height(),strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top)),i>n.height()&&l>0&&(i=-a.height(),strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top)),a.stop(!0).css({top:i})}).on("mouseup",function(){e.inverthover&&a.trigger("mouseenter"),t(this).off("mousemove"),setTimeout(function(){r=!1},50)}),!1}).on("click",function(){return r?!1:void 0}):n.addClass("no_drag"))}else n.addClass("str_static");if("down"==e.direction)if(n.addClass("str_vertical").addClass("str_down"),a.css({top:-a.height(),bottom:"auto"}),a.height()>n.height()){var C=n.height();e.circular&&(e.xml||(h(),C=a.height())),e.xml&&a.css({top:-a.height()});var _=0;w=function(){var t=n.height(),o=t/n.data("scrollamount")*1e3;return 0!=parseFloat(a.css("top"))&&(t=a.height()+n.height(),o=(t-(a.height()+parseFloat(a.css("top"))))/n.data("scrollamount")*1e3),o};var T=function(){0!=s&&a.animate({top:C},w(),"linear",function(){t(this).css({top:-a.height()}),-1==s?setTimeout(T,e.scrolldelay):(s--,setTimeout(T,e.scrolldelay))})};n.data({moveF:T}),e.inverthover||T(),e.hoverstop&&(n.on(o,function(){t(this).addClass("str_active"),a.stop(!0)}).on(i,function(){t(this).removeClass("str_active"),t(this).off("mousemove"),T()}),e.drag?n.on("mousedown",function(o){e.inverthover&&a.stop(!0);var i,s,l=1,f=o.clientY;return strMoveTop=a.position().top,_=strMoveTop-(o.clientY-n.offset().top),t(this).on("mousemove",function(t){r=!0,s=t.clientY,s>f?l=1:f>s&&(l=-1),f=s,i=_+t.clientY-n.offset().top,e.circular?(i<-a.height()&&0>l&&(i=0,strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top)),i>0&&l>0&&(i=-a.height(),strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top))):(i<-a.height()&&0>l&&(i=n.height(),strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top)),i>n.height()&&l>0&&(i=-a.height(),strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top))),a.stop(!0).css({top:i})}).on("mouseup",function(){e.inverthover&&a.trigger("mouseenter"),t(this).off("mousemove"),setTimeout(function(){r=!1},50)}),!1}).on("click",function(){return r?!1:void 0}):n.addClass("no_drag"))}else if(e.runshort){var _=0,w=function(){return f=(n.height()-a.position().top)/n.data("scrollamount")*1e3},T=function(){var o=n.height();a.animate({top:o},w(),"linear",function(){t(this).css({top:-a.height()}),-1==s?setTimeout(T,e.scrolldelay):(s--,setTimeout(T,e.scrolldelay))})};n.data({moveF:T}),e.inverthover||T(),e.hoverstop&&(n.on(o,function(){t(this).addClass("str_active"),a.stop(!0)}).on(i,function(){t(this).removeClass("str_active"),t(this).off("mousemove"),T()}),e.drag?n.on("mousedown",function(o){e.inverthover&&a.stop(!0);var i,s,l=1,f=o.clientY;return strMoveTop=a.position().top,_=strMoveTop-(o.clientY-n.offset().top),t(this).on("mousemove",function(t){r=!0,s=t.clientY,s>f?l=1:f>s&&(l=-1),f=s,i=_+t.clientY-n.offset().top,i<-a.height()&&0>l&&(i=n.height(),strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top)),i>n.height()&&l>0&&(i=-a.height(),strMoveTop=a.position().top,_=strMoveTop-(t.clientY-n.offset().top)),a.stop(!0).css({top:i})}).on("mouseup",function(){e.inverthover&&a.trigger("mouseenter"),t(this).off("mousemove"),setTimeout(function(){r=!1},50)}),!1}).on("click",function(){return r?!1:void 0}):n.addClass("no_drag"))}else n.addClass("str_static")};e.xml?t.ajax({url:e.xml,dataType:"xml",success:function(o){for(var i=t(o).find("text"),s=i.length,r=0;s>r;r++){var a=i.eq(r),l=a.text(),f=t("<span>").text(l).appendTo(n);("left"==e.direction||"right"==e.direction)&&(f.css({display:"inline-block",textAlign:"right"}),r>0&&f.css({width:n.width()+f.width()})),("down"==e.direction||"up"==e.direction)&&(f.css({display:"block",textAlign:"left"}),r>0&&f.css({paddingTop:n.height()}))}v()}}):v(),n.data({ini:v,startheight:f})})},update:function(){var o=t(this),e=t(".str_origin",o),i=t(".str_move_clone",o);e.stop(!0),i.remove(),o.data("ini")()},destroy:function(){var o=t(this),e=t(".str_move",o),i=o.data("startheight");t(".str_move_clone",o).remove(),o.off("mouseenter"),o.off("mousedown"),o.off("mouseup"),o.off("mouseleave"),o.off("mousemove"),o.removeClass("noStop").removeClass("str_vertical").removeClass("str_active").removeClass("no_drag").removeClass("str_static").removeClass("str_right").removeClass("str_down");var s=o.attr("style");if(s){for(var n=s.split(";"),r=0;r<n.length;r++){var a=t.trim(n[r]),l=a.search(/^height/g);-1!=l&&(n[r]="")}var f=n.join(";"),c=f.replace(/;+/g,";");";"==c?o.removeAttr("style"):o.attr("style",c),i&&o.css({height:i})}if(e.stop(!0),e.length){var h=e.html();e.remove(),o.html(h)}},pause:function(){var o=t(this),e=t(".str_move",o);e.stop(!0)},play:function(){var o=t(this);t(this).off("mousemove"),o.data("moveF")()}};t.fn.liMarquee=function(e){return o[e]?o[e].apply(this,Array.prototype.slice.call(arguments,1)):"object"!=typeof e&&e?void t.error("Метод "+e+" в jQuery.liMarquee не существует"):o.init.apply(this,arguments)}}(jQuery);
+/*
+ * jQuery liMarquee v 4.6
+ *
+ * Copyright 2013, Linnik Yura | LI MASS CODE | http://masscode.ru
+ * http://masscode.ru/index.php/k2/item/44-limarquee
+ * Free to use
+ *
+ * Last Update 20.11.2014
+ */
+(function ($) {
+	var methods = {
+		init: function (options) {
+			var p = {
+				direction: 'left', //Указывает направление движения содержимого контейнера (left | right | up | down)
+				loop: -1, //Задает, сколько раз будет прокручиваться содержимое. "-1" для бесконечного воспроизведения движения
+				scrolldelay: 0, //Величина задержки в миллисекундах между движениями
+				scrollamount: 50, //Скорость движения контента (px/sec)
+				circular: true, //Если "true" - строка непрерывная 
+				drag: true, //Если "true" - включено перетаскивание строки
+				runshort: true, //Если "true" - короткая строка тоже "бегает", "false" - стоит на месте
+				hoverstop: true, //true - строка останавливается при наведении курсора мыши, false - строка не останавливается
+				inverthover: false, //false - стандартное поведение. Если "true" - строка начинает движение только при наведении курсора
+				xml: false //Путь к xml файлу с нужным текстом
+			};
+			if (options) {
+				$.extend(p, options);
+			}
+
+			return this.each(function () {
+				var enterEvent = 'mouseenter';
+				var leaveEvent = 'mouseleave';
+				if(p.inverthover){
+					enterEvent = 'mouseleave';
+					leaveEvent = 'mouseenter';	
+				}
+				
+								
+				var
+					loop = p.loop,
+					strWrap = $(this).addClass('str_wrap').data({scrollamount:p.scrollamount}),
+					fMove = false;
+					
+				
+				
+				var strWrapStyle = strWrap.attr('style'); 
+				
+				if(strWrapStyle){
+					var wrapStyleArr = strWrapStyle.split(';');
+					var startHeight = false;
+					for(var i=0; i < wrapStyleArr.length; i++){
+						var str = $.trim(wrapStyleArr[i]);					
+						var tested =  str.search(/^height/g);
+						if(tested != -1){
+							startHeight = parseFloat(strWrap.css('height'));
+						}
+					}
+				}
+
+				var code = function () {
+					
+					strWrap.off('mouseleave');
+					strWrap.off('mouseenter');
+					strWrap.off('mousemove');
+					strWrap.off('mousedown');
+					strWrap.off('mouseup');
+
+					
+					if(!$('.str_move',strWrap).length){
+						strWrap.wrapInner($('<div>').addClass('str_move'));
+					}
+					
+					var
+					strMove = $('.str_move', strWrap).addClass('str_origin'),
+					strMoveClone = strMove.clone().removeClass('str_origin').addClass('str_move_clone'),
+					time = 0;
+
+					if (!p.hoverstop) {
+						strWrap.addClass('noStop');
+					}
+
+					var circCloneHor = function(){
+						strMoveClone.clone().css({
+							left:'100%',
+							right:'auto',							
+							width: strMove.width()
+						}).appendTo(strMove);
+						strMoveClone.css({
+							right: '100%',
+							left:'auto',
+							width: strMove.width()
+						}).appendTo(strMove);
+					}
+					
+					var circCloneVert = function(){
+						strMoveClone.clone().css({
+							top: '100%',
+							bottom:'auto',
+							height: strMove.height()
+						}).appendTo(strMove);
+						strMoveClone.css({
+							bottom: '100%',
+							top:'auto',
+							height:strMove.height()
+						}).appendTo(strMove);
+					}
+					
+					
+					
+					if (p.direction == 'left') {
+						strWrap.height(strMove.outerHeight())
+						if (strMove.width() > strWrap.width()) {
+							var leftPos = -strMove.width();
+							
+							if (p.circular) {
+								
+								if (!p.xml) {
+									circCloneHor()
+									leftPos = -(strMove.width() + (strMove.width() - strWrap.width()));
+								}
+							}
+							if (p.xml) {
+								strMove.css({
+									left:strWrap.width()	
+								})
+							}
+							var
+							strMoveLeft = strWrap.width(),
+								k1 = 0,
+								timeFunc1 = function () {
+									var
+									fullS = Math.abs(leftPos),
+										time = (fullS / strWrap.data('scrollamount')) * 1000;
+									if (parseFloat(strMove.css('left')) != 0) {
+										fullS = (fullS + strWrap.width());
+										time = (fullS - (strWrap.width() - parseFloat(strMove.css('left')))) / strWrap.data('scrollamount') * 1000;
+									}
+									return time;
+								},
+								moveFuncId1 = false,
+								moveFunc1 = function () {
+									if (loop != 0) {
+										strMove.stop(true).animate({
+											left: leftPos
+										}, timeFunc1(), 'linear', function () {
+											$(this).css({
+												left: strWrap.width()
+											});
+											if (loop == -1) {
+												moveFuncId1 = setTimeout(moveFunc1, p.scrolldelay);
+											} else {
+												loop--;
+												moveFuncId1 = setTimeout(moveFunc1, p.scrolldelay);
+											}
+										});
+									}
+								};
+								strWrap.data({
+									moveId: moveFuncId1	,
+									moveF : moveFunc1
+								})
+								if(!p.inverthover){
+									moveFunc1();
+								}
+							
+							if (p.hoverstop) {
+								strWrap.on(enterEvent, function () {
+									$(this).addClass('str_active');
+									clearTimeout(moveFuncId1);
+									strMove.stop(true);
+								}).on(leaveEvent, function () {
+									$(this).removeClass('str_active');
+									$(this).off('mousemove');
+									moveFunc1();
+								});
+
+								if (p.drag) {
+									strWrap.on('mousedown', function (e) {
+										if(p.inverthover){
+											strMove.stop(true);
+										}
+										//drag
+										var dragLeft;
+										var dir = 1;
+										var newX;
+										var oldX = e.clientX;
+										//drag
+										
+										strMoveLeft = strMove.position().left;
+										k1 = strMoveLeft - (e.clientX - strWrap.offset().left);
+										
+										
+										
+										$(this).on('mousemove', function (e) {
+											fMove = true;
+											
+											//drag
+											newX = e.clientX;
+											if(newX > oldX){
+												dir = 1
+											}else{
+												dir = -1
+											}
+											oldX = newX	
+											dragLeft = k1 + (e.clientX - strWrap.offset().left);
+											
+											if (!p.circular) {
+												if(dragLeft < -strMove.width() && dir < 0){
+													dragLeft = strWrap.width();
+													strMoveLeft = strMove.position().left;
+													k1 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+												if(dragLeft > strWrap.width() && dir > 0){
+													dragLeft = -strMove.width();
+													strMoveLeft = strMove.position().left;
+													k1 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+											}else{
+												if(dragLeft < -strMove.width() && dir < 0){
+													dragLeft = 0;
+													strMoveLeft = strMove.position().left;
+													k1 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+												if(dragLeft > 0 && dir > 0){
+													dragLeft = -strMove.width();
+													strMoveLeft = strMove.position().left;
+													k1 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+	
+											}
+											
+											
+											strMove.stop(true).css({
+												left: dragLeft
+											});
+											//drag
+											
+										
+											
+										}).on('mouseup', function () {
+											$(this).off('mousemove');
+											if(p.inverthover){
+												strMove.trigger('mouseenter')
+											}
+											setTimeout(function () {                             
+												fMove = false
+											}, 50)
+											
+										});
+										return false;
+									})
+									.on('click', function () {
+										if (fMove) {
+											return false
+										}
+									});
+								} else {
+									strWrap.addClass('no_drag');
+								};
+							}
+						} else {
+							if (p.runshort) {
+								strMove.css({
+									left: strWrap.width()
+								});
+								var
+								strMoveLeft = strWrap.width(),
+									k1 = 0,
+									timeFunc = function () {
+										time = (strMove.width() + strMove.position().left) / strWrap.data('scrollamount') * 1000;
+										return time;
+									};
+								var moveFunc = function () {
+									var leftPos = -strMove.width();
+									strMove.animate({
+										left: leftPos
+									}, timeFunc(), 'linear', function () {
+										$(this).css({
+											left: strWrap.width()
+										});
+										if (loop == -1) {
+											setTimeout(moveFunc, p.scrolldelay);
+										} else {
+											loop--;
+											setTimeout(moveFunc, p.scrolldelay);
+										}
+									});
+								};
+								strWrap.data({
+									moveF : moveFunc
+								})
+								if(!p.inverthover){
+									moveFunc();
+								}
+								if (p.hoverstop) {
+									strWrap.on(enterEvent, function () {
+										$(this).addClass('str_active');
+										strMove.stop(true);
+									}).on(leaveEvent, function () {
+										$(this).removeClass('str_active');
+										$(this).off('mousemove');
+										moveFunc();
+									});
+
+									if (p.drag) {
+										strWrap.on('mousedown', function (e) {
+											if(p.inverthover){
+												strMove.stop(true);
+											}
+											
+											//drag
+											var dragLeft;
+											var dir = 1;
+											var newX;
+											var oldX = e.clientX;
+											//drag
+											
+											strMoveLeft = strMove.position().left;
+											k1 = strMoveLeft - (e.clientX - strWrap.offset().left);
+											$(this).on('mousemove', function (e) {
+												fMove = true;
+												
+												
+												//drag
+												newX = e.clientX;
+												if(newX > oldX){
+													dir = 1
+												}else{
+													dir = -1
+												}
+												oldX = newX	
+												dragLeft = k1 + (e.clientX - strWrap.offset().left);
+												
+												if(dragLeft < -strMove.width() && dir < 0){
+													dragLeft = strWrap.width();
+													strMoveLeft = strMove.position().left;
+													k1 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+												if(dragLeft > strWrap.width() && dir > 0){
+													dragLeft = -strMove.width();
+													strMoveLeft = strMove.position().left;
+													k1 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+												
+												
+												strMove.stop(true).css({
+													left: dragLeft
+												});
+												
+												
+												
+											}).on('mouseup', function () {
+												if(p.inverthover){
+													strMove.trigger('mouseenter')
+												}
+												$(this).off('mousemove');
+												setTimeout(function () {                             
+													fMove = false
+												}, 50)
+											});
+											return false;
+										})
+										.on('click', function () {
+											if (fMove) {
+												return false
+											}
+										});
+									} else {
+										strWrap.addClass('no_drag');
+									};
+								}
+							} else {
+								strWrap.addClass('str_static');
+							}
+						};
+					};
+					if (p.direction == 'right') {
+						strWrap.height(strMove.outerHeight())
+						strWrap.addClass('str_right');
+						strMove.css({
+							left: -strMove.width(),
+							right: 'auto'
+						})
+						
+						if (strMove.width() > strWrap.width()) {
+							var leftPos = strWrap.width();
+							strMove.css({
+								left: 0
+							})
+							if (p.circular) {
+								if (!p.xml) {
+									circCloneHor()
+									//Определяем крайнюю точку
+									leftPos = strMove.width();
+								}
+							}
+							
+							var
+							k2 = 0;
+							timeFunc = function () {
+								var
+								fullS = strWrap.width(), //крайняя точка
+									time = (fullS / strWrap.data('scrollamount')) * 1000; //время
+								if (parseFloat(strMove.css('left')) != 0) {
+									fullS = (strMove.width() + strWrap.width());
+									time = (fullS - (strMove.width() + parseFloat(strMove.css('left')))) / strWrap.data('scrollamount') * 1000;
+								}
+								return time;
+							};
+							var moveFunc = function () {
+
+								if (loop != 0) {
+									strMove.animate({
+										left: leftPos
+									}, timeFunc(), 'linear', function () {
+										$(this).css({
+											left: -strMove.width()
+										});
+										if (loop == -1) {
+											setTimeout(moveFunc, p.scrolldelay);
+										} else {
+											loop--;
+											setTimeout(moveFunc, p.scrolldelay);
+										};
+									});
+								};
+							};
+							strWrap.data({
+								moveF : moveFunc
+							})
+					
+							if(!p.inverthover){
+								moveFunc();
+							}
+							if (p.hoverstop) {
+								strWrap.on(enterEvent, function () {
+									$(this).addClass('str_active');
+									strMove.stop(true);
+								}).on(leaveEvent, function () {
+									$(this).removeClass('str_active');
+									$(this).off('mousemove');
+									moveFunc();
+								});
+
+								if (p.drag) {
+									
+									strWrap.on('mousedown', function (e) {
+										if(p.inverthover){
+											strMove.stop(true);
+										}
+										
+										
+										//drag
+										var dragLeft;
+										var dir = 1;
+										var newX;
+										var oldX = e.clientX;
+										//drag
+										
+										strMoveLeft = strMove.position().left;
+										k2 = strMoveLeft - (e.clientX - strWrap.offset().left);
+										$(this).on('mousemove', function (e) {
+											
+											fMove = true;
+											
+											//drag
+											newX = e.clientX;
+											if(newX > oldX){
+												dir = 1
+											}else{
+												dir = -1
+											}
+											oldX = newX	
+											dragLeft = k2 + (e.clientX - strWrap.offset().left);
+
+
+											if (!p.circular) {
+
+												if(dragLeft < -strMove.width() && dir < 0){
+													dragLeft = strWrap.width();
+													strMoveLeft = strMove.position().left;
+													k2 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+												if(dragLeft > strWrap.width() && dir > 0){
+													dragLeft = -strMove.width();
+													strMoveLeft = strMove.position().left;
+													k2 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+											}else{
+												if(dragLeft < -strMove.width() && dir < 0){
+													dragLeft = 0;
+													strMoveLeft = strMove.position().left;
+													k2 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+												if(dragLeft > 0 && dir > 0){
+													dragLeft = -strMove.width();
+													strMoveLeft = strMove.position().left;
+													k2 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+	
+											}
+											
+											strMove.stop(true).css({
+												left: dragLeft
+											});
+											
+
+										}).on('mouseup', function () {
+											if(p.inverthover){
+												strMove.trigger('mouseenter')
+											}
+											$(this).off('mousemove');
+											setTimeout(function () {                             
+												fMove = false
+											}, 50)
+										});
+										return false;
+									})
+									.on('click', function () {
+										if (fMove) {
+											return false
+										}
+									});
+								} else {
+									strWrap.addClass('no_drag');
+								};
+							}
+						} else {
+														
+							if (p.runshort) {
+								
+								var k2 = 0;
+								var timeFunc = function () {
+									time = (strWrap.width() - strMove.position().left) / strWrap.data('scrollamount') * 1000;
+									return time;
+								};
+								var moveFunc = function () {
+									var leftPos = strWrap.width();
+									strMove.animate({
+										left: leftPos
+									}, timeFunc(), 'linear', function () {
+										$(this).css({
+											left: -strMove.width()
+										});
+										if (loop == -1) {
+											setTimeout(moveFunc, p.scrolldelay);
+										} else {
+											loop--;
+											setTimeout(moveFunc, p.scrolldelay);
+										};
+									});
+								};
+
+								strWrap.data({
+									moveF : moveFunc
+								})
+
+								if(!p.inverthover){
+									moveFunc();
+								}
+								if (p.hoverstop) {
+									strWrap.on(enterEvent, function () {
+										$(this).addClass('str_active');
+										strMove.stop(true);
+									}).on(leaveEvent, function () {
+										$(this).removeClass('str_active');
+										$(this).off('mousemove');
+										moveFunc();
+									});
+
+									if (p.drag) {
+										strWrap.on('mousedown', function (e) {
+											if(p.inverthover){
+												strMove.stop(true);
+											}
+											
+											//drag
+											var dragLeft;
+											var dir = 1;
+											var newX;
+											var oldX = e.clientX;
+											//drag
+											
+											strMoveLeft = strMove.position().left;
+											k2 = strMoveLeft - (e.clientX - strWrap.offset().left);
+											$(this).on('mousemove', function (e) {
+												fMove = true;
+												
+												
+												
+												//drag
+												newX = e.clientX;
+												if(newX > oldX){
+													dir = 1
+												}else{
+													dir = -1
+												}
+												oldX = newX	
+												dragLeft = k2 + (e.clientX - strWrap.offset().left);
+												
+												if(dragLeft < -strMove.width() && dir < 0){
+													dragLeft = strWrap.width();
+													strMoveLeft = strMove.position().left;
+													k2 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+												if(dragLeft > strWrap.width() && dir > 0){
+													dragLeft = -strMove.width();
+													strMoveLeft = strMove.position().left;
+													k2 = strMoveLeft - (e.clientX - strWrap.offset().left);
+												}
+
+												strMove.stop(true).css({
+													left:dragLeft
+												});
+												
+											}).on('mouseup', function () {
+												if(p.inverthover){
+													strMove.trigger('mouseenter')
+												}
+												$(this).off('mousemove');
+												setTimeout(function () {                             
+													fMove = false
+												}, 50)
+											});
+											return false;
+										})
+										.on('click', function () {
+											if (fMove) {
+												return false
+											}
+										});
+									} else {
+										strWrap.addClass('no_drag');
+									};
+								}
+							} else {
+								strWrap.addClass('str_static');
+							}
+						};
+					};
+					if (p.direction == 'up') {
+						strWrap.addClass('str_vertical');
+						
+						if (strMove.height() > strWrap.height()) {
+							var topPos = -strMove.height();
+							if (p.circular) {
+								if (!p.xml) {
+									circCloneVert();									
+									topPos = -(strMove.height() + (strMove.height() - strWrap.height()));
+								}
+							}
+							if (p.xml) {
+								strMove.css({
+									top:strWrap.height()	
+								})
+							}
+							var
+							k2 = 0;
+							timeFunc = function () {
+								var
+								fullS = Math.abs(topPos),
+									time = (fullS / strWrap.data('scrollamount')) * 1000;
+								if (parseFloat(strMove.css('top')) != 0) {
+									fullS = (fullS + strWrap.height());
+									time = (fullS - (strWrap.height() - parseFloat(strMove.css('top')))) / strWrap.data('scrollamount') * 1000;
+								}
+								
+								return time;
+							};
+							var moveFunc = function () {
+								if (loop != 0) {
+									strMove.animate({
+										top: topPos
+									}, timeFunc(), 'linear', function () {
+										$(this).css({
+											top: strWrap.height()
+										});
+										if (loop == -1) {
+											setTimeout(moveFunc, p.scrolldelay);
+										} else {
+											loop--;
+											setTimeout(moveFunc, p.scrolldelay);
+										};
+									});
+								};
+							};
+							
+							strWrap.data({
+								moveF : moveFunc
+							})
+							
+							if(!p.inverthover){
+								moveFunc();
+							}
+							if (p.hoverstop) {
+								strWrap.on(enterEvent, function () {
+									$(this).addClass('str_active');
+									strMove.stop(true);
+								}).on(leaveEvent, function () {
+									$(this).removeClass('str_active');
+									$(this).off('mousemove');
+									moveFunc();
+								});
+
+								if (p.drag) {
+									strWrap.on('mousedown', function (e) {
+										if(p.inverthover){
+											strMove.stop(true);
+										}
+										
+										//drag
+										var dragTop;
+										var dir = 1;
+										var newY;
+										var oldY = e.clientY;
+										//drag
+										
+										
+										strMoveTop = strMove.position().top;
+										k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+										$(this).on('mousemove', function (e) {
+											
+											fMove = true;
+
+											//drag
+											newY = e.clientY;
+											if(newY > oldY){
+												dir = 1
+											}else{
+												if(newY < oldY){
+													dir = -1
+												}
+											}
+											oldY = newY	
+											dragTop = k2 + e.clientY - strWrap.offset().top;
+
+
+											if (!p.circular){
+												if(dragTop < -strMove.height() && dir < 0){
+													dragTop = strWrap.height();
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}
+												if(dragTop > strWrap.height() && dir > 0){
+													dragTop = -strMove.height();
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}	
+											}else{
+												if(dragTop < -strMove.height() && dir < 0){
+													dragTop = 0;
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}
+												if(dragTop > 0 && dir > 0){
+													dragTop = -strMove.height();
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}
+											}
+
+
+											strMove.stop(true).css({
+												top: dragTop
+											});
+											//drag
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+										}).on('mouseup', function () {
+											if(p.inverthover){
+												strMove.trigger('mouseenter')
+											}
+											$(this).off('mousemove');
+											setTimeout(function () {                             
+												fMove = false
+											}, 50)
+										});
+										return false;
+									})
+									.on('click', function () {
+										if (fMove) {
+											return false
+										}
+									});
+								} else {
+									strWrap.addClass('no_drag');
+								};
+							}
+						} else {
+							if (p.runshort) {
+								strMove.css({
+									top: strWrap.height()
+								});
+								var k2 = 0;
+								var timeFunc = function () {
+									
+									time = (strMove.height() + strMove.position().top) / strWrap.data('scrollamount') * 1000;
+									
+									return time;
+								};
+								var moveFunc = function () {
+									var topPos = -strMove.height();
+									strMove.animate({
+										top: topPos
+									}, timeFunc(), 'linear', function () {
+										$(this).css({
+											top: strWrap.height()
+										});
+										if (loop == -1) {
+											setTimeout(moveFunc, p.scrolldelay);
+										} else {
+											loop--;
+											setTimeout(moveFunc, p.scrolldelay);
+										};
+									});
+								};
+								strWrap.data({
+									moveF : moveFunc
+								})
+								if(!p.inverthover){
+									moveFunc();
+								}
+								if (p.hoverstop) {
+									strWrap.on(enterEvent, function () {
+										$(this).addClass('str_active');
+										strMove.stop(true);
+									}).on(leaveEvent, function () {
+										$(this).removeClass('str_active');
+										$(this).off('mousemove');
+										moveFunc();
+									});
+
+									if (p.drag) {
+										strWrap.on('mousedown', function (e) {
+											if(p.inverthover){
+												strMove.stop(true);
+											}
+											
+											//drag
+											var dragTop;
+											var dir = 1;
+											var newY;
+											var oldY = e.clientY;
+											//drag
+											
+											strMoveTop = strMove.position().top;
+											k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+											$(this).on('mousemove', function (e) {
+												
+												
+												fMove = true;
+
+												//drag
+												newY = e.clientY;
+												if(newY > oldY){
+													dir = 1
+												}else{
+													if(newY < oldY){
+														dir = -1
+													}
+												}
+												oldY = newY	
+												dragTop = k2 + e.clientY - strWrap.offset().top;
+												
+												if(dragTop < -strMove.height() && dir < 0){
+													dragTop = strWrap.height();
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}
+												if(dragTop > strWrap.height() && dir > 0){
+													dragTop = -strMove.height();
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}	
+												//*drag
+												
+												strMove.stop(true).css({
+													top: dragTop
+												});
+												
+												
+											}).on('mouseup', function () {
+												if(p.inverthover){
+													strMove.trigger('mouseenter')
+												}
+												$(this).off('mousemove');
+												setTimeout(function () {                             
+													fMove = false
+												}, 50)
+											});
+											return false;
+										})
+										.on('click', function () {
+											if (fMove) {
+												return false
+											}
+										});
+									} else {
+										strWrap.addClass('no_drag');
+									};
+								}
+							} else {
+								strWrap.addClass('str_static');
+							}
+						};
+					};
+					if (p.direction == 'down') {
+
+						strWrap.addClass('str_vertical').addClass('str_down');
+						strMove.css({
+							top: -strMove.height(),
+							bottom: 'auto'
+						})
+						if (strMove.height() > strWrap.height()) {
+							var topPos = strWrap.height();
+							if (p.circular) {
+								if (!p.xml) {
+									circCloneVert();									
+									topPos = strMove.height();
+								}
+							}
+							if (p.xml) {
+								strMove.css({
+									top:-strMove.height()
+								})
+							}
+							var
+							k2 = 0;
+							timeFunc = function () {
+								var
+								fullS = strWrap.height(), //крайняя точка
+									time = (fullS / strWrap.data('scrollamount')) * 1000; //время
+
+								if (parseFloat(strMove.css('top')) != 0) {
+									fullS = (strMove.height() + strWrap.height());
+									time = (fullS - (strMove.height() + parseFloat(strMove.css('top')))) / strWrap.data('scrollamount') * 1000;
+								}
+								return time;
+							};
+							var moveFunc = function () {
+
+								if (loop != 0) {
+									strMove.animate({
+										top: topPos
+									}, timeFunc(), 'linear', function () {
+										$(this).css({
+											top: -strMove.height()
+										});
+										if (loop == -1) {
+
+											setTimeout(moveFunc, p.scrolldelay);
+										} else {
+											loop--;
+											setTimeout(moveFunc, p.scrolldelay);
+										};
+									});
+								};
+							};
+							strWrap.data({
+								moveF : moveFunc
+							})
+							if(!p.inverthover){
+								moveFunc();
+							}
+							if (p.hoverstop) {
+								strWrap.on(enterEvent, function () {
+									$(this).addClass('str_active');
+									strMove.stop(true);
+								}).on(leaveEvent, function () {
+									$(this).removeClass('str_active');
+									$(this).off('mousemove');
+									moveFunc();
+								});
+
+								if (p.drag) {
+									strWrap.on('mousedown', function (e) {
+										if(p.inverthover){
+											strMove.stop(true);
+										}
+										
+										//drag
+										var dragTop;
+										var dir = 1;
+										var newY;
+										var oldY = e.clientY;
+										//drag
+										
+										
+										strMoveTop = strMove.position().top;
+										k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+										$(this).on('mousemove', function (e) {
+											
+											fMove = true;
+											
+											//drag
+											newY = e.clientY;
+											if(newY > oldY){
+												dir = 1
+											}else{
+												if(newY < oldY){
+													dir = -1
+												}
+											}
+											oldY = newY	
+											dragTop = k2 + e.clientY - strWrap.offset().top;
+
+
+											if (!p.circular){
+												if(dragTop < -strMove.height() && dir < 0){
+													dragTop = strWrap.height();
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}
+												if(dragTop > strWrap.height() && dir > 0){
+													dragTop = -strMove.height();
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}	
+											}else{
+												if(dragTop < -strMove.height() && dir < 0){
+													dragTop = 0;
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}
+												if(dragTop > 0 && dir > 0){
+													dragTop = -strMove.height();
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}
+											}
+
+
+											strMove.stop(true).css({
+												top: dragTop
+											});
+											//drag
+
+
+
+										}).on('mouseup', function () {
+											if(p.inverthover){
+												strMove.trigger('mouseenter')
+											}
+											$(this).off('mousemove');
+											setTimeout(function () {                             
+												fMove = false
+											}, 50)
+										});
+										return false;
+									})
+									.on('click', function () {
+										if (fMove) {
+											return false
+										}
+									});
+								} else {
+									strWrap.addClass('no_drag');
+								};
+							}
+						} else {
+							if (p.runshort) {
+								var k2 = 0;
+								var timeFunc = function () {
+									time = (strWrap.height() - strMove.position().top) / strWrap.data('scrollamount') * 1000;
+									return time;
+								};
+								var moveFunc = function () {
+									var topPos = strWrap.height();
+									strMove.animate({
+										top: topPos
+									}, timeFunc(), 'linear', function () {
+										$(this).css({
+											top: -strMove.height()
+										});
+										if (loop == -1) {
+											setTimeout(moveFunc, p.scrolldelay);
+										} else {
+											loop--;
+											setTimeout(moveFunc, p.scrolldelay);
+										};
+									});
+								};
+								strWrap.data({
+									moveF : moveFunc
+								})
+								if(!p.inverthover){
+									moveFunc();
+								}
+								if (p.hoverstop) {
+									strWrap.on(enterEvent, function () {
+										$(this).addClass('str_active');
+										strMove.stop(true);
+									}).on(leaveEvent, function () {
+										$(this).removeClass('str_active');
+										$(this).off('mousemove');
+										moveFunc();
+									});
+
+									if (p.drag) {
+										strWrap.on('mousedown', function (e) {
+											if(p.inverthover){
+												strMove.stop(true);
+											}
+											
+											//drag
+											var dragTop;
+											var dir = 1;
+											var newY;
+											var oldY = e.clientY;
+											//drag
+											
+											strMoveTop = strMove.position().top;
+											k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+											$(this).on('mousemove', function (e) {
+												fMove = true;
+
+												//drag
+												newY = e.clientY;
+												if(newY > oldY){
+													dir = 1
+												}else{
+													if(newY < oldY){
+														dir = -1
+													}
+												}
+												oldY = newY	
+												dragTop = k2 + e.clientY - strWrap.offset().top;
+	
+	
+												if(dragTop < -strMove.height() && dir < 0){
+													dragTop = strWrap.height();
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}
+												if(dragTop > strWrap.height() && dir > 0){
+													dragTop = -strMove.height();
+													strMoveTop = strMove.position().top;
+													k2 = strMoveTop - (e.clientY - strWrap.offset().top);
+												}	
+												//*drag
+												
+												strMove.stop(true).css({
+													top: dragTop
+												});
+												
+												
+												
+												
+												
+												
+												
+												
+											}).on('mouseup', function () {
+												if(p.inverthover){
+													strMove.trigger('mouseenter')
+												}
+												$(this).off('mousemove');
+												setTimeout(function () {                             
+													fMove = false
+												}, 50)
+											})
+											return false;
+										})
+										.on('click', function () {
+											if (fMove) {
+												return false
+											}
+										});
+									} else {
+										strWrap.addClass('no_drag');
+									};
+								}
+							} else {
+								strWrap.addClass('str_static');
+							}
+						};
+					};
+					
+					
+					
+					
+				}
+				if (p.xml) {
+					$.ajax({
+						url: p.xml,
+						dataType: "xml",
+						success: function (xml) {
+							var xmlTextEl = $(xml).find('text');
+							var xmlTextLength = xmlTextEl.length;
+							for(var i = 0; i < xmlTextLength; i++){
+								var xmlElActive = xmlTextEl.eq(i);
+								var xmlElContent = xmlElActive.text();
+								var xmlItemEl = $('<span>').text(xmlElContent).appendTo(strWrap);
+								
+								if(p.direction == 'left' || p.direction == 'right'){
+									xmlItemEl.css({display:'inline-block',textAlign:'right'});	
+									if(i > 0){
+										xmlItemEl.css({width:strWrap.width()+xmlItemEl.width()});	
+									}
+								}
+								if(p.direction == 'down' || p.direction == 'up'){
+									xmlItemEl.css({display:'block',textAlign:'left'});	
+										if(i > 0){
+											xmlItemEl.css({paddingTop:strWrap.height()});
+										}
+								}
+								
+							}
+							code();
+						}
+					});
+				} else {
+					code();
+				}
+				strWrap.data({
+					ini:code,
+					startheight: startHeight	
+				})
+				
+				
+				
+				
+			});
+		},
+		update: function () {
+			var el = $(this);
+			var str_origin = $('.str_origin',el);
+			var str_move_clone = $('.str_move_clone',el);
+			str_origin.stop(true);
+			str_move_clone.remove();
+			el.data('ini')();
+		},
+		destroy: function () {
+			
+			var el = $(this);
+			var elMove = $('.str_move',el);
+			var startHeight = el.data('startheight');
+			
+			$('.str_move_clone',el).remove();
+			el.off('mouseenter');
+			el.off('mousedown');
+			el.off('mouseup');
+			el.off('mouseleave');
+			el.off('mousemove');
+			el.removeClass('noStop').removeClass('str_vertical').removeClass('str_active').removeClass('no_drag').removeClass('str_static').removeClass('str_right').removeClass('str_down');
+			
+			var elStyle = el.attr('style'); 
+			if(elStyle){
+				var styleArr = elStyle.split(';');
+				for(var i=0; i < styleArr.length; i++){
+					var str = $.trim(styleArr[i]);
+					var tested =  str.search(/^height/g);
+					if(tested != -1){
+						styleArr[i] = '';	
+					}
+				}
+				var newArr = styleArr.join(';');
+				var newStyle =  newArr.replace(/;+/g,';')
+			
+				if(newStyle == ';'){
+					el.removeAttr('style');	
+				}else{
+					el.attr('style',newStyle);	
+				}
+				
+				if(startHeight){
+					el.css({height:startHeight})	
+				}
+			}
+			elMove.stop(true);
+
+			if(elMove.length){
+				var context = elMove.html();
+				elMove.remove();
+				el.html(context);
+			}
+	
+		},
+		pause: function(){	
+			var el = $(this);
+			var elMove = $('.str_move',el);
+			elMove.stop(true);
+		}, 
+		play: function(){
+			var el = $(this);
+			$(this).off('mousemove');
+			el.data('moveF')();	
+		}
+		
+	};
+	$.fn.liMarquee = function (method) {
+		if (methods[method]) {
+			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+		} else if (typeof method === 'object' || !method) {
+			return methods.init.apply(this, arguments);
+		} else {
+			$.error('Метод ' + method + ' в jQuery.liMarquee не существует');
+		}
+	};
+})(jQuery);
