@@ -251,7 +251,7 @@
                         appAddr.href = "https://lnk0.com/VxVhQ5";
                         appAddr.href = "https://lnk0.com/RlgIB9";
             } else {
-                appAddr.href = 'http://apk.51gjj.com/jk/51jk_' + place_name + '.apk';
+                appAddr.href = 'http://apk.51gjj.com/jk/51gjj_' + place_name + '.apk';
             }
         }
 
