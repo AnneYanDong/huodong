@@ -41,11 +41,30 @@
                     <div class="climb climbing"></div>
                     <div class="letter lettering"></div>
                     <div class="gold scrolling"><img data-src="<?php echo $imgUrl; ?>dynamic_gold.png" alt="btn"></div>
+                    <div class="tp-analyzing hide"></div>
+                    <img class="sweat hide" data-src="<?php echo $imgUrl; ?>page1_tp.png" alt="tp">
                 </div>
             </div>
            <div class="page page2">
                 <div class="content">
-                    222
+                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                    <div class="portrait"><img data-src="<?php echo $imgUrl; ?>page2_portrait6.png" alt="portrait1"></div>
+                    <div class="circle"></div>
+                    <div class="detail1">
+                        <span>孙俪的公积金在上海市排名为</span>
+                        <span>3475</span>
+                        <span>名</span>
+                    </div>
+                    <div class="gif-container">
+                        <img class="pg" data-src="<?php echo $imgUrl; ?>page2_pg.png" alt="pg">
+                        <div class="gif"></div>
+                    </div>
+                    <div class="detail2">
+                        <span>超过</span>
+                        <span>75.4%</span>
+                        <span>的上海人</span>
+                    </div>
+                    <div class="next"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
             <div class="page page3">

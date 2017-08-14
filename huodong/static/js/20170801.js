@@ -427,6 +427,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             for (var i = 0; i < len; i++) {
                 // 这里是原生js创建的元素，所以在该元素的下面添加子元素的时候就用原生js的方法appendChild()
                 var oLi = document.createElement("li");
+                /*用jquery创建元素是这样的$("<li></li>")*/
                 var oImg = document.createElement("img");
                 var oSpan = document.createElement("span");
                 oLi.appendChild(oImg);

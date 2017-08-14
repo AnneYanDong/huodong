@@ -11,16 +11,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
     var local = ct.Tool.local();
 
     ct.Tool.buryPoint();
-    var loan = [];
-    var total = [];
-    var loanTotal = [];
-    var time = null;
-    var loanTime = [];
-    var release = null;
-    var loanRelease = [];
-    var focus = null;
-    var loanFocus = [];
-    var data;
     var run = {
         iconName: [],
 
@@ -108,17 +98,32 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     _this.changeState(now); //把当前页面在改变之前塞入浏览器历史
                 },
                 afterChange: function(e) {
+                    var timer = null;
+                    clearTimeout(timer);
                     _this.fullPageObj.stop();
                     var now = "page" + (e.cur + 1);
                     if (now == "page1") {
-                        _this.BuryRequest(now);
-                       
+                        _this.BuryRequest(now);//页面埋点更换
+                        
+                        $(".page1").on("click",".img-btn",function(){
+                            oM.show();
+                            $(".page1 .tp-analyzing").show();
+                            $(".page1 .sweat").show();
+                            timer = setTimeout(function(){
+                                // oM.hide();
+                                // $(".page1 .tp-analyzing").hide();
+                                // $(".page1 .sweat").hide();
+                                // _this.fullPageObj.moveTo(1,true);
+                            },3000);
+                        })
                         _this.respondState(now);
                     }
 
                     if (now == "page2") {
-                        _this.BuryRequest(now);
-                      
+                        _this.BuryRequest(now); //页面埋点更换
+
+
+
                         _this.respondState(now, 0, true,function(){
                             console.log("返回第一页");
                         });
