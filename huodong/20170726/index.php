@@ -40,7 +40,7 @@
             <img class="main-title" data-src="<?php echo $imgUrl?>main_title_v2.png">
             <div class="act-time">活动时间：<span class="time-day">8.15<div class="time-hour"><div class="time-second">00:00</div></div><span>-</span>8.25</span><div class="time-hour"><div class="time-second">23:59</div></div></div>
             <img class="add-interest" data-src="<?php echo $imgUrl?>interest_v2.png">
-            <a class="buying" bp="立即抢购" title="立即抢购" href="/business/home/Invest/h5/account/index.php?page=1"></a>
+            <a class="buying" bp="立即抢购" title="立即抢购" href="javascript:history.go(-1);"></a>
             <div class="list-wrap">
                 <img class="list-bg" data-src="<?php echo $imgUrl?>list_bg.png">
                 <div class="number num-1"><img data-src="<?php echo $imgUrl?>num_1_v2.png"><span class="phone">1565555555</span><span class="invest-money"></span></div>
@@ -51,7 +51,7 @@
                 <!--<div class="tip">*排名每小时更新一次*</div>-->
             </div>
             <img class="invest-btn" data-src="<?php echo $imgUrl?>go_btn.png">
-            <a class="buying-bottom" bp="去投资，争风云榜位" title="去投资，争风云榜位" href="/business/home/Invest/h5/account/index.php?page=1"></a>
+            <a class="buying-bottom" bp="去投资，争风云榜位" title="去投资，争风云榜位" href="javascript:history.go(-1);"></a>
         </div>
     </div>
 </div>
