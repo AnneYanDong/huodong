@@ -227,6 +227,28 @@ define(["jquery"], function($) {
         })
     }
 
+    //埋点改版
+    Tool.buryPoint_v2 = function (s, url) {
+        var _this = this;
+        $("body").on("click", "[bp]", function () {
+            var event = $(this).attr("bp");
+            var url = _this.url(url || "/act/request/activity");
+            Ajax.do({
+                url: url,
+                data: {
+                    tag: event,
+                    source: s
+                },
+                success: function (d) {
+                    console.debug("埋点记录成功：" + event)
+                },
+                fail: function () {
+                    console.debug("埋点记录失败：" + event)
+                }
+            })
+        })
+    }
+
     // 获取地址栏某个参数(查询字符串)
     Tool.getUrlData = function(search) {
         var _this = this;
