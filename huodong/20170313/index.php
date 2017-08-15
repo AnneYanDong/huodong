@@ -1,17 +1,11 @@
 <?php 
     $title = "信用卡定制"; // 配置标题的，必须
-    include "../public/v1/header.php";
-?>
-<?php
-    $actDate = "20170313"; // 配置图片的，必须
+    include "../public/v2/header.php";
+    $proName = "20170313"; // 配置文件的项目名
+    $version = "v2";
     $obj = new Resource; // 实例化获取资源类
-    $res = $obj->getResStr($actDate); // 获取指定的活动资源，返回数组，array("css"=> "..", "js"=>"。。")
-    $origin = $_SERVER['HTTP_HOST'];
-    if (preg_match('/b\.jianbing\.com/', $origin) || preg_match('/kaifa\.jianbing\.com/', $origin)) {
-        $imgUrl = '//r.51gjj.com/act/release/img/' . $actDate . '_';
-    } else {
-        $imgUrl = '../static/img/' . $actDate . '_';
-    };
+    $res = $obj->getResStr($proName,$version); // 获取指定的活动资源，返回数组，array("css"=> "..", "js"=>"。。")
+    include "../public/v2/img_src.php";    
 ?>
     <link rel="stylesheet" href="<?php echo $res['css'] ?>">
     <style>
@@ -19,14 +13,13 @@
         .loading-bg-color {
             background: #0d0d0d;
         }
-
         .loading-ele-color:after, .loading-ele-color:before {
             background: #0d0d0d !important;
         }
     </style>
     <script>
         // 埋点后缀用
-        var projectName = "<?php echo $actDate ?>";
+        var projectName = "<?php echo $proName ?>";
     </script>
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     </head>
@@ -88,12 +81,10 @@
             </div>
             <div class="page page4">
                 <div class="content">
-
                 </div>
             </div>
             <div class="page page5">
                 <div class="content">
-
                 </div>
             </div>
         </div>

@@ -1,1 +1,315 @@
-!function(e){function t(e){r.debug&&console.log("touchmove()"),e.preventDefault()}function o(e,t,o){return r.debug&&console.log("fix()"),0>e?o?t-1:0:e>=t?o?0:t-1:e}function n(e,t,o){r.debug&&console.log("move()");var n="0px",i="0px";"v"===t?i=o+"px":n=o+"px",e.style.cssText+=";-webkit-transform : translate3d("+n+", "+i+", 0px);transform : translate3d("+n+", "+i+", 0px);"}function i(e){console.log("init()");var t=e?e:{};for(var o in r)t.hasOwnProperty(o)||(t[o]=r[o]);var n=this;n.curIndex=-1,n.o=t,n.startY=0,n.movingFlag=!1,n.ele.classList.add("fullPage-wp"),n.parentEle=n.ele.parentNode;var i=t.page;0==i.indexOf(".")&&(i=i.substring(1,i.length)),n.pageEles=n.ele.getElementsByClassName(i);for(var s=0;s<n.pageEles.length;s++){var a=n.pageEles[s];a.classList.add("fullPage-page"),a.classList.add("fullPage-dir-"+t.dir)}n.pagesLength=n.pageEles.length,n.update(),n.initEvent(),n.start()}function s(e,t){t.debug&&console.log("Fullpage()"),this.ele=e,i.call(this,t)}var r={page:".page",start:0,duration:500,loop:!1,drag:!1,dir:"v",der:.1,change:function(){},beforeChange:function(){},afterChange:function(){},orientationchange:function(){},debug:!1};s.prototype.update=function(){if(this.o.debug&&console.log("update()"),"h"===this.o.dir){this.width=this.parentEle.offsetWidth;for(var e=0;e<this.pageEles.length;e++){var t=this.pageEles[e];t.style.width=this.width+"px"}this.ele.style.width=this.width*this.pagesLength+"px"}this.height=this.parentEle.offsetHeight;for(var e=0;e<this.pageEles.length;e++){var t=this.pageEles[e];t.style.height=this.height+"px"}this.moveTo(this.curIndex<0?this.o.start:this.curIndex)},s.prototype.initEvent=function(){this.o.debug&&console.log("initEvent()");var t=this,o=t.ele;o.addEventListener("touchstart",function(e){return t.status?t.movingFlag?0:(t.startX=e.targetTouches[0].pageX,t.startY=e.targetTouches[0].pageY,void t.o.debug):1}),o.addEventListener("touchend",function(e){if(!t.status)return 1;if(t.movingFlag)return 0;var o="v"===t.o.dir?(e.changedTouches[0].pageY-t.startY)/t.height:(e.changedTouches[0].pageX-t.startX)/t.width;t.o.debug;var n=o>t.o.der||o<-t.o.der?o>0?-1:1:0;t.moveTo(t.curIndex+n,!0)}),t.o.drag&&o.addEventListener("touchmove",function(e){if(!t.status)return 1;if(t.movingFlag)return t.startX=e.targetTouches[0].pageX,t.startY=e.targetTouches[0].pageY,0;var i=e.changedTouches[0].pageY-t.startY;(0==t.curIndex&&i>0||t.curIndex===t.pagesLength-1&&0>i)&&(i/=2);var s=e.changedTouches[0].pageX-t.startX;(0==t.curIndex&&s>0||t.curIndex===t.pagesLength-1&&0>s)&&(s/=2);var r="v"===t.o.dir?-t.curIndex*t.height+i:-t.curIndex*t.width+s;o.classList.remove("anim"),n(o,t.o.dir,r)}),e.addEventListener("orientationchange",function(){(180===e.orientation||0===e.orientation)&&t.o.orientationchange("portrait"),(90===e.orientation||-90===e.orientation)&&t.o.orientationchange("landscape")},!1),e.addEventListener("resize",function(){t.update()},!1)},s.prototype.holdTouch=function(){this.o.debug,document.addEventListener("touchmove",t)},s.prototype.unholdTouch=function(){this.o.debug,document.removeEventListener("touchmove",t)},s.prototype.start=function(){this.o.debug&&console.log("start()"),this.status=1,this.holdTouch()},s.prototype.stop=function(){this.o.debug&&console.log("stop()"),this.status=0,this.unholdTouch()},s.prototype.getCurIndex=function(){return this.o.debug&&console.log("getCurIndex()"),this.curIndex},s.prototype.moveTo=function(t,i){this.o.debug&&console.log("moveTo()");var s=this,r=s.ele,a=s.curIndex;if(t=o(t,s.pagesLength,s.o.loop),i?r.classList.add("anim"):r.classList.remove("anim"),t!==a){var g=s.o.beforeChange({next:t,cur:a});if(g===!1)return 1}s.movingFlag=!0,s.curIndex=t,n(r,s.o.dir,-t*("v"===s.o.dir?s.height:s.width)),t!==a&&s.o.change({prev:a,cur:t}),e.setTimeout(function(){if(s.movingFlag=!1,t!==a){s.o.afterChange({prev:a,cur:t});for(var e=0;e<s.pageEles.length;e++){var o=s.pageEles[e];e===t?o.classList.add("cur"):o.classList.remove("cur")}}},s.o.duration)},s.prototype.movePrev=function(e){this.o.debug&&console.log("movePrev()"),this.moveTo(this.curIndex-1,e)},s.prototype.moveNext=function(e){this.o.debug&&console.log("moveNext()"),this.moveTo(this.curIndex+1,e)},Element.prototype.fullpage=function(e){return new s(this,e)}}(window);
+/*!
+ * zepto.fullpage.js v0.5.0 (https://github.com/yanhaijing/zepto.fullpage)
+ * API https://github.com/yanhaijing/zepto.fullpage/blob/master/doc/api.md
+ * Copyright 2014 yanhaijing. All Rights Reserved
+ * Licensed under MIT (https://github.com/yanhaijing/zepto.fullpage/blob/master/LICENSE)
+ */
+(function(window) {
+    var d = {
+        page: '.page',
+        start: 0,
+        duration: 500,
+        loop: false,
+        drag: false,
+        dir: 'v',
+        der: 0.1,
+        change: function(data) {},
+        beforeChange: function(data) {},
+        afterChange: function(data) {},
+        orientationchange: function(orientation) {},
+        debug: false
+    };
+
+    function touchmove(e) {
+        if (d.debug) {
+            console.log("touchmove()");
+        }
+        e.preventDefault();
+    }
+
+    function fix(cur, pagesLength, loop) {
+
+        if (d.debug) {
+            console.log("fix()");
+        }
+        if (cur < 0) {
+            return !!loop ? pagesLength - 1 : 0;
+        }
+
+        if (cur >= pagesLength) {
+            return !!loop ? 0 : pagesLength - 1;
+        }
+
+        return cur;
+    }
+
+    function move(ele, dir, dist) {
+        if (d.debug) {
+            console.log("move()");
+        }
+        var xPx = '0px',
+            yPx = '0px';
+        if (dir === 'v') yPx = dist + 'px';
+        else xPx = dist + "px";
+        ele.style.cssText += (';-webkit-transform : translate3d(' + xPx + ', ' + yPx + ', 0px);' +
+            'transform : translate3d(' + xPx + ', ' + yPx + ', 0px);');
+    }
+
+    function init(option) {
+        if (true) {
+            console.log("init()");
+        }
+        var o = option ? option : {};
+        for (var key in d) {
+            if (!o.hasOwnProperty(key)) {
+                o[key] = d[key];
+            }
+        }
+
+        var that = this;
+        that.curIndex = -1;
+        that.o = o;
+
+        that.startY = 0;
+        that.movingFlag = false;
+
+        that.ele.classList.add('fullPage-wp');
+        that.parentEle = that.ele.parentNode;
+
+        var query = o.page;
+        if (query.indexOf(".") == 0) {
+            query = query.substring(1, query.length);
+        }
+        that.pageEles = that.ele.getElementsByClassName(query);
+        for (var i = 0; i < that.pageEles.length; i++) {
+            var pageEle = that.pageEles[i];
+            pageEle.classList.add('fullPage-page');
+            pageEle.classList.add('fullPage-dir-' + o.dir);
+        }
+
+        that.pagesLength = that.pageEles.length;
+        that.update();
+        that.initEvent();
+        that.start();
+    }
+
+    function Fullpage(ele, option) {
+        if (option.debug) {
+            console.log("Fullpage()");
+        }
+        this.ele = ele;
+        init.call(this, option);
+    }
+    Fullpage.prototype.update = function() {
+        if (this.o.debug) {
+            console.log("update()");
+        }
+        if (this.o.dir === 'h') {
+            this.width = this.parentEle.offsetWidth;
+            for (var i = 0; i < this.pageEles.length; i++) {
+                var pageEle = this.pageEles[i];
+                pageEle.style.width = this.width + 'px';
+            }
+            this.ele.style.width = (this.width * this.pagesLength) + 'px';
+        }
+
+        this.height = this.parentEle.offsetHeight;
+        for (var i = 0; i < this.pageEles.length; i++) {
+            var pageEle = this.pageEles[i];
+            pageEle.style.height = this.height + 'px';
+        }
+
+        this.moveTo(this.curIndex < 0 ? this.o.start : this.curIndex);
+    };
+    Fullpage.prototype.initEvent = function() {
+        if (this.o.debug) {
+            console.log("initEvent()");
+        }
+        var that = this;
+        var ele = that.ele;
+
+        ele.addEventListener('touchstart', function(e) {
+            if (!that.status) {
+                return 1;
+            }
+            //e.preventDefault();
+            if (that.movingFlag) {
+                return 0;
+            }
+
+            that.startX = e.targetTouches[0].pageX;
+            that.startY = e.targetTouches[0].pageY;
+            if (that.o.debug) {
+                // console.log("begin: " + that.startY);
+            }
+        });
+        ele.addEventListener('touchend', function(e) {
+            if (!that.status) {
+                return 1;
+            }
+            //e.preventDefault();
+            if (that.movingFlag) {
+                return 0;
+            }
+
+            var sub = that.o.dir === 'v' ? (e.changedTouches[0].pageY - that.startY) / that.height : (e.changedTouches[0].pageX - that.startX) / that.width;
+            if (that.o.debug) {
+                // console.log(sub);
+            }
+            var der = (sub > that.o.der || sub < -that.o.der) ? sub > 0 ? -1 : 1 : 0;
+
+            that.moveTo(that.curIndex + der, true);
+        });
+        if (that.o.drag) {
+            ele.addEventListener('touchmove', function(e) {
+                if (!that.status) {
+                    return 1;
+                }
+                //e.preventDefault();
+                if (that.movingFlag) {
+                    that.startX = e.targetTouches[0].pageX;
+                    that.startY = e.targetTouches[0].pageY;
+                    return 0;
+                }
+
+                var y = e.changedTouches[0].pageY - that.startY;
+                if ((that.curIndex == 0 && y > 0) || (that.curIndex === that.pagesLength - 1 && y < 0)) y /= 2;
+                var x = e.changedTouches[0].pageX - that.startX;
+                if ((that.curIndex == 0 && x > 0) || (that.curIndex === that.pagesLength - 1 && x < 0)) x /= 2;
+                var dist = (that.o.dir === 'v' ? (-that.curIndex * that.height + y) : (-that.curIndex * that.width + x));
+                ele.classList.remove('anim');
+                move(ele, that.o.dir, dist);
+            });
+        }
+
+        // 翻转屏幕提示
+        // ==============================
+        window.addEventListener('orientationchange', function() {
+            if (window.orientation === 180 || window.orientation === 0) {
+                that.o.orientationchange('portrait');
+            }
+            if (window.orientation === 90 || window.orientation === -90) {
+                that.o.orientationchange('landscape');
+            }
+        }, false);
+
+        window.addEventListener('resize', function() {
+            that.update();
+        }, false);
+    };
+    Fullpage.prototype.holdTouch = function() {
+        if (this.o.debug) {
+            // console.log("holdTouch()");
+        }
+
+        document.addEventListener('touchmove', touchmove);
+    };
+    Fullpage.prototype.unholdTouch = function() {
+        if (this.o.debug) {
+            // console.log("unholdTouch()");
+        }
+
+        document.removeEventListener('touchmove', touchmove);
+    };
+    Fullpage.prototype.start = function() {
+        if (this.o.debug) {
+            console.log("start()");
+        }
+
+        this.status = 1;
+        this.holdTouch();
+    };
+    Fullpage.prototype.stop = function() {
+        if (this.o.debug) {
+            console.log("stop()");
+        }
+
+        this.status = 0;
+        this.unholdTouch();
+    };
+    Fullpage.prototype.getCurIndex = function() {
+        if (this.o.debug) {
+            console.log("getCurIndex()");
+        }
+
+        return this.curIndex;
+    };
+    Fullpage.prototype.moveTo = function(next, anim) {
+        if (this.o.debug) {
+            console.log("moveTo()");
+        }
+
+        var that = this;
+        var ele = that.ele;
+        var cur = that.curIndex;
+        next = fix(next, that.pagesLength, that.o.loop);
+
+        if (anim) {
+            ele.classList.add('anim');
+        } else {
+            ele.classList.remove('anim');
+        }
+
+        if (next !== cur) {
+            var flag = that.o.beforeChange({
+                next: next,
+                cur: cur
+            });
+            // beforeChange 显示返回false 可阻止滚屏的发生
+            if (flag === false) {
+                return 1;
+            }
+        }
+
+        that.movingFlag = true;
+        that.curIndex = next;
+        move(ele, that.o.dir, -next * (that.o.dir === 'v' ? that.height : that.width));
+
+        if (next !== cur) {
+            that.o.change({
+                prev: cur,
+                cur: next
+            });
+        }
+
+        window.setTimeout(function() {
+            that.movingFlag = false;
+            if (next !== cur) {
+                that.o.afterChange({
+                    prev: cur,
+                    cur: next
+                });
+                for (var i = 0; i < that.pageEles.length; i++) {
+                    var pageEle = that.pageEles[i];
+                    if (i === next) {
+                        pageEle.classList.add("cur");
+                    } else {
+                        pageEle.classList.remove("cur");
+                    }
+                }
+            }
+        }, that.o.duration);
+    };
+    Fullpage.prototype.movePrev = function(anim) {
+        if (this.o.debug) {
+            console.log("movePrev()");
+        }
+
+        this.moveTo(this.curIndex - 1, anim);
+    };
+    Fullpage.prototype.moveNext = function(anim) {
+        if (this.o.debug) {
+            console.log("moveNext()");
+        }
+
+        this.moveTo(this.curIndex + 1, anim);
+    };
+
+    Element.prototype.fullpage = function(option) {
+        // if (debug) {
+        //     d.debug = true;
+        // }
+
+        return new Fullpage(this, option);
+    };
+}(window));

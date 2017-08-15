@@ -126,7 +126,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             window.location.href = "/hs/appgjj/login?return_url=/app/invest/";
                         }
                     } else {
-                        oP.show(d.resMsg || 暂无数据);
+                        oP.show(d.resMsg || "暂无数据");
                     }
                 }
             })
