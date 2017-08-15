@@ -7,6 +7,7 @@
 }
 .page {
   background: url("../img/20170807_page_bg.png") no-repeat center;
+  // background: url("http://r.51gjj.com/act/release/img/20170807_page_bg.png") no-repeat center;
   background-size: cover;
 }
 .page1 .title{
@@ -325,6 +326,77 @@ img.quickmark {
 .page4 .detail6 > div {
   padding-bottom: .1rem;
 }
+.page5 .people1 {
+  width: 4.37rem;
+  height: .98rem;
+  position: absolute;
+  top: 1.98rem;
+  left: 1.53rem;
+}
+.page5 .people2 {
+  width: 4.37rem;
+  height: .98rem;
+  position: absolute;
+  top: 8.31rem;
+  left: 1.53rem;
+}
+.page5 .detail10 {
+  position: absolute;
+  top: 3.24rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .38rem;
+  color: #1e1b68;
+  text-align: center;
+  font-weight: bold;
+}
+.page5 .detail10 > div:nth-child(2) {
+  width: 3.42rem;
+  height: .51rem;
+  line-height: .51rem;
+  padding-bottom: .3rem;
+}
+.page5 .detail10 > div:nth-child(2) span:nth-child(2) {
+  font-size: .60rem;
+  color: #e33d3b;
+}
+.page5 .detail10 > div,.page5 .detail11 > div {
+  padding-bottom: .2rem;
+}
+.page5 .star-gif {
+  background: url("../img/star_sprites.png");
+  background-size: 3.05rem .25rem;
+  width: .76rem;
+  height: .25rem;
+  position: absolute;
+  top: 5.3rem;
+  left: 3.38rem;
+  -moz-animation: star 2s step-end infinite;
+  -webkit-animation: star 2s step-end infinite;
+  animation: star 2s step-end infinite;
+}
+.page5 .people-gif {
+  background: url("../img/people_sprites2.png");
+  background-size: 10.86rem 1.23rem;
+  width: 5.43rem;
+  height: 1.23rem;
+  position: absolute;
+  top: 5.52rem;
+  left: 1.02rem;
+  -moz-animation: changeface 1s step-end infinite;
+  -webkit-animation: changeface 1s step-end infinite;
+  animation: changeface 1s step-end infinite;
+}
+.page5 .detail11 {
+  position: absolute;
+  top: 7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .38rem;
+  color: #1e1b68;
+  text-align: center;
+  font-weight: bold;
+}
 .page6 .detail7 {
   position: absolute;
   top: .83rem;
@@ -411,6 +483,34 @@ img.quickmark {
   -moz-transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
+}
+.page8 .share {
+  width: 2.47rem;
+  height: 1.37rem;
+  position: absolute;
+  top: .24rem;
+  right: .72rem;
+}
+.page8 .quickmark {
+  width: 2.68rem;
+  height: 2.70rem;
+  position: absolute;
+  top: 2.33rem;
+  left: 2.43rem;
+}
+.page8 .detail {
+  width: 6.04rem;
+  height: 2.24rem;
+  position: absolute;
+  top: 5.45rem;
+  left: .72rem;
+}
+.page8 .img-btn {
+  width: 4.62rem;
+  height: 1.16rem;
+  position: absolute;
+  top: 8.32rem;
+  left: 1.45rem;
 }
 @keyframes climbing {
   to {
@@ -746,5 +846,61 @@ img.quickmark {
     -moz-transform: rotate(-5deg);
     -webkit-transform: rotate(-5deg);
     transform: rotate(-5deg);
+  }
+}
+@keyframes changeface {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: -5.43rem 0;
+  }
+  100% {
+    background-position: -10.86rem 0;
+  }
+}
+@-webkit-keyframes changeface {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: -5.43rem 0;
+  }
+  100% {
+    background-position: -10.86rem 0;
+  }
+}
+@keyframes star {
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: -.76rem 0;
+  }
+  50% {
+    background-position: -1.52rem 0;
+  }
+  75% {
+    background-position: -2.28rem 0;
+  }
+  100% {
+    background-position: -3.05rem 0;
+  }
+}
+@-webkit-keyframes star {
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: -.76rem 0;
+  }
+  50% {
+    background-position: -1.52rem 0;
+  }
+  75% {
+    background-position: -2.28rem 0;
+  }
+  100% {
+    background-position: -3.05rem 0;
   }
 }
