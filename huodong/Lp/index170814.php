@@ -150,7 +150,7 @@
         <div class="box">
             <div class="section section-one">
                 <div class="banner-part-one">
-                    <img class="bg" src="//r.51gjj.com/act/images/downPage/20161207_2bg1.jpg" alt="bg">
+                    <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170814_bg1.jpg" alt="bg">
                 </div>
                 <div class="user-info">
                     <div class="phone input-wrap">
@@ -168,7 +168,7 @@
                     </div> -->
                 </div>
                 <div class="banner-part-two">
-                    <img class="bg" src="//r.51gjj.com/act/images/downPage/20161207_2bg1_2.jpg" alt="bg">
+                    <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170814_bg2.png" alt="bg">
                 </div>
                 <div class="cnzz">
                     浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金借款
@@ -179,7 +179,7 @@
                 </div>
             </div>
             <div class="section section-two" style="background: #fff">
-                <img src="//r.51gjj.com/act/images/downPage/20161207_2bg2.jpg" alt="down_banner">
+                <img src="https://r.51gjj.com/act/images/shichang/20170814_bg3.jpg" alt="down_banner">
                 <div class="bottom-float">
                     <a class="bottom-down-app" href="javascript:;" id="appAddr"></a>
                 </div>
