@@ -41,8 +41,6 @@
                     <div class="climb climbing"></div>
                     <div class="letter lettering"></div>
                     <div class="gold scrolling"><img data-src="<?php echo $imgUrl; ?>dynamic_gold.png" alt="btn"></div>
-                    <div class="tp-analyzing hide"></div>
-                    <img class="sweat hide" data-src="<?php echo $imgUrl; ?>page1_tp.png" alt="tp">
                 </div>
             </div>
            <div class="page page2">
@@ -69,21 +67,80 @@
             </div>
             <div class="page page3">
                <div class="content">
-                   3333
+                   <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                   <div class="detail3">
+                       <div>
+                            <span>从</span><span class="font-style">2010</span><span class="font-color">年</span><span class="font-style">5</span><span class="font-color">月</span>
+                       </div>
+                       <div><span>孙俪第一次缴纳公积金</span></div>
+                       <div><span>至今已经</span><span class="font-style">5</span><span>年了</span></div>
+                   </div>
+                   <div class="detail4">
+                       <div>
+                           <span>那一年,孙俪在</span><span class="font-color">北京</span>
+                       </div>
+                       <div><span>多少人来人去你还记不记得</span></div>
+                   </div>
+                   <img class="page3-pg" data-src="<?php echo $imgUrl; ?>page3_pg.png" alt="pg">
+                    <div class="thinking-gif"></div>
+                   <div class="next"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                </div>
             </div>
             <div class="page page4">
                 <div class="content">
-                    444
+                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                    <div class="detail5">
+                        <div>
+                            <div><span>身为一枚</span></div>
+                            <div><span>金光闪闪的</span><span class="font-style">80</span>后</div>
+                        </div>
+                        <div>
+                            <div><span>孙俪</span></div>
+                            <div><span>同比</span><span class="font-style">56.2%</span><span>的女性</span></div>
+                            <div><span>更“有财”</span></div>
+                        </div>
+                    </div>
+                    <img class="loading" data-src="<?php echo $imgUrl; ?>page4_loading.png" alt="loading">
+                    <img class="page4-pg" data-src="<?php echo $imgUrl; ?>page4_pg.png" alt="pg">
+                    <div class="detail6">
+                        <div><span>另外，实力也远超了</span></div>
+                        <div><span class="font-style">42.5%</span><span>的男性</span></div>
+                    </div>
+                    <div class="next"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
             <div class="page page5">
                 <div class="content">
-                    5555
+                    待定。。。
+                </div>
+            </div>
+            <div class="page page6">
+                <div class="content">
+                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                    <div class="detail7">
+                        <div class="detail7-1">
+                            <div><span>说到买房...</span></div>
+                            <div><span>孙俪的公积金可以</span></div>
+                            <div>在<span>上海</span>买半个<span>卫生间</span></div>
+                            <div>在<span>厦门</span>买一个<span>带阳台的主卧</span></div>
+                            <div>...</div>
+                            <div>在<span>大兴安岭...</span></div>
+                        </div>
+                        <div class="detail7-2">
+                            <div>买啥单元楼啊！</div>
+                            <div>白桦林开道别墅来两栋！</div>
+                            <div>现金全款啊！</div>
+                        </div>
+                    </div>
+                    <div class="next"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
+                </div>
+            </div>
+            <div class="page page7">
+                <div class="content">
+                    待定。。。
                 </div>
             </div>
         </div>
-        <div class="mask hide"></div>
     </div>
     <script>
         var indexData = {
@@ -91,28 +148,13 @@
         };
     </script>
 
-<!-- 贷款信息开始 -->
-    <script type="text/template" id="tpl-loan-name">
-        <span>${name}</span>
-    </script>
-    <script type="text/template" id="tpl-loan-match">
-        匹配度&nbsp;${match_rate}%<span></span>
-    </script>
-    <script type="text/template" id="tpl-loan-amount">
-        额度&nbsp;&nbsp;<span>${max_amount}</span>
-    </script>
-    <script type="text/template" id="tpl-day-rate">
-        日费率&nbsp;<span>${day_rate}</span>
-    </script>
-    <script type="text/template" id="tpl-release-time">
-        放款时间&nbsp;<span>${loan_time}</span>
-    </script>
-<!-- 贷款信息结束 -->
-
     <script>
         var indexFn = function (data) {
             return Number(data) + 1;
         }
     </script>
+
+    <div class="tp-analyzing hide"></div>
+    <img class="sweat hide" data-src="<?php echo $imgUrl; ?>page1_tp.png" alt="tp">
     </body>
 </html>

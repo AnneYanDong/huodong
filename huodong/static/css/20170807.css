@@ -72,7 +72,7 @@
   top: 8.59rem;
   animation: move 4s forwards step-end infinite;
 }
-.page1 .tp-analyzing {
+.tp-analyzing {
   background: url("../img/letter_tp_sprites.png");
   position: relative;
   top: 3.08rem;
@@ -81,15 +81,17 @@
   width: 1.74rem;
   height: 1.65rem;
   animation: analyzing 1s step-end infinite;
+  z-index: 99;
 }
-.page1 .sweat{
+.sweat{
   width: 2.59rem;
   height: 2.12rem;
   position: absolute;
   top: 4.06rem;
   left: 2.35rem;
+  z-index: 99;
 }
-.page2 img.quickmark {
+img.quickmark {
   width: 1.15rem;
   height: 1.15rem;
   position: absolute;
@@ -187,7 +189,7 @@
   color: red;
   margin: 0 -.2rem;
 }
-.page2 .next {
+.next {
   width: .92rem;
   height: .47rem;
   position: absolute;
@@ -196,9 +198,104 @@
   padding-top: .4rem;
   animation: hint 1s infinite;
 }
-.page2 .next img {
+.next img {
   width: .92rem;
   height: .47rem;
+}
+.page3 .page3-pg {
+  width: 6.66rem;
+  height: 4.76rem;
+  position: absolute;
+  top: 5.51rem;
+  left: .45rem;
+}
+.page3 .detail3 {
+  text-align: left;
+  font-size: .38rem;
+  font-weight: bold;
+  color: #1e1b68;
+  position: absolute;
+  top: 1.25rem;
+  left: .45rem;
+}
+.font-style {
+  color: #e33d3b;
+  font-size: .60rem;
+  font-weight: bold;
+}
+.font-color {
+  color: #e33d3b;
+  font-weight: bold;
+}
+.page3 .detail4 {
+  font-size: .38rem;
+  font-weight: bold;
+  text-align: left;
+  color: #1e1b68;
+  position: absolute;
+  top: 3.50rem;
+  left: .45rem;
+}
+.page3 .detail3 div,.page3 .detail4 div{
+  padding-bottom: .1rem;
+}
+.page3 .thinking {
+  width: 1.18rem;
+  height: 1.19rem;
+  position: absolute;
+  top: 6.39rem;
+  left: 1.61rem;
+}
+.thinking-gif {
+  background: url("../img/think_sprites1.png");
+  width: 1.18rem;
+  height: 1.18rem;
+  background-size: 4.70rem 1.19rem;
+  position: absolute;
+  top: 6.39rem;
+  left: 1.61rem;
+  animation: thinking 2s step-start infinite;
+}
+.page4 .detail5 {
+  text-align: left;
+  font-size: .38rem;
+  font-weight: bold;
+  color: #1e1b68;
+  position: absolute;
+  top: 1.23rem;
+  left: .53rem;
+}
+.page4 .detail5 > div {
+  padding-bottom: .72rem;
+}
+.page4 .detail5 > div div {
+  padding-bottom: .1rem;
+}
+.page4 .loading {
+  width: .34rem;
+  height: .34rem;
+  position: absolute;
+  top: 2.29rem;
+  right: 1.65rem;
+}
+.page4 .page4-pg {
+  width: 6.47rem;
+  height: 3.95rem;
+  position: absolute;
+  top: 5.39rem;
+  left: .53rem;
+}
+.page4 .detail6 {
+  position: absolute;
+  top: 7.76rem;
+  left: 1.12rem;
+  text-align: left;
+  font-size: .38rem;
+  font-weight: bold;
+  color: #1e1b68;
+}
+.page4 .detail6 > div {
+  padding-bottom: .1rem;
 }
 @keyframes climbing {
   to {
@@ -409,11 +506,14 @@
   0% {
     background-position: 0 0;
   }
-  50% {
-    background-position: -3.58rem 0;
+  35% {
+    background-position: -3.59rem 0;
+  }
+  70% {
+    background-position: -7.18rem 0;
   }
   100% {
-    background-position: -7.20rem 0;
+    background-position: -10.77rem 0;
   }
 }
 @-webkit-keyframes people {
@@ -430,5 +530,38 @@
 @keyframes hint {
   to {
     top: 11.2rem;
+  }
+}
+@-webkit-keyframes hint {
+  to {
+    top: 11.2rem;
+  }
+}
+@keyframes thinking {
+  0% {
+    background-position: 0 0;
+  }
+  40% {
+    background-position: -1.2rem 0;
+  }
+  80% {
+    background-position: -2.32rem 0;
+  }
+  100% {
+    background-position: -3.5rem 0;
+  }
+}
+@-webkit-keyframes thinking {
+  0% {
+    background-position: 0 0;
+  }
+  40% {
+    background-position: -1.2rem 0;
+  }
+  80% {
+    background-position: -2.32rem 0;
+  }
+  100% {
+    background-position: -3.5rem 0;
   }
 }

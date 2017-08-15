@@ -91,7 +91,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
         fullpage: function() {
             var _this = this;
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
-                start: 0,  //默认第一页开始
+                start: 5,  //默认第一页开始
                 beforeChange: function(e) {
                     var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
                     console.log("now",now);
@@ -102,18 +102,19 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     clearTimeout(timer);
                     _this.fullPageObj.stop();
                     var now = "page" + (e.cur + 1);
+
                     if (now == "page1") {
                         _this.BuryRequest(now);//页面埋点更换
                         
                         $(".page1").on("click",".img-btn",function(){
                             oM.show();
-                            $(".page1 .tp-analyzing").show();
-                            $(".page1 .sweat").show();
+                            $(".tp-analyzing").fadeIn();
+                            $(".sweat").fadeIn();
                             timer = setTimeout(function(){
-                                // oM.hide();
-                                // $(".page1 .tp-analyzing").hide();
-                                // $(".page1 .sweat").hide();
-                                // _this.fullPageObj.moveTo(1,true);
+                                oM.hide();
+                                $(".tp-analyzing").fadeOut();
+                                $(".sweat").fadeOut();
+                                _this.fullPageObj.moveTo(1,true);
                             },3000);
                         })
                         _this.respondState(now);
@@ -123,7 +124,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                         _this.BuryRequest(now); //页面埋点更换
 
 
-
+                        $(".page2").on("click",".next",function(){
+                            _this.fullPageObj.moveTo(2,true);
+                        })
                         _this.respondState(now, 0, true,function(){
                             console.log("返回第一页");
                         });
@@ -131,6 +134,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
                     if (now == "page3") {
                         _this.BuryRequest(now);
+                        $(".page3").on("click",".next",function(){
+                            _this.fullPageObj.moveTo(3,true);
+                        })
                         _this.respondState(now, 1, true, function() {
                             console.log("返回第二页");
                         });
@@ -138,6 +144,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
                     if (now == "page4") {
                         _this.BuryRequest(now);
+                        $(".page4").on("click",".next",function(){
+                            _this.fullPageObj.moveTo(4,true);
+                        })
                         _this.respondState(now, 2, true,function(){
                             console.log("返回第三页");
                         });
