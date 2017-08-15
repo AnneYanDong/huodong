@@ -12,8 +12,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
     ct.Tool.buryPoint();
     var run = {
-        iconName: [],
-
         start: function() {
             var _this = this;
 
@@ -70,15 +68,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             _this.fullPageObj = _this.fullpage();
         },
         BuryRequest: function(now) {
-            console.log("页面埋点：",now);
+            console.log("埋点：",now);
             var page = now;
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
                 url: ct.Tool.url("/app/request/activity"),
                 data: JSON.stringify({
-                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "进入页面" + page + projectName
+                    source: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    tag: "20170807_page_1_0_next"
                 }),
                 success: function (d) {
                     if (d.success) {
@@ -91,7 +89,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
         fullpage: function() {
             var _this = this;
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
-                start: 5,  //默认第一页开始
+                start: 0,  //默认第一页开始
                 beforeChange: function(e) {
                     var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
                     console.log("now",now);
@@ -104,9 +102,21 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     var now = "page" + (e.cur + 1);
 
                     if (now == "page1") {
-                        _this.BuryRequest(now);//页面埋点更换
-                        
                         $(".page1").on("click",".img-btn",function(){
+                            $.ajax({
+                                type: "POST",
+                                dataType: "JSON",
+                                url: ct.Tool.url("/app/request/activity"),
+                                data: JSON.stringify({
+                                    source: ct.Tool.userAgent().isGjj ? 1 : 0,
+                                    tag: "20170807_page1_1_0_开始解析"
+                                }),
+                                success: function (d) {
+                                    if (d.success) {
+
+                                    }
+                                }
+                            });
                             oM.show();
                             $(".tp-analyzing").fadeIn();
                             $(".sweat").fadeIn();
@@ -121,10 +131,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page2") {
-                        _this.BuryRequest(now); //页面埋点更换
-
 
                         $(".page2").on("click",".next",function(){
+                            _this.BuryRequest(now); //页面埋点更换
                             _this.fullPageObj.moveTo(2,true);
                         })
                         _this.respondState(now, 0, true,function(){
@@ -133,8 +142,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page3") {
-                        _this.BuryRequest(now);
                         $(".page3").on("click",".next",function(){
+
+                            _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(3,true);
                         })
                         _this.respondState(now, 1, true, function() {
@@ -143,8 +153,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page4") {
-                        _this.BuryRequest(now);
                         $(".page4").on("click",".next",function(){
+                            _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(4,true);
                         })
                         _this.respondState(now, 2, true,function(){
@@ -153,10 +163,34 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page5") {
+                        $(".page5").on("click",".next",function(){
+                            _this.BuryRequest(now);
+                            _this.fullPageObj.moveTo(5,true);
+                        })
+                        _this.respondState(now, 3, true,function(){
+                            console.log("返回第四页");
+                            
+                        });
+
+                    };
+
+                    if (now == "page6") {
+                        $(".page6").on("click",".next",function(){
+                            _this.BuryRequest(now);
+                            _this.fullPageObj.moveTo(6,true);
+                        })
+                        _this.respondState(now, 3, true,function(){
+                            console.log("返回第五页");
+                            
+                        });
+
+                    };
+
+                    if (now == "page7") {
                         _this.BuryRequest(now);
                         
                         _this.respondState(now, 3, true,function(){
-                            console.log("返回第四页");
+                            console.log("返回第六页");
                             
                         });
 
