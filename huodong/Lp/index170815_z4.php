@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="css/public.css">
     <style>
         .user-info{
-            position: relative;
-            background: #fff;
-            padding: .4rem 0;
+            position: absolute;
+            top: 6.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
         }
         .user-info input{
             border: none;
@@ -18,19 +20,18 @@
         }
         .input-wrap{
             height: .9rem;
-            width: 6rem;
+            width: 4.5rem;
             text-align: center;
             padding: 0 10px;
             background: #fff;
             border: 1px solid #c7c7c7;
-            margin: 0 auto;
         }
         .input-wrap:first-child{
-            border-radius: 5px 5px 0 0;
+            border-radius: 10px 10px 0 0;
             border-bottom: 0;
         }
         .input-wrap+.input-wrap{
-            border-radius:  0 0 5px 5px;
+            border-radius:  0 0 10px 10px;
             border-top: 0;
         }
         .input-wrap input{
@@ -54,17 +55,16 @@
         }
         .code .get-code {
             position: absolute;
-            top: 0rem;
+            top: -.02rem;
             right: 0;
             width: 1.9rem;
             height: 0.92rem;
             line-height: 0.92rem;
             z-index: 2;
-            background: #ff8700;
+            background: #d52d2a;
             color: #fff;
             text-align: center;
             font-size: 13px;
-            border-radius: 0 0 5px 0;
         }
 
         .code .code-mark {
@@ -77,28 +77,19 @@
             background: transparent;
         }
 
-        .search-btn{
-            background: #fece02;
-            width: 86%;
+        .search-btn-absolute{
+            position: absolute;
+            top: 3.4rem;
+            left: 0;
+            background: transparent;
+            width: 100%;
             height: 1rem;
-            margin: .4rem auto;
-            border-radius: 5px;
-            text-align: center;
-            line-height: 1rem;
-            color: #5c3701;
-        }
-        .prompt{
-            color: #9c9c9c;
-            padding: 0 .4rem;
-        }
-        .prompt a{
-            color: #028efd;
         }
         .bottom-float{
             width: 80%;
             height: 1.28rem;
             position: absolute;
-            top: 9.4rem;
+            top: 7.7rem;
             left: 50%;
             transform: translateX(-50%);
             -webkit-transform: translateX(-50%);
@@ -111,8 +102,21 @@
             right: 0;
             bottom: 0;
         }
+
+        .company{
+            color: #7b7b7b;
+            font-size: 11px;
+            line-height: 11px;
+            text-align: center;
+            padding: 4px 0;
+        }
+
+        .company p+p{
+            margin-top: 2px;
+        }
     </style>
     <script src="https://r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
+    <script src="js/index20170807.js?v=1502334189"></script>
     <script>
         function setFont(d, c) {
             var b = {},
@@ -149,7 +153,7 @@
         <div class="box">
             <div class="section section-one">
                 <div class="banner-part-one">
-                    <img class="bg" src="//r.51gjj.com/act/images/20161028v2_2_bg1.jpg" alt="bg">
+                    <img class="bg" src="//r.51gjj.com/act/images/20161011_market_downbg_section_new5.jpg" alt="bg">
                 </div>
                 <div class="user-info">
                     <div class="phone input-wrap">
@@ -159,36 +163,31 @@
                         <input type="text" placeholder="请输入验证码" class="JS-code" maxlength="10">
                         <div class="get-code JS-get-code">获取验证码</div>
                     </div>
-                    <div class="search-btn search-btn-not-active">
-                        领取1000元免费借款
-                    </div>
-<!--                     <div class="prompt">
-                        老用户请使用<a href="gjj51://">APP登录</a>
-                    </div> -->
+                    <div class="search-btn search-btn-absolute search-btn-not-active"></div>
                 </div>
-                <div class="banner-part-two">
-                    <img class="bg" src="//r.51gjj.com/act/images/20161028v2_1_bg2.jpg" alt="bg">
-                    <div class="copyright" style="font-size: 11px; color:#333; background: #fff; text-align: center;">
-                        <p style="padding: 5px 0;">杭州煎饼网络技术有限公司 浙ICP备12029872号</p>
-                    </div>
+                <div class="company" style="background: #1e1e1f;">
+                    <p>浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家</p>
+                    <p>杭州煎饼网络技术有限公司</p> 
                 </div>
                 <div class="cnzz">
-                    浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家
                     <script type="text/javascript">
                     var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
                     document.write(unescape("%3Cspan id='cnzz_stat_icon_1256135023'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256135023%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
                     </script>
                 </div>
             </div>
-            <div class="section section-two" style="background: #fff">
-                <img src="//r.51gjj.com/act/images/20161028v2_2_bg2.jpg" alt="down_banner">
+            <div class="section section-two">
+                <img src="//r.51gjj.com/act/images/20161011_market_downbg_section_two.jpg" alt="down_banner">
                 <div class="bottom-float">
                     <a class="bottom-down-app" href="javascript:;" id="appAddr"></a>
+                </div>
+                <div class="company" style="background: #000000;">
+                    <p>浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家</p>
+                    <p>杭州煎饼网络技术有限公司</p> 
                 </div>
             </div>
         </div>
     </div>
-    <script src="js/index20170807.js?v=1502334189"></script>
     <script>
         //判断渠道
         function is_weixn() {
