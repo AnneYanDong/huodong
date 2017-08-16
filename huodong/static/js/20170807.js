@@ -189,7 +189,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         fullpage: function () {
             var _this = this;
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
-                start: 5,  //默认第一页开始
+                start: 0,  //默认第一页开始
                 beforeChange: function(e) {
                     var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
                     console.log("now", now);
@@ -237,8 +237,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                             }
                                         }
                                     }
-                            //     }
-                            // });
+                                }
+                            });
                             $.ajax({
                                 type: "POST",
                                 dataType: "JSON",
