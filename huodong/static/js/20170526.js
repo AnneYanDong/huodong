@@ -32,8 +32,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             fastClick.attach(document.body);
 
             /*设置HTML的font-size*/
-            ct.Tool.setFont();
-            window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
+            ct.Tool.setFont_v2();
+            window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont_v2));
             window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
             // window.onresize = ct.Tool.debounce(ct.Tool.setFont)
 

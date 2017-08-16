@@ -104,6 +104,17 @@ define(["jquery"], function($) {
 
         $("html")[0].style.fontSize = viewPort.w / rate + "px";
     }
+    Tool.setFont_v2 = function (rate) {
+        var rate = rate || 7.5;
+        var viewPort = this.viewPortInfo();
+        // viewPort.w > 640 ? 640 : viewPort.w;
+        if (viewPort.w > 640) {
+            viewPort.w = 640;
+        } else {
+            viewPort.w = viewPort.w;
+        }
+        $("html")[0].style.fontSize = viewPort.w / rate + "px";
+    }
 
     // 处理QQ或者华为等底部有底部控制栏占据可视窗口高度的的问题，重新设置
     // 以Iphone7 下微信显示宽高比作为参照。
