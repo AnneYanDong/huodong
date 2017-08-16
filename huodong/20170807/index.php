@@ -41,11 +41,11 @@
            <div class="page page2">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
-                    <div class="portrait"><img data-src="<?php echo $imgUrl; ?>page2_portrait6.png" alt="portrait1"></div>
+                    <div class="portrait"></div>
                     <div class="circle"></div>
                     <div class="detail1">
                         <span>孙俪的公积金在上海市排名为</span>
-                        <span>3475</span>
+                        <span><!-- 3475 --></span>
                         <span>名</span>
                     </div>
                     <div class="gif-container">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="detail2">
                         <span>超过</span>
-                        <span>75.4%</span>
+                        <span><!-- 75.4% --></span>
                         <span>的上海人</span>
                     </div>
                     <!-- 按钮 -->
@@ -89,11 +89,11 @@
                     <div class="detail5">
                         <div>
                             <div><span>身为一枚</span></div>
-                            <div><span>金光闪闪的</span><span class="font-style">80</span>后</div>
+                            <div><span>金光闪闪的</span><span class="age font-style"></span>后</div>
                         </div>
                         <div>
                             <div><span>孙俪</span></div>
-                            <div><span>同比</span><span class="font-style">56.2%</span><span>的女性</span></div>
+                            <div><span>同比</span><span class="female-ranking font-style"></span><span>的女性</span></div>
                             <div><span>更“有财”</span></div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                     <div class="glass"><img data-src="<?php echo $imgUrl; ?>page4_glass.png" alt="glass"></div>
                     <div class="detail6">
                         <div><span>另外，实力也远超了</span></div>
-                        <div><span class="font-style">42.5%</span><span>的男性</span></div>
+                        <div><span class="male-ranking font-style"></span><span>的男性</span></div>
                     </div>
                     <!-- 按钮 -->
                     <div class="next"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
@@ -116,7 +116,7 @@
                         <div><span>奋斗的这些年</span></div>
                         <div>
                             <span>共有超过</span>
-                            <span>3</span>
+                            <span class="company_count"></span>
                             <span>家企业</span>
                         </div>
                         <div><span>争着为孙俪缴公积金</span></div>

@@ -66,6 +66,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             var _this = this;
             $(".wp").removeClass("hide");
             _this.fullPageObj = _this.fullpage();
+            _this.getAnalysisData();
         },
         BuryRequest: function(now) {
             console.log("埋点：",now);
@@ -73,7 +74,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: ct.Tool.url("/app/request/activity"),
+                url: "/app/request/activity",
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
                     tag: "20170807_"+ page + "_1_0_next"
@@ -85,11 +86,54 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 }
             });
         },
+        createPortrait: function(d) {
+            var image = new Image();
+            var male = ["http://r.51gjj.com/act/release/img/20170807_page2_portrait4.png",
+                        "http://r.51gjj.com/act/release/img/20170807_page2_portrait5.png",
+                        "http://r.51gjj.com/act/release/img/20170807_page2_portrait6.png"];
+            var female = ["http://r.51gjj.com/act/release/img/20170807_page2_portrait1.png",
+                         "http://r.51gjj.com/act/release/img/20170807_page2_portrait2.png",
+                         "http://r.51gjj.com/act/release/img/20170807_page2_portrait3.png"];
+            if(d.analyze1.gender == "男") {
+                image.src = male[Math.floor(Math.random()*male.length)];
+            } else {
+                image.src = female[Math.floor(Math.random()*female.length)];
+            }
+            $(".portrait").append(image);
+        },
+        getAnalyzeData: function(d) {
+            $(".page2 .detail1 span:nth-child(2)").text(d.analyze1.ranking);
+            $(".page2 .detail2 span:nth-child(2)").text(d.analyze1.ranking_p + "%");
+            $(".page3 .detail3 > div:first-child span:nth-child(2)").text(d.analyze2.year);
+            $(".page3 .detail3 span:nth-child(4)").text(d.analyze2.month);
+            $(".page3 .detail4 span:nth-child(2)").text(d.analyze2.city);
+            $(".page4 .detail5 .age").text(d.analyze3.age);
+            $(".page4 .detail5 .female-ranking").text(d.analyze3.ranking_p_female + "%");
+            $(".page4 .detail6 .male-ranking").text(d.analyze3.ranking_p_male + "%");
+            $(".page5 .detail10 .company_count").text(d.analyze4.company_count);
+        },
+        getAnalysisData: function() {
+            var _this = this;
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "test.php",
+                // url: "/act/analyze/get_analyze",
+                success: function (d) {
+                    if (d.success) {
+                        console.log("后台数据：",d);
+                        var d = d.ret;
+                        _this.createPortrait(d);
+                        _this.getAnalyzeData(d);
+                    }
+                }
+            });
+        },
 
         fullpage: function() {
             var _this = this;
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
-                start: 7,  //默认第一页开始
+                start: 0,  //默认第一页开始
                 beforeChange: function(e) {
                     var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
                     console.log("now",now);
@@ -131,7 +175,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page2") {
-
                         $(".page2").on("click",".next",function(){
                             _this.BuryRequest(now); //页面埋点更换
                             _this.fullPageObj.moveTo(2,true);

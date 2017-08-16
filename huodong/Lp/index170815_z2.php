@@ -112,7 +112,7 @@
             bottom: 0;
         }
     </style>
-    <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+    <script src="https://r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
     <script>
         function setFont(d, c) {
             var b = {},
@@ -185,7 +185,7 @@
             </div>
         </div>
     </div>
-    <script src="js/main_v2.min.js?v=1502789647"></script>
+    <script src="js/index20170807.js?v=1502334189"></script>
     <script>
         //判断渠道
         function is_weixn() {
