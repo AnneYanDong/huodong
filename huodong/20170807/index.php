@@ -50,6 +50,10 @@
                     </div>
                     <div class="gif-container">
                         <img class="pg" data-src="<?php echo $imgUrl; ?>page2_pg.png" alt="pg">
+                        <div class="gjj_number">
+                            <div><span>上海缴纳公积金人口基数</span></div>
+                            <div>为<span>1233</span>万人</div>
+                        </div>
                         <div class="gif"></div>
                     </div>
                     <div class="detail2">
@@ -73,9 +77,10 @@
                    </div>
                    <div class="detail4">
                        <div>
-                           <span>那一年,孙俪在</span><span class="font-color">北京</span>
+                           <span>现在在</span><span class="font-color">北京</span><span>的你</span>
                        </div>
-                       <div><span>多少人来人去你还记不记得</span></div>
+                       <div><span>还记得当年的那座城</span></div>
+                       <div><span>那个初出茅庐的你么？</span></div>
                    </div>
                    <img class="page3-pg" data-src="<?php echo $imgUrl; ?>page3_pg.png" alt="pg">
                     <div class="thinking-gif"></div>

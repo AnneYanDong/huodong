@@ -222,7 +222,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(6,true);
                         })
-                        _this.respondState(now, 3, true,function(){
+                        _this.respondState(now, 4, true,function(){
                             console.log("返回第五页");
                             
                         });
@@ -234,7 +234,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(7,true);
                         })
-                        _this.respondState(now, 3, true,function(){
+                        _this.respondState(now, 5, true,function(){
                             console.log("返回第六页");
                         });
 
@@ -258,7 +258,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             });
                             _this.share();
                         })
-                        _this.respondState(now, 3, true,function(){
+                        _this.respondState(now, 6, true,function(){
                             console.log("返回第七页");
                         });
 

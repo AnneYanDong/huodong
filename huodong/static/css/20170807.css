@@ -147,6 +147,7 @@ img.quickmark {
   font-weight: 500;
   padding-bottom: .1rem;
   padding-top: .2rem;
+  font-weight: bold;
 }
 .page2 .detail1 span:nth-child(2) {
   font-size: .91rem;
@@ -172,6 +173,20 @@ img.quickmark {
   width: 6.40rem;
   height: 3.58rem;
 }
+.page2 .gjj_number {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: transLateX(-50%);
+  font-size: .38rem;
+  color: #1e1b68;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+.page2 .gjj_number div:first-child {
+  padding-bottom: .1rem;
+}
 .page2 .gif-container .gif {
   background: url("../img/people_sprites.png");
   background-size: 10.77rem .92rem;
@@ -189,6 +204,7 @@ img.quickmark {
   position: absolute;
   top: 9.71rem;
   left: 1.75rem;
+  font-weight: bold;
 }
 .page2 .detail2 span:first-child,.page2 .detail2 span:last-child {
   font-size: .38rem;
@@ -219,7 +235,7 @@ img.quickmark {
   width: 6.66rem;
   height: 4.76rem;
   position: absolute;
-  top: 5.51rem;
+  top: 5.8rem;
   left: .45rem;
 }
 .page3 .detail3 {
@@ -246,7 +262,7 @@ img.quickmark {
   text-align: left;
   color: #1e1b68;
   position: absolute;
-  top: 3.50rem;
+  top: 3.80rem;
   left: .45rem;
 }
 .page3 .detail3 div,.page3 .detail4 div{
@@ -469,6 +485,7 @@ img.quickmark {
 }
 .page7 .detail8 span:last-child {
   font-size: .40rem;
+  font-weight: bold;
 }
 .page7 .detail9 {
   width: 100%;
