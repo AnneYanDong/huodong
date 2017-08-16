@@ -143,7 +143,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 success: function (d) {
                     if (d.success) {
                         console.log("后台数据：",d);
-                        if (d.show) {
+                        if (d.ret.show) {
                             _this.createPortrait(d.ret);
                             _this.getAnalyzingData(d.ret);
                         } else {
