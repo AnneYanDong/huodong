@@ -1,11 +1,12 @@
 <?php
   $ret = array(
     "ret"=>array(
-       "login"=> false,
+       "login"=> true,
         "is_weChat"=> false,
         "is_qq"=> false,
-        "show"=> false,
+        "show"=> true,
         "name"=> "栋哥",
+        "url" => "http://www.baidu.com",
         "analyze1" => array(
           "city"=>"杭州",
           "ranking"=>12334,
@@ -15,7 +16,8 @@
         "analyze2" => array(
           "year"=>2010,
           "month"=> 9,
-          "city"=> "杭州"
+          "city"=> "杭州",
+          "diff_year"=> 6
         ),
         "analyze3" => array(
           "age"=>90,

@@ -44,14 +44,14 @@
                     <div class="portrait"></div>
                     <div class="circle"></div>
                     <div class="detail1">
-                        <span>孙俪的公积金在上海市排名为</span>
-                        <span><!-- 3475 --></span>
+                        <span><!-- 孙俪的公积金在上海市排名为 --></span>
+                        <span></span>
                         <span>名</span>
                     </div>
                     <div class="gif-container">
                         <img class="pg" data-src="<?php echo $imgUrl; ?>page2_pg.png" alt="pg">
                         <div class="gjj_number">
-                            <div><span>上海缴纳公积金人口基数</span></div>
+                            <div><span><!-- 上海缴纳公积金人口基数 --></span></div>
                             <div>为<span>1233</span>万人</div>
                         </div>
                         <div class="gif"></div>
@@ -59,7 +59,7 @@
                     <div class="detail2">
                         <span>超过</span>
                         <span><!-- 75.4% --></span>
-                        <span>的上海人</span>
+                        <span><!-- 的上海人 --></span>
                     </div>
                     <!-- 按钮 -->
                     <div class="next"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
@@ -73,7 +73,7 @@
                             <span>从</span><span class="font-style">2010</span><span class="font-color">年</span><span class="font-style">5</span><span class="font-color">月</span>
                        </div>
                        <div><span>孙俪第一次缴纳公积金</span></div>
-                       <div><span>至今已经</span><span class="font-style">5</span><span>年了</span></div>
+                       <div><span>至今已经</span><span class="diff-year font-style"><!-- 5 --></span><span>年了</span></div>
                    </div>
                    <div class="detail4">
                        <div>

@@ -66,7 +66,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             var _this = this;
             $(".wp").removeClass("hide");
             _this.fullPageObj = _this.fullpage();
-            _this.getAnalysisData();
         },
         BuryRequest: function(now) {
             console.log("埋点：",now);
@@ -119,11 +118,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             }
             $(".portrait").append(image);
         },
-        getAnalyzeData: function(d) {
+        getAnalyzingData: function(d) {
             $(".page2 .detail1 span:nth-child(2)").text(d.analyze1.ranking);
+            $(".page2 .detail1 span:first-child").text(d.name + "的公积金在" + d.analyze1.city + "市排名为");
+            $(".page2 .gjj_number div:first-child span").text(d.analyze1.city + "缴纳公积金人口基数");
             $(".page2 .detail2 span:nth-child(2)").text(d.analyze1.ranking_p + "%");
+            $(".page2 .detail2 span:nth-child(3)").text("的" + d.analyze1.city + "人");
             $(".page3 .detail3 > div:first-child span:nth-child(2)").text(d.analyze2.year);
             $(".page3 .detail3 span:nth-child(4)").text(d.analyze2.month);
+            $(".page3 .detail3 .diff-year").text(d.analyze2.diff_year);
             $(".page3 .detail4 span:nth-child(2)").text(d.analyze2.city);
             $(".page4 .detail5 .age").text(d.analyze3.age);
             $(".page4 .detail5 .female-ranking").text(d.analyze3.ranking_p_female + "%");
@@ -140,9 +143,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 success: function (d) {
                     if (d.success) {
                         console.log("后台数据：",d);
-                        var d = d.ret;
-                        _this.createPortrait(d);
-                        _this.getAnalyzeData(d);
+                        if (d.show) {
+                            _this.createPortrait(d.ret);
+                            _this.getAnalyzingData(d.ret);
+                        } else {
+                            window.location.href = d.url;
+                        }
                     }
                 }
             });
@@ -169,6 +175,42 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             $.ajax({
                                 type: "POST",
                                 dataType: "JSON",
+                                url: "test.php",
+                                // url: "/act/analyze/get_analyze",
+                                success: function (d) {
+                                    if (d.success) {
+                                        console.log("后台数据：",d);
+                                        if (d.login == false) {
+                                            oP.show("想解析公积金，先登录APP啦！");
+                                            if (Bridge) {
+                                                Bridge.action("login");
+                                            }
+                                        } else {
+                                            if (!d.ret.show) {
+                                                oP.show("查询公积金后，才能解析你的公积金秘密噢~");
+                                                setTimeout(function(){
+                                                    window.location.href = d.ret.url;
+                                                },1500);
+                                            } else {
+                                                _this.getAnalysisData();
+                                            }
+                                            oM.show();
+                                            $(".tp-analyzing").fadeIn();
+                                            $(".sweat").fadeIn();
+                                            console.log(_this.fullPageObj);
+                                            setTimeout(function(){
+                                                oM.hide();
+                                                $(".tp-analyzing").fadeOut();
+                                                $(".sweat").fadeOut();
+                                                _this.fullPageObj.moveTo(1,true);
+                                            },2000);
+                                        }
+                                    }
+                                }
+                            });
+                            $.ajax({
+                                type: "POST",
+                                dataType: "JSON",
                                 url: ct.Tool.url("/act/request/activity"),
                                 data: JSON.stringify({
                                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
@@ -180,15 +222,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                     }
                                 }
                             });
-                            oM.show();
-                            $(".tp-analyzing").fadeIn();
-                            $(".sweat").fadeIn();
-                            timer = setTimeout(function(){
-                                oM.hide();
-                                $(".tp-analyzing").fadeOut();
-                                $(".sweat").fadeOut();
-                                _this.fullPageObj.moveTo(1,true);
-                            },3000);
                         })
                         _this.respondState(now);
                     }
