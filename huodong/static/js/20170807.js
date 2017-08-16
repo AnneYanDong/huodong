@@ -48,7 +48,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
          /*   $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: ct.Tool.url("/app/request/activity"),
+                url: ct.Tool.url("/act/request/activity"),
                 data: JSON.stringify({
                     place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
                     tag: "进入页面" + projectName
@@ -70,14 +70,32 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
         },
         BuryRequest: function(now) {
             console.log("埋点：",now);
-            var page = now;
+            var page = now.substring(4);
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "/app/request/activity",
+                url: "/act/request/activity",
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
                     tag: "20170807_"+ page + "_1_0_next"
+                }),
+                success: function (d) {
+                    if (d.success) {
+
+                    }
+                }
+            });
+        },
+        PageBuryRequest: function(now) {
+            console.log("埋点：",now);
+            var page = now.substring(4);
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "/act/request/activity",
+                data: JSON.stringify({
+                    source: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    tag: "20170807_"+ page + "_0_0_进入页面" + now + ""
                 }),
                 success: function (d) {
                     if (d.success) {
@@ -146,14 +164,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     var now = "page" + (e.cur + 1);
 
                     if (now == "page1") {
+                        _this.PageBuryRequest(now);
                         $(".page1").on("click",".img-btn",function(){
                             $.ajax({
                                 type: "POST",
                                 dataType: "JSON",
-                                url: ct.Tool.url("/app/request/activity"),
+                                url: ct.Tool.url("/act/request/activity"),
                                 data: JSON.stringify({
                                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                                    tag: "20170807_page1_1_0_开始解析"
+                                    tag: "20170807_1_1_0_开始解析"
                                 }),
                                 success: function (d) {
                                     if (d.success) {
@@ -175,6 +194,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page2") {
+                        _this.PageBuryRequest(now);
                         $(".page2").on("click",".next",function(){
                             _this.BuryRequest(now); //页面埋点更换
                             _this.fullPageObj.moveTo(2,true);
@@ -185,6 +205,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page3") {
+                        _this.PageBuryRequest(now);
                         $(".page3").on("click",".next",function(){
 
                             _this.BuryRequest(now);
@@ -196,6 +217,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page4") {
+                        _this.PageBuryRequest(now);
                         $(".page4").on("click",".next",function(){
                             _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(4,true);
@@ -206,6 +228,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
 
                     if (now == "page5") {
+                        _this.PageBuryRequest(now);
                         $(".page5").on("click",".next",function(){
                             _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(5,true);
@@ -218,6 +241,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     };
 
                     if (now == "page6") {
+                        _this.PageBuryRequest(now);
                         $(".page6").on("click",".next",function(){
                             _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(6,true);
@@ -230,6 +254,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     };
 
                     if (now == "page7") {
+                        _this.PageBuryRequest(now);
                         $(".page7").on("click",".next",function(){
                             _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(7,true);
@@ -241,14 +266,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     };
 
                     if (now == "page8") {
+                        _this.PageBuryRequest(now);
                         $(".page8").on("click",".img-btn",function(){
                             $.ajax({
                                 type: "POST",
                                 dataType: "JSON",
-                                url: ct.Tool.url("/app/request/activity"),
+                                url: ct.Tool.url("/act/request/activity"),
                                 data: JSON.stringify({
                                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                                    tag: "20170807_"+ now + "_1_0_低调分享"
+                                    tag: "20170807_8_1_0_低调分享"
                                 }),
                                 success: function (d) {
                                     if (d.success) {

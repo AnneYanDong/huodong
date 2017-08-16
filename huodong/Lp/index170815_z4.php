@@ -198,6 +198,36 @@
                 return false;
             }
         }
+        function userAgent() {
+            var u = window.navigator.userAgent;
+            var app = {
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/),
+                isAndroid: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1 || u.indexOf("android") > -1,
+                isiOS: /[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                webApp: -1 == u.indexOf("Safari"),
+                weixin: u.indexOf("MicroMessenger") > -1,
+                isGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u) || /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isAndroidGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isiOSGjj: /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isGjjFdjsq: /^android\/[\w\W]+client\/[\w\W]+category\/51fdjsq$/.test(u)
+            };
+            return app;
+        }
+        // 页面埋点
+       $.ajax({
+           type: "POST",
+           dataType: "JSON",
+           url: "/act/request/activity",
+           data: JSON.stringify({
+               place_cid: userAgent().isGjj ? 1 : 0,
+               tag: "进入页面index170815_z4.php"
+           }),
+           success: function (d) {
+               if (d.success) {
+
+               }
+           }
+       });
         var appAddr = document.getElementById('appAddr');
         if (is_weixn()) {
             var wxurl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.balance6game.housingfund';
