@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function($, fastClick, fullpage, ct, Bridge, juicer) {
+require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function ($, fastClick, fullpage, ct, Bridge, juicer) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -12,7 +12,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
     ct.Tool.buryPoint();
     var run = {
-        start: function() {
+        start: function () {
             var _this = this;
 
             /*解决移动端click点击300延迟*/
@@ -34,41 +34,41 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
             /*图片预加载*/
             ct.Tool.imgPreLoad({
-                callback: function() {
+                callback: function () {
                     this.hintLog("图片加载完成");
                     var timer = null;
                     clearTimeout(timer);
-                    timer = setTimeout(function() {
+                    timer = setTimeout(function () {
                         oPreLoading.hide();
                         _this.init();
                     }, 500)
                 }
             })
 
-         /*   $.ajax({
-                type: "POST",
-                dataType: "JSON",
-                url: ct.Tool.url("/act/request/activity"),
-                data: JSON.stringify({
-                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "进入页面" + projectName
-                }),
-                success: function (d) {
-                    if (d.success) {
+            /*   $.ajax({
+                   type: "POST",
+                   dataType: "JSON",
+                   url: ct.Tool.url("/act/request/activity"),
+                   data: JSON.stringify({
+                       place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                       tag: "进入页面" + projectName
+                   }),
+                   success: function (d) {
+                       if (d.success) {
 
-                    }
-                }
-            });*/
+                       }
+                   }
+               });*/
         },
 
-        init: function() {
+        init: function () {
             console.log("解析你的公积金活动");
             var _this = this;
             $(".wp").removeClass("hide");
             _this.fullPageObj = _this.fullpage();
         },
-        BuryRequest: function(now) {
-            console.log("埋点：",now);
+        BuryRequest: function (now) {
+            console.log("埋点：", now);
             var page = now.substring(4);
             $.ajax({
                 type: "POST",
@@ -76,7 +76,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 url: "/act/request/activity",
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "20170807_"+ page + "_1_0_next"
+                    tag: "20170807_" + page + "_1_0_next"
                 }),
                 success: function (d) {
                     if (d.success) {
@@ -85,8 +85,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 }
             });
         },
-        PageBuryRequest: function(now) {
-            console.log("埋点：",now);
+        PageBuryRequest: function (now) {
+            console.log("埋点：", now);
             var page = now.substring(4);
             $.ajax({
                 type: "POST",
@@ -94,7 +94,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 url: "/act/request/activity",
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "20170807_"+ page + "_0_0_进入页面" + now + ""
+                    tag: "20170807_" + page + "_0_0_进入页面" + now + ""
                 }),
                 success: function (d) {
                     if (d.success) {
@@ -103,22 +103,24 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 }
             });
         },
-        createPortrait: function(d) {
+        createPortrait: function (d) {
             var image = new Image();
             var male = ["http://r.51gjj.com/act/release/img/20170807_page2_portrait4.png",
-                        "http://r.51gjj.com/act/release/img/20170807_page2_portrait5.png",
-                        "http://r.51gjj.com/act/release/img/20170807_page2_portrait6.png"];
+                "http://r.51gjj.com/act/release/img/20170807_page2_portrait5.png",
+                "http://r.51gjj.com/act/release/img/20170807_page2_portrait6.png"
+            ];
             var female = ["http://r.51gjj.com/act/release/img/20170807_page2_portrait1.png",
-                         "http://r.51gjj.com/act/release/img/20170807_page2_portrait2.png",
-                         "http://r.51gjj.com/act/release/img/20170807_page2_portrait3.png"];
-            if(d.analyze1.gender == "男") {
-                image.src = male[Math.floor(Math.random()*male.length)];
+                "http://r.51gjj.com/act/release/img/20170807_page2_portrait2.png",
+                "http://r.51gjj.com/act/release/img/20170807_page2_portrait3.png"
+            ];
+            if (d.analyze1.gender == "男") {
+                image.src = male[Math.floor(Math.random() * male.length)];
             } else {
-                image.src = female[Math.floor(Math.random()*female.length)];
+                image.src = female[Math.floor(Math.random() * female.length)];
             }
             $(".portrait").append(image);
         },
-        getAnalyzingData: function(d) {
+        getAnalyzingData: function (d) {
             $(".page2 .detail1 span:nth-child(2)").text(d.analyze1.ranking);
             $(".page2 .detail1 span:first-child").text(d.name + "的公积金在" + d.analyze1.city + "市排名为");
             $(".page2 .gjj_number div:first-child span").text(d.analyze1.city + "缴纳公积金人口基数");
@@ -133,7 +135,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             $(".page4 .detail6 .male-ranking").text(d.analyze3.ranking_p_male + "%");
             $(".page5 .detail10 .company_count").text(d.analyze4.company_count);
         },
-        getAnalysisData: function() {
+        getAnalysisData: function () {
             var _this = this;
             $.ajax({
                 type: "POST",
@@ -142,7 +144,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 // url: "/act/analyze/get_analyze",
                 success: function (d) {
                     if (d.success) {
-                        console.log("后台数据：",d);
+                        console.log("后台数据：", d);
                         if (d.ret.show) {
                             _this.createPortrait(d.ret);
                             _this.getAnalyzingData(d.ret);
@@ -154,16 +156,16 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             });
         },
 
-        fullpage: function() {
+        fullpage: function () {
             var _this = this;
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
-                start: 0,  //默认第一页开始
-                beforeChange: function(e) {
+                start: 0, //默认第一页开始
+                beforeChange: function (e) {
                     var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
-                    console.log("now",now);
+                    console.log("now", now);
                     _this.changeState(now); //把当前页面在改变之前塞入浏览器历史
                 },
-                afterChange: function(e) {
+                afterChange: function (e) {
                     var timer = null;
                     clearTimeout(timer);
                     _this.fullPageObj.stop();
@@ -171,7 +173,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
                     if (now == "page1") {
                         _this.PageBuryRequest(now);
-                        $(".page1").on("click",".img-btn",function(){
+                        $(".page1").on("click", ".img-btn", function () {
                             $.ajax({
                                 type: "POST",
                                 dataType: "JSON",
@@ -179,7 +181,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                 // url: "/act/analyze/get_analyze",
                                 success: function (d) {
                                     if (d.success) {
-                                        console.log("后台数据：",d);
+                                        console.log("后台数据：", d);
                                         if (d.login == false) {
                                             oP.show("想解析公积金，先登录APP啦！");
                                             if (Bridge) {
@@ -188,9 +190,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                         } else {
                                             if (!d.ret.show) {
                                                 oP.show("查询公积金后，才能解析你的公积金秘密噢~");
-                                                setTimeout(function(){
+                                                setTimeout(function () {
                                                     window.location.href = d.ret.url;
-                                                },1500);
+                                                }, 1500);
                                             } else {
                                                 _this.getAnalysisData();
                                             }
@@ -198,12 +200,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                             $(".tp-analyzing").fadeIn();
                                             $(".sweat").fadeIn();
                                             console.log(_this.fullPageObj);
-                                            setTimeout(function(){
+                                            setTimeout(function () {
                                                 oM.hide();
                                                 $(".tp-analyzing").fadeOut();
                                                 $(".sweat").fadeOut();
-                                                _this.fullPageObj.moveTo(1,true);
-                                            },2000);
+                                                _this.fullPageObj.moveTo(1, true);
+                                            }, 2000);
                                         }
                                     }
                                 }
@@ -228,71 +230,71 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
                     if (now == "page2") {
                         _this.PageBuryRequest(now);
-                        $(".page2").on("click",".next",function(){
+                        $(".page2").on("click", ".next", function () {
                             _this.BuryRequest(now); //页面埋点更换
-                            _this.fullPageObj.moveTo(2,true);
+                            _this.fullPageObj.moveTo(2, true);
                         })
-                        _this.respondState(now, 0, true,function(){
+                        _this.respondState(now, 0, true, function () {
                             console.log("返回第一页");
                         });
                     }
 
                     if (now == "page3") {
                         _this.PageBuryRequest(now);
-                        $(".page3").on("click",".next",function(){
+                        $(".page3").on("click", ".next", function () {
 
                             _this.BuryRequest(now);
-                            _this.fullPageObj.moveTo(3,true);
+                            _this.fullPageObj.moveTo(3, true);
                         })
-                        _this.respondState(now, 1, true, function() {
+                        _this.respondState(now, 1, true, function () {
                             console.log("返回第二页");
                         });
                     }
 
                     if (now == "page4") {
                         _this.PageBuryRequest(now);
-                        $(".page4").on("click",".next",function(){
+                        $(".page4").on("click", ".next", function () {
                             _this.BuryRequest(now);
-                            _this.fullPageObj.moveTo(4,true);
+                            _this.fullPageObj.moveTo(4, true);
                         })
-                        _this.respondState(now, 2, true,function(){
+                        _this.respondState(now, 2, true, function () {
                             console.log("返回第三页");
                         });
                     }
 
                     if (now == "page5") {
                         _this.PageBuryRequest(now);
-                        $(".page5").on("click",".next",function(){
+                        $(".page5").on("click", ".next", function () {
                             _this.BuryRequest(now);
-                            _this.fullPageObj.moveTo(5,true);
+                            _this.fullPageObj.moveTo(5, true);
                         })
-                        _this.respondState(now, 3, true,function(){
+                        _this.respondState(now, 3, true, function () {
                             console.log("返回第四页");
-                            
+
                         });
 
                     };
 
                     if (now == "page6") {
                         _this.PageBuryRequest(now);
-                        $(".page6").on("click",".next",function(){
+                        $(".page6").on("click", ".next", function () {
                             _this.BuryRequest(now);
-                            _this.fullPageObj.moveTo(6,true);
+                            _this.fullPageObj.moveTo(6, true);
                         })
-                        _this.respondState(now, 4, true,function(){
+                        _this.respondState(now, 4, true, function () {
                             console.log("返回第五页");
-                            
+
                         });
 
                     };
 
                     if (now == "page7") {
                         _this.PageBuryRequest(now);
-                        $(".page7").on("click",".next",function(){
+                        $(".page7").on("click", ".next", function () {
                             _this.BuryRequest(now);
-                            _this.fullPageObj.moveTo(7,true);
+                            _this.fullPageObj.moveTo(7, true);
                         })
-                        _this.respondState(now, 5, true,function(){
+                        _this.respondState(now, 5, true, function () {
                             console.log("返回第六页");
                         });
 
@@ -300,7 +302,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
 
                     if (now == "page8") {
                         _this.PageBuryRequest(now);
-                        $(".page8").on("click",".img-btn",function(){
+                        $(".page8").on("click", ".img-btn", function () {
                             $.ajax({
                                 type: "POST",
                                 dataType: "JSON",
@@ -317,7 +319,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             });
                             _this.share();
                         })
-                        _this.respondState(now, 6, true,function(){
+                        _this.respondState(now, 6, true, function () {
                             console.log("返回第七页");
                         });
 
@@ -327,18 +329,18 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             return fullpage;
         },
 
-        changeState: function(page) {
+        changeState: function (page) {
             window.history.pushState && window.history.pushState({
                 title: page
             }, page, "index.php#page=" + page); // 塞入新的历史
         },
 
         // 返回。
-        respondState: function(page, to, isAnim, fn) {
+        respondState: function (page, to, isAnim, fn) {
             var _this = this;
             var app = ct.Tool.userAgent();
             if (Bridge && app.isGjj) {
-                Bridge.onBack(function() {
+                Bridge.onBack(function () {
                     if (page == "page1") {
                         return false;
                     } else {
@@ -354,7 +356,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     }
                 })
             } else {
-                window.onpopstate = function() {
+                window.onpopstate = function () {
                     if (isAnim) {
                         console.log(_this.fullPageObj)
                         _this.fullPageObj.moveTo(to, true);
@@ -386,12 +388,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 // Bridge.action('quickIcon', {
                 //     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
                 //     onclick: function () {
-                        Bridge.action('ShareTimeline', {
-                            "title": "转盘抽奖",
-                            'desc': "查公积金送积分",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170721_share.png",
-                            "link": "https://" + host + "/hd/20160714/invite_out_v2.php?c=" + invitation_code
-                        });
+                Bridge.action('ShareTimeline', {
+                    "title": "转盘抽奖",
+                    'desc': "查公积金送积分",
+                    "thumb": "https://r.51gjj.com/act/release/img/20170721_share.png",
+                    "link": "https://" + host + "/hd/20160714/invite_out_v2.php?c=" + invitation_code
+                });
                 //     }
                 // })
             }
