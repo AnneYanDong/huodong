@@ -29,10 +29,12 @@
           "company_count"=> 8,
         ),
         "analyze5" => array(
-          "text"=>"待定",
+          "text"=>"在北京买一块窗玻璃|
+          在杭州买一个迷你阳台|...|
+          在泰国曼谷...|租啥小单间啊！|高层公寓来一套啊！|永久居住有木有！",
         ),
         "analyze6" => array(
-          "loanable_amount"=>"待定",
+          "loanable_amount"=>1231231,
         )
     ),
     "success"=>true,

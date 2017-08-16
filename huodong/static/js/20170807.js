@@ -11,6 +11,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
     var local = ct.Tool.local();
 
     ct.Tool.buryPoint();
+    var dataObj = null;
     var run = {
         start: function() {
             var _this = this;
@@ -66,6 +67,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             var _this = this;
             $(".wp").removeClass("hide");
             _this.fullPageObj = _this.fullpage();
+            _this.getAnalysisData();
         },
         BuryRequest: function(now) {
             console.log("埋点：",now);
@@ -119,19 +121,46 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
             $(".portrait").append(image);
         },
         getAnalyzingData: function(d) {
+            var _this = this;
             $(".page2 .detail1 span:nth-child(2)").text(d.analyze1.ranking);
             $(".page2 .detail1 span:first-child").text(d.name + "的公积金在" + d.analyze1.city + "市排名为");
             $(".page2 .gjj_number div:first-child span").text(d.analyze1.city + "缴纳公积金人口基数");
             $(".page2 .detail2 span:nth-child(2)").text(d.analyze1.ranking_p + "%");
             $(".page2 .detail2 span:nth-child(3)").text("的" + d.analyze1.city + "人");
+
             $(".page3 .detail3 > div:first-child span:nth-child(2)").text(d.analyze2.year);
+            $(".page3 .detail3 > div:nth-child(2) span").text(d.name + "第一次缴纳公积金");
             $(".page3 .detail3 span:nth-child(4)").text(d.analyze2.month);
             $(".page3 .detail3 .diff-year").text(d.analyze2.diff_year);
             $(".page3 .detail4 span:nth-child(2)").text(d.analyze2.city);
-            $(".page4 .detail5 .age").text(d.analyze3.age);
+
+            if (d.analyze3.age) {
+                $(".page4 .detail5 .age").text(d.analyze3.age);
+                $(".page4 .detail5 .age").after($("<span>后</span>"));
+            } else {
+                $(".page4 .detail5 .age").text("社会人");
+            }
+            $(".page4 .detail5 .name").text(d.name);
+            $(".page4 .detail5 .gender").text("的" + d.analyze3.gender + "性");
+            $(".page4 .detail6 .gender").text("的" + d.analyze3.gender + "性");
             $(".page4 .detail5 .female-ranking").text(d.analyze3.ranking_p_female + "%");
             $(".page4 .detail6 .male-ranking").text(d.analyze3.ranking_p_male + "%");
+
             $(".page5 .detail10 .company_count").text(d.analyze4.company_count);
+            $(".page5 .detail10 .name").text("争着为" + d.name + "缴公积金");
+
+            $(".page6 .detail7-1 .name").text(d.name + "的公积金可以");
+            _this.getPage6Text(d.analyze5.text);
+
+            $(".page7 .detail8 .loan-amount").text(d.analyze6.loanable_amount);
+        },
+        getPage6Text: function(text) {
+            var _this = this;
+            var arrText = text.split("|");
+            console.log(arrText);
+            for(var i = 0; len = arrText.length,i < len; i ++) {
+                $(".page6 .text"+ (i+1) +"").text(arrText[i].match(/\S+/));
+            }
         },
         getAnalysisData: function() {
             var _this = this;
@@ -141,9 +170,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 url: "test.php",
                 // url: "/act/analyze/get_analyze",
                 success: function (d) {
+                    dataObj = d;
                     if (d.success) {
                         console.log("后台数据：",d);
-                        if (d.show) {
+                        if (d.ret.show) {
                             _this.createPortrait(d.ret);
                             _this.getAnalyzingData(d.ret);
                         } else {
@@ -157,7 +187,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
         fullpage: function() {
             var _this = this;
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
-                start: 0,  //默认第一页开始
+                start: 5,  //默认第一页开始
                 beforeChange: function(e) {
                     var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
                     console.log("now",now);
@@ -172,42 +202,42 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     if (now == "page1") {
                         _this.PageBuryRequest(now);
                         $(".page1").on("click",".img-btn",function(){
-                            $.ajax({
-                                type: "POST",
-                                dataType: "JSON",
-                                url: "test.php",
-                                // url: "/act/analyze/get_analyze",
-                                success: function (d) {
-                                    if (d.success) {
-                                        console.log("后台数据：",d);
-                                        if (d.login == false) {
+
+                            console.log("后台数据：",dataObj);
+                            // $.ajax({
+                            //     type: "POST",
+                            //     dataType: "JSON",
+                            //     url: "test.php",
+                            //     // url: "/act/analyze/get_analyze",
+                            //     success: function (d) {
+                                    if (dataObj.success) {
+                                        if (dataObj.login == false) {
                                             oP.show("想解析公积金，先登录APP啦！");
                                             if (Bridge) {
                                                 Bridge.action("login");
                                             }
                                         } else {
-                                            if (!d.ret.show) {
+                                            if (!dataObj.ret.show) {
                                                 oP.show("查询公积金后，才能解析你的公积金秘密噢~");
                                                 setTimeout(function(){
-                                                    window.location.href = d.ret.url;
+                                                    window.location.href = dataObj.ret.url;
                                                 },1500);
                                             } else {
-                                                _this.getAnalysisData();
+                                                oM.show();
+                                                $(".tp-analyzing").fadeIn();
+                                                $(".sweat").fadeIn();
+                                                console.log(_this.fullPageObj);
+                                                setTimeout(function(){
+                                                    oM.hide();
+                                                    $(".tp-analyzing").fadeOut();
+                                                    $(".sweat").fadeOut();
+                                                    _this.fullPageObj.moveTo(1,true);
+                                                },2000);
                                             }
-                                            oM.show();
-                                            $(".tp-analyzing").fadeIn();
-                                            $(".sweat").fadeIn();
-                                            console.log(_this.fullPageObj);
-                                            setTimeout(function(){
-                                                oM.hide();
-                                                $(".tp-analyzing").fadeOut();
-                                                $(".sweat").fadeOut();
-                                                _this.fullPageObj.moveTo(1,true);
-                                            },2000);
                                         }
                                     }
-                                }
-                            });
+                            //     }
+                            // });
                             $.ajax({
                                 type: "POST",
                                 dataType: "JSON",

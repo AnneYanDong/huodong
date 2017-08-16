@@ -214,7 +214,7 @@ img.quickmark {
 .page2 .detail2 span:nth-child(2) {
   font-family: DIN-BLACK;
   font-size: .59rem;
-  color: red;
+  color: #e33d3b;
   margin: 0 -.2rem;
 }
 .next {

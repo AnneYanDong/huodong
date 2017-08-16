@@ -72,7 +72,7 @@
                        <div>
                             <span>从</span><span class="font-style">2010</span><span class="font-color">年</span><span class="font-style">5</span><span class="font-color">月</span>
                        </div>
-                       <div><span>孙俪第一次缴纳公积金</span></div>
+                       <div><span><!-- 孙俪第一次缴纳公积金 --></span></div>
                        <div><span>至今已经</span><span class="diff-year font-style"><!-- 5 --></span><span>年了</span></div>
                    </div>
                    <div class="detail4">
@@ -94,11 +94,11 @@
                     <div class="detail5">
                         <div>
                             <div><span>身为一枚</span></div>
-                            <div><span>金光闪闪的</span><span class="age font-style"></span>后</div>
+                            <div class="age-container"><span>金光闪闪的</span><span class="age font-style"></span></div>
                         </div>
                         <div>
-                            <div><span>孙俪</span></div>
-                            <div><span>同比</span><span class="female-ranking font-style"></span><span>的女性</span></div>
+                            <div><span class="name"><!-- 孙俪 --></span></div>
+                            <div><span>同比</span><span class="female-ranking font-style"></span><span class="gender"><!-- 的女性 --></span></div>
                             <div><span>更“有财”</span></div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                     <div class="glass"><img data-src="<?php echo $imgUrl; ?>page4_glass.png" alt="glass"></div>
                     <div class="detail6">
                         <div><span>另外，实力也远超了</span></div>
-                        <div><span class="male-ranking font-style"></span><span>的男性</span></div>
+                        <div><span class="male-ranking font-style"></span><span class="gender"><!-- 的男性 --></span></div>
                     </div>
                     <!-- 按钮 -->
                     <div class="next"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
@@ -124,7 +124,7 @@
                             <span class="company_count"></span>
                             <span>家企业</span>
                         </div>
-                        <div><span>争着为孙俪缴公积金</span></div>
+                        <div><span class="name"><!-- 争着为孙俪缴公积金 --></span></div>
                     </div>
                     <div class="star-gif"></div>
                     <div class="people-gif"></div>
@@ -143,16 +143,16 @@
                     <div class="detail7">
                         <div class="detail7-1">
                             <div><span>说到买房...</span></div>
-                            <div><span>孙俪的公积金可以</span></div>
-                            <div>在<span class="font-color">上海</span>买半个<span class="font-style">卫生间</span></div>
-                            <div>在<span class="font-color">厦门</span>买一个<span class="font-style">带阳台的主卧</span></div>
-                            <div>...</div>
-                            <div>在<span class="font-color">大兴安岭...</span></div>
+                            <div><span class="name"><!-- 孙俪的公积金可以 --></span></div>
+                            <div class="text1"></div>
+                            <div class="text2"></div>
+                            <div class="text3"></div>
+                            <div class="text4"></div>
                         </div>
                         <div class="detail7-2">
-                            <div>买啥单元楼啊！</div>
-                            <div>白桦林开道别墅来两栋！</div>
-                            <div>现金全款啊！</div>
+                            <div class="text5"></div>
+                            <div class="text6"></div>
+                            <div class="text7"></div>
                         </div>
                     </div>
                     <div class="bc-box">
@@ -167,7 +167,7 @@
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
                     <img class="title" data-src="<?php echo $imgUrl; ?>page7_title.png" alt="title">
-                    <div class="detail8"><span>1500000</span><span>元</span></div>
+                    <div class="detail8"><span class="loan-amount"><!-- 1500000 --></span><span>元</span></div>
                     <div class="detail9"><span>身价这种事儿，还是低调，低调。</span></div>
                     <img class="people" data-src="<?php echo $imgUrl; ?>page7_people.png" alt="people">
                     <!-- 按钮 -->
