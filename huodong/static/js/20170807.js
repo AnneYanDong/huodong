@@ -76,7 +76,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 url: ct.Tool.url("/app/request/activity"),
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "20170807_page_1_0_next"
+                    tag: "20170807_"+ page + "_1_0_next"
                 }),
                 success: function (d) {
                     if (d.success) {
@@ -89,7 +89,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
         fullpage: function() {
             var _this = this;
             var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
-                start: 0,  //默认第一页开始
+                start: 7,  //默认第一页开始
                 beforeChange: function(e) {
                     var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
                     console.log("now",now);
@@ -187,53 +187,42 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     };
 
                     if (now == "page7") {
-                        _this.BuryRequest(now);
-                        
+                        $(".page7").on("click",".next",function(){
+                            _this.BuryRequest(now);
+                            _this.fullPageObj.moveTo(7,true);
+                        })
                         _this.respondState(now, 3, true,function(){
                             console.log("返回第六页");
-                            
+                        });
+
+                    };
+
+                    if (now == "page8") {
+                        $(".page8").on("click",".img-btn",function(){
+                            $.ajax({
+                                type: "POST",
+                                dataType: "JSON",
+                                url: ct.Tool.url("/app/request/activity"),
+                                data: JSON.stringify({
+                                    source: ct.Tool.userAgent().isGjj ? 1 : 0,
+                                    tag: "20170807_"+ now + "_1_0_低调分享"
+                                }),
+                                success: function (d) {
+                                    if (d.success) {
+
+                                    }
+                                }
+                            });
+                            _this.share();
+                        })
+                        _this.respondState(now, 3, true,function(){
+                            console.log("返回第七页");
                         });
 
                     };
                 }
             });
             return fullpage;
-        },
-
-        // 走后台跳转申请
-        getAnalysisData: function(now) {
-            var _this = this;
-            console.log("请求传递的数据：",loan);
-            $.ajax({
-                type: "POST",
-                dataType: "JSON",
-                data: JSON.stringify(loan),
-                // url: "test.php",
-                url: "/act/act170801/get_button",
-                success: function(d){
-                    if (d.success) {
-                        data = d.ret.data;
-                        console.log("data->",data);
-                       if (data.sex == 1) {
-                         //弹屏男
-                          $(".page4 .customization-tp").fadeIn();
-                          _this.showAnalyzeProcess(0);
-                          //动态展示icon
-                          _this.showIcon();
-                          //定制贷款信息
-                          _this.getLoanInfo();
-                          setTimeout(function(){
-                            _this.fullPageObj.moveTo(4, true);
-                            $(".page4 .customization-tp").fadeOut();
-                            $(".page4 .analyzing-process div").removeClass("analyzing").addClass("hide");
-                          },2000);
-                       }
-                    }
-                    else {
-                        oP.show(d.msg || "出错了请重试");
-                    }
-                }
-            });
         },
 
         changeState: function(page) {
@@ -276,6 +265,36 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 }
             }
         },
+        //分享按钮：
+        share: function (invitation_code) {
+            var u = navigator.userAgent;
+            var app = {
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/),
+                isAndroid: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1 || u.indexOf("android") > -1,
+                isiOS: /[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                webApp: -1 == u.indexOf("Safari"),
+                weixin: u.indexOf("MicroMessenger") > -1,
+                isGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u) || /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isAndroidGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isiOSGjj: /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isGjjFdjsq: /^android\/[\w\W]+client\/[\w\W]+category\/51fdjsq$/.test(u)
+            };
+            var host = window.location.host;
+            if (app.isGjj && Bridge) {
+                // Bridge.action('quickIcon', {
+                //     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
+                //     onclick: function () {
+                        Bridge.action('ShareTimeline', {
+                            "title": "转盘抽奖",
+                            'desc': "查公积金送积分",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170721_share.png",
+                            "link": "https://" + host + "/hd/20160714/invite_out_v2.php?c=" + invitation_code
+                        });
+                //     }
+                // })
+            }
+            return this;
+        }
     }
     run.start();
 })

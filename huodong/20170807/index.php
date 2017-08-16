@@ -111,6 +111,23 @@
             <div class="page page5">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                    <img class="people1" data-src="<?php echo $imgUrl; ?>page5_people1.png" alt="people1">
+                    <div class="detail10">
+                        <div><span>奋斗的这些年</span></div>
+                        <div>
+                            <span>共有超过</span>
+                            <span>3</span>
+                            <span>家企业</span>
+                        </div>
+                        <div><span>争着为孙俪缴公积金</span></div>
+                    </div>
+                    <div class="star-gif"></div>
+                    <div class="people-gif"></div>
+                    <div class="detail11">
+                        <div>这么抢手</div>
+                        <div>你家里人知道吗</div>
+                    </div>
+                    <img class="people2" data-src="<?php echo $imgUrl; ?>page5_people1.png" alt="people2">
                     <!-- 按钮 -->
                     <div class="next"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
@@ -150,6 +167,14 @@
                     <img class="people" data-src="<?php echo $imgUrl; ?>page7_people.png" alt="people">
                     <!-- 按钮 -->
                     <div class="next"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
+                </div>
+            </div>
+            <div class="page page8">
+                <div class="content">
+                    <img class="share" data-src="<?php echo $imgUrl; ?>page8_share.png" alt="share"/>
+                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>page8_quickmark.png" alt="quickmark"/>
+                    <img class="detail" data-src="<?php echo $imgUrl; ?>page8_detail.png" alt="detail"/>
+                    <img class="img-btn" data-src="<?php echo $imgUrl; ?>page8_btn.png" alt="btn"/>
                 </div>
             </div>
         </div>
