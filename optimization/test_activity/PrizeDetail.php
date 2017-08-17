@@ -2,7 +2,7 @@
 	$title = "奖品详情";
 	include "../public/v1/header.php";
 	$obj = new Resource;
-	$res = $obj->getResStr("activity");
+	$res = $obj->getResStr("test_activity");
  ?>
  <?php 
  	echo $res['css'];
