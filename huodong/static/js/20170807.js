@@ -124,6 +124,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
         getAnalyzingData: function(d) {
             var _this = this;
+           /* _this.showTextContent(".page2 .detail1 span:nth-child(2)",d.analyze1.ranking);
+            _this.showTextContent(".page2 .detail1 span:first-child",d.name + "的公积金在" + d.analyze1.city + "市排名为");
+            _this.showTextContent(".page2 .detail2 span:nth-child(2)",d.analyze1.city + "缴纳公积金人口基数");
+            _this.showTextContent(".page2 .detail2 span:nth-child(2)",d.analyze1.ranking_p + "%");
+            _this.showTextContent(".page2 .detail2 span:nth-child(3)","的" + d.analyze1.city + "人");*/
             $(".page2 .detail1 span:nth-child(2)").text(d.analyze1.ranking);
             $(".page2 .detail1 span:first-child").text(d.name + "的公积金在" + d.analyze1.city + "市排名为");
             $(".page2 .gjj_number div:first-child span").text(d.analyze1.city + "缴纳公积金人口基数");
@@ -154,6 +159,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             $(".page6 .detail7-1 .name").text(d.name + "的公积金可以");
             _this.getPage6Text(d.analyze5.text);
 
+            $(".page7 .detail8 div:first-child span").text(d.name + "的公积金可以拥有");
             $(".page7 .detail8 .loan-amount").text(d.analyze6.loanable_amount);
         },
         getPage6Text: function(text) {
@@ -164,6 +170,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 $(".page6 .text"+ (i+1) +"").text(arrText[i].match(/\S+/));
             }
         },
+       /* showTextContent: function(ele,value) {
+            $(ele).text(value);
+        },*/
         getAnalysisData: function () {
             var _this = this;
             $.ajax({

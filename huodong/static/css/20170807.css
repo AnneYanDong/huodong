@@ -429,7 +429,10 @@ img.quickmark {
 .page6 .detail7-2 {
   font-size: .30rem;
 }
-.page6 .detail7-1 > div,.page6 .detail7-2 > div {
+.page6 .detail7-1 > div {
+  padding-bottom: .2rem;
+}
+.page6 .detail7-2 > div {
   padding-bottom: .1rem;
 }
 .page6 .building {
@@ -480,11 +483,24 @@ img.quickmark {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-.page7 .detail8 span:first-child {
+.page7 .detail8 div:not(:nth-child(2)) {
+  font-size: .38rem;
+  color: #1e1b68;
+  font-weight: bold;
+  width: 100%;
+  position: absolute;
+}
+.page7 .detail8 div:first-child {
+  top: -.6rem;
+}
+.page7 .detail8 div:last-child {
+  top: 1.4rem;
+}
+.page7 .detail8 div:nth-child(2) span:first-child {
   font-size: .91rem;
   font-weight: bold;
 }
-.page7 .detail8 span:last-child {
+.page7 .detail8 div:nth-child(2) span:last-child {
   font-size: .40rem;
   font-weight: bold;
 }

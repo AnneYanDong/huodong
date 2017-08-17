@@ -144,8 +144,8 @@
                         <div class="detail7-1">
                             <div><span>说到买房...</span></div>
                             <div><span class="name"><!-- 孙俪的公积金可以 --></span></div>
-                            <div class="text1"></div>
-                            <div class="text2"></div>
+                            <div class="text1 font-color"></div>
+                            <div class="text2 font-color"></div>
                             <div class="text3"></div>
                             <div class="text4"></div>
                         </div>
@@ -167,7 +167,11 @@
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
                     <img class="title" data-src="<?php echo $imgUrl; ?>page7_title.png" alt="title">
-                    <div class="detail8"><span class="loan-amount"><!-- 1500000 --></span><span>元</span></div>
+                    <div class="detail8">
+                        <div><span></span></div>
+                        <div><span class="loan-amount"><!-- 1500000 --></span><span>元</span></div>
+                        <div><span>信用财富</span></div>
+                    </div>
                     <div class="detail9"><span>身价这种事儿，还是低调，低调。</span></div>
                     <img class="people" data-src="<?php echo $imgUrl; ?>page7_people.png" alt="people">
                     <!-- 按钮 -->
