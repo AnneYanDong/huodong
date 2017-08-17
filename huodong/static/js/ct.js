@@ -104,6 +104,17 @@ define(["jquery"], function($) {
 
         $("html")[0].style.fontSize = viewPort.w / rate + "px";
     }
+    Tool.setFont_v2 = function (rate) {
+        var rate = rate || 7.5;
+        var viewPort = this.viewPortInfo();
+        // viewPort.w > 640 ? 640 : viewPort.w;
+        if (viewPort.w > 640) {
+            viewPort.w = 640;
+        } else {
+            viewPort.w = viewPort.w;
+        }
+        $("html")[0].style.fontSize = viewPort.w / rate + "px";
+    }
 
     // 处理QQ或者华为等底部有底部控制栏占据可视窗口高度的的问题，重新设置
     // 以Iphone7 下微信显示宽高比作为参照。
@@ -222,6 +233,28 @@ define(["jquery"], function($) {
                 },
                 fail: function() {
                     console.log("记录失败：" + event)
+                }
+            })
+        })
+    }
+
+    //埋点改版
+    Tool.buryPoint_v2 = function (s, url) {
+        var _this = this;
+        $("body").on("click", "[bp]", function () {
+            var event = $(this).attr("bp");
+            var url = _this.url(url || "/act/request/activity");
+            Ajax.do({
+                url: url,
+                data: {
+                    tag: event,
+                    source: s
+                },
+                success: function (d) {
+                    console.debug("埋点记录成功：" + event)
+                },
+                fail: function () {
+                    console.debug("埋点记录失败：" + event)
                 }
             })
         })
