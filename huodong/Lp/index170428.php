@@ -157,7 +157,7 @@
 <body>
     <div class="container">
         <div class="banner-part-one">
-            <img class="bg" src="https://r.51gjj.com/act/images/shichang/index170428_new_bg.png" alt="bg">
+            <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170315_v1_new_1.jpg" alt="bg">
             <div class="btn-down">
                 <a href="javascript:;" id="appAddr"></a>
             </div>
@@ -224,7 +224,7 @@
         };
 
         if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-            appAddr.href = "https://itunes.apple.com/cn/app/id1133860708?ct=" + place_name + "&mt=8";
+            appAddr.href = "https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?ls=1&mt=8";
         } else {
             appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
         }
