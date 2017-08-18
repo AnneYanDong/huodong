@@ -125,46 +125,64 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 $(".page7 .div-container").append("<span class='ming'>元</span>");
             }
         },
+        showData: function(d) {
+            var dataObj = {
+                ele: [".page2 .detail1 span:first-child",
+                      ".page2 .gjj_number div:first-child span",
+                      ".page2 .detail2 span:nth-child(2)",
+                      ".page2 .detail2 span:nth-child(3)",
+                      ".page3 .detail3 > div:first-child span:nth-child(2)",
+                      ".page3 .detail3 > div:nth-child(2) span",
+                      ".page3 .detail3 span:nth-child(4)",
+                      ".page3 .detail3 .diff-year",
+                      ".page3 .detail4 span:nth-child(2)",
+                      ".page4 .detail5 .name",
+                      ".page4 .detail5 .gender",
+                      ".page4 .detail6 .gender",
+                      ".page4 .detail5 .female-ranking",
+                      ".page4 .detail6 .male-ranking",
+                      ".page5 .detail10 .company_count",
+                      ".page5 .detail10 .name",
+                      ".page6 .detail7-1 .name",
+                      ".page7 .detail8 div:first-child span",
+                      ".page4 .detail5 .age"
+                      ],
+                data: [d.name + "的公积金在" + d.analyze1.city + "市排名为",
+                       d.analyze1.city + "缴纳公积金人口基数",
+                       d.analyze1.ranking_p + "%",
+                       "的" + d.analyze1.city + "人",
+                       d.analyze2.year,
+                       d.name + "第一次缴纳公积金",
+                       d.analyze2.month,
+                       d.analyze2.diff_year,
+                       d.analyze2.city,
+                       d.name,
+                       "的" + d.analyze3.gender + "性",
+                       "的" + d.analyze3.gender + "性",
+                       d.analyze3.ranking_p_female + "%",
+                       d.analyze3.ranking_p_male + "%",
+                       d.analyze4.company_count,
+                       "争着为" + d.name + "缴公积金",
+                       d.name + "的公积金可以",
+                       d.name + "的公积金可以拥有",
+                       d.analyze3.age
+                       ]
+            }
+            for(var i = 0; i < dataObj.ele.length; i++) {
+                $(dataObj.ele[i]).text(dataObj.data[i]);
+            }
+            if (d.analyze3.age == null || d.analyze3.age == false) {
+                $(".page4 .detail5 .age").text("社会人");
+            } else {
+                $(dataObj.ele[".page4 .detail5 .age"]).text(dataObj.data[d.analyze3.age]);
+                $(".page4 .detail5 .age").after($("<span>后</span>"));
+            }
+        },
         getAnalyzingData: function(d) {
             var _this = this;
-            $(".page2 .detail1 span:first-child").text(d.name + "的公积金在" + d.analyze1.city + "市排名为");
+            _this.showData(d);
             _this.getNumberImage(d.analyze1.ranking,"page2");
-
-            $(".page2 .gjj_number div:first-child span").text(d.analyze1.city + "缴纳公积金人口基数");
-            //
-            $(".page2 .detail2 span:nth-child(2)").text(d.analyze1.ranking_p + "%");
-
-            $(".page2 .detail2 span:nth-child(3)").text("的" + d.analyze1.city + "人");
-            //
-            $(".page3 .detail3 > div:first-child span:nth-child(2)").text(d.analyze2.year);
-            $(".page3 .detail3 > div:nth-child(2) span").text(d.name + "第一次缴纳公积金");
-            //
-            $(".page3 .detail3 span:nth-child(4)").text(d.analyze2.month);
-            //
-            $(".page3 .detail3 .diff-year").text(d.analyze2.diff_year);
-            $(".page3 .detail4 span:nth-child(2)").text(d.analyze2.city);
-
-            if (d.analyze3.age) {
-                $(".page4 .detail5 .age").text(d.analyze3.age);
-                $(".page4 .detail5 .age").after($("<span>后</span>"));
-            } else {
-                $(".page4 .detail5 .age").text("社会人");
-            }
-            $(".page4 .detail5 .name").text(d.name);
-            $(".page4 .detail5 .gender").text("的" + d.analyze3.gender + "性");
-            $(".page4 .detail6 .gender").text("的" + d.analyze3.gender + "性");
-            //
-            $(".page4 .detail5 .female-ranking").text(d.analyze3.ranking_p_female + "%");
-            $(".page4 .detail6 .male-ranking").text(d.analyze3.ranking_p_male + "%");
-            //
-            $(".page5 .detail10 .company_count").text(d.analyze4.company_count);
-
-            $(".page5 .detail10 .name").text("争着为" + d.name + "缴公积金");
-
-            $(".page6 .detail7-1 .name").text(d.name + "的公积金可以");
             _this.getPage6Text(d.analyze5.text);
-
-            $(".page7 .detail8 div:first-child span").text(d.name + "的公积金可以拥有");
             _this.getNumberImage(d.analyze6.loanable_amount,"page7");
         },
         getPage6Text: function(text) {
