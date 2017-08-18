@@ -32,7 +32,7 @@
                     <div class="title"><img data-src="<?php echo $imgUrl; ?>page1_title.png" alt="title"></div>
                     <div class="img-gold"><img data-src="<?php echo $imgUrl; ?>page1_$.png" alt="$"></div>
                     <!-- 按钮 -->
-                    <div class="img-btn"><img data-src="<?php echo $imgUrl; ?>page1_btn.png" alt="btn"></div>
+                    <div class="img-btn" bp="20170807_1_1_0_开始解封"><img data-src="<?php echo $imgUrl; ?>page1_btn.png" alt="btn"></div>
                     <div class="climb climbing"></div>
                     <div class="letter lettering"></div>
                     <div class="gold scrolling"><img data-src="<?php echo $imgUrl; ?>dynamic_gold.png" alt="gold"></div>
@@ -45,11 +45,10 @@
                     <div class="circle"></div>
                     <div class="detail1">
                         <span><!-- 孙俪的公积金在上海市排名为 --></span>
-                        <span></span>
-                        <span>名</span>
+                        <div class="div-container"></div>
                     </div>
                     <div class="gif-container">
-                        <img class="pg" data-src="<?php echo $imgUrl; ?>page2_pg.png" alt="pg">
+                        <img class="pg" data-src="<?php echo $imgUrl; ?>page2_new_pg.png" alt="pg">
                         <div class="gjj_number">
                             <div><span><!-- 上海缴纳公积金人口基数 --></span></div>
                             <div>为<span>1233</span>万人</div>
@@ -166,10 +165,10 @@
             <div class="page page7">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
-                    <img class="title" data-src="<?php echo $imgUrl; ?>page7_title.png" alt="title">
+                    <img class="title" data-src="<?php echo $imgUrl; ?>page7_new_title.png" alt="title">
                     <div class="detail8">
                         <div><span></span></div>
-                        <div><span class="loan-amount"><!-- 1500000 --></span><span>元</span></div>
+                        <div class="div-container"></div>
                         <div><span>信用财富</span></div>
                     </div>
                     <div class="detail9"><span>身价这种事儿，还是低调，低调。</span></div>
