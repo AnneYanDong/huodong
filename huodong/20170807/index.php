@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <img class="loading" data-src="<?php echo $imgUrl; ?>page4_loading.png" alt="loading">
-                    <img class="page4-pg" data-src="<?php echo $imgUrl; ?>page4_pg.png" alt="pg">
+                    <img class="page4-pg" data-src="<?php echo $imgUrl; ?>page4_new_pg.png" alt="pg">
                     <div class="glass"><img data-src="<?php echo $imgUrl; ?>page4_glass.png" alt="glass"></div>
                     <div class="detail6">
                         <div><span>另外，实力也远超了</span></div>

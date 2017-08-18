@@ -45,21 +45,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     }, 500)
                 }
             })
-
-            /*   $.ajax({
-                   type: "POST",
-                   dataType: "JSON",
-                   url: ct.Tool.url("/act/request/activity"),
-                   data: JSON.stringify({
-                       place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
-                       tag: "进入页面" + projectName
-                   }),
-                   success: function (d) {
-                       if (d.success) {
-
-                       }
-                   }
-               });*/
         },
 
         init: function () {
@@ -75,24 +60,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 Bridge.action("setNavigationColor",{backgroundColor:"#e33d3b",textColor:"#fff",iconType:"1"});
             }
         },
-        // BuryRequest: function (now) {
-        //     console.log("埋点：", now);
-        //     var page = now.substring(4);
-        //     $.ajax({
-        //         type: "POST",
-        //         dataType: "JSON",
-        //         url: "/act/request/activity",
-        //         data: JSON.stringify({
-        //             source: ct.Tool.userAgent().isGjj ? 1 : 0,
-        //             tag: "20170807_" + page + "_1_0_next"
-        //         }),
-        //         success: function (d) {
-        //             if (d.success) {
-
-        //             }
-        //         }
-        //     });
-        // },
         PageBuryRequest: function (now) {
             console.log("埋点：", now);
             var page = now.substring(4);
@@ -162,10 +129,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             var _this = this;
             $(".page2 .detail1 span:first-child").text(d.name + "的公积金在" + d.analyze1.city + "市排名为");
             _this.getNumberImage(d.analyze1.ranking,"page2");
-
-
-
-
 
             $(".page2 .gjj_number div:first-child span").text(d.analyze1.city + "缴纳公积金人口基数");
             //
@@ -287,20 +250,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                     }
                                 }
                             });
-                          /*  $.ajax({
-                                type: "POST",
-                                dataType: "JSON",
-                                url: ct.Tool.url("/act/request/activity"),
-                                data: JSON.stringify({
-                                    source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                                    tag: "20170807_1_1_0_开始解析"
-                                }),
-                                success: function (d) {
-                                    if (d.success) {
-
-                                    }
-                                }
-                            });*/
                         })
                         _this.respondState(now);
                     }
@@ -308,7 +257,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     if (now == "page2") {
                         _this.PageBuryRequest(now);
                         $(".page2").on("click", ".next", function () {
-                           /* _this.BuryRequest(now); //页面埋点更换*/
                             _this.fullPageObj.moveTo(2, true);
                         })
                         _this.respondState(now, 0, true, function () {
@@ -319,8 +267,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     if (now == "page3") {
                         _this.PageBuryRequest(now);
                         $(".page3").on("click", ".next", function () {
-
-                            /*_this.BuryRequest(now);*/
                             _this.fullPageObj.moveTo(3, true);
                         })
                         _this.respondState(now, 1, true, function () {
@@ -331,7 +277,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     if (now == "page4") {
                         _this.PageBuryRequest(now);
                         $(".page4").on("click", ".next", function () {
-                           /* _this.BuryRequest(now);*/
                             _this.fullPageObj.moveTo(4, true);
                         })
                         _this.respondState(now, 2, true, function () {
@@ -342,7 +287,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     if (now == "page5") {
                         _this.PageBuryRequest(now);
                         $(".page5").on("click", ".next", function () {
-                            // _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(5, true);
                         })
                         _this.respondState(now, 3, true, function () {
@@ -355,7 +299,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     if (now == "page6") {
                         _this.PageBuryRequest(now);
                         $(".page6").on("click", ".next", function () {
-                            // _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(6, true);
                         })
                         _this.respondState(now, 4, true, function () {
@@ -368,7 +311,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     if (now == "page7") {
                         _this.PageBuryRequest(now);
                         $(".page7").on("click", ".next", function () {
-                            // _this.BuryRequest(now);
                             _this.fullPageObj.moveTo(7, true);
                         })
                         _this.respondState(now, 5, true, function () {
@@ -380,20 +322,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     if (now == "page8") {
                         _this.PageBuryRequest(now);
                         $(".page8").on("click", ".img-btn", function () {
-                          /*  $.ajax({
-                                type: "POST",
-                                dataType: "JSON",
-                                url: ct.Tool.url("/act/request/activity"),
-                                data: JSON.stringify({
-                                    source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                                    tag: "20170807_8_1_0_低调分享"
-                                }),
-                                success: function (d) {
-                                    if (d.success) {
-
-                                    }
-                                }
-                            });*/
                             _this.share();
                         })
                         _this.respondState(now, 6, true, function () {
