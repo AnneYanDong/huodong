@@ -9,7 +9,7 @@
         "url" => "http://www.baidu.com",
         "analyze1" => array(
           "city"=>"杭州",
-          "ranking"=>6168,
+          "ranking"=>3175,
           "ranking_p"=> 90.12,
           "gender"=> "女"
         ),

@@ -143,6 +143,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 $(".div-container div img").css({
                     "width":".42rem",
                     "height":".68rem",
+                    "padding":".02rem"
                 });
             } else {
                 $(".div-container div img").css({

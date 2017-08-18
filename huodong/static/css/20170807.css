@@ -120,7 +120,7 @@ img.quickmark {
   width: 1.65rem;
   height: 1.74rem;
   position: absolute;
-  top: .37rem;
+  top: .38rem;
   left: .52rem;
 }
 .page2 .circle {
@@ -149,18 +149,11 @@ img.quickmark {
   padding-bottom: .5rem;
   font-weight: bold;
 }
-.page2 .detail1 span:nth-child(2) {
-  // font-size: .91rem;
-  // color: #e33d3b;
-  // font-weight: bold;
-  /* font-family: DIN-BLACK; */
-}
 .page2 .detail1 {
   width: 100%;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  /* font-family: DIN-BLACK; */
 }
 .div-container {
   display: flex;
@@ -178,13 +171,8 @@ img.quickmark {
   position: relative;
   top: .2rem;
   font-weight: bold;
+  transform: translate(.1rem,.04rem);
 }
-/* .page2 .detail1 div img {
-  width: .42rem;
-  height: .68rem;
-  position: absolute;
-  top: 4.43rem;
-} */
 .page2 .gif-container {
   width: 6.40rem;
   height: 3.58rem;
@@ -235,7 +223,6 @@ img.quickmark {
   color: #1e1b68;
 }
 .page2 .detail2 span:nth-child(2) {
-  /* font-family: DIN-BLACK; */
   font-weight: bold;
   font-size: .59rem;
   color: #e33d3b;
@@ -245,7 +232,7 @@ img.quickmark {
   width: .92rem;
   height: .47rem;
   position: absolute;
-  top: 11.07rem;
+  top: 10.8rem;
   left: 3.28rem;
   padding-top: .4rem;
   -moz-animation: hint 1s infinite;
@@ -276,7 +263,9 @@ img.quickmark {
   color: #e33d3b;
   font-size: .59rem;
   font-weight: bold;
-  /* font-family: DIN-BLACK; */
+  padding: 0 .02rem;
+  position: relative;
+  top: .04rem;
 }
 .font-color {
   color: #e33d3b;
@@ -291,8 +280,14 @@ img.quickmark {
   top: 3.80rem;
   left: .45rem;
 }
-.page3 .detail3 div,.page3 .detail4 div{
+.page3 .detail3 div{
   padding-bottom: .1rem;
+}
+.page3 .detail4 div {
+  padding-bottom: .2rem;
+}
+.page3 .detail4 div span {
+  letter-spacing: .01rem;
 }
 .page3 .thinking {
   width: 1.18rem;
@@ -401,6 +396,8 @@ img.quickmark {
 .page5 .detail10 > div:nth-child(2) span:nth-child(2) {
   font-size: .60rem;
   color: #e33d3b;
+  position: relative;
+  top: .05rem;
 }
 .page5 .detail10 > div,.page5 .detail11 > div {
   padding-bottom: .2rem;
@@ -802,12 +799,12 @@ img.quickmark {
 }
 @keyframes hint {
   to {
-    top: 11.2rem;
+    top: 11rem;
   }
 }
 @-webkit-keyframes hint {
   to {
-    top: 11.2rem;
+    top: 11rem;
   }
 }
 @keyframes thinking {
