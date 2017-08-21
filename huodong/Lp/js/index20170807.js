@@ -4,6 +4,26 @@ var init = {
         this.getCode();
         this.isInputEnter();
     },
+    //获得查询字符串
+    getQueryStringArgs: function() {
+        var qs = location.search.length > 0 ? location.search.substring(1) : 0;
+        var items = qs.length > 0 ? qs.split("&") : [];
+        var item = null,
+            name = null,
+            value = null,
+            len = items.length;
+        var args = {};
+        for(var i = 0; i < len; i ++) {
+            item = items[i].split("=");
+            name = decodeURIComponent(item[0]);
+            value = decodeURIComponent(item[1]);
+
+            if(name.length) {
+                args[name] = value;
+            }
+        }
+        return args;
+    },
     //点击获取验证码
     getCode: function() {
         var skipTimer = null;
@@ -18,7 +38,7 @@ var init = {
                     url: oUrl,
                     type: "POST",
                     dataType: "JSON",
-                    data:JSON.stringify({"phone": phoneNum}),
+                    data:JSON.stringify({"phone": phoneNum,"place_name":place_name}),
                     success: function(d) {
                         if (d.success === true) {
                             _this.alertBox("短信验证码已发送，请注意查收",2000);
@@ -45,6 +65,8 @@ var init = {
     searchClick: function() {
         var _this = this;
         var skipTimer = null;
+        var args = _this.getQueryStringArgs(),
+            place_name = args["p"];
         // var oUrl = "test.php";
         var oUrl = "/act/market/get_register";
         $(".search-btn").on("click", function() {
@@ -59,7 +81,7 @@ var init = {
                      	JSON.stringify({
                      		"phone": phoneNum,
 	                        "code": codeNum,
-	                        "place": "market_register"
+	                        "place": place_name
                      	}),
                     success: function(d) {
                         if (d.success === true) { //手机号码验证码都正确，跳转到H5查询
