@@ -1,0 +1,58 @@
+.wp {
+  background: #f56817;
+}
+.content .title {
+  width: 7.50rem;
+  height: 3.01rem;
+  position: absolute;
+  top: 0;
+}
+.money {
+  background: url("../img/20170821_money_sprites.png");
+  width: 5.35rem;
+  height: 2.38rem;
+  background-size: 59.03rem 2.38rem;
+
+  position: absolute;
+  top: 2.13rem;
+  left: 1rem;
+  
+  -moz-animation: money 1s step-end infinite;
+  -webkit-animation: money 1s step-end infinite;
+  animation: money 1s step-end infinite;
+}
+@keyframes money {
+  0% {
+    background-position: 0 0;
+  }
+  10% {
+    background-position: -5.37rem 0;
+  }
+  20% {
+    background-position: -10.74rem 0;
+  }
+  30% {
+    background-position: -16.11rem 0;
+  }
+  40% {
+    background-position: -21.48rem 0;
+  }
+  50% {
+    background-position: -26.85rem 0;
+  }
+  60% {
+    background-position: -32.22rem 0;
+  }
+  70% {
+    background-position: -37.59rem 0;
+  }
+  80% {
+    background-position: -42.96rem 0;
+  }
+  90% {
+    background-position: -48.32rem 0;
+  }
+  100% {
+    background-position: -53.68rem 0;
+  }
+}

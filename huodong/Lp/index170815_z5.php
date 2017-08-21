@@ -168,6 +168,9 @@
                 </div>
                 <div class="banner-part-two">
                     <img class="bg" src="//r.51gjj.com/act/images/20161028v2_1_bg2.jpg" alt="bg">
+                    <div class="copyright" style="font-size: 11px; color:#333; background: #fff; text-align: center;">
+                        <p style="padding: 5px 0;">杭州煎饼网络技术有限公司 浙ICP备12029872号-3</p>
+                    </div>
                 </div>
                 <div class="cnzz">
                     浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家

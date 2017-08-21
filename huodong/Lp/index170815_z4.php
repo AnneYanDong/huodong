@@ -166,7 +166,7 @@
                     <div class="search-btn search-btn-absolute search-btn-not-active"></div>
                 </div>
                 <div class="company" style="background: #1e1e1f;">
-                    <p>浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家</p>
+                    <p>浙ICP备12029872号-3&nbsp;&nbsp;51公积金管家</p>
                     <p>杭州煎饼网络技术有限公司</p> 
                 </div>
                 <div class="cnzz">
@@ -178,13 +178,16 @@
             </div>
             <div class="section section-two">
                 <img src="//r.51gjj.com/act/images/20161011_market_downbg_section_two.jpg" alt="down_banner">
+                <div class="copyright" style="font-size: 11px; color:#333; background: #fff; text-align: center;">
+                    <p style="padding: 5px 0;">杭州煎饼网络技术有限公司 浙ICP备12029872号-3</p>
+                </div>
                 <div class="bottom-float">
                     <a class="bottom-down-app" href="javascript:;" id="appAddr"></a>
                 </div>
-                <div class="company" style="background: #000000;">
-                    <p>浙ICP备12029872号©2014-2016&nbsp;&nbsp;51公积金管家</p>
-                    <p>杭州煎饼网络技术有限公司</p> 
-                </div>
+               <!--  <div class="company" style="background: #000000;">
+                    <p>浙ICP备12029872号-3&nbsp;&nbsp;51公积金管家</p>
+                    <p>杭州煎饼网络技术有限公司</p>
+                </div> -->
             </div>
         </div>
     </div>
