@@ -352,7 +352,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             return fullpage;
         },
 
-        changeState: function (page) {
+        changeState: function (page,id) {
             window.history.pushState && window.history.pushState({
                 title: page
             }, page, "index.php#page=" + page); // 塞入新的历史
@@ -393,7 +393,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             }
         },
         //分享按钮：
-        share: function (invitation_code) {
+        share: function (unionid) {
             var u = navigator.userAgent;
             var app = {
                 mobile: !!u.match(/AppleWebKit.*Mobile.*/),
@@ -415,7 +415,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     "title": "转盘抽奖",
                     'desc': "查公积金送积分",
                     "thumb": "https://r.51gjj.com/act/release/img/20170721_share.png",
-                    "link": "https://" + host + "/hd/20160714/invite_out_v2.php?c=" + invitation_code
+                    "link": "https://" + host + "/act/wechat/act_analyzes?=" + unionid
                 });
                 //     }
                 // })

@@ -1,4 +1,4 @@
-.wp {
+.wp-outer {
   background: #f56817;
 }
 .content .title {
@@ -16,10 +16,64 @@
   position: absolute;
   top: 2.13rem;
   left: 1rem;
-  
+  z-index: 2;
+
   -moz-animation: money 1s step-end infinite;
   -webkit-animation: money 1s step-end infinite;
   animation: money 1s step-end infinite;
+}
+.btn-group {
+  width: 7.29rem;
+  height: 10.32rem;
+  position: absolute;
+  top: 3.48rem;
+  left: .11rem;
+}
+.rule-btn {
+  position: absolute;
+  top: 14.05rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: .28rem;
+  color: #d03201;
+  margin-bottom: .59rem;
+  border-bottom: 1px solid #d03201;
+}
+@-webkit-keyframes money {
+  0% {
+    background-position: 0 0;
+  }
+  10% {
+    background-position: -5.37rem 0;
+  }
+  20% {
+    background-position: -10.74rem 0;
+  }
+  30% {
+    background-position: -16.11rem 0;
+  }
+  40% {
+    background-position: -21.48rem 0;
+  }
+  50% {
+    background-position: -26.85rem 0;
+  }
+  60% {
+    background-position: -32.22rem 0;
+  }
+  70% {
+    background-position: -37.59rem 0;
+  }
+  80% {
+    background-position: -42.96rem 0;
+  }
+  90% {
+    background-position: -48.32rem 0;
+  }
+  100% {
+    background-position: -53.68rem 0;
+  }
 }
 @keyframes money {
   0% {

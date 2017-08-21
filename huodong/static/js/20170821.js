@@ -21,10 +21,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
 
             /*设置HTML的font-size*/
             ct.Tool.setFont();
-            ct.Tool.handleBottomStatusBar();
+            // ct.Tool.handleBottomStatusBar();
             window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
-            window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
-            // window.onresize = ct.Tool.debounce(ct.Tool.setFont)
+            // window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
+            window.onresize = ct.Tool.debounce(ct.Tool.setFont)
 
             /*整体预加载动画*/
             var oPreLoading = Object.create(ct.PreLodingUi);
@@ -51,7 +51,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             console.log("周末提款机2.0活动");
             var _this = this;
             _this.setNavAttr();
-            $(".wp").removeClass("hide");
+            $(".wp-outer").removeClass("hide");
             _this.PageBuryRequest();
         },
         setNavAttr: function() {

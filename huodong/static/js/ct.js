@@ -216,7 +216,7 @@ define(["jquery"], function($) {
     }
 
     // 统计按钮的点击情况
-    /*Tool.buryPoint = function(url) {
+    Tool.buryPoint = function(url) {
         var _this = this;
         $("body").on("click", "[bp]", function() {
             var event = $(this).attr("bp");
@@ -236,7 +236,7 @@ define(["jquery"], function($) {
                 }
             })
         })
-    }*/
+    }
 
     //埋点改版
     Tool.buryPoint_v2 = function (s, url) {

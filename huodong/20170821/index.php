@@ -25,12 +25,13 @@
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     </head>
     <body>
-    <div class="wp hide">
+    <div class="wp-outer hide">
         <div class="wp-inner">
             <div class="content">
                 <img class="title" data-src="<?php echo $imgUrl; ?>title.png" alt="title">
                 <div class="money"></div>
-                <!-- <div class="rule-btn" bp="规则" title="规则">活动规则</div> -->
+                <img class="btn-group" data-src="<?php echo $imgUrl; ?>btn_group.png" alt="btn_group">
+                <div class="rule-btn" bp="规则" title="规则">活动规则</div>
             </div>
         </div>
     </div>
@@ -40,15 +41,15 @@
         };
     </script>
     <script type="text/template" id="tpl-rule">
-            <div class="rule">
-                <h6>提款规则</h6>
-                <ul>
-                    {@each rule as item,index}
-                    <li><span>${Number(index)+1}、</span>${item}</li>
-                    {@/each}
-                </ul>
-                <div class="btn-close"></div>
-            </div>
+        <div class="rule">
+            <h6>提款规则</h6>
+            <ul>
+                {@each rule as item,index}
+                <li><span>${Number(index)+1}、</span>${item}</li>
+                {@/each}
+            </ul>
+            <div class="btn-close"></div>
+        </div>
     </script>
     </body>
 </html>
