@@ -31,7 +31,11 @@
                 <img class="title" data-src="<?php echo $imgUrl; ?>title.png" alt="title">
                 <div class="money"></div>
                 <img class="btn-group" data-src="<?php echo $imgUrl; ?>btn_group.png" alt="btn_group">
-                <div class="rule-btn" bp="规则" title="规则">活动规则</div>
+                <div class="btn1" bp="20170821_1_1_0_利息最低贷"></div>
+                <div class="btn2" bp="20170821_1_2_0_审批最快贷"></div>
+                <div class="btn3" bp="20170821_1_3_0_门槛最低贷"></div>
+                <div class="btn4" bp="20170821_1_4_0_急用首选贷"></div>
+                <div class="rule-btn" bp="20170821_1_5_0_规则">活动规则</div>
             </div>
         </div>
     </div>

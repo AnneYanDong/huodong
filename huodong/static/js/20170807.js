@@ -193,11 +193,33 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 $(".page6 .text"+ (i+1) +"").text(arrText[i].match(/\S+/));
             }
         },
+        getQueryStringArgs: function() {
+            var qs = location.search.length > 0 ? location.search.substring(1) : 0;
+            var items = qs.length > 0 ? qs.split("&") : [];
+            var item = null,
+                name = null,
+                value = null,
+                len = items.length;
+            var args = {};
+            for(var i = 0; i < len; i ++) {
+                item = items[i].split("=");
+                name = decodeURIComponent(item[0]);
+                value = decodeURIComponent(item[1]);
+
+                if(name.length) {
+                    args[name] = value;
+                }
+            }
+            return args;
+        },
         getAnalysisData: function () {
             var _this = this;
+            var args = _this.getQueryStringArgs();
+            var unionid = args["unionid"];
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
+                data: stringify({"unionid": unionid}),
                 url: "test.php",
                 // url: "/act/analyze/get_analyze",
                 success: function (d) {
@@ -393,7 +415,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             }
         },
         //分享按钮：
-        share: function (unionid) {
+        share: function () {
             var u = navigator.userAgent;
             var app = {
                 mobile: !!u.match(/AppleWebKit.*Mobile.*/),
@@ -412,10 +434,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 //     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
                 //     onclick: function () {
                 Bridge.action('ShareTimeline', {
-                    "title": "转盘抽奖",
-                    'desc': "查公积金送积分",
+                    "title": "要不是和你铁，这份公积金档案也不会发给你！",
+                    'desc': "点击查看我的公积金秘密。",
                     "thumb": "https://r.51gjj.com/act/release/img/20170721_share.png",
-                    "link": "https://" + host + "/act/wechat/act_analyzes?=" + unionid
+                    "link": "https://" + host + "/act/wechat/act_analyzes"
                 });
                 //     }
                 // })

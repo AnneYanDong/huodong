@@ -1,4 +1,10 @@
-.wp-outer {
+@import url('basicFullPage.css');
+@import url('mtool.css');
+@import url('rule-btn.css');
+.rule {
+  top: 3.5rem;
+}
+body {
   background: #f56817;
 }
 .content .title {
@@ -28,6 +34,27 @@
   position: absolute;
   top: 3.48rem;
   left: .11rem;
+}
+.btn1,
+.btn2,
+.btn3,
+.btn4 {
+  width: 1.65rem;
+  height: .77rem;
+  position: absolute;
+  right: .53rem;
+}
+.btn1 {
+  top: 5.46rem;
+}
+.btn2 {
+  top: 7.66rem;
+}
+.btn3 {
+  top: 9.91rem;
+}
+.btn4 {
+  top: 12.22rem;
 }
 .rule-btn {
   position: absolute;
