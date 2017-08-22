@@ -181,12 +181,12 @@
                     </script>
                 </div>
             </div>
-            <!-- <div class="section section-two" style="background: #fff">
+            <div class="section section-two" style="background: #fff">
                 <img src="//r.51gjj.com/act/images/20161028v2_2_bg2.jpg" alt="down_banner">
                 <div class="bottom-float">
                     <a class="bottom-down-app" href="javascript:;" id="appAddr"></a>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
     <script>

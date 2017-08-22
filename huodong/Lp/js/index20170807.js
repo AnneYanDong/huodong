@@ -45,9 +45,9 @@ var init = {
                             _this.timeDown($(".JS-get-code"), 60)
                         } else if(d.code == 512){
                         	_this.alertBox("您已注册，直接参与吧",1000);
-                        	// skipTimer = setTimeout(function(){
-                         //        $(".section").addClass("slideTop");
-                         //    },1500)
+                        	skipTimer = setTimeout(function(){
+                                $(".section").addClass("slideTop");
+                            },1500)
                         } else{
                         	$(".JS-get-code").removeClass("timing");
                         	_this.alertBox(d.msg || "出错了，请重试",1000)
