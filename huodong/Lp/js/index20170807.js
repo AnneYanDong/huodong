@@ -67,6 +67,7 @@ var init = {
         var skipTimer = null;
         var args = _this.getQueryStringArgs(),
             place_name = args["p"];
+            console.log(place_name);
         // var oUrl = "test.php";
         var oUrl = "/act/market/get_register";
         $(".search-btn").on("click", function() {
