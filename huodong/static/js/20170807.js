@@ -42,7 +42,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     timer = setTimeout(function () {
                         oPreLoading.hide();
                         _this.init();
-                    }, 500)
+                    },500)
                 }
             })
         },
@@ -130,7 +130,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 ele: [".page2 .detail1 span:first-child",
                       ".page2 .gjj_number div:first-child span",
                       ".page2 .detail2 span:nth-child(2)",
-                      ".page2 .detail2 span:nth-child(3)",
+                      ".page2 .detail2 span:last-child",
+                      ".page2 .dynamic-text span",
                       ".page3 .detail3 > div:first-child span:nth-child(2)",
                       ".page3 .detail3 > div:nth-child(2) span",
                       ".page3 .detail3 span:nth-child(4)",
@@ -147,10 +148,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                       ".page7 .detail8 div:first-child span",
                       ".page4 .detail5 .age"
                       ],
-                data: [d.name + "的公积金在" + d.analyze1.city + "市排名为",
+                data: [d.name + "的公积金",
                        d.analyze1.city + "缴纳公积金人口基数",
                        d.analyze1.ranking_p + "%",
-                       "的" + d.analyze1.city + "人",
+                       d.analyze1.city + "人",
+                       d.analyze1.text,
                        d.analyze2.year,
                        d.name + "第一次缴纳公积金",
                        d.analyze2.month,
@@ -181,7 +183,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         getAnalyzingData: function(d) {
             var _this = this;
             _this.showData(d);
-            _this.getNumberImage(d.analyze1.ranking,"page2");
+            // _this.getNumberImage(d.analyze1.ranking,"page2");
             _this.getPage6Text(d.analyze5.text);
             _this.getNumberImage(d.analyze6.loanable_amount,"page7");
         },
@@ -219,9 +221,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                data: stringify({"unionid": unionid}),
-                url: "test.php",
-                // url: "/act/analyze/get_analyze",
+                data: JSON.stringify({"unionid": unionid}),
+                // url: "test.php",
+                url: "/act/analyze/get_analyze",
                 success: function (d) {
                     dataObj = d;
                     if (d.success) {
@@ -258,8 +260,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             $.ajax({
                                 type: "POST",
                                 dataType: "JSON",
-                                url: "test.php",
-                                // url: "/act/analyze/get_analyze",
+                                // url: "test.php",
+                                url: "/act/analyze/get_analyze",
                                 success: function (d) {
                                     if (d.success) {
                                         console.log("后台数据：", d);

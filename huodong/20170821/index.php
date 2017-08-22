@@ -1,5 +1,5 @@
 <?php 
-    $title = "周末提款机"; // 配置标题的，必须
+    $title = "周末放款专区"; // 配置标题的，必须
     include "../public/v2/header.php";
     $proName = "20170821"; // 配置文件的项目名
     $version = "v1";
@@ -30,7 +30,8 @@
             <div class="content">
                 <img class="title" data-src="<?php echo $imgUrl; ?>title.png" alt="title">
                 <div class="money"></div>
-                <img class="btn-group" data-src="<?php echo $imgUrl; ?>btn_group.png" alt="btn_group">
+                <img class="static-money" data-src="<?php echo $imgUrl; ?>static_money.png" alt="static-money">
+                <img class="btn-group" data-src="<?php echo $imgUrl; ?>btn_group3.png" alt="btn_group3">
                 <div class="btn1" bp="20170821_1_1_0_利息最低贷"></div>
                 <div class="btn2" bp="20170821_1_2_0_审批最快贷"></div>
                 <div class="btn3" bp="20170821_1_3_0_门槛最低贷"></div>

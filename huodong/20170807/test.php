@@ -11,7 +11,8 @@
           "city"=>"杭州",
           "ranking"=>3175,
           "ranking_p"=> 90.12,
-          "gender"=> "女"
+          "gender"=> "女",
+          "text"=>"可以说balalbala"
         ),
         "analyze2" => array(
           "year"=>2010,

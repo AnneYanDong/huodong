@@ -69,13 +69,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     url: "/act/act170822/get_button/"+ (btn_id - 1) +"",
                     success: function(d) {
                         if (d.success) {
-                            if (!d.login) {
+                            if (!d.ret.login) {
                                 if(Bridge) {
                                     Bridge.action("login");
                                 }
                             } else {
                                 window.location.href = d.ret.url;
                             }
+                        } else {
+                            oP.show(d.msg);
                         }
                     }
                 });

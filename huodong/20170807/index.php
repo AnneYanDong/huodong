@@ -44,22 +44,18 @@
                     <div class="portrait"></div>
                     <div class="circle"></div>
                     <div class="detail1">
-                        <span><!-- 孙俪的公积金在上海市排名为 --></span>
-                        <div class="div-container"></div>
+                        <span></span>
+                        <!-- <div class="div-container"></div> -->
                     </div>
-                    <div class="gif-container">
-                        <img class="pg" data-src="<?php echo $imgUrl; ?>page2_new_pg.png" alt="pg">
-                        <div class="gjj_number">
-                            <div><span><!-- 上海缴纳公积金人口基数 --></span></div>
-                            <div>为<span>1233</span>万人</div>
-                        </div>
-                        <div class="gif"></div>
-                    </div>
+                    <div class="gif"></div>
                     <div class="detail2">
                         <span>超过</span>
-                        <span><!-- 75.4% --></span>
-                        <span><!-- 的上海人 --></span>
+                        <span></span>
+                        <span>的</span>
+                        <span></span>
                     </div>
+                    <div class="dynamic-text"><span><!-- 可以说非常强势了！ --></span></div>
+                    <img class="awesome" data-src="<?php echo $imgUrl; ?>page2_awesome.png" alt="awesome">
                     <!-- 按钮 -->
                     <div class="next" bp="20170807_2_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
@@ -102,6 +98,7 @@
                         </div>
                     </div>
                     <img class="loading" data-src="<?php echo $imgUrl; ?>page4_loading.png" alt="loading">
+                    <img class="flower" data-src="<?php echo $imgUrl; ?>flower.png" alt="flower">
                     <img class="page4-pg" data-src="<?php echo $imgUrl; ?>page4_new_pg.png" alt="pg">
                     <div class="glass"><img data-src="<?php echo $imgUrl; ?>page4_glass.png" alt="glass"></div>
                     <div class="detail6">
