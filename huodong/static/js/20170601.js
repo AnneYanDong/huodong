@@ -12,7 +12,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
 
     ct.Tool.buryPoint();
     // id type
-    ct.Tool.share(64, xingyezhuanxiang618);
+    ct.Tool.share(64, "xingyezhuanxiang618");
 
     var myDay = new Date().getDay();
     var app = null;
