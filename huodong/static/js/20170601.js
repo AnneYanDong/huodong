@@ -11,6 +11,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var local = ct.Tool.local();
 
     ct.Tool.buryPoint();
+    ct.Tool.share();
 
     var myDay = new Date().getDay();
     var app = null;
