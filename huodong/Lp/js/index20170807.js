@@ -29,7 +29,7 @@ var init = {
         var skipTimer = null;
         // var oUrl = "test.php";
 
-        var oUrl = "/act/market/get_verification_code";
+        var oUrl = "https://b.jianbing.com/act/market/get_verification_code";
         var _this = this;
         $(".JS-get-code").on("click", function() {
             if (_this.checkPhone($(".JS-phone"))) {
@@ -69,7 +69,7 @@ var init = {
             place_name = args["p"];
             console.log(place_name);
         // var oUrl = "test.php";
-        var oUrl = "/act/market/get_register";
+        var oUrl = "https://b.jianbing.com/act/market/get_register";
         $(".search-btn").on("click", function() {
             if (_this.checkPhone($(".phone input")) && _this.checkCode($(".msg-code input"))) {
                 var phoneNum = $(".JS-phone").val();
