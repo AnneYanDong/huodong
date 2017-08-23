@@ -2,9 +2,9 @@
   $ret = array(
     "ret"=>array(
        "login"=> true,
-        "is_weChat"=> false,
+        "is_weChat"=> true,
         "is_qq"=> false,
-        "show"=> true,
+        "show"=> false,
         "name"=> "栋哥",
         "url" => "http://www.baidu.com",
         "analyze1" => array(

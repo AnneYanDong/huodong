@@ -274,7 +274,7 @@ img.quickmark {
 }
 .page2 .dynamic-text span:before {
   content: '';
-  background-image: url("../img/20170807_before.png");
+  background-image: url("https://r.51gjj.com/act/release/img/20170807_before.png");
   background-size: .32rem .32rem;
   position: absolute;
   top: -.2rem;
@@ -282,7 +282,7 @@ img.quickmark {
 }
 .page2 .dynamic-text span:after {
   content: '';
-  background-image: url("../img/20170807_after.png");
+  background-image: url("https://r.51gjj.com/act/release/img/20170807_after.png");
   background-size: .32rem .32rem;
   position: absolute;
   top: .38rem;

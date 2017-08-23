@@ -11,7 +11,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
     var local = ct.Tool.local();
     var source = ct.Tool.userAgent().isGjj ? 1 : 0;
     ct.Tool.buryPoint_v2(0);
-    var dataObj = null;
     var run = {
         start: function () {
             var _this = this;
@@ -50,10 +49,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         init: function () {
             console.log("解析你的公积金活动");
             var _this = this;
+            var args = _this.getQueryStringArgs();
+            unionid = args["unionid"];
             _this.setNavAttr();
             $(".wp").removeClass("hide");
             _this.fullPageObj = _this.fullpage();
-            _this.getAnalysisData();
         },
         setNavAttr: function() {
             if (Bridge) {
@@ -183,7 +183,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         getAnalyzingData: function(d) {
             var _this = this;
             _this.showData(d);
-            // _this.getNumberImage(d.analyze1.ranking,"page2");
             _this.getPage6Text(d.analyze5.text);
             _this.getNumberImage(d.analyze6.loanable_amount,"page7");
         },
@@ -214,29 +213,31 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             }
             return args;
         },
-        getAnalysisData: function () {
+        getAnalysisData: function (d) {
             var _this = this;
-            var args = _this.getQueryStringArgs();
-            var unionid = args["unionid"];
-            $.ajax({
-                type: "POST",
-                dataType: "JSON",
-                data: JSON.stringify({"unionid": unionid}),
-                // url: "test.php",
-                url: "/act/analyze/get_analyze",
-                success: function (d) {
-                    dataObj = d;
-                    if (d.success) {
-                        console.log("后台数据：",d);
-                        if (d.ret.show) {
-                            _this.createPortrait(d.ret);
-                            _this.getAnalyzingData(d.ret);
-                        } else {
-                            window.location.href = d.url;
-                        }
-                    }
-                }
-            });
+            _this.createPortrait(d.ret);
+            _this.getAnalyzingData(d.ret);
+        },
+        handleProcess: function(d) {
+            var _this = this;
+            if (!d.ret.show) {
+                oP.show("查询公积金后，才能解析你的公积金秘密噢~");
+                setTimeout(function(){
+                    _this.getAnalysisData(d);
+                    window.location.href = d.ret.url + "?redirect=javascript%3Ahistory.back()";
+                },1500);
+            } else {
+                _this.getAnalysisData(d);
+                oM.show();
+                $(".tp-analyzing").fadeIn();
+                $(".sweat").fadeIn();
+                setTimeout(function(){
+                    oM.hide();
+                    $(".tp-analyzing").fadeOut();
+                    $(".sweat").fadeOut();
+                    _this.fullPageObj.moveTo(1,true);
+                },2000);
+            }
         },
 
         fullpage: function () {
@@ -260,35 +261,26 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             $.ajax({
                                 type: "POST",
                                 dataType: "JSON",
+                                data: JSON.stringify({"unionid": unionid}),
                                 // url: "test.php",
                                 url: "/act/analyze/get_analyze",
                                 success: function (d) {
                                     if (d.success) {
                                         console.log("后台数据：", d);
-                                        if (d.login == false) {
-                                            oP.show("想解析公积金，先登录APP啦！");
-                                            if (Bridge) {
-                                                Bridge.action("login");
-                                            }
+                                        if (d.ret.is_weChat) {
+                                            _this.handleProcess(d);
                                         } else {
-                                            if (!d.ret.show) {
-                                                oP.show("查询公积金后，才能解析你的公积金秘密噢~");
-                                                setTimeout(function(){
-                                                    window.location.href = d.ret.url;
-                                                },1500);
+                                            if (d.ret.login == false) {
+                                                oP.show("想解析公积金，先登录APP啦！");
+                                                if (Bridge) {
+                                                    Bridge.action("login");
+                                                }
                                             } else {
-                                                oM.show();
-                                                $(".tp-analyzing").fadeIn();
-                                                $(".sweat").fadeIn();
-                                                console.log(_this.fullPageObj);
-                                                setTimeout(function(){
-                                                    oM.hide();
-                                                    $(".tp-analyzing").fadeOut();
-                                                    $(".sweat").fadeOut();
-                                                    _this.fullPageObj.moveTo(1,true);
-                                                },2000);
+                                                _this.handleProcess(d);
                                             }
                                         }
+                                    } else {
+                                        oP.show(d.msg || "出错了请重试");
                                     }
                                 }
                             });
@@ -377,9 +369,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
 
         changeState: function (page,id) {
+            var _this = this;
             window.history.pushState && window.history.pushState({
                 title: page
-            }, page, "index.php#page=" + page); // 塞入新的历史
+            }, page, "index.php?unionid="+unionid+"#page=" + page); // 塞入新的历史
         },
 
         // 返回。
@@ -438,7 +431,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 Bridge.action('ShareTimeline', {
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
-                    "thumb": "https://r.51gjj.com/act/release/img/20170721_share.png",
+                    "thumb": "https://r.51gjj.com/act/release/img/20170807_share.png",
                     "link": "https://" + host + "/act/wechat/act_analyzes"
                 });
                 //     }
