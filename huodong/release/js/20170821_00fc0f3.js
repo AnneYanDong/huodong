@@ -146,7 +146,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             "title": "抢个红包过周末",
                             'desc': "利息5折、现金、实物...",
                             "thumb": "https://r.51gjj.com/act/release/img/20170821_share.png",
-                            "link": "https://" + host + "/act/wechat/act_analyzes"
+                            "link": "https://" + host + "/act/home/huodong/20170821/index.php"
                         });
                     }
                 })

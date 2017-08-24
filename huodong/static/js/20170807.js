@@ -51,6 +51,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             var _this = this;
             var args = _this.getQueryStringArgs();
             unionid = args["unionid"];
+            _this.share();
             _this.setNavAttr();
             $(".wp").removeClass("hide");
             _this.fullPageObj = _this.fullpage();
@@ -224,7 +225,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 oP.show("查询公积金后，才能解析你的公积金秘密噢~");
                 setTimeout(function(){
                     _this.getAnalysisData(d);
-                    window.location.href = d.ret.url + "?redirect=javascript%3Ahistory.back()";
+                    alert(d.ret.url + "?redirect=javascript%3Ahistory.go(-1)");
+                    window.location.href = d.ret.url + "?redirect=javascript%3Ahistory.go(-1)";
                     setTimeout(function(){
                         oM.show();
                         $(".tp-analyzing").fadeIn();
@@ -436,17 +438,17 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             };
             var host = window.location.host;
             if (app.isGjj && Bridge) {
-                // Bridge.action('quickIcon', {
-                //     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
-                //     onclick: function () {
+                Bridge.action('quickIcon', {
+                    thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
+                    onclick: function () {
                 Bridge.action('ShareTimeline', {
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
                     "thumb": "https://r.51gjj.com/act/release/img/20170807_share.png",
                     "link": "https://" + host + "/act/wechat/act_analyzes"
                 });
-                //     }
-                // })
+                    }
+                })
             }
             return this;
         }
