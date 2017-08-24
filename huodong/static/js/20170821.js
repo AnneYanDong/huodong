@@ -71,12 +71,16 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     url: "/act/act170822/get_button/"+ (btn_id - 1) +"",
                     success: function(d) {
                         if (d.success) {
-                            if (!d.ret.login) {
-                                if(Bridge) {
-                                    Bridge.action("login");
-                                }
-                            } else {
+                            if (d.ret.is_weChat || d.ret.is_qq) {
                                 window.location.href = d.ret.url;
+                            } else {
+                                if (!d.ret.login) {
+                                    if(Bridge) {
+                                        Bridge.action("login");
+                                    }
+                                } else {
+                                    window.location.href = d.ret.url;
+                                }
                             }
                         } else {
                             oP.show(d.msg);
