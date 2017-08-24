@@ -119,7 +119,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             $(".num-" + v.rank + " .invest-money").text(v.sumTenderMoney);
                         })
                         $(".money-red").text(d.resData.currentUserTenderMoney);
-                    } else if (10100 <= d.resCode < 10200) {
+                    } else if ((10100 <= d.resCode) && (d.resCode < 10200)) {
                         if (app.isGjj && Bridge) {
                             Bridge.action("login");
                         } else {
