@@ -11,6 +11,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
     var local = ct.Tool.local();
     var source = ct.Tool.userAgent().isGjj ? 1 : 0;
     ct.Tool.buryPoint_v2(source);
+    ct.Tool.share(82,"zmtkj");
     var run = {
         start: function () {
             var _this = this;
@@ -50,6 +51,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             console.log("周末提款机2.0活动");
             var _this = this;
             _this.setNavAttr();
+            _this.share();
             $(".wp-outer").removeClass("hide");
             _this.PageBuryRequest();
             _this.withdraw();
@@ -85,7 +87,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
         setNavAttr: function() {
             if (Bridge) {
-                Bridge.action("setNavigationColor",{backgroundColor:"#212226",textColor:"#fff",iconType:"1"});
+                Bridge.action("setNavigationColor",{backgroundColor:"#fff",textColor:"#202124",iconType:"1"});
             }
         },
         PageBuryRequest: function () {
@@ -121,6 +123,36 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 })
             })
         },
+        //分享按钮：
+        share: function () {
+            var u = navigator.userAgent;
+            var app = {
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/),
+                isAndroid: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1 || u.indexOf("android") > -1,
+                isiOS: /[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                webApp: -1 == u.indexOf("Safari"),
+                weixin: u.indexOf("MicroMessenger") > -1,
+                isGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u) || /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isAndroidGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isiOSGjj: /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+                isGjjFdjsq: /^android\/[\w\W]+client\/[\w\W]+category\/51fdjsq$/.test(u)
+            };
+            var host = window.location.host;
+            if (app.isGjj && Bridge) {
+                Bridge.action('quickIcon', {
+                    thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
+                    onclick: function () {
+                        Bridge.action('ShareTimeline', {
+                            "title": "抢个红包过周末",
+                            'desc': "利息5折、现金、实物...",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170821_share.png",
+                            "link": "https://" + host + "/act/wechat/act_analyzes"
+                        });
+                    }
+                })
+            }
+            return this;
+        }
     }
     var ruleJson = {
         rule: [
