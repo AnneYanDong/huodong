@@ -329,9 +329,9 @@ define(["jquery", "share"], function($, wx) {
     return newUrl;
   }
 
-  Tool.share = function() {
-    var share_id = 10;
-    var share_type = 'huodong';
+  Tool.share = function(id,type) {
+    var share_id = id || 0;
+    var share_type = type || 'huodong';
     var url = window.location.href.split('#')[0];
     var default_image = 'https://r.51gjj.com/image/static/ico_fenx.png'; //默认图片
     $.ajax({
@@ -341,13 +341,14 @@ define(["jquery", "share"], function($, wx) {
       data: 'url=' + encodeURIComponent(url) + '&share_id=' + share_id + '&share_type=' + share_type,
       dataType: 'jsonp',
       success: function(data) {
+        console.log(data);
         share_callback(data);
       }
     });
 
     function share_callback(data) {
       wx.config({
-        debug: true,
+        debug: false,
         appId: 'wx90f7de7c9b73bf69', //配置的微信服务号订阅号的APPID
         timestamp: data.timestamp,
         nonceStr: data.nonceStr,
@@ -359,7 +360,7 @@ define(["jquery", "share"], function($, wx) {
           title: data.title != '' ? data.title : $(document).attr("title"), //默认头信息
           link: data.link != '' ? data.link : url, //当前链接
           imgUrl: data.image != '' ? data.image : default_image, //默认链接
-          description: data.description != '' ? data.description : $(document).attr("title")
+          desc: data.description != '' ? data.description : $(document).attr("title")
 
         };
         wx.onMenuShareTimeline(share_data);
