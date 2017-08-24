@@ -24,7 +24,7 @@
         <div class="outer-wp">
             <div class="inner-wp">
                 <div class="content">
-                    <div class="bg"><img data-src="<?php echo $imgUrl; ?>bg.png" alt="bg"></div>
+                    <div class="bg"><img data-src="<?php echo $imgUrl; ?>new_bg.png" alt="bg"></div>
                     <div class="amount">
                         <span>您当前累计投资14天标</span>
                         <span class="total-amount"></span>
