@@ -70,7 +70,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         if(Bridge) {
                             Bridge.action("login");
                         }
-                    } else if (10100 <= d.resCode < 10200){
+                    } else if ((10100 <= d.resCode) && (d.resCode< 10200)){
                         $(".amount span:eq(1)").text(d.resData.currentUserTenderMoney); 
                     } else {
                         oP.show(d.resMsg || "暂无数据");
