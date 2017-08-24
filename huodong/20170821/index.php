@@ -32,11 +32,11 @@
                 <div class="money"></div>
                 <img class="static-money" data-src="<?php echo $imgUrl; ?>static_money.png" alt="static-money">
                 <img class="btn-group" data-src="<?php echo $imgUrl; ?>btn_group3.png" alt="btn_group3">
-                <div class="btn1" bp="20170821_1_1_0_利息最低贷"></div>
-                <div class="btn2" bp="20170821_1_2_0_审批最快贷"></div>
-                <div class="btn3" bp="20170821_1_3_0_门槛最低贷"></div>
-                <div class="btn4" bp="20170821_1_4_0_急用首选贷"></div>
-                <div class="rule-btn" bp="20170821_1_5_0_规则">活动规则</div>
+                <div class="btn1" bp="82_1_1_30_利息最低贷"></div>
+                <div class="btn2" bp="82_1_2_28_审批最快贷"></div>
+                <div class="btn3" bp="82_1_3_27_门槛最低贷"></div>
+                <div class="btn4" bp="82_1_4_35_急用首选贷"></div>
+                <div class="rule-btn" bp="82_1_5_0_规则">活动规则</div>
             </div>
         </div>
     </div>

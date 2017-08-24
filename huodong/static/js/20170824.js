@@ -60,12 +60,20 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "test.php",
+                // url: "test.php",
+                url: "/invest2/user/queryUser/totalTenderAmount",
                 success: function (d) {
-                    if (d.success) {
-                        $(".amount span:eq(1)").text(d.ret.amount);
+                    console.log("后台数据：",d);
+                    if (10100 <= d.resCode < 10200) {
+                        if(Bridge) {
+                            Bridge.action("login");
+                        }
                     } else {
-                        oP.show(d.msg || "出错请重试");
+                        if (d.resCode == 1) {
+                            $(".amount span:eq(1)").text(d.resData.currentUserTenderMoney);
+                        } else {
+                            oP.show(d.resMsg || "出错请重试");
+                        }
                     }
                 }
             });

@@ -97,7 +97,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 url: "/act/request/activity",
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "20170821_1_0_0_进入页面"
+                    tag: "82_1_0_0_进入页面"
                 }),
                 success: function (d) {
                     if (d.success) {
