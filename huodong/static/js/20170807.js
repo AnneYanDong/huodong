@@ -225,6 +225,17 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 setTimeout(function(){
                     _this.getAnalysisData(d);
                     window.location.href = d.ret.url + "?redirect=javascript%3Ahistory.back()";
+                    setTimeout(function(){
+                        oM.show();
+                        $(".tp-analyzing").fadeIn();
+                        $(".sweat").fadeIn();
+                        setTimeout(function(){
+                            oM.hide();
+                            $(".tp-analyzing").fadeOut();
+                            $(".sweat").fadeOut();
+                            _this.fullPageObj.moveTo(1,true);
+                        },3500);
+                    },2500);
                 },1500);
             } else {
                 _this.getAnalysisData(d);
