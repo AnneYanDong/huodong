@@ -1,5 +1,11 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
+body {
+  background-color: #653bb3;
+}
+.content {
+  position: relative;
+}
 .bg {
   margin: 0 auto;
 }

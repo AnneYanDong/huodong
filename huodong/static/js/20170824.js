@@ -119,8 +119,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         Bridge.action('ShareTimeline', {
                             "title": "抢个红包过周末",
                             'desc': "利息5折、现金、实物...",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170821_share.png",
-                            "link": "https://" + host + "/act/wechat/act_analyzes"
+                            "thumb": "https://r.51gjj.com/act/release/img/20170824_share.png",
+                            "link": "https://" + host + "/act/home/huodong/20170824/index.php"
                         });
                     }
                 })

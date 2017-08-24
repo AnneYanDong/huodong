@@ -225,7 +225,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 oP.show("查询公积金后，才能解析你的公积金秘密噢~");
                 setTimeout(function(){
                     _this.getAnalysisData(d);
-                    alert(d.ret.url + "?redirect=javascript%3Ahistory.go(-1)");
                     window.location.href = d.ret.url + "?redirect=javascript%3Ahistory.go(-1)";
                     setTimeout(function(){
                         oM.show();
@@ -422,7 +421,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 }
             }
         },
-        //分享按钮：
+        //分享按钮：只有在测试app或者正式app才能正确调用
         share: function () {
             var u = navigator.userAgent;
             var app = {
@@ -445,7 +444,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
                     "thumb": "https://r.51gjj.com/act/release/img/20170807_share.png",
-                    "link": "https://" + host + "/act/wechat/act_analyzes"
+                    "link": "https://" + host + "/act/home/huodong/20170807/index.php"
                 });
                     }
                 })
