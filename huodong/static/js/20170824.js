@@ -61,21 +61,19 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 type: "POST",
                 dataType: "JSON",
                 // url: "test.php",
-                url: "/invest2/user/queryUser/totalTenderAmount",
+                // url: "/invest2/user/queryUser/totalTenderAmount",
+                url: "https://kaifa.jianbing.com/invest2/user/queryUser/totalTenderAmount",
                 success: function (d) {
                     console.log("后台数据：",d);
-                    if (10100 <= d.resCode < 10200) {
+                    if (d.resCode == 1) {
                         console.log("10100-10200");
                         if(Bridge) {
                             Bridge.action("login");
                         }
+                    } else if (10100 <= d.resCode < 10200){
+                        $(".amount span:eq(1)").text(d.resData.currentUserTenderMoney); 
                     } else {
-                        if (d.resCode == 1) {
-                            console.log("1");
-                            $(".amount span:eq(1)").text(d.resData.currentUserTenderMoney);
-                        } else {
-                            oP.show(d.resMsg || "出错请重试");
-                        }
+                        oP.show(d.resMsg || "暂无数据");
                     }
                 }
             });
