@@ -224,9 +224,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             if (!d.ret.show) {
                 oP.show("查询公积金后，才能解析你的公积金秘密噢~");
                 setTimeout(function(){
-                    _this.getAnalysisData(d);
-                    window.location.href = d.ret.url + "?redirect=javascript%3Ahistory.go(-1)";
+                    window.location.href = d.ret.url + "?page=query";
                     setTimeout(function(){
+                        // window.history.back(-1);
                         oM.show();
                         $(".tp-analyzing").fadeIn();
                         $(".sweat").fadeIn();
@@ -234,12 +234,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             oM.hide();
                             $(".tp-analyzing").fadeOut();
                             $(".sweat").fadeOut();
+                            _this.getAnalysisData(d);
                             _this.fullPageObj.moveTo(1,true);
                         },3500);
-                    },2500);
+                    },1000);
                 },1500);
             } else {
-                _this.getAnalysisData(d);
                 oM.show();
                 $(".tp-analyzing").fadeIn();
                 $(".sweat").fadeIn();
@@ -247,6 +247,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     oM.hide();
                     $(".tp-analyzing").fadeOut();
                     $(".sweat").fadeOut();
+                    _this.getAnalysisData(d);
                     _this.fullPageObj.moveTo(1,true);
                 },2000);
             }
@@ -444,7 +445,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
                     "thumb": "https://r.51gjj.com/act/release/img/20170807_share.png",
-                    "link": "https://" + host + "/act/home/huodong/20170807/index.php"
+                    "link": "https://" + host + "/act/wechat/act_analyzes"
                 });
                     }
                 })

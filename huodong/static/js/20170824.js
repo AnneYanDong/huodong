@@ -21,9 +21,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
 
             /*设置HTML的font-size*/
             ct.Tool.setFont();
-            ct.Tool.handleBottomStatusBar();
+            // ct.Tool.handleBottomStatusBar();
             window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
-            window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
+            // window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
             window.onresize = ct.Tool.debounce(ct.Tool.setFont)
 
             /*整体预加载动画*/
