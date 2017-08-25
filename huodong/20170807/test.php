@@ -4,9 +4,9 @@
        "login"=> true,
         "is_weChat"=> true,
         "is_qq"=> false,
-        "show"=> false,
+        "show"=> true,
         "name"=> "栋哥",
-        "url" => "http://www.baidu.com",
+        "url" => "https://www.baidu.com/",
         "analyze1" => array(
           "city"=>"杭州",
           "ranking"=>3175,
