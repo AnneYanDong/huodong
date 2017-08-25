@@ -1,0 +1,59 @@
+@import url('basicFullPage.css');
+@import url('mtool.css');
+@import url('rule-btn.css');
+.rule-btn {
+  position: absolute;
+  top: 11.17rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: .26rem;
+  color: #677bd9;
+  // padding-bottom: .59rem;
+  text-decoration: underline;
+}
+.wp {
+  background: url("../img/20170828_bg.png") center no-repeat;
+  background-size: cover;
+}
+.content {
+  position: relative;
+}
+.title-container {
+  background: url("../img/20170828_title.png") center no-repeat;
+  background-size: cover;
+  width: 5.09rem;
+  height: 2.79rem;
+  position: absolute;
+  top: 1.05rem;
+  left: 50%;
+  margin-left: -2.54rem;
+}
+.building-left {
+  background: url("../img/20170828_building_left.png") center no-repeat;
+  background-size: cover;
+  width: 1.95rem;
+  height: 3.62rem;
+  position: absolute;
+  top: 2.53rem;
+  left: 0;
+}
+.building-right {
+  background: url("../img/20170828_building_right.png") center no-repeat;
+  background-size: cover;
+  width: 2.03rem;
+  height: 3.84rem;
+  position: absolute;
+  top: 2.31rem;
+  right: 0;
+}
+.dynamic-content {
+  background: #fff;
+  width: 6.45rem;
+  height: 6.45rem;
+  border-radius: .2rem;
+  position: absolute;
+  top: 4.42rem;
+  left: 50%;
+  margin-left: -3.23rem;
+}

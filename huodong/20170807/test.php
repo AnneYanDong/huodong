@@ -4,7 +4,7 @@
        "login"=> true,
         "is_weChat"=> true,
         "is_qq"=> false,
-        "show"=> false,
+        "show"=> true,
         "name"=> "栋哥",
         "url" => "https://www.baidu.com/",
         "analyze1" => array(
