@@ -214,7 +214,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
         handleProcess: function(d) {
             var _this = this;
-            if (!d.ret.show) {
+            if (d.ret.show == false) {
                 oP.show("查询公积金后，才能解析你的公积金秘密噢~");
                 setTimeout(function(){
                     window.location.href = d.ret.url + "?page=query";
