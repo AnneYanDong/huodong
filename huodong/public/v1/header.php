@@ -69,6 +69,9 @@
                 },
                 "number":{
                     "deps": ["jquery"]
+                },
+                "share": {
+                    "exports": "share",
                 }
             }
         }
