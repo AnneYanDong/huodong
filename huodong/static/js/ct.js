@@ -333,7 +333,7 @@ define(["jquery", "share"], function($, wx) {
     var share_id = id || 0;
     var share_type = type || 'huodong';
     var url = window.location.href.split('#')[0];
-    var default_image = '//r.51gjj.com/image/static/ico_fenx.png'; //默认图片
+    var default_image = 'https://r.51gjj.com/image/static/ico_fenx.png'; //默认图片
     $.ajax({
       //获取分享的配置信息
       url: "//b.jianbing.com/app/share/share_info",
@@ -359,8 +359,11 @@ define(["jquery", "share"], function($, wx) {
         var share_data = {
           title: data.title != '' ? data.title : $(document).attr("title"), //默认头信息
           link: data.link != '' ? data.link : url, //当前链接
-          imgUrl: "//r.51gjj.com/image/test_20170828.png", //默认链接
-          desc: data.description != '' ? data.description : $(document).attr("title")
+          imgUrl: default_image, //默认链接
+          desc: data.description != '' ? data.description : $(document).attr("title"),
+          success: function(){
+            alert(share_data.imgUrl);
+          }
         };
         alert(share_data.imgUrl);
         wx.onMenuShareTimeline(share_data);
