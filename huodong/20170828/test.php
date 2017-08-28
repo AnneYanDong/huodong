@@ -1,20 +1,23 @@
 <?php 
-  $ret = array(
-    "ret"=>array(
-      "info":[
-         {"name": "187****9234","money": "200"},
-         {"name": "187****9234","money": "200"},
-         {"name": "187****9234","money": "200"},
-         {"name": "187****9234","money": "200"},
-         {"name": "187****9234","money": "200"},
-         {"name": "187****9234","money": "200"},
-         {"name": "187****9234","money": "200"},
-         {"name": "187****9234","money": "200"},
-         {"name": "187****9234","money": "200"},
-         {"name": "187****9234","money": "200"}
-        ]
-    ),
-    "success"=>true,
-  );
-  echo json_encode($ret);
+  echo '{
+    "ret":{
+        "info":[
+           {"name": "187****9234","money": "200"},
+           {"name": "187****9234","money": "200"},
+           {"name": "187****9234","money": "200"},
+           {"name": "187****9234","money": "200"},
+           {"name": "187****9234","money": "200"},
+           {"name": "187****9234","money": "200"},
+           {"name": "187****9234","money": "200"},
+           {"name": "187****9234","money": "200"},
+           {"name": "187****9234","money": "200"},
+           {"name": "187****9234","money": "200"}
+          ],
+        "show":false,
+        "is_weChat":false,
+        "is_qq":false,
+        "login":true,
+    },
+          "success":true
+        }';
  ?>

@@ -56,31 +56,70 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
             _this.share();
             $(".wp").removeClass("hide");
             _this.PageBuryRequest();
-            _this.getDynamicText();
+            _this.getSingleInfo();
         },
-        getDynamicText: function() {
+        getSingleInfo: function() {
+            var _this = this;
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
                 url: "test.php",
-                // url: "/invest2/user/queryUser/totalTenderAmount",
                 success: function (d) {
-                    console.log("后台数据：",d);
-                    var textTpl = $("#tpl-dynamic-text").html();
-                    var textHtml = juicer(textTpl,d.ret);
-                    $(".dynamic-text").append(textHtml);
-                    $('.dynamic-text').liMarquee({
-                        direction: "left",
-                        scrollamount: 50,
-                        hoverstop: false,
-                        drag: false,
-                    });
+                    if (d.success) {
+                        console.log("后台数据：",d);
+                        _this.getLottery(d);
+                        if (d.ret.is_weChat || d.ret.is_qq) {
+                            _this.startIsImportedProcess(d);
+                        } else {
+                            if (!d.ret.login) {
+                                if (Bridge) {
+                                    Bridge.action("login");
+                                }
+                            } else {
+                                _this.startIsImportedProcess(d);
+                            }
+                        }
+                    } else {
+                        oP.show("出错了");
+                    }
                 }
+            });
+        },
+        startIsImportedProcess: function(d) {
+            var _this = this;
+            if (!d.ret.show) {
+                _this.showNotImportLayout(d);
+            } else {
+                _this.showImportedLayout(d);
+            }
+        },
+        showNotImportLayout: function(d) {
+            var notImportedTpl = $("#tpl-not-imported").html();
+            // var notImportedTplHtml = juicer(notImportedTpl,d.ret);
+            $(".dynamic-layout").append(notImportedTplHtml);
+        },
+        showImportedLayout: function(d) {
+            var haveImportedTpl = $("#tpl-have-imported").html();
+            var haveImportedTplHtml = juicer(haveImportedTpl,d.ret);
+            $(".dynamic-layout").append(haveImportedTplHtml);
+        },
+        getLottery: function(d) {
+            var info = d.ret.info;
+            var singleInfo = $(".single-info");
+            for (var i = 0; i < info.length; i++) {
+                var oSpan = $("<span>");
+                oSpan.text("恭喜用户" + info[i].name + "获得" + info[i].money + "元理财金");
+                oSpan.appendTo(singleInfo);
+            }
+            singleInfo.liMarquee({
+                hoverstop: false,
+                drag: false,
+                scrollamount: 30
             });
         },
         setNavAttr: function() {
             if (Bridge) {
-                Bridge.action("setNavigationColor",{backgroundColor:"#212226",textColor:"#fff",iconType:"1"});
+                Bridge.action("setNavigationColor",{backgroundColor:"#fff",textColor:"#212226",iconType:"1"});
             }
         },
         PageBuryRequest: function () {
@@ -136,10 +175,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
                     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
                     onclick: function () {
                         Bridge.action('ShareTimeline', {
-                            "title": "抢个红包过周末",
-                            'desc': "利息5折、现金、实物...",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170824_share.png",
-                            "link": "https://" + host + "/act/home/huodong/20170824/index.php"
+                            "title": "28888元理财金，人人有份",
+                            'desc': "我们出本金，利息都归你",
+                            "thumb": "https://r.51gjj.com/act/release/img/20170828_share.png",
+                            "link": "https://" + host + "/act/home/huodong/20170828/index.php"
                         });
                     }
                 })
@@ -149,12 +188,16 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
     }
     var ruleJson = {
         rule: [
-            "领券后，通过活动页面完成申请或放款将获得特定奖励，同个业务奖励只能领取一次。",
-            "领券后申请金优贷，每日前100名将获得精美定制笔记本一份；领券后申请金卡贷并放款，享受当月利息下调50%；领券后申请金安贷24小时未放款，获得超时赔付50元现金；领券后申请金花贷并放款，获得50元无门槛抵息券。",
-            "此活动针对从未申请过金花贷、金优贷、金卡贷、金安贷业务的新用户，一个用户至多领取到这4个业务对应的奖励。",
-            "抵息券将在首月还款直接减免，逾期、提前还款将不享受此优惠；现金/实物奖励将在用户信息完整后7个工作日内打款/寄出，请确认收款/收货信息准确性。",
+            "活动时间：9月1号-9月15号；",
+            "活动对象：已导入公积金的所有用户；",
+            "活动页面中所有金额单位均为：元；",
+            "导入多个公积金账户的用户，以距当前时间最近的导入账户为发放标准；",
+            "成功领取理财金后，可点击理财Tab页—在首页找到新手体验标查看；",
+            "发放时间：理财金的收益会在领取成功后的第2天发放到您的理财账户，收益可以操作提现，点击我的理财——可用余额——提现，可提现到银行卡；",
+            "已经获得体验金，但未获得后续认证或投资体验金的用户，请在9月22日24点前完成实名认证，否则将失去领取后续体验金的资格；",
+            "本活动仅限于未投资过51有钱的用户参加，同一个用户只能领取一次（同一个手机号码和身份证和银行卡视为同一用户）；",
             "有任何疑问或者帮助可联系客服4008635151。",
-            "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"
+            "理财金由51公积金管家提供，与设备生产商Apple Inc公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"
         ]
     }
     run.start();
