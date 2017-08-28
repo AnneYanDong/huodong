@@ -360,7 +360,7 @@ define(["jquery", "share"], function($, wx) {
           title: data.title != '' ? data.title : $(document).attr("title"), //默认头信息
           link: data.link != '' ? data.link : url, //当前链接
           imgUrl: data.image != '' ? data.image : default_image, //默认链接
-          desc: data.description != '' ? data.description : $(document).attr("title")
+          desc: data.description != '' ? data.description : $(document).attr("title"),
           success: function(){
             alert(share_data.imgUrl);
           }
