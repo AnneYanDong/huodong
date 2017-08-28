@@ -348,7 +348,7 @@ define(["jquery", "share"], function($, wx) {
 
     function share_callback(data) {
       wx.config({
-        debug: true,
+        debug: false,
         appId: 'wx90f7de7c9b73bf69', //配置的微信服务号订阅号的APPID
         timestamp: data.timestamp,
         nonceStr: data.nonceStr,
@@ -359,8 +359,7 @@ define(["jquery", "share"], function($, wx) {
         var share_data = {
           title: data.title != '' ? data.title : $(document).attr("title"), //默认头信息
           link: data.link != '' ? data.link : url, //当前链接
-          // imgUrl: data.image != '' ? data.image : default_image, //默认链接
-          imgUrl: "//r.51gjj.com/image/static/test_20170828.png", //默认链接
+          imgUrl: data.image != '' ? data.image : default_image, //默认链接
           desc: data.description != '' ? data.description : $(document).attr("title")
 
         };
