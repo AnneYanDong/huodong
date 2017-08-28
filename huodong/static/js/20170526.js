@@ -11,7 +11,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
     var local = ct.Tool.local();
 
     ct.Tool.buryPoint();
-
+    ct.Tool.share(63, "xykdzpyq");
     var run = {
         status: {
             login: false,

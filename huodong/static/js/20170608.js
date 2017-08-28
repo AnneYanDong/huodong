@@ -11,7 +11,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
     var local = ct.Tool.local();
 
     ct.Tool.buryPoint();
-
+    ct.Tool.share(71, "xmdpyq");
     var myDay = new Date().getDay();
     var app = null;
     var oUrl = null;
