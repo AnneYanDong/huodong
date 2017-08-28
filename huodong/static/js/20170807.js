@@ -49,8 +49,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         init: function () {
             console.log("解析你的公积金活动");
             var _this = this;
+
             var args = _this.getQueryStringArgs();
             unionid = args["unionid"];
+
+            _this.share();
             _this.setNavAttr();
             $(".wp").removeClass("hide");
             _this.fullPageObj = _this.fullpage();
@@ -89,14 +92,17 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 "http://r.51gjj.com/act/release/img/20170807_page2_portrait3.png"
             ];
             if (d.analyze1.gender == "男") {
+                $(".portrait").empty();
                 image.src = male[Math.floor(Math.random() * male.length)];
             } else {
+                $(".portrait").empty();
                 image.src = female[Math.floor(Math.random() * female.length)];
             }
             $(".portrait").append(image);
         },
         getNumberImage: function(data,page) {
             var rankingStr = data.toString();
+            $("."+ page +" .div-container").empty();
             for(var i = 0;len1 = rankingStr.length,i < len1; i++) {
                 var OImg = new Image();
                 var ODivLi = $("<div class='img-wrap"+ i +"'></div>");
@@ -106,24 +112,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     $("."+ page +" .div-container").append(ODivLi);
                 }
             }
-            if (page == "page2" || page == "page7") {
-                $(".div-container div img").css({
-                    "width":".42rem",
-                    "height":".68rem",
-                    "padding":".02rem"
-                });
-            } else {
-                $(".div-container div img").css({
-                    "width":".27rem",
-                    "height":".42rem",
-                });
-            }
-            if (page == "page2") {
-                $(".page2 .div-container").append("<span class='ming'>名</span>");
-            }
-            if (page == "page7") {
-                $(".page7 .div-container").append("<span class='ming'>元</span>");
-            }
+            $(".div-container div img").css({
+                "width":".42rem",
+                "height":".68rem",
+                "padding":".02rem"
+            });
+            $(".page7 .div-container").append("<span class='ming'>元</span>");
         },
         showData: function(d) {
             var dataObj = {
@@ -183,8 +177,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         getAnalyzingData: function(d) {
             var _this = this;
             _this.showData(d);
-            _this.getPage6Text(d.analyze5.text);
             _this.getNumberImage(d.analyze6.loanable_amount,"page7");
+            _this.getPage6Text(d.analyze5.text);
         },
         getPage6Text: function(text) {
             var _this = this;
@@ -220,14 +214,25 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
         handleProcess: function(d) {
             var _this = this;
-            if (!d.ret.show) {
+            if (d.ret.show == false) {
                 oP.show("查询公积金后，才能解析你的公积金秘密噢~");
                 setTimeout(function(){
-                    _this.getAnalysisData(d);
-                    window.location.href = d.ret.url + "?redirect=javascript%3Ahistory.back()";
+                    window.location.href = d.ret.url + "?page=query";
+                    setTimeout(function(){
+                        window.history.back(-1);
+                        oM.show();
+                        $(".tp-analyzing").fadeIn();
+                        $(".sweat").fadeIn();
+                        setTimeout(function(){
+                            oM.hide();
+                            $(".tp-analyzing").fadeOut();
+                            $(".sweat").fadeOut();
+                            _this.getAnalysisData(d);
+                            _this.fullPageObj.moveTo(1,true);
+                        },3500);
+                    },1000);
                 },1500);
             } else {
-                _this.getAnalysisData(d);
                 oM.show();
                 $(".tp-analyzing").fadeIn();
                 $(".sweat").fadeIn();
@@ -235,6 +240,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     oM.hide();
                     $(".tp-analyzing").fadeOut();
                     $(".sweat").fadeOut();
+                    _this.getAnalysisData(d);
                     _this.fullPageObj.moveTo(1,true);
                 },2000);
             }
@@ -269,15 +275,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                         console.log("后台数据：", d);
                                         if (d.ret.is_weChat) {
                                             _this.handleProcess(d);
-                                        } else {
-                                            if (d.ret.login == false) {
-                                                oP.show("想解析公积金，先登录APP啦！");
-                                                if (Bridge) {
-                                                    Bridge.action("login");
-                                                }
-                                            } else {
-                                                _this.handleProcess(d);
+                                        } else if (d.ret.login == false) {
+                                            oP.show("想解析公积金，先登录APP啦！");
+                                            if (Bridge) {
+                                                Bridge.action("login");
                                             }
+                                        } else {
+                                            _this.handleProcess(d);
                                         }
                                     } else {
                                         oP.show(d.msg || "出错了请重试");
@@ -409,7 +413,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 }
             }
         },
-        //分享按钮：
+        //分享按钮：只有在测试app或者正式app才能正确调用
         share: function () {
             var u = navigator.userAgent;
             var app = {
@@ -425,17 +429,17 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             };
             var host = window.location.host;
             if (app.isGjj && Bridge) {
-                // Bridge.action('quickIcon', {
-                //     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
-                //     onclick: function () {
+                Bridge.action('quickIcon', {
+                    thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
+                    onclick: function () {
                 Bridge.action('ShareTimeline', {
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
                     "thumb": "https://r.51gjj.com/act/release/img/20170807_share.png",
                     "link": "https://" + host + "/act/wechat/act_analyzes"
                 });
-                //     }
-                // })
+                    }
+                })
             }
             return this;
         }

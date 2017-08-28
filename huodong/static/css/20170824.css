@@ -1,0 +1,41 @@
+@import url('basicFullPage.css');
+@import url('mtool.css');
+body {
+  background-color: #653bb3;
+}
+/* .content {
+  position: relative;
+} */
+.bg {
+  margin: 0 auto;
+}
+.bg img{
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.amount {
+  width: 4.70rem;
+  height: .63rem;
+  line-height: .05rem;
+  text-align: center;
+  background: #460b82;
+  border-radius: .5rem;
+  position: relative;
+  top: 19.78rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.amount span:not(:nth-child(2)) {
+  font-size: .22rem;
+  color: #fff;
+}
+.total-amount {
+  font-size: .36rem;
+  font-weight: bold;
+  color: #ff9742;
+  position: relative;
+  top: .05rem;
+}

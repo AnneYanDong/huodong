@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <title>51有钱</title>
+    <script src="https://r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            -webkit-overflow-scrolling: touch;
+        }
+        .container {
+            width: 100%;
+            height: auto;
+            
+        }
+        .banner-part-one {
+            background: url("https://r.51gjj.com/act/images/yunying/170825_bg.jpg") no-repeat;
+            height: 40.19rem;
+            background-size: 100%;
+            position: relative;
+        }
+        .banner-part-one .top-logo {
+            position: absolute;
+            top: 0.73rem;
+            background: url("https://r.51gjj.com/act/images/yunying/170825_logo_img.png") no-repeat;
+            height: 4.8rem;
+            width: 7rem;
+            background-size: 7rem;
+            margin: 0 0.48rem;
+            margin-left: -3.5rem;
+            left: 50%;
+        }
+        .JS_input {
+            width: 5.4rem;
+            height: 1rem;
+            border-radius: 0.46rem;
+            background: #ffffff;
+            position: relative;
+            margin: 0 auto;
+            padding: 0 0.3rem;
+            box-shadow: 0 17px 10px -8px #ffc0ae inset;
+        }
+        .JS_input input {
+            height: 1rem;
+            /*line-height: 1rem;*/
+            width: 5rem;
+            padding: 0 10px;
+            position: absolute;
+            top: 0;
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 0.32rem;
+            -webkit-appearance:none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        .code-wrap {
+            top: 7.05rem;
+        }
+        .phone {
+            top: 6.6rem;
+        }
+        .code {
+            top: 7.05rem;
+        }
+        .JS_input input::-webkit-input-placeholder{
+        color: #fe6a4b;
+        font-weight: 600;
+        }
+        .JS_input input::-moz-placeholder{
+        color: #fe6a4b;
+        font-weight: 600;
+        }
+        .JS_input input::-ms-input-placeholder{
+        color: #fe6a4b;
+        font-weight: 600;
+        }
+        .info-code {
+            height: 1rem;
+            width: 3.5rem;
+        }
+        .get-code {
+            width: 3.5rem!important;
+        }
+        .code-btn {
+            width: 2rem!important;
+            position: absolute;
+            right: 0.05rem;
+            padding: 0!important;
+            background: linear-gradient(to bottom,#ff9252,#fe737e)!important;
+            border-radius: 0.46rem!important;
+            height: 0.9rem!important;
+            margin-top: 0.05rem;
+            color: #ffffff;
+        }
+        .submit-btn {
+            height: 1.88rem;
+            position: absolute;
+            top: 9.2rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .submit-btn img {
+            width: 6.64rem;
+        }
+        .income-img {
+            width: 7.02rem;
+            position: absolute;
+            top: 11.4rem;
+            left: 50%;
+            margin-left: -3.51rem;
+        }
+        .income-img img {
+            width: 100%;
+        }
+        .advantage-img {
+            width: 7rem;
+            position: absolute;
+            top: 18.1rem;
+            left: 50%;
+            margin-left: -3.5rem;
+        }
+        .advantage-img img {
+            width: 100%;
+        }
+        .info-bottom {
+            width: 5.09rem;
+            position: absolute;
+            top: 38.5rem;
+            margin-left: -2.545rem;
+            left: 50%;
+            height: 0.5rem;
+        }
+        .info-bottom img {
+            width: 100%;
+            position: absolute;
+        }
+        .load-bottom {
+            position: fixed;
+            bottom: 0;
+            height: 0.9rem;
+            width: 100%;
+            background: #000000;
+            opacity: 0.75;
+        }
+        .load-logo {
+            width: 0.66rem;
+            position: absolute;
+            left: 0.3rem;
+            top: .12rem;
+        }
+        .wrap-txt {
+            position: absolute;
+            height: 0.65rem;
+            width: 100%;
+            margin-top: -0.325rem;
+            top: 50%;
+        }
+        .wrap-txt .txt1 {
+            color: #ffffff;
+            font-size: 0.28rem;
+            left: 1.15rem;
+            top: 0;
+            position: absolute;
+        }
+        .wrap-txt .txt2 {
+            color: #ffffff;
+            font-size: 0.22rem;
+            left: 1.15rem;
+            bottom: 0;
+            position: absolute;
+            letter-spacing: 0.18rem;
+        }
+        .load-bottom .load-btn {
+            position: absolute;
+            right: 0.3rem;
+            top: 0.2rem;
+            width: 1.61rem;
+        }
+        .info-project {
+            color: #ffffff;
+            font-size: 0.24rem;
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 38rem;
+            font-weight: 600;
+        }
+    </style>
+    <script>
+        function setFont(d, c) {
+            var b = {},
+                a = document,
+                f;
+            b.widthProportion = function () {
+                var e = (a.body && a.body.clientWidth || a.getElementsByTagName("html")[0].offsetWidth || window.innerWidth) /
+                    d;
+                // console.log(e);
+                return e
+            };
+            b.changePage = function () {
+                var f = b.widthProportion() * c,
+                    obj = a.getElementsByTagName("html")[0];
+                obj.setAttribute("style", "font-size:" + f + "px !important");
+                var style = null;
+                if (window.getComputedStyle) {
+                    style = window.getComputedStyle(obj, null);
+                    font = style.fontSize;
+                    font = Number(font.replace("px", ""));
+                    if (font > f) {
+                        var per = font / f;
+                        obj.setAttribute("style", "font-size:" + f / per + "px !important");
+                    }
+                }
+            };
+            b.changePage();
+            addEventListener("resize", b.changePage, false);
+        }
+        setFont(750, 100);
+    </script>
+    <script>
+        var _czc = _czc || [];
+        _czc.push(["_setAccount", "1256135023"]);
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="banner-part-one">
+            <div class="top-logo"></div>
+            <div class="JS_input phone">
+               <input type="tel" class="get-phone input" placeholder="请输入您的手机号">
+            </div>
+            <div class="code-wrap JS_input">
+                <div class="info-code">
+                    <input type="tel" class="get-code input" placeholder="请输入验证码">
+                    <input type="button" value="获取验证码" class="code-btn">
+                </div>
+            </div>
+            <div class="submit-btn"><img src="https://r.51gjj.com/act/images/yunying/index170824_sub-btn.png"></div>
+            <div class="income-img"><img src="https://r.51gjj.com/act/images/yunying/index170824_img1.png"></div>
+            <div class="advantage-img"><img src="https://r.51gjj.com/act/images/yunying/index170824_img2.png"></div>
+            <div class="info-project">51公积金旗下自营理财项目</div>
+            <div class="info-bottom"><img src="https://r.51gjj.com/act/images/yunying/index170824_bottom.png"></div>
+        </div>
+        <div class="load-bottom">
+                <img class="load-logo" src="https://r.51gjj.com/act/images/yunying/20170515_yq_logo.png">
+                <div class="wrap-txt">
+                    <span class="txt1">下载51公积金管家</span>
+                    <span class="txt2">激活你的财富</span>
+                </div>
+                <img class="load-btn" src="https://r.51gjj.com/act/images/yunying/20170515_yq_btn.png">
+        </div>
+    </div>
+    <script>
+        var oDiv = '<div class="load-bottom">';
+            oDiv    += '<img class="load-logo" src="https://r.51gjj.com/act/images/yunying/20170515_yq_logo.png">';
+            oDiv    += '<div class="wrap-txt"><span class="txt1">下载51公积金管家</span><span class="txt2">激活你的财富</span>'
+            oDiv    += '</div> <img class="load-btn" src="https://r.51gjj.com/act/images/yunying/20170515_yq_btn.png"></div>'
+        $(".input").focus(function(){
+            $(".load-bottom").remove();
+        })
+        $(".input").blur(function(){
+            if ($(".load-bottom").length < 1) {
+                $(".container").append(oDiv);
+            }
+            // setTimeout(function () {
+            //     $(".load-bottom").show();
+            // },100)
+        })   
+    </script>
+</body>
+
+</html>

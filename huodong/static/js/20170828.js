@@ -11,7 +11,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
     var local = ct.Tool.local();
     var source = ct.Tool.userAgent().isGjj ? 1 : 0;
     ct.Tool.buryPoint_v2(source);
-    ct.Tool.share(82,"zmtkj");
+    // ct.Tool.share(82,"zmtkj");
     var run = {
         start: function () {
             var _this = this;
@@ -24,7 +24,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             ct.Tool.handleBottomStatusBar();
             window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
             window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
-            window.onresize = ct.Tool.debounce(ct.Tool.setFont)
+            // window.onresize = ct.Tool.debounce(ct.Tool.setFont)
 
             /*整体预加载动画*/
             var oPreLoading = Object.create(ct.PreLodingUi);
@@ -48,50 +48,31 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
         },
 
         init: function () {
-            console.log("周末提款机2.0活动");
+            console.log("理财金活动");
             var _this = this;
-            _this.setNavAttr();
-            _this.share();
-            $(".wp-outer").removeClass("hide");
-            _this.PageBuryRequest();
-            _this.withdraw();
             _this.openRule();
             _this.closeRule();
+            _this.setNavAttr();
+            _this.share();
+            $(".wp").removeClass("hide");
+            _this.PageBuryRequest();
+            // _this.getAmount();
         },
-        withdraw: function() {
-            var _this = this;
-            $(".content").on("click",".btn1,.btn2,.btn3,.btn4",function(){
-                var btn = $(this);
-                var btn_id = btn[0].classList.value.substring(3);
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    data: JSON.stringify({btn_id}),
-                    // url: "test.php",
-                    url: "/act/act170822/get_button/"+ (btn_id - 1) +"",
-                    success: function(d) {
-                        if (d.success) {
-                            if (d.ret.is_weChat || d.ret.is_qq) {
-                                window.location.href = d.ret.url;
-                            } else {
-                                if (!d.ret.login) {
-                                    if(Bridge) {
-                                        Bridge.action("login");
-                                    }
-                                } else {
-                                    window.location.href = d.ret.url;
-                                }
-                            }
-                        } else {
-                            oP.show(d.msg);
-                        }
-                    }
-                });
+        getAmount: function() {
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "test.php",
+                // url: "/invest2/user/queryUser/totalTenderAmount",
+                success: function (d) {
+                    console.log("后台数据：",d);
+                    
+                }
             });
         },
         setNavAttr: function() {
             if (Bridge) {
-                Bridge.action("setNavigationColor",{backgroundColor:"#fff",textColor:"#202124",iconType:"1"});
+                Bridge.action("setNavigationColor",{backgroundColor:"#212226",textColor:"#fff",iconType:"1"});
             }
         },
         PageBuryRequest: function () {
@@ -101,7 +82,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 url: "/act/request/activity",
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "82_1_0_0_进入页面"
+                    tag: "20170821_1_0_0_进入页面"
                 }),
                 success: function (d) {
                     if (d.success) {
@@ -149,8 +130,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         Bridge.action('ShareTimeline', {
                             "title": "抢个红包过周末",
                             'desc': "利息5折、现金、实物...",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170821_share.png",
-                            "link": "https://" + host + "/act/home/huodong/20170821/index.php"
+                            "thumb": "https://r.51gjj.com/act/release/img/20170824_share.png",
+                            "link": "https://" + host + "/act/home/huodong/20170824/index.php"
                         });
                     }
                 })
