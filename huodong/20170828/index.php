@@ -28,15 +28,19 @@
     <div class="wp hide">
         <div class="wp-inner">
             <div class="content">
+                <div class="dynamic-text"></div>
                 <div class="title-container"></div>
                 <div class="building-left"></div>
                 <div class="building-right"></div>
-                <div class="dynamic-content"></div>
+                <div class="dynamic-layout"></div>
                 <div class="rule-btn" bp="id_1_8_0_规则">活动规则</div>
             </div>
         </div>
     </div>
 
+    <script type="text/template" id="tpl-dynamic-text">
+        <span>恭喜用户${tel}获得${money}元理财金！</span>
+    </script>
     <script type="text/template" id="tpl-not-imported">
         
     </script>

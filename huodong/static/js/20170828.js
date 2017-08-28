@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function ($, fastClick, fullpage, ct, Bridge, juicer) {
+require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"], function ($, fastClick, fullpage, ct, Bridge, juicer, liMarquee) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -56,9 +56,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             _this.share();
             $(".wp").removeClass("hide");
             _this.PageBuryRequest();
-            // _this.getAmount();
+            _this.getDynamicText();
         },
-        getAmount: function() {
+        getDynamicText: function() {
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
@@ -66,7 +66,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 // url: "/invest2/user/queryUser/totalTenderAmount",
                 success: function (d) {
                     console.log("后台数据：",d);
-                    
+                    var textTpl = $("#tpl-dynamic-text").html();
+                    var textHtml = juicer(textTpl,d.ret);
+                    $(".dynamic-text").append(textHtml);
+                    $('.dynamic-text').liMarquee({
+                        direction: "left",
+                        scrollamount: 50,
+                        hoverstop: false,
+                        drag: false,
+                    });
                 }
             });
         },

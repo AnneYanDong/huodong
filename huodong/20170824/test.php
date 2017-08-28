@@ -1,7 +1,8 @@
 <?php 
   $ret = array(
-    "ret"=>array(
-            "amount"=>"1888888",
+    "resCode"=>1,
+    "resData"=>array(
+            "currentUserTenderMoney"=>"12345678901",
         ),
     "success"=>true,
   );

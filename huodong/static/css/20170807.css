@@ -96,7 +96,8 @@
   height: 2.12rem;
   position: absolute;
   top: 4.06rem;
-  left: 2.35rem;
+  left: 50%;
+  margin-left: -1.3rem;
   z-index: 99;
 }
 img.quickmark {
@@ -453,9 +454,10 @@ img.quickmark {
   color: #1e1b68;
   text-align: center;
   font-weight: bold;
+  width: 100%;
 }
 .page5 .detail10 > div:nth-child(2) {
-  width: 3.42rem;
+  // width: 3.42rem;
   height: .51rem;
   line-height: .51rem;
   padding-bottom: .3rem;
@@ -603,12 +605,13 @@ img.quickmark {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-.page8 .share {
+.share {
   width: 2.47rem;
   height: 1.37rem;
   position: absolute;
   top: .24rem;
   right: .72rem;
+  z-index: 99;
 }
 .page8 .quickmark {
   width: 2.68rem;
@@ -1022,4 +1025,48 @@ img.quickmark {
   100% {
     background-position: -3.05rem 0;
   }
+}
+@keyframes bounceout {
+  20% {
+    -webkit-transform: scale3d(.9, .9, .9);
+    -ms-transform: scale3d(.9, .9, .9);
+    -moz-transform: scale3d(.9, .9, .9);
+    transform: scale3d(.9, .9, .9);
+  }
+
+  50%, 55% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    -ms-transform: scale3d(1.1, 1.1, 1.1);
+    -moz-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    -ms-transform: scale3d(.3, .3, .3);
+    -moz-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+}
+@-webkit-keyframes bounceout {
+  20% {
+    transform: scale3d(.9, .9, .9);
+  }
+
+  50%, 55% {
+    opacity: 1;
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+}
+.bounce-out {
+  -webkit-animation: bounceout 200ms ease-in-out;
+  -moz-animation: bounceout 200ms ease-in-out;
+  animation: bounceout 200ms ease-in-out;
 }
