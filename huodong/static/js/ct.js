@@ -339,7 +339,7 @@ define(["jquery", "share"], function($, wx) {
       url: "//b.jianbing.com/app/share/share_info",
       type: 'get',
       data: 'url=' + encodeURIComponent(url) + '&share_id=' + share_id + '&share_type=' + share_type,
-      dataType: 'jsonp',
+      dataType: 'json',
       success: function(data) {
         console.log(data);
         share_callback(data);
@@ -359,10 +359,10 @@ define(["jquery", "share"], function($, wx) {
         var share_data = {
           title: data.title != '' ? data.title : $(document).attr("title"), //默认头信息
           link: data.link != '' ? data.link : url, //当前链接
-          imgUrl: data.image != '' ? data.image : default_image, //默认链接
+          imgUrl: "//r.51gjj.com/image/test_20170828.png", //默认链接
           desc: data.description != '' ? data.description : $(document).attr("title")
-
         };
+        alert(share_data.imgUrl);
         wx.onMenuShareTimeline(share_data);
         wx.onMenuShareAppMessage(share_data);
       });
