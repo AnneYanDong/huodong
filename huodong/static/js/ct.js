@@ -336,7 +336,7 @@ define(["jquery", "share"], function($, wx) {
     var default_image = 'https://r.51gjj.com/image/static/ico_fenx.png'; //默认图片
     $.ajax({
       //获取分享的配置信息
-      url: "http://b.jianbing.com/app/share/share_info",
+      url: "//b.jianbing.com/app/share/share_info",
       type: 'get',
       data: 'url=' + encodeURIComponent(url) + '&share_id=' + share_id + '&share_type=' + share_type,
       dataType: 'jsonp',
