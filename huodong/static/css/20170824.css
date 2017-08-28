@@ -17,7 +17,7 @@ body {
   transform: translateX(-50%);
 }
 .amount {
-  width: 4.70rem;
+  width: 6rem;
   height: .63rem;
   line-height: .05rem;
   text-align: center;

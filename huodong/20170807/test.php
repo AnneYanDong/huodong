@@ -5,7 +5,7 @@
         "is_weChat"=> true,
         "is_qq"=> false,
         "show"=> true,
-        "name"=> "栋哥",
+        "name"=> "朱梦思",
         "url" => "https://www.baidu.com/",
         "analyze1" => array(
           "city"=>"杭州",
