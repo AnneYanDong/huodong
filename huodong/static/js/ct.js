@@ -333,7 +333,7 @@ define(["jquery", "share"], function($, wx) {
     var share_id = id || 0;
     var share_type = type || 'huodong';
     var url = window.location.href.split('#')[0];
-    var default_image = 'https://r.51gjj.com/image/static/ico_fenx.png'; //默认图片
+    var default_image = 'https://r.51gjj.com/image/static/test_201708282.png'; //默认图片
     $.ajax({
       //获取分享的配置信息
       url: "//b.jianbing.com/app/share/share_info",
