@@ -191,6 +191,24 @@
             top: 38rem;
             font-weight: 600;
         }
+        .alert-box {
+            min-width: 60%;
+            position: absolute;
+            text-align: center;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            padding: .4rem .2rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-size: 13px;
+            z-index: 999;
+            border-radius: 5px;
+            line-height: 16px;
+        }
     </style>
     <script>
         function setFont(d, c) {
@@ -234,15 +252,15 @@
         <div class="banner-part-one">
             <div class="top-logo"></div>
             <div class="JS_input phone">
-               <input type="tel" class="get-phone input" placeholder="请输入您的手机号">
+               <input type="tel" maxlength="11" class="get-phone input JS-phone" placeholder="请输入您的手机号">
             </div>
             <div class="code-wrap JS_input">
                 <div class="info-code">
-                    <input type="tel" class="get-code input" placeholder="请输入验证码">
-                    <input type="button" value="获取验证码" class="code-btn">
+                    <input type="tel" maxlength="6" class="get-code input" placeholder="请输入验证码">
+                    <input type="button" value="获取验证码" class="code-btn JS-get-code JS-code">
                 </div>
             </div>
-            <div class="submit-btn"><img src="https://r.51gjj.com/act/images/yunying/index170824_sub-btn.png"></div>
+            <div class="submit-btn search-btn"><img src="https://r.51gjj.com/act/images/yunying/index170824_sub-btn.png"></div>
             <div class="income-img"><img src="https://r.51gjj.com/act/images/yunying/index170824_img1.png"></div>
             <div class="advantage-img"><img src="https://r.51gjj.com/act/images/yunying/index170824_img2.png"></div>
             <div class="info-project">51公积金旗下自营理财项目</div>
@@ -269,10 +287,188 @@
             if ($(".load-bottom").length < 1) {
                 $(".container").append(oDiv);
             }
-            // setTimeout(function () {
-            //     $(".load-bottom").show();
-            // },100)
         })   
+            var place_name = window.location.search;
+            if (place_name) {
+                place_name = place_name.match(/[?&]p=([^&]+)/);
+                if (place_name) {
+                    place_name = decodeURIComponent(place_name[1]);
+                }
+            }
+            if (!place_name) {
+                place_name = window.location.hash;
+                if (place_name) {
+                    place_name = place_name.substr(1);
+                }
+            }
+            if (!place_name) {
+                place_name = 'jianbing';
+            }
+        var init = {
+    fn: function() {
+        this.searchClick();
+        this.getCode();
+    },
+    //获得查询字符串
+    getQueryStringArgs: function() {
+        var qs = location.search.length > 0 ? location.search.substring(1) : 0;
+        var items = qs.length > 0 ? qs.split("&") : [];
+        var item = null,
+            name = null,
+            value = null,
+            len = items.length;
+        var args = {};
+        for(var i = 0; i < len; i ++) {
+            item = items[i].split("=");
+            name = decodeURIComponent(item[0]);
+            value = decodeURIComponent(item[1]);
+
+            if(name.length) {
+                args[name] = value;
+            }
+        }
+        return args;
+    },
+    //点击获取验证码
+    getCode: function() {
+        var skipTimer = null;
+        // var oUrl = "test.php";
+        var oUrl = "https://b.jianbing.com/act/market/get_verification_code";
+        var _this = this;
+        $(".JS-get-code").on("click", function() {
+            if (_this.checkPhone($(".JS-phone"))) {
+                var phoneNum = $(".JS-phone").val();
+                $.ajax({
+                    url: "/act/market/get_verification_code",
+                    type: "POST",
+                    dataType: "JSON",
+                    data:JSON.stringify({"phone": phoneNum,"place_name":place_name}),
+                    success: function(d) {
+                        if (d.success === true) {
+                            _this.alertBox("短信验证码已发送，请注意查收",2000);
+                            _this.timeDown($(".JS-get-code"), 60)
+                        } else if(d.code == 512){
+                        	_this.alertBox("您已注册，直接参与吧",1000);
+                        	skipTimer = setTimeout(function(){
+                               window.location.href = "https://b.jianbing.com/51wealthy#home_redirect";
+                            },1500)
+                        } else{
+                        	$(".JS-get-code").removeClass("timing");
+                        	_this.alertBox(d.msg || "出错了，请重试",1000)
+                        }
+                    },
+                    error: function(xhr){
+                    	$(".JS-get-code").removeClass("timing");
+                    	_this.alertBox("发生错误" + xhr + "，请重试",1000);
+                    }
+                })
+            }
+        })
+    },
+    //立即投资
+    searchClick: function() {
+        var _this = this;
+        var skipTimer = null;
+        var args = _this.getQueryStringArgs(),
+        place_name = args["p"];
+        console.log(place_name);
+        var oUrl = "https://b.jianbing.com/act/market/get_register";
+        $(".search-btn").on("click", function() {
+            if (_this.checkPhone($(".phone input")) && _this.checkCode($(".msg-code input"))) {
+                var phoneNum = $(".JS-phone").val();
+                var codeNum = $(".JS-code").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/act/market/get_register",
+                    dataType: "JSON",
+                    data:
+                     	JSON.stringify({
+                     		"phone": phoneNum,
+	                        "code": codeNum,
+	                        "place": place_name
+                     	}),
+                    success: function(d) {
+                        if (d.success === true) { //手机号码验证码都正确，跳转到H5查询
+                        	window.location.href = "https://b.jianbing.com/51wealthy#home_redirect";
+                        }else if (d.code == 512){
+                        	_this.alertBox("您已注册，直接参与吧",1000);
+                        	clearTimeout(skipTimer);
+                            window.location.href = "https://b.jianbing.com/51wealthy#home_redirect";
+                        }else{
+                        	_this.alertBox(d.msg || "出错了，请重试",1000)
+                        }
+                    },
+                    error: function(xhr) {
+                        _this.alertBox("发生错误" + xhr + "，请重试",1000);
+                    }
+                })
+            }
+        })
+    },
+
+    //校验手机号和短信验证码的方法
+    checkPhone: function(ele) {
+        var _this = this;
+        var reg = /^1\d{10}$/;
+        var phoneNum = ele.val();
+        if (reg.test(phoneNum)) {
+            return true;
+        } else {
+            _this.alertBox("请输入正确的手机号！",2000)
+        }
+    },
+
+    checkCode: function(ele) {
+        var _this = this;
+        var codeNum = ele.val();
+        if (codeNum != "") {
+            return true;
+        } else {
+            _this.alertBox("验证码错误或未输入",2000);
+        }
+    },
+
+    //弹窗
+    alertBox: function(txt,howTime) {
+        var alertTimer = null;
+        var alertBox = $(".alert-box");
+        clearTimeout(alertTimer);
+        if (alertBox.length == 0) {
+            $("body").append($("<div class='alert-box'>" + txt + "</div>"));
+            alertTimer = setTimeout(function() {
+                // $(".alert-box").hide();
+                $(".alert-box").remove();
+            }, howTime)
+        }
+    },
+
+    //倒计时功能
+    timeDown: function(ele, howTime) {
+        if (ele.hasClass("timing")) {
+            return false;
+        } else {
+            clearInterval(timer);
+            ele.val(howTime + "s");
+            ele.addClass("timing");
+            ele.parent().append($("<div class='code-mark'></div>"))
+            var howTime = howTime - 1;
+            var timer = setInterval(function() {
+                ele.val(howTime + "s");
+                howTime--;
+                if (howTime < 0) {
+                    clearInterval(timer);
+                    $(".code-mark").remove();
+                    ele.removeClass("timing");
+                    ele.val("获取验证码");
+                }
+            }, 1000)
+        }
+    },
+}
+
+window.onload = function() {
+	init.fn();
+}
     </script>
 </body>
 
