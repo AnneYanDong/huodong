@@ -437,7 +437,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 Bridge.action('ShareTimeline', {
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
-                    "thumb": "https://r.51gjj.com/act/release/img/20170807_share.png",
+                    "thumb": "https://r.51gjj.com/act/release/img/20170807_new_share.png",
                     "link": "https://" + host + "/act/wechat/act_analyzes"
                 });
                     }
@@ -466,7 +466,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 Bridge.action('ShareTimeline', {
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
-                    "thumb": "https://r.51gjj.com/act/release/img/20170807_share.png",
+                    "thumb": "https://r.51gjj.com/act/release/img/20170807_new_share.png",
                     "link": "https://" + host + "/act/wechat/act_analyzes"
                 });
                 //     }

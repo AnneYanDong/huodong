@@ -128,9 +128,63 @@
 .dynamic-title {
   font-size: .35rem;
   color: #545454;
+  opacity: .9;
+  position: absolute;
   top: .59rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .act-detail {
   font-size: .28rem;
   color: #545454;
+  position: absolute;
+  top: 3.24rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+.dynamic-btn {
+  font-size: .36rem;
+  color: #fff;
+  background: #f4a72e;
+  width: 5.27rem;
+  height: .98rem;
+  line-height: .98rem;
+  border-radius: .5rem;
+  position: absolute;
+  top: 4.91rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.provident1 {
+  position: absolute;
+  top: 1.47rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.not-imported {
+  width: 5.26rem;
+  height: 1.22rem;
+}
+.provident2 {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  position: absolute;
+  top: 1.47rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.provident2 div {
+  margin-right: .16rem;
+}
+.provident2 div img{
+  width: .92rem;
+  height: 1.21rem;
+}
+.provident2 div span {
+  position: relative;
+  top: -1.2rem;
+  color: #fed841;
+  font-size: .84rem;
 }
