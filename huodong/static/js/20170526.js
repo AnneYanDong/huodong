@@ -112,7 +112,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 start: 0,
                 beforeChange: function(e) {
                     var now = "page" + e.next;
-                    ct.Tool.share(63, "xykdzpyq");
                     _this.changeState(now);
                     // if (e.next < e.cur) {
                     //     return false;
@@ -122,6 +121,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                     _this.fullPageObj.stop();
                     ct.Tool.share(63, "xykdzpyq");
                     var now = "page" + e.cur;
+                    console.log("ggs")
                     if (now == "page0") {
                         $(".page1 .btn").on("click", function() {
                             if (!_this.status.login) { //未登录跳转登录页

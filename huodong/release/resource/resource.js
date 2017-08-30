@@ -60,7 +60,7 @@
 	},
 
 	"20170526": {
-		"js": ["r.51gjj.com/act/release/js/20170526_f97b8a1.js"],
+		"js": ["r.51gjj.com/act/release/js/20170526_9e213e7.js"],
 		"css": ["r.51gjj.com/act/release/css/20170526_2f71f42.css"]
 	},
 
