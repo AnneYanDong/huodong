@@ -176,10 +176,10 @@
   left: 50%;
   transform: translateX(-50%);
 }
- .provident2 div.digit-div {
-  margin-right: .18rem;
-} 
-.provident2 div.digit-div img{
+.provident2 .show-num {
+  margin-right: .16rem;
+}
+.provident2 .show-num img{
   width: .92rem;
   height: 1.21rem;
 }
@@ -204,7 +204,7 @@
  opacity: .5;
  animation: flipbottom 500ms ease-in 2;
 }  */
-.provident2 div.digit-div span.digit-span {
+.provident2 .show-num .show-num-span {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   // font-weight: bold;
   position: relative;
