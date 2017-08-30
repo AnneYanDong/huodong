@@ -411,7 +411,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             "title": "公积金能办信用卡啦",
                             'desc': "定制信用卡拿现金大礼包",
                             "thumb": "https://r.51gjj.com/act/images/yunying/20170313_fx.jpg",
-                            "link": "http://" + host + "/act/home/huodong/20170526/"
+                            "link": "https://" + host + "/act/home/huodong/20170526/"
                         });
                     }
                 })
