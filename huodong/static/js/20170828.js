@@ -158,9 +158,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
         showScrollPage: function(d) {
             $(".provident2").addClass("dataStatistics");
             $(".provident2 div").addClass("digit_set");
+            $(".provident2 .digit_set").each(function(index,item){
+                $(item).empty();
+            })
             $(".provident2 div:last").addClass("set_last");
             $('.dataStatistics').dataStatistics({min:0,max:d.ret.money,time:30000,len:d.ret.money.toString().length});
-            $(".provident2 div span").css("top","-1.7rem");
+            // $(".provident2 div span").css("top","-1.7rem");
         },
         // hideFakeEle: function() {
         //     setTimeout(function(){
@@ -172,15 +175,18 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             var _this = this;
             var num = data.toString();
             $(".provident2").empty();
-            for(var i = 0;len1 = num.length,i < len1; i++) {
+            var len = num.length;
+            for(var i = 0;i < len; i++) {
                 var OImg = new Image();
-                var ODivLi = $("<div>");
+                OImg.src = "http://r.51gjj.com/act/release/img/20170828_number_bg.png";
+                var ODivLi = $("<div>",{"class": "show-num"});
                 ODivLi.append(OImg);
-                for(var j = 0;j <= i; j++) {
-                    OImg.src = "http://r.51gjj.com/act/release/img/20170828_number_bg.png";
-                    $(".provident2").append(ODivLi);
-                }
-                $(".provident2 div:eq("+ i +")").append('<span>' + num.charAt(i) + '</span>');
+                $(".provident2").append(ODivLi);
+                // for(var j = 0;j <= i; j++) {
+                //     OImg.src = "http://r.51gjj.com/act/release/img/20170828_number_bg.png";
+                //     $(".provident2").append(ODivLi);
+                // }
+                $(".provident2 div:eq("+ i +")").append('<span class="show-num-span">' + num.charAt(i) + '</span>');
             }
         },
         getLottery: function(d) {

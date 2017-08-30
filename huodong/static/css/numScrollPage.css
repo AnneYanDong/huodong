@@ -72,7 +72,7 @@ transform: perspective(4rem) rotateX(0deg); transform-origin: 50% 50%;} }
 .dataStatistics .digit > div.digit_bottom, .dataStatistics .digit > div.shadow_bottom { background: url("../img/20170828_bottom.png");background-size:.92rem .60rem;bottom: 0;z-index: 0;/* border-radius: .10rem .10rem 0 0; */ position: relative;/* top: .7rem; */}
 .dataStatistics .digit > div.digit_bottom .digit_wrap, .dataStatistics .digit > div.shadow_bottom .digit_wrap {display: block;margin-top: -95%; }
 .dataStatistics .digit > div.digit_bottom:before, .dataStatistics .digit > div.shadow_bottom:before {content: "";/* border-radius: 0 0 .10rem .10rem; */height: 100%;width: 100%;position: absolute;left: 0;top: 0; }
-.digit_wrap {line-height: 250rem; display: block; overflow: hidden;}
+.digit_wrap {line-height: 1.7rem; display: block; overflow: hidden;}
 .dataStatistics .digit > div.shadow_bottom {opacity: 0;-webkit-transition: opacity 0.3s ease-in; }
 .dataStatistics .digit.previous .digit_top,.dataStatistics .digit.previous .shadow_top {opacity: 1;z-index: 2;-webkit-transform-origin: 50% 100%;-webkit-animation: flipTop 0.3s ease-in both;-moz-transform-origin: 50% 100%;-moz-animation: flipTop 0.3s ease-in both;-ms-transform-origin: 50% 100%;-ms-animation: flipTop 0.3s ease-in both; transform-origin: 50% 100%;animation: flipTop 0.3s ease-in both;}
 .dataStatistics .digit.previous .digit_bottom,.dataStatistics .digit.previous .shadow_bottom {z-index: 1;/* opacity: 1; */ }
