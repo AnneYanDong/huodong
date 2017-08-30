@@ -359,7 +359,7 @@ define(["jquery", "share"], function($, wx) {
         var share_data = {
           title: data.title != '' ? data.title : $(document).attr("title"), //默认头信息
           link: data.link != '' ? data.link : url, //当前链接
-          imgUrl: default_image, //默认链接
+          imgUrl: data.image != '' ? data.image : default_image, //默认链接
           desc: data.description != '' ? data.description : $(document).attr("title"),
           success: function(){
             console.log(share_data.imgUrl);
