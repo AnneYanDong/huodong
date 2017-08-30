@@ -362,7 +362,7 @@ define(["jquery", "share"], function($, wx) {
           imgUrl: data.image != '' ? data.image : default_image, //默认链接
           desc: data.description != '' ? data.description : $(document).attr("title"),
           success: function(){
-            alert(share_data.imgUrl);
+            console.log(share_data.imgUrl);
           }
         };
         wx.onMenuShareTimeline(share_data);
