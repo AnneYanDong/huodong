@@ -128,9 +128,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                         Bridge.action("login");
                                     }
                             }
-                            if (_this.status.weChat == true) { //微信端打开
-                                oP.show("请登陆app参与活动");
-                            }
+                            // if (_this.status.weChat == true) { //微信端打开
+                            //     oP.show("请登陆app参与活动");
+                            // }
                             _this.fullPageObj.moveTo(1, true);
                         });
 
