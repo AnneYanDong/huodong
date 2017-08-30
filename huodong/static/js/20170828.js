@@ -112,6 +112,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                     $(".dynamic-layout").empty();
                     _this.showDynamicLayout($("#tpl-not-double"),d);
                     _this.getNumberImage(d.ret.money);
+
+                    _this.showScrollPage(d);
                     // _this.hideFakeEle();
                 });
                 $(".dynamic-layout").on("click",".btn3",function(){
@@ -150,17 +152,19 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
 
                 _this.showScrollPage(d);
 
-                /*_this.getTpContent(d);
-                oM.show();
-                $(".dynamic-layout .tp").fadeIn();*/
+                // setTimeout(function(){
+                //     _this.getTpContent(d);
+                //     oM.show();
+                //     $(".dynamic-layout .tp").fadeIn();
+                // },1500);
             })
         },
         showScrollPage: function(d) {
             $(".provident2").addClass("dataStatistics");
             $(".provident2 div").addClass("digit_set");
             $(".provident2 div:last").addClass("set_last");
-            $('.dataStatistics').dataStatistics({min:0,max:d.ret.money,time:30000,len:d.ret.money.toString().length});
-            $(".provident2 div span").css("top","-1.7rem");
+            $('.dataStatistics').dataStatistics({min:100,max:d.ret.money,time:30000,len:d.ret.money.toString().length});
+            // $(".provident2 div span").css("top","-1.7rem");
         },
         // hideFakeEle: function() {
         //     setTimeout(function(){
@@ -174,13 +178,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             $(".provident2").empty();
             for(var i = 0;len1 = num.length,i < len1; i++) {
                 var OImg = new Image();
-                var ODivLi = $("<div>");
+                var ODivLi = $("<div class='digit-div'>");
                 ODivLi.append(OImg);
                 for(var j = 0;j <= i; j++) {
                     OImg.src = "http://r.51gjj.com/act/release/img/20170828_number_bg.png";
                     $(".provident2").append(ODivLi);
                 }
-                $(".provident2 div:eq("+ i +")").append('<span>' + num.charAt(i) + '</span>');
+                $(".provident2 div:eq("+ i +")").append('<span class="digit-span">' + num.charAt(i) + '</span>');
             }
         },
         getLottery: function(d) {

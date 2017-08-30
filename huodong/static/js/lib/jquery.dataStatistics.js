@@ -53,10 +53,13 @@ $.fn.dataStatistics = function(options){
       
       //执行
 			function run(){
+        console.log("run方法执行");
 				var difference =options.max-options.min;//要执行动画的次数
+        console.log("要执行动画的次数",difference);
 				
 				//每次要执行动画的时间
 				var t = options.time/difference;
+        console.log("要执行动画的时间",t);
 				
 				//后一位数
 	  		function increase() {
@@ -104,6 +107,3 @@ $.fn.dataStatistics = function(options){
   		}
   		run();
 	};
-	
-	
-	

@@ -6,8 +6,8 @@
         "is_weChat"=> false,
         "is_qq"=> false,
         "import"=> true,
-        "base"=>27140,
-        "money"=>54280,
+        "base"=>2714,
+        "money"=>5428,
         "multiple"=>8,
         "url"=>"https://kaifa.jianbing.com/h5/",
         "info" => array(

@@ -176,10 +176,10 @@
   left: 50%;
   transform: translateX(-50%);
 }
-.provident2 div {
-  margin-right: .16rem;
-}
-.provident2 div img{
+ .provident2 div.digit-div {
+  margin-right: .18rem;
+} 
+.provident2 div.digit-div img{
   width: .92rem;
   height: 1.21rem;
 }
@@ -204,7 +204,7 @@
  opacity: .5;
  animation: flipbottom 500ms ease-in 2;
 }  */
-.provident2 div span {
+.provident2 div.digit-div span.digit-span {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   // font-weight: bold;
   position: relative;
@@ -212,7 +212,7 @@
   top: -1.3rem;
   color: #fed841;
   font-size: .84rem;
-   z-index: 3; 
+   z-index: 3;
 }
 .tp {
   width: 10rem;

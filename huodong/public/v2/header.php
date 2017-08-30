@@ -31,7 +31,8 @@
                 "Vue-build": ["//r.51gjj.com/act/release/js/lib/vue2.2.6.min", "lib/vue2.2.6.min"],
                 "axios": ["//r.51gjj.com/act/release/js/lib/axios.min","lib/axios.min"],
                 "number": ["//r.51gjj.com/act/release/js/lib/number","lib/number"],
-                "dataStatistics": ["//r.51gjj.com/act/release/js/lib/jquery.dataStatistics","lib/jquery.dataStatistics"],
+                // "dataStatistics": ["//r.51gjj.com/act/release/js/lib/jquery.dataStatistics","lib/jquery.dataStatistics"],
+                "dataStatistics": ["./huodong/static/js/lib/jquery.dataStatistics","lib/jquery.dataStatistics"],
                 "goDownload": ["//r.51gjj.com/act/release/js/lib/goDownload","lib/goDownload"],
                 "share": ["//res.wx.qq.com/open/js/jweixin-1.2.0"]
             },
