@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"], function ($, fastClick, fullpage, ct, Bridge, juicer, liMarquee) {
+require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee","number"], function ($, fastClick, fullpage, ct, Bridge, juicer, liMarquee,number) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -95,13 +95,45 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee"]
         },
         showNotImportLayout: function(d) {
             var notImportedTpl = $("#tpl-not-imported").html();
-            // var notImportedTplHtml = juicer(notImportedTpl,d.ret);
+            var notImportedTplHtml = juicer(notImportedTpl,d.ret);
             $(".dynamic-layout").append(notImportedTplHtml);
+            $(".dynamic-layout").on("click",".btn1",function(){
+                window.location.href = d.ret.url + "?page=query";
+            })
         },
         showImportedLayout: function(d) {
+            var _this = this;
             var haveImportedTpl = $("#tpl-have-imported").html();
             var haveImportedTplHtml = juicer(haveImportedTpl,d.ret);
             $(".dynamic-layout").append(haveImportedTplHtml);
+            _this.getNumberImage(d);
+            $(".dynamic-layout").on("click",".btn2",function(){
+                //tp
+            })
+        },
+        getNumberImage: function(data) {
+            var amount = data.ret.amount.toString();
+            console.log(amount);
+            $(".provident2").empty();
+            for(var i = 0;len1 = amount.length,i < len1; i++) {
+                var OImg = new Image();
+                var ODivLi = $("<div>");
+                ODivLi.append(OImg);
+                for(var j = 0;j <= i; j++) {
+                    OImg.src = "http://r.51gjj.com/act/release/img/20170828_number_bg.png";
+                    $(".provident2").append(ODivLi);
+                }
+                $(".provident2 div:eq("+ i +")").append('<span>' + amount.charAt(i) + '</span>');
+                if($(".provident2 div span:eq("+ i +")").dataset){
+                    $(".provident2 div span:eq("+ i +")").dataset.from = 0;
+                    $(".provident2 div span:eq("+ i +")").dataset.to = amount.charAt(i);
+                    $(".provident2 div span:eq("+ i +")").dataset.speed = 1000;
+                }else{
+                    $(".provident2 div span:eq("+ i +")").attr('data-from','0');
+                    $(".provident2 div span:eq("+ i +")").attr('data-to',amount.charAt(i));
+                    $(".provident2 div span:eq("+ i +")").attr('data-speed','1000');
+                }
+            }
         },
         getLottery: function(d) {
             var info = d.ret.info;

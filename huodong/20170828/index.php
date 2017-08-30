@@ -35,51 +35,51 @@
                 <div class="building-left"></div>
                 <div class="building-right"></div>
                 <div class="dynamic-layout"></div>
-                <div class="rule-btn" bp="id_1_8_0_规则">活动规则</div>
+                <div class="rule-btn" bp="id_1_6_0_规则">活动规则</div>
             </div>
         </div>
     </div>
 
     <script type="text/template" id="tpl-not-imported">
         <div class="dynamic-title"><span>您的公积金月缴额为</span></div>
-        <div class="provident">
-            <img class="not-imported" data-src="<?php echo $imgUrl; ?>" alt="not-img">
+        <div class="provident1">
+            <img class="not-imported" src="http://r.51gjj.com/act/release/img/20170828_not_imported.png" alt="not-img">
         </div>
         <div class="act-detail">
             <div><span>*根据月缴情况</span><span style="color: #f26315;">翻倍赠送</span><span>理财金</span></div>
             <div><span>不影响公积金余额</span></div>
         </div>
-        <div class="dynamic-btn">测测我能赚多少</div>
+        <div class="dynamic-btn btn1">测测我能赚多少</div>
     </script>
 
     <script type="text/template" id="tpl-have-imported">
         <div class="dynamic-title"><span>您的公积金月缴额为</span></div>
-        <div class="provident"></div>
+        <div class="provident2"></div>
         <div class="act-detail">
-            <div><span>*根据月缴情况</span><span>翻倍赠送</span><span>理财金</span></div>
+            <div><span>*根据月缴情况</span><span style="color: #f26315;">翻倍赠送</span><span>理财金</span></div>
             <div><span>不影响公积金余额</span></div>
         </div>
-        <div class="dynamic-btn">一键领取理财金</div>
+        <div class="dynamic-btn btn2">一键领取理财金</div>
     </script>
 
     <script type="text/template" id="tpl-not-double">
         <div class="dynamic-title"><span>您的翻倍理财金</span></div>
         <div class="provident"></div>
         <div class="act-detail">
-            <div><span>*根据月缴情况</span><span>翻倍赠送</span><span>理财金</span></div>
+            <div><span>*根据月缴情况</span><span style="color: #f26315;">翻倍赠送</span><span>理财金</span></div>
             <div><span>不影响公积金余额</span></div>
         </div>
-        <div class="dynamic-btn">存入理财账户</div>
+        <div class="dynamic-btn btn3">存入理财账户</div>
     </script>
 
     <script type="text/template" id="tpl-have-doubled">
         <div class="dynamic-title"><span>您已领取翻倍理财金</span></div>
         <div class="provident"></div>
         <div class="act-detail">
-            <div><span>*根据月缴情况</span><span>翻倍赠送</span><span>理财金</span></div>
+            <div><span>*根据月缴情况</span><span style="color: #f26315;">翻倍赠送</span><span>理财金</span></div>
             <div><span>不影响公积金余额</span></div>
         </div>
-        <div class="dynamic-btn">查看收益</div>
+        <div class="dynamic-btn btn4">查看收益</div>
     </script>
 
     <script type="text/template" id="tpl-rule">
