@@ -353,7 +353,7 @@ define(["jquery", "share"], function($, wx) {
         timestamp: data.timestamp,
         nonceStr: data.nonceStr,
         signature: data.signature,
-        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', ]
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
       });
       wx.ready(function() {
         var share_data = {
@@ -362,11 +362,14 @@ define(["jquery", "share"], function($, wx) {
           imgUrl: data.image != '' ? data.image : default_image, //默认链接
           desc: data.description != '' ? data.description : $(document).attr("title"),
           success: function(){
-            alert(share_data.imgUrl);
+            console.log(share_data.imgUrl);
           }
         };
         wx.onMenuShareTimeline(share_data);
         wx.onMenuShareAppMessage(share_data);
+        wx.onMenuShareQQ(share_data);
+        wx.onMenuShareWeibo(share_data);
+        wx.onMenuShareQZone(share_data);
       });
     }
   }
