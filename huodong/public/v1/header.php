@@ -25,7 +25,7 @@
                 "fastClick": ["//r.51gjj.com/act/release/js/lib/fastclick.min","lib/fastclick.min"],
                 "juicer": ["//r.51gjj.com/act/release/js/lib/juicer-min","lib/juicer-min"],
                 "dataStatistics": ["//r.51gjj.com/act/release/js/lib/jquery.dataStatistics","lib/jquery.dataStatistics"],
-                "ct": ["./huodong/static/js/ct.js?v=20170830_2"],
+                "ct": ["./huodong/static/js/ct.js?v=20170830_3"],
                 "marquee": ["//r.51gjj.com/act/release/js/lib/jquery.liMarquee.min", "lib/jquery.liMarquee"],
                 "Vue-dev": ["//r.51gjj.com/act/release/js/lib/vue2.2.6", "lib/vue2.2.6"],
                 "Vue": ["//r.51gjj.com/act/release/js/lib/vue2.2.6.min", "lib/vue2.2.6.min"],
