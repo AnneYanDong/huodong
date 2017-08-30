@@ -133,7 +133,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                       ".page3 .detail4 span:nth-child(2)",
                       ".page4 .detail5 .name",
                       ".page4 .detail5 .gender",
-                      ".page4 .detail6 .gender",
+                      // ".page4 .detail6 .gender",
                       ".page4 .detail5 .female-ranking",
                       ".page4 .detail6 .male-ranking",
                       ".page5 .detail10 .company_count",
@@ -154,7 +154,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                        d.analyze2.city,
                        d.name,
                        "的" + d.analyze3.gender + "性",
-                       "的" + d.analyze3.gender + "性",
+                       // "的" + d.analyze3.gender + "性",
                        d.analyze3.ranking_p_female + "%",
                        d.analyze3.ranking_p_male + "%",
                        d.analyze4.company_count,
@@ -179,6 +179,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     $(".page4 .detail5 .age").siblings().not(":first").remove();
                     $(".page4 .detail5 .age").after($("<span class='hou'>后</span>"));
                 }
+            }
+            //判断性别
+            if (d.analyze3.gender === "女") {
+                $(".page4 .detail6 .gender").text("的男性");
+            } else {
+                $(".page4 .detail6 .gender").text("的女性");
             }
         },
         getAnalyzingData: function(d) {
@@ -432,7 +438,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             var host = window.location.host;
             if (app.isGjj && Bridge) {
                 Bridge.action('quickIcon', {
-                    thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
+                    thumb: "https://r.51gjj.com/image/static/ico_title_share_white.png",
                     onclick: function () {
                 Bridge.action('ShareTimeline', {
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",

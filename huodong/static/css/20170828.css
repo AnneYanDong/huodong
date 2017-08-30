@@ -1,6 +1,7 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
 @import url('rule-btn.css');
+@import url('numScrollPage.css');
 .rule-btn {
   position: absolute;
   top: 11.17rem;
@@ -11,7 +12,7 @@
   text-decoration: underline;
 }
 .wp {
-  background: url("../img/20170828_bg.png") center no-repeat;
+  background: url("https://r.51gjj.com/act/release/img/20170828_bg.png") center no-repeat;
   background-size: cover;
 }
 .content {
@@ -87,7 +88,7 @@
     cursor: inherit;
 }
 .title-container {
-  background: url("../img/20170828_new_title.png") center no-repeat;
+  background: url("https://r.51gjj.com/act/release/img/20170828_new_title.png") center no-repeat;
   background-size: cover;
   width: 5.09rem;
   height: 2.79rem;
@@ -97,7 +98,7 @@
   margin-left: -2.54rem;
 }
 .building-left {
-  background: url("../img/20170828_building_left.png") center no-repeat;
+  background: url("https://r.51gjj.com/act/release/img/20170828_building_left.png") center no-repeat;
   background-size: cover;
   width: 1.95rem;
   height: 3.62rem;
@@ -106,7 +107,7 @@
   left: 0;
 }
 .building-right {
-  background: url("../img/20170828_building_right.png") center no-repeat;
+  background: url("https://r.51gjj.com/act/release/img/20170828_building_right.png") center no-repeat;
   background-size: cover;
   width: 2.03rem;
   height: 3.84rem;
@@ -182,9 +183,131 @@
   width: .92rem;
   height: 1.21rem;
 }
+/*  .provident2 div span:before {
+ content: "";
+ width: 183%;
+ height: 52%;
+ position: absolute;
+ background: #3a54ba;
+ left: -.21rem;
+ top: .54rem;
+ opacity: .5;
+ animation: fliptop 500ms ease-in 2;
+}
+.provident2 div span:after {
+ content: "";
+ width: 183%;
+ height: 52%;
+ position: absolute;
+ background: #3a54ba;
+ left: -.21rem;
+ opacity: .5;
+ animation: flipbottom 500ms ease-in 2;
+}  */
 .provident2 div span {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  // font-weight: bold;
   position: relative;
-  top: -1.2rem;
+  // top: -.4rem;
+  top: -1.3rem;
   color: #fed841;
   font-size: .84rem;
+   z-index: 3; 
 }
+.tp {
+  width: 10rem;
+  height: 40rem;
+  position: absolute;
+  top: -8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  perspective: 5rem;
+  perspective-origin: .5rem .5rem;
+  z-index: 99;
+}
+.tp img {
+  width: 5.99rem;
+  height: 6.60rem;
+  position: absolute;
+  top: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tp .double {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: right;
+  width: 2.06rem;
+  position: relative;
+  top: 8.8rem;
+  left: 4.4rem;
+  font-size: .63rem;
+  color: #fff;
+  font-weight: bold;
+}
+.tp .multiple {
+  font-size: .32rem;
+  font-weight: bold;
+  color: #ffc706;
+  width: 1.6rem;
+  height: .7rem;
+  line-height: .7rem;
+  box-shadow: 0 0 0 1px;
+  position: absolute;
+  top: 8.2rem;
+  right: 2.57rem;
+  transform: rotate(30deg);
+  animation: stamp 500ms ease;
+}
+.multiple span:first-child {
+  position: relative;
+  top: -.07rem;
+}
+.multiple span:last-child {
+  font-size: .54rem;
+  font-weight: bolder;
+}
+.deposite-btn {
+  position: absolute;
+  top: 11.53rem;
+  width: 3.61rem;
+  height: .77rem;
+  left: 50%;
+  margin-left: -1.8rem;
+}
+@-webkit-keyframes stamp {
+  from {
+    transform: translate3d(6rem,61rem,26rem);
+  }
+  to {
+    transform: translate3d(2rem,1rem,2rem);
+
+  }
+}
+@keyframes stamp {
+  from {
+    transform: translate3d(6rem,61rem,26rem);
+  }
+  to {
+    transform: translate3d(2rem,1rem,2rem);
+
+  }
+}
+  @keyframes fliptop {
+  0% {
+    transform: perspective(4rem) rotateX(0deg);
+  }
+ 
+  100% {
+    transform: perspective(4rem) rotateX(-90deg);
+  }
+ }
+ @keyframes flipbottom {
+  0% {
+    transform: perspective(4rem) rotateX(90deg);
+  }
+ 
+  100% {
+    transform: perspective(4rem) rotateX(0deg);
+  }
+ } 

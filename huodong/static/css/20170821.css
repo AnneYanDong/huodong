@@ -23,7 +23,8 @@ body {
 
   position: absolute;
   top: 2.13rem;
-  left: 1rem;
+  left: 50%;
+  margin-left: -2.9rem;
   z-index: 2;
 
   -moz-animation: money 1s step-end infinite;

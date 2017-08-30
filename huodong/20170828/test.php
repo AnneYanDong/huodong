@@ -1,11 +1,14 @@
 <?php
   $ret = array(
     "ret"=>array(
+        "auth"=> true,
         "login"=> true,
         "is_weChat"=> false,
         "is_qq"=> false,
-        "show"=> true,
-        "amount"=>27140,
+        "import"=> true,
+        "base"=>27140,
+        "money"=>54280,
+        "multiple"=>8,
         "url"=>"https://kaifa.jianbing.com/h5/",
         "info" => array(
           array("name"=> "187****9234","money"=> "200"),

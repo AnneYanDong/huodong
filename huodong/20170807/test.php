@@ -11,8 +11,8 @@
           "city"=>"杭州",
           "ranking"=>3175,
           "ranking_p"=> 90.12,
-          "gender"=> "女",
-          "text"=>"可以说balalbala"
+          "gender"=> "男",
+          "text"=>"别回头，再不努力别人就超过你了！"
         ),
         "analyze2" => array(
           "year"=>2010,
@@ -22,7 +22,7 @@
         ),
         "analyze3" => array(
           "age"=>90,
-          "gender"=> "女",
+          "gender"=> "男",
           "ranking_p_male"=> 90.23,
           "ranking_p_female"=> 10.10
         ),

@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee","number"], function ($, fastClick, fullpage, ct, Bridge, juicer, liMarquee,number) {
+require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee","dataStatistics"], function ($, fastClick, fullpage, ct, Bridge, juicer,dataStatistics) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -64,19 +64,29 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                 type: "POST",
                 dataType: "JSON",
                 url: "test.php",
+                // url: "/act/act170828/get_status",
                 success: function (d) {
                     if (d.success) {
                         console.log("后台数据：",d);
                         _this.getLottery(d);
-                        if (d.ret.is_weChat || d.ret.is_qq) {
-                            _this.startIsImportedProcess(d);
+                        if (!d.ret.auth) {
+                            _this.showDynamicLayout($("#tpl-have-doubled"),d);
+                            _this.getNumberImage(d.ret.money);
+                            // _this.hideFakeEle();
+                            $(".dynamic-layout").on("click",".btn4",function(){
+                                window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
+                            })
                         } else {
-                            if (!d.ret.login) {
-                                if (Bridge) {
-                                    Bridge.action("login");
-                                }
-                            } else {
+                            if (d.ret.is_weChat || d.ret.is_qq) {
                                 _this.startIsImportedProcess(d);
+                            } else {
+                                if (!d.ret.login) {
+                                    if (Bridge) {
+                                        Bridge.action("login");
+                                    }
+                                } else {
+                                    _this.startIsImportedProcess(d);
+                                }
                             }
                         }
                     } else {
@@ -87,35 +97,82 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
         },
         startIsImportedProcess: function(d) {
             var _this = this;
-            if (!d.ret.show) {
+            if (!d.ret.import) {
                 _this.showNotImportLayout(d);
             } else {
                 _this.showImportedLayout(d);
+                $(".tp").on("click",".deposite-btn",function(){
+                    $(".dynamic-layout .tp").fadeOut();
+                    window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
+                });
+                $(".dynamic-layout").on("click",".tp",function(){
+                    oM.hide();
+                    $(".double").remove();
+                    $(".multiple").remove();
+                    $(".dynamic-layout").empty();
+                    _this.showDynamicLayout($("#tpl-not-double"),d);
+                    _this.getNumberImage(d.ret.money);
+                    // _this.hideFakeEle();
+                });
+                $(".dynamic-layout").on("click",".btn3",function(){
+                    window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
+                })
             }
         },
+        showDynamicLayout: function(tpl,d) {
+            var tplContent = tpl.html();
+            var tplHtml = juicer(tplContent,d.ret);
+            $(".dynamic-layout").append(tplHtml);
+        },
         showNotImportLayout: function(d) {
-            var notImportedTpl = $("#tpl-not-imported").html();
-            var notImportedTplHtml = juicer(notImportedTpl,d.ret);
-            $(".dynamic-layout").append(notImportedTplHtml);
+            var _this = this;
+            _this.showDynamicLayout($("#tpl-not-imported"),d);
             $(".dynamic-layout").on("click",".btn1",function(){
-                window.location.href = d.ret.url + "?page=query";
+                oP.show("抱歉，您的公积金尚未查询，请先查询后再来领取哦。");
+                setTimeout(function(){
+                    window.location.href = "https://kaifa.jianbing.com/h5/?page=query";
+                },1500);
             })
+        },
+        getTpContent: function(d) {
+            $("<div class='double'></div>").appendTo($(".tp")).text(d.ret.money);
+            $("<div class='multiple'></div>").appendTo($(".tp"));
+            $("<span></span>").appendTo($(".tp .multiple")).text("已翻X");
+            $("<span></span>").appendTo($(".tp .multiple")).text(d.ret.multiple);
         },
         showImportedLayout: function(d) {
             var _this = this;
-            var haveImportedTpl = $("#tpl-have-imported").html();
-            var haveImportedTplHtml = juicer(haveImportedTpl,d.ret);
-            $(".dynamic-layout").append(haveImportedTplHtml);
-            _this.getNumberImage(d);
+            _this.showDynamicLayout($("#tpl-have-imported"),d);
+            _this.getNumberImage(d.ret.base);
+            // _this.hideFakeEle();
+
             $(".dynamic-layout").on("click",".btn2",function(){
-                //tp
+
+                _this.showScrollPage(d);
+
+                /*_this.getTpContent(d);
+                oM.show();
+                $(".dynamic-layout .tp").fadeIn();*/
             })
         },
+        showScrollPage: function(d) {
+            $(".provident2").addClass("dataStatistics");
+            $(".provident2 div").addClass("digit_set");
+            $(".provident2 div:last").addClass("set_last");
+            $('.dataStatistics').dataStatistics({min:0,max:d.ret.money,time:30000,len:d.ret.money.toString().length});
+            $(".provident2 div span").css("top","-1.7rem");
+        },
+        // hideFakeEle: function() {
+        //     setTimeout(function(){
+        //         $(".provident2 div span").append("<style>::before{display:none}</style>");
+        //         $(".provident2 div span").append("<style>::after{display:none}</style>");
+        //     },1000);
+        // },
         getNumberImage: function(data) {
-            var amount = data.ret.amount.toString();
-            console.log(amount);
+            var _this = this;
+            var num = data.toString();
             $(".provident2").empty();
-            for(var i = 0;len1 = amount.length,i < len1; i++) {
+            for(var i = 0;len1 = num.length,i < len1; i++) {
                 var OImg = new Image();
                 var ODivLi = $("<div>");
                 ODivLi.append(OImg);
@@ -123,16 +180,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                     OImg.src = "http://r.51gjj.com/act/release/img/20170828_number_bg.png";
                     $(".provident2").append(ODivLi);
                 }
-                $(".provident2 div:eq("+ i +")").append('<span>' + amount.charAt(i) + '</span>');
-                if($(".provident2 div span:eq("+ i +")").dataset){
-                    $(".provident2 div span:eq("+ i +")").dataset.from = 0;
-                    $(".provident2 div span:eq("+ i +")").dataset.to = amount.charAt(i);
-                    $(".provident2 div span:eq("+ i +")").dataset.speed = 1000;
-                }else{
-                    $(".provident2 div span:eq("+ i +")").attr('data-from','0');
-                    $(".provident2 div span:eq("+ i +")").attr('data-to',amount.charAt(i));
-                    $(".provident2 div span:eq("+ i +")").attr('data-speed','1000');
-                }
+                $(".provident2 div:eq("+ i +")").append('<span>' + num.charAt(i) + '</span>');
             }
         },
         getLottery: function(d) {
