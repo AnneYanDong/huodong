@@ -119,7 +119,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 },
                 afterChange: function(e) {
                     _this.fullPageObj.stop();
+                    ct.Tool.share(63, "xykdzpyq");
                     var now = "page" + e.cur;
+                    console.log("ggs")
                     if (now == "page0") {
                         $(".page1 .btn").on("click", function() {
                             if (!_this.status.login) { //未登录跳转登录页
@@ -128,9 +130,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                                         Bridge.action("login");
                                     }
                             }
-                            if (_this.status.weChat == true) { //微信端打开
-                                oP.show("请登陆app参与活动");
-                            }
+                            // if (_this.status.weChat == true) { //微信端打开
+                            //     oP.show("请登陆app参与活动");
+                            // }
                             _this.fullPageObj.moveTo(1, true);
                         });
 
@@ -411,7 +413,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                             "title": "公积金能办信用卡啦",
                             'desc': "定制信用卡拿现金大礼包",
                             "thumb": "https://r.51gjj.com/act/images/yunying/20170313_fx.jpg",
-                            "link": "http://" + host + "/act/home/huodong/20170526/"
+                            "link": "https://" + host + "/act/home/huodong/20170526/"
                         });
                     }
                 })

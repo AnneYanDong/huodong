@@ -60,8 +60,8 @@
 	},
 
 	"20170526": {
-		"js": ["r.51gjj.com/act/release/js/20170526_9012668.js"],
-		"css": ["r.51gjj.com/act/release/css/20170526_2c2d4d3.css"]
+		"js": ["r.51gjj.com/act/release/js/20170526_9e213e7.js"],
+		"css": ["r.51gjj.com/act/release/css/20170526_2f71f42.css"]
 	},
 
 	"20170531": {
