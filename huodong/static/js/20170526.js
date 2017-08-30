@@ -112,6 +112,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 start: 0,
                 beforeChange: function(e) {
                     var now = "page" + e.next;
+                    ct.Tool.share(63, "xykdzpyq");
                     _this.changeState(now);
                     // if (e.next < e.cur) {
                     //     return false;
@@ -119,6 +120,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
                 },
                 afterChange: function(e) {
                     _this.fullPageObj.stop();
+                    ct.Tool.share(63, "xykdzpyq");
                     var now = "page" + e.cur;
                     if (now == "page0") {
                         $(".page1 .btn").on("click", function() {
