@@ -33,7 +33,7 @@
                 "axios": ["//r.51gjj.com/act/release/js/lib/axios.min","lib/axios.min"],
                 "number": ["//r.51gjj.com/act/release/js/lib/number","lib/number"],
                 "goDownload": ["//r.51gjj.com/act/release/js/lib/goDownload","lib/goDownload"],
-                "share": ["//res.wx.qq.com/open/js/jweixin-1.1.0"]
+                "share": ["//res.wx.qq.com/open/js/jweixin-1.2.0"]
             },
 
             "shim": {
