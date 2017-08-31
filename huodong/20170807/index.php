@@ -32,7 +32,7 @@
                     <div class="title"><img data-src="<?php echo $imgUrl; ?>page1_title.png" alt="title"></div>
                     <div class="img-gold"><img data-src="<?php echo $imgUrl; ?>page1_$.png" alt="$"></div>
                     <!-- 按钮 -->
-                    <div class="img-btn" bp="20170807_1_1_0_开始解封"><img data-src="<?php echo $imgUrl; ?>page1_btn.png" alt="btn"></div>
+                    <div class="img-btn" bp="85_1_1_0_开始解封"><img data-src="<?php echo $imgUrl; ?>page1_btn.png" alt="btn"></div>
                     <div class="climb climbing"></div>
                     <div class="letter lettering"></div>
                     <div class="gold scrolling"><img data-src="<?php echo $imgUrl; ?>dynamic_gold.png" alt="gold"></div>
@@ -57,7 +57,7 @@
                     <div class="dynamic-text"><span><!-- 可以说非常强势了！ --></span></div>
                     <img class="awesome" data-src="<?php echo $imgUrl; ?>page2_awesome.png" alt="awesome">
                     <!-- 按钮 -->
-                    <div class="next" bp="20170807_2_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
+                    <div class="next" bp="85_2_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
             <div class="page page3">
@@ -80,7 +80,7 @@
                    <img class="page3-pg" data-src="<?php echo $imgUrl; ?>page3_pg.png" alt="pg">
                     <div class="thinking-gif"></div>
                     <!-- 按钮 -->
-                   <div class="next" bp="20170807_3_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
+                   <div class="next" bp="85_3_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                </div>
             </div>
             <div class="page page4">
@@ -106,7 +106,7 @@
                         <div><span class="male-ranking font-style"></span><span class="gender"><!-- 的男性 --></span></div>
                     </div>
                     <!-- 按钮 -->
-                    <div class="next" bp="20170807_4_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
+                    <div class="next" bp="85_4_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
             <div class="page page5">
@@ -130,7 +130,7 @@
                     </div>
                     <img class="people2" data-src="<?php echo $imgUrl; ?>page5_people1.png" alt="people2">
                     <!-- 按钮 -->
-                    <div class="next" bp="20170807_5_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
+                    <div class="next" bp="85_5_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
             <div class="page page6">
@@ -156,7 +156,7 @@
                         <img class="cloud" data-src="<?php echo $imgUrl; ?>page6_cloud.png" alt="cloud">
                     </div>
                     <!-- 按钮 -->
-                    <div class="next" bp="20170807_6_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
+                    <div class="next" bp="85_6_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
             <div class="page page7">
@@ -171,7 +171,7 @@
                     <div class="detail9"><span>身价这种事儿，还是低调，低调。</span></div>
                     <img class="people" data-src="<?php echo $imgUrl; ?>page7_people.png" alt="people">
                     <!-- 按钮 -->
-                    <div class="next" bp="20170807_7_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
+                    <div class="next" bp="85_7_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
             <div class="page page8">
@@ -179,7 +179,7 @@
                     <img class="share" data-src="<?php echo $imgUrl; ?>page8_share.png" alt="share"/>
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark.jpg" alt="quickmark"/>
                     <img class="detail" data-src="<?php echo $imgUrl; ?>page8_detail.png" alt="detail"/>
-                    <img class="img-btn" bp="20170807_8_1_0_低调分享" data-src="<?php echo $imgUrl; ?>page8_btn.png" alt="btn"/>
+                    <img class="img-btn" bp="85_8_1_0_低调分享" data-src="<?php echo $imgUrl; ?>page8_btn.png" alt="btn"/>
                 </div>
             </div>
         </div>

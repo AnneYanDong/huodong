@@ -106,6 +106,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                     window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
                 });
                 $(".dynamic-layout").on("click",".tp",function(){
+                    // $(".dynamic-layout .btn2").removeAttr("disabled");
                     oM.hide();
                     $(".double").remove();
                     $(".multiple").remove();
@@ -114,6 +115,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                     _this.getNumberImage(d.ret.money);
 
                     _this.showScrollPage(d);
+                    $('.dataStatistics').dataStatistics({min:d.ret.money,max:d.ret.money,time:1000,len:d.ret.money.toString().length});
                 });
                 $(".dynamic-layout").on("click",".btn3",function(){
                     window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
@@ -138,6 +140,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
         },
         //弹屏内容
         getTpContent: function(d) {
+            $(".double").remove();
+            $(".multiple").remove();
             $("<div class='double'></div>").appendTo($(".tp")).text(d.ret.money);
             $("<div class='multiple'></div>").appendTo($(".tp"));
             $("<span></span>").appendTo($(".tp .multiple")).text("已翻X");
@@ -148,10 +152,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             var _this = this;
             _this.showDynamicLayout($("#tpl-have-imported"),d);
             _this.getNumberImage(d.ret.base);
-
-            $(".dynamic-layout").on("click",".btn2",function(){
+            // $(".dynamic-layout .btn2").removeAttr("disabled");
+            $(".dynamic-layout").unbind().on("click",".btn2",function(){
+                $(this).attr('disabled', true);
                 _this.getNumberImage(d.ret.money);
                 _this.showScrollPage(d);
+                $('.dataStatistics').dataStatistics({min:(d.ret.base),max:d.ret.base,time:1000,len:d.ret.money.toString().length});
 
                 setTimeout(function(){
                     _this.getTpContent(d);
@@ -168,7 +174,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                 $(item).empty();
             })
             $(".provident2 div:last").addClass("set_last");
-            $('.dataStatistics').dataStatistics({min:(d.ret.money-100),max:d.ret.money,time:1,len:d.ret.money.toString().length});
+            // $('.dataStatistics').dataStatistics({min:(d.ret.money-100),max:d.ret.money,time:1000,len:d.ret.money.toString().length});
         },
         getNumberImage: function(data) {
             var _this = this;
