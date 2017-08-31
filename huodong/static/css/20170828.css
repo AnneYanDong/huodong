@@ -12,7 +12,7 @@
   text-decoration: underline;
 }
 .wp {
-  background: url("https://r.51gjj.com/act/release/img/20170828_bg.png") center no-repeat;
+  background: url("//r.51gjj.com/act/release/img/20170828_bg.png") center no-repeat;
   background-size: cover;
 }
 .content {
@@ -88,7 +88,7 @@
     cursor: inherit;
 }
 .title-container {
-  background: url("https://r.51gjj.com/act/release/img/20170828_new_title.png") center no-repeat;
+  background: url("//r.51gjj.com/act/release/img/20170828_new_title.png") center no-repeat;
   background-size: cover;
   width: 5.09rem;
   height: 2.79rem;
@@ -98,7 +98,7 @@
   margin-left: -2.54rem;
 }
 .building-left {
-  background: url("https://r.51gjj.com/act/release/img/20170828_building_left.png") center no-repeat;
+  background: url("//r.51gjj.com/act/release/img/20170828_building_left.png") center no-repeat;
   background-size: cover;
   width: 1.95rem;
   height: 3.62rem;
@@ -107,7 +107,7 @@
   left: 0;
 }
 .building-right {
-  background: url("https://r.51gjj.com/act/release/img/20170828_building_right.png") center no-repeat;
+  background: url("//r.51gjj.com/act/release/img/20170828_building_right.png") center no-repeat;
   background-size: cover;
   width: 2.03rem;
   height: 3.84rem;
