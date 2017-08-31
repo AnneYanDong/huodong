@@ -58,6 +58,29 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             _this.PageBuryRequest();
             _this.getSingleInfo();
         },
+        urlPost: function(url, p) {
+            var args = $.extend(true, {
+                // step: '2'
+            }, p);
+            $(".JS_form_submit_set").remove();
+            var id = "form_id_" + (new Date()).getTime(),
+                form = $('<form method="post" id="' + id + '" class="JS_form_submit_set"><input type="submit" value="提交表单"></form>').appendTo(document.body),
+                input;
+            form = $("#" + id);
+            form.attr({
+                "action": url
+            }).hide();
+            $.each(args, function(key, value) {
+                input = $("<input type='hidden'>");
+                input.attr({
+                    "name": key
+                });
+                input.val(value);
+                form.append(input);
+            });
+            form[0].submit();
+            form.remove();
+        },
         getSingleInfo: function() {
             var _this = this;
             $.ajax({
@@ -73,8 +96,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                             _this.showDynamicLayout($("#tpl-have-doubled"),d);
                             _this.getNumberImage(d.ret.money);
                             _this.showScrollPage(d);
+                            $('.dataStatistics').dataStatistics({min:d.ret.money,max:d.ret.money,time:1000,len:d.ret.money.toString().length});
                             $(".dynamic-layout").on("click",".btn4",function(){
-                                window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
+                                _this.urlPost("https://"+ window.location.host +"/51wealthy/h5/member/invest_exper.php",JSON.stringify({userLevel:d.ret.level}));
+                                // window.location.href = "https://b.jianbing.com/51wealthy/h5/member/invest_exper.php";
                             })
                         } else {
                             if (d.ret.is_weChat || d.ret.is_qq) {
@@ -186,7 +211,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                 var ODivLi = $("<div class='show-num'>");
                 ODivLi.append(OImg);
                 for(var j = 0;j <= i; j++) {
-                    OImg.src = "http://r.51gjj.com/act/release/img/20170828_number_bg.png";
+                    OImg.src = "https://r.51gjj.com/act/release/img/20170828_number_bg.png";
                     $(".provident2").append(ODivLi);
                 }
                 $(".provident2 div:eq("+ i +")").append('<span class="show-num-span">' + num.charAt(i) + '</span>');

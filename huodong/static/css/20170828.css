@@ -144,6 +144,9 @@
   transform: translateX(-50%);
   width: 100%;
 }
+.act-detail div {
+  padding-bottom: .05rem;
+}
 .dynamic-btn {
   font-size: .36rem;
   color: #fff;
