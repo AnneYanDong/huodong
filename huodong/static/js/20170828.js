@@ -72,7 +72,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                         if (!d.ret.auth) {
                             _this.showDynamicLayout($("#tpl-have-doubled"),d);
                             _this.getNumberImage(d.ret.money);
-                            // _this.hideFakeEle();
                             $(".dynamic-layout").on("click",".btn4",function(){
                                 window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
                             })
@@ -114,7 +113,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                     _this.getNumberImage(d.ret.money);
 
                     _this.showScrollPage(d);
-                    // _this.hideFakeEle();
                 });
                 $(".dynamic-layout").on("click",".btn3",function(){
                     window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
@@ -146,17 +144,16 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             var _this = this;
             _this.showDynamicLayout($("#tpl-have-imported"),d);
             _this.getNumberImage(d.ret.base);
-            // _this.hideFakeEle();
 
             $(".dynamic-layout").on("click",".btn2",function(){
-
+                _this.getNumberImage(d.ret.money);
                 _this.showScrollPage(d);
 
-                // setTimeout(function(){
-                //     _this.getTpContent(d);
-                //     oM.show();
-                //     $(".dynamic-layout .tp").fadeIn();
-                // },1500);
+                setTimeout(function(){
+                    _this.getTpContent(d);
+                    oM.show();
+                    $(".dynamic-layout .tp").fadeIn();
+                },1500);
             })
         },
         showScrollPage: function(d) {
@@ -166,15 +163,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                 $(item).empty();
             })
             $(".provident2 div:last").addClass("set_last");
-            $('.dataStatistics').dataStatistics({min:100,max:d.ret.money,time:30000,len:d.ret.money.toString().length});
-            // $(".provident2 div span").css("top","-1.7rem");
+            $('.dataStatistics').dataStatistics({min:(d.ret.money-100),max:d.ret.money,time:1,len:d.ret.money.toString().length});
         },
-        // hideFakeEle: function() {
-        //     setTimeout(function(){
-        //         $(".provident2 div span").append("<style>::before{display:none}</style>");
-        //         $(".provident2 div span").append("<style>::after{display:none}</style>");
-        //     },1000);
-        // },
         getNumberImage: function(data) {
             var _this = this;
             var num = data.toString();
@@ -182,13 +172,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             var len = num.length;
             for(var i = 0;i < len; i++) {
                 var OImg = new Image();
-                var ODivLi = $("<div class='digit-div'>");
+                var ODivLi = $("<div class='show-num'>");
                 ODivLi.append(OImg);
                 for(var j = 0;j <= i; j++) {
                     OImg.src = "http://r.51gjj.com/act/release/img/20170828_number_bg.png";
                     $(".provident2").append(ODivLi);
                 }
-                $(".provident2 div:eq("+ i +")").append('<span class="digit-span">' + num.charAt(i) + '</span>');
+                $(".provident2 div:eq("+ i +")").append('<span class="show-num-span">' + num.charAt(i) + '</span>');
             }
         },
         getLottery: function(d) {

@@ -55,23 +55,23 @@ transform: perspective(4rem) rotateX(90deg); }
 100% {
 transform: perspective(4rem) rotateX(0deg); } }
 
-.dataStatistics {color: #fedec2;font-family: "Helvetica Neue", Helvetica, sans-serif;font-size: 1.6rem;font-weight: bold;line-height: 1.70rem;height: 1.70rem;  /* width: 7.46rem; */ margin: 0 auto;}
+.dataStatistics {color: #fed841;font-family: "Helvetica Neue", Helvetica, sans-serif;font-size: 1rem;/* font-weight: bold; */line-height: 1.20rem;height: 1.20rem;  /* width: 7.46rem; */ margin: 0 auto;}
 
 .dataStatistics .seperator {vertical-align: top;margin: 0 -.20rem;display: inline; }
 .dataStatistics .seconds,.dataStatistics .minutes,.dataStatistics .hours,.dataStatistics .days {height: 100%;display: inline; }
-.dataStatistics .digit_set { float: left;border-radius: .10rem;/* box-shadow: 0 .02rem .04rem rgba(0, 0, 0, 0.8);border: .01rem solid #111111; */width: .92rem;height: 1.21rem;display: inline-block;position: relative;margin: 0 .1rem; }
+.dataStatistics .digit_set { float: left;border-radius: .10rem;/* box-shadow: 0 .02rem .04rem rgba(0, 0, 0, 0.8);border: .01rem solid #111111; */width: .82rem;height: 1.21rem;display: inline-block;position: relative;margin: 0 .1rem; }
 
 .dataStatistics .digit {position: absolute;height: 100%; top: -.01rem;}
-.dataStatistics .digit > div {position: absolute;left: 0;overflow: hidden;height: 50%;width: .92rem;padding: 0 .15rem; }
+.dataStatistics .digit > div {position: absolute;left: 0;overflow: hidden;height: 52%;width: .72rem;padding: 0 .1rem; }
 
-.dataStatistics .digit > div.digit_top, .dataStatistics .digit > div.shadow_top { width: .92rem;background-color: #e38538;border-bottom: .01rem solid #e38538;box-sizing: border-box;top: 0;z-index: 0;border-radius: .10rem .10rem 0 0; }
+.dataStatistics .digit > div.digit_top, .dataStatistics .digit > div.shadow_top { width: .92rem;background-color: #3a54ba;/* border-bottom: .01rem solid #3a54ba; */box-sizing: border-box;top: -.1rem;z-index: 0;border-radius: 0 0 .10rem .10rem; }
 .dataStatistics .digit > div.digit_top:before, .dataStatistics .digit > div.shadow_top:before {content: "";
 height: 100%;width: 100%;position: absolute;left: 0;top: 0; }
 .dataStatistics .digit > div.shadow_top {width: .92rem;opacity: 0;-webkit-transition: opacity 0.3s ease-in; }
-.dataStatistics .digit > div.digit_bottom, .dataStatistics .digit > div.shadow_bottom {background-color: #e38538;bottom: 0;z-index: 0;border-radius: 0 0 .10rem .10rem; }
+.dataStatistics .digit > div.digit_bottom, .dataStatistics .digit > div.shadow_bottom {background-color: #3a54ba;bottom: 0;z-index: 0;border-radius: .10rem .10rem 0 0; }
 .dataStatistics .digit > div.digit_bottom .digit_wrap, .dataStatistics .digit > div.shadow_bottom .digit_wrap {display: block;margin-top: -95%; }
 .dataStatistics .digit > div.digit_bottom:before, .dataStatistics .digit > div.shadow_bottom:before {content: "";border-radius: 0 0 .10rem .10rem;height: 100%;width: 80%;position: absolute;left: 0;top: 0; }
-.digit_wrap{line-height: 1.70rem; display: block; overflow: hidden;}
+.digit_wrap{line-height: 1.40rem; display: block; overflow: hidden;}
 .dataStatistics .digit > div.shadow_bottom {opacity: 0;-webkit-transition: opacity 0.3s ease-in; }
 .dataStatistics .digit.previous .digit_top,.dataStatistics .digit.previous .shadow_top {opacity: 1;z-index: 2;
 -webkit-transform-origin: 50% 100%;-webkit-animation: flipTop 0.3s ease-in both;-moz-transform-origin: 50% 100%;-moz-animation: flipTop 0.3s ease-in both;-ms-transform-origin: 50% 100%;-ms-animation: flipTop 0.3s ease-in both; transform-origin: 50% 100%;animation: flipTop 0.3s ease-in both;}

@@ -7,7 +7,7 @@
         "is_qq"=> false,
         "import"=> true,
         "base"=>2714,
-        "money"=>5428,
+        "money"=>5423,
         "multiple"=>8,
         "url"=>"https://kaifa.jianbing.com/h5/",
         "info" => array(
