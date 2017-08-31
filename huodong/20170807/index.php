@@ -40,7 +40,7 @@
             </div>
            <div class="page page2">
                 <div class="content">
-                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark.jpg" alt="quickmark">
                     <div class="portrait"></div>
                     <div class="circle"></div>
                     <div class="detail1">
@@ -62,7 +62,7 @@
             </div>
             <div class="page page3">
                <div class="content">
-                   <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                   <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark.jpg" alt="quickmark">
                    <div class="detail3">
                        <div>
                             <span>从</span><span class="font-style">2010</span><span class="font-color">年</span><span class="font-style">5</span><span class="font-color">月</span>
@@ -85,7 +85,7 @@
             </div>
             <div class="page page4">
                 <div class="content">
-                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark.jpg" alt="quickmark">
                     <div class="detail5">
                         <div>
                             <div><span>身为一枚</span></div>
@@ -111,7 +111,7 @@
             </div>
             <div class="page page5">
                 <div class="content">
-                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark.jpg" alt="quickmark">
                     <img class="people1" data-src="<?php echo $imgUrl; ?>page5_people1.png" alt="people1">
                     <div class="detail10">
                         <div><span>奋斗的这些年</span></div>
@@ -135,7 +135,7 @@
             </div>
             <div class="page page6">
                 <div class="content">
-                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark.jpg" alt="quickmark">
                     <div class="detail7">
                         <div class="detail7-1">
                             <div><span>说到买房...</span></div>
@@ -161,7 +161,7 @@
             </div>
             <div class="page page7">
                 <div class="content">
-                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>page2_quickmark.png" alt="quickmark">
+                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark.jpg" alt="quickmark">
                     <img class="title" data-src="<?php echo $imgUrl; ?>page7_new_title.png" alt="title">
                     <div class="detail8">
                         <div><span></span></div>
@@ -177,7 +177,7 @@
             <div class="page page8">
                 <div class="content">
                     <img class="share" data-src="<?php echo $imgUrl; ?>page8_share.png" alt="share"/>
-                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>page8_quickmark.png" alt="quickmark"/>
+                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark.jpg" alt="quickmark"/>
                     <img class="detail" data-src="<?php echo $imgUrl; ?>page8_detail.png" alt="detail"/>
                     <img class="img-btn" bp="20170807_8_1_0_低调分享" data-src="<?php echo $imgUrl; ?>page8_btn.png" alt="btn"/>
                 </div>

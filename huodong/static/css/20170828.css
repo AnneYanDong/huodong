@@ -1,7 +1,7 @@
-@import url('basicFullPage.css');
-@import url('mtool.css');
-@import url('rule-btn.css');
-@import url('numScrollPage.css');
+@import url('//r.51gjj.com/act/release/css/basicFullPage.css');
+@import url('//r.51gjj.com/act/release/css/mtool.css');
+@import url('//r.51gjj.com/act/release/css/rule-btn.css');
+@import url('//r.51gjj.com/act/release/css/numScrollPage.css');
 .rule-btn {
   position: absolute;
   top: 11.17rem;
