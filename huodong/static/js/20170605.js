@@ -183,7 +183,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             "title": "8万元额度3分钟到账，申请还送现金",
                             'desc': "申请送40，借款送50",
                             "thumb": "https://r.51gjj.com/act/release/img/20170605_wxshare.png",
-                            "link": "http://" + host + "/act/home/huodong/20170605/"
+                            "link": "https://" + host + "/act/home/huodong/20170605/"
                         });
                     }
                 })

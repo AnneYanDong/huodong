@@ -350,7 +350,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             "title": "5万元3分钟到账，抢最高300元抵息",
                             'desc': "30-300元抵息人人有份",
                             "thumb": "https://r.51gjj.com/act/release/img/20170705_wxfx_jyd.png",
-                            "link": "http://" + host + "/act/home/huodong/20170705/"
+                            "link": "https://" + host + "/act/home/huodong/20170705/index.php"
                         });
                     }
                 })

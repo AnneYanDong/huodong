@@ -165,7 +165,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             "title": "端午出行福利大放送，国人过节从不空手而归！",
                             'desc': "300元出行券、*30神秘壕吃基金，没领的抓紧！",
                             "thumb": "https://r.51gjj.com/act/release/img/20170519_share.png",
-                            "link": "http://" + host + "/act/home/huodong/20170519/"
+                            "link": "https://" + host + "/act/home/huodong/20170519/"
                         });
                     }
                 })

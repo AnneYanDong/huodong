@@ -269,7 +269,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             "title": "大节难逃 领“拦路红包”",
                             'desc': "免费领取618“拦路红包”，人手一份，祝你狂欢！",
                             "thumb": "https://r.51gjj.com/act/release/img/20170601_share_1.png",
-                            "link": "http://" + host + "/act/home/huodong/20170601/"
+                            "link": "https://" + host + "/act/home/huodong/20170601/"
                         });
                     }
                 })

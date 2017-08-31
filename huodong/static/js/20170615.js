@@ -195,7 +195,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             "title": "【父亲节快乐】这些年收获了很多祝福和礼物，但其实…",
                             'desc': "给的再多，不如懂你，点击领取父亲节专属礼包！",
                             "thumb": "https://r.51gjj.com/act/release/img/20170615_wxshare.png",
-                            "link": "http://" + host + "/act/home/huodong/20170615/"
+                            "link": "https://" + host + "/act/home/huodong/20170615/"
                         });
                     }
                 })

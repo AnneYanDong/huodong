@@ -146,7 +146,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             "title": "信用卡额度能变现，最高50w享12%超高收益！",
                             'desc': "申请送50元话费，额度最高用户额度享7天超高收益！",
                             "thumb": "https://r.51gjj.com/image/act/20170424_wxfx.png",
-                            "link": "http://" + host + "/act/home/huodong/20170424/"
+                            "link": "https://" + host + "/act/home/huodong/20170424/"
                         });
                     }
                 })

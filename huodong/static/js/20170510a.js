@@ -146,7 +146,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                             "title": "为足球喝彩",
                             'desc': "两分钟拿58元现金红包",
                             "thumb": "https://r.51gjj.com/act/release/img/20170510_share.png",
-                            "link": "http://" + host + "/act/home/huodong/20170510/"
+                            "link": "https://" + host + "/act/home/huodong/20170510/"
                         });
                     }
                 })

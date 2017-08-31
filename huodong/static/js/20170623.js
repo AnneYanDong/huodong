@@ -190,7 +190,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             "title": "送你115元高温补贴",
                             'desc': "51鑫福贷申请即可获得15元，放款再得100元",
                             "thumb": "https://r.51gjj.com/act/release/img/20170623_wxshare.png",
-                            "link": "http://" + host + "/act/home/huodong/20170623/"
+                            "link": "https://" + host + "/act/home/huodong/20170623/"
                         });
                     }
                 })

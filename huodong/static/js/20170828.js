@@ -63,8 +63,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "test.php",
-                // url: "/act/act170828/get_status",
+                // url: "test.php",
+                url: "/act/act170828/get_status",
                 success: function (d) {
                     if (d.success) {
                         console.log("后台数据：",d);
@@ -72,6 +72,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                         if (!d.ret.auth) {
                             _this.showDynamicLayout($("#tpl-have-doubled"),d);
                             _this.getNumberImage(d.ret.money);
+                            _this.showScrollPage(d);
                             $(".dynamic-layout").on("click",".btn4",function(){
                                 window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
                             })
@@ -124,6 +125,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             var tplHtml = juicer(tplContent,d.ret);
             $(".dynamic-layout").append(tplHtml);
         },
+        //未导入展示内容
         showNotImportLayout: function(d) {
             var _this = this;
             _this.showDynamicLayout($("#tpl-not-imported"),d);
@@ -134,12 +136,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                 },1500);
             })
         },
+        //弹屏内容
         getTpContent: function(d) {
             $("<div class='double'></div>").appendTo($(".tp")).text(d.ret.money);
             $("<div class='multiple'></div>").appendTo($(".tp"));
             $("<span></span>").appendTo($(".tp .multiple")).text("已翻X");
             $("<span></span>").appendTo($(".tp .multiple")).text(d.ret.multiple);
         },
+        //已导入展示内容
         showImportedLayout: function(d) {
             var _this = this;
             _this.showDynamicLayout($("#tpl-have-imported"),d);
@@ -156,6 +160,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                 },1500);
             })
         },
+        //数字翻页动画插件使用
         showScrollPage: function(d) {
             $(".provident2").addClass("dataStatistics");
             $(".provident2 div").addClass("digit_set");

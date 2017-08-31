@@ -276,7 +276,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             "title": "7.14银色情人节 这个节日我赞助",
                             'desc': "真情红包，真爱相送，点击领取258元现金红包！",
                             "thumb": "https://r.51gjj.com/act/release/img/20170710_wxshare.png",
-                            "link": "http://" + host + "/act/home/huodong/20170710/"
+                            "link": "https://" + host + "/act/home/huodong/20170710/index.php"
                         });
                     }
                 })

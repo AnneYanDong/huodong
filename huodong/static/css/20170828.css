@@ -183,27 +183,6 @@
   width: .92rem;
   height: 1.21rem;
 }
-/*  .provident2 div span:before {
- content: "";
- width: 183%;
- height: 52%;
- position: absolute;
- background: #3a54ba;
- left: -.21rem;
- top: .54rem;
- opacity: .5;
- animation: fliptop 500ms ease-in 2;
-}
-.provident2 div span:after {
- content: "";
- width: 183%;
- height: 52%;
- position: absolute;
- background: #3a54ba;
- left: -.21rem;
- opacity: .5;
- animation: flipbottom 500ms ease-in 2;
-}  */
 .provident2 .show-num .show-num-span {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-weight: bold;
@@ -293,6 +272,24 @@
 
   }
 }
+  @-webkit-keyframes fliptop {
+  0% {
+    transform: perspective(4rem) rotateX(0deg);
+  }
+ 
+  100% {
+    transform: perspective(4rem) rotateX(-90deg);
+  }
+ }
+ @-webkit-keyframes flipbottom {
+  0% {
+    transform: perspective(4rem) rotateX(90deg);
+  }
+ 
+  100% {
+    transform: perspective(4rem) rotateX(0deg);
+  }
+ } 
   @keyframes fliptop {
   0% {
     transform: perspective(4rem) rotateX(0deg);
