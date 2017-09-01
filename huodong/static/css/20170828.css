@@ -1,7 +1,7 @@
 @import url('//r.51gjj.com/act/release/css/basicFullPage.css');
 @import url('//r.51gjj.com/act/release/css/mtool.css');
 @import url('//r.51gjj.com/act/release/css/rule-btn.css');
-@import url('//r.51gjj.com/act/release/css/numScrollPage.css');
+@import url('//r.51gjj.com/act/release/css/numScrollPage_new.css');
 .rule-btn {
   position: absolute;
   top: 11.17rem;
@@ -190,7 +190,6 @@
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-weight: bold;
   position: relative;
-  // top: -.4rem;
   top: -1.26rem;
   color: #fed841;
   font-size: .84rem;

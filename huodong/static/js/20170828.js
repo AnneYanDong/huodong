@@ -98,7 +98,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                             _this.showScrollPage(d);
                             $('.dataStatistics').dataStatistics({min:d.ret.money,max:d.ret.money,time:1000,len:d.ret.money.toString().length});
                             $(".dynamic-layout").on("click",".btn4",function(){
-                                _this.urlPost("https://"+ window.location.host +"/51wealthy/h5/member/invest_exper.php",JSON.stringify({userLevel:d.ret.level}));
+                                _this.urlPost("/51wealthy/h5/member/invest_exper.php",JSON.stringify({userLevel:d.ret.level}));
                                 // window.location.href = "https://b.jianbing.com/51wealthy/h5/member/invest_exper.php";
                             })
                         } else {
@@ -128,7 +128,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                 _this.showImportedLayout(d);
                 $(".tp").on("click",".deposite-btn",function(){
                     $(".dynamic-layout .tp").fadeOut();
-                    window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
+                    window.location.href = "/51wealthy/h5/account/index.php";
                 });
                 $(".dynamic-layout").on("click",".tp",function(){
                     // $(".dynamic-layout .btn2").removeAttr("disabled");
@@ -143,7 +143,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                     $('.dataStatistics').dataStatistics({min:d.ret.money,max:d.ret.money,time:1000,len:d.ret.money.toString().length});
                 });
                 $(".dynamic-layout").on("click",".btn3",function(){
-                    window.location.href = "https://b.jianbing.com/51wealthy/h5/account/index.php";
+                    window.location.href = "/51wealthy/h5/account/index.php";
                 })
             }
         },
@@ -159,7 +159,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             $(".dynamic-layout").on("click",".btn1",function(){
                 oP.show("抱歉，您的公积金尚未查询，请先查询后再来领取哦。");
                 setTimeout(function(){
-                    window.location.href = "https://kaifa.jianbing.com/h5/?page=query";
+                    var back = encodeURIComponent("/act/home/huodong/20170828/index.php");
+                    window.location.href = "/h5/?page=query&info_return_url="+back;
+                    _this.showImportedLayout();
                 },1500);
             })
         },
@@ -199,7 +201,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                 $(item).empty();
             })
             $(".provident2 div:last").addClass("set_last");
-            // $('.dataStatistics').dataStatistics({min:(d.ret.money-100),max:d.ret.money,time:1000,len:d.ret.money.toString().length});
         },
         getNumberImage: function(data) {
             var _this = this;
@@ -302,7 +303,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
     }
     var ruleJson = {
         rule: [
-            "活动时间：9月1号-9月15号；",
+            "活动时间：9月4号-9月19号；",
             "活动对象：已导入公积金的所有用户；",
             "活动页面中所有金额单位均为：元；",
             "导入多个公积金账户的用户，以距当前时间最近的导入账户为发放标准；",

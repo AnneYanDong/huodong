@@ -1,11 +1,11 @@
 <?php
   $ret = array(
     "ret"=>array(
-        "auth"=> false,
+        "auth"=> true,
         "login"=> true,
         "is_weChat"=> false,
         "is_qq"=> false,
-        "import"=> true,
+        "import"=> false,
         "base"=>2714,
         "money"=>5423,
         "multiple"=>8,

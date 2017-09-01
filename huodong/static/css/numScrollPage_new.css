@@ -68,7 +68,7 @@ transform: perspective(4rem) rotateX(0deg); } }
 .dataStatistics .digit > div.digit_top:before, .dataStatistics .digit > div.shadow_top:before {content: "";
 height: 100%;width: 100%;position: absolute;left: 0;top: 0; }
 .dataStatistics .digit > div.shadow_top {width: .92rem;opacity: 0;-webkit-transition: opacity 0.3s ease-in; }
-.dataStatistics .digit > div.digit_bottom, .dataStatistics .digit > div.shadow_bottom {background-color: #3a54ba;bottom: 0;z-index: 0;border-radius: .10rem .10rem 0 0; }
+.dataStatistics .digit > div.digit_bottom, .dataStatistics .digit > div.shadow_bottom {background-color: #3a54ba;bottom: .05rem;z-index: 0;border-radius: .10rem .10rem 0 0; }
 .dataStatistics .digit > div.digit_bottom .digit_wrap, .dataStatistics .digit > div.shadow_bottom .digit_wrap {display: block;margin-top: -95%; }
 .dataStatistics .digit > div.digit_bottom:before, .dataStatistics .digit > div.shadow_bottom:before {content: "";border-radius: 0 0 .10rem .10rem;height: 100%;width: 80%;position: absolute;left: 0;top: 0; }
 .digit_wrap{line-height: 1.40rem; display: block; overflow: hidden;}

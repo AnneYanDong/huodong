@@ -61,7 +61,7 @@
         <div class="dynamic-title"><span>您的公积金月缴额为</span></div>
         <div class="provident2"></div>
         <div class="act-detail">
-            <div><span>*根据月缴情况1</span><span style="color: #f26315;">翻倍赠送</span><span>理财金</span></div>
+            <div><span>*根据月缴情况</span><span style="color: #f26315;">翻倍赠送</span><span>理财金</span></div>
             <div><span>不影响公积金余额</span></div>
         </div>
         <div class="dynamic-btn btn2" bp="id_1_2_id2_一键领取理财金">一键领取理财金</div>
