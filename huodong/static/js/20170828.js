@@ -11,7 +11,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
     var local = ct.Tool.local();
     var source = ct.Tool.userAgent().isGjj ? 1 : 0;
     ct.Tool.buryPoint_v2(source);
-    // ct.Tool.share(82,"zmtkj");
+    // ct.Tool.share(84,"zmtkj");
     var run = {
         start: function () {
             var _this = this;
@@ -244,7 +244,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                 url: "/act/request/activity",
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "20170821_1_0_0_进入页面"
+                    tag: "84_1_0_0_进入页面"
                 }),
                 success: function (d) {
                     if (d.success) {

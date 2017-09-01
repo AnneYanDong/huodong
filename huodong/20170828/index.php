@@ -1,5 +1,5 @@
 <?php 
-    $title = "领取理财金"; // 配置标题的，必须
+    $title = "公积金也能赚收益"; // 配置标题的，必须
     include "../public/v2/header.php";
     $proName = "20170828"; // 配置文件的项目名
     $version = "v1";
@@ -37,10 +37,10 @@
                 <div class="dynamic-layout">
                     <div class="tp hide">
                         <img data-src="<?php echo $imgUrl; ?>tp.png" alt="tp">
-                        <div class="deposite-btn" bp="id_1_5_id2_弹屏按钮"></div>
+                        <div class="deposite-btn" bp="84_1_5_0_弹屏按钮"></div>
                     </div>
                 </div>
-                <div class="rule-btn" bp="id_1_6_0_活动规则">活动规则</div>
+                <div class="rule-btn" bp="84_1_6_0_活动规则">活动规则</div>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
             <div><span>*根据月缴情况</span><span style="color: #f26315;">翻倍赠送</span><span>理财金</span></div>
             <div><span>不影响公积金余额</span></div>
         </div>
-        <div class="dynamic-btn btn1" bp="id_1_1_id2_测测我能赚多少">测测我能赚多少</div>
+        <div class="dynamic-btn btn1" bp="84_1_1_0_测测我能赚多少">测测我能赚多少</div>
     </script>
 
     <script type="text/template" id="tpl-have-imported">
@@ -64,7 +64,7 @@
             <div><span>*根据月缴情况</span><span style="color: #f26315;">翻倍赠送</span><span>理财金</span></div>
             <div><span>不影响公积金余额</span></div>
         </div>
-        <div class="dynamic-btn btn2" bp="id_1_2_id2_一键领取理财金">一键领取理财金</div>
+        <div class="dynamic-btn btn2" bp="84_1_2_0_一键领取理财金">一键领取理财金</div>
     </script>
 
     <script type="text/template" id="tpl-not-double">
@@ -74,7 +74,7 @@
             <div><span>*根据月缴情况</span><span style="color: #f26315;">翻倍赠送</span><span>理财金</span></div>
             <div><span>不影响公积金余额</span></div>
         </div>
-        <div class="dynamic-btn btn3" bp="id_1_3_id2_存入理财账户">存入理财账户</div>
+        <div class="dynamic-btn btn3" bp="84_1_3_0_存入理财账户">存入理财账户</div>
     </script>
 
     <script type="text/template" id="tpl-have-doubled">
@@ -84,7 +84,7 @@
             <div><span>*根据月缴情况</span><span style="color: #f26315;">翻倍赠送</span><span>理财金</span></div>
             <div><span>不影响公积金余额</span></div>
         </div>
-        <div class="dynamic-btn btn4" bp="id_1_4_id2_查看收益">查看收益</div>
+        <div class="dynamic-btn btn4" bp="84_1_4_0_查看收益">查看收益</div>
     </script>
 
     <script type="text/template" id="tpl-rule">
