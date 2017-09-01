@@ -127,6 +127,7 @@
   text-align: center;
 }
 .dynamic-title {
+  width: 100%;
   font-size: .35rem;
   color: #545454;
   opacity: .9;
@@ -187,7 +188,7 @@
   height: 1.21rem;
 }
 .provident2 .show-num .show-num-span {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   position: relative;
   top: -1.26rem;
@@ -278,7 +279,7 @@
   0% {
     transform: perspective(4rem) rotateX(0deg);
   }
- 
+
   100% {
     transform: perspective(4rem) rotateX(-90deg);
   }
@@ -287,16 +288,16 @@
   0% {
     transform: perspective(4rem) rotateX(90deg);
   }
- 
+
   100% {
     transform: perspective(4rem) rotateX(0deg);
   }
- } 
+ }
   @keyframes fliptop {
   0% {
     transform: perspective(4rem) rotateX(0deg);
   }
- 
+
   100% {
     transform: perspective(4rem) rotateX(-90deg);
   }
@@ -305,8 +306,8 @@
   0% {
     transform: perspective(4rem) rotateX(90deg);
   }
- 
+
   100% {
     transform: perspective(4rem) rotateX(0deg);
   }
- } 
+ }
