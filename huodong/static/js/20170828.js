@@ -92,25 +92,37 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                     if (d.success) {
                         console.log("后台数据：",d);
                         _this.getLottery(d);
-                        if (!d.ret.auth) {
-                            _this.showDynamicLayout($("#tpl-have-doubled"),d);
-                            _this.getNumberImage(d.ret.money);
-                            _this.showScrollPage(d);
-                            $('.dataStatistics').dataStatistics({min:d.ret.money,max:d.ret.money,time:1000,len:d.ret.money.toString().length});
-                            $(".dynamic-layout").on("click",".btn4",function(){
-                                _this.urlPost("/51wealthy/h5/member/invest_exper.php",JSON.stringify({userLevel:d.ret.level}));
-                                // window.location.href = "https://b.jianbing.com/51wealthy/h5/member/invest_exper.php";
+                        if (d.ret.old) {
+                            oP.show("非常抱歉，此活动只针对新用户哟~");
+                            _this.showDynamicLayout($("#tpl-not-imported"),d);
+                            $(".dynamic-layout").on("click",".btn1",function(){
+                                oP.show("非常抱歉，此活动只针对新用户哟~");
                             })
                         } else {
-                            if (d.ret.is_weChat || d.ret.is_qq) {
-                                _this.startIsImportedProcess(d);
+                            if (d.ret.exp) {
+                                _this.showDynamicLayout($("#tpl-have-doubled"),d);
+                                _this.getNumberImage(d.ret.money);
+                                _this.showScrollPage(d);
+                                $('.dataStatistics').dataStatistics({min:d.ret.money,max:d.ret.money,time:1000,len:d.ret.money.toString().length});
+                                $(".dynamic-layout").on("click",".btn4",function(){
+                                    _this.urlPost("/51wealthy/h5/member/invest_exper.php",{userLevel:d.ret.level});
+                                    // window.location.href = "https://b.jianbing.com/51wealthy/h5/member/invest_exper.php";
+                                })
                             } else {
-                                if (!d.ret.login) {
-                                    if (Bridge) {
-                                        Bridge.action("login");
-                                    }
-                                } else {
+                                if (d.ret.is_weChat || d.ret.is_qq) {
                                     _this.startIsImportedProcess(d);
+                                } else {
+                                    if (!d.ret.login) {
+                                        _this.showDynamicLayout($("#tpl-not-imported"),d);
+                                        $(".dynamic-layout").on("click",".btn1",function(){
+                                            oP.show("先登录才能参与活动哟~");
+                                        })
+                                        if (Bridge) {
+                                            Bridge.action("login");
+                                        }
+                                    } else {
+                                        _this.startIsImportedProcess(d);
+                                    }
                                 }
                             }
                         }
@@ -308,7 +320,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             "活动页面中所有金额单位均为：元；",
             "导入多个公积金账户的用户，以距当前时间最近的导入账户为发放标准；",
             "成功领取理财金后，可点击理财Tab页—在首页找到新手体验标查看；",
-            "发放时间：理财金的收益会在领取成功后的第2天发放到您的理财账户，收益可以操作提现，点击我的理财——可用余额——提现，可提现到银行卡；",
+            "发放时间：理财金的收益会在领取成功后的第2天发放到您的理财账户；",
             "已经获得体验金，但未获得后续认证或投资体验金的用户，请在9月22日24点前完成实名认证，否则将失去领取后续体验金的资格；",
             "本活动仅限于未投资过51有钱的用户参加，同一个用户只能领取一次（同一个手机号码和身份证和银行卡视为同一用户）；",
             "有任何疑问或者帮助可联系客服4008635151。",
