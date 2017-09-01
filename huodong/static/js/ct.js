@@ -241,7 +241,7 @@ define(["jquery", "share"], function($, wx) {
   //埋点改版
   Tool.buryPoint_v2 = function(s, url) {
     var _this = this;
-    $("body").on("click", "[bp]", function() {
+    $(document).on("click", "[bp]", function() {
       var event = $(this).attr("bp");
       var url = _this.url(url || "/act/request/activity");
       Ajax.do({
