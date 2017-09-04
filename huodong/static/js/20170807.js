@@ -269,8 +269,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                                 type: "POST",
                                 dataType: "JSON",
                                 data: JSON.stringify({"unionid": unionid}),
-                                // url: "test.php",
-                                url: "/act/analyze/get_analyze",
+                                url: "test.php",
+                                // url: "/act/analyze/get_analyze",
                                 success: function (d) {
                                     if (d.success) {
                                         console.log("后台数据：", d);

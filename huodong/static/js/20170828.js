@@ -93,38 +93,29 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                         console.log("后台数据：",d);
                         _this.getLottery(d);
                         if (d.ret.old) {
-                            oP.show("非常抱歉，此活动只针对新用户哟~");
+                            oP.show("非常抱歉，此活动只针对理财新用户哟~");
                             _this.showDynamicLayout($("#tpl-not-imported"),d);
                             $(".dynamic-layout").on("click",".btn1",function(){
-                                oP.show("非常抱歉，此活动只针对新用户哟~");
+                                oP.show("非常抱歉，此活动只针对理财新用户哟~");
                             })
                         } else {
-                            if (d.ret.exp) {
-                                _this.showDynamicLayout($("#tpl-have-doubled"),d);
-                                _this.getNumberImage(d.ret.money);
-                                _this.showScrollPage(d);
-                                $('.dataStatistics').dataStatistics({min:d.ret.money,max:d.ret.money,time:1000,len:d.ret.money.toString().length});
-                                $(".dynamic-layout").on("click",".btn4",function(){
-                                    _this.urlPost("/51wealthy/h5/member/invest_exper.php",{userLevel:d.ret.level});
-                                    // window.location.href = "https://b.jianbing.com/51wealthy/h5/member/invest_exper.php";
-                                })
+                            
+                            if (d.ret.is_weChat || d.ret.is_qq) {
+                                _this.startIsImportedProcess(d);
                             } else {
-                                if (d.ret.is_weChat || d.ret.is_qq) {
-                                    _this.startIsImportedProcess(d);
-                                } else {
-                                    if (!d.ret.login) {
-                                        _this.showDynamicLayout($("#tpl-not-imported"),d);
-                                        $(".dynamic-layout").on("click",".btn1",function(){
-                                            oP.show("先登录才能参与活动哟~");
-                                        })
-                                        if (Bridge) {
-                                            Bridge.action("login");
-                                        }
-                                    } else {
-                                        _this.startIsImportedProcess(d);
+                                if (!d.ret.login) {
+                                    _this.showDynamicLayout($("#tpl-not-imported"),d);
+                                    $(".dynamic-layout").on("click",".btn1",function(){
+                                        oP.show("先登录才能参与活动哟~");
+                                    })
+                                    if (Bridge) {
+                                        Bridge.action("login");
                                     }
+                                } else {
+                                    _this.startIsImportedProcess(d);
                                 }
                             }
+                            
                         }
                     } else {
                         oP.show("出错了");
@@ -137,26 +128,37 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             if (!d.ret.import) {
                 _this.showNotImportLayout(d);
             } else {
-                _this.showImportedLayout(d);
-                $(".tp").on("click",".deposite-btn",function(){
-                    $(".dynamic-layout .tp").fadeOut();
-                    window.location.href = "/51wealthy/h5/account/index.php";
-                });
-                $(".dynamic-layout").on("click",".tp",function(){
-                    // $(".dynamic-layout .btn2").removeAttr("disabled");
-                    oM.hide();
-                    $(".double").remove();
-                    $(".multiple").remove();
-                    $(".dynamic-layout").empty();
-                    _this.showDynamicLayout($("#tpl-not-double"),d);
+                if (d.ret.exp) {
+                    _this.showDynamicLayout($("#tpl-have-doubled"),d);
                     _this.getNumberImage(d.ret.money);
-
                     _this.showScrollPage(d);
                     $('.dataStatistics').dataStatistics({min:d.ret.money,max:d.ret.money,time:1000,len:d.ret.money.toString().length});
-                });
-                $(".dynamic-layout").on("click",".btn3",function(){
-                    window.location.href = "/51wealthy/h5/account/index.php";
-                })
+                    $(".dynamic-layout").on("click",".btn4",function(){
+                        _this.urlPost("/51wealthy/h5/member/invest_exper.php",{userLevel:d.ret.level});
+                        // window.location.href = "https://b.jianbing.com/51wealthy/h5/member/invest_exper.php";
+                    })
+                } else {
+                    _this.showImportedLayout(d);
+                    $(".tp").on("click",".deposite-btn",function(){
+                        $(".dynamic-layout .tp").fadeOut();
+                        window.location.href = "/51wealthy/h5/account/index.php";
+                    });
+                    $(".dynamic-layout").on("click",".tp",function(){
+                        // $(".dynamic-layout .btn2").removeAttr("disabled");
+                        oM.hide();
+                        $(".double").remove();
+                        $(".multiple").remove();
+                        $(".dynamic-layout").empty();
+                        _this.showDynamicLayout($("#tpl-not-double"),d);
+                        _this.getNumberImage(d.ret.money);
+
+                        _this.showScrollPage(d);
+                        $('.dataStatistics').dataStatistics({min:d.ret.money,max:d.ret.money,time:1000,len:d.ret.money.toString().length});
+                    });
+                    $(".dynamic-layout").on("click",".btn3",function(){
+                        window.location.href = "/51wealthy/h5/account/index.php";
+                    })
+                }
             }
         },
         showDynamicLayout: function(tpl,d) {
@@ -315,15 +317,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
     }
     var ruleJson = {
         rule: [
-            "活动时间：9月4号-9月19号；",
+            "活动时间：9月5号-9月19号；",
             "活动对象：已导入公积金的所有用户；",
-            "活动页面中所有金额单位均为：元；",
+            "活动页面中所有金额单位均为元；",
             "导入多个公积金账户的用户，以距当前时间最近的导入账户为发放标准；",
             "成功领取理财金后，可点击理财Tab页—在首页找到新手体验标查看；",
             "发放时间：理财金的收益会在领取成功后的第2天发放到您的理财账户；",
             "已经获得体验金，但未获得后续认证或投资体验金的用户，请在9月22日24点前完成实名认证，否则将失去领取后续体验金的资格；",
             "本活动仅限于未投资过51有钱的用户参加，同一个用户只能领取一次（同一个手机号码和身份证和银行卡视为同一用户）；",
-            "有任何疑问或者帮助可联系客服4008635151。",
+            "有任何疑问或者帮助可联系客服4008635151;",
             "理财金由51公积金管家提供，与设备生产商Apple Inc公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"
         ]
     }
