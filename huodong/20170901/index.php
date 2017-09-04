@@ -29,7 +29,7 @@
            <div class="top-title"><img data-src="<?php echo $imgUrl; ?>title.png"></div>
            <div class="middle-info"><img data-src="<?php echo $imgUrl; ?>number.png"></div>
            <div class="act-table"><img data-src="<?php echo $imgUrl; ?>table.png"></div>
-           <div class="act-rule"><img data-src="<?php echo $imgUrl; ?>rule.png"></div>
+           <div class="act-rule"><img data-src="<?php echo $imgUrl; ?>rule_1.png"></div>
            <div class="xw-bottom"><img data-src="<?php echo $imgUrl; ?>xw_logo.png"></div>
         </div>
     </div>
