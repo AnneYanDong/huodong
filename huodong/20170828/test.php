@@ -2,7 +2,7 @@
   $ret = array(
     "ret"=>array(
         "old"=> false,
-        "exp"=> true,
+        "exp"=> false,
         "login"=> true,
         "is_weChat"=> false,
         "is_qq"=> false,
