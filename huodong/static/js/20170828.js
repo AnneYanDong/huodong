@@ -134,9 +134,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                     _this.showScrollPage(d);
                     $('.dataStatistics').dataStatistics({min:d.ret.money,max:d.ret.money,time:1000,len:d.ret.money.toString().length});
                     $(".dynamic-layout").on("click",".btn4",function(){
-                        alert("查看收益按钮点击！");
                         _this.urlPost("/51wealthy/h5/member/invest_exper.php",{userLevel:d.ret.level});
-                        // window.location.href = "https://b.jianbing.com/51wealthy/h5/member/invest_exper.php";
                     })
                 } else {
                     _this.showImportedLayout(d);
