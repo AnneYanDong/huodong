@@ -65,6 +65,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             var _this = this;
             $(".wp").removeClass("hide");
         },
+
     }
+
+
     run.start();
 })
