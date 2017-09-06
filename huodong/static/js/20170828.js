@@ -105,7 +105,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                                 $(".dynamic-layout").on("click",".btn1",function(){
                                     oP.show("抱歉，请在51公积金管家APP上参与此活动~");
                                     setTimeout(function(){
-                                        window.location.href = encodeURIComponent("https://lnk0.com/easylink/ELQlo4M5");
+                                        window.location.href = "https://lnk0.com/easylink/ELQlo4M5";
                                     },1500)
                                 })
                             } else {
