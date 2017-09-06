@@ -101,10 +101,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                         } else {
                             
                             if (d.ret.is_weChat || d.ret.is_qq) {
-                                oP.show("抱歉，请在51公积金管家APP上参与此活动~");
-                                setTimeout(function(){
-                                    window.location.href = encodeURIComponent("https://lnk0.com/easylink/ELQlo4M5?from=lcwx");
-                                },1500)
+                                _this.showDynamicLayout($("#tpl-not-imported"),d);
+                                $(".dynamic-layout").on("click",".btn1",function(){
+                                    oP.show("抱歉，请在51公积金管家APP上参与此活动~");
+                                    setTimeout(function(){
+                                        window.location.href = encodeURIComponent("https://lnk0.com/easylink/ELQlo4M5");
+                                    },1500)
+                                })
                             } else {
                                 if (!d.ret.login) {
                                     _this.showDynamicLayout($("#tpl-not-imported"),d);
