@@ -1,0 +1,10 @@
+*~
+
+.DS_Store
+
+.idea
+
+node_modules
+dist
+
+//忽略哪些文件不需要通过git来进行版本控制
