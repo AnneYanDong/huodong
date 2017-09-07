@@ -4,7 +4,7 @@
         "old"=> false,
         "exp"=> true,
         "login"=> true,
-        "is_weChat"=> false,
+        "is_weChat"=> true,
         "is_qq"=> false,
         "import"=> true,
         "base"=>2714,
