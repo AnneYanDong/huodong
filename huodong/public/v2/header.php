@@ -13,7 +13,8 @@
             "baseUrl": "../../",
             "paths": {
                 "jquery": ["//r.51gjj.com/act/release/js/lib/jQuery.min", "lib/jQuery.min"],
-                "zepto": ["//r.51gjj.com/act/release/js/lib/zepto.min", "lib/zepto.min"],
+                "zepto": ["//r.51gjj.com/act/release/js/lib/pageSlider.min", "lib/pageSlider.min"],
+                "pageSlider": ["//r.51gjj.com/act/release/js/lib/zepto.min", "lib/zepto.min"],
                 "bridge": ["//r.51gjj.com/act/release/js/lib/bridge", "lib/bridge"],
                 "FullPage": ["//r.51gjj.com/act/release/js/lib/js.fullpage", "lib/js.fullpage"],
                 "qrcode": ["//r.51gjj.com/act/release/js/lib/qrcode.min", "lib/qrcode.min"], //二维码生成
