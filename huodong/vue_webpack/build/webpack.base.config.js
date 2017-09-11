@@ -11,7 +11,7 @@ module.exports = {
 		app: resolve('../src/main.js')
 	},
 	output: {
-		filename: 'js/[name].js'
+		filename: 'js/[name]_[chunkhash:6].js'
 	},
 	module: {
 		rules: [{
@@ -29,7 +29,7 @@ module.exports = {
 			use: {
 				loader: 'url-loader',
 				options: {
-					limit: 10000,
+					limit: 1000,
 					name: 'images/[name].[hash:7].[ext]'
 				}
 			}

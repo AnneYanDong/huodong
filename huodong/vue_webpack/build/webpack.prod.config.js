@@ -22,7 +22,7 @@ module.exports = merge(baseWebpackConfig, {
 		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new ExtractTextPlugin({
-			filename: 'css/style.css?[contenthash:8]'
+			filename: 'css/[name]_[hash:6].css?'
 		}),
 		new HtmlWebpackPlugin({
 			filename: 'index.html',

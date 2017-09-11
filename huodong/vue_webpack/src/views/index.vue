@@ -3,7 +3,7 @@
 		这是{{page}}页面<br>
 		<span class="fontIcon icon-add_circle"></span>
 		<div class="img"></div>
-		<div class="test-vue-style">测试Vue 23style</div>
+		<div class="test-vue-style">测试Vue 23st22yle</div>
 	</div>
 </template>
 <script>
