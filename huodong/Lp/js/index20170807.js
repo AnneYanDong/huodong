@@ -32,6 +32,7 @@ var init = {
         var oUrl = "https://b.jianbing.com/act/market/get_verification_code";
         var _this = this;
         $(".JS-get-code").on("click", function() {
+            console.log(".......");
             if (_this.checkPhone($(".JS-phone"))) {
                 var phoneNum = $(".JS-phone").val();
                 $.ajax({
