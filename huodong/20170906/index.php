@@ -1,7 +1,7 @@
 <?php 
     $title = "邀请好友"; // 配置标题的，必须
     include "../public/v2/header.php";
-    $proName = "20170905";
+    $proName = "20170906";
     $version = "v1";
 ?>
 <?php

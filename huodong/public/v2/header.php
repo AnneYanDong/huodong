@@ -39,7 +39,8 @@
             },
             "shim": {
                 "qrcode": {
-                    "deps": ["jquery"]
+                    "deps": ["jquery"],
+                    "exports": "qrcode"
                 },
                 "bridge": {
                     "exports": "Bridge"
