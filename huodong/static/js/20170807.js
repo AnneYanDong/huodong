@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function ($, fastClick, fullpage, ct, Bridge, juicer) {
+require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pageSlider"], function ($, fastClick, fullpage, ct, Bridge, juicer,zepto,pageSlider) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -243,7 +243,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                     $(".sweat").fadeOut();
                     _this.getAnalysisData(d);
                     _this.fullPageObj.moveTo(1,true);
-                },2000);
+                },1000);
             }
         },
 
@@ -306,6 +306,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         $(".page2").on("click", ".next", function () {
                             _this.fullPageObj.moveTo(2, true);
                         })
+                        moveSectionUp();
                         _this.respondState(now, 0, true, function () {
                             console.log("返回第一页");
                         });

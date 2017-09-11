@@ -2,7 +2,7 @@
   $ret = array(
     "ret"=>array(
        "login"=> true,
-        "is_weChat"=> true,
+        "is_weChat"=> false,
         "is_qq"=> false,
         "show"=> true,
         "name"=> "朱梦思",
