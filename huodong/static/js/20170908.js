@@ -99,7 +99,6 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue-dev"], function($, fastClick
         },
         mounted: function() {
           this.moveSlideBar();
-          this.share();
         },
         watch: {
           'page.lineFillWidth': function() {
@@ -309,21 +308,6 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue-dev"], function($, fastClick
                 console.log(jqxhr);
               }
             })
-          },
-          share: function(){
-            if (app.isGjj && Bridge) {
-              Bridge.action('quickIcon', {
-                  thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
-                  onclick: function () {
-                    Bridge.action('ShareTimeline', {
-                        "title": "抢个红包过周末",
-                        'desc': "利息5折、现金、实物...",
-                        "thumb": "https://r.51gjj.com/act/release/img/20170821_share.png",
-                        "link": "https://" + host + "/act/home/huodong/20170821/index.php"
-                    });
-                  }
-              })
-            }
           }
         }
       })
