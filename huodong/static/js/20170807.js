@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pageSlider"], function ($, fastClick, fullpage, ct, Bridge, juicer,zepto,pageSlider) {
+require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], function ($, fastClick, fullpage, ct, Bridge, juicer,swiper) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -18,6 +18,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pa
 
             /*解决移动端click点击300延迟*/
             fastClick.attach(document.body);
+            //移动端上下滑动
+            // $(function() {
+                // var myPageSlider = pageSlider.case();
+            // });
 
             /*设置HTML的font-size*/
             ct.Tool.setFont();
@@ -53,11 +57,97 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pa
 
             var args = _this.getQueryStringArgs();
             unionid = args["unionid"];
-
             _this.share();
             _this.setNavAttr();
             $(".wp").removeClass("hide");
             _this.fullPageObj = _this.fullpage();
+        },
+        pageSlide: function(now) {
+            var _this = this;
+            console.log("Slide->now = ",now);
+            var page = now.substring(4);
+            console.log("Slide->page = ",page);
+
+            $("body").on("touchstart", function(e) {
+                // e.preventDefault();
+                e.stopPropagation();
+                startX = e.originalEvent.changedTouches[0].pageX,
+                startY = e.originalEvent.changedTouches[0].pageY;
+            });
+            $("body").on("touchmove", function(e) {
+                // e.preventDefault();
+                e.stopPropagation();
+                moveEndX = e.originalEvent.changedTouches[0].pageX,
+                moveEndY = e.originalEvent.changedTouches[0].pageY,
+                X = moveEndX - startX,
+                Y = moveEndY - startY;
+                if ( Math.abs(Y) > Math.abs(X) && Y > 0) {
+                    console.log("向下滑动");
+                    if (page == 1) {
+                        return;
+                    } else {
+                        _this.fullPageObj.moveTo(page - 1);
+                    }
+                }
+                else if ( Math.abs(Y) > Math.abs(X) && Y < 0 ) {
+                    console.log("向上滑动");
+                    if (page === 1) {
+                        $.ajax({
+                            type: "POST",
+                            dataType: "JSON",
+                            data: JSON.stringify({"unionid": unionid}),
+                            url: "test.php",
+                            // url: "/act/analyze/get_analyze",
+                            success: function (d) {
+                                if (d.success) {
+                                    console.log("后台数据：", d);
+                                    if (d.ret.is_weChat) {
+                                        $(".page8").on("click", ".img-btn", function () {
+                                            $(".page8 .share").addClass("bounce-out");
+                                            setTimeout(function(){
+                                                $(".page8 .share").removeClass("bounce-out");
+                                            },200);
+                                        })
+                                        _this.handleProcess(d);
+                                    } else{
+                                        if (d.ret.login == false) {
+                                            oP.show("想解析公积金，先登录APP啦！");
+                                            if (Bridge) {
+                                                Bridge.action("login");
+                                            }
+                                        } else {
+                                            _this.handleProcess(d);
+                                        }
+                                    }
+                                } else {
+                                    oP.show(d.msg || "出错了请重试");
+                                }
+                            }
+                        });
+                    }else if (page === 2) {
+                        _this.fullPageObj.moveTo(2,true);
+                    } else if (page === 3) {
+                        _this.fullPageObj.moveTo(3,true);
+                    } else if (page === 4) {
+                        _this.fullPageObj.moveTo(4,true);
+                    } else if (page === 5) {
+                        _this.fullPageObj.moveTo(5,true);
+                    } else if (page === 6) {
+                        _this.fullPageObj.moveTo(6,true);
+                    } else if (page === 7) {
+                        _this.fullPageObj.moveTo(7,true);
+                    } else {
+                        return;
+                    }
+                }else{
+                    console.log("just touch");
+                }
+            });
+            var windowHeight = $(window).height(),
+              $body = $("body");
+              // console.log($(window).height());
+              // console.log($('body').height());
+              $body.css("height", windowHeight);
         },
         setNavAttr: function() {
             if (Bridge) {
@@ -254,6 +344,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pa
                 beforeChange: function(e) {
                     var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
                     console.log("now", now);
+                    _this.PageBuryRequest(now);
+                    _this.pageSlide(now);
                     _this.changeState(now); //把当前页面在改变之前塞入浏览器历史
                 },
                 afterChange: function (e) {
@@ -263,7 +355,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pa
                     var now = "page" + (e.cur + 1);
 
                     if (now == "page1") {
-                        _this.PageBuryRequest(now);
                         $(".page1").on("click", ".img-btn", function () {
                             $.ajax({
                                 type: "POST",
@@ -302,18 +393,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pa
                     }
 
                     if (now == "page2") {
-                        _this.PageBuryRequest(now);
                         $(".page2").on("click", ".next", function () {
                             _this.fullPageObj.moveTo(2, true);
                         })
-                        moveSectionUp();
                         _this.respondState(now, 0, true, function () {
                             console.log("返回第一页");
                         });
                     }
 
                     if (now == "page3") {
-                        _this.PageBuryRequest(now);
                         $(".page3").on("click", ".next", function () {
                             _this.fullPageObj.moveTo(3, true);
                         })
@@ -323,7 +411,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pa
                     }
 
                     if (now == "page4") {
-                        _this.PageBuryRequest(now);
                         $(".page4").on("click", ".next", function () {
                             _this.fullPageObj.moveTo(4, true);
                         })
@@ -333,7 +420,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pa
                     }
 
                     if (now == "page5") {
-                        _this.PageBuryRequest(now);
                         $(".page5").on("click", ".next", function () {
                             _this.fullPageObj.moveTo(5, true);
                         })
@@ -345,7 +431,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pa
                     };
 
                     if (now == "page6") {
-                        _this.PageBuryRequest(now);
                         $(".page6").on("click", ".next", function () {
                             _this.fullPageObj.moveTo(6, true);
                         })
@@ -357,7 +442,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pa
                     };
 
                     if (now == "page7") {
-                        _this.PageBuryRequest(now);
                         $(".page7").on("click", ".next", function () {
                             _this.fullPageObj.moveTo(7, true);
                         })
@@ -368,7 +452,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","zepto","pa
                     };
 
                     if (now == "page8") {
-                        _this.PageBuryRequest(now);
                         $(".page8").on("click", ".img-btn", function () {
                             _this.share2();
                         })
