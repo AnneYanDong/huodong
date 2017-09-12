@@ -90,19 +90,14 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 if (_this.checkPhone($(".JS-phone"))) {
                     var phoneNum = $(".JS-phone").val();
                     $.ajax({
-                        url: "/app",
+                        url: "//b.jianbing.com/act/market/get_verification_code",
                         type: "POST",
                         dataType: "JSON",
-                        data:JSON.stringify({"phone": phoneNum,"place_name":place_name}),
+                        data:JSON.stringify({"phone": phoneNum}),
                         success: function(d) {
                             if (d.success === true) {
                                 oP.show("短信验证码已发送，请注意查收");
                                 _this.timeDown($(".JS-get-code"), 60)
-                            } else if(d.code == 512){
-                                oP.show("您已注册，直接参与吧");
-                                skipTimer = setTimeout(function(){
-                                    $(".section").addClass("slideTop");
-                                },1500)
                             } else{
                                 $(".JS-get-code").removeClass("timing");
                                 oP.show(d.msg || "出错了，请重试")
@@ -119,7 +114,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         searchClick: function() {
             var _this = this;
             var skipTimer = null;
-            var oUrl = "https://b.jianbing.com/act/market/get_register";
+            var oUrl = "//kaifa.jianbing.com/act/market/get_invitation_register";
             $(".btn-submit").on("click", function() {
                 if (_this.checkPhone($(".JS-phone")) && _this.checkCode($(".JS-code"))) {
                     var phoneNum = $(".JS-phone").val();
@@ -130,19 +125,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                         dataType: "JSON",
                         data:
                              JSON.stringify({
-                                 "phone": phoneNum,
+                                "phone": phoneNum,
                                 "code": codeNum,
-                                "place": place_name
+                                // "pcode": getURLParams(window.location.href)["invitation_code"],
+                                // "channel": getURLParams(window.location.href)["channel"]
                              }),
                         success: function(d) {
-                            if (d.success === true) { //手机号码验证码都正确，跳转到H5查询
-                            }else if (d.code == 512){
-                                oP.show("您已注册，直接参与吧");
-                                clearTimeout(skipTimer);
-                                skipTimer = setTimeout(function(){
-                                    $(".section").addClass("slideTop");
-                                },1500)
-                            }else{
+                            if (d.success === true) {
+                                window.location.href = "//d.51gjj.com/51gjj_a.html?p=app3";
+                            } else{
                                 oP.show(d.msg || "出错了，请重试")
                             }
                         },
@@ -203,4 +194,20 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
 
 
     run.start();
+    function getURLParams(url) {
+        var urlParts = url.split("?");
+        var result = {};
+        if (urlParts[1]) {
+            urlParts[1] = urlParts[1].split("#")[0];
+            var params = urlParts[1].split("&");
+    
+            for (var i = 0; i < params.length; ++i) {
+                var item = params[i].split("=");
+                var key = decodeURIComponent(item[0]);
+                var val = decodeURIComponent(item[1]);
+                result[key] = val;
+            }
+        }
+        return result;
+    }
 })
