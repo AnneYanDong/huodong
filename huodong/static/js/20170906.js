@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"], function ($, fastClick, fullpage, ct, Bridge, juicer,qrcode) {
+require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"], function ($, fastClick, fullpage, ct, Bridge, juicer, qrcode) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -11,7 +11,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
     var local = ct.Tool.local();
     var host = window.location.host;
     var state = 1;
-    var currentPage=1,loadingPage=0;
+    var currentPage_1 = 1,
+        loadingPage_1 = 0;
+    var currentPage_2 = 1,
+        loadingPage_2 = 0;
+    var more_1 = 0;
+    var more_1 = 0;
+    var cur_1 = 1;
+    var cur_2 = 1;
+    var flag = true;
 
     ct.Tool.buryPoint_v2(0);
 
@@ -70,7 +78,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             _this.switchTab();
             _this.render1();
             // _this.render2();
-            _this.loadMore();
+            // _this.loadMore();
             _this.scrollTab();
         },
         switchTab: function () {
@@ -81,189 +89,125 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 var type = $(this).attr("data-type");
                 console.log($(this).attr("data-type"))
                 if (type == 1) {
-                    console.log(111);
                     state = 1;
-                    _this.render1();
+                    // _this.render1();
                 } else {
-                    console.log(222);
                     state = 2;
-                    _this.render2();
+                    if (flag == true) {
+                        _this.render2();
+                        flag = false;
+                    } 
                 }
             })
         },
-        addItems:function (url,n,currentPage,loadingPage) {
+        addItems: function (url) {
             var _this = this;
             $.ajax({
-                type:'POST',
-                //url:Global.url(url + new Date().getTime() + '&page=' +n),
+                type: 'POST',
                 url: url,
-                dataType:'json',
-                async:false,
-                success:function(json){
-                    var html='';
-                    var inviteSue = 0;
-                    if(json.resData.list != ''){
-                        loadingPage=json.resData.list.length;
-                        for(var i=0;i<loadingPage;i++){
-                            var accountTime=json.resData.list[i].accountTime;
-                            var money=json.resData.list[i].money;
-                            var relaName = json.resData.list[i].relaName;
-                            var investTotal=loadingPage;
-    
-                            if(investTotal>0){
-                                inviteSue++;
+                dataType: 'json',
+                async: false,
+                success: function (json) {
+                    if (state == 1) {
+                        var html = '';
+                        var inviteSue = 0;
+                        if (json.resData.userInvites != '') {
+                            loadingPage_1 = json.resData.userInvites.length;
+                            for (var i = 0; i < loadingPage_1; i++) {
+                                var userName = json.resData.userInvites[i].userName;
+                                var inviteTime = json.resData.userInvites[i].inviteTime;
+                                var inviestTotal = json.resData.userInvites[i].inviestTotal;
+
+                                if (investTotal > 0) {
+                                    inviteSue++;
+                                }
+                                html += '<li class="record-list"><span>' + userName + '</span><span>' + inviteTime + '</span><span>' + inviestTotal + '</span></li>';
                             }
-                            //html+='<li><div class="info"><h3>'+userName+'</h3><h4>注册时间：'+inviteTime+'</h4></div></li>';
-                            html += '<li class="record-list"><span>'+accountTime+'</span><span>'+money+'</span><span>'+relaName+'</span></li>';
+                            $(".wrap-tab .record-on .wrap-scroll").append(html);
+                        } else if (currentPage_1 == 1) {
+                            loadingPage_1 = 0;
+                            $(".wrap-tab .cur .wrap-scroll li").remove();
+                        } else {
+                            $('.wrap-scroll').unbind('scroll');
                         }
-                        $(".wrap-tab .cur .wrap-scroll").append(html);
-                        // $(".inviteNum").html(json.resData.totalNum);
-                    }else if(currentPage == 1){
-                        loadingPage=0;
-                        $(".list-title").append('<div class="null-data"><img src="//r.51gjj.com/image/static/no_invite.png"><p style="color: #000000;">您还没有成功邀请好友哦</p></div>');
-                        $('.home-title').remove();
-                        $(".home").remove();
+                        currentPage_1++;
+                        cur_1 = currentPage_1;
+                        console.log("当前cur", cur_1)
+                        more_1 = loadingPage_1;
+                    } else {
+                        var html = '';
+                        var inviteSue = 0;
+                        if (json.resData.list != '') {
+                            loadingPage_2 = json.resData.list.length;
+                            for (var i = 0; i < loadingPage_2; i++) {
+                                var accountTime = json.resData.list[i].accountTime;
+                                var money = json.resData.list[i].money;
+                                var relaName = json.resData.list[i].relaName;
+                                var investTotal = loadingPage_2;
+
+                                if (investTotal > 0) {
+                                    inviteSue++;
+                                }
+                                html += '<li class="record-list"><span>' + accountTime + '</span><span>' + money + '</span><span>' + relaName + '</span></li>';
+                            }
+                            $(".wrap-tab .cur .wrap-scroll").append(html);
+                        } else if (currentPage_2 == 1) {
+                            loadingPage_2 = 0;
+                            $(".wrap-tab .cur .wrap-scroll li").remove();
+                        } else {
+                            $('.wrap-scroll').unbind('scroll');
+                        }
+                        currentPage_2++;
+                        cur_2 = currentPage_2;
+                        console.log("当前cur", cur_2)
+                        more_2 = loadingPage_2;
                     }
-                    else{
-                        $('.wrap-tab .cur .wrap-scroll').unbind('scroll');
-                    }
-                    currentPage++;
-                    console.log("currentpage++",currentPage)
                 }
             })
-          
+
         },
         render1: function () {
-            currentPage=1,loadingPage=0;
+            _this = this;
             var falg = true;
-            var argum = '&randomTime=';
-                function addItems(url,n){
-                    $.ajax({
-                        type:'POST',
-                        //url:Global.url(url + new Date().getTime() + '&page=' +n),
-                        url: url,
-                        dataType:'json',
-                        async:false,
-                        success:function(json){
-                            var html='';
-                            var inviteSue = 0;
-                            if(json.resData.userInvites != ''){
-                                loadingPage=json.resData.userInvites.length;
-                                for(var i=0;i<loadingPage;i++){
-                                    var userName=json.resData.userInvites[i].userName;
-                                    var inviteTime=json.resData.userInvites[i].inviteTime;
-                                    var sumTenderMoney = json.resData.userInvites[i].sumTenderMoney;
-                                    var investTotal=json.resData.totalNum;
-            
-                                    if(investTotal>0){
-                                        inviteSue++;
-                                    }
-                                    //html+='<li><div class="info"><h3>'+userName+'</h3><h4>注册时间：'+inviteTime+'</h4></div></li>';
-                                    html += '<li class="record-list"><span>'+userName+'</span><span>'+inviteTime+'</span><span>'+sumTenderMoney+'</span></li>';
-                                }
-                                $(".wrap-tab .record-on .wrap-scroll").append(html);
-                                $(".inviteNum").html(json.resData.totalNum);
-                            }else if(currentPage == 1){
-                                loadingPage=0;
-                                $(".list-title").append('<div class="null-data"><img src="//r.51gjj.com/image/static/no_invite.png"><p style="color: #000000;">您还没有成功邀请好友哦</p></div>');
-                                $('.home-title').remove();
-                                $(".home").remove();
-                            }
-                            else{
-                                $('.wrap-scroll').unbind('scroll');
-                            }
-                            currentPage++;
-                        }
-                    })
-                }
-                //addItems('/member/friend/userInviteJSON.html?'+argum,1);
-                addItems('https://test.jianbing.com/invest2/user/queryUser/userInviteList/pageNum/1/pageSize/10',1);
-            
-                if(currentPage > 1){
-                    var loading = false;
-                    $(document).find('.infinite-scroll').on('scroll', function(e) {
-                        //如果正在加载，则退出
-                        if(loading) return;
-                        //设置flag
-                        loading=true;
-                        //模拟1s的加载过程
-                        setTimeout(function(){
-                            // var loadingPage = currentPage + 1;
-                            console.log(loadingPage+','+currentPage)
-                            if(loadingPage < 10){
-                                //加载完毕，则注销无限加载事件，以防不必要的加载
-                                $.detachInfiniteScroll($('.wrap-scroll'));
-                                return ;
-                            }else {
-                                addItems('https://test.jianbing.com/invest2/user/queryUser/userInviteList/pageNum/'+currentPage+'/pageSize/10');
-                            }
-                            //添加新item           	
-                            loading=false;
-                        },300)
-                    })
-                }
+            _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteList/pageNum/1/pageSize/10');
         },
         render2: function () {
             _this = this;
-            currentPage=1,loadingPage=0;
             var falg = true;
-            var argum = '&randomTime=';
-                //addItems('/member/friend/userInviteJSON.html?'+argum,1);
-                _this.addItems('http://test.jianbing.com/invest2/user/queryUser/userInviteAward/2/10',1,currentPage,loadingPage);
-                console.log("当前",currentPage)
+            _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteAward/1/10');
 
         },
-        loadMore: function () {
-            if(currentPage > 1){
-                var loading = false;
-                $(document).find('.wrap-scroll').on('scroll', function(e) {
-                    //如果正在加载，则退出
-                    if(loading) return;
-                    //设置flag
-                    loading=true;
-                    //模拟1s的加载过程
-                    setTimeout(function(){
-                        var loadingPage = currentPage + 1;
-                        console.log(loadingPage+','+currentPage)
-                        if(loadingPage < 10){
-                            //加载完毕，则注销无限加载事件，以防不必要的加载
-                            // $.detachInfiniteScroll($('.wrap-scroll'));
-                            return ;
-                        }else {
-                            _this.addItems('https://test.jianbing.com/invest2/user/queryUser/userInviteList/pageNum/'+currentPage+'/pageSize/10');
-                        }
-                        //添加新item           	
-                        loading=false;
-                    },300)
-                })
-            }
-        },
         scrollTab: function () {
-                // if(currentPage > 1){
-                    var loading = false;
-                    $(document).find('.wrap-scroll').on('scroll', function(e) {
-                        console.log("*****滚动****")
-                        console.log(currentPage)
-                        //如果正在加载，则退出
-                        if(loading) return;
-                        //设置flag
-                        loading=true;
-                        //模拟1s的加载过程
-                        setTimeout(function(){
-                            var loadingPage = currentPage + 1;
-                            console.log(loadingPage+','+currentPage)
-                            if(loadingPage < 10){
-                                //加载完毕，则注销无限加载事件，以防不必要的加载
-                                // $.detachInfiniteScroll($('.wrap-scroll'));
-                                return ;
-                            }else {
-                                _this.addItems('https://test.jianbing.com/invest2/user/queryUser/userInviteList/pageNum/'+currentPage+'/pageSize/10');
-                            }
-                            //添加新item           	
-                            loading=false;
-                        },300)
-                    })
-                // }
+            var _this = this;
+            var loading_1 = false;
+            $(document).find('.record-on .wrap-scroll').on('scroll', function (e) {
+                if (loading_1) return;
+                loading_1 = true;
+                setTimeout(function () {
+                    if (more_1 < 10) {
+                        $('.record-on .wrap-scroll').unbind('scroll');
+                        return;
+                    } else {
+                        _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteList/pageNum/' + cur_1 + '/pageSize/10');
+                    }
+                    loading_1 = false;
+                }, 300)
+
+            })
+            var loading_2 = false;
+            $(document).find('.cur .wrap-scroll').on('scroll', function (e) {
+                if (loading_2) return;
+                loading_2 = true;
+                setTimeout(function () {
+                    if (loadingPage_2 < 10) {
+                        $('.cur .wrap-scroll').unbind('scroll');
+                        return;
+                    } else {
+                        _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteAward/' + cur_2 + '/10');
+                    }
+                    loading_2 = false;
+                }, 300)
+            })
         }
 
     }

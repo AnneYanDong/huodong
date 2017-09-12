@@ -26,8 +26,8 @@
     </head>
     <body>
     <div class="wp hide">
-        <div class="wp-inner">
-            <div class="page page1 section sec1">
+        <div class="wp-inner swiper-container">
+            <div class="page page1 swiper-slide">
                 <div class="content">
                     <div class="title"><img data-src="<?php echo $imgUrl; ?>page1_title.png" alt="title"></div>
                     <div class="img-gold"><img data-src="<?php echo $imgUrl; ?>page1_$.png" alt="$"></div>
@@ -38,7 +38,7 @@
                     <div class="gold scrolling"><img data-src="<?php echo $imgUrl; ?>dynamic_gold.png" alt="gold"></div>
                 </div>
             </div>
-           <div class="page page2 section sec2">
+            <div class="page page2 swiper-slide">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                     <div class="portrait"></div>
@@ -60,7 +60,7 @@
                     <div class="next" bp="85_2_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
-            <div class="page page3 section sec3">
+            <div class="page page3 swiper-slide">
                <div class="content">
                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                    <div class="detail3">
@@ -83,7 +83,7 @@
                    <div class="next" bp="85_3_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                </div>
             </div>
-            <div class="page page4 section sec4">
+            <div class="page page4 swiper-slide">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                     <div class="detail5">
@@ -109,7 +109,7 @@
                     <div class="next" bp="85_4_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
-            <div class="page page5 section sec5">
+            <div class="page page5 swiper-slide">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                     <img class="people1" data-src="<?php echo $imgUrl; ?>page5_people1.png" alt="people1">
@@ -133,7 +133,7 @@
                     <div class="next" bp="85_5_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
-            <div class="page page6 section sec6">
+            <div class="page page6 swiper-slide">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                     <div class="detail7">
@@ -159,7 +159,7 @@
                     <div class="next" bp="85_6_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
-            <div class="page page7 section sec7">
+            <div class="page page7 swiper-slide">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                     <img class="title" data-src="<?php echo $imgUrl; ?>page7_new_title.png" alt="title">
@@ -174,7 +174,7 @@
                     <div class="next" bp="85_7_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
-            <div class="page page8 section sec8">
+            <div class="page page8 swiper-slide">
                 <div class="content">
                     <img class="share" data-src="<?php echo $imgUrl; ?>page8_share.png" alt="share"/>
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark"/>
@@ -195,6 +195,36 @@
             return Number(data) + 1;
         }
     </script>
+    <!-- <script src="../static/js/lib/slide.js"></script>
+    <script type="text/javascript">
+      var  con = document.getElementById('con');
+      var startY, moveY, endY , orginTop , lastY ;
+      con.addEventListener('touchstart' , function(event) {
+        event.preventDefault();
+        startY = event.targetTouches[0].pageY;
+        orginTop = parseFloat(getComputedStyle( this , null).top);
+      }, false);
+      con.addEventListener('touchmove' , function(event) {
+        event.preventDefault();
+        this.style.top = orginTop + event.targetTouches[0].pageY - startY + "px";
+        endY = event.targetTouches[0].pageY - startY;
+      }, false);
+      con.addEventListener('touchend' , function(event) {
+        event.preventDefault();
+        var a = parseFloat(getComputedStyle( this , null).top) % document.body.offsetHeight;
+        if ( Math.abs(a) < document.body.offsetHeight/2 ) {
+          lastY = parseFloat(getComputedStyle( this , null).top) - a ;
+        } else {
+          lastY = parseFloat(getComputedStyle( this , null).top) - document.body.offsetHeight - a;
+        }
+        if ( parseFloat(getComputedStyle( this , null).top) > 0 ) {
+          lastY = 0;
+        } else if ( parseFloat(getComputedStyle( this , null).top) < -3 * document.body.offsetHeight) {
+          lastY = -3 * document.body.offsetHeight;
+        }
+        $(this).animate({top : lastY},300);
+      }, false);
+    </script> -->
 
     <div class="tp-analyzing hide"></div>
     <img class="sweat hide" data-src="<?php echo $imgUrl; ?>page1_tp.png" alt="tp">
