@@ -160,7 +160,7 @@
     background-size: 100%;
     width: 5.24rem;
     padding: .5rem .36rem;
-    position: absolute;
+    position: fixed;
     top: 1.5rem;
     left: 50%;
     font-size: 12px;
