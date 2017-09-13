@@ -25,8 +25,8 @@
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     </head>
     <body>
-    <div class="wp hide">
-        <div class="wp-inner swiper-container">
+    <div class="wp hide swiper-container">
+        <div class="wp-inner swiper-wrapper">
             <div class="page page1 swiper-slide">
                 <div class="content">
                     <div class="title"><img data-src="<?php echo $imgUrl; ?>page1_title.png" alt="title"></div>
@@ -228,5 +228,14 @@
 
     <div class="tp-analyzing hide"></div>
     <img class="sweat hide" data-src="<?php echo $imgUrl; ?>page1_tp.png" alt="tp">
+
+    <!-- <script>
+        $(document).ready(function () {
+             var mySwiper = new Swiper ('.swiper-container', {
+               direction: 'vertical',
+               loop: true
+             })
+        })
+      </script> -->
     </body>
 </html>

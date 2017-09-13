@@ -12,6 +12,8 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue-dev"], function($, fastClick
 
   ct.Tool.buryPoint_v2(0);
 
+  ct.Tool.share();
+
   var run = {
     start: function() {
       var _this = this;

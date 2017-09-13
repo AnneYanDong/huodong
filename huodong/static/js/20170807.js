@@ -18,10 +18,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
 
             /*解决移动端click点击300延迟*/
             fastClick.attach(document.body);
-            //移动端上下滑动
-            // $(function() {
-                // var myPageSlider = pageSlider.case();
-            // });
 
             /*设置HTML的font-size*/
             ct.Tool.setFont();
@@ -57,47 +53,154 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
 
             var args = _this.getQueryStringArgs();
             unionid = args["unionid"];
+            shareid = args["shareid"];
             _this.share();
             _this.setNavAttr();
             $(".wp").removeClass("hide");
+            _this.useSwiper();
             _this.fullPageObj = _this.fullpage();
         },
-        pageSlide: function(now) {
-            var _this = this;
-            console.log("Slide->now = ",now);
-            var page = now.substring(4);
-            console.log("Slide->page = ",page);
 
-            $("body").on("touchstart", function(e) {
-                // e.preventDefault();
-                e.stopPropagation();
-                startX = e.originalEvent.changedTouches[0].pageX,
-                startY = e.originalEvent.changedTouches[0].pageY;
-            });
-            $("body").on("touchmove", function(e) {
-                // e.preventDefault();
-                e.stopPropagation();
-                moveEndX = e.originalEvent.changedTouches[0].pageX,
-                moveEndY = e.originalEvent.changedTouches[0].pageY,
-                X = moveEndX - startX,
-                Y = moveEndY - startY;
-                if ( Math.abs(Y) > Math.abs(X) && Y > 0) {
-                    console.log("向下滑动");
-                    if (page == 1) {
-                        return;
-                    } else {
-                        _this.fullPageObj.moveTo(page - 1);
+        fullpage: function () {
+            var _this = this;
+            var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
+                start: 0,  //默认第一页开始
+                beforeChange: function(e) {
+                    var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
+                    console.log("now", now);
+                    _this.PageBuryRequest(now);
+                    _this.changeState(now); //把当前页面在改变之前塞入浏览器历史
+                },
+                afterChange: function (e) {
+                    var timer = null;
+                    clearTimeout(timer);
+                    _this.fullPageObj.stop();
+                    var now = "page" + (e.cur + 1);
+
+                    if (now == "page1") {
+                        $(".page1").on("click", ".img-btn", function () {
+                            $.ajax({
+                                type: "POST",
+                                dataType: "JSON",
+                                data: JSON.stringify({"unionid": unionid,"shareid":shareid}),
+                                // url: "test.php",
+                                url: "/act/analyze/get_analyze",
+                                success: function (d) {
+                                    if (d.success) {
+                                        console.log("后台数据：", d);
+                                        if (d.ret.is_weChat) {
+                                            $(".page8").on("click", ".img-btn", function () {
+                                                $(".page8 .share").addClass("bounce-out");
+                                                setTimeout(function(){
+                                                    $(".page8 .share").removeClass("bounce-out");
+                                                },200);
+                                            })
+                                            _this.handleProcess(d);
+                                        } else{
+                                            if (d.ret.login == false) {
+                                                oP.show("想解析公积金，先登录APP啦！");
+                                                if (Bridge) {
+                                                    Bridge.action("login");
+                                                }
+                                            } else {
+                                                _this.handleProcess(d);
+                                            }
+                                        }
+                                    } else {
+                                        oP.show(d.msg || "出错了请重试");
+                                    }
+                                }
+                            });
+                        })
+                        _this.respondState(now);
                     }
+
+                    if (now == "page2") {
+                        $(".page2").on("click", ".next", function () {
+                            _this.fullPageObj.moveTo(2, true);
+                        })
+                        _this.respondState(now, 0, true, function () {
+                            console.log("返回第一页");
+                        });
+                    }
+
+                    if (now == "page3") {
+                        $(".page3").on("click", ".next", function () {
+                            _this.fullPageObj.moveTo(3, true);
+                        })
+                        _this.respondState(now, 1, true, function () {
+                            console.log("返回第二页");
+                        });
+                    }
+
+                    if (now == "page4") {
+                        $(".page4").on("click", ".next", function () {
+                            _this.fullPageObj.moveTo(4, true);
+                        })
+                        _this.respondState(now, 2, true, function () {
+                            console.log("返回第三页");
+                        });
+                    }
+
+                    if (now == "page5") {
+                        $(".page5").on("click", ".next", function () {
+                            _this.fullPageObj.moveTo(5, true);
+                        })
+                        _this.respondState(now, 3, true, function () {
+                            console.log("返回第四页");
+
+                        });
+
+                    };
+
+                    if (now == "page6") {
+                        $(".page6").on("click", ".next", function () {
+                            _this.fullPageObj.moveTo(6, true);
+                        })
+                        _this.respondState(now, 4, true, function () {
+                            console.log("返回第五页");
+
+                        });
+
+                    };
+
+                    if (now == "page7") {
+                        $(".page7").on("click", ".next", function () {
+                            _this.fullPageObj.moveTo(7, true);
+                        })
+                        _this.respondState(now, 5, true, function () {
+                            console.log("返回第六页");
+                        });
+
+                    };
+
+                    if (now == "page8") {
+                        $(".page8").on("click", ".img-btn", function () {
+                            _this.share2();
+                        })
+                        _this.respondState(now, 6, true, function () {
+                            console.log("返回第七页");
+                        });
+
+                    };
                 }
-                else if ( Math.abs(Y) > Math.abs(X) && Y < 0 ) {
-                    console.log("向上滑动");
-                    if (page === 1) {
+            });
+            return fullpage;
+        },
+        useSwiper: function() {
+            var _this = this;
+            var swiper = new Swiper('.swiper-container', {
+                direction: 'vertical',
+                onTouchEnd:function(swiper){
+                    var swiperIndex=swiper.activeIndex;//获取当前活动块的索引值
+                    switch (swiperIndex){
+                        case 0://第一屏
                         $.ajax({
                             type: "POST",
                             dataType: "JSON",
-                            data: JSON.stringify({"unionid": unionid}),
-                            url: "test.php",
-                            // url: "/act/analyze/get_analyze",
+                            data: JSON.stringify({"unionid": unionid,"shareid": shareid}),
+                            // url: "test.php",
+                            url: "/act/analyze/get_analyze",
                             success: function (d) {
                                 if (d.success) {
                                     console.log("后台数据：", d);
@@ -124,30 +227,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                                 }
                             }
                         });
-                    }else if (page === 2) {
-                        _this.fullPageObj.moveTo(2,true);
-                    } else if (page === 3) {
-                        _this.fullPageObj.moveTo(3,true);
-                    } else if (page === 4) {
-                        _this.fullPageObj.moveTo(4,true);
-                    } else if (page === 5) {
-                        _this.fullPageObj.moveTo(5,true);
-                    } else if (page === 6) {
-                        _this.fullPageObj.moveTo(6,true);
-                    } else if (page === 7) {
-                        _this.fullPageObj.moveTo(7,true);
-                    } else {
-                        return;
+                        break;
                     }
-                }else{
-                    console.log("just touch");
                 }
             });
-            var windowHeight = $(window).height(),
-              $body = $("body");
-              // console.log($(window).height());
-              // console.log($('body').height());
-              $body.css("height", windowHeight);
         },
         setNavAttr: function() {
             if (Bridge) {
@@ -337,139 +420,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
             }
         },
 
-        fullpage: function () {
-            var _this = this;
-            var fullpage = document.getElementsByClassName("wp-inner")[0].fullpage({
-                start: 0,  //默认第一页开始
-                beforeChange: function(e) {
-                    var now = "page" + (e.next + 1); //页面在改变之前获取当前页面
-                    console.log("now", now);
-                    _this.PageBuryRequest(now);
-                    _this.pageSlide(now);
-                    _this.changeState(now); //把当前页面在改变之前塞入浏览器历史
-                },
-                afterChange: function (e) {
-                    var timer = null;
-                    clearTimeout(timer);
-                    _this.fullPageObj.stop();
-                    var now = "page" + (e.cur + 1);
-
-                    if (now == "page1") {
-                        $(".page1").on("click", ".img-btn", function () {
-                            $.ajax({
-                                type: "POST",
-                                dataType: "JSON",
-                                data: JSON.stringify({"unionid": unionid}),
-                                url: "test.php",
-                                // url: "/act/analyze/get_analyze",
-                                success: function (d) {
-                                    if (d.success) {
-                                        console.log("后台数据：", d);
-                                        if (d.ret.is_weChat) {
-                                            $(".page8").on("click", ".img-btn", function () {
-                                                $(".page8 .share").addClass("bounce-out");
-                                                setTimeout(function(){
-                                                    $(".page8 .share").removeClass("bounce-out");
-                                                },200);
-                                            })
-                                            _this.handleProcess(d);
-                                        } else{
-                                            if (d.ret.login == false) {
-                                                oP.show("想解析公积金，先登录APP啦！");
-                                                if (Bridge) {
-                                                    Bridge.action("login");
-                                                }
-                                            } else {
-                                                _this.handleProcess(d);
-                                            }
-                                        }
-                                    } else {
-                                        oP.show(d.msg || "出错了请重试");
-                                    }
-                                }
-                            });
-                        })
-                        _this.respondState(now);
-                    }
-
-                    if (now == "page2") {
-                        $(".page2").on("click", ".next", function () {
-                            _this.fullPageObj.moveTo(2, true);
-                        })
-                        _this.respondState(now, 0, true, function () {
-                            console.log("返回第一页");
-                        });
-                    }
-
-                    if (now == "page3") {
-                        $(".page3").on("click", ".next", function () {
-                            _this.fullPageObj.moveTo(3, true);
-                        })
-                        _this.respondState(now, 1, true, function () {
-                            console.log("返回第二页");
-                        });
-                    }
-
-                    if (now == "page4") {
-                        $(".page4").on("click", ".next", function () {
-                            _this.fullPageObj.moveTo(4, true);
-                        })
-                        _this.respondState(now, 2, true, function () {
-                            console.log("返回第三页");
-                        });
-                    }
-
-                    if (now == "page5") {
-                        $(".page5").on("click", ".next", function () {
-                            _this.fullPageObj.moveTo(5, true);
-                        })
-                        _this.respondState(now, 3, true, function () {
-                            console.log("返回第四页");
-
-                        });
-
-                    };
-
-                    if (now == "page6") {
-                        $(".page6").on("click", ".next", function () {
-                            _this.fullPageObj.moveTo(6, true);
-                        })
-                        _this.respondState(now, 4, true, function () {
-                            console.log("返回第五页");
-
-                        });
-
-                    };
-
-                    if (now == "page7") {
-                        $(".page7").on("click", ".next", function () {
-                            _this.fullPageObj.moveTo(7, true);
-                        })
-                        _this.respondState(now, 5, true, function () {
-                            console.log("返回第六页");
-                        });
-
-                    };
-
-                    if (now == "page8") {
-                        $(".page8").on("click", ".img-btn", function () {
-                            _this.share2();
-                        })
-                        _this.respondState(now, 6, true, function () {
-                            console.log("返回第七页");
-                        });
-
-                    };
-                }
-            });
-            return fullpage;
-        },
-
         changeState: function (page,id) {
             var _this = this;
             window.history.pushState && window.history.pushState({
                 title: page
-            }, page, "index.php?unionid="+unionid+"#page=" + page); // 塞入新的历史
+            }, page, "index.php?unionid="+unionid+"&shareid="+shareid+"#page=" + page); // 塞入新的历史
         },
 
         // 返回。
@@ -529,7 +484,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
                     "thumb": "https://r.51gjj.com/act/release/img/20170807_new_share.png",
-                    "link": "https://" + host + "/act/wechat/act_analyzes"
+                    "link": "https://" + host + "/act/home/huodong/20170807/index.php?shareid=" + shareid
                 });
                     }
                 })
@@ -558,7 +513,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
                     "thumb": "https://r.51gjj.com/act/release/img/20170807_new_share.png",
-                    "link": "https://" + host + "/act/wechat/act_analyzes"
+                    "link": "https://" + host + "/act/home/huodong/20170824/index.php?shareid=" + shareid
                 });
                 //     }
                 // })
