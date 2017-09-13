@@ -275,7 +275,11 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue"], function($, fastClick, ct
                       oP.show('成功领取奖励，请登录app领券，立即享受优惠');
                       return false;
                     } else {
-                      oP.show(d.ret.msg || '领券失败')
+                      oP.show(d.ret.msg || '请登录app领券，立即享受优惠', {
+                        callback: function(){
+                          window.location.href = d.ret.url;
+                        }
+                      })
                     }
                   } else if (app.isGjj) { // APP
                     alert("..")
