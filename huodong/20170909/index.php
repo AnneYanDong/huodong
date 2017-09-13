@@ -67,21 +67,65 @@
         </div>
     </div>
 </div>
-<!-- <div class="mask hide">
-    <div class="prize-box"></div>
-</div> -->
-<div class="mask hide"></div>
-            <div class="rule zm-customer-confirm hide">
-                <h6>活动规则</h6>
-                <ul>
-                    <li><span>1.</span>获得条件：完成注册即可获得理财金；</li>
-                    <li><span>2.</span>发放时间：理财金的收益会在领取成功后的第2天发放到您的理财账户；</li>
-                    <li><span>3.</span>已经获取体验金，但未获得后续认证或投资体验金的用户，请在绑定关系内的15日内实名认证，
-                                        否则将失去领取后续体验金的资格。</li>
-                </ul>
-                <div class="btn-close"></div>
-            </div>
+<div class="mask hide">
+    <div class="prize-box-lottery  prize-box-0 hide">
+        <div class="btn-close"></div>
     </div>
+    <div class="prize-box-lottery  prize-box-1 hide">
+        <div class="btn-close"></div>
+    </div>
+    <div class="prize-box-lottery  prize-box-2 hide">
+        <div class="btn-close"></div>
+    </div>
+    <div class="prize-box-lottery  prize-box-3 hide">
+        <div class="btn-close"></div>
+    </div>
+    <div class="prize-box-lottery  prize-box-4 hide">
+        <div class="btn-close"></div>
+    </div>
+    <div class="prize-box-lottery no-prize prize-box-5 hide">
+        <div class="btn-close"></div>
+    </div>
+    <div class="prize-box-lottery  prize-box-6 hide">
+        <div class="btn-close"></div>
+    </div>
+    <div class="prize-box-lottery  prize-box-7 hide">
+        <div class="btn-close"></div>
+    </div>
+</div>
+<div class="rule-1 rule zm-customer-confirm hide">
+    <h6>抽奖条件</h6>
+    <ul>
+        <li><span>1.</span>活动期间内，投资每满5000元可获得1次抽奖机会，最多可获得5次抽奖机会；</li>
+        <li><span>2.</span>活动期间内，每成功邀请一位好友投资满1000元，可获得1次抽奖机会，最多可获得3次抽奖机会， （参考上一条，单人最高能获得8次抽奖机会）；
+        </li>
+    </ul>
+    <h6>奖品发放</h6>
+    <ul>
+        <li>活动结束后10个工作日内发放。（iphone8中奖用户根据实际上市时间而定，我们会第一时间寄出）</li>
+    </ul>
+    <div class="btn-close"></div>
+</div>
+<div class="rule-2 rule zm-customer-confirm hide rule-2-bg">
+    <h6>活动规则</h6>
+    <ul>
+        <li><span>1.</span>获得条件：活动期间内，投资14天产品累计金额达到奖励区间，即可获得相应奖励。</li>
+        <li><span>2.</span>奖励发放: 活动结束后7个工作日内将发放到您的理财账户中，会有电话或短信通知您。
+        </li>
+    </ul>
+    <div class="btn-close"></div>
+</div>
+<div class="prize-list hide">
+            <!-- <div class="wrap-no-prize">
+                <div class="no-prize-img"></div>
+                <div class="null-text">还是空的，快去抽奖吧！</div>
+            </div> -->
+            <!-- <div class="has-prize">
+                <div class="prize-icon"><img data-src="//r.51gjj.com/act/release/img/20170909_prize_list_7.png"></div>
+                <div class="prize-text">5元现金</div>
+            </div> -->
+            <div class="btn-prize-conf"></div>
+</div>
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     <script>
     </script>

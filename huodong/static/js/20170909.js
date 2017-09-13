@@ -9,7 +9,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
     oM.create().build();
 
     var local = ct.Tool.local();
-    var host = window.location.host
+    var host = window.location.host;
+    var lotteryTime,totalTenderAmount;
 
     ct.Tool.buryPoint_v2(0);
 
@@ -65,16 +66,46 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
+            _this.render();
             _this.openRule1();
-            // _this.openRule2();
+            _this.openRule2();
             _this.closeRule1();
-            // _this.closeRule2();
+            _this.closeLottery();
             _this.pageload();
+            _this.myPrize();
+            _this.closePrize();
+            _this.skip();
+        },
+        render: function () {
+            $.ajax({
+                type: "POST",
+                url: "test.php",
+                dataType: 'json',
+                success: function (d) {
+                    var lotteryTime = d.resData.lotteryTime;
+                    $(".lottery-change span").text(lotteryTime);
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: "test.php",
+                dataType: 'json',
+                success: function (d) {
+                    var totalTenderAmount = d.resData.totalTenderAmount;console.log(totalTenderAmount)
+                    $(".btn-tips span").text(totalTenderAmount);
+                }
+            });
         },
         openRule1: function () {
             $(".btn-lottery-rule").on("click", function () {
                 oM.show();
-                $(".rule").fadeIn();
+                $(".rule-1").fadeIn();
+            })
+        },
+        openRule2: function () {
+            $(".btn-rule-2").on("click", function () {
+                oM.show();
+                $(".rule-2").fadeIn();
             })
         },
         closeRule1: function () {
@@ -82,6 +113,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 $(".rule").fadeOut(function () {
                     oM.hide();
                 })
+            })
+        },
+        closeLottery: function () {
+            $(".prize-box-lottery").on("click", ".btn-close",function () {
+                $(this).parent().addClass("hide");
+                $(".mask").addClass("hide");;
             })
         },
         pageload: function() {
@@ -134,15 +171,28 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                     setTimeout(function () {
                         switch (lottery.prize) {
                             case 0:
-                            case 4:
-                                oPrize300jifen.removeClass("hide");
+                                $(".prize-box-0").removeClass("hide");
+                                break;
+                            case 1:
+                                $(".prize-box-1").removeClass("hide");
                                 break;
                             case 2:
-                            case 6:
-                                oPrize100jifen.removeClass("hide");
+                                $(".prize-box-2").removeClass("hide");
                                 break;
                             case 3:
-                                oPrize10yuan.removeClass("hide");
+                                $(".prize-box-3").removeClass("hide");
+                                break;
+                            case 4:
+                                $(".prize-box-4").removeClass("hide");
+                                break;
+                            case 5:
+                                $(".prize-box-5").removeClass("hide");
+                                break;
+                            case 6:
+                                $(".prize-box-6").removeClass("hide");
+                                break;
+                            case 7:
+                                $(".prize-box-7").removeClass("hide");
                                 break;
                         }
                         lottery.prize = -1;
@@ -236,6 +286,59 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 }
             });
         },
+        myPrize: function () {
+            $(".wrap-button").on("click",".btn-prize", function () {
+                $(".mask").removeClass("hide");
+                $(".prize-list").removeClass("hide");
+                $.ajax({
+                    type: "POST",
+                    url: "//test.jianbing.com/lottery/QueryLotteryRecord/lotteryRecord",
+                    dataType: 'json',
+                    success: function (d) {
+                        if (d.resData.list.length != 0) {
+                            var res = '<div class="has-prize"><div class="prize-icon"><img src="//r.51gjj.com/act/release/img/20170909_prize_list_'+d.resData.list[0].type
+                                    +'.png"></div></div>';
+                            if ($(".has-prize").length <= 0) {console.log($(".prize-list").length)
+                                $(".prize-list").append(res);
+                            }
+                            if (d.resData.list[0].type == 1) {
+                                $(".has-prize").append('<div class="prize-text">iphone8(32G)</div>');
+                            } else if (d.resData.list[0].type == 2) {
+                                $(".has-prize").append('<div class="prize-text">500元京东卡</div>');
+                            } else if(d.resData.list[0].type == 3) {
+                                $(".has-prize").append('<div class="prize-text">小米手环</div>');
+                            } else if (d.resData.list[0].type == 4) {
+                                $(".has-prize").append('<div class="prize-text">小米充电宝</div>');
+                            } else if (d.resData.list[0].type == 5) {
+                                $(".has-prize").append('<div class="prize-text">50元京东卡</div>');
+                            } else if (d.resData.list[0].type == 6) {
+                                $(".has-prize").append('<div class="prize-text">爱奇艺月卡</div>');
+                            } else if (d.resData.list[0].type == 7) {
+                                $(".has-prize").append('<div class="prize-text">5元现金</div>');
+                            }
+                        } else {
+                            var res = '<div class="wrap-no-prize"><div class="no-prize-img"></div><div class="null-text">还是空的，快去抽奖吧！</div></div>';
+                            $(".prize-list").append(res);
+                        }
+                    }
+                })
+            })
+        },
+        closePrize: function () {
+            $(".prize-list").on("click", ".btn-prize-conf", function () {
+                $(".mask").addClass("hide");
+                $(".prize-list").addClass("hide");
+                $(".has-prize").remove();
+            })
+        },
+        skip: function () {
+            $(".wrap-button").on("click", ".btn-change", function () {
+                window.location.href = "/hs/appgjj/login?return_url=/app/invest/";
+            })
+            $(".toPurchase").on("click",function () {
+                window.location.href = "/hs/appgjj/login?return_url=/app/invest/";
+            })
+        }
     }
 
 

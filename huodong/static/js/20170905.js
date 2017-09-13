@@ -71,42 +71,64 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             _this.record();
         },
         showQrcode: function () {
-            if (document.getElementById('qrcode-show')) {
-                var url = "https://" + host + "/act/home/20170905/index.php?code=123456";
-                var qrcode = new QRCode(document.getElementById('qrcode-show'),{
-                    // width:$("#qrcode").height(),
-                    // height:$("#qrcode").height(),
-                    width: 100,
-                    height: 100,
-                    colorDark:'#000000',
-                });
-                qrcode.makeCode(url);
-                var qrcodeBig = new QRCode(document.getElementById('qrcodeBig'),{
-                    width:$("#qrcodeBig").height(),
-                    height:$("#qrcodeBig").height(),
-                    colorDark:'#000000',
-                });
-                qrcodeBig.makeCode(url);
-                $("#qrcode-show").on('click', function(event) {
-                  $("#JS-code-show").show()
-                  event.preventDefault();
-                  /* Act on the event */
-                });
-              }
+            $.ajax({
+                url: "//kaifa.jianbing.com/act/market/get_invitation_code",
+                type: "POST",
+                dataType: "JSON",
+                success: function(d) {
+                    var code = d.ret.invitation_code;
+                    if (document.getElementById('qrcode-show')) {
+                        var url = "https://" + host + "/act/home/20170905/index.php?pCode="+code;
+                        var qrcode = new QRCode(document.getElementById('qrcode-show'),{
+                            // width:$("#qrcode").height(),
+                            // height:$("#qrcode").height(),
+                            width: 100,
+                            height: 100,
+                            colorDark:'#000000',
+                        });
+                        qrcode.makeCode(url);
+                        var qrcodeBig = new QRCode(document.getElementById('qrcodeBig'),{
+                            width:$("#qrcodeBig").height(),
+                            height:$("#qrcodeBig").height(),
+                            colorDark:'#000000',
+                        });
+                        qrcodeBig.makeCode(url);
+                        $("#qrcode-show").on('click', function(event) {
+                          $("#JS-code-show").show()
+                          event.preventDefault();
+                          /* Act on the event */
+                        });
+                      }
+                },
+                error: function(xhr){
+                    oP.show("发生错误" + xhr + "，请重试");
+                }
+            })
         },
         closeQrcode: function () {
             $('#JS-code-close').on('click',function() {
-                $("#JS-code-show").hide()
+                $("#JS-code-show").hide();
             })
         },
         invite: function () {
-            $('.invite_btn').on('click', function() {
-                Bridge.action('ShareTimeline', {
-                    "title": "您的好友送你25元现金，真钱可提现！",
-                    'desc': "跟着好友加入51有钱，一起来理财！",
-                    "thumb": "https://r.51gjj.com/act/release/img/20170525172908_share.png",
-                    "link": "https://" + host + "/act/home/20170905/index.php?code=123456"
-                });
+            $('.invite_btn').on('click', function() {console.log("邀请码**")
+                $.ajax({
+                    url: "//kaifa.jianbing.com/act/market/get_invitation_code",
+                    type: "POST",
+                    dataType: "JSON",
+                    success: function(d) {
+                        var code = d.ret.invitation_code;
+                        Bridge.action('ShareTimeline', {
+                            "title": "您的好友送你25元现金，真钱可提现！",
+                            'desc': "跟着好友加入51有钱，一起来理财！",
+                            "thumb": "//r.51gjj.com/act/release/img/20170525172908_share.png",
+                            "link": "//" + host + "/act/home/20170908_invest/index.php?pCode="+code
+                        });
+                    },
+                    error: function(xhr){
+                        oP.show("发生错误" + xhr + "，请重试");
+                    }
+                })
             })
         },
         record: function () {
