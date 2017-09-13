@@ -169,12 +169,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         render1: function () {
             _this = this;
             var falg = true;
-            _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteList/pageNum/1/pageSize/10');
+            _this.addItems('/invest2/user/queryUser/userInviteList/pageNum/1/pageSize/10');
         },
         render2: function () {
             _this = this;
             var falg = true;
-            _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteAward/1/10');
+            _this.addItems('/invest2/user/queryUser/userInviteAward/1/10');
 
         },
         scrollTab: function () {
@@ -188,7 +188,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                         $('.record-on .wrap-scroll').unbind('scroll');
                         return;
                     } else {
-                        _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteList/pageNum/' + cur_1 + '/pageSize/10');
+                        _this.addItems('/invest2/user/queryUser/userInviteList/pageNum/' + cur_1 + '/pageSize/10');
                     }
                     loading_1 = false;
                 }, 300)
@@ -203,7 +203,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                         $('.cur .wrap-scroll').unbind('scroll');
                         return;
                     } else {
-                        _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteAward/' + cur_2 + '/10');
+                        _this.addItems('/invest2/user/queryUser/userInviteAward/' + cur_2 + '/10');
                     }
                     loading_2 = false;
                 }, 300)

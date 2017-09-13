@@ -61,10 +61,18 @@
     font-size: .24rem;
 }
 .wrap-btn {
-    padding: 0 0.2rem;
     display: flex;
-    justify-content: space-between;
-    padding-top: .48rem;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 7.5rem;
+    align-items: center;
+    height: 1.3rem;
+    background: #000000;
+    opacity: 0.75;
+}
+.wrap-btn img:first-child {
+    padding-right: 0.2rem;
 }
 .wrap-btn img {
     width: 3.45rem;

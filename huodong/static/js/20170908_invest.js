@@ -69,7 +69,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             _this.closeRule();
             _this.getCode();
             _this.searchClick();
-
+            _this.render();
+        },
+        render: function () {
+            var phone = getURLParams(window.location.href)["phone"];
+            $(".tips-phone p span").text(phone);
         },
         openRule: function () {
             $(".btn-rule").on("click", "span",function () {
@@ -90,7 +94,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 if (_this.checkPhone($(".JS-phone"))) {
                     var phoneNum = $(".JS-phone").val();
                     $.ajax({
-                        url: "//b.jianbing.com/act/market/get_verification_code",
+                        url: "/act/market/get_verification_code",
                         type: "POST",
                         dataType: "JSON",
                         data:JSON.stringify({"phone": phoneNum}),
@@ -114,7 +118,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         searchClick: function() {
             var _this = this;
             var skipTimer = null;
-            var oUrl = "//kaifa.jianbing.com/act/market/get_invitation_register";
+            var oUrl = "/act/market/get_invitation_register";
             $(".btn-submit").on("click", function() {
                 if (_this.checkPhone($(".JS-phone")) && _this.checkCode($(".JS-code"))) {
                     var phoneNum = $(".JS-phone").val();
@@ -132,8 +136,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                              }),
                         success: function(d) {
                             if (d.success === true) {
-                                window.location.href = "//d.51gjj.com/51gjj_a.html?p=app3";
-                            } else{
+                                window.location.href = "http://d.51gjj.com/";
+                            } else if (d.code == 512) {
+                                oP.show("您已经注册过，不能太贪心哦～");
+                            } else {
                                 oP.show(d.msg || "出错了，请重试")
                             }
                         },
