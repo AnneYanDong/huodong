@@ -12,9 +12,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
     var source = ct.Tool.userAgent().isGjj ? 1 : 0;
     ct.Tool.buryPoint_v2(source,"/act/request/activity");
     // ct.Tool.share(84,"zmtkj");
+    
     var run = {
         start: function () {
             var _this = this;
+
+            var args = _this.getQueryStringArgs();
+            unionid = args["unionid"];
 
             /*解决移动端click点击300延迟*/
             fastClick.attach(document.body);
@@ -58,6 +62,25 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             _this.PageBuryRequest();
             _this.getSingleInfo();
         },
+        getQueryStringArgs: function() {
+            var qs = location.search.length > 0 ? location.search.substring(1) : 0;
+            var items = qs.length > 0 ? qs.split("&") : [];
+            var item = null,
+                name = null,
+                value = null,
+                len = items.length;
+            var args = {};
+            for(var i = 0; i < len; i ++) {
+                item = items[i].split("=");
+                name = decodeURIComponent(item[0]);
+                value = decodeURIComponent(item[1]);
+
+                if(name.length) {
+                    args[name] = value;
+                }
+            }
+            return args;
+        },
         urlPost: function(url, p) {
             var args = $.extend(true, {
                 // step: '2'
@@ -86,6 +109,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
+                data: JSON.stringify({"unionid": unionid}),
                 // url: "test.php",
                 url: "/act/act170828/get_status",
                 success: function (d) {
@@ -101,13 +125,24 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                         } else {
                             
                             if (d.ret.is_weChat || d.ret.is_qq) {
-                                _this.showDynamicLayout($("#tpl-not-imported"),d);
-                                $(".dynamic-layout").on("click",".btn1",function(){
-                                    oP.show("抱歉，请在51公积金管家APP上参与此活动~");
-                                    setTimeout(function(){
-                                        window.location.href = "https://lnk0.com/easylink/ELQlo4M5";
-                                    },1500)
-                                })
+                                // _this.showDynamicLayout($("#tpl-not-imported"),d);
+                                // $(".dynamic-layout").on("click",".btn1",function(){
+                                //     oP.show("抱歉，请在51公积金管家APP上参与此活动~");
+                                //     setTimeout(function(){
+                                //         window.location.href = "https://lnk0.com/easylink/ELQlo4M5";
+                                //     },1500)
+                                // })
+                                if (!d.ret.login) {
+                                    _this.showDynamicLayout($("#tpl-not-imported"),d);
+                                    $(".dynamic-layout").on("click",".btn1",function(){
+                                        oP.show("先登录才能参与活动哟~");
+                                    })
+                                    if (Bridge) {
+                                        Bridge.action("login");
+                                    }
+                                } else {
+                                    _this.startIsImportedProcess(d);
+                                }
                             } else {
                                 if (!d.ret.login) {
                                     _this.showDynamicLayout($("#tpl-not-imported"),d);
@@ -124,7 +159,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                             
                         }
                     } else {
-                        oP.show("出错了");
+                        _this.showDynamicLayout($("#tpl-not-imported"),d);
+                        oP.show("非常抱歉，服务器开小差啦~");
+                        $(".dynamic-layout").on("click",".btn1",function(){
+                            oP.show("非常抱歉，服务器开小差啦~");
+                        })
                     }
                 }
             });
@@ -312,7 +351,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                             "title": "28888元理财金，人人有份",
                             'desc': "我们出本金，利息都归你",
                             "thumb": "https://r.51gjj.com/act/release/img/20170828_share.png",
-                            "link": "https://" + host + "/act/home/huodong/20170828/index.php"
+                            "link": "https://" + host + "/act/wechat/act_act170828"
                         });
                     }
                 })

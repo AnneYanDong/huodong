@@ -286,7 +286,7 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  background-image: url("../img/20170908_bg.jpg");
+  background-image: url("//r.51gjj.com/act/release/img/20170908_bgme.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -315,7 +315,7 @@ body {
   margin-left: -2.66rem;
   width: 5.32rem;
   height: 2.52rem;
-  background: url("../img/20170908_title.png");
+  background: url("//r.51gjj.com/act/release/img/20170908_title.png");
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -328,7 +328,7 @@ body {
   height: 7.04rem;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 24px #757575;
+  box-shadow: 0 0 24px #770d69;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   padding: 16px;
@@ -379,7 +379,7 @@ body {
   height: .27rem;
   top: 50%;
   left: 50%;
-  background-image: url("../img/20170908_purple.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170908_purple.png");
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   background-repeat: no-repeat;

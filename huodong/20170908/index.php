@@ -1,5 +1,5 @@
 <?php 
-    $title = "邀请好友"; // 配置标题的，必须
+    $title = "提现奖励月"; // 配置标题的，必须
     include "../public/v2/header.php";
     $proName = "20170908";
     $version = "v1";

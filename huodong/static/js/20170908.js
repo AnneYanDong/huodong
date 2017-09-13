@@ -1,5 +1,5 @@
 require.config(requireConfig);
-define(["jquery", "fastClick", "ct", "bridge", "Vue-dev"], function($, fastClick, ct, Bridge, Vue, ) {
+define(["jquery", "fastClick", "ct", "bridge", "Vue"], function($, fastClick, ct, Bridge, Vue) {
 
   var oP = Object.create(ct.Prompt);
   oP.create().build();
@@ -52,7 +52,7 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue-dev"], function($, fastClick
         url: ct.Tool.url("/act/request/activity"),
         data: JSON.stringify({
           source: ct.Tool.userAgent().isGjj ? 1 : 0,
-          tag: "20170908_1_0_0_进入页面"
+          tag: "87_1_0_33_进入页面"
         }),
         success: function(d) {
           if (d.success == true) {
@@ -275,13 +275,21 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue-dev"], function($, fastClick
                       oP.show('成功领取奖励，请登录app领券，立即享受优惠');
                       return false;
                     } else {
-                      oP.show(d.ret.msg || '领券失败')
+                      oP.show(d.ret.msg || '请登录app领券，立即享受优惠', {
+                        callback: function(){
+                          window.location.href = d.ret.url;
+                        }
+                      })
                     }
                   } else if (app.isGjj) { // APP
                     if (!d.ret.login) {
-                      if (Bridge && app.isGjj) {
-                        Bridge.action('login');
-                      }
+                      oP.show('未登录，请先登录APP', {
+                        callback: function() {
+                          if (Bridge && app.isGjj) {
+                            Bridge.action('login');
+                          }
+                        }
+                      });
                       return false;
                     }
                     if (d.ret.type == 1) {
@@ -298,6 +306,9 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue-dev"], function($, fastClick
                         }
                       });
                     }
+                  } else {
+                    oP.show('请登录51公积金管家APP参与该活动');
+                    return false;
                   }
                 } else {
                   oP.show('活动尚未开始！试试其他活动');

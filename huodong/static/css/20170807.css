@@ -1,14 +1,10 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
 @import url('swiper-3.4.2.min.css');
-/* @font-face {
-  font-family: DIN-BLACK;
-  src: url("httpss://r.51gjj.com/act/images/shichang/DIN-Bold.otf"),
-       url("httpss://r.51gjj.com/act/images/shichang/DIN-Bold.otf");
-} */
-// .con{position: absolute;left: 0;top: 0;width: 100%;height: 100%;}
-// .page1,.page2,.page3,.page4,.page5,.page6,.page7,.page8{width: 100%;height: 100%;}
-// html,body{position: relative;width: 100%;height: 100%;overflow: hidden;}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
 .page {
   background: url("https://r.51gjj.com/act/release/img/20170807_page_bg.png") no-repeat center;
   background-size: cover;
