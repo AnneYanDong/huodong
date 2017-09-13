@@ -27,7 +27,7 @@
 <div class="wp hide">
     <div class="wp-inner">
         <div class="content">
-            <div class="yq-logo"><img data-src="//127.0.0.1/business_act/huodong/static/img/20170909_logo.png"></div>
+            <div class="yq-logo"><img data-src="//r.51gjj.com/act/release/img/20170909_logo.png"></div>
             <div class="prize-img"><img data-src="<?php echo $imgUrl;?>prize_img.png"></div>
             <div class="wrap-lottery">
                 <div class="lottery-bg">
@@ -84,7 +84,7 @@
         <div class="btn-close"></div>
     </div>
     <div class="prize-box-lottery no-prize prize-box-5 hide">
-        <div class="btn-close"></div>
+        <div class="btn-close no-prize-btn"></div>
     </div>
     <div class="prize-box-lottery  prize-box-6 hide">
         <div class="btn-close"></div>

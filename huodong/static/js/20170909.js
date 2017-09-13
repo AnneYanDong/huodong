@@ -10,7 +10,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
 
     var local = ct.Tool.local();
     var host = window.location.host;
-    var lotteryTime,totalTenderAmount;
+    var timeFlag = false;
 
     ct.Tool.buryPoint_v2(0);
 
@@ -66,20 +66,56 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         init: function () {
             var _this = this;
             $(".wp").removeClass("hide");
+            _this.actStart();
             _this.render();
             _this.openRule1();
             _this.openRule2();
             _this.closeRule1();
             _this.closeLottery();
-            _this.pageload();
-            _this.myPrize();
+            // _this.pageload();
+            // _this.myPrize();
             _this.closePrize();
-            _this.skip();
+            // _this.skip();
+        },
+        getNowFormatDate: function () {
+            var date = new Date();
+            var seperator1 = "-";
+            var seperator2 = ":";
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+                    + " " + date.getHours() + seperator2 + date.getMinutes()
+                    + seperator2 + date.getSeconds();
+            return currentdate;
+        },
+        actStart: function () {
+            _this = this;
+            var curTime = _this.getNowFormatDate();console.log(curTime)
+            if (curTime >= '2017-09-12 17:40:00') {
+                timeFlag = true;
+                _this.pageload();
+                _this.myPrize();
+                _this.skip();
+            } else {
+                $(".lottery-start").addClass("no-start");
+                $(".lottery-text").addClass("no-start-text");
+                $(".lottery-change").remove();
+                $(".lottery-text").text("暂未开启");
+                $(".btn-change").addClass("grayscale");
+                $(".btn-prize").addClass("grayscale");
+                $(".toPurchase").addClass("grayscale");
+            }
         },
         render: function () {
             $.ajax({
                 type: "POST",
-                url: "test.php",
+                url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lotteryTime",
                 dataType: 'json',
                 success: function (d) {
                     var lotteryTime = d.resData.lotteryTime;
@@ -88,7 +124,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             });
             $.ajax({
                 type: "POST",
-                url: "test.php",
+                url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lottery/totalTenderAmount",
                 dataType: 'json',
                 success: function (d) {
                     var totalTenderAmount = d.resData.totalTenderAmount;console.log(totalTenderAmount)
@@ -122,6 +158,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             })
         },
         pageload: function() {
+            var _this = this;
             var oMask = $(".mask");
             var oNoChance = $(".no-chance");
             var lottery = {
@@ -227,13 +264,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                     return false;
                 } else {
                     $.ajax({
-                        // url: "g.php",
-                        url: "test.php",
+                        //url: "test.php",
+                        url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lottery",
                         type: "POST",
                         dataType: "json",
-                        data: {
-                            action: "lottery"
-                        },
                         success: function (d) {
                             if (d.resCode == 1) {
                                 // if (d.chance && d.allowLottery) {
@@ -241,32 +275,33 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                                     var giftCode = d.resData.type;
                                     var prize = null;
                                     switch (giftCode) {
-                                        case 1:
+                                        case "1":
                                             prize = 1;
                                             break;
-                                        case 2:
+                                        case "2":
                                             prize = 7;
                                             break;
-                                        case 3:
+                                        case "3":
                                             prize = 3;
                                             break;
-                                        case 4:
+                                        case "4":
                                             prize = 6;
                                             break;
-                                        case 5:
+                                        case "5":
                                             prize = 0;
                                             break;
-                                        case 6:
+                                        case "6":
                                             prize = 2;
                                             break;
-                                        case 7:
+                                        case "7":
                                             prize = 4;
                                             break;
-                                        case 8:
+                                        case "8":
                                             prize = 5;
                                             break;
                                     }
                                     lottery.stop(prize);console.log("****,",prize)
+                                    _this.render();
                                     lottery.speed = 100;
                                     roll(); //转圈过程不响应click事件，会将click置为false
                                     click = true; //一次抽奖完成后，设置click为true，可继续抽奖
@@ -276,11 +311,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                                 //     oNoChance.removeClass("hide");
                                 // }
                             } else {
-                                alert(d.errmsg || "出错，请重试", 2000);
+                                oP.show(d.resMsg || "出错，请重试");
                             }
                         },
                         error: function (jqXHR) {
-                            alert(jqXHR, 2000);
+                            oP.show(jqXHR);
                         }
                     })
                 }
@@ -292,7 +327,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 $(".prize-list").removeClass("hide");
                 $.ajax({
                     type: "POST",
-                    url: "//test.jianbing.com/lottery/QueryLotteryRecord/lotteryRecord",
+                    url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lotteryRecord",
                     dataType: 'json',
                     success: function (d) {
                         if (d.resData.list.length != 0) {
@@ -328,7 +363,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             $(".prize-list").on("click", ".btn-prize-conf", function () {
                 $(".mask").addClass("hide");
                 $(".prize-list").addClass("hide");
-                $(".has-prize").remove();
+                if ($(".has-prize")) {
+                    $(".has-prize").remove();
+                }
+
+                if ($(".wrap-no-prize")) {
+                    $(".wrap-no-prize").remove();
+                }
             })
         },
         skip: function () {
