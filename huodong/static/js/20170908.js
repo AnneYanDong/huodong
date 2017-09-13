@@ -1,5 +1,5 @@
 require.config(requireConfig);
-define(["jquery", "fastClick", "ct", "bridge", "Vue-dev"], function($, fastClick, ct, Bridge, Vue, ) {
+define(["jquery", "fastClick", "ct", "bridge", "Vue"], function($, fastClick, ct, Bridge, Vue) {
 
   var oP = Object.create(ct.Prompt);
   oP.create().build();
@@ -278,10 +278,15 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue-dev"], function($, fastClick
                       oP.show(d.ret.msg || '领券失败')
                     }
                   } else if (app.isGjj) { // APP
+                    alert("..")
                     if (!d.ret.login) {
-                      if (Bridge && app.isGjj) {
-                        Bridge.action('login');
-                      }
+                      oP.show('未登录，请先登录APP', {
+                        callback: function() {
+                          if (Bridge && app.isGjj) {
+                            Bridge.action('login');
+                          }
+                        }
+                      });
                       return false;
                     }
                     if (d.ret.type == 1) {
@@ -298,6 +303,9 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue-dev"], function($, fastClick
                         }
                       });
                     }
+                  } else {
+                    oP.show('请登录51公积金管家APP参与该活动');
+                    return false;
                   }
                 } else {
                   oP.show('活动尚未开始！试试其他活动');
