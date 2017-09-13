@@ -52,7 +52,7 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue"], function($, fastClick, ct
         url: ct.Tool.url("/act/request/activity"),
         data: JSON.stringify({
           source: ct.Tool.userAgent().isGjj ? 1 : 0,
-          tag: "20170908_1_0_0_进入页面"
+          tag: "87_1_0_0_进入页面"
         }),
         success: function(d) {
           if (d.success == true) {
@@ -282,7 +282,6 @@ define(["jquery", "fastClick", "ct", "bridge", "Vue"], function($, fastClick, ct
                       })
                     }
                   } else if (app.isGjj) { // APP
-                    alert("..")
                     if (!d.ret.login) {
                       oP.show('未登录，请先登录APP', {
                         callback: function() {
