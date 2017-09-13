@@ -248,7 +248,7 @@ define(["jquery", "share"], function($, wx) {
         url: url,
         data: {
           tag: event,
-          source: s
+          source: _this.userAgent().isGjj ? 1 : 0
         },
         success: function(d) {
           console.debug("埋点记录成功：" + event)
