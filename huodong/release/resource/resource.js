@@ -1,4 +1,3 @@
-
 {
 	"test": {
 		"js": ["r.51gjj.com/act/release/js/test_02a9d89.js"],
@@ -32,7 +31,7 @@
 
 	"20170419": {
 		"js": ["r.51gjj.com/act/release/js/20170419_2f0778f.js"],
-		"css": ["r.51gjj.com/act/release/css/20170419_acee653.css"]
+		"css": ["r.51gjj.com/act/release/css/20170419_c6cd5ed.css"]
 	},
 
 	"20170425": {
