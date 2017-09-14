@@ -38,7 +38,7 @@
                     <input class="JS-code" type="tel" placeholder="请输入验证码" maxlength="6">
                     <div class="code-btn JS-get-code">获取验证码</div>
                 </div>
-                <input class="btn-submit" value="领取18888元体验金" type="button">
+                <input class="btn-submit" bp="20170908_1_1_0_领取18888元体验金" value="领取18888元体验金" type="button">
             </div>
             <div class="tips-phone">
                 <p>好友<span></span>邀请你来51有钱理财</p>

@@ -21,7 +21,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
     var cur_2 = 1;
     var flag = true;
 
-    ct.Tool.buryPoint_v2(0);
+    ct.Tool.buryPoint_v2(ct.Tool.userAgent().isGjj? 1: 0);
 
     var run = {
 
@@ -62,7 +62,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 url: ct.Tool.url("/act/request/activity"),
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "20170901_1_0_0_进入页面"
+                    tag: "20170905_1_0_0_邀请记录"
                 }),
                 success: function (d) {
                     if (d.success == true) {
