@@ -11,9 +11,9 @@
         "resCode"=>1,
         "resMsg"=>"操作成功",
         "resData"=>array(
-            "list"=>array(
-                array("type"=>2)
-            ),
+                "type"=>"4",
+
+
             "totalTenderAmount"=>2000,
             "lotteryTime"=>3
         )

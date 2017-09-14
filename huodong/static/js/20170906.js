@@ -21,7 +21,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
     var cur_2 = 1;
     var flag = true;
 
-    ct.Tool.buryPoint_v2(0);
+    ct.Tool.buryPoint_v2(ct.Tool.userAgent().isGjj? 1: 0);
 
     var run = {
 
@@ -33,7 +33,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
 
             /*设置HTML的font-size*/
             ct.Tool.setFont();
+            // ct.Tool.handleBottomStatusBar();
             window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
+            // window.addEventListener("resize", ct.Tool.debounce(ct.Tool.handleBottomStatusBar));
             // window.onresize = ct.Tool.debounce(ct.Tool.setFont)
 
             /*整体预加载动画*/
@@ -62,7 +64,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 url: ct.Tool.url("/act/request/activity"),
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "20170901_1_0_0_进入页面"
+                    tag: "20170905_1_0_0_邀请记录"
                 }),
                 success: function (d) {
                     if (d.success == true) {
@@ -116,12 +118,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                             for (var i = 0; i < loadingPage_1; i++) {
                                 var userName = json.resData.userInvites[i].userName;
                                 var inviteTime = json.resData.userInvites[i].inviteTime;
-                                var inviestTotal = json.resData.userInvites[i].inviestTotal;
+                                var sumTenderMoney = json.resData.userInvites[i].sumTenderMoney;
 
                                 if (investTotal > 0) {
                                     inviteSue++;
                                 }
-                                html += '<li class="record-list"><span>' + userName + '</span><span>' + inviteTime + '</span><span>' + inviestTotal + '</span></li>';
+                                html += '<li class="record-list"><span>' + userName + '</span><span>' + inviteTime + '</span><span>' + sumTenderMoney + '</span></li>';
                             }
                             $(".wrap-tab .record-on .wrap-scroll").append(html);
                         } else if (currentPage_1 == 1) {
@@ -142,13 +144,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                             for (var i = 0; i < loadingPage_2; i++) {
                                 var accountTime = json.resData.list[i].accountTime;
                                 var money = json.resData.list[i].money;
-                                var relaName = json.resData.list[i].relaName;
+                                var realName = json.resData.list[i].realName;
                                 var investTotal = loadingPage_2;
 
                                 if (investTotal > 0) {
                                     inviteSue++;
                                 }
-                                html += '<li class="record-list"><span>' + accountTime + '</span><span>' + money + '</span><span>' + relaName + '</span></li>';
+                                html += '<li class="record-list"><span>' + accountTime + '</span><span>' + money + '</span><span>' + realName + '</span></li>';
                             }
                             $(".wrap-tab .cur .wrap-scroll").append(html);
                         } else if (currentPage_2 == 1) {
@@ -169,12 +171,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         render1: function () {
             _this = this;
             var falg = true;
-            _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteList/pageNum/1/pageSize/10');
+            _this.addItems('/invest2/user/queryUser/userInviteList/pageNum/1/pageSize/10');
         },
         render2: function () {
             _this = this;
             var falg = true;
-            _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteAward/1/10');
+            _this.addItems('/invest2/user/queryUser/userInviteAward/1/10');
 
         },
         scrollTab: function () {
@@ -188,7 +190,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                         $('.record-on .wrap-scroll').unbind('scroll');
                         return;
                     } else {
-                        _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteList/pageNum/' + cur_1 + '/pageSize/10');
+                        _this.addItems('/invest2/user/queryUser/userInviteList/pageNum/' + cur_1 + '/pageSize/10');
                     }
                     loading_1 = false;
                 }, 300)
@@ -203,7 +205,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                         $('.cur .wrap-scroll').unbind('scroll');
                         return;
                     } else {
-                        _this.addItems('//test.jianbing.com/invest2/user/queryUser/userInviteAward/' + cur_2 + '/10');
+                        _this.addItems('/invest2/user/queryUser/userInviteAward/' + cur_2 + '/10');
                     }
                     loading_2 = false;
                 }, 300)

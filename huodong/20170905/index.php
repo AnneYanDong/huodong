@@ -31,18 +31,18 @@
             <div class="invite-text"><img data-src="<?php echo $imgUrl;?>invite_text.png"></div>
             <div class="act-date"><img data-src="<?php echo $imgUrl;?>act_date.png"></div>
             <div class="wrap-prize">
-                <img data-src="<?php echo $imgUrl;?>prize.png">
-                <div class="invite-record-btn"></div>
+                <img data-src="<?php echo $imgUrl;?>prize_v2.png">
+                <div class="invite-record-btn" bp="20170905_1_1_0_邀请记录"></div>
             </div>
             <div class="wrap-money"><img data-src="<?php echo $imgUrl;?>money.png"></div>
             <div class="wrap-tips">
                 <p>*本活动最终解释权归51有钱所有*</p>
                 <p>客服电话： 400-863-5151</p>
             </div>
-            <div class="wrap-btn">
+            <!-- <div class="wrap-btn">
                 <img id="qrcode-show" class="qrcode_btn" data-src="<?php echo $imgUrl;?>qrcode.png">
                 <img class="invite_btn" data-src="<?php echo $imgUrl;?>invite_btn.png">
-            </div>
+            </div> -->
         </div>
         <div class="code-show" id="JS-code-show">
             <div class="code-cont">
@@ -53,6 +53,10 @@
             </div>
         </div>
     </div>
+</div>
+<div class="wrap-btn">
+    <img id="qrcode-show" bp="20170905_1_2_0_面对面扫码邀请" class="qrcode_btn" data-src="<?php echo $imgUrl;?>qrcode.png">
+    <img class="invite_btn" bp="20170905_1_3_0_立即邀请拿奖励" data-src="<?php echo $imgUrl;?>invite_btn_v2.png">
 </div>
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     <script>

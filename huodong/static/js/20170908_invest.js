@@ -11,7 +11,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
     var local = ct.Tool.local();
     var host = window.location.host
 
-    ct.Tool.buryPoint_v2(0);
+    ct.Tool.buryPoint_v2(ct.Tool.userAgent().isGjj? 1: 0);
 
     var run = {
 
@@ -52,7 +52,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 url: ct.Tool.url("/act/request/activity"),
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "20170901_1_0_0_进入页面"
+                    tag: "20170908_1_0_0_理财被邀请人页面"
                 }),
                 success: function (d) {
                     if (d.success == true) {
@@ -69,7 +69,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             _this.closeRule();
             _this.getCode();
             _this.searchClick();
-
+            _this.render();
+        },
+        render: function () {
+            var phone = getURLParams(window.location.href)["phone"];
+            $(".tips-phone p span").text(phone);
         },
         openRule: function () {
             $(".btn-rule").on("click", "span",function () {
@@ -90,7 +94,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 if (_this.checkPhone($(".JS-phone"))) {
                     var phoneNum = $(".JS-phone").val();
                     $.ajax({
-                        url: "//b.jianbing.com/act/market/get_verification_code",
+                        url: "/act/market/get_verification_code",
                         type: "POST",
                         dataType: "JSON",
                         data:JSON.stringify({"phone": phoneNum}),
@@ -114,7 +118,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         searchClick: function() {
             var _this = this;
             var skipTimer = null;
-            var oUrl = "//kaifa.jianbing.com/act/market/get_invitation_register";
+            var oUrl = "/act/market/get_invitation_register";
             $(".btn-submit").on("click", function() {
                 if (_this.checkPhone($(".JS-phone")) && _this.checkCode($(".JS-code"))) {
                     var phoneNum = $(".JS-phone").val();
@@ -132,9 +136,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                              }),
                         success: function(d) {
                             if (d.success === true) {
-                                window.location.href = "//d.51gjj.com/51gjj_a.html?p=app3";
-                            } else{
-                                oP.show(d.msg || "出错了，请重试")
+                                //window.location.href = "http://d.51gjj.com/";
+                                window.location.href = "./download.php";
+                            } else if (d.code == 512) {
+                                oP.show("您已经注册过，不能太贪心哦～");
+                            } else {
+                                oP.show(d.msg || "出错了，请重试");
                             }
                         },
                         error: function(xhr) {
