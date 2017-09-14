@@ -50,15 +50,15 @@
             </div>
             <div class="btn-rule-1">
                 <p>一次抽奖=投资每满5000或每邀1位好友投满1000</p>
-                <p><span class="btn-lottery-rule">具体规则>></span></p>
+                <p><span class="btn-lottery-rule" bp="20170909_1_1_0_具体规则">具体规则>></span></p>
             </div>
             <div class="wrap-button">
-                <div class="btn-change" bp="20170909_1_1_0_立即赚取机会"><img data-src="<?php echo $imgUrl;?>btn_change.png"></div>
-                <div class="btn-prize" bp="20170909_1_2_0_我的奖品"><img data-src="<?php echo $imgUrl;?>btn_prize.png"></div>
+                <div class="btn-change" bp="20170909_1_2_0_立即赚取机会"><img data-src="<?php echo $imgUrl;?>btn_change.png"></div>
+                <div class="btn-prize" bp="20170909_1_3_0_我的奖品"><img data-src="<?php echo $imgUrl;?>btn_prize.png"></div>
             </div>
             <div class="money-prize"><img data-src="<?php echo $imgUrl;?>money.png"></div>
-            <div class="btn-rule-2">活动规则>></div>
-            <div class="toPurchase" bp="20170909_1_3_0_立即抢购">立即抢购</div>
+            <div class="btn-rule-2" bp="20170909_1_4_0_活动规则">活动规则>></div>
+            <div class="toPurchase" bp="20170909_1_5_0_立即抢购">立即抢购</div>
             <div class="btn-tips">您当前累计投资14天标<span>999.999</span>元</div>
             <div class="wrap-bottom">
                 <p>*本活动所有解释权归51有钱所有，与苹果公司无关*</p>

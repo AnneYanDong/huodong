@@ -109,7 +109,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             _this = this;
             var curTime = _this.getNowFormatDate();
             console.log(curTime)
-            if (curTime >= '2017-09-14 16:25:00') {
+            if (curTime >= '2017-09-15 00:00:00') {
                 timeFlag = true;
                 _this.pageload();
                 _this.myPrize();
@@ -127,7 +127,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         render: function () {
             $.ajax({
                 type: "POST",
-                url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lotteryTime",
+                url: "/invest2/lottery/QueryLotteryRecord/lotteryTime",
                 dataType: 'json',
                 success: function (d) {
                     var lotteryTime = d.resData.lotteryTime;
@@ -141,7 +141,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             });
             $.ajax({
                 type: "POST",
-                url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lottery/totalTenderAmount",
+                url: "/invest2/lottery/QueryLotteryRecord/lottery/totalTenderAmount",
                 dataType: 'json',
                 success: function (d) {
                     var totalTenderAmount = d.resData.totalTenderAmount;
@@ -280,7 +280,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 } else {
                     $.ajax({
                         //url: "test.php",
-                        url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lottery",
+                        url: "/invest2/lottery/QueryLotteryRecord/lottery",
                         type: "POST",
                         dataType: "json",
                         success: function (d) {
@@ -343,7 +343,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 $(".prize-list").removeClass("hide");
                 $.ajax({
                     type: "POST",
-                    url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lotteryRecord",
+                    url: "/invest2/lottery/QueryLotteryRecord/lotteryRecord",
                     dataType: 'json',
                     success: function (d) {
                         if (d.resData.list.length != 0) {
