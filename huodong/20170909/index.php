@@ -28,7 +28,7 @@
     <div class="wp-inner">
         <div class="content">
             <div class="yq-logo"><img data-src="//r.51gjj.com/act/release/img/20170909_logo.png"></div>
-            <div class="prize-img"><img data-src="<?php echo $imgUrl;?>prize_img.png"></div>
+            <div class="prize-img"><img data-src="<?php echo $imgUrl;?>prize_img_v2.png"></div>
             <div class="wrap-lottery">
                 <div class="lottery-bg">
                     <!-- <img data-src="<?php echo $imgUrl;?>lottery_bg.png"> -->
@@ -59,7 +59,7 @@
             <div class="money-prize"><img data-src="<?php echo $imgUrl;?>money.png"></div>
             <div class="btn-rule-2" bp="20170909_1_4_0_活动规则">活动规则>></div>
             <div class="toPurchase" bp="20170909_1_5_0_立即抢购">立即抢购</div>
-            <div class="btn-tips">您当前累计投资14天标<span>999.999</span>元</div>
+            <div class="btn-tips">您当前累计投资14天标<span>0</span>元</div>
             <div class="wrap-bottom">
                 <p>*本活动所有解释权归51有钱所有，与苹果公司无关*</p>
                 <p>客服热线：400-863-5151</p>
