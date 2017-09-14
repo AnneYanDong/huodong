@@ -187,7 +187,7 @@ define(["jquery", "share"], function($, wx) {
         if (imgNum == loaded) {
           clearTimeout(timer);
           $("img").each(function(i, ele) {
-            ele.src = $(this).data("src")
+            ele.src = $(this).data("src") || $(this).attr("src");
           })
           callback.call(_this); // 定时器内部this指向window.因此需要显示绑定this
         }
