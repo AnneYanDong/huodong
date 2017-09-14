@@ -3,6 +3,7 @@
 .wp {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    background: #d73b29;
 }
 
 .wp-inner {
@@ -19,7 +20,7 @@
 }
 .wrap-scroll {
     overflow-y: scroll;
-    height: 400px;
+    height: 380px;
 }
 .wrap-title {
     display: flex;
