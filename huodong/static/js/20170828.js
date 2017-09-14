@@ -11,7 +11,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
     var local = ct.Tool.local();
     var source = ct.Tool.userAgent().isGjj ? 1 : 0;
     ct.Tool.buryPoint_v2(source,"/act/request/activity");
-    // ct.Tool.share(84,"zmtkj");
+    ct.Tool.share(84,"gjjzsy");
     
     var run = {
         start: function () {

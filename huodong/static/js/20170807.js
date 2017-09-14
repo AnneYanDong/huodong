@@ -193,14 +193,16 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                 direction: 'vertical',
                 onTouchEnd:function(swiper){
                     var swiperIndex=swiper.activeIndex;//获取当前活动块的索引值
+                        console.log("swiper内",_this);
+                        _this.PageBuryRequest(swiperIndex);
                     switch (swiperIndex){
                         case 0://第一屏
                         $.ajax({
                             type: "POST",
                             dataType: "JSON",
                             data: JSON.stringify({"unionid": unionid,"shareid": shareid}),
-                            // url: "test.php",
-                            url: "/act/analyze/get_analyze",
+                            url: "test.php",
+                            // url: "/act/analyze/get_analyze",
                             success: function (d) {
                                 if (d.success) {
                                     console.log("后台数据：", d);
