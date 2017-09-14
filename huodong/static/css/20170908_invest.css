@@ -7,9 +7,10 @@
 
 .wp-inner {
     position: relative;
-    height: 25.07rem;
+    height: 25.8rem;
     background: url("//r.51gjj.com/act/release/img/20170908_bg.jpg") no-repeat;
     background-size: 100%;
+    background-color: #db3c28;
 }
 .yq-logo {
     width: 100%;

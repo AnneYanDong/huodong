@@ -136,7 +136,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                              }),
                         success: function(d) {
                             if (d.success === true) {
-                                window.location.href = "http://d.51gjj.com/";
+                                //window.location.href = "http://d.51gjj.com/";
+                                
                             } else if (d.code == 512) {
                                 oP.show("您已经注册过，不能太贪心哦～");
                             } else {
