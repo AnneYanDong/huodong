@@ -132,17 +132,17 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                                 //         window.location.href = "https://lnk0.com/easylink/ELQlo4M5";
                                 //     },1500)
                                 // })
-                                if (!d.ret.login) {
-                                    _this.showDynamicLayout($("#tpl-not-imported"),d);
-                                    $(".dynamic-layout").on("click",".btn1",function(){
-                                        oP.show("先登录才能参与活动哟~");
-                                    })
-                                    if (Bridge) {
-                                        Bridge.action("login");
-                                    }
-                                } else {
+                                // if (!d.ret.login) {
+                                //     _this.showDynamicLayout($("#tpl-not-imported"),d);
+                                //     $(".dynamic-layout").on("click",".btn1",function(){
+                                //         oP.show("先登录才能参与活动哟~");
+                                //     })
+                                //     if (Bridge) {
+                                //         Bridge.action("login");
+                                //     }
+                                // } else {
                                     _this.startIsImportedProcess(d);
-                                }
+                                // }
                             } else {
                                 if (!d.ret.login) {
                                     _this.showDynamicLayout($("#tpl-not-imported"),d);
