@@ -67,9 +67,8 @@
     bottom: 0;
     width: 7.5rem;
     align-items: center;
-    height: 1.3rem;
-    background: #000000;
-    opacity: 0.75;
+    height: 1.08rem;
+    background: #d73d2a;
 }
 .wrap-btn img:first-child {
     padding-right: 0.2rem;

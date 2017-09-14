@@ -11,8 +11,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
     var local = ct.Tool.local();
     var host = window.location.host;
     var timeFlag = false;
-
-    ct.Tool.buryPoint_v2(0);
+    ct.Tool.buryPoint_v2(ct.Tool.userAgent().isGjj? 1: 0);
 
     var run = {
 
@@ -53,7 +52,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 url: ct.Tool.url("/act/request/activity"),
                 data: JSON.stringify({
                     source: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "20170901_1_0_0_进入页面"
+                    tag: "20170909_1_0_0_理财抽奖活动"
                 }),
                 success: function (d) {
                     if (d.success == true) {
