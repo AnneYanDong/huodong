@@ -109,14 +109,14 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -1.3rem;
-    margin-left: -1.3rem;
+    margin-top: -1.8rem;
+    margin-left: -1.8rem;
     padding: 0.1rem;
     background-color: #ffffff;
   }
   .code-show .code-cont .img-code {
-    height: 2.4rem;
-    width: 2.4rem;
+    height: 3.6rem;
+    width: 3.6rem;
     /* height: 120px;
     width: 120px; */
   }

@@ -109,7 +109,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             _this = this;
             var curTime = _this.getNowFormatDate();
             console.log(curTime)
-            if (curTime >= '2017-09-12 17:40:00') {
+            if (curTime >= '2017-09-14 16:25:00') {
                 timeFlag = true;
                 _this.pageload();
                 _this.myPrize();
@@ -391,10 +391,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         },
         skip: function () {
             $(".wrap-button").on("click", ".btn-change", function () {
-                window.location.href = "/hs/appgjj/login?return_url=/app/invest/";
+                window.location.href = "javascript:history.go(-1);";
             })
             $(".toPurchase").on("click", function () {
-                window.location.href = "/hs/appgjj/login?return_url=/app/invest/";
+                window.location.href = "javascript:history.go(-1);";
             })
         }
     }
