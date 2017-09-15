@@ -341,7 +341,6 @@ define(["jquery", "share"], function($, wx) {
       data: 'url=' + encodeURIComponent(url) + '&share_id=' + share_id + '&share_type=' + share_type,
       dataType: 'json',
       success: function(data) {
-        console.log(data);
         share_callback(data);
       }
     });

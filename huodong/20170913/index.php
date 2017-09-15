@@ -24,6 +24,9 @@
     </script>
     </head>
     <body>
+    <img style="display: none;" data-src="https://r.51gjj.com/act/release/img/20170526_bs_bj.png" alt="">
+    <img style="display: none;" data-src="https://r.51gjj.com/act/release/img/20170313_xy_jy.png" alt="">
+    <img style="display: none;" data-src="https://r.51gjj.com/act/release/img/20170313_xy_lxy.png" alt="">
     <div class="wp" v-if="wpShow">
       <div class="wp-inner" ref="wpinner">
         <div class="page page1">
@@ -52,7 +55,7 @@
                 <p>超长免息期</p>
               </div>
             </transition-group>
-            <div @click="startMake(1)" class="button">
+            <div @click="startMake(1)" class="button" bp="88_1_1_0_立即定制">
               <span class="light light-animted"></span>立即定制
             </div>
             <div class="process" @click="process"><span>办卡进度</span><span class="arrow"></span></div>
@@ -62,15 +65,15 @@
           <div class="content">
             <div class="title">选择信用卡额度</div>
             <div class="choose-wrap">
-              <transition enter-active-class="animated fadeInLeft">
-                <div v-if="pageTwoshow" class="item" :class="{'grayscale': choose.cardAmount != 1}" @click="next('cardAmount', 1, 2)">
+              <transition name="my-left-in">
+                <div v-if="pageTwoshow" bp="88_2_1_0_1到5万" class="item" :class="{'grayscale': choose.cardAmount != 1}" @click="next('cardAmount', 1, 2)">
                   <p>1~5万</p>
-                </div>
+                </div>  
               </transition>
-              <transition enter-active-class="animated fadeInRight">
-                <div v-if="pageTwoshow" class="item" :class="{'grayscale': choose.cardAmount != 2}"  @click="next('cardAmount', 2, 2)">
-                  <p>6~50万</p>
-                </div>
+              <transition name="my-right-in">
+                <div v-if="pageTwoshow" bp="88_2_2_0_1到5万" class="item" :class="{'grayscale': choose.cardAmount != 2}"  @click="next('cardAmount', 2, 2)">
+                <p>6~50万</p>
+              </div>
               </transition>
             </div>
           </div>
@@ -79,13 +82,13 @@
           <div class="content">
             <div class="title">选择信用卡发卡行</div>
             <div class="choose-wrap">
-              <transition enter-active-class="animated fadeInLeft">
-                <div v-if="pageThreeshow" class="item" :class="{'grayscale': choose.bank != 1}" @click="next('bank', 1, 3)">
+              <transition name="my-left-in">
+                <div bp="88_3_1_0_浦发" v-if="pageThreeshow" class="item" :class="{'grayscale': choose.bank != 1}" @click="next('bank', 1, 3)">
                   <span class="bank pufa"></span>
                 </div>
               </transition>
-              <transition enter-active-class="animated fadeInRight">
-                <div v-if="pageThreeshow" class="item" :class="{'grayscale': choose.bank != 2}" @click="next('bank', 2, 4)">
+              <transition name="my-right-in">
+                <div bp="88_3_2_0_兴业" v-if="pageThreeshow" class="item" :class="{'grayscale': choose.bank != 2}" @click="next('bank', 2, 4)">
                   <span class="bank xingye"></span>
                 </div>
               </transition>
@@ -99,14 +102,14 @@
               <p class="complement">(即月工资)</p>
             </div>
             <div class="choose-wrap">
-              <transition enter-active-class="animated fadeInLeft">
-                <div v-if="pageFourshow" class="item" :class="{'grayscale': choose.base != 1}" @click="next('base', 1, 4)">
+              <transition name="my-left-in">
+                <div bp="88_4_1_0_4千以下" v-if="pageFourshow" class="item" :class="{'grayscale': choose.base != 1}" @click="next('base', 1, 4)">
                   <p>4000
                     <br>以下</p>
                 </div>
               </transition>
-              <transition enter-active-class="animated fadeInRight">
-                <div v-if="pageFourshow" class="item" :class="{'grayscale': choose.base != 2}" @click="next('base', 2, 4)">
+              <transition name="my-right-in">
+                <div bp="88_4_2_0_4千以上" v-if="pageFourshow" class="item" :class="{'grayscale': choose.base != 2}" @click="next('base', 2, 4)">
                   <p>4000
                     <br>以上</p>
                 </div>
@@ -116,28 +119,34 @@
         </div>
         <div class="page page5">
           <div class="content">
-            <template v-if="page.show && pageFiveshow">
+            <template>
               <div class="recommend-card">
                 <div class="introduction">
-                  <h6 class="card-title" v-text="page.show.title"></h6>
+                  <h6 v-if="page.show && pageFiveshow" class="card-title" v-text="page.show.title"></h6>
                   <div class="line"></div>
                   <div class="card">
-                    <img :src="page.show.img">
+                    <transition enter-active-class="animated flipInX">
+                    <img v-if="page.show && pageFiveshow" :src="page.show.img">
+                    </transition>
                   </div>
                   <div class="desc interests">
-                    <h6 class="area-title"><span class="logo hg"></span>权益</h6>
-                    <ul class="desc-list">
-                      <li v-for="item in page.show.interests"><span class="point">·</span><p v-text="item"></p></li>
-                    </ul>
+                    <h6 v-if="page.show && pageFiveshow" class="area-title"><span class="logo hg"></span>权益</h6>
+                    <transition-group enter-active-class="animated-fadeIn fadeInRight" tag="ul" :class="'desc-list'">
+                      <template v-if="page.show && pageFiveshow">
+                        <li key="item" v-for="(item,index) in page.show.interests" :style="'animation-delay:' + index * 0.2 + 's'"><span class="point">·</span><p v-text="item"></p></li>
+                      </template>
+                    </transition-group>
                   </div>
                   <div class="desc activity">
-                    <h6 class="area-title"><span class="logo hd"></span>活动</h6>
-                    <ul class="desc-list">
-                      <li v-for="item in page.show.activity"><span class="point">·</span><p v-text="item"></p></li>
-                    </ul>
+                    <h6 v-if="page.show && pageFiveshow" class="area-title"><span class="logo hd"></span>活动</h6>
+                    <transition-group enter-active-class="animated-fadeIn fadeInRight" tag="ul" :class="'desc-list'">
+                      <template v-if="page.show && pageFiveshow">
+                        <li key="item" v-for="(item,index) in page.show.activity" :style="'animation-delay:' + index * 0.2 + 's'"><span class="point">·</span><p v-text="item"></p></li>
+                      </template>
+                    </transition-group>
                   </div>
                 </div>
-                <div class="apply" @click="apply(page.show.url)">立即申请</div>
+                <div class="apply" @click="apply"><span class="light light-animted"></span>立即申请</div>
               </div>
               <div class="rule">
                 <span @click.self="showRule">活动规则</span>

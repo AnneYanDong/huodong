@@ -311,7 +311,7 @@ a {
   background-position: center;
 }
 .page1 {
-  background-image: url("../../20170913/20170913page1_bg.jpg");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page1_bg.jpg");
 }
 .page1 .content {
   height: 100%;
@@ -334,7 +334,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../../20170913/20170913page1_circle.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page1_circle.png");
   background-size: cover;
   z-index: 0;
 }
@@ -344,7 +344,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../../20170913/20170913page1_money.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page1_money.png");
   background-size: cover;
   z-index: 3;
 }
@@ -356,7 +356,7 @@ a {
   z-index: 2;
   width: 5.8rem;
   height: 3.09rem;
-  background-image: url("../../20170913/20170913page1_title.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page1_title.png");
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -368,7 +368,7 @@ a {
   width: 5.64rem;
   height: 2.51rem;
   z-index: 2;
-  background-image: url("../../20170913/20170913page1_card.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page1_card.png");
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -399,13 +399,13 @@ a {
   background-size: 100%;
 }
 .page1 .content .feature .item.f-one .icon {
-  background-image: url("../../20170913/20170913page1_feature1.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page1_feature1.png");
 }
 .page1 .content .feature .item.f-two .icon {
-  background-image: url("../../20170913/20170913page1_feature2.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page1_feature2.png");
 }
 .page1 .content .feature .item.f-three .icon {
-  background-image: url("../../20170913/20170913page1_feature3.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page1_feature3.png");
 }
 .page1 .content .feature .item p {
   font-size: .3rem;
@@ -433,7 +433,7 @@ a {
   position: absolute;
   width: 2.1rem;
   height: 1rem;
-  background-image: url("../../20170913/20170913page1_light.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page1_light.png");
   background-repeat: no-repeat;
   background-size: 100%;
   top: 0;
@@ -463,7 +463,7 @@ a {
   background-size: 100%;
 }
 .page2 {
-  background-image: url("../../20170913/20170913page_normal_bg.jpg");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page_normal_bg.jpg");
 }
 .page2 .content .title {
   font-size: 24px;
@@ -485,7 +485,7 @@ a {
 .page2 .content .choose-wrap .item {
   width: 3rem;
   height: 4.05rem;
-  background-image: url("../../20170913/20170913page_normal_choose_bg.jpg");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page_normal_choose_bg.jpg");
   font-size: .74rem;
   line-height: .74rem;
   text-align: center;
@@ -504,7 +504,7 @@ a {
   margin-left: .18rem;
 }
 .page3 {
-  background-image: url("../../20170913/20170913page_normal_bg.jpg");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page_normal_bg.jpg");
 }
 .page3 .content .title {
   font-size: 24px;
@@ -526,7 +526,7 @@ a {
 .page3 .content .choose-wrap .item {
   width: 3rem;
   height: 4.05rem;
-  background-image: url("../../20170913/20170913page_normal_choose_bg.jpg");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page_normal_choose_bg.jpg");
   text-align: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -547,13 +547,13 @@ a {
   background-size: 100%;
 }
 .page3 .content .choose-wrap .item .bank.pufa {
-  background-image: url("../../20170913/20170913pufa.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913pufa.png");
 }
 .page3 .content .choose-wrap .item .bank.xingye {
-  background-image: url("../../20170913/20170913xingye.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913xingye.png");
 }
 .page4 {
-  background-image: url("../../20170913/20170913page_normal_bg.jpg");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page_normal_bg.jpg");
 }
 .page4 .content .title {
   font-size: 24px;
@@ -578,7 +578,7 @@ a {
 .page4 .content .choose-wrap .item {
   width: 3rem;
   height: 4.05rem;
-  background-image: url("../../20170913/20170913page_normal_choose_bg.jpg");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page_normal_choose_bg.jpg");
   text-align: center;
   color: #fff;
   font-size: .74rem;
@@ -594,7 +594,7 @@ a {
   margin-left: .18rem;
 }
 .page5 {
-  background-image: url("../../20170913/20170913page_normal_bg.jpg");
+  background-image: url("//r.51gjj.com/act/release/img/20170913page_normal_bg.jpg");
 }
 .page5 .content {
   padding-top: 1.3rem;
@@ -606,6 +606,7 @@ a {
 .page5 .content .recommend-card .introduction {
   background: rgba(30, 29, 38, 0.95);
   padding: .3rem 0;
+  min-height: 6rem;
 }
 .page5 .content .recommend-card .introduction .card-title {
   font-size: .4rem;
@@ -643,6 +644,7 @@ a {
 .page5 .content .recommend-card .introduction .card {
   width: 4.57rem;
   height: 2.88rem;
+  min-height: 2.88rem;
   margin: .22rem auto 0;
 }
 .page5 .content .recommend-card .introduction .card img {
@@ -652,6 +654,7 @@ a {
 }
 .page5 .content .recommend-card .introduction .desc {
   margin-top: .3rem;
+  min-height: .5rem;
 }
 .page5 .content .recommend-card .introduction .desc .area-title {
   height: .4rem;
@@ -672,10 +675,10 @@ a {
   background-size: 100%;
 }
 .page5 .content .recommend-card .introduction .desc .area-title .logo.hg {
-  background-image: url("../../20170913/20170913icon_hg.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913icon_hg.png");
 }
 .page5 .content .recommend-card .introduction .desc .area-title .logo.hd {
-  background-image: url("../../20170913/20170913icon_hd.png");
+  background-image: url("//r.51gjj.com/act/release/img/20170913icon_hd.png");
 }
 .page5 .content .recommend-card .introduction .desc .desc-list {
   padding: 0 .74rem;
@@ -721,6 +724,19 @@ a {
   color: #000;
   font-size: .36rem;
   background: #d6af6f;
+  position: relative;
+  overflow: hidden;
+}
+.page5 .content .recommend-card .apply .light {
+  position: absolute;
+  width: 2.1rem;
+  height: 1rem;
+  background-image: url("//r.51gjj.com/act/release/img/20170913page1_light.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  top: 0;
+  left: -2.1rem;
+  z-index: 9;
 }
 .page5 .content .rule {
   margin-top: .38rem;
@@ -805,15 +821,38 @@ a {
   animation-timing-function: ease-out;
   -webkit-animation-timing-function: ease-out;
 }
+.animated-fadeIn {
+  animation-duration: 0.6s;
+  -webkit-animation-duration: 0.6s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
 @keyframes lightmove {
   0% {
     transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
   }
   50% {
     transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
   }
   100% {
     transform: translateX(600%);
+    -webkit-transform: translateX(600%);
+  }
+}
+@-webkit-keyframes lightmove {
+  0% {
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(600%);
+    -webkit-transform: translateX(600%);
   }
 }
 .grayscale {
@@ -889,4 +928,16 @@ a {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+.my-left-in-enter-active {
+  transition: opacity 1s;
+}
+.my-left-in-enter {
+  opacity: 0;
+}
+.my-right-in-enter-active {
+  transition: opacity 1s;
+}
+.my-right-in-enter {
+  opacity: 0;
 }
