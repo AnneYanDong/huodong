@@ -117,10 +117,21 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                         console.log("后台数据：",d);
                         _this.getLottery(d);
                         if (d.ret.old) {
-                            oP.show("非常抱歉，此活动只针对理财新用户哟~");
+                            oP.show("非常抱歉，此活动只针对理财新用户哟~去试试其他理财产品吧~");
                             _this.showDynamicLayout($("#tpl-not-imported"),d);
+               
+                                setTimeout(function(){
+                                    window.location.href = "/51wealthy";
+                                },1500);
+                            
                             $(".dynamic-layout").on("click",".btn1",function(){
-                                oP.show("非常抱歉，此活动只针对理财新用户哟~");
+                                oP.show("非常抱歉，此活动只针对理财新用户哟~去试试其他理财产品吧~");
+                            
+                                    setTimeout(function(){
+                                        window.location.href = "/51wealthy";
+
+                                    },1500);
+                                
                             })
                         } else {
                             
@@ -161,8 +172,20 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                     } else {
                         _this.showDynamicLayout($("#tpl-not-imported"),d);
                         oP.show(d.msg || "非常抱歉，服务器开小差啦~");
+                        if (d.code === 252) {
+                            setTimeout(function(){
+                                window.location.href = "/51wealthy";
+
+                            },1500);
+                        }
                         $(".dynamic-layout").on("click",".btn1",function(){
                             oP.show(d.msg || "非常抱歉，服务器开小差啦~");
+                            if (d.code === 252) {
+                                setTimeout(function(){
+                                    window.location.href = "/51wealthy";
+
+                                },1500);
+                            }
                         })
                     }
                 }
