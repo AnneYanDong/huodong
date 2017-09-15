@@ -10,7 +10,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
 
     var local = ct.Tool.local();
     var source = ct.Tool.userAgent().isGjj ? 1 : 0;
-    ct.Tool.buryPoint_v2(0);
+    ct.Tool.buryPoint_v2(source);
     ct.Tool.share(85,"jiexigjj831");
     var run = {
         start: function () {
@@ -189,62 +189,62 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
             });
             return fullpage;
         },
-        useSwiper: function() {
-            var _this = this;
-            var swiper = new Swiper('.swiper-container', {
-                direction: 'vertical',
-                history: "index.php?unionid="+unionid+"&shareid="+shareid+"#page",
-                onTouchEnd:function(swiper){
-                    var swiperIndex=swiper.activeIndex;//获取当前活动块的索引值
-                    switch (swiperIndex){
-                        case 0://第一屏
-                        $.ajax({
-                            type: "POST",
-                            dataType: "JSON",
-                            data: JSON.stringify({"unionid": unionid,"shareid": shareid}),
-                            // url: "test.php",
-                            url: "/act/analyze/get_analyze",
-                            success: function (d) {
-                                if (d.success) {
-                                    console.log("后台数据：", d);
-                                    if (d.ret.is_weChat) {
-                                        $(".page8").on("click", ".img-btn", function () {
-                                            $(".page8 .share").addClass("bounce-out");
-                                            setTimeout(function(){
-                                                $(".page8 .share").removeClass("bounce-out");
-                                            },200);
-                                        })
-                                        _this.handleProcess(d);
-                                    } else{
-                                        if (d.ret.login == false) {
-                                            // swiper.detachEvents();
-                                            oP.show("想解析公积金，先登录APP啦！");
-                                            $(".page1").addClass("swiper-no-swiping");
-                                            $(".page2").remove();
-                                            $(".page3").remove();
-                                            $(".page4").remove();
-                                            $(".page5").remove();
-                                            $(".page6").remove();
-                                            $(".page7").remove();
-                                            $(".page8").remove();
-                                            $(".page9").remove();
-                                            if (Bridge) {
-                                                Bridge.action("login");
-                                            }
-                                        } else {
-                                            _this.handleProcess(d);
-                                        }
-                                    }
-                                } else {
-                                    oP.show(d.msg || "出错了请重试");
-                                }
-                            }
-                        });
-                        break;
-                    }
-                }
-            });
-        },
+        // useSwiper: function() {
+        //     var _this = this;
+        //     var swiper = new Swiper('.swiper-container', {
+        //         direction: 'vertical',
+        //         history: "index.php?unionid="+unionid+"&shareid="+shareid+"#page",
+        //         onTouchEnd:function(swiper){
+        //             var swiperIndex=swiper.activeIndex;//获取当前活动块的索引值
+        //             switch (swiperIndex){
+        //                 case 0://第一屏
+        //                 $.ajax({
+        //                     type: "POST",
+        //                     dataType: "JSON",
+        //                     data: JSON.stringify({"unionid": unionid,"shareid": shareid}),
+        //                     // url: "test.php",
+        //                     url: "/act/analyze/get_analyze",
+        //                     success: function (d) {
+        //                         if (d.success) {
+        //                             console.log("后台数据：", d);
+        //                             if (d.ret.is_weChat) {
+        //                                 $(".page8").on("click", ".img-btn", function () {
+        //                                     $(".page8 .share").addClass("bounce-out");
+        //                                     setTimeout(function(){
+        //                                         $(".page8 .share").removeClass("bounce-out");
+        //                                     },200);
+        //                                 })
+        //                                 _this.handleProcess(d);
+        //                             } else{
+        //                                 if (d.ret.login == false) {
+        //                                     // swiper.detachEvents();
+        //                                     oP.show("想解析公积金，先登录APP啦！");
+        //                                     $(".page1").addClass("swiper-no-swiping");
+        //                                     $(".page2").remove();
+        //                                     $(".page3").remove();
+        //                                     $(".page4").remove();
+        //                                     $(".page5").remove();
+        //                                     $(".page6").remove();
+        //                                     $(".page7").remove();
+        //                                     $(".page8").remove();
+        //                                     $(".page9").remove();
+        //                                     if (Bridge) {
+        //                                         Bridge.action("login");
+        //                                     }
+        //                                 } else {
+        //                                     _this.handleProcess(d);
+        //                                 }
+        //                             }
+        //                         } else {
+        //                             oP.show(d.msg || "出错了请重试");
+        //                         }
+        //                     }
+        //                 });
+        //                 break;
+        //             }
+        //         }
+        //     });
+        // },
         setNavAttr: function() {
             if (Bridge) {
                 Bridge.action("setNavigationColor",{backgroundColor:"#e33d3b",textColor:"#fff",iconType:"1"});
