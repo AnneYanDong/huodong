@@ -28,7 +28,7 @@
     <div class="wp-inner">
         <div class="content">
             <div class="yq-logo"><img data-src="//r.51gjj.com/act/release/img/20170909_logo.png"></div>
-            <div class="prize-img"><img data-src="<?php echo $imgUrl;?>prize_img_v2.png"></div>
+            <div class="prize-img"><img data-src="<?php echo $imgUrl;?>prize_img_v3.png"></div>
             <div class="wrap-lottery">
                 <div class="lottery-bg">
                     <!-- <img data-src="<?php echo $imgUrl;?>lottery_bg.png"> -->
