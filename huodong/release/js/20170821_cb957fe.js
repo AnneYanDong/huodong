@@ -44,9 +44,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                         _this.init();
                     }, 500)
                 }
-            })
+            });
         },
-
         init: function () {
             console.log("周末提款机2.0活动");
             var _this = this;
@@ -117,17 +116,17 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                 var resRuleHtml = juicer(ruleTpl, ruleJson);
                 $('body').append(resRuleHtml);
                 $(".rule").fadeIn();
-            })
+            });
         },
         // 关闭规则
         closeRule: function () {
             $("body").on("click", ".btn-close", function () {
                 $(".rule").fadeOut(function () {
                     oM.hide();
-                })
-            })
+                });
+            });
         },
-        //分享按钮：
+        //分享按钮
         share: function () {
             var u = navigator.userAgent;
             var app = {
@@ -153,11 +152,11 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
                             "link": "https://" + host + "/act/home/huodong/20170821/index.php"
                         });
                     }
-                })
+                });
             }
             return this;
         }
-    }
+    };
     var ruleJson = {
         rule: [
             "领券后，通过活动页面完成申请或放款将获得特定奖励，同个业务奖励只能领取一次。",
@@ -167,6 +166,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function 
             "有任何疑问或者帮助可联系客服4008635151。",
             "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"
         ]
-    }
+    };
     run.start();
-})
+});

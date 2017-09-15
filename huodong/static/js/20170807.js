@@ -88,6 +88,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                                 success: function (d) {
                                     if (d.success) {
                                         console.log("后台数据：", d);
+                                        newShareId = d.ret.shareid;
                                         if (d.ret.is_weChat) {
                                             $(".page8").on("click", ".img-btn", function () {
                                                 $(".page8 .share").addClass("bounce-out");
@@ -191,10 +192,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
             var _this = this;
             var swiper = new Swiper('.swiper-container', {
                 direction: 'vertical',
+                history: "index.php?unionid="+unionid+"&shareid="+shareid+"#page",
                 onTouchEnd:function(swiper){
                     var swiperIndex=swiper.activeIndex;//获取当前活动块的索引值
-                        console.log("swiper内",_this);
-                        _this.PageBuryRequest(swiperIndex);
                     switch (swiperIndex){
                         case 0://第一屏
                         $.ajax({
@@ -216,7 +216,17 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                                         _this.handleProcess(d);
                                     } else{
                                         if (d.ret.login == false) {
+                                            // swiper.detachEvents();
                                             oP.show("想解析公积金，先登录APP啦！");
+                                            $(".page1").addClass("swiper-no-swiping");
+                                            $(".page2").remove();
+                                            $(".page3").remove();
+                                            $(".page4").remove();
+                                            $(".page5").remove();
+                                            $(".page6").remove();
+                                            $(".page7").remove();
+                                            $(".page8").remove();
+                                            $(".page9").remove();
                                             if (Bridge) {
                                                 Bridge.action("login");
                                             }
@@ -486,7 +496,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
                     "thumb": "https://r.51gjj.com/act/release/img/20170807_new_share.png",
-                    "link": "https://" + host + "/act/home/huodong/20170807/index.php?shareid=" + shareid
+                    "link": "https://" + host + "/act/home/huodong/20170807/index.php?shareid=" + newShareId
                 });
                     }
                 })
@@ -515,7 +525,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                     "title": "要不是和你铁，这份公积金档案也不会发给你！",
                     'desc': "点击查看我的公积金秘密。",
                     "thumb": "https://r.51gjj.com/act/release/img/20170807_new_share.png",
-                    "link": "https://" + host + "/act/home/huodong/20170824/index.php?shareid=" + shareid
+                    "link": "https://" + host + "/act/home/huodong/20170824/index.php?shareid=" + newShareId
                 });
                 //     }
                 // })

@@ -160,9 +160,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                         }
                     } else {
                         _this.showDynamicLayout($("#tpl-not-imported"),d);
-                        oP.show("非常抱歉，服务器开小差啦~");
+                        oP.show(d.msg || "非常抱歉，服务器开小差啦~");
                         $(".dynamic-layout").on("click",".btn1",function(){
-                            oP.show("非常抱歉，服务器开小差啦~");
+                            oP.show(d.msg || "非常抱歉，服务器开小差啦~");
                         })
                     }
                 }
