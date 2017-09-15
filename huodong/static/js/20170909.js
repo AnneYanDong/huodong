@@ -326,6 +326,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                                 //     oMask.removeClass("hide");
                                 //     oNoChance.removeClass("hide");
                                 // }
+                            } else if (d.resMsg == "Token不存在") {
+                                oP.show("请先登录哦~");
                             } else {
                                 oP.show(d.resMsg || "出错，请重试");
                             }

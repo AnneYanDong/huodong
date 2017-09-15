@@ -160,9 +160,9 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
                         }
                     } else {
                         _this.showDynamicLayout($("#tpl-not-imported"),d);
-                        oP.show("非常抱歉，服务器开小差啦~");
+                        oP.show(d.msg || "非常抱歉，服务器开小差啦~");
                         $(".dynamic-layout").on("click",".btn1",function(){
-                            oP.show("非常抱歉，服务器开小差啦~");
+                            oP.show(d.msg || "非常抱歉，服务器开小差啦~");
                         })
                     }
                 }
@@ -361,7 +361,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "marquee",
     }
     var ruleJson = {
         rule: [
-            "活动时间：9月5号-9月19号；",
+            "活动时间：9月5号-9月30号；",
             "活动对象：已导入公积金的所有用户；",
             "活动页面中所有金额单位均为元；",
             "导入多个公积金账户的用户，以距当前时间最近的导入账户为发放标准；",

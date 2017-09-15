@@ -42,7 +42,7 @@
             </div>
             <div class="tips-phone">
                 <p>好友<span></span>邀请你来51有钱理财</p>
-                <p>下载51公积金管家app, 在“理财业务”使用</p>
+                <!--<p>下载51公积金管家app, 在“理财业务”使用</p>-->
             </div>
             <div class="btn-rule"><span>活动规则>></span></div>
             <div class="introduce"><img data-src="<?php echo $imgUrl_1?>introduce_v2.png"></div>
@@ -56,7 +56,7 @@
 <div class="rule zm-customer-confirm hide">
     <h6>活动规则</h6>
     <ul>
-        <li><span>1.</span>获得条件：完成注册后，下载51公积金管家app，在“理财业务”找到新手体验标领取；</li>
+        <li><span>1.</span>获得条件：完成注册后，前往“理财首页”找到 “新手体验标” 领取；</li>
         <li><span>2.</span>发放时间：体验金的收益会在领取成功后的第2天发放到您的理财账户；</li>
         <li><span>3.</span>请在接受邀请的15日内领取体验金，过期失效，尽快领取。</li>
     </ul>

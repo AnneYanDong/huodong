@@ -10,6 +10,8 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
   var local = ct.Tool.local();
   var app = ct.Tool.userAgent();
 
+  var cookie = Object.create(ct.Cookie);
+
   ct.Tool.buryPoint_v2(0);
 
   ct.Tool.share();
@@ -142,7 +144,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   // if (!vm.pageThreeshow) {
                   //   vm.pushState(vm.page.now);
                   // }
-                  vm.respondState(1,function(){
+                  vm.respondState(1, function() {
                     vm.choose.cardAmount = 0;
                   })
                   vm.pageThreeshow = true;
@@ -152,7 +154,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   // if (!vm.pageFourshow) {
                   //   vm.pushState(vm.page.now);
                   // }
-                  vm.respondState(2, function(){
+                  vm.respondState(2, function() {
                     vm.choose.bank = 0;
                   })
                   vm.pageFourshow = true;
@@ -163,13 +165,13 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   //   vm.pushState(vm.page.now);
                   // }
                   if (vm.choose.bank == 1) {
-                    vm.respondState(3,function(){
+                    vm.respondState(3, function() {
                       vm.choose.base = 0;
                       vm.page.show = null;
                       vm.pageFiveshow = false;
                     })
                   } else if (vm.choose.bank == 2) {
-                    vm.respondState(2, function(){
+                    vm.respondState(2, function() {
                       vm.choose.bank = 0;
                       vm.page.show = null;
                       vm.pageFiveshow = false;
@@ -198,6 +200,15 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
           },
           apply: function() {
             var vm = this;
+            var loginId = cookie.get("jianbing_customer_id");
+            
+            if (Bridge && app.isGjj) {
+              if (!/\d/g.test(loginId)) {
+                Bridge.action('login');
+                return false;
+              }
+            }
+
             var tag = '88_5_1_' + vm.page.show.bankId + '_立即申请';
             $.ajax({
               type: "POST",
@@ -209,7 +220,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
               }),
               success: function(d) {
                 if (d.success == true) {
-                  
+
                 }
               }
             })
@@ -224,7 +235,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
               success: function(d) {
                 if (d.success == true) {
                   window.location.href = vm.page.show.url;
-                }else{
+                } else {
                   oP.show(d.msg || "get_gift出错")
                 }
               }
@@ -287,7 +298,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
               Bridge.onBack(function() {
                 if (page == "page0") {
                   return false;
-                } else{
+                } else {
                   self.fullPageObj.moveTo(page, true);
                   if (fn && ct.Tool.isFunction(fn)) {
                     fn();
@@ -307,7 +318,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
           },
           pushState: function(curUrl) {
             window.history.pushState && window.history.pushState({
-                title: curUrl
+              title: curUrl
             }, curUrl, "index.php#page=" + curUrl); // 塞入新的历史
           },
           share: function() {

@@ -27,7 +27,7 @@
     <body>
     <div class="wp hide swiper-container">
         <div class="wp-inner swiper-wrapper">
-            <div class="page page1 swiper-slide">
+            <div class="page page1 swiper-slide" data-history="page1">
                 <div class="content">
                     <div class="title"><img data-src="<?php echo $imgUrl; ?>page1_title.png" alt="title"></div>
                     <div class="img-gold"><img data-src="<?php echo $imgUrl; ?>page1_$.png" alt="$"></div>
@@ -38,7 +38,7 @@
                     <div class="gold scrolling"><img data-src="<?php echo $imgUrl; ?>dynamic_gold.png" alt="gold"></div>
                 </div>
             </div>
-            <div class="page page2 swiper-slide">
+            <div class="page page2 swiper-slide" data-history="page2">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                     <div class="portrait"></div>
@@ -60,7 +60,7 @@
                     <div class="next" bp="85_2_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
-            <div class="page page3 swiper-slide">
+            <div class="page page3 swiper-slide" data-history="page3">
                <div class="content">
                    <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                    <div class="detail3">
@@ -83,7 +83,7 @@
                    <div class="next" bp="85_3_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                </div>
             </div>
-            <div class="page page4 swiper-slide">
+            <div class="page page4 swiper-slide" data-history="page4">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                     <div class="detail5">
@@ -109,7 +109,7 @@
                     <div class="next" bp="85_4_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
-            <div class="page page5 swiper-slide">
+            <div class="page page5 swiper-slide" data-history="page5">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                     <img class="people1" data-src="<?php echo $imgUrl; ?>page5_people1.png" alt="people1">
@@ -133,7 +133,7 @@
                     <div class="next" bp="85_5_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
-            <div class="page page6 swiper-slide">
+            <div class="page page6 swiper-slide" data-history="page6">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                     <div class="detail7">
@@ -159,7 +159,7 @@
                     <div class="next" bp="85_6_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
-            <div class="page page7 swiper-slide">
+            <div class="page page7 swiper-slide" data-history="page7">
                 <div class="content">
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark">
                     <img class="title" data-src="<?php echo $imgUrl; ?>page7_new_title.png" alt="title">
@@ -174,7 +174,7 @@
                     <div class="next" bp="85_7_1_0_nextbtn"><img data-src="<?php echo $imgUrl; ?>page2_next.png" alt="next"></div>
                 </div>
             </div>
-            <div class="page page8 swiper-slide">
+            <div class="page page8 swiper-slide" data-history="page8">
                 <div class="content">
                     <img class="share" data-src="<?php echo $imgUrl; ?>page8_share.png" alt="share"/>
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark"/>
