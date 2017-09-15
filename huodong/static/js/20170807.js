@@ -50,6 +50,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
         init: function () {
             console.log("解析你的公积金活动");
             var _this = this;
+            //test
 
             var args = _this.getQueryStringArgs();
             unionid = args["unionid"];
@@ -57,7 +58,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
             _this.share();
             _this.setNavAttr();
             $(".wp").removeClass("hide");
-            _this.useSwiper();
+            // _this.useSwiper();
             _this.fullPageObj = _this.fullpage();
         },
 
@@ -201,8 +202,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                             type: "POST",
                             dataType: "JSON",
                             data: JSON.stringify({"unionid": unionid,"shareid": shareid}),
-                            url: "test.php",
-                            // url: "/act/analyze/get_analyze",
+                            // url: "test.php",
+                            url: "/act/analyze/get_analyze",
                             success: function (d) {
                                 if (d.success) {
                                     console.log("后台数据：", d);
