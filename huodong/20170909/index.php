@@ -28,7 +28,7 @@
     <div class="wp-inner">
         <div class="content">
             <div class="yq-logo"><img data-src="//r.51gjj.com/act/release/img/20170909_logo.png"></div>
-            <div class="prize-img"><img data-src="<?php echo $imgUrl;?>prize_img.png"></div>
+            <div class="prize-img"><img data-src="<?php echo $imgUrl;?>prize_img_v3.png"></div>
             <div class="wrap-lottery">
                 <div class="lottery-bg">
                     <!-- <img data-src="<?php echo $imgUrl;?>lottery_bg.png"> -->
@@ -50,16 +50,16 @@
             </div>
             <div class="btn-rule-1">
                 <p>一次抽奖=投资每满5000或每邀1位好友投满1000</p>
-                <p><span class="btn-lottery-rule">具体规则>></span></p>
+                <p><span class="btn-lottery-rule" bp="20170909_1_1_0_具体规则">具体规则>></span></p>
             </div>
             <div class="wrap-button">
-                <div class="btn-change" bp="20170909_1_1_0_立即赚取机会"><img data-src="<?php echo $imgUrl;?>btn_change.png"></div>
-                <div class="btn-prize" bp="20170909_1_2_0_我的奖品"><img data-src="<?php echo $imgUrl;?>btn_prize.png"></div>
+                <div class="btn-change" bp="20170909_1_2_0_立即赚取机会"><img data-src="<?php echo $imgUrl;?>btn_change.png"></div>
+                <div class="btn-prize" bp="20170909_1_3_0_我的奖品"><img data-src="<?php echo $imgUrl;?>btn_prize.png"></div>
             </div>
             <div class="money-prize"><img data-src="<?php echo $imgUrl;?>money.png"></div>
-            <div class="btn-rule-2">活动规则>></div>
-            <div class="toPurchase" bp="20170909_1_3_0_立即抢购">立即抢购</div>
-            <div class="btn-tips">您当前累计投资14天标<span>999.999</span>元</div>
+            <div class="btn-rule-2" bp="20170909_1_4_0_活动规则">活动规则>></div>
+            <div class="toPurchase" bp="20170909_1_5_0_立即抢购">立即抢购</div>
+            <div class="btn-tips">您当前累计投资14天标<span>0</span>元</div>
             <div class="wrap-bottom">
                 <p>*本活动所有解释权归51有钱所有，与苹果公司无关*</p>
                 <p>客服热线：400-863-5151</p>
@@ -97,7 +97,7 @@
     <h6>抽奖条件</h6>
     <ul>
         <li><span>1.</span>活动期间内，投资每满5000元可获得1次抽奖机会，最多可获得5次抽奖机会；</li>
-        <li><span>2.</span>活动期间内，每成功邀请一位好友投资满1000元，可获得1次抽奖机会，最多可获得3次抽奖机会， （参考上一条，单人最高能获得8次抽奖机会）；
+        <li><span>2.</span>活动期间内，每成功邀请一位好友注册并投资满1000元，可获得1次抽奖机会，最多可获得3次抽奖机会， （参考上一条，单人最高能获得8次抽奖机会）；
         </li>
     </ul>
     <h6>奖品发放</h6>

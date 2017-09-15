@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"], function ($, fastClick, fullpage, ct, Bridge, juicer,qrcode) {
+require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"], function ($, fastClick, fullpage, ct, Bridge, juicer, qrcode) {
     var oMask = $(".mask");
 
     var oP = Object.create(ct.Prompt);
@@ -11,7 +11,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
     var local = ct.Tool.local();
     var host = window.location.host;
     var timeFlag = false;
-    ct.Tool.buryPoint_v2(ct.Tool.userAgent().isGjj? 1: 0);
+    ct.Tool.buryPoint_v2(ct.Tool.userAgent().isGjj ? 1 : 0);
 
     var run = {
 
@@ -88,15 +88,28 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             if (strDate >= 0 && strDate <= 9) {
                 strDate = "0" + strDate;
             }
-            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
-                    + " " + date.getHours() + seperator2 + date.getMinutes()
-                    + seperator2 + date.getSeconds();
+            var hours = date.getHours();
+            if (hours >= 0 && hours <= 9) {
+                hours = "0" + hours;
+            }
+            var minutes = date.getMinutes();
+            if (minutes >= 0 && minutes <= 9) {
+                minutes = "0" + minutes;
+            }
+            var seconds = date.getSeconds();
+            if (seconds >= 0 && seconds <= 9) {
+                seconds = "0" + seconds;
+            }      
+            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate +
+                " " + hours + seperator2 + minutes +
+                seperator2 + seconds;
             return currentdate;
         },
         actStart: function () {
             _this = this;
-            var curTime = _this.getNowFormatDate();console.log(curTime)
-            if (curTime >= '2017-09-12 17:40:00') {
+            var curTime = _this.getNowFormatDate();
+            console.log(curTime)
+            if (curTime >= '2017-09-15 00:00:00') {
                 timeFlag = true;
                 _this.pageload();
                 _this.myPrize();
@@ -114,19 +127,25 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         render: function () {
             $.ajax({
                 type: "POST",
-                url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lotteryTime",
+                url: "/invest2/lottery/QueryLotteryRecord/lotteryTime",
                 dataType: 'json',
                 success: function (d) {
                     var lotteryTime = d.resData.lotteryTime;
                     $(".lottery-change span").text(lotteryTime);
+                    if (lotteryTime == 0) {
+                        $(".lottery-text").addClass("gray-color");
+                    } else {
+                        $(".lottery-text").removeClass("gray-color");
+                    }
                 }
             });
             $.ajax({
                 type: "POST",
-                url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lottery/totalTenderAmount",
+                url: "/invest2/lottery/QueryLotteryRecord/lottery/totalTenderAmount",
                 dataType: 'json',
                 success: function (d) {
-                    var totalTenderAmount = d.resData.totalTenderAmount;console.log(totalTenderAmount)
+                    var totalTenderAmount = d.resData.totalTenderAmount;
+                    console.log(totalTenderAmount)
                     $(".btn-tips span").text(totalTenderAmount);
                 }
             });
@@ -151,12 +170,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             })
         },
         closeLottery: function () {
-            $(".prize-box-lottery").on("click", ".btn-close",function () {
+            $(".prize-box-lottery").on("click", ".btn-close", function () {
                 $(this).parent().addClass("hide");
                 $(".mask").addClass("hide");;
             })
         },
-        pageload: function() {
+        pageload: function () {
             var _this = this;
             var oMask = $(".mask");
             var oNoChance = $(".no-chance");
@@ -175,8 +194,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                         this.obj = $lottery;
                         this.count = $units.length;
                         $lottery.find(".lottery-box-" + this.index).addClass("lottery-active");
-                    }
-                    ;
+                    };
                 },
                 roll: function () {
                     var index = this.index;
@@ -186,8 +204,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                     index += 1;
                     if (index > count - 1) {
                         index = 0;
-                    }
-                    ;
+                    };
                     $(lottery).find(".lottery-box-" + index).addClass("lottery-active");
                     this.index = index;
                     return false;
@@ -197,7 +214,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                     return false;
                 }
             };
-    
+
             function roll(forward) {
                 lottery.times += 1;
                 lottery.roll(); //转动过程调用的是lottery的roll方法，这里是第一次调用初始化
@@ -239,7 +256,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                     if (lottery.times < lottery.cycle) {
                         lottery.speed -= 10;
                     } else if (lottery.times == lottery.cycle) {
-    
+
                     } else {
                         if (lottery.times > lottery.cycle + 10 && ((lottery.prize == 0 && lottery.index == 7) || lottery.prize == lottery.index + 1)) {
                             lottery.speed += 110;
@@ -249,13 +266,12 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                     }
                     if (lottery.speed < 40) {
                         lottery.speed = 40;
-                    }
-                    ;
+                    };
                     lottery.timer = setTimeout(roll, lottery.speed); //循环调用
                 }
                 return false;
             }
-    
+
             var click = false;
             lottery.init('lottery');
             $(".lottery-start").click(function () {
@@ -264,51 +280,54 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                 } else {
                     $.ajax({
                         //url: "test.php",
-                        url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lottery",
+                        url: "/invest2/lottery/QueryLotteryRecord/lottery",
                         type: "POST",
                         dataType: "json",
                         success: function (d) {
                             if (d.resCode == 1) {
                                 // if (d.chance && d.allowLottery) {
-                                    // initFn.getChance();
-                                    var giftCode = d.resData.type;
-                                    var prize = null;
-                                    switch (giftCode) {
-                                        case "1":
-                                            prize = 1;
-                                            break;
-                                        case "2":
-                                            prize = 7;
-                                            break;
-                                        case "3":
-                                            prize = 3;
-                                            break;
-                                        case "4":
-                                            prize = 6;
-                                            break;
-                                        case "5":
-                                            prize = 0;
-                                            break;
-                                        case "6":
-                                            prize = 2;
-                                            break;
-                                        case "7":
-                                            prize = 4;
-                                            break;
-                                        case "8":
-                                            prize = 5;
-                                            break;
-                                    }
-                                    lottery.stop(prize);console.log("****,",prize)
-                                    _this.render();
-                                    lottery.speed = 100;
-                                    roll(); //转圈过程不响应click事件，会将click置为false
-                                    click = true; //一次抽奖完成后，设置click为true，可继续抽奖
-                                    return false;
+                                // initFn.getChance();
+                                var giftCode = d.resData.type;
+                                var prize = null;
+                                switch (giftCode) {
+                                    case "1":
+                                        prize = 1;
+                                        break;
+                                    case "2":
+                                        prize = 7;
+                                        break;
+                                    case "3":
+                                        prize = 3;
+                                        break;
+                                    case "4":
+                                        prize = 6;
+                                        break;
+                                    case "5":
+                                        prize = 0;
+                                        break;
+                                    case "6":
+                                        prize = 2;
+                                        break;
+                                    case "7":
+                                        prize = 4;
+                                        break;
+                                    case "8":
+                                        prize = 5;
+                                        break;
+                                }
+                                lottery.stop(prize);
+                                console.log("****,", prize)
+                                _this.render();
+                                lottery.speed = 100;
+                                roll(); //转圈过程不响应click事件，会将click置为false
+                                click = true; //一次抽奖完成后，设置click为true，可继续抽奖
+                                return false;
                                 // } else {
                                 //     oMask.removeClass("hide");
                                 //     oNoChance.removeClass("hide");
                                 // }
+                            } else if (d.resMsg == "Token不存在") {
+                                oP.show("请先登录哦~");
                             } else {
                                 oP.show(d.resMsg || "出错，请重试");
                             }
@@ -321,25 +340,26 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             });
         },
         myPrize: function () {
-            $(".wrap-button").on("click",".btn-prize", function () {
+            $(".wrap-button").on("click", ".btn-prize", function () {
                 $(".mask").removeClass("hide");
                 $(".prize-list").removeClass("hide");
                 $.ajax({
                     type: "POST",
-                    url: "//test.jianbing.com/invest2/lottery/QueryLotteryRecord/lotteryRecord",
+                    url: "/invest2/lottery/QueryLotteryRecord/lotteryRecord",
                     dataType: 'json',
                     success: function (d) {
                         if (d.resData.list.length != 0) {
-                            var res = '<div class="has-prize"><div class="prize-icon"><img src="//r.51gjj.com/act/release/img/20170909_prize_list_'+d.resData.list[0].type
-                                    +'.png"></div></div>';
-                            if ($(".has-prize").length <= 0) {console.log($(".prize-list").length)
+                            var res = '<div class="has-prize"><div class="prize-icon"><img src="//r.51gjj.com/act/release/img/20170909_prize_list_' + d.resData.list[0].type +
+                                '.png"></div></div>';
+                            if ($(".has-prize").length <= 0) {
+                                console.log($(".prize-list").length)
                                 $(".prize-list").append(res);
                             }
                             if (d.resData.list[0].type == 1) {
                                 $(".has-prize").append('<div class="prize-text">iphone8(32G)</div>');
                             } else if (d.resData.list[0].type == 2) {
                                 $(".has-prize").append('<div class="prize-text">500元京东卡</div>');
-                            } else if(d.resData.list[0].type == 3) {
+                            } else if (d.resData.list[0].type == 3) {
                                 $(".has-prize").append('<div class="prize-text">小米手环</div>');
                             } else if (d.resData.list[0].type == 4) {
                                 $(".has-prize").append('<div class="prize-text">小米充电宝</div>');
@@ -373,10 +393,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         },
         skip: function () {
             $(".wrap-button").on("click", ".btn-change", function () {
-                window.location.href = "/hs/appgjj/login?return_url=/app/invest/";
+                window.location.href = "javascript:history.go(-1);";
             })
-            $(".toPurchase").on("click",function () {
-                window.location.href = "/hs/appgjj/login?return_url=/app/invest/";
+            $(".toPurchase").on("click", function () {
+                window.location.href = "javascript:history.go(-1);";
             })
         }
     }

@@ -38,14 +38,14 @@
                     <input class="JS-code" type="tel" placeholder="请输入验证码" maxlength="6">
                     <div class="code-btn JS-get-code">获取验证码</div>
                 </div>
-                <input class="btn-submit" bp="20170908_1_1_0_领取18888元体验金" value="领取18888元体验金" type="button">
+                <input class="btn-submit" bp="20170908_1_1_0_领取18888元体验金" value="前往领取" type="button">
             </div>
             <div class="tips-phone">
                 <p>好友<span></span>邀请你来51有钱理财</p>
                 <p>下载51公积金管家app, 在“理财业务”使用</p>
             </div>
             <div class="btn-rule"><span>活动规则>></span></div>
-            <div class="introduce"><img data-src="<?php echo $imgUrl_1?>introduce.png"></div>
+            <div class="introduce"><img data-src="<?php echo $imgUrl_1?>introduce_v2.png"></div>
             <div class="bottom-tips">
                 <p>*本活动最终解释权归51有钱所有*</p>
                 <p>客服电话： 400-863-5151</p>
@@ -56,7 +56,7 @@
 <div class="rule zm-customer-confirm hide">
     <h6>活动规则</h6>
     <ul>
-        <li><span>1.</span>获得条件：完完成注册后，下载51公积金管家app，在“理财业务”找到新手体验标领取；</li>
+        <li><span>1.</span>获得条件：完成注册后，下载51公积金管家app，在“理财业务”找到新手体验标领取；</li>
         <li><span>2.</span>发放时间：体验金的收益会在领取成功后的第2天发放到您的理财账户；</li>
         <li><span>3.</span>请在接受邀请的15日内领取体验金，过期失效，尽快领取。</li>
     </ul>
