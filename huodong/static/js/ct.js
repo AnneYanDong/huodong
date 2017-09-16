@@ -308,6 +308,10 @@ define(["jquery", "share"], function($, wx) {
     }
   }
 
+  Tool.isLogin = function(){
+
+  }
+
   // 返回51公积金APP开发，测试，正式的host
   Tool.appHost = function() {
     var host = this.local().host;
@@ -339,9 +343,8 @@ define(["jquery", "share"], function($, wx) {
       url: "//b.jianbing.com/app/share/share_info",
       type: 'get',
       data: 'url=' + encodeURIComponent(url) + '&share_id=' + share_id + '&share_type=' + share_type,
-      dataType: 'json',
+      dataType: 'jsonp',
       success: function(data) {
-        console.log(data);
         share_callback(data);
       }
     });
@@ -736,14 +739,23 @@ define(["jquery", "share"], function($, wx) {
     return dataArr.join("&");
   }
 
+  /*cookie*/
   var Cookie = Object.create(Common);
-  Cookie.originCookies = function() {
+  Cookie.getAll = function() {
     return document.cookie;
   }
-  Cookie.get = function(obj) {
+  Cookie.get = function(name) {
     var obj = obj || {};
-    if (this.isObject(obj)) {
-
+    var cookieStr = this.getAll();
+    var cookieArr = cookieStr.split(";");
+    cookieArr.forEach(function(item,index){
+      var kv = item.replace(/(^\s)|(\s$)/, '').split("=");
+      obj[kv[0]] = kv[1];
+    })
+    if (name) {
+      return obj[name];
+    }else{
+      return obj;
     }
   }
 
@@ -754,6 +766,7 @@ define(["jquery", "share"], function($, wx) {
     Mask: Mask, // 需要创建实例
     AjaxMask: ajaxMask,
     PreLodingUi: preLodingUi, // 需要创建实例
-    Ajax: Ajax
+    Ajax: Ajax,
+    Cookie: Cookie
   }
 })
