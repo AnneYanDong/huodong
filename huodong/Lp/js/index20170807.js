@@ -70,7 +70,7 @@ var init = {
             place_name = args["p"];
             console.log(place_name);
         // var oUrl = "test.php";
-        var oUrl = "https://b.jianbing.com/act/market/get_register";
+        var oUrl = "/act/market/get_register";
         $(".search-btn").on("click", function() {
             if (_this.checkPhone($(".phone input")) && _this.checkCode($(".msg-code input"))) {
                 var phoneNum = $(".JS-phone").val();
