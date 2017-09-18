@@ -29,7 +29,7 @@ var init = {
         var skipTimer = null;
         // var oUrl = "test.php";
 
-        var oUrl = "https://b.jianbing.com/act/market/get_verification_code";
+        var oUrl = "/act/market/get_verification_code";
         var _this = this;
         $(".JS-get-code").on("click", function() {
             console.log(".......");
