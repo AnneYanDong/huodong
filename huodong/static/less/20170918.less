@@ -1,0 +1,193 @@
+@import url(normal.less);
+@import url(mtool.less);
+
+// @img: "../../20170918/";
+@img: "//r.51gjj.com/act/release/img/";
+
+
+
+
+// 通用工具样式
+.rule {
+  padding-bottom: 0;
+  max-height: 6.1rem;
+  h6 {
+    margin: 0;
+    margin-bottom: .2rem;
+    font-size: 24px;
+    color: #4e4e4e;
+    padding: .2rem 0 0 .2rem;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+  }
+  ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    max-height: 5rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    li {
+      position: relative;
+      font-size: 12px;
+      line-height: .36rem;
+      padding-left: 16px;
+      margin-bottom: 10px;
+      color: #616161;
+      span {
+        position: absolute;
+        left: 0px;
+        top: 0;
+        font-style: normal;
+      }
+    }
+  }
+  .close-btn {
+    position: absolute;
+    top: 6.5rem;
+    left: 50%;
+    margin-left: -.4rem;
+    width: .8rem;
+    height: .8rem;
+    background: url("https://r.51gjj.com/act/images/20160818_close.png") no-repeat;
+    background-size: 100%;
+  }
+}
+
+.zm-customer-confirm {
+  width: 88%;
+  padding-bottom: .84rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  z-index: 101;
+}
+
+
+// 背景图基本设置
+.bg-set() {
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.border-box() {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.certen-y() {
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.certen-x() {
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+
+.certen() {
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.flex() {
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+}
+
+.flex-1() {
+  flex: 1;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+}
+
+// vue方式加载动画样式重新写
+.vue-pre-loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background: #0d0d0d;
+  .vue-pre-loading-des {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 100px;
+    color: #fff;
+  }
+  .vue-pre-loading-ele {
+    width: 78px;
+    height: 78px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 8px #fff;
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      background: #e84c3d;
+      width: 40px;
+      height: 80px;
+    }
+    &:before {
+      left: -1px;
+      -webkit-transform-origin: 40px 40px;
+      transform-origin: 40px 40px;
+      -webkit-animation: loading 2s infinite ease 1.5s;
+      animation: loading 2s infinite ease 1.5s;
+    }
+    &:after {
+      right: -1px;
+      -webkit-transform-origin: 0px 40px;
+      transform-origin: 0px 40px;
+      -webkit-animation: loading 2s infinite ease;
+      animation: loading 2s infinite ease;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

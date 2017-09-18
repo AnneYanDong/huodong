@@ -378,6 +378,9 @@ a {
   width: 100%;
   height: 1.08rem;
   text-align: center;
+  padding: 0 .3rem;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   display: flex;
   display: -webkit-flex;
   display: -moz-flex;
@@ -394,7 +397,7 @@ a {
   height: .6rem;
   display: block;
   margin: 0 auto;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -444,7 +447,7 @@ a {
   position: absolute;
   left: 50%;
   top: 11.1rem;
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
   z-index: 9;
   transform: translateX(-50%);
@@ -662,7 +665,7 @@ a {
   font-size: 14px;
   line-height: .4rem;
   position: relative;
-  text-indent: 24px;
+  text-indent: .66rem;
 }
 .page5 .content .recommend-card .introduction .desc .area-title .logo {
   position: absolute;
@@ -688,7 +691,7 @@ a {
 .page5 .content .recommend-card .introduction .desc .desc-list li {
   list-style: none;
   position: relative;
-  font-size: 12px;
+  font-size: .26rem;
   margin-top: 7px;
   padding-left: .4rem;
 }
@@ -714,7 +717,7 @@ a {
 }
 .page5 .content .recommend-card .introduction .activity .desc-list li {
   color: #d6af6f;
-  font-size: 13px;
+  font-size: .28rem;
 }
 .page5 .content .recommend-card .apply {
   width: 100%;
