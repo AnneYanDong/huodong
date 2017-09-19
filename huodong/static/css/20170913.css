@@ -558,66 +558,25 @@ a {
 .page4 {
   background-image: url("//r.51gjj.com/act/release/img/20170913page_normal_bg.jpg");
 }
-.page4 .content .title {
-  font-size: 24px;
-  color: #fff;
-  text-align: center;
-  margin-top: 2.12rem;
-  line-height: 24px;
-}
-.page4 .content .title .complement {
-  font-size: 14px;
-}
-.page4 .content .choose-wrap {
-  margin-top: 1.86rem;
-  display: flex;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  justify-content: center;
-  -webkit-justify-content: center;
-  padding: 0 .68rem;
-}
-.page4 .content .choose-wrap .item {
-  width: 3rem;
-  height: 4.05rem;
-  background-image: url("//r.51gjj.com/act/release/img/20170913page_normal_choose_bg.jpg");
-  text-align: center;
-  color: #fff;
-  font-size: .74rem;
-  padding-top: .8rem;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  flex: 1;
-  -webkit-flex: 1;
-  -moz-flex: 1;
-  -ms-flex: 1;
-}
-.page4 .content .choose-wrap .item + .item {
-  margin-left: .18rem;
-}
-.page5 {
-  background-image: url("//r.51gjj.com/act/release/img/20170913page_normal_bg.jpg");
-}
-.page5 .content {
+.page4 .content {
   padding-top: 1.3rem;
 }
-.page5 .content .recommend-card {
+.page4 .content .recommend-card {
   width: 6.1rem;
   margin: 0 auto;
 }
-.page5 .content .recommend-card .introduction {
+.page4 .content .recommend-card .introduction {
   background: rgba(30, 29, 38, 0.95);
   padding: .3rem 0;
   min-height: 6rem;
 }
-.page5 .content .recommend-card .introduction .card-title {
+.page4 .content .recommend-card .introduction .card-title {
   font-size: .4rem;
   color: #fff;
   text-align: center;
   line-height: .4rem;
 }
-.page5 .content .recommend-card .introduction .line {
+.page4 .content .recommend-card .introduction .line {
   height: 4px;
   width: .52rem;
   border: 1px solid #000000;
@@ -628,8 +587,8 @@ a {
   -webkit-box-sizing: border-box;
   position: relative;
 }
-.page5 .content .recommend-card .introduction .line:before,
-.page5 .content .recommend-card .introduction .line:after {
+.page4 .content .recommend-card .introduction .line:before,
+.page4 .content .recommend-card .introduction .line:after {
   content: '';
   position: absolute;
   width: .89rem;
@@ -638,28 +597,28 @@ a {
   top: 50%;
   margin-top: -1px;
 }
-.page5 .content .recommend-card .introduction .line:before {
+.page4 .content .recommend-card .introduction .line:before {
   left: -1rem;
 }
-.page5 .content .recommend-card .introduction .line:after {
+.page4 .content .recommend-card .introduction .line:after {
   right: -1rem;
 }
-.page5 .content .recommend-card .introduction .card {
+.page4 .content .recommend-card .introduction .card {
   width: 4.57rem;
   height: 2.88rem;
   min-height: 2.88rem;
   margin: .22rem auto 0;
 }
-.page5 .content .recommend-card .introduction .card img {
+.page4 .content .recommend-card .introduction .card img {
   display: block;
   width: 100%;
   height: auto;
 }
-.page5 .content .recommend-card .introduction .desc {
+.page4 .content .recommend-card .introduction .desc {
   margin-top: .3rem;
   min-height: .5rem;
 }
-.page5 .content .recommend-card .introduction .desc .area-title {
+.page4 .content .recommend-card .introduction .desc .area-title {
   height: .4rem;
   padding: 0 .74rem;
   font-size: 14px;
@@ -667,7 +626,7 @@ a {
   position: relative;
   text-indent: .66rem;
 }
-.page5 .content .recommend-card .introduction .desc .area-title .logo {
+.page4 .content .recommend-card .introduction .desc .area-title .logo {
   position: absolute;
   top: 50%;
   left: 0.8rem;
@@ -677,49 +636,49 @@ a {
   background-repeat: no-repeat;
   background-size: 100%;
 }
-.page5 .content .recommend-card .introduction .desc .area-title .logo.hg {
+.page4 .content .recommend-card .introduction .desc .area-title .logo.hg {
   background-image: url("//r.51gjj.com/act/release/img/20170913icon_hg.png");
 }
-.page5 .content .recommend-card .introduction .desc .area-title .logo.hd {
+.page4 .content .recommend-card .introduction .desc .area-title .logo.hd {
   background-image: url("//r.51gjj.com/act/release/img/20170913icon_hd.png");
 }
-.page5 .content .recommend-card .introduction .desc .desc-list {
+.page4 .content .recommend-card .introduction .desc .desc-list {
   padding: 0 .74rem;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
-.page5 .content .recommend-card .introduction .desc .desc-list li {
+.page4 .content .recommend-card .introduction .desc .desc-list li {
   list-style: none;
   position: relative;
   font-size: .26rem;
   margin-top: 7px;
   padding-left: .4rem;
 }
-.page5 .content .recommend-card .introduction .desc .desc-list li .point {
+.page4 .content .recommend-card .introduction .desc .desc-list li .point {
   font-size: 12px;
   font-weight: bold;
   border-radius: 50%;
   margin-right: 6px;
   position: absolute;
 }
-.page5 .content .recommend-card .introduction .desc .desc-list li p {
+.page4 .content .recommend-card .introduction .desc .desc-list li p {
   display: inline-block;
   padding-left: .2rem;
 }
-.page5 .content .recommend-card .introduction .interests {
+.page4 .content .recommend-card .introduction .interests {
   color: #d6ae6e;
 }
-.page5 .content .recommend-card .introduction .interests .desc-list li {
+.page4 .content .recommend-card .introduction .interests .desc-list li {
   color: #c8c8c8;
 }
-.page5 .content .recommend-card .introduction .activity {
+.page4 .content .recommend-card .introduction .activity {
   color: #d6af6f;
 }
-.page5 .content .recommend-card .introduction .activity .desc-list li {
+.page4 .content .recommend-card .introduction .activity .desc-list li {
   color: #d6af6f;
   font-size: .28rem;
 }
-.page5 .content .recommend-card .apply {
+.page4 .content .recommend-card .apply {
   width: 100%;
   height: 1rem;
   text-align: center;
@@ -730,7 +689,7 @@ a {
   position: relative;
   overflow: hidden;
 }
-.page5 .content .recommend-card .apply .light {
+.page4 .content .recommend-card .apply .light {
   position: absolute;
   width: 2.1rem;
   height: 1rem;
@@ -741,7 +700,7 @@ a {
   left: -2.1rem;
   z-index: 9;
 }
-.page5 .content .rule {
+.page4 .content .rule {
   margin-top: .38rem;
   text-align: center;
   font-size: 14px;

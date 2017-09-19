@@ -95,7 +95,7 @@
             </div>
           </div>
         </div>
-        <div class="page page4">
+<!--         <div class="page page4">
           <div class="content">
             <div class="title">
               <p>选择您的公积金缴存基数</p>
@@ -116,8 +116,8 @@
               </transition>
             </div>
           </div>
-        </div>
-        <div class="page page5">
+        </div> -->
+        <div class="page page4">
           <div class="content">
             <template>
               <div class="recommend-card">
@@ -164,8 +164,9 @@
               <li><span>2.</span>申请巴萨卡完成开卡后可额外获得298元现金红包。</li>
               <li><span>3.</span>理财金仅限平台理财新用户体验使用，且仅限领取一次，不可重复体验。</li>
               <li><span>4.</span>如您为平台理财老用户，我们将折算成等值现金发放至您的账户。</li>
-              <li><span>5.</span>有任何疑问或者帮助可联系客服4008635151。</li>
-              <li><span>6.</span>本商品由51公积金管家提供，与设备生产商Apple Inc公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。</li>
+              <li><span>5.</span>同一业务同类型活动奖品仅限领取一次，如您的账户中存在以上业务其他奖券，本次活动则不再发奖。</li>
+              <li><span>6.</span>有任何疑问或者帮助可联系客服4008635151。</li>
+              <li><span>7.</span>本商品由51公积金管家提供，与设备生产商Apple Inc公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。</li>
             </ul>
             <div class="close-btn" @click="showRule()"></div>
           </div> 
