@@ -116,7 +116,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             wx.ready(function () {
                 var share_data = {
                     title: "限时加息2%，2W存14天收益70元，厉害了！", //默认头信息
-                    link: "https://b.jianbing.com/act/home/huodong/20170919/", //当前链接
+                    link: "https://b.jianbing.com/act/home/huodong/20170919/index.php?mode=local", //当前链接
                     imgUrl: "https://r.51gjj.com/act/release/img/20170919_share_wx.png", //默认链接
                     desc: "收益高达9%，新网银行存管，一起赚起来！",
                     success: function () {
