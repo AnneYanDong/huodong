@@ -229,6 +229,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
           closeGift: function() {
             this.maskStatus = false;
             this.giftStatus = false;
+            this.ruleStatus = false;
           },
           share: function() {
             if (app.isGjj && Bridge) {

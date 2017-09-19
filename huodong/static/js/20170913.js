@@ -165,6 +165,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   if (vm.choose.bank == 1) {
                     vm.respondState(now, 2, function() {
                       // vm.choose.base = 0;
+                      vm.choose.bank = 0;
                       vm.page.show = null;
                       vm.pageFiveshow = false;
                     })
@@ -327,7 +328,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   Bridge.action('ShareTimeline', {
                     "title": "公积金定制大额信用卡，白拿8万理财金！",
                     'desc': "还有298元现金红包送~",
-                    "thumb": "https://r.51gjj.com/act/release/img/20170913_wx_xykdz.jpg",
+                    "thumb": "https://r.51gjj.com/act/release/img/20170913_wx_xykdz2.png",
                     "link": "https://" + local.host + "/act/home/huodong/20170913/index.php#page=page0"
                   });
                 }
