@@ -97,7 +97,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 //获取分享的配置信息
                 url: "/hs/wx/get_sign_package",
                 type: 'GET',
-                data: 'url=' + encodeURIComponent(url) + '&appid=wxb42d431526f1c17d',
+                data: 'url=' + encodeURIComponent(url) + '&appid=wx90f7de7c9b73bf69',
                 dataType: 'JSON',
                 success: function (r) {
                     _this.share_callback(r);
