@@ -67,8 +67,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
           pageFiveshow: false,
           choose: {
             cardAmount: 0,
-            bank: 0,
-            base: 0
+            bank: 0
           },
           page: {
             show: null,
@@ -80,12 +79,24 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
         created: function() {
 
         },
+        mounted: function() {
+          $(".vue-pre-loading").fadeOut();
+          this.wpShow = true;
+          this.$nextTick(function() {
+            self.fullPageObj = this.fullpage();
+          })          
+          this.share();
+        },
         watch: {
           'choose.bank': function() {
             var vm = this;
             if (vm.choose.bank != 0) {
               if (vm.choose.bank == 1) {
-
+                if (vm.choose.cardAmount == 1) {
+                  vm.$set(vm.page, 'show', vm.setData('pufabasa'));
+                } else {
+                  vm.$set(vm.page, 'show', vm.setData('pufabasa'));
+                }
               } else if (vm.choose.bank == 2) {
                 if (vm.choose.cardAmount == 1) {
                   vm.$set(vm.page, 'show', vm.setData('xingyejy'));
@@ -94,21 +105,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                 }
               }
             }
-          },
-          'choose.base': function() {
-            if (this.choose.base != 0) {
-              if (this.choose.bank == 1) {
-                this.$set(this.page, 'show', this.setData('pufabasa'));
-              }
-            }
           }
-        },
-        mounted: function() {
-          $(".vue-pre-loading").fadeOut();
-          this.wpShow = true;
-          this.$nextTick(function() {
-            self.fullPageObj = this.fullpage();
-          })
         },
         methods: {
           fullpage: function() {
@@ -129,6 +126,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   // if (!vm.pageOneshow) {
                   //   vm.pushState(vm.page.now);
                   // }
+                  vm.respondState(now)
                   vm.pageOneshow = true;
                 }
 
@@ -136,7 +134,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   // if (!vm.pageTwoshow) {
                   //   vm.pushState(vm.page.now);
                   // }
-                  vm.respondState(0)
+                  vm.respondState(now,0)
                   vm.pageTwoshow = true;
                 }
 
@@ -144,34 +142,35 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   // if (!vm.pageThreeshow) {
                   //   vm.pushState(vm.page.now);
                   // }
-                  vm.respondState(1, function() {
+                  vm.respondState(now, 1, function() {
                     vm.choose.cardAmount = 0;
                   })
                   vm.pageThreeshow = true;
                 }
 
-                if (now == "page3") {
-                  // if (!vm.pageFourshow) {
-                  //   vm.pushState(vm.page.now);
-                  // }
-                  vm.respondState(2, function() {
-                    vm.choose.bank = 0;
-                  })
-                  vm.pageFourshow = true;
-                }
+                // if (now == "page3") {
+                //   // if (!vm.pageFourshow) {
+                //   //   vm.pushState(vm.page.now);
+                //   // }
+                //   vm.respondState(now, 2, function() {
+                //     vm.choose.bank = 0;
+                //   })
+                //   vm.pageFourshow = true;
+                // }
 
-                if (now == "page4") {
+                if (now == "page3") {
                   // if (!vm.pageFiveshow) {
                   //   vm.pushState(vm.page.now);
                   // }
                   if (vm.choose.bank == 1) {
-                    vm.respondState(3, function() {
-                      vm.choose.base = 0;
+                    vm.respondState(now, 2, function() {
+                      // vm.choose.base = 0;
+                      vm.choose.bank = 0;
                       vm.page.show = null;
                       vm.pageFiveshow = false;
                     })
                   } else if (vm.choose.bank == 2) {
-                    vm.respondState(2, function() {
+                    vm.respondState(now, 2, function() {
                       vm.choose.bank = 0;
                       vm.page.show = null;
                       vm.pageFiveshow = false;
@@ -259,7 +258,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   '1元机场停车 指定酒店住就送'
                 ],
                 'activity': [
-                  '申请送88888理财金（限领一次）激活再送298元现金红包'
+                  '申请送88888理财金（限领一次）,激活再送298元现金红包'
                 ],
                 'url': 'https://b.jianbing.com/business/home/h5/pufafcb/index.php',
                 'bankId': '45'
@@ -293,13 +292,13 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
             }
             return cardArr[n];
           },
-          respondState: function(page, fn) {
+          respondState: function(now, to, fn) {
             if (app.isGjj && Bridge) {
               Bridge.onBack(function() {
-                if (page == "page0") {
+                if (now == "page0") {
                   return false;
                 } else {
-                  self.fullPageObj.moveTo(page, true);
+                  self.fullPageObj.moveTo(to, true);
                   if (fn && ct.Tool.isFunction(fn)) {
                     fn();
                   }
@@ -312,7 +311,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                 if (fn && ct.Tool.isFunction(fn)) {
                   fn();
                 }
-                self.fullPageObj.moveTo(page, true)
+                self.fullPageObj.moveTo(to, true)
               }
             }
           },
@@ -329,8 +328,8 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   Bridge.action('ShareTimeline', {
                     "title": "公积金定制大额信用卡，白拿8万理财金！",
                     'desc': "还有298元现金红包送~",
-                    "thumb": "https://r.51gjj.com/act/release/img/20170828_share.png",
-                    "link": "https://" + local.host + "/act/home/huodong/20170913/index.php#/page0"
+                    "thumb": "https://r.51gjj.com/act/release/img/20170913_wx_xykdz2.png",
+                    "link": "https://" + local.host + "/act/home/huodong/20170913/index.php#page=page0"
                   });
                 }
               })

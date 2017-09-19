@@ -38,7 +38,8 @@
                 // "dataStatistics": ["//r.51gjj.com/act/release/js/lib/jquery.dataStatistics","lib/jquery.dataStatistics"],
                 "dataStatistics": ["./huodong/static/js/lib/jquery.dataStatistics","lib/jquery.dataStatistics"],
                 "goDownload": ["//r.51gjj.com/act/release/js/lib/goDownload","lib/goDownload"],
-                "share": ["//res.wx.qq.com/open/js/jweixin-1.2.0"]
+                "share": ["//res.wx.qq.com/open/js/jweixin-1.2.0"],
+                "jqueryEasing":["//r.51gjj.com/act/release/js/lib/jquery.easing.min", "lib/jquery.easing.min"]
             },
             "shim": {
                 "qrcode": {
@@ -76,7 +77,11 @@
                     "deps": ["jquery"]
                 },
                 "share": {
-                    "exports": "share",
+                    "exports": "share"
+                },
+                "jqueryEasing": {
+                    "deps": ["jquery"],
+                    "exports": "jqueryEasing"
                 }
                 // "swiper": {
                 //     "deps": ["jquery"]

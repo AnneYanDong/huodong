@@ -239,7 +239,7 @@ define(["jquery", "share"], function($, wx) {
   }
 
   //埋点改版
-  Tool.buryPoint_v2 = function(s, url) {
+  Tool.buryPoint_v2 = function(url) {
     var _this = this;
     $(document).on("click", "[bp]", function() {
       var event = $(this).attr("bp");
