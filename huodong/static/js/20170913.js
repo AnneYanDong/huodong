@@ -67,8 +67,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
           pageFiveshow: false,
           choose: {
             cardAmount: 0,
-            bank: 0,
-            base: 0
+            bank: 0
           },
           page: {
             show: null,
@@ -93,20 +92,17 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
             var vm = this;
             if (vm.choose.bank != 0) {
               if (vm.choose.bank == 1) {
-
+                if (vm.choose.cardAmount == 1) {
+                  vm.$set(vm.page, 'show', vm.setData('pufabasa'));
+                } else {
+                  vm.$set(vm.page, 'show', vm.setData('pufabasa'));
+                }
               } else if (vm.choose.bank == 2) {
                 if (vm.choose.cardAmount == 1) {
                   vm.$set(vm.page, 'show', vm.setData('xingyejy'));
                 } else {
                   vm.$set(vm.page, 'show', vm.setData('xingyelxy'));
                 }
-              }
-            }
-          },
-          'choose.base': function() {
-            if (this.choose.base != 0) {
-              if (this.choose.bank == 1) {
-                this.$set(this.page, 'show', this.setData('pufabasa'));
               }
             }
           }
@@ -152,23 +148,23 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                   vm.pageThreeshow = true;
                 }
 
-                if (now == "page3") {
-                  // if (!vm.pageFourshow) {
-                  //   vm.pushState(vm.page.now);
-                  // }
-                  vm.respondState(now, 2, function() {
-                    vm.choose.bank = 0;
-                  })
-                  vm.pageFourshow = true;
-                }
+                // if (now == "page3") {
+                //   // if (!vm.pageFourshow) {
+                //   //   vm.pushState(vm.page.now);
+                //   // }
+                //   vm.respondState(now, 2, function() {
+                //     vm.choose.bank = 0;
+                //   })
+                //   vm.pageFourshow = true;
+                // }
 
-                if (now == "page4") {
+                if (now == "page3") {
                   // if (!vm.pageFiveshow) {
                   //   vm.pushState(vm.page.now);
                   // }
                   if (vm.choose.bank == 1) {
-                    vm.respondState(now, 3, function() {
-                      vm.choose.base = 0;
+                    vm.respondState(now, 2, function() {
+                      // vm.choose.base = 0;
                       vm.page.show = null;
                       vm.pageFiveshow = false;
                     })
@@ -332,7 +328,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                     "title": "公积金定制大额信用卡，白拿8万理财金！",
                     'desc': "还有298元现金红包送~",
                     "thumb": "https://r.51gjj.com/act/release/img/20170913_wx_xykdz.jpg",
-                    "link": "https://" + local.host + "act/home/huodong/20170913/index.php#page=page0"
+                    "link": "https://" + local.host + "/act/home/huodong/20170913/index.php#page=page0"
                   });
                 }
               })

@@ -1,5 +1,5 @@
 require.config(requireConfig);
-define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge, Vue, FullPage) {
+define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Bridge, Vue, _) {
 
   var oP = Object.create(ct.Prompt);
   oP.create().build();
@@ -14,7 +14,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
 
   ct.Tool.buryPoint_v2(0);
 
-  ct.Tool.share();
+  ct.Tool.share(89, "qqymx");
 
   var run = {
     start: function() {
@@ -45,7 +45,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
         url: ct.Tool.url("/act/request/activity"),
         data: JSON.stringify({
           source: ct.Tool.userAgent().isGjj ? 1 : 0,
-          tag: "87_1_0_33_进入页面"
+          tag: "89_1_0_33_进入页面"
         }),
         success: function(d) {
           if (d.success == true) {
@@ -60,43 +60,175 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
         el: ".wp",
         data: {
           wpShow: false,
-          pageOneshow: false,
-          pageTwoshow: false,
-          pageThreeshow: false,
-          pageFourshow: false,
-          pageFiveshow: false,
-          choose: {
-            cardAmount: 0,
-            bank: 0,
-            base: 0
-          },
-          page: {
-            show: null,
-            now: ''
-          },
+          itemHeight: "",
+          allowStart: false,
+          pageShow: false,
           maskStatus: false,
-          ruleStatus: false
-        },
-        created: function() {
-
-        },
-        mounted: function() {
-          this.share();
-        },
-        watch: {
-
+          ruleStatus: false,
+          giftStatus: false,
+          result: {},
+          giftImg: ""
         },
         mounted: function() {
           $(".vue-pre-loading").fadeOut();
-          this.wpShow = true;
+          this.pageShow = true;
           this.$nextTick(function() {
-            self.fullPageObj = this.fullpage();
+            $.ajax({
+              type: "POST",
+              dataType: "json",
+              url: "test.php",
+              data: JSON.stringify({
+
+              }),
+              success: function(d) {
+                if (d.success == true) {
+                  if (d.lottery == 0) {
+                    vm.setItemInfo();
+                    vm.initAnim();   
+                  }else if(d.lottery == 1){
+                    oP.show("您已经抽过奖了")
+                    vm.$set(vm.result, 'gift', d.ret);
+                    vm.allowStart = true;
+                    vm.startAnim();
+                  }           
+                }else{
+                  oP.show(d.msg || "抽奖失败，请联系客服咨询")
+                }
+              }
+            })
           })
         },
+        watch: {
+          "result": {
+            handler: function(){
+              if (this.result && this.result.gift && this.result.gift.code) {
+                switch (this.result.gift.code) {
+                  case '0500':
+                    this.giftImg = 'g-500';
+                    break;
+                }
+              }
+            },
+            deep: true
+          }
+        },
         methods: {
+          setItemInfo: function() {
+            this.itemHeight = $(".count-item")[0].getBoundingClientRect().height || $(".count-item").eq(0).height();
+          },
+          initAnim: function() {
+            var vm = this;
+            var countHeight = vm.itemHeight;
+            var moveY = countHeight * 10;
+            var initAnimArr = vm.createInitNum();
+            var initAnimTimer = null;
+            vm.$nextTick(function() {
+              // 10个为一轮。
+              $(".init-anim").each(function(index, item) {
+                $(this).delay(index * 300).animate({
+                  "backgroundPositionY": -(moveY + countHeight * initAnimArr[index]) + "px",
+                }, {
+                  duration: 1500,
+                  easing: "easeInOutCirc",
+                  complete: function() {
+                    clearTimeout(initAnimTimer);
+                    initAnimTimer = setTimeout(function() {
+                      $(".init-anim").addClass("question-mark");
+                      $(".init-anim").css({
+                        backgroundPosition: '0px 0px'
+                      });
+                      vm.allowStart = true;
+                    }, 400)
+                  }
+                })
+              })
+            })
+          },
+          startAnim: function() {
+            var vm = this;
+            var startAnimTimer = null;
+            var loginId = cookie.get("jianbing_customer_id");
+            if (Bridge && app.isGjj) {
+              if (!/\d/g.test(loginId)) {
+                oP.show("请先登录APP",{
+                  callback: function(){
+                    Bridge.action('login');
+                  }
+                })
+                return false;
+              }
+            }            
+            if (!vm.allowStart) {
+              return false;
+            }
+            if (vm.result && vm.result.gift && vm.result.gift.code) {
+              this.maskStatus = true;
+              this.giftStatus = true;
+              return false;
+            }
+            $.ajax({
+              type: "POST",
+              dataType: "json",
+              url: "test.php",
+              data: JSON.stringify({
+
+              }),
+              success: function(d) {
+                if (d.success == true) {
+                  vm.$set(vm.result, 'gift', d.ret);
+                  vm.$nextTick(function() {
+                    $(".count-item").removeClass("question-mark")
+                    var countHeight = vm.itemHeight;
+                    var initAnimArr = vm.result.gift.code.split("");
+                    var moveY = countHeight * 30;
+                    $(".count-item").each(function(index, item) {
+                      $(this).delay(index * 300).animate({
+                        "backgroundPositionY": -(moveY + countHeight * initAnimArr[index]) + "px",
+                      }, {
+                        duration: 2000 + initAnimArr.length,
+                        easing: "easeInOutCirc",
+                        complete: function() {
+                          clearTimeout(startAnimTimer);
+                          startAnimTimer = setTimeout(function(){
+                            vm.maskStatus = true;
+                            vm.giftStatus = true;
+                          },400)
+                        }
+                      })
+                    })
+                  })
+                }else{
+                  oP.show(d.msg || "抽奖失败，请联系客服咨询")
+                }
+              }
+            })
+          },
+          goUrl: function(){
+            if (this.result.gift) {
+              window.location.href = this.result.gift.url;
+            }
+          },
+          createInitNum: function(){
+            var vm = this;
+            var arr = [];
+            for (var i = 0; i < 2; i++) {
+              arr.push(Math.floor(Math.random() * 10))
+            }
+            if (arr[1] != 0) {
+              arr[0] = 0;
+            }
+            if (arr[0] > 1) {
+              arr[0] = 1;
+            }
+            return arr;
+          },
           showRule: function() {
             this.ruleStatus = !this.ruleStatus;
             this.maskStatus = !this.maskStatus;
+          },
+          closeGift: function() {
+            this.maskStatus = false;
+            this.giftStatus = false;
           },
           share: function() {
             if (app.isGjj && Bridge) {
@@ -104,10 +236,10 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
                 thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
                 onclick: function() {
                   Bridge.action('ShareTimeline', {
-                    "title": "公积金定制大额信用卡，白拿8万理财金！",
-                    'desc': "还有298元现金红包送~",
-                    "thumb": "https://r.51gjj.com/act/release/img/20170913_wx_xykdz.jpg",
-                    "link": "https://" + local.host + "act/home/huodong/20170913/index.php#page=page0"
+                    "title": "5万元3分钟到账，抢1000元免息额度",
+                    'desc': "抽多少免多少",
+                    "thumb": "https://r.51gjj.com/act/release/img/20170918_wx_jyd.jpg",
+                    "link": "https://" + local.host + "act/home/huodong/20170918/index.php"
                   });
                 }
               })
