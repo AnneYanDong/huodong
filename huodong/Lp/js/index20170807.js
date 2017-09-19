@@ -107,6 +107,7 @@ var init = {
             }
         })
     },
+    
 
     //校验手机号和短信验证码的方法
     checkPhone: function(ele) {

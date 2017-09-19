@@ -12,11 +12,17 @@
         .user-info{
             position: relative;
             background: #f6f6f6;
-            padding: .4rem 0;
+            /*padding: .4rem 0;*/
         }
         .user-info input{
             border: none;
             outline: none;
+            text-align: center;
+            width: 5.4rem;
+            height: .80rem;
+            line-height: .80rem;
+            border-radius: .5rem;
+            box-shadow: 0 0 0.1rem #ead205;
         }
         .input-wrap{
             height: .9rem;
@@ -48,11 +54,10 @@
             position: absolute;
             content: "";
             display: block;
-            width: 80%;
-            height: 2px;
-            background: #bfbfbf;
-            top: 0;
-            left: 4%;
+            width: 1px;
+            height: 80%;
+            background: #ead205;
+            top: 4px;
         }
         .code .get-code {
             position: absolute;
@@ -101,7 +106,7 @@
             height: .90rem;
             line-height: .90rem;
             position: absolute;
-            top: 2.8rem;
+            top: -2.8rem;
             left: 50%;
             transform: translateX(-50%);
             -webkit-transform: translateX(-50%);
@@ -126,9 +131,42 @@
             -moz-transform: translateX(-50%);
             -ms-transform: translateX(-50%);
         }
+        .telphone {
+           position: absolute;
+           top: -5.32rem;
+           background: transparent;
+           border: none;
+           left: 50%;
+           -webkit-transform: translateX(-50%);
+           -ms-transform: translateX(-50%);
+           -moz-transform: translateX(-50%);
+           transform: translateX(-50%);
+           text-align: center;
+           width: 5.9rem;
+           height: .80rem;
+           line-height: .80rem;
+        }
+        .phone-code {
+            position: absolute;
+            top: -4rem;
+            background: transparent;
+            border: none;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            transform: translateX(-50%);
+            text-align: center;
+            width: 5.9rem;
+            height: .80rem;
+            line-height: .80rem;
+        }
+        .get-code {
+            position: absolute;
+            top: -.01rem;
+            right: .5rem;
+        }
     </style>
-    <script type="text/javascript" src="https://r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
-    <script type="text/javascript" src="js/index20170807.js"></script>
     <script>
     function setFont(d, c) {
         var b = {},
@@ -158,41 +196,6 @@
         addEventListener("resize", b.changePage, false);
     }
     setFont(750, 100);
-    function userAgent() {
-        var u = window.navigator.userAgent;
-        var app = {
-          mobile: !!u.match(/AppleWebKit.*Mobile.*/),
-          isAndroid: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1 || u.indexOf("android") > -1,
-          isiOS: /[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
-          webApp: -1 == u.indexOf("Safari"),
-          weixin: u.indexOf("MicroMessenger") > -1,
-          isGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u) || /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
-          isAndroidGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u),
-          isiOSGjj: /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
-          isGjjFdjsq: /^android\/[\w\W]+client\/[\w\W]+category\/51fdjsq$/.test(u)
-        };
-        return app;
-    }
-    function btnBuryPoint() {
-        $(document).on("click", "[bp]", function() {
-          var event = $(this).attr("bp");
-          var url = "/act/request/activity";
-          $.ajax({
-            url: url,
-            data: {
-              tag: event,
-              source: userAgent().isGjj ? 1 : 0
-            },
-            success: function(d) {
-              console.debug("埋点记录成功：" + event)
-            },
-            fail: function() {
-              console.debug("埋点记录失败：" + event)
-            }
-          })
-        })
-    }
-    btnBuryPoint();
     </script>
     <script>
     var _czc = _czc || [];
@@ -204,27 +207,27 @@
         <div class="box">
             <div class="section section-one">
                 <div class="banner-part-one">
-                    <img class="bg" src="https://r.51gjj.com/act/images/shichang/20170911_new_title.gif" alt="title">
+                    <img class="bg" src="https://r.51gjj.com/act/images/shichang/zhongtengxin_bg.png" alt="title">
                 </div>
                 <div class="user-info">
-                    <div class="phone input-wrap">
-                        <input type="text" placeholder="请输入您的手机号" class="JS-phone" maxlength="11">
+                    <div class="phone input-wrap telphone">
+                        <input type="text" placeholder="输入您的手机号" class="JS-phone" maxlength="11">
                     </div>
-                    <div class="code input-wrap">
-                        <input type="text" placeholder="请输入验证码" class="JS-code" maxlength="10">
-                        <div class="get-code JS-get-code" style="background: #2891e2;" bp="获取验证码">获取验证码</div>
+                    <div class="phone-code">
+                        <input type="text" placeholder="请输入验证码" class="JS-code" maxlength="10" style="text-align: left;padding-left: .5rem;">
+                        <div class="code get-code JS-get-code"><span style="padding-left: .2rem;">获取验证码</span></div>
                     </div>
                     <div>
                         <div class="bottom-float">
-                            <a class="bottom-down-app" href="" id="appAddr" style="background: #2891e2; color: #fff; text-align: center;" bp="立即查看额度">立即查看额度</a>
+                            <a class="bottom-down-app" href="" id="appAddr"></a>
                         </div>
                     </div>
-                    <div class="company">
+                    <!-- <div class="company">
                         <div class="copyright" style="font-size: 11px; color:#333; background: transparent; text-align: center;opacity: .5;">
                             <p style="padding: 5px 0;">浙ICP备12029872号©2014-2017&nbsp;51公积金管家</p>
                             <p>杭州煎饼网络技术有限公司 </p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 
                 <div class="cnzz">
@@ -246,6 +249,9 @@
             </div> -->
         </div>
     </div>
+
+    <script type="text/javascript" src="https://r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
+    <script type="text/javascript" src="js/index20170807.js"></script>
     <script>
         //判断渠道
         function is_weixn() {
@@ -298,7 +304,7 @@
             };
 
             if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-                appAddr.href = "https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?ls=1&mt=8 ";
+                appAddr.href = "https://lnk0.com/IB5Qto";
             } else {
                 appAddr.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
             }
