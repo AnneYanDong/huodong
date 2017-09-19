@@ -28,7 +28,7 @@
                 <div class="content">
                     <img data-src="<?php echo $imgUrl; ?>bg.jpg" alt="">
                     <div class="share-btn"></div>
-                    <div class="skip-btn"></div>
+                    <div bp="20170919_1_1_0_领取18888元体验金 class="skip-btn"></div>
                 </div>
             </div>
         </div>

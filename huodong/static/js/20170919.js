@@ -66,7 +66,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 url: ct.Tool.url("/app/request/activity"),
                 data: JSON.stringify({
                     place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
-                    tag: "进入页面" + projectName
+                    tag: "20170919_1_0_0_限时加息"
                 }),
                 success: function (d) {
                     if (d.success == true) {
@@ -91,13 +91,13 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                 $("body").append(res);
             }
 
-            //var url = window.location.href.split('#')[0];
-            var url = "https://b.jianbing.com/act/home/huodong/20170919/index.php"
+            var url = window.location.href.split('#')[0];
             $.ajax({
                 //获取分享的配置信息
                 url: "/hs/wx/get_sign_package",
                 type: 'GET',
-                data: 'url=' + encodeURIComponent(window.location.href.split('#')[0]) + '&appid=wx90f7de7c9b73bf69',
+                //data: 'url=' + encodeURIComponent(url) + '&appid=wxb42d431526f1c17d',
+                data: 'url=' + encodeURIComponent(url) + '&appid=wxb42d431526f1c17d',
                 dataType: 'JSON',
                 success: function (r) {
                     _this.share_callback(r);
@@ -105,8 +105,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             })
         },
         share_callback: function (r) {
+            var host = window.location.host;
             wx.config({
-                debug: true,
+                debug: false,
                 appId: r.data.appId, //配置的微信服务号订阅号的APPID
                 timestamp: r.data.timestamp,
                 nonceStr: r.data.nonceStr,
@@ -116,7 +117,7 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             wx.ready(function () {
                 var share_data = {
                     title: "限时加息2%，2W存14天收益70元，厉害了！", //默认头信息
-                    link: "https://b.jianbing.com/act/home/huodong/20170919/index.php", //当前链接
+                    link: "https://" + host + "/act/home/huodong/20170919/", //当前链接
                     imgUrl: "https://r.51gjj.com/act/release/img/20170919_share_wx.png", //默认链接
                     desc: "收益高达9%，新网银行存管，一起赚起来！",
                     success: function () {
@@ -124,7 +125,6 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
                     }
                 };
                 wx.onMenuShareTimeline(share_data);
-                console.log(share_data)
                 wx.onMenuShareAppMessage(share_data);
                 wx.onMenuShareQQ(share_data);
                 wx.onMenuShareWeibo(share_data);
