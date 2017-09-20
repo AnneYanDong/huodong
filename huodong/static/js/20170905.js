@@ -126,13 +126,17 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                     type: "POST",
                     dataType: "JSON",
                     success: function(d) {
-                        var code = d.ret.invitation_code;
-                        Bridge.action('ShareTimeline', {
-                            "title": "老司机带你赚钱，快来领18888元体验金",
-                            'desc': "收益高达8.5%，新网银行存管，放心上车",
-                            "thumb": "https://r.51gjj.com/act/release/img/20170905_wx_fx.png",
-                            "link": "https://" + host + "/act/home/huodong/20170908_invest/index.php?pcode="+code+"&channel=invest_invitation&phone="+d.ret.invitation_phone
-                        });
+                        if (d.success == true) {
+                            var code = d.ret.invitation_code;
+                            Bridge.action('ShareTimeline', {
+                                "title": "老司机带你赚钱，快来领18888元体验金",
+                                'desc': "收益高达8.5%，新网银行存管，放心上车",
+                                "thumb": "https://r.51gjj.com/act/release/img/20170905_wx_fx.png",
+                                "link": "https://" + host + "/act/home/huodong/20170908_invest/index.php?pcode="+code+"&channel=invest_invitation&phone="+d.ret.invitation_phone
+                            });
+                        } else {
+                            oP.show(d.msg)
+                        }
                     },
                     error: function(xhr){
                         oP.show("发生错误" + xhr + "，请重试");
