@@ -166,6 +166,10 @@
             top: -.01rem;
             right: .5rem;
         }
+        input[type="text"]::-webkit-input-placeholder{color:#eee;opacity:1;}/* WebKit browsers */
+        input[type="text"]:-moz-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox 4 to 18 */
+        input[type="text"]::-moz-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox 19+ */
+        input[type="text"]:-ms-input-placeholder{color:#eee;opacity:1;}/* Mozilla Firefox 19+ */
     </style>
     <script>
     function setFont(d, c) {

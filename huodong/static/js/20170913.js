@@ -14,7 +14,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
 
   ct.Tool.buryPoint_v2(0);
 
-  ct.Tool.share();
+  ct.Tool.share(88, "xykdz3");
 
   var run = {
     start: function() {
