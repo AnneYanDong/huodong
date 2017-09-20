@@ -47,7 +47,7 @@
               </div>
               <div class="card-panel-shadow"></div>
             </div>
-            <div class="button-apply" @click="startAnim">马上抢</div>
+            <div class="button-apply" v-text="buttonTxt" ref="buttonapply"></div>
           </div>
           <transition name="fade-slow">
             <template v-if="ruleStatus">
