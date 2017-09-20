@@ -85,6 +85,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
                 if (d.success == true) {
                   vm.setItemInfo();
                   if (d.ret.lottery == 0) {
+                    vm.$set(vm.result, 'gift', d.ret);
                     vm.initAnim();
                     vm.startAnim();
                   } else if (d.ret.lottery == 1) {
@@ -107,6 +108,21 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
                 switch (this.result.gift.code) {
                   case '0500':
                     this.giftImg = 'g-500';
+                    break;
+                  case '0600':
+                    this.giftImg = 'g-600';
+                    break;
+                  case '0700':
+                    this.giftImg = 'g-700';
+                    break;
+                  case '0800':
+                    this.giftImg = 'g-800';
+                    break;
+                  case '0900':
+                    this.giftImg = 'g-900';
+                    break;
+                  case '1000':
+                    this.giftImg = 'g-1000';
                     break;
                 }
               }
