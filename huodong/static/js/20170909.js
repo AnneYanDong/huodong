@@ -333,7 +333,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                             }
                         },
                         error: function (jqXHR) {
-                            oP.show(jqXHR);
+                            oP.show("抽奖不成功" || jqXHR);
                         }
                     })
                 }
