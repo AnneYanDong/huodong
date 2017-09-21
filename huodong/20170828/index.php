@@ -20,7 +20,7 @@
     </style>
     <!-- <script>
         // 埋点后缀用
-        var projectName = "<?php echo $actDate ?>";
+        var projectName = "<?php //echo $actDate ?>";
     </script> -->
     <script src="../static/js/lib/require.min.js" data-main="<?php echo $res['js'] ?>"></script>
     </head>
