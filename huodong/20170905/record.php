@@ -32,7 +32,7 @@
            </ul>
            <div class="wrap-tab">
                 <ul class="record-on">
-                    <li><span>已邀好友</span><span>注册时间</span><span>15日内累计投资金额/元</span></li>
+                    <li><span>已邀好友</span><span>邀请时间</span><span>15日内累计投资14天标金额/元</span></li>
                     <div class="wrap-scroll">
                         <!-- <li class="record-list"><span>余**</span><span>2017/07/09 18:00</span><span>100,000.00</span></li> -->
                         <!-- <li class="record-list"><span>余**</span><span>2017/07/09 18:00</span><span>100,000.00</span></li>

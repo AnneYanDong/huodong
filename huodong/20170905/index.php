@@ -44,13 +44,13 @@
                 <img class="invite_btn" data-src="<?php echo $imgUrl;?>invite_btn.png">
             </div> -->
         </div>
-        <div class="code-show" id="JS-code-show">
-            <div class="code-cont">
-                <span class="code-close" id="JS-code-close"></span>
-                <div class="code-box">
-                    <div class="img-code" id="qrcodeBig"></div>
-                </div>
-            </div>
+    </div>
+</div>
+<div class="code-show" id="JS-code-show">
+    <div class="code-cont">
+        <span class="code-close" id="JS-code-close"></span>
+        <div class="code-box">
+            <div class="img-code" id="qrcodeBig"></div>
         </div>
     </div>
 </div>
