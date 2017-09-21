@@ -71,6 +71,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
             _this.record();
         },
         showQrcode: function () {
+            _this = this;
             $.ajax({
                 url: "/act/market/get_invitation_code",
                 type: "POST",
@@ -113,11 +114,30 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                     oP.show("发生错误" + xhr + "，请重试");
                 }
             })
+            if (_this.isWeiXin() || _this.isqq()) {
+                $(".invite_btn").remove();
+            }
         },
         closeQrcode: function () {
             $('#JS-code-close').on('click',function() {
                 $("#JS-code-show").hide();
             })
+        },
+        isWeiXin: function () {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        isqq: function () {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/QQ/i) == "qq") {
+                return true;
+            } else {
+                return false;
+            }
         },
         invite: function () {
             $('.invite_btn').on('click', function() {console.log("邀请码**")
