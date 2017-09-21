@@ -12,8 +12,6 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
 
   var cookie = Object.create(ct.Cookie);
 
-  ct.Tool.buryPoint_v2(0);
-
   ct.Tool.share(89, "qqymx");
 
   var run = {
@@ -74,6 +72,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
           $(".vue-pre-loading").fadeOut();
           this.pageShow = true;
           this.$nextTick(function() {
+            ct.Tool.buryPoint_v2();
             $.ajax({
               type: "POST",
               dataType: "json",

@@ -47,7 +47,7 @@
               </div>
               <div class="card-panel-shadow"></div>
             </div>
-            <div class="button-apply" v-text="buttonTxt" ref="buttonapply" :bg="'89_1_1_31_' + buttonTxt"></div>
+            <div class="button-apply" v-text="buttonTxt" ref="buttonapply" :bp="'89_1_1_31_' + buttonTxt"></div>
           </div>
           <transition name="fade-slow">
             <template v-if="ruleStatus">
