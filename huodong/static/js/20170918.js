@@ -12,8 +12,6 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
 
   var cookie = Object.create(ct.Cookie);
 
-  ct.Tool.buryPoint_v2(0);
-
   ct.Tool.share(89, "qqymx");
 
   var run = {
@@ -45,7 +43,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
         url: ct.Tool.url("/act/request/activity"),
         data: JSON.stringify({
           source: ct.Tool.userAgent().isGjj ? 1 : 0,
-          tag: "89_1_0_33_进入页面"
+          tag: "89_1_0_31_进入页面"
         }),
         success: function(d) {
           if (d.success == true) {
@@ -66,6 +64,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
           maskStatus: false,
           ruleStatus: false,
           giftStatus: false,
+          buttonTxt: "马上抢",
           result: {},
           giftImg: ""
         },
@@ -73,26 +72,29 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
           $(".vue-pre-loading").fadeOut();
           this.pageShow = true;
           this.$nextTick(function() {
+            ct.Tool.buryPoint_v2();
             $.ajax({
               type: "POST",
               dataType: "json",
-              url: "test.php",
+              url: ct.Tool.url("/act/act170918/get_status"),
               data: JSON.stringify({
 
               }),
               success: function(d) {
                 if (d.success == true) {
-                  if (d.lottery == 0) {
-                    vm.setItemInfo();
-                    vm.initAnim();   
-                  }else if(d.lottery == 1){
-                    oP.show("您已经抽过奖了")
+                  vm.setItemInfo();
+                  if (d.ret.lottery == 0) {
                     vm.$set(vm.result, 'gift', d.ret);
-                    vm.allowStart = true;
+                    vm.initAnim();
                     vm.startAnim();
-                  }           
-                }else{
-                  oP.show(d.msg || "抽奖失败，请联系客服咨询")
+                  } else if (d.ret.lottery == 1) {
+                    vm.$set(vm.result, 'gift', d.ret);
+                    vm.buttonTxt = "立即使用";
+                    vm.hasLotteried();
+                  }
+                } else {
+                  oP.show(d.msg || "抽奖失败，请联系客服咨询");
+                  return false;
                 }
               }
             })
@@ -100,11 +102,26 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
         },
         watch: {
           "result": {
-            handler: function(){
+            handler: function() {
               if (this.result && this.result.gift && this.result.gift.code) {
                 switch (this.result.gift.code) {
                   case '0500':
                     this.giftImg = 'g-500';
+                    break;
+                  case '0600':
+                    this.giftImg = 'g-600';
+                    break;
+                  case '0700':
+                    this.giftImg = 'g-700';
+                    break;
+                  case '0800':
+                    this.giftImg = 'g-800';
+                    break;
+                  case '0900':
+                    this.giftImg = 'g-900';
+                    break;
+                  case '1000':
+                    this.giftImg = 'g-1000';
                     break;
                 }
               }
@@ -148,67 +165,100 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
             var vm = this;
             var startAnimTimer = null;
             var loginId = cookie.get("jianbing_customer_id");
-            if (Bridge && app.isGjj) {
-              if (!/\d/g.test(loginId)) {
-                oP.show("请先登录APP",{
-                  callback: function(){
-                    Bridge.action('login');
+            vm.$refs.buttonapply.addEventListener("click", function() {
+
+              if (!vm.result.gift.login) {
+                oP.show("请先登录51公积金管家APP参与活动", {
+                  callback: function() {
+                    if (app.isGjj && Bridge) {
+                      Bridge.action('login');
+                    }
                   }
                 })
                 return false;
               }
-            }            
-            if (!vm.allowStart) {
-              return false;
-            }
-            if (vm.result && vm.result.gift && vm.result.gift.code) {
-              this.maskStatus = true;
-              this.giftStatus = true;
-              return false;
-            }
-            $.ajax({
-              type: "POST",
-              dataType: "json",
-              url: "test.php",
-              data: JSON.stringify({
 
-              }),
-              success: function(d) {
-                if (d.success == true) {
-                  vm.$set(vm.result, 'gift', d.ret);
-                  vm.$nextTick(function() {
-                    $(".count-item").removeClass("question-mark")
-                    var countHeight = vm.itemHeight;
-                    var initAnimArr = vm.result.gift.code.split("");
-                    var moveY = countHeight * 30;
-                    $(".count-item").each(function(index, item) {
-                      $(this).delay(index * 300).animate({
-                        "backgroundPositionY": -(moveY + countHeight * initAnimArr[index]) + "px",
-                      }, {
-                        duration: 2000 + initAnimArr.length,
-                        easing: "easeInOutCirc",
-                        complete: function() {
-                          clearTimeout(startAnimTimer);
-                          startAnimTimer = setTimeout(function(){
-                            vm.maskStatus = true;
-                            vm.giftStatus = true;
-                          },400)
-                        }
+              // if (Bridge && app.isGjj) {
+              //   if (!/\d/g.test(loginId)) {
+              //     oP.show("请先登录APP", {
+              //       callback: function() {
+              //         Bridge.action('login');
+              //       }
+              //     })
+              //     return false;
+              //   }
+              // }
+              if (!vm.allowStart) {
+                return false;
+              }
+              if (vm.result && vm.result.gift && vm.result.gift.code) {
+                vm.buttonTxt = "立即使用";
+                window.location.href = vm.result.gift.url;
+                return false;
+              }
+              vm.allowStart = false;
+              $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: ct.Tool.url("/act/act170918/get_gift"),
+                data: JSON.stringify({
+
+                }),
+                success: function(d) {
+                  if (d.success == true && d.ret.lottery == 1) {
+                    vm.$set(vm.result, 'gift', d.ret);
+                    vm.$nextTick(function() {
+                      $(".count-item").removeClass("question-mark")
+                      var countHeight = vm.itemHeight;
+                      var initAnimArr = vm.result.gift.code.split("");
+                      var moveY = countHeight * 30;
+                      $(".count-item").each(function(index, item) {
+                        $(this).delay(index * 300).animate({
+                          "backgroundPositionY": -(moveY + countHeight * initAnimArr[index]) + "px",
+                        }, {
+                          duration: 2000 + initAnimArr.length,
+                          easing: "easeInOutCirc",
+                          complete: function() {
+                            clearTimeout(startAnimTimer);
+                            startAnimTimer = setTimeout(function() {
+                              vm.allowStart = true;
+                              vm.maskStatus = true;
+                              vm.giftStatus = true;
+                              vm.buttonTxt = "立即使用"
+                            }, 400)
+                          }
+                        })
                       })
                     })
-                  })
-                }else{
-                  oP.show(d.msg || "抽奖失败，请联系客服咨询")
+                  } else {
+                    oP.show(d.msg || "暂不符合活动要求，看看其他贷款", {
+                      callback: function(){
+                        window.location.href = d.ret.url;
+                      }
+                    })
+                  }
                 }
-              }
+              })
             })
           },
-          goUrl: function(){
+          hasLotteried: function() {
+            var vm = this;
+            vm.$nextTick(function() {
+              var initAnimArr = vm.result.gift.code.split("");
+              $(".count-item").each(function(index, item) {
+                $(this).css("backgroundPositionY", -(vm.itemHeight * initAnimArr[index]) + "px");
+              })
+            })
+            vm.$refs.buttonapply.addEventListener("click", function() {
+              vm.goUrl();
+            })
+          },
+          goUrl: function() {
             if (this.result.gift) {
               window.location.href = this.result.gift.url;
             }
           },
-          createInitNum: function(){
+          createInitNum: function() {
             var vm = this;
             var arr = [];
             for (var i = 0; i < 2; i++) {

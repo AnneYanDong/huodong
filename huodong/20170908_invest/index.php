@@ -45,7 +45,7 @@
                 <!--<p>下载51公积金管家app, 在“理财业务”使用</p>-->
             </div>
             <div class="btn-rule"><span>活动规则>></span></div>
-            <div class="introduce"><img data-src="<?php echo $imgUrl_1?>introduce_v2.png"></div>
+            <div class="introduce"><img data-src="<?php echo $imgUrl_1?>introduce_v3.png"></div>
             <div class="bottom-tips">
                 <p>*本活动最终解释权归51有钱所有*</p>
                 <p>客服电话： 400-863-5151</p>
