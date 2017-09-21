@@ -45,7 +45,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
         url: ct.Tool.url("/act/request/activity"),
         data: JSON.stringify({
           source: ct.Tool.userAgent().isGjj ? 1 : 0,
-          tag: "89_1_0_33_进入页面"
+          tag: "89_1_0_31_进入页面"
         }),
         success: function(d) {
           if (d.success == true) {

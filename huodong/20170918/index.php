@@ -47,7 +47,7 @@
               </div>
               <div class="card-panel-shadow"></div>
             </div>
-            <div class="button-apply" v-text="buttonTxt" ref="buttonapply" :bg="'88_1_1_31_' + buttonTxt"></div>
+            <div class="button-apply" v-text="buttonTxt" ref="buttonapply" :bg="'89_1_1_31_' + buttonTxt"></div>
           </div>
           <transition name="fade-slow">
             <template v-if="ruleStatus">
@@ -71,7 +71,7 @@
                    <div class="left" :class="giftImg"></div>
                    <div class="right"></div>
                  </div>
-                 <div class="getPrize" @click="goUrl" bg="88_1_1_31_立即领取">立即领取</div>
+                 <div class="getPrize" @click="goUrl" bg="89_1_1_31_立即领取">立即领取</div>
                </div>
             </template>
           </transition>          
