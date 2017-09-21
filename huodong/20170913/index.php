@@ -55,7 +55,7 @@
                 <p>超长免息期</p>
               </div>
             </transition-group>
-            <div @click="startMake(1)" class="button" bp="88_1_1_0_立即定制">
+            <div @click="startMake(1)" class="button" bp="88_1_1_33立即定制">
               <span class="light light-animted"></span>立即定制
             </div>
             <div class="process" @click="process"><span>办卡进度</span><span class="arrow"></span></div>
@@ -66,12 +66,12 @@
             <div class="title">选择信用卡额度</div>
             <div class="choose-wrap">
               <transition name="my-left-in">
-                <div v-if="pageTwoshow" bp="88_2_1_0_1到5万" class="item" :class="{'grayscale': choose.cardAmount != 1}" @click="next('cardAmount', 1, 2)">
+                <div v-if="pageTwoshow" bp="88_2_1_33_1到5万" class="item" :class="{'grayscale': choose.cardAmount != 1}" @click="next('cardAmount', 1, 2)">
                   <p>1~5万</p>
                 </div>  
               </transition>
               <transition name="my-right-in">
-                <div v-if="pageTwoshow" bp="88_2_2_0_1到5万" class="item" :class="{'grayscale': choose.cardAmount != 2}"  @click="next('cardAmount', 2, 2)">
+                <div v-if="pageTwoshow" bp="88_2_2_33_6~50万" class="item" :class="{'grayscale': choose.cardAmount != 2}"  @click="next('cardAmount', 2, 2)">
                 <p>6~50万</p>
               </div>
               </transition>
@@ -83,12 +83,12 @@
             <div class="title">选择信用卡发卡行</div>
             <div class="choose-wrap">
               <transition name="my-left-in">
-                <div bp="88_3_1_0_浦发" v-if="pageThreeshow" class="item" :class="{'grayscale': choose.bank != 1}" @click="next('bank', 1, 3)">
+                <div bp="88_3_1_33_浦发" v-if="pageThreeshow" class="item" :class="{'grayscale': choose.bank != 1}" @click="next('bank', 1, 3)">
                   <span class="bank pufa"></span>
                 </div>
               </transition>
               <transition name="my-right-in">
-                <div bp="88_3_2_0_兴业" v-if="pageThreeshow" class="item" :class="{'grayscale': choose.bank != 2}" @click="next('bank', 2, 4)">
+                <div bp="88_3_2_33_兴业" v-if="pageThreeshow" class="item" :class="{'grayscale': choose.bank != 2}" @click="next('bank', 2, 4)">
                   <span class="bank xingye"></span>
                 </div>
               </transition>

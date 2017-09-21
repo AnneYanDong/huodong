@@ -45,7 +45,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
         url: ct.Tool.url("/act/request/activity"),
         data: JSON.stringify({
           source: ct.Tool.userAgent().isGjj ? 1 : 0,
-          tag: "87_1_0_33_进入页面"
+          tag: "88_1_0_33_进入页面"
         }),
         success: function(d) {
           if (d.success == true) {
@@ -208,7 +208,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge
               }
             }
 
-            var tag = '88_5_1_' + vm.page.show.bankId + '_立即申请';
+            var tag = '88_4_1_33' + vm.page.show.bankId + '_立即申请' + vm.page.show.title;
             $.ajax({
               type: "POST",
               dataType: "JSON",
