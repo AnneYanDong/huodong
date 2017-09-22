@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const utils = require('./utils');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 function resolve(relPath){
 	return path.resolve(__dirname, relPath);
@@ -11,7 +12,7 @@ module.exports = {
 		app: resolve('../src/main.js')
 	},
 	output: {
-		filename: 'js/[name]_[chunkhash:6].js'
+		filename: 'js/[name]_[hash:6].js'
 	},
 	module: {
 		rules: [{
@@ -43,5 +44,10 @@ module.exports = {
 				}
 			}]
 		}]
-	}
+	},
+	plugins: [
+		new CleanWebpackPlugin(['static'],{
+			root: resolve("../")
+		})
+	]
 }
