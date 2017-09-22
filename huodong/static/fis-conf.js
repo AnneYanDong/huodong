@@ -1,4 +1,4 @@
-fis.set("project.ignore", ['node_modules/**', 'output/**', '.git/**', 'fis-conf.js', "img/**", "less/**"])
+fis.set("project.ignore", ['node_modules/**', 'output/**', '.git/**', 'fis-conf.js', "img/**", "less/**", "vue_webpack/**"])
 
 fis.match("js/(*.js)",{
 	useHash: true,
