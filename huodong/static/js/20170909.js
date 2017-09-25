@@ -393,10 +393,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
         },
         skip: function () {
             $(".wrap-button").on("click", ".btn-change", function () {
-                window.location.href = "javascript:history.go(-1);";
+                window.location.href = "/51wealthy";
             })
             $(".toPurchase").on("click", function () {
-                window.location.href = "javascript:history.go(-1);";
+                window.location.href = "/51wealthy";
             })
         }
     }

@@ -1,5 +1,5 @@
 require.config(requireConfig);
-define(["jquery", "ct", "bridge", "Vue-dev", "FullPage"], function($, ct, Bridge, Vue, FullPage) {
+define(["jquery", "ct", "bridge", "Vue", "FullPage"], function($, ct, Bridge, Vue, FullPage) {
 
   var oP = Object.create(ct.Prompt);
   oP.create().build();
