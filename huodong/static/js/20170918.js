@@ -1,5 +1,5 @@
 require.config(requireConfig);
-define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Bridge, Vue, _) {
+define(["jquery", "ct", "bridge", "Vue", "jqueryEasing"], function($, ct, Bridge, Vue, _) {
 
   var oP = Object.create(ct.Prompt);
   oP.create().build();
