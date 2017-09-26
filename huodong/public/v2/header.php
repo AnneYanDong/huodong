@@ -3,7 +3,6 @@
  ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>
@@ -23,13 +22,12 @@
     }
     window.resVersion = resVersion;
   })(window);
-
   var requireConfig = {
     "baseUrl": "../../",
     "paths": {
       "jquery": ["//r.51gjj.com/act/release/js/lib/jQuery.min", "lib/jQuery.min"],
-      "pageSlider": ["//r.51gjj.com/act/release/js/lib/pageSlider.min", "lib/pageSlider.min"],
-      "zepto": ["//r.51gjj.com/act/release/js/lib/zepto.min", "lib/zepto.min"],
+      "zepto": ["//r.51gjj.com/act/release/js/lib/pageSlider.min", "lib/pageSlider.min"],
+      // "pageSlider": ["//r.51gjj.com/act/release/js/lib/zepto.min", "lib/zepto.min"],
       // "slide": ["//r.51gjj.com/act/release/js/lib/slide", "lib/slide"],
       // "swiper": ["//r.51gjj.com/act/release/js/lib/swiper-3.4.2.jquery.min", "lib/swiper-3.4.2.jquery.min"],
       "swiper": ["//r.51gjj.com/act/release/js/lib/swiper-3.4.2.min", "lib/swiper-3.4.2.min"],
