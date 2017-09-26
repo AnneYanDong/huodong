@@ -195,18 +195,6 @@ p {
   padding: 0;
   margin: 0;
 }
-input {
-  border: none;
-  outline: none;
-  border-radius: 0;
-}
-.opacity-enter-active {
-  -webkit-transition: opacity 0.4s;
-  transition: opacity 0.4s;
-}
-.opacity-enter {
-  opacity: 0;
-}
 .vue-loading-wrap {
   position: absolute;
   top: 0;
@@ -261,48 +249,6 @@ input {
     transform: rotate(360deg);
   }
 }
-html,
-body {
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-.wp {
-  height: 100%;
-  opacity: 0;
-  transition: opacity .4s linear;
-  -webkit-transition: opacity .4s linear;
-}
-.wp.show {
-  opacity: 1;
-}
-.wp .content {
-  height: 100%;
-  background: #e9eef4;
-}
-.wp .content .page-one .title {
+.wp .content .page-one {
   width: 100%;
-  height: 6.39rem;
-}
-.wp .content .page-one .title img {
-  display: block;
-  width: 100%;
-}
-.wp .content .page-one .input-wrap {
-  width: 6.23rem;
-  font-size: .28rem;
-  line-height: .28rem;
-  margin: 0 auto;
-  padding: .34rem 0.24rem;
-  background: #fff;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-}
-.wp .content .page-one .input-wrap input {
-  width: 100%;
-  height: 100%;
-  text-align: left;
-  color: #9c9c9c;
 }
