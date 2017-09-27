@@ -93,9 +93,9 @@ require(["jquery", "fastClick",  "ct", "bridge", "juicer", "share"], function ($
                 url: "/invest2/user/queryUser/tenderRank",
                 success: function (d) {
                     if (d.resCode == 1) {
-                        var topList = d.resData.topList.slice()
-                        $.each(topList, function (k, v) {
-                            $(".prize-" + v.rank + " .act-rank-name").text(v.mobilePhone.replace(/^(\d{3})\d{4}(\d+)/,"$1****$2"));
+                        $.each(d.resData.topList, function (k, v) {
+                            //v.mobilePhone = v.mobilePhone.replace(/^(\d{3})\d{4}(\d+)/,"$1****$2");
+                            $(".prize-" + v.rank + " .act-rank-name").text(v.mobilePhone);
                             $(".prize-" + v.rank + " .act-rank-money").text(v.sumTenderMoney);
                         })
                         $(".act-invest .personal-invest").text(d.resData.currentUserTenderMoney + "元");
