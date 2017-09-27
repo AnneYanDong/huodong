@@ -63,8 +63,7 @@
       "goDownload": ["//r.51gjj.com/act/release/js/lib/goDownload", "lib/goDownload"],
       "share": ["//res.wx.qq.com/open/js/jweixin-1.2.0"],
       "jqueryEasing": ["//r.51gjj.com/act/release/js/lib/jquery.easing.min", "lib/jquery.easing.min"],
-      "loadingAnim": ['', "vue_components/loading"],
-      "phonecode": ['', "vue_components/phonecode"]
+      "jquerynstSlider": ["//r.51gjj.com/act/release/js/lib/jquery.nstslider.min", "lib/jquery.nstslider.min"]
     }
     if (!ENV_PRO) {
       for(var i in paths){
@@ -103,9 +102,6 @@
         "dataStatistics": {
           "deps": ["zepto"]
         },
-        "ct": {
-          "deps": ["zepto"]
-        },
         "marquee": {
           "deps": ["zepto"]
         },
@@ -118,6 +114,9 @@
         "jqueryEasing": {
           "deps": ["jquery"],
           "exports": "jqueryEasing"
+        },
+        "jquerynstSlider": {
+          "deps": ["jquery"]
         }
       }
     }

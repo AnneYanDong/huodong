@@ -27,7 +27,7 @@
         <img src="loan3.jpg" alt="">
       </div>
       <div class="appdown">
-        <p class="button"><span class="txt">更多借款，前往APP申请</span><span class="icon"></span></p>
+        <p class="button" @click="appdown"><span class="txt">更多借款，前往APP申请</span><span class="icon"></span></p>
       </div>
     </div>
   </div>
