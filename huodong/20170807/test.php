@@ -1,12 +1,13 @@
 <?php
   $ret = array(
     "ret"=>array(
-       "login"=> false,
+       "login"=> true,
         "is_weChat"=> true,
         "is_qq"=> false,
         "show"=> true,
         "name"=> "朱梦思",
         "url" => "https://www.baidu.com/",
+        "play"=> true,
         "analyze1" => array(
           "city"=>"杭州",
           "ranking"=>3175,

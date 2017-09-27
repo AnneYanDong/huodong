@@ -654,11 +654,12 @@ img.quickmark {
   left: 2.43rem;
 }
 .page8 .detail {
-  width: 6.04rem;
-  height: 2.24rem;
+  width: 4.57rem;
+  height: 1.42rem;
   position: absolute;
   top: 5.45rem;
-  left: .72rem;
+  left: 50%;
+  margin-left: -2.28rem;
 }
 .page8 .img-btn {
   width: 4.62rem;
@@ -666,6 +667,15 @@ img.quickmark {
   position: absolute;
   top: 8.32rem;
   left: 1.45rem;
+}
+.page8 .weChat-finger {
+  width: .75rem;
+  height: .73rem;
+  position: absolute;
+  top: 9rem;
+  left: 5.27rem;
+  z-index: 2;
+  animation: weChatFinger 1s infinite;
 }
 @keyframes climbing {
   to {
@@ -1153,4 +1163,27 @@ img.quickmark {
   -webkit-animation: bounceout 200ms ease-in-out;
   -moz-animation: bounceout 200ms ease-in-out;
   animation: bounceout 200ms ease-in-out;
+}
+
+@-webkit-keyframes weChatFinger {
+  0%,100%{
+    -webkit-transform: translate(.2rem,.2rem);
+    -moz-transform: translate(.2rem,.2rem);
+    -ms-transform: translate(.2rem,.2rem);
+    transform: translate(.2rem,.2rem);
+  }
+  50%{
+    transform: translate(.2rem,.4rem);
+  }
+}
+@keyframes weChatFinger {
+  0%,100%{
+    -webkit-transform: translate(.2rem,.2rem);
+    -moz-transform: translate(.2rem,.2rem);
+    -ms-transform: translate(.2rem,.2rem);
+    transform: translate(.2rem,.2rem);
+  }
+  50%{
+    transform: translate(.2rem,.4rem);
+  }
 }

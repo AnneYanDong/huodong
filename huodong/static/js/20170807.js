@@ -75,7 +75,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
         },
         pagePaginationBuryRequest: function() {
             if ($(".swiper-pagination-bullet").hasClass("swiper-pagination-bullet-active")) {
-                $(".share").addClass("bounce-out");
                 var num = Number($(".swiper-pagination-bullet-active").text()) + 1;
                 $.ajax({
                     type: "POST",
@@ -114,12 +113,15 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                             success: function (d) {
                                 if (d.success) {
                                     if (d.ret.is_weChat) {
-                                        $(".page8").on("click", ".img-btn", function () {
-                                            $(".page8 .share").addClass("bounce-out");
-                                            setTimeout(function(){
-                                                $(".page8 .share").removeClass("bounce-out");
-                                            },200);
-                                        })
+                                        $(".share").addClass("hide");
+                                        $("#weChat-detail").show();
+                                        $(".img-btn").show();
+                                        $(".weChat-finger").show();
+                                        if (d.ret.play) {
+                                            $(".page8").on("click", ".img-btn", function () {
+                                                window.location.href = "/act/wechat/act_analyzes";
+                                            })
+                                        }
                                         _this.swiperHandleProcess(d);
                                     } else{
                                         if (d.ret.login == false) {
@@ -138,6 +140,13 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                                                 Bridge.action("login");
                                             }
                                         } else {
+                                            setInterval(function(){
+                                                $(".page8 .share").addClass("bounce-out");
+                                                setTimeout(function(){
+                                                    $(".page8 .share").removeClass("bounce-out");
+                                                },200);
+                                            },1500);
+                                            $("#app-detail").show();
                                             _this.swiperHandleProcess(d);
                                         }
                                     }
