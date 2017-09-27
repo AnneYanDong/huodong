@@ -2,7 +2,7 @@
 @import url('mtool.css');
 @import url('marquee.css');
 .wp {
-    overflow: auto!important;
+    overflow-y: auto!important;
     background: #f05559;
     -webkit-overflow-scrolling: touch;
 }
@@ -38,11 +38,11 @@
     width: 6rem;
     padding: .5rem .36rem;
     position: absolute;
-    top: 2.5rem;
+    top: 50%;
     left: 50%;
     font-size: 12px;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
     border-radius: 5px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -72,12 +72,12 @@
 .rule ul li {
     position: relative;
     font-size: 0.24rem;
-    line-height: 18px;
+    line-height: 0.35rem;
     padding-left: 16px;
     margin-bottom: 5px;
 }
 .rule ul .add-style {
-    padding-top: .5rem;
+    padding-top: .4rem;
     text-align: center;
     padding-left: 0;
 }
