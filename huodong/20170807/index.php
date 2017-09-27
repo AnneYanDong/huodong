@@ -178,8 +178,10 @@
                 <div class="content">
                     <img class="share" data-src="<?php echo $imgUrl; ?>page8_share.png" alt="share"/>
                     <img class="quickmark" data-src="<?php echo $imgUrl; ?>new_quickmark_v2.png" alt="quickmark"/>
-                    <img class="detail" data-src="<?php echo $imgUrl; ?>page8_detail.png" alt="detail"/>
-                    <img class="img-btn hide" bp="85_8_1_0_低调分享" data-src="<?php echo $imgUrl; ?>page8_btn.png" alt="btn"/>
+                    <img id="weChat-detail" class="detail hide" data-src="<?php echo $imgUrl; ?>page8_weChat_detail.png" alt="weChat-detail"/>
+                    <img id="app-detail" class="detail hide" data-src="<?php echo $imgUrl; ?>page8_app_detail.png" alt="app-detail"/>
+                    <img class="weChat-finger hide" data-src="<?php echo $imgUrl; ?>page8_weChat_finger.png" alt="weChat-finger"/>
+                    <img class="img-btn hide" bp="85_8_1_0_解析我的公积金" data-src="<?php echo $imgUrl; ?>page8_weChat_btn.png" alt="weChat-btn"/>
                 </div>
             </div>
         </div>
