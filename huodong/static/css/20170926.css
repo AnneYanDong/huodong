@@ -25,7 +25,7 @@
     display: inline-block;
     width: .32rem;
     height: .32rem;
-    background: url("http://r.51gjj.com/act/release/img/20170313_right_arrow.png") no-repeat;
+    background: url("//r.51gjj.com/act/release/img/20170313_right_arrow.png") no-repeat;
     background-size: .31rem .31rem;
     position: relative;
     margin-left: 5px;
@@ -91,7 +91,7 @@
 
 .rule .btn-close {
     position: absolute;
-    background: url("https://r.51gjj.com/act/images/20160818_close.png") no-repeat;
+    background: url("//r.51gjj.com/act/images/20160818_close.png") no-repeat;
     background-size: 100%;
     width: .8rem;
     height: .8rem;
