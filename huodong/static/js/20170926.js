@@ -157,7 +157,7 @@ require(["jquery", "fastClick",  "ct", "bridge", "juicer", "share"], function ($
                             "title": "国庆嗨翻天，全民加息至9.5%，还送888元奖励金",
                             'desc': "双节同庆加息至9.5%，新网银行存管，一起赚起来！",
                             "thumb": "https://r.51gjj.com/act/release/img/20170926_wxshare.png",
-                            "link": "https://" + host + "/act/home/huodong/20170926/index.php?mode=local"
+                            "link": "https://" + host + "/act/home/huodong/20170926/"
                         });
                     }
                 })

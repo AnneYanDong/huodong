@@ -10,6 +10,7 @@
     $origin = $_SERVER['HTTP_HOST'];
     include "../public/v2/img_src.php";
 ?>
+    <meta name="format-detection" content="telephone=no" />
     <link rel="stylesheet" href="<?php echo $res['css'] ?>">
     <style>
         /* 加载动画颜色配置 */
