@@ -1,0 +1,252 @@
+@import url('basicFullPage.css');
+@import url('mtool.css');
+@import url('marquee.css');
+.wp {
+    overflow-y: auto!important;
+    background: #f05559;
+    -webkit-overflow-scrolling: touch;
+}
+
+.wp-inner {
+    background: url("//r.51gjj.com/act/release/img/20170926_bg.jpg") no-repeat;
+    position: relative;
+    height: 47.78rem;
+    background-size: 100%;
+}
+.rule-btn {
+    position: absolute;
+    top: 0;
+    right: 0.2rem;
+    height: 1rem;
+    width: 0.9rem;
+}
+
+.rule-btn .icon-process {
+    display: inline-block;
+    width: .32rem;
+    height: .32rem;
+    background: url("http://r.51gjj.com/act/release/img/20170313_right_arrow.png") no-repeat;
+    background-size: .31rem .31rem;
+    position: relative;
+    margin-left: 5px;
+    vertical-align: bottom;
+}
+
+.rule {
+    background: url("//r.51gjj.com/act/release/img/20170926_rule_bg.png")no-repeat;
+    display: none;
+    width: 6rem;
+    padding: .5rem .36rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 12px;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    border-radius: 5px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    z-index: 99;
+    background-size: 100%;
+    height: 7.6rem;
+}
+.rule h6 {
+    margin: 0;
+    margin-bottom: .4rem;
+    font-size: 24px;
+    color: #d3921b;
+    text-align: center;
+}
+
+.rule ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1.6rem;
+    max-height: 6rem;
+    overflow-y: scroll;
+    color: #f24e33;
+}
+.rule ul .add-style-2 {
+    padding-left: 60px;
+}
+.rule ul li {
+    position: relative;
+    font-size: 0.24rem;
+    line-height: 0.35rem;
+    padding-left: 16px;
+    margin-bottom: 5px;
+}
+.rule ul .add-style {
+    padding-top: .4rem;
+    text-align: center;
+    padding-left: 0;
+}
+
+.rule ul li span {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    font-style: normal;
+}
+
+.rule .btn-close {
+    position: absolute;
+    background: url("https://r.51gjj.com/act/images/20160818_close.png") no-repeat;
+    background-size: 100%;
+    width: .8rem;
+    height: .8rem;
+    bottom: -1rem;
+    left: 50%;
+    margin-left: -.4rem;
+}
+.add-style-1 {
+    padding-left: 60px!important;
+}
+.content .logo {
+    width: 1.74rem;
+    height: .55rem;
+    padding-top: .1rem;
+    padding-left: .2rem;
+}
+.content .logo img {
+    width: 100%;
+}
+.content .big-title {
+    width: 6.57rem;
+    height: 2.41rem;
+    margin: 0 auto;
+    padding-top: 1.4rem;
+}
+.content .big-title img {
+    width: 100%;
+}
+.content .act-date {
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: .24rem;
+    padding: 0.3rem 0;
+}
+.content .act-rate {
+    width: 7.5rem;
+    height: 6.9rem;
+    margin: 0 auto;
+    padding-top: 3.95rem;
+    position: relative;
+}
+.content .act-rate img {
+    width: 100%;
+}
+.content .act-rate .btn-purchase {
+    position: absolute;
+    top: 8.55rem;
+    width: 5rem;
+    height: 1rem;
+    margin-left: -2.5rem;
+    left: 50%;
+}
+.act-prize-text {
+    width: 4.6rem;
+    margin: 0 auto;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: .26rem;
+    padding-top: 2.1rem;
+    line-height: .5rem;
+    text-align: center;
+}
+.act-prize-text span {
+    color: #ffd948;
+}
+.act-prize {
+    width: 6.98rem;
+    height: 2.58rem;
+    margin: 0 auto;
+    margin-top: 0.25rem;
+    position: relative;
+}
+.prize-1 {
+    background: url("//r.51gjj.com/act/release/img/20170926_prize_rank1.png")no-repeat;
+    background-size: 100%;
+}
+.prize-2 {
+    background: url("//r.51gjj.com/act/release/img/20170926_prize_rank2.png")no-repeat;
+    background-size: 100%;
+}
+.prize-3 {
+    background: url("//r.51gjj.com/act/release/img/20170926_prize_rank3.png")no-repeat;
+    background-size: 100%;
+}
+.prize-4 {
+    background: url("//r.51gjj.com/act/release/img/20170926_prize_rank4.png")no-repeat;
+    background-size: 100%;
+}
+.prize-5 {
+    background: url("//r.51gjj.com/act/release/img/20170926_prize_rank5.png")no-repeat;
+    background-size: 100%;
+}
+.prize-6 {
+    background: url("//r.51gjj.com/act/release/img/20170926_prize_rank6.png")no-repeat;
+    background-size: 100%;
+}
+.prize-7 {
+    background: url("//r.51gjj.com/act/release/img/20170926_prize_rank7.png")no-repeat;
+    background-size: 100%;
+}
+.prize-8 {
+    background: url("//r.51gjj.com/act/release/img/20170926_prize_rank8.png")no-repeat;
+    background-size: 100%;
+}
+.act-rank-name {
+    position: absolute;
+    font-size: .48rem;
+    color: #ca4845;
+    top: .88rem;
+    left: 3.6rem;
+    width: 2.7rem;
+    height: 0.45rem;
+    font-size: .28rem;
+    line-height: .45rem;
+    text-indent: .2rem;
+}
+.act-rank-money {
+    position: absolute;
+    font-size: .48rem;
+    color: #ca4845;
+    top: 1.6rem;
+    left: 3.6rem;
+    width: 2.7rem;
+    height: 0.45rem;
+    font-size: .28rem;
+    line-height: .45rem;
+    text-indent: .2rem;
+}
+.content .act-invest {
+    background: url("//r.51gjj.com/act/release/img/20170926_personal_invest.png")no-repeat;
+    background-size: 100%;
+    width: 7.5rem;
+    height: 5.28rem;
+    margin-top: .6rem;
+    position: relative;
+}
+.act-invest .personal-invest {
+    position: absolute;
+    top: 1.5rem;
+    width: 5rem;
+    height: .9rem;
+    margin-left: -2.5rem;
+    left: 50%;
+    font-size: .48rem;
+    text-align: center;
+    color: #e95652;
+    line-height: .9rem;
+}
+.btn-receive {
+    position: absolute;
+    width: 5rem;
+    height: 1rem;
+    top: 3rem;
+    transform: translateX(-50%);
+    left: 50%;
+}

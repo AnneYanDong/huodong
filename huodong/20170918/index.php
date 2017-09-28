@@ -27,7 +27,7 @@
       <div class="wp">
         <div class="content">
           <div class="main-content">
-            <div class="rule-btn" @click="showRule" bp="88_1_1_0_立即定制">活动说明</div>
+            <div class="rule-btn" @click="showRule" bp="88_1_1_31_活动说明">活动说明</div>
             <div class="main-title"></div>
             <div class="sub-title"></div>
             <div key="ball1" v-if="pageShow" class="balloon-1" :class="{'balloon-1-anim': pageShow}"></div>
@@ -47,7 +47,7 @@
               </div>
               <div class="card-panel-shadow"></div>
             </div>
-            <div class="button-apply" v-text="buttonTxt" ref="buttonapply"></div>
+            <div class="button-apply" v-text="buttonTxt" ref="buttonapply" :bp="'89_1_1_31_' + buttonTxt"></div>
           </div>
           <transition name="fade-slow">
             <template v-if="ruleStatus">
@@ -71,7 +71,7 @@
                    <div class="left" :class="giftImg"></div>
                    <div class="right"></div>
                  </div>
-                 <div class="getPrize" @click="goUrl">立即领取</div>
+                 <div class="getPrize" @click="goUrl" bg="89_1_1_31_立即领取">立即领取</div>
                </div>
             </template>
           </transition>          

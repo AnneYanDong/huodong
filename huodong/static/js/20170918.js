@@ -1,5 +1,5 @@
 require.config(requireConfig);
-define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Bridge, Vue, _) {
+define(["jquery", "ct", "bridge", "Vue", "jqueryEasing"], function($, ct, Bridge, Vue, _) {
 
   var oP = Object.create(ct.Prompt);
   oP.create().build();
@@ -11,8 +11,6 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
   var app = ct.Tool.userAgent();
 
   var cookie = Object.create(ct.Cookie);
-
-  ct.Tool.buryPoint_v2(0);
 
   ct.Tool.share(89, "qqymx");
 
@@ -45,7 +43,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
         url: ct.Tool.url("/act/request/activity"),
         data: JSON.stringify({
           source: ct.Tool.userAgent().isGjj ? 1 : 0,
-          tag: "89_1_0_33_进入页面"
+          tag: "89_1_0_31_进入页面"
         }),
         success: function(d) {
           if (d.success == true) {
@@ -74,6 +72,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
           $(".vue-pre-loading").fadeOut();
           this.pageShow = true;
           this.$nextTick(function() {
+            ct.Tool.buryPoint_v2();
             $.ajax({
               type: "POST",
               dataType: "json",
@@ -85,6 +84,7 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
                 if (d.success == true) {
                   vm.setItemInfo();
                   if (d.ret.lottery == 0) {
+                    vm.$set(vm.result, 'gift', d.ret);
                     vm.initAnim();
                     vm.startAnim();
                   } else if (d.ret.lottery == 1) {
@@ -107,6 +107,21 @@ define(["jquery", "ct", "bridge", "Vue-dev", "jqueryEasing"], function($, ct, Br
                 switch (this.result.gift.code) {
                   case '0500':
                     this.giftImg = 'g-500';
+                    break;
+                  case '0600':
+                    this.giftImg = 'g-600';
+                    break;
+                  case '0700':
+                    this.giftImg = 'g-700';
+                    break;
+                  case '0800':
+                    this.giftImg = 'g-800';
+                    break;
+                  case '0900':
+                    this.giftImg = 'g-900';
+                    break;
+                  case '1000':
+                    this.giftImg = 'g-1000';
                     break;
                 }
               }

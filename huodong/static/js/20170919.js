@@ -63,9 +63,9 @@ require(["jquery", "fastClick", "lucky-card", "ct", "bridge", "juicer", "marquee
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: ct.Tool.url("/app/request/activity"),
+                url: ct.Tool.url("/act/request/activity"),
                 data: JSON.stringify({
-                    place_cid: ct.Tool.userAgent().isGjj ? 1 : 0,
+                    source: ct.Tool.userAgent().isGjj ? 1 : 0,
                     tag: "20170919_1_0_0_限时加息"
                 }),
                 success: function (d) {

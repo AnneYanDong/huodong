@@ -1,0 +1,29 @@
+@import url(../common/common.less);
+
+.phonecode-wrap{
+	&.phonecode-default{
+		width: 100%;
+		padding-right: 2rem;
+		.border-box();
+		.get-code{
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 9;
+			font-size: 12px;
+			text-align: center;
+			width: 2rem;
+			height: 100%;
+			background: #03a9f4;
+			.code-txt{
+				position: absolute;
+				width: 100%;
+				top: 50%;
+				left: 50%;
+				color: #fff;
+				font-size: 14px;
+				.center();
+			}
+		}
+	}
+}

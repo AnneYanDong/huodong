@@ -71,7 +71,7 @@
                 </div>  
               </transition>
               <transition name="my-right-in">
-                <div v-if="pageTwoshow" bp="88_2_2_0_1到5万" class="item" :class="{'grayscale': choose.cardAmount != 2}"  @click="next('cardAmount', 2, 2)">
+                <div v-if="pageTwoshow" bp="88_2_2_0_6~50万" class="item" :class="{'grayscale': choose.cardAmount != 2}"  @click="next('cardAmount', 2, 2)">
                 <p>6~50万</p>
               </div>
               </transition>

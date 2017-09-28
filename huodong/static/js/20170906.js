@@ -117,7 +117,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                             loadingPage_1 = json.resData.userInvites.length;
                             for (var i = 0; i < loadingPage_1; i++) {
                                 var userName = json.resData.userInvites[i].userName;
-                                var inviteTime = json.resData.userInvites[i].inviteTime;
+                                var inviteTime = json.resData.userInvites[i].inviteTime.substr(0,10);
                                 var sumTenderMoney = json.resData.userInvites[i].sumTenderMoney;
 
                                 if (investTotal > 0) {
@@ -142,7 +142,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer", "qrcode"],
                         if (json.resData.list != '') {
                             loadingPage_2 = json.resData.list.length;
                             for (var i = 0; i < loadingPage_2; i++) {
-                                var accountTime = json.resData.list[i].accountTime;
+                                var accountTime = json.resData.list[i].accountTime.substr(0,10);
                                 var money = json.resData.list[i].money;
                                 var realName = json.resData.list[i].realName;
                                 var investTotal = loadingPage_2;

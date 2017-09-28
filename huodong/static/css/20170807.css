@@ -1,10 +1,25 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
-@import url('swiper-3.4.2.min.css');
+@import url('https://r.51gjj.com/act/release/css/lib/swiper-3.4.2.min.css');
 .swiper-container {
     width: 100%;
     height: 100%;
 }
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  display: inline-block;
+  border-radius: 100%;
+  background: #000;
+  opacity: 0;
+  font-size: 14px;
+  color: #fff;
+}
+// .swiper-pagination-bullet-active {
+//     opacity: 1;
+//     background: #e33d3b;
+// }
 .page {
   background: url("https://r.51gjj.com/act/release/img/20170807_page_bg.png") no-repeat center;
   background-size: cover;
@@ -80,9 +95,10 @@
 }
 .tp-analyzing {
   background: url("https://r.51gjj.com/act/release/img/letter_tp_sprites.png");
-  position: relative;
-  top: 3.08rem;
-  margin: auto;
+  position: absolute;
+  top: 3.3rem;
+  left: 50%;
+  margin-left: -0.87rem;
   background-size: 3.48rem 1.65rem;
   width: 1.74rem;
   height: 1.65rem;
@@ -638,11 +654,12 @@ img.quickmark {
   left: 2.43rem;
 }
 .page8 .detail {
-  width: 6.04rem;
-  height: 2.24rem;
+  width: 4.57rem;
+  height: 1.42rem;
   position: absolute;
   top: 5.45rem;
-  left: .72rem;
+  left: 50%;
+  margin-left: -2.28rem;
 }
 .page8 .img-btn {
   width: 4.62rem;
@@ -650,6 +667,15 @@ img.quickmark {
   position: absolute;
   top: 8.32rem;
   left: 1.45rem;
+}
+.page8 .weChat-finger {
+  width: .75rem;
+  height: .73rem;
+  position: absolute;
+  top: 9rem;
+  left: 5.27rem;
+  z-index: 2;
+  animation: weChatFinger 1s infinite;
 }
 @keyframes climbing {
   to {
@@ -1137,4 +1163,27 @@ img.quickmark {
   -webkit-animation: bounceout 200ms ease-in-out;
   -moz-animation: bounceout 200ms ease-in-out;
   animation: bounceout 200ms ease-in-out;
+}
+
+@-webkit-keyframes weChatFinger {
+  0%,100%{
+    -webkit-transform: translate(.2rem,.2rem);
+    -moz-transform: translate(.2rem,.2rem);
+    -ms-transform: translate(.2rem,.2rem);
+    transform: translate(.2rem,.2rem);
+  }
+  50%{
+    transform: translate(.2rem,.4rem);
+  }
+}
+@keyframes weChatFinger {
+  0%,100%{
+    -webkit-transform: translate(.2rem,.2rem);
+    -moz-transform: translate(.2rem,.2rem);
+    -ms-transform: translate(.2rem,.2rem);
+    transform: translate(.2rem,.2rem);
+  }
+  50%{
+    transform: translate(.2rem,.4rem);
+  }
 }

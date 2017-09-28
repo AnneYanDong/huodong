@@ -2,11 +2,12 @@
   $ret = array(
     "ret"=>array(
        "login"=> true,
-        "is_weChat"=> false,
+        "is_weChat"=> true,
         "is_qq"=> false,
         "show"=> true,
         "name"=> "朱梦思",
         "url" => "https://www.baidu.com/",
+        "play"=> true,
         "analyze1" => array(
           "city"=>"杭州",
           "ranking"=>3175,
@@ -18,7 +19,8 @@
           "year"=>2010,
           "month"=> 9,
           "city"=> "杭州",
-          "diff_year"=> 6
+          "diff_year"=> 6,
+          "diff_month"=> 13
         ),
         "analyze3" => array(
           "age"=>90,
