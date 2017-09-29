@@ -123,6 +123,7 @@ require(["jquery", "fastClick",  "ct", "bridge", "juicer", "share"], function ($
         },
         share: function () {
             var _this = this;
+            var host = window.location.host;
             var url = window.location.href.split('#')[0];
             var appid = /b.jianbing.com/g.test(host)? "wx90f7de7c9b73bf69":"wxb42d431526f1c17d";
             $.ajax({

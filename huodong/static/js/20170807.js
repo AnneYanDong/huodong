@@ -112,6 +112,8 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                             url: "/act/analyze/get_analyze",
                             success: function (d) {
                                 if (d.success) {
+                                    newShareId = d.ret.shareid;
+                                    console.log("newShareId = ",newShareId);
                                     if (d.ret.is_weChat) {
                                         $(".share").addClass("hide");
                                         $("#weChat-detail").show();
@@ -434,7 +436,6 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
             if (app.isGjj && Bridge) {
                 Bridge.action('quickIcon', {
                     thumb: "https://r.51gjj.com/image/static/ico_title_share_white.png",
-                    title: "分享~",
                     onclick: function () {
                         Bridge.action('ShareTimeline', {
                             "title": "要不是和你铁，这份公积金档案也不会发给你！",
@@ -446,36 +447,36 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer","swiper"], 
                 })
             }
             return this;
-        },
-        share2: function () {
-            var u = navigator.userAgent;
-            var app = {
-                mobile: !!u.match(/AppleWebKit.*Mobile.*/),
-                isAndroid: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1 || u.indexOf("android") > -1,
-                isiOS: /[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
-                webApp: -1 == u.indexOf("Safari"),
-                weixin: u.indexOf("MicroMessenger") > -1,
-                isGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u) || /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
-                isAndroidGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u),
-                isiOSGjj: /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
-                isGjjFdjsq: /^android\/[\w\W]+client\/[\w\W]+category\/51fdjsq$/.test(u)
-            };
-            var host = window.location.host;
-            if (app.isGjj && Bridge) {
-                // Bridge.action('quickIcon', {
-                //     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
-                    // onclick: function () {
-                Bridge.action('ShareTimeline', {
-                    "title": "要不是和你铁，这份公积金档案也不会发给你！",
-                    'desc': "点击查看我的公积金秘密。",
-                    "thumb": "https://r.51gjj.com/act/release/img/20170807_new_share.png",
-                    "link": "https://" + host + "/act/home/huodong/20170824/index.php?shareid=" + newShareId
-                });
-                //     }
-                // })
-            }
-            return this;
         }
+        // share2: function () {
+        //     var u = navigator.userAgent;
+        //     var app = {
+        //         mobile: !!u.match(/AppleWebKit.*Mobile.*/),
+        //         isAndroid: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1 || u.indexOf("android") > -1,
+        //         isiOS: /[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+        //         webApp: -1 == u.indexOf("Safari"),
+        //         weixin: u.indexOf("MicroMessenger") > -1,
+        //         isGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u) || /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+        //         isAndroidGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u),
+        //         isiOSGjj: /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+        //         isGjjFdjsq: /^android\/[\w\W]+client\/[\w\W]+category\/51fdjsq$/.test(u)
+        //     };
+        //     var host = window.location.host;
+        //     if (app.isGjj && Bridge) {
+        //         // Bridge.action('quickIcon', {
+        //         //     thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
+        //             // onclick: function () {
+        //         Bridge.action('ShareTimeline', {
+        //             "title": "要不是和你铁，这份公积金档案也不会发给你！",
+        //             'desc': "点击查看我的公积金秘密。",
+        //             "thumb": "https://r.51gjj.com/act/release/img/20170807_new_share.png",
+        //             "link": "https://" + host + "/act/home/huodong/20170824/index.php?shareid=" + newShareId
+        //         });
+        //         //     }
+        //         // })
+        //     }
+        //     return this;
+        // }
     }
     run.start();
 })
