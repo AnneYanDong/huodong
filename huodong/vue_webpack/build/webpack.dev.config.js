@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const baseWebpackConfig = require('./webpack.base.config.js');
+const baseWebpackConfig = require('./webpack.base.config');
 const utils = require('./utils');
 const config = require('./config');
 
@@ -29,10 +29,6 @@ module.exports = merge(baseWebpackConfig,{
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new HtmlWebpackPlugin({
-			filename: 'index.html', // 相对于webpack配置项output.path 资源打包的路径
-			template: 'index.html', // 相对于webpack编译时的上下文目录，就是项目根目录，这里就是vue_webpack目录
-			inject: true // 传递true或body时，所有JS资源将放置在body元素底部
-		})
+		...utils.genHtmlPlugins()
 	]
 })

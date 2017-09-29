@@ -2,32 +2,32 @@ process.env.NODE_ENV = 'production';
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.config');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const utils = require('./utils');
 const config = require('./config');
 
 module.exports = merge(baseWebpackConfig, {
 	output: {
 		path: config.prod.outputPath,
-		publicPath: config.prod.outputPublicPath
+		filename: 'js/[name]_[chunkhash].js'
 	},
 	module: {
 		rules: utils.styleLoaders()
 	},
 	plugins: [
+    new webpack.ProgressPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+		new CleanWebpackPlugin(['dist'],{
+			root: path.resolve(__dirname, "../")
+		}),	
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': '"production"'
 		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new ExtractTextPlugin({
-			filename: 'css/[name]_[hash:6].css?'
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'index.html',
-			template: 'index.html',
-			inject: true
+			filename: 'css/[name]_[contenthash:6].css'
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
@@ -38,6 +38,7 @@ module.exports = merge(baseWebpackConfig, {
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'manifest',
 	    chunks: ['vendor']
-		})
+		}),
+		...utils.genHtmlPlugins()
 	]
 })

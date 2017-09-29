@@ -1,18 +1,18 @@
 const webpack = require('webpack');
 const path = require('path');
 const utils = require('./utils');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const entry = require('./entry');
 
 function resolve(relPath){
+	// console.log(path.resolve(__dirname, relPath));
 	return path.resolve(__dirname, relPath);
 }
 
 module.exports = {
-	entry: {
-		app: resolve('../src/main.js')
-	},
+	entry: entry,
 	output: {
-		filename: 'js/[name]_[hash:6].js'
+		filename: 'js/[name].js',
+    chunkFilename: "js/[name].[chunkhash].js" // 非入口的模块文件。比如异步加载的模块。暂时用不到
 	},
 	module: {
 		rules: [{
@@ -31,7 +31,7 @@ module.exports = {
 				loader: 'url-loader',
 				options: {
 					limit: 1000,
-					name: 'images/[name].[hash:7].[ext]'
+					name: 'images/[name]_[hash:6].[ext]'
 				}
 			}
 		},{
@@ -40,14 +40,9 @@ module.exports = {
 				loader: 'url-loader',
 				options: {
 					limit: 10000,
-					name: 'fonts/[name].[hash:7].[ext]'
+					name: 'fonts/[name]_[hash:6].[ext]'
 				}
 			}]
 		}]
-	},
-	plugins: [
-		new CleanWebpackPlugin(['static'],{
-			root: resolve("../")
-		})
-	]
+	}
 }

@@ -15,7 +15,7 @@
     <div class="content">
       <div class="page-one">
         <div class="title">
-          <img src="regist_bg.jpg" alt="">
+          <img src="//r.51gjj.com/act/release/img/20170925invitation_regist_bg.jpg" alt="">
         </div>
         <div class="input-wrap">
           <input type="number" maxlength="11" class="phone" placeholder="请输入您的手机号">
@@ -25,7 +25,7 @@
         </div>
         <div class="accept-button">接受邀请</div>
         <div class="from-who-invite">好友<span class="invite-phone">{{phone | phonenumber}}</span>邀请你来借款</div>
-        <div class="prize-banner"><img src="prize-banner.jpg" alt=""></div>
+        <div class="prize-banner"><img src="//r.51gjj.com/act/release/img/20170925invitation_prize-banner.jpg" alt=""></div>
         <div class="footer">*本活动最终解释权归51公积金管家所有*</div>
       </div>
     </div>

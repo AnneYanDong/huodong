@@ -14,17 +14,17 @@
   <div class="wp" :class="{'show': init}">
     <div class="content">
       <div class="title">
-        <img src="regist_bg.jpg" alt="">
+        <img src="//r.51gjj.com/act/release/img/20170925invitation_regist_bg.jpg" alt="">
       </div>
       <div class="loan">精选借款</div>
       <div class="loan-item">
-        <img src="loan1.jpg" alt="">
+        <img src="//r.51gjj.com/act/release/img/20170925invitation_loan1.jpg" alt="">
       </div>
       <div class="loan-item">
-        <img src="loan2.jpg" alt="">
+        <img src="//r.51gjj.com/act/release/img/20170925invitation_loan2.jpg" alt="">
       </div>
       <div class="loan-item">
-        <img src="loan3.jpg" alt="">
+        <img src="//r.51gjj.com/act/release/img/20170925invitation_loan3.jpg" alt="">
       </div>
       <div class="appdown">
         <p class="button" @click="appdown"><span class="txt">更多借款，前往APP申请</span><span class="icon"></span></p>

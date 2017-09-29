@@ -14,7 +14,7 @@
   <div class="wp" :class="{'show': init}">
     <div class="content">
       <div class="banner-wrap">
-        <img src="invite_bg.jpg" alt="">
+        <img src="//r.51gjj.com/act/release/img/20170925invitation_invite_bg.jpg" alt="">
         <div class="instruction award-desc" @click="toggleRule">奖励说明</div>
         <div class="instruction invite-process">邀请进度</div>
       </div>
@@ -36,7 +36,7 @@
         <div class="leftLabel" v-text="moneyAmount"></div>        
       </div>
       <div class="footer">
-        <img src="invite_bottom.jpg" alt="">
+        <img src="//r.51gjj.com/act/release/img/20170925invitation_invite_bottom.jpg" alt="">
         <div class="button">立即去赚奖金</div>
       </div>
     </div>
