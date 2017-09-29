@@ -244,7 +244,7 @@ a{text-decoration:none}
         "title": "邀请记录",
         "thumb": "https://r.51gjj.com/act/release/img/20170628_share.jpeg",
         "color": "#ffffff",
-        "link": "http://" + host + "/hd/20170927_jdhh_yq/record.php"
+        "link": "https://" + host + "/hd/20170927_jdhh_yq/record.php"
     })
 </script>
 </html>
