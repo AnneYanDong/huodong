@@ -1,1 +1,0 @@
-require.config(requireConfig),require(["ct","loadingAnim","Vue"],function(n,e){return n.Tool.setFont(),{registPage:function(){function o(){window.vm=new Vue({el:".wp",data:{},created:function(){e.hide()},mounted:function(){},methods:{}})}var i=this;n.Tool.imgPreLoad({callback:function(){console.log("fsf"),setTimeout(function(){o.call(i)},0)}})}}});

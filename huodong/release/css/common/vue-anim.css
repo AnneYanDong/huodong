@@ -1,0 +1,7 @@
+.opacity-enter-active {
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+.opacity-enter {
+  opacity: 0;
+}
