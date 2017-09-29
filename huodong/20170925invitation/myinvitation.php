@@ -14,7 +14,7 @@
   <div class="wp" :class="{'show': init}">
     <div class="content">
       <div class="banner-wrap">
-        <img src="myinvitation_bg.jpg" alt="">
+        <img src="//r.51gjj.com/act/release/img/20170925invitation_myinvitation_bg.jpg" alt="">
         <div class="money-wrap">
           <span class="desc">已获返佣奖金</span>
           <h6>800<span class="unit"> 元</span></h6>
