@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
-const devConfig = require('./webpack.dev.config.js');
+const devConfig = require('./webpack.dev.config');
 const config = require('./config.js');
 const compiler = webpack(devConfig); // node下调用webpack()返回一个compiler
 

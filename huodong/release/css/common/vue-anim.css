@@ -1,7 +1,8 @@
-.opacity-enter-active {
-  -webkit-transition: opacity 0.4s;
+.opacity-enter-active,
+.opacity-leave-active {
   transition: opacity 0.4s;
 }
-.opacity-enter {
+.opacity-enter,
+.opacity-leave-to {
   opacity: 0;
 }

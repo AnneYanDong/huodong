@@ -225,7 +225,7 @@ a{text-decoration:none}
               'desc': "我在用51借点花花，送你20元免息券，快用起来~",
               "thumb": "https://r.51gjj.com/act/release/img/20170927_pro.png",
               // "link": "https://" + host + "/act/home/huodong/20170927_jdhh_yq/index.php?inviter_uid="+d.ret.inviter_uid
-              "link": "https://"+host+".jianbing.com/hd/20170628_jdhh_out/index.php?inviter_uid="+d.ret.inviter_uid
+              "link": "https://"+host+"/hd/20170628_jdhh_out/index.php?inviter_uid="+d.ret.inviter_uid
             });
           } else if (d.code == 0){
             alert(d.msg || "出错请重试");
@@ -244,7 +244,7 @@ a{text-decoration:none}
         "title": "邀请记录",
         "thumb": "https://r.51gjj.com/act/release/img/20170628_share.jpeg",
         "color": "#ffffff",
-        "link": "http://" + host + "/hd/20170927_jdhh_yq/record.php"
+        "link": "https://" + host + "/hd/20170927_jdhh_yq/record.php"
     })
 </script>
 </html>

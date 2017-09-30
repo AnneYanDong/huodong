@@ -256,7 +256,7 @@ a{text-decoration:none}
                 "title": "1000元现金10分钟到账，推荐你试试看！",
                 'desc': "我在用51借点花花，送你20元免息券，快用起来~",
                 "thumb": "https://r.51gjj.com/act/release/img/20170927_pro.png",
-                "link": "https://"+host+".jianbing.com/hd/20170628_jdhh_out/index.php?inviter_uid="+d.ret.inviter_uid
+                "link": "https://"+host+"/hd/20170628_jdhh_out/index.php?inviter_uid="+d.ret.inviter_uid
                 });
             } else if (d.code == 0){
                 alert(d.msg || "出错请重试");
