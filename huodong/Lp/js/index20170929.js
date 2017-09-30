@@ -7,10 +7,6 @@ var init = {
         this.searchClick2("https://itunes.apple.com/cn/app/51gong-ji-jin-jie-kuan-gong/id1079260326?mt=8",'http://apk.51gjj.com/jk/51jk_' + place_name + '.apk');
         this.getCode2("https://itunes.apple.com/cn/app/51gong-ji-jin-jie-kuan-gong/id1079260326?mt=8",'http://apk.51gjj.com/jk/51jk_' + place_name + '.apk');
 
-        //index170929_3.html
-        this.searchClick3("https://b.jianbing.com/hs/fx/products?from=bjtg20","https://b.jianbing.com/hs/fx/products?from=bjtg20");
-        this.getCode3("https://b.jianbing.com/hs/fx/products?from=bjtg20","https://b.jianbing.com/hs/fx/products?from=bjtg20");
-
         this.isInputEnter();
         this.btnBuryPoint();
         this.PageBuryRequest();
@@ -60,7 +56,11 @@ var init = {
         var _this = this;
         var skipTimer = null;
         var args = _this.getQueryStringArgs();
+        if (!_this.place_name) {
+            _this.place_name = 'jianbing';
+        } else {
             _this.place_name = args["p"];
+        }
             console.log("place_name=",place_name);
         // var oUrl = "test.php";
         var oUrl = "/act/market/get_register";
@@ -253,108 +253,6 @@ var init = {
                     },
                     error: function(xhr){
                         $(".JS-get-code2").removeClass("timing");
-                        _this.alertBox("发生错误" + xhr + "，请重试",1000);
-                    }
-                })
-            }
-        })
-    },
-    //点击查询,注册后跳链接的
-    searchClick3: function(iosLink,androidLink) {
-        var _this = this;
-        var skipTimer = null;
-        var args = _this.getQueryStringArgs();
-            _this.place_name = args["p"];
-            console.log("place_name=",place_name);
-        // var oUrl = "test.php";
-        var oUrl = "/act/market/get_register";
-        $(".search-btn3").on("click", function() {
-            if (_this.checkPhone($(".phone input")) && _this.checkCode($(".msg-code input"))) {
-                var phoneNum = $(".JS-phone").val();
-                var codeNum = $(".JS-code").val();
-                $.ajax({
-                    type: "POST",
-                    url: oUrl,
-                    dataType: "JSON",
-                    data:
-                       JSON.stringify({
-                         "phone": phoneNum,
-                          "code": codeNum,
-                          "place": place_name
-                       }),
-                    success: function(d) {
-                        if (d.success === true) { //手机号码验证码都正确，跳转到H5查询
-                         $(".section").addClass("slideTop");
-                        }else if (d.code == 512){
-                         _this.alertBox("您已注册，直接参与吧",1000);
-                         clearTimeout(skipTimer);
-                            skipTimer = setTimeout(function(){
-                                if (_this.browser.versions.ios || _this.browser.versions.iPhone || _this.browser.versions.iPad) {
-                                    window.location.href = iosLink;
-                                } else {
-                                    // if (!place_name) {
-                                    //     place_name = 'jianbing';
-                                    // } else {
-                                    //     place_name = args[p];
-                                    // }
-                                    window.location.href = androidLink;
-                                }
-                            },1500);
-                        }else{
-                         _this.alertBox(d.msg || "出错了，请重试",1000)
-                        }
-                    },
-                    error: function(xhr) {
-                        _this.alertBox("发生错误" + xhr + "，请重试",1000);
-                    }
-                })
-            } else {
-
-            }
-        })
-    },
-    //点击获取验证码,注册后跳链接的
-    getCode3: function() {
-        var skipTimer = null;
-        // var oUrl = "test.php";
-
-        var oUrl = "/act/market/get_verification_code";
-        var _this = this;
-        $(".JS-get-code3").on("click", function() {
-            console.log(".......");
-            if (_this.checkPhone($(".JS-phone"))) {
-                var phoneNum = $(".JS-phone").val();
-                $.ajax({
-                    url: oUrl,
-                    type: "POST",
-                    dataType: "JSON",
-                    data:JSON.stringify({"phone": phoneNum,"place_name":place_name}),
-                    success: function(d) {
-                        if (d.success === true) {
-                            _this.alertBox("短信验证码已发送，请注意查收",2000);
-                            _this.timeDown($(".JS-get-code3"), 60)
-                        } else if(d.code == 512){
-                            _this.alertBox("您已注册，直接参与吧",1000);
-                            skipTimer = setTimeout(function(){
-                                if (_this.browser.versions.ios || _this.browser.versions.iPhone || _this.browser.versions.iPad) {
-                                    window.location.href = iosLink;
-                                } else {
-                                    var args = _this.getQueryStringArgs();
-                                    // if (!place_name) {
-                                    //     place_name = 'jianbing';
-                                    // } else {
-                                    //     place_name = args[p];
-                                    // }
-                                    window.location.href = androidLink;
-                                }
-                            },1500)
-                        } else{
-                            $(".JS-get-code3").removeClass("timing");
-                            _this.alertBox(d.msg || "出错了，请重试",1000)
-                        }
-                    },
-                    error: function(xhr){
-                        $(".JS-get-code3").removeClass("timing");
                         _this.alertBox("发生错误" + xhr + "，请重试",1000);
                     }
                 })
