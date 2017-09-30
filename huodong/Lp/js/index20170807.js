@@ -3,6 +3,9 @@ var init = {
         this.searchClick();
         this.getCode();
         this.isInputEnter();
+        this.btnBuryPoint();
+        this.PageBuryRequest();
+        this.setFont(750,100);
     },
     //获得查询字符串
     getQueryStringArgs: function() {
@@ -107,7 +110,85 @@ var init = {
             }
         })
     },
-    
+    setFont: function(d, c) {
+        var b = {},
+            a = document,
+            f;
+        b.widthProportion = function() {
+            var e = (a.body && a.body.clientWidth || a.getElementsByTagName("html")[0].offsetWidth || window.innerWidth) / d;
+            // console.log(e);
+            return e
+        };
+        b.changePage = function() {
+            var f = b.widthProportion() * c,
+                obj = a.getElementsByTagName("html")[0];
+            obj.setAttribute("style", "font-size:" + f + "px !important");
+            var style = null;
+            if (window.getComputedStyle) {
+                style = window.getComputedStyle(obj, null);
+                font = style.fontSize;
+                font = Number(font.replace("px", ""));
+                if (font > f) {
+                    var per = font / f;
+                    obj.setAttribute("style", "font-size:" + f / per + "px !important");
+                }
+            }
+        };
+        b.changePage();
+        addEventListener("resize", b.changePage, false);
+    },
+    userAgent: function() {
+        var u = window.navigator.userAgent;
+        var app = {
+          mobile: !!u.match(/AppleWebKit.*Mobile.*/),
+          isAndroid: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1 || u.indexOf("android") > -1,
+          isiOS: /[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+          webApp: -1 == u.indexOf("Safari"),
+          weixin: u.indexOf("MicroMessenger") > -1,
+          isGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u) || /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+          isAndroidGjj: /^android\/[\w\W]+client\/[\w\W]+theme\/[\w\W]+$/.test(u),
+          isiOSGjj: /^[\w\W]*ios\/[\w\W]+client\/[\w\W]+device\/[\w\W]+theme\/[\w\W]+$/.test(u),
+          isGjjFdjsq: /^android\/[\w\W]+client\/[\w\W]+category\/51fdjsq$/.test(u)
+        };
+        return app;
+    },
+    btnBuryPoint: function() {
+        var _this = this;
+        $(document).on("click", "[bp]", function() {
+          var event = $(this).attr("bp");
+          var url = "/act/request/activity";
+          $.ajax({
+            url: url,
+            data: {
+              tag: event,
+              source: _this.userAgent().isGjj ? 1 : 0
+            },
+            success: function(d) {
+              console.debug("埋点记录成功：" + event)
+            },
+            fail: function() {
+              console.debug("埋点记录失败：" + event)
+            }
+          })
+        })
+    },
+    PageBuryRequest: function () {
+        var _this = this;
+        $.ajax({
+            type: "POST",
+            dataType: "JSON",
+            url: "/act/request/activity",
+            data: JSON.stringify({
+                source: _this.userAgent().isGjj ? 1 : 0,
+                tag: "进入页面"
+            }),
+            success: function (d) {
+                if (d.success) {
+
+                }
+            }
+        });
+    },
 
     //校验手机号和短信验证码的方法
     checkPhone: function(ele) {
