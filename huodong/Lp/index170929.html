@@ -10,7 +10,7 @@
   <style>
     .header img {
       width: 100%;
-      height: 5.31rem;
+      height: 5.40rem;
     }
     .register {
       background: #fff;
@@ -28,7 +28,10 @@
       text-align: center;
       border: none;
       border-radius: .5rem;
-      box-shadow: 0 0 0 2px #ababab;
+      border: 2px solid #ababab;
+     /* -webkit-box-shadow: 0 0 0 2px #ababab;
+      -moz-box-shadow: 0 0 0 2px #ababab;
+      box-shadow: 0 0 0 2px #ababab;*/
       margin-top: .4rem;
     }
     .register .code {
@@ -37,7 +40,10 @@
       position: absolute;
       left: 50%;
       margin-left: -2.92rem;
-      box-shadow: 0 0 0 2px #ababab;
+      border: 2px solid #ababab;
+      /*-webkit-box-shadow: 0 0 0 2px #ababab;
+      -moz-box-shadow: 0 0 0 2px #ababab;
+      box-shadow: 0 0 0 2px #ababab;*/
       border-radius: .5rem;
     }
     .register .code input {
@@ -107,7 +113,7 @@
         box-sizing: border-box;
         -ms-box-sizing: border-box;
         -moz-box-sizing: border-box;
-        -webikt-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
         padding-bottom: 1.5rem;
         background: #f2f2f2;
     }
@@ -174,8 +180,50 @@
   </div>
 
   <script type="text/javascript" src="https://r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
-  <script type="text/javascript" src="js/index20170807.js"></script>
+  <script type="text/javascript" src="js/index20170929.js"></script>
   <script>
+  //移动端判断手指向上滑动还是向下滑动
+  function GetSlideDirection(startX, startY, endX, endY) {
+      var dy = startY - endY;
+      //var dx = endX - startX;
+      var result = 0;
+      if(dy>0) {
+      //向上滑动
+        result=1;
+      }else{
+      //向下滑动
+        result=2;
+      }
+
+      return result;
+  }
+  //滑动处理
+    var startX, startY;
+    document.addEventListener('touchstart',function (ev) {
+        startX = ev.touches[0].pageX;
+        startY = ev.touches[0].pageY;
+    }, false);
+
+    document.addEventListener('touchend',function (ev) {
+        var endX, endY;
+        endX = ev.changedTouches[0].pageX;
+        endY = ev.changedTouches[0].pageY;
+        var direction = GetSlideDirection(startX, startY, endX, endY);
+        switch(direction) {
+            case 0:
+                break;
+            case 1:
+                // 向上
+                $(".footer-float").fadeIn();
+                break;
+            case 2:
+                // 向下
+               $(".footer-float").fadeOut();
+                break;
+            default:
+        }
+    }, false);
+
       //鼠标滚动显示悬浮框
       var client = function () {
           var engine = {
@@ -284,14 +332,6 @@
               }(),
               language: (navigator.browserLanguage || navigator.language).toLowerCase()
           };
-
-          //添加滚动显示浮动按钮
-          $("window").scroll(function() {
-            console.log("$(document).scrollTop() = ",$("window").scrollTop());
-            // if ($("body").scrollTop() > 912px) {
-            //   $(".footer-float").show();
-            // }
-          });
 
           if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
               appAddr.href = "https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?ls=1&mt=8";

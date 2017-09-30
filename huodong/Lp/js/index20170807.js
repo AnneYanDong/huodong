@@ -2,6 +2,8 @@ var init = {
     fn: function() {
         this.searchClick();
         this.getCode();
+        // this.searchClick2();
+        // this.getCode2();
         this.isInputEnter();
         this.btnBuryPoint();
         this.PageBuryRequest();
@@ -65,6 +67,7 @@ var init = {
             }
         })
     },
+
     //点击查询
     searchClick: function() {
         var _this = this;
@@ -83,22 +86,22 @@ var init = {
                     url: oUrl,
                     dataType: "JSON",
                     data:
-                     	JSON.stringify({
-                     		"phone": phoneNum,
-	                        "code": codeNum,
-	                        "place": place_name
-                     	}),
+                        JSON.stringify({
+                            "phone": phoneNum,
+                            "code": codeNum,
+                            "place": place_name
+                        }),
                     success: function(d) {
                         if (d.success === true) { //手机号码验证码都正确，跳转到H5查询
-                        	$(".section").addClass("slideTop");
+                            $(".section").addClass("slideTop");
                         }else if (d.code == 512){
-                        	_this.alertBox("您已注册，直接参与吧",1000);
-                        	clearTimeout(skipTimer);
+                            _this.alertBox("您已注册，直接参与吧",1000);
+                            clearTimeout(skipTimer);
                             skipTimer = setTimeout(function(){
                                 $(".section").addClass("slideTop");
                             },1500)
                         }else{
-                        	_this.alertBox(d.msg || "出错了，请重试",1000)
+                            _this.alertBox(d.msg || "出错了，请重试",1000)
                         }
                     },
                     error: function(xhr) {
@@ -110,6 +113,127 @@ var init = {
             }
         })
     },
+    browser: {
+        versions: function() {
+            var u = navigator.userAgent,
+                app = navigator.appVersion;
+            return { //移动终端浏览器版本信息
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+            };
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    },
+    // //点击查询,注册后跳链接的
+    // searchClick2: function(iosLink,androidLink) {
+    //     var _this = this;
+    //     var skipTimer = null;
+    //     var args = _this.getQueryStringArgs(),
+    //         place_name = args["p"];
+    //         console.log("place_name=",place_name);
+    //     // var oUrl = "test.php";
+    //     var oUrl = "/act/market/get_register";
+    //     $(".search-btn2").on("click", function() {
+    //         if (_this.checkPhone($(".phone input")) && _this.checkCode($(".msg-code input"))) {
+    //             var phoneNum = $(".JS-phone").val();
+    //             var codeNum = $(".JS-code").val();
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: oUrl,
+    //                 dataType: "JSON",
+    //                 data:
+    //                  	JSON.stringify({
+    //                  		"phone": phoneNum,
+	   //                      "code": codeNum,
+	   //                      "place": place_name
+    //                  	}),
+    //                 success: function(d) {
+    //                     if (d.success === true) { //手机号码验证码都正确，跳转到H5查询
+    //                     	$(".section").addClass("slideTop");
+    //                     }else if (d.code == 512){
+    //                     	_this.alertBox("您已注册，直接参与吧",1000);
+    //                     	clearTimeout(skipTimer);
+    //                         skipTimer = setTimeout(function(){
+    //                             if (_this.browser.versions.ios || _this.browser.versions.iPhone || _this.browser.versions.iPad) {
+    //                                 window.location.href = "https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?ls=1&mt=8";
+    //                             } else {
+    //                                 if (!place_name) {
+    //                                     place_name = 'jianbing';
+    //                                 } else {
+    //                                     place_name = args[p];
+    //                                 }
+    //                                 window.location.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
+    //                             }
+    //                         },1500);
+    //                     }else{
+    //                     	_this.alertBox(d.msg || "出错了，请重试",1000)
+    //                     }
+    //                 },
+    //                 error: function(xhr) {
+    //                     _this.alertBox("发生错误" + xhr + "，请重试",1000);
+    //                 }
+    //             })
+    //         } else {
+
+    //         }
+    //     })
+    // },
+        //点击获取验证码,注册后跳链接的
+        // getCode2: function() {
+        //     var skipTimer = null;
+        //     // var oUrl = "test.php";
+
+        //     var oUrl = "/act/market/get_verification_code";
+        //     var _this = this;
+        //     $(".JS-get-code2").on("click", function() {
+        //         console.log(".......");
+        //         if (_this.checkPhone($(".JS-phone"))) {
+        //             var phoneNum = $(".JS-phone").val();
+        //             $.ajax({
+        //                 url: oUrl,
+        //                 type: "POST",
+        //                 dataType: "JSON",
+        //                 data:JSON.stringify({"phone": phoneNum,"place_name":place_name}),
+        //                 success: function(d) {
+        //                     if (d.success === true) {
+        //                         _this.alertBox("短信验证码已发送，请注意查收",2000);
+        //                         _this.timeDown($(".JS-get-code2"), 60)
+        //                     } else if(d.code == 512){
+        //                         _this.alertBox("您已注册，直接参与吧",1000);
+        //                         skipTimer = setTimeout(function(){
+        //                             if (_this.browser.versions.ios || _this.browser.versions.iPhone || _this.browser.versions.iPad) {
+        //                                 window.location.href = "https://itunes.apple.com/us/app/51gong-ji-jin-guan-jia-zhu/id908573399?ls=1&mt=8";
+        //                             } else {
+        //                                 var args = _this.getQueryStringArgs();
+        //                                 if (!place_name) {
+        //                                     place_name = 'jianbing';
+        //                                 } else {
+        //                                     place_name = args[p];
+        //                                 }
+        //                                 window.location.href = 'http://apk.51gjj.com/51gjj_' + place_name + '.apk';
+        //                             }
+        //                         },1500)
+        //                     } else{
+        //                         $(".JS-get-code2").removeClass("timing");
+        //                         _this.alertBox(d.msg || "出错了，请重试",1000)
+        //                     }
+        //                 },
+        //                 error: function(xhr){
+        //                     $(".JS-get-code2").removeClass("timing");
+        //                     _this.alertBox("发生错误" + xhr + "，请重试",1000);
+        //                 }
+        //             })
+        //         }
+        //     })
+        // },
     setFont: function(d, c) {
         var b = {},
             a = document,

@@ -10,7 +10,7 @@
   <style>
     .header img {
       width: 100%;
-      height: 5.31rem;
+      height: 5.40rem;
     }
     .register {
       background: #fff;
@@ -28,7 +28,11 @@
       text-align: center;
       border: none;
       border-radius: .5rem;
-      box-shadow: 0 0 0 2px #ababab;
+      border: 2px solid #ababab;
+      /*-webkit-box-shadow: 0 0 0 2px #ababab;
+      -moz-box-shadow: 0 0 0 2px #ababab;
+      -ms-box-shadow: 0 0 0 2px #ababab;
+      box-shadow: 0 0 0 2px #ababab;*/
       margin-top: .4rem;
     }
     .register .code {
@@ -37,7 +41,11 @@
       position: absolute;
       left: 50%;
       margin-left: -2.92rem;
-      box-shadow: 0 0 0 2px #ababab;
+      border: 2px solid #ababab;
+      /*-webkit-box-shadow: 0 0 0 2px #ababab;
+      -moz-box-shadow: 0 0 0 2px #ababab;
+      -ms-box-shadow: 0 0 0 2px #ababab;
+      box-shadow: 0 0 0 2px #ababab;*/
       border-radius: .5rem;
     }
     .register .code input {
@@ -107,7 +115,7 @@
         box-sizing: border-box;
         -ms-box-sizing: border-box;
         -moz-box-sizing: border-box;
-        -webikt-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
         padding-bottom: 1.5rem;
         background: #f2f2f2;
     }
@@ -119,7 +127,8 @@
       width: 100%;
       height: 1.39rem;
       background: #d3d3d3;
-      position: relative;
+      position: fixed;
+      bottom: 0;
       z-index: 2;
     }
     .footer-float img {
@@ -142,11 +151,11 @@
       <div class="code-wrap">
         <div class="code msg-code">
           <input type="number" name="code" placeholder="请输入验证码" class="JS-code" maxlength="10">
-          <div class="get-code JS-get-code" bp="获取验证码"><span>获取验证码</span></div>
+          <div class="get-code JS-get-code3" bp="获取验证码"><span>获取验证码</span></div>
         </div>
       </div>
     </div>
-    <div class="bottom-float search-btn" bp="测测您能借多少">
+    <div class="bottom-float search-btn3" bp="测测您能借多少">
         <a class="bottom-down-app" href="" id="appAddr"></a>
     </div>
     <div class="footer">
@@ -173,8 +182,107 @@
   </div>
 
   <script type="text/javascript" src="https://r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
-  <script type="text/javascript" src="js/index20170807.js"></script>
+  <script type="text/javascript" src="js/index20170929.js"></script>
   <script>
+  //移动端判断手指向上滑动还是向下滑动
+  function GetSlideDirection(startX, startY, endX, endY) {
+      var dy = startY - endY;
+      //var dx = endX - startX;
+      var result = 0;
+      if(dy>0) {
+      //向上滑动
+        result=1;
+      }else{
+      //向下滑动
+        result=2;
+      }
+
+      return result;
+  }
+  //滑动处理
+    var startX, startY;
+    document.addEventListener('touchstart',function (ev) {
+        startX = ev.touches[0].pageX;
+        startY = ev.touches[0].pageY;
+    }, false);
+
+    document.addEventListener('touchend',function (ev) {
+        var endX, endY;
+        endX = ev.changedTouches[0].pageX;
+        endY = ev.changedTouches[0].pageY;
+        var direction = GetSlideDirection(startX, startY, endX, endY);
+        switch(direction) {
+            case 0:
+                break;
+            case 1:
+                // 向上
+                $(".footer-float").fadeIn();
+                break;
+            case 2:
+                // 向下
+               $(".footer-float").fadeOut();
+                break;
+            default:
+        }
+    }, false);
+      //鼠标滚动显示悬浮框
+      var client = function () {
+          var engine = {
+              //呈现引擎
+              ie: 0,
+              gecko: 0,
+              webkit: 0,
+              khtml: 0,
+              opera: 0,
+              //具体版本号
+              ver: null
+          };
+          return {
+              engine: engine
+          };
+      }();
+      var EventUtil = {
+          getEvent: function (event) {
+              return event ? event : window.event;
+          },
+          addHandler: function (element, type, handler) {
+              if (element.addEventListener) {
+                  element.addEventListener(type, handler, false);
+              } else if (element.attachEvent) {
+                  element.attachEvent("on" + type, handler);
+              } else {
+                  element["on" + type] = handler;
+              }
+          },
+          getWheelDelta: function (event) {
+              if (event.wheelDelta) {
+                  return (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
+              } else {
+                  return -event.detail * 40;
+              }
+          }
+      };
+      (function(){
+          function handleMouseWheel(event) {
+              event = EventUtil.getEvent(event);
+              var delta = EventUtil.getWheelDelta(event);
+              // alert(delta);
+              if (delta < 0) {
+                $(".footer-float").fadeIn();
+              } else {
+                $(".footer-float").fadeOut();
+              }
+          }
+          EventUtil.addHandler(document, "mousewheel", handleMouseWheel);
+          EventUtil.addHandler(document, "DOMMouseScroll", handleMouseWheel);
+      })();
+      $(".footer-float").on("click",function() {
+        $('body,html').animate({
+          scrollTop: 0
+        }, 300);
+        $(".footer-float").fadeOut();
+        return false;
+      })
       //判断渠道
       function is_weixn() {
           var ua = navigator.userAgent.toLowerCase();
@@ -224,14 +332,6 @@
               }(),
               language: (navigator.browserLanguage || navigator.language).toLowerCase()
           };
-
-          //添加滚动显示浮动按钮
-          $("window").scroll(function() {
-            console.log("$(document).scrollTop() = ",$("window").scrollTop());
-            // if ($("body").scrollTop() > 912px) {
-            //   $(".footer-float").show();
-            // }
-          });
 
           if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
               appAddr.href = "https://b.jianbing.com/hs/fx/products?from=bjtg20"
