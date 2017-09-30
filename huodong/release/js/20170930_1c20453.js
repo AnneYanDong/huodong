@@ -59,7 +59,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
     },
     withdraw: function() {
       var _this = this;
-      $(".content").on("click", ".btn1,.btn2,.btn3,.btn4", function() {
+      $(".content").on("click", ".btn1,.btn2,.btn3", function() {
         var btn = $(this);
         var btn_id = btn[0].classList.value.substring(3);
         $.ajax({
@@ -67,7 +67,7 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
           dataType: "JSON",
           data: JSON.stringify({ btn_id }),
           // url: "test.php",
-          url: "/act/act170822/get_button/" + (btn_id - 1) + "",
+          url: "/act/act170822/get_button/" + (btn_id) + "",
           success: function(d) {
             if (d.success) {
               if (d.ret.is_weChat || d.ret.is_qq) {
@@ -146,10 +146,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
           thumb: "https://r.51gjj.com/image/static/ico_title_share_dark.png",
           onclick: function() {
             Bridge.action('ShareTimeline', {
-              "title": "抢个红包过周末",
+              "title": "抢个红包过国庆",
               'desc': "利息5折、现金、实物...",
               "thumb": "https://r.51gjj.com/act/release/img/20170821_share.png",
-              "link": "https://" + host + "/act/home/huodong/20170821/index.php"
+              "link": "https://" + host + "/act/home/huodong/20170930/index.php"
             });
           }
         });
@@ -160,11 +160,10 @@ require(["jquery", "fastClick", "FullPage", "ct", "bridge", "juicer"], function(
   var ruleJson = {
     rule: [
       "领券后，通过活动页面完成申请或放款将获得特定奖励，同个业务奖励只能领取一次。",
-      "领券后申请金优贷，每日前100名将获得精美定制笔记本一份；领券后申请金卡贷并放款，享受当月利息下调50%；领券后申请金安贷24小时未放款，获得超时赔付50元现金；领券后申请金花贷并放款，获得50元无门槛抵息券。",
-      "此活动针对从未申请过金花贷、金优贷、金卡贷、金安贷业务的新用户，一个用户至多领取到这4个业务对应的奖励。",
-      "抵息券将在首月还款直接减免，逾期、提前还款将不享受此优惠；现金/实物奖励将在用户信息完整后7个工作日内打款/寄出，请确认收款/收货信息准确性。",
-      "有任何疑问或者帮助可联系客服4008635151。",
-      "本商品由51公积金管家提供，与设备生产商Apple Inc.公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"
+      "领券后申请金优贷，每日前100名将获得精美定制笔记本一份；领券后申请金安贷24小时未放款，获得超时赔付50元现金；领券后申请金花贷并放款，获得50元无门槛抵息券。",
+      "此活动针对从未申请过金花贷、金优贷、金安贷业务的新用户，一个用户至多领取到这3个业务对应的奖励。",
+      "抵息券将在首月还款直接减免，逾期、提前还款将不享受此优惠；现金/实物奖励将在用户信息完整后7个工作日内打款/寄出，请确认收款/收货信息 准确性。",
+      "有任何疑问或者帮助可联系客服4008635151。本商品由51公积金管家提供，与设备生产商Apple Inc公司无关，杭州煎饼网络技术有限公司拥有在法律允许范围内解释本活动的权利。"
     ]
   };
   run.start();
