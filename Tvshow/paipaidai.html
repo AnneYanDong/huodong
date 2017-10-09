@@ -77,9 +77,10 @@
 
   @media screen and (-webkit-min-device-pixel-ratio:0) {
     .number .amount-wrap .amount {
-      background: -webkit-gradient(linear, left top, left bottom, from(#efe894), to(#dab556));
+/*      background: -webkit-gradient(linear, left top, left bottom, from(#efe894), to(#dab556));
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-text-fill-color: transparent;*/
+      color: #e0c87a;
       text-shadow: none !important;
     }
     .number .amount-wrap .amount-shadow {
@@ -122,7 +123,7 @@
   </script>
 </head>
 
-<body title="zhongtengxin">
+<body title="paipaidai">
   <div class="bg"></div>
   <div class="content">
     <div class="logo">
@@ -153,39 +154,39 @@
     			break;
     		case "wolaidai":
     			_this.type = 2;
-    			_this.title = "我来贷";
+    			_this.title = "51公积金管家-我来贷实时累计放款量";
     			break;
     		case "paipaidai":
     			_this.type = 3;
-    			_this.title = "拍拍贷";
+    			_this.title = "51公积金管家-拍拍贷实时累计放款量";
     			break;
     		case "guangfa":
     			_this.type = 4;
-    			_this.title = "广发";
+    			_this.title = "51公积金管家-广发实时累计放款量";
     			break;
     		case "pufa":
     			_this.type = 5;
-    			_this.title = "浦发";
+    			_this.title = "51公积金管家-浦发实时累计放款量";
     			break;
     		case "zhongan":
     			_this.type = 6;
-    			_this.title = "众安";
+    			_this.title = "51公积金管家-众安实时累计放款量";
     			break;
     		case "mashang":
     			_this.type = 7;
-    			_this.title = "马上";
+    			_this.title = "51公积金管家-马上实时累计放款量";
     			break;
         case "fengedai":
           _this.type = 8;
-          _this.title = "蜂E贷";
+          _this.title = "51公积金管家-蜂e贷实时累计放款量";
           break;
         case "licai":
           _this.type = 9;
-          _this.title = "理财";
+          _this.title = "51公积金管家-理财实时累计放款量";
           break;
         case "leijizhuceyonghushu":
           _this.type = 10;
-          _this.title = "累计注册用户数";
+          _this.title = "51公积金管家-累计注册用户数";
           break;
     	}
     },
@@ -206,7 +207,7 @@
               _this.start(0, d.ret.total);
               _this.first = false;
             } else {
-              var interval = _this.genStartTime(25,30);
+              var interval = _this.genStartTime(4,7);
               console.log(interval)
               _this.start(interval, d.ret.total);
             }
