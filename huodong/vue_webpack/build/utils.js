@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const page = require('./page');
 const isProd = process.env.NODE_ENV === 'production';
 
 var cssLang = [{
@@ -72,6 +73,7 @@ exports.genHtmlPlugins = function() {
   Object.keys(baseWebpackConfig.entry).forEach(function(name) {
   	plugins.push(
   		new HtmlWebpackPlugin({
+        title: page.title[name],
   			filename: isProd ? path.resolve(__dirname, '../dist/' + name + '.html') : name + '.html',
   			template: 'index.tpl.html',
   			chunks: isProd ? ['vendor', 'manifest', name] : [name],

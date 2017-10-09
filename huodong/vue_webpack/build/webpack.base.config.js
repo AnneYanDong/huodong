@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const utils = require('./utils');
-const entry = require('./entry');
+const page = require('./page');
 
 function resolve(relPath){
 	// console.log(path.resolve(__dirname, relPath));
@@ -9,7 +9,7 @@ function resolve(relPath){
 }
 
 module.exports = {
-	entry: entry,
+	entry: page.entry,
 	output: {
 		filename: 'js/[name].js',
     chunkFilename: "js/[name].[chunkhash].js" // 非入口的模块文件。比如异步加载的模块。暂时用不到
