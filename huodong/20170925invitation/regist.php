@@ -18,16 +18,17 @@
           <img src="//r.51gjj.com/act/release/img/20170925invitation_regist_bg.jpg" alt="">
         </div>
         <div class="input-wrap">
-          <input type="number" maxlength="11" class="phone" placeholder="请输入您的手机号">
+          <input type="number" maxlength="11" class="phone" placeholder="请输入您的手机号" v-model="phone">
         </div>
         <div class="input-wrap">
-          <my-phonecode stylecls="my-phonecode-style" codetime="3" :codeurl="getCodeUrl"></my-phonecode>
+          <my-phonecode stylecls="my-phonecode-style" codetime="3" :codeurl="getCodeUrl" :phone="phone"></my-phonecode>
         </div>
-        <div class="accept-button">接受邀请</div>
-        <div class="from-who-invite">好友<span class="invite-phone">{{phone | phonenumber}}</span>邀请你来借款</div>
+        <div class="accept-button" @click="apply">接受邀请</div>
+        <div class="from-who-invite">好友<span class="invite-phone">{{inviter | phonenumber}}</span>邀请你来借款</div>
         <div class="prize-banner"><img src="//r.51gjj.com/act/release/img/20170925invitation_prize-banner.jpg" alt=""></div>
         <div class="footer">*本活动最终解释权归51公积金管家所有*</div>
       </div>
+<!--       <my-alert v-if="myTip" :message="myTip" v-on:closemytip="nullMessage"></my-alert> -->
     </div>
   </div>
   <div class="vue-loading-wrap">

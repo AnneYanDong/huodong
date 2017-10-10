@@ -139,42 +139,42 @@
   </div>
   <script>
   var init = {
-  	title: "",
-  	type: "",
+    title: "",
+    type: "",
     startTimer: null,
     first: true,
-    businessCharge: function(){
-    	var _this = this;
-    	var t = $("body").attr("title");
-    	switch(t) {
-    		case "zhongtengxin":
-    			_this.type = 1;
-    			_this.title = "51公积金管家-中腾信实时累计放款量";
-    			break;
-    		case "wolaidai":
-    			_this.type = 2;
-    			_this.title = "51公积金管家-我来贷实时累计放款量";
-    			break;
-    		case "paipaidai":
-    			_this.type = 3;
-    			_this.title = "51公积金管家-拍拍贷实时累计放款量";
-    			break;
-    		case "guangfa":
-    			_this.type = 4;
-    			_this.title = "51公积金管家-广发实时累计放款量";
-    			break;
-    		case "pufa":
-    			_this.type = 5;
-    			_this.title = "51公积金管家-浦发实时累计放款量";
-    			break;
-    		case "zhongan":
-    			_this.type = 6;
-    			_this.title = "51公积金管家-众安实时累计放款量";
-    			break;
-    		case "mashang":
-    			_this.type = 7;
-    			_this.title = "51公积金管家-马上实时累计放款量";
-    			break;
+    businessCharge: function() {
+      var _this = this;
+      var t = $("body").attr("title");
+      switch (t) {
+        case "zhongtengxin":
+          _this.type = 1;
+          _this.title = "51公积金管家-中腾信实时累计放款量";
+          break;
+        case "wolaidai":
+          _this.type = 2;
+          _this.title = "51公积金管家-我来贷实时累计放款量";
+          break;
+        case "paipaidai":
+          _this.type = 3;
+          _this.title = "51公积金管家-拍拍贷实时累计放款量";
+          break;
+        case "guangfa":
+          _this.type = 4;
+          _this.title = "51公积金管家-广发实时累计放款量";
+          break;
+        case "pufa":
+          _this.type = 5;
+          _this.title = "51公积金管家-浦发实时累计放款量";
+          break;
+        case "zhongan":
+          _this.type = 6;
+          _this.title = "51公积金管家-众安实时累计放款量";
+          break;
+        case "mashang":
+          _this.type = 7;
+          _this.title = "51公积金管家-马上实时累计放款量";
+          break;
         case "fengedai":
           _this.type = 8;
           _this.title = "51公积金管家-蜂e贷实时累计放款量";
@@ -187,13 +187,22 @@
           _this.type = 10;
           _this.title = "51公积金管家-累计注册用户数";
           break;
-    	}
+      }
     },
     getData: function() {
       var _this = this;
+      _this.start();
+    },
+    genStartTime: function(min, max) {
+      var range = (max - min) * 60;
+      var rand = Math.random();
+      var num = min * 60 + Math.round(rand * range);
+      return num * 1000;
+    },
+    start: function() {
+      var _this = this;
       $.ajax({
         url: "https://b.jianbing.com/act/statistics/get_loan_total",
-        // url: "test.php",
         type: "POST",
         dataType: "JSON",
         data: JSON.stringify({
@@ -201,52 +210,35 @@
         }),
         success: function(d) {
           if (d.success) {
-          	_this.n++;
-            if (_this.first) {
-              _this.start(0, d.ret.total);
-              _this.first = false;
-            } else {
-              var interval = _this.genStartTime(4,7);
-              console.log(interval)
-              _this.start(interval, d.ret.total);
+            var decimal_places = 0;
+            var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
+            var nowAmount = $(".amount .val").text().replace(/,/g, "");
+            if (nowAmount != d.ret.total) {
+              $('.amount-shadow .val, .amount .val').prop('number', Number(nowAmount)).animateNumber({
+                easing: "easeInQuad",
+                number: d.ret.total * decimal_factor,
+                numberStep: function(now, tween) {
+                  var floored_number = Math.floor(now) / decimal_factor,
+                    target = $(tween.elem);
+                  if (decimal_places > 0) {
+                    floored_number = floored_number.toFixed(decimal_places);
+                    floored_number = floored_number.toString().replace('.', ',');
+                  }
+                  target.text(_this.setNum(floored_number));
+                }
+              }, 5000);
             }
+            var interval = _this.genStartTime(4, 7);
+            clearTimeout(_this.startTimer);
+            _this.startTimer = setTimeout(_this.start.bind(window.init),interval)
           }
         },
         error: function() {
           console.log("error")
-        }
+          clearTimeout(_this.startTimer);
+          _this.startTimer = setTimeout(_this.start.bind(window.init),interval)
+        } 
       })
-    },
-    genStartTime: function(min, max) {
-    	var range = (max - min) * 60;
-    	var rand = Math.random();
-    	var num = min * 60 + Math.round(rand * range);
-    	return num * 1000;
-    },
-    start: function(time, toNum) {
-      var _this = this;
-      clearTimeout(_this.startTimer);
-      _this.startTimer = setTimeout(function() {
-        var decimal_places = 0;
-        var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
-        var nowAmount = $(".amount .val").text().replace(/,/g, "");
-        if (nowAmount != toNum) {
-					$('.amount-shadow .val, .amount .val').prop('number', Number(nowAmount)).animateNumber({
-	          easing: "easeInQuad",
-	          number: toNum * decimal_factor,
-	          numberStep: function(now, tween) {
-	            var floored_number = Math.floor(now) / decimal_factor,
-	              target = $(tween.elem);
-	            if (decimal_places > 0) {
-	              floored_number = floored_number.toFixed(decimal_places);
-	              floored_number = floored_number.toString().replace('.', ',');
-	            }
-	            target.text(_this.setNum(floored_number));
-	          }
-	        }, 5000);
-        }
-        _this.getData();
-      }, time)
     },
     setNum: function(n) {
       var arr = (n + "").split("").reverse();
@@ -259,38 +251,38 @@
       }
       return newArr.reverse().join("");
     },
-    setTitle: function(){
-    	var _this = this;
-    	$(".business-title").text(_this.title);
+    setTitle: function() {
+      var _this = this;
+      $(".business-title").text(_this.title);
     },
     showLeftTime: function() {
       function timedown() {
-				var now = new Date();
-	      var year = now.getFullYear();
-	      var month = now.getMonth() + 1;
-	      if (month < 10) {
-	        month = '0' + month;
-	      }
-	      var day = now.getDate();
-	      if (day < 10) {
-	        day = '0' + day;
-	      }
-	      var hours = now.getHours();
-	      if (hours < 10) {
-	        hours = '0' + hours;
-	      }
-	      var minutes = now.getMinutes();
-	      if (minutes < 10) {
-	        minutes = '0' + minutes;
-	      }
-	      var seconds = now.getSeconds();
-	      if (seconds < 10) {
-	        seconds = '0' + seconds;
-	      }
-	      var showTime = year + "年" + month + "月" + day + "日 " + hours + ":" + minutes + ":" + seconds + "";
-	      $('.time').html(showTime);
-	      //一秒刷新一次显示时间
-	     	var timer = setTimeout(timedown, 1000);
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        if (month < 10) {
+          month = '0' + month;
+        }
+        var day = now.getDate();
+        if (day < 10) {
+          day = '0' + day;
+        }
+        var hours = now.getHours();
+        if (hours < 10) {
+          hours = '0' + hours;
+        }
+        var minutes = now.getMinutes();
+        if (minutes < 10) {
+          minutes = '0' + minutes;
+        }
+        var seconds = now.getSeconds();
+        if (seconds < 10) {
+          seconds = '0' + seconds;
+        }
+        var showTime = year + "年" + month + "月" + day + "日 " + hours + ":" + minutes + ":" + seconds + "";
+        $('.time').html(showTime);
+        //一秒刷新一次显示时间
+        var timer = setTimeout(timedown, 1000);
       }
       timedown();
     }

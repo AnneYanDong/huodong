@@ -1,6 +1,8 @@
 require.config(requireConfig);
 require(["ct", "Vue"], function(ct, Vue) {
   ct.Tool.setFont();
+  var oP = Object.create(ct.Prompt);
+  oP.create().build();
   window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
 
   function hide(fn) {
@@ -13,6 +15,50 @@ require(["ct", "Vue"], function(ct, Vue) {
       }
     }, 0)
   }
+
+  // function alertComponent() {
+  //   var tplArr = [
+  //     '<transition name="opacity">',
+  //     '<div v-if="message" class="my-msg" v-text="message">',
+  //     '</div>',
+  //     '</transition>'
+  //   ];
+  //   return {
+  //     props: {
+  //       message: {
+  //         type: String
+  //       },
+  //       time: {
+  //         type: [Number, String],
+  //         default: 3000
+  //       }
+  //     },
+  //     template: tplArr.join(""),
+  //     data: function() {
+  //       return {
+  //         timer: null
+  //       }
+  //     },
+  //     watch: {
+  //       'message': {
+  //         immediate: true,
+  //         handler: function(val, oldVal) {
+  //           this.nullMessage();
+  //         },
+  //         deep: true
+  //       }
+  //     },
+  //     methods: {
+  //       nullMessage: function() {
+  //         var vm = this;
+  //         clearTimeout(vm.timer);
+  //         vm.timer = setTimeout(function() {
+  //           vm.$emit('closemytip');
+  //         }, vm.time)
+  //       }
+  //     }
+  //   }
+  // }
 
   function phonecodeComponent() {
     var tplArr = [
@@ -33,6 +79,9 @@ require(["ct", "Vue"], function(ct, Vue) {
         },
         codeurl: {
           type: [String]
+        },
+        phone: {
+          type: [String, Number]
         }
       },
       template: tplArr.join(""),
@@ -50,22 +99,39 @@ require(["ct", "Vue"], function(ct, Vue) {
         getCode: function() {
           var vm = this;
           if (!vm.codeurl) {
-            console.log("codeurl不存在")
+            oP.show("codeurl不存在")
+            return false;
+          }
+          if (!vm.phone) {
+            oP.show("phone不存在")
+            return false;
           }
           if (!vm.codeFlag) {
-            console.log("请勿重复获取验证码");
+            oP.show("请勿重复获取验证码");
             return false;
-          }          
+          }
           vm.codeFlag = false;
           $.ajax({
             type: "post",
             dataType: "json",
             url: vm.codeurl,
+            data: JSON.stringify({
+              phone: vm.phone
+            }),
             success: function(d) {
               if (d.success) {
                 vm.timedown();
-              }else{
-                console.log("codeurl调用失败");
+              } else {
+                if (d.code == 300) {
+                  oP.show(d.msg, {
+                    callback: function(){
+                      window.location.href = 'appdown.php';
+                    }
+                  })
+                }else{
+                  vm.codeFlag = true;
+                  oP.show(d.msg || "错误");
+                }
               }
             },
             fail: function() {
@@ -76,8 +142,9 @@ require(["ct", "Vue"], function(ct, Vue) {
         timedown: function(fn) {
           var vm = this;
           vm.codeTxt = vm.time;
+
           function td() {
-            setTimeout(function(){
+            setTimeout(function() {
               if (vm.time <= 0) {
                 vm.codeTxt = '获取验证码';
                 vm.codeFlag = true;
@@ -87,7 +154,7 @@ require(["ct", "Vue"], function(ct, Vue) {
               vm.time--;
               vm.codeTxt = vm.time;
               td();
-            },1000)
+            }, 1000)
           }
           td();
         }
@@ -101,12 +168,14 @@ require(["ct", "Vue"], function(ct, Vue) {
       el: ".wp",
       data: {
         init: false,
-        getCodeUrl: "test.php",
-        phone: "13334321111"
+        getCodeUrl: ct.Tool.url("/act/act170921/send_captcha"),
+        phone: "",
+        inviter: '',
+        myTip: ''
       },
-      filters:{
-        phonenumber: function(v){
-          return (v+"").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+      filters: {
+        phonenumber: function(v) {
+          return (v + "").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
         }
       },
       components: {
@@ -116,9 +185,34 @@ require(["ct", "Vue"], function(ct, Vue) {
         hide(function() {
           vm.init = true;
         });
+        this.inviter = ct.Tool.getUrlData("inviter")
       },
       mounted: function() {},
-      methods: {}
+      methods: {
+        apply: function(){
+          $.ajax({
+            type: "post",
+            dataType: "json",
+            url: ct.Tool.url("/act/act170921/register"),
+            data: JSON.stringify({
+              phone: vm.phone,
+              code: $(".code").val(),
+              invite: ct.Tool.getUrlData("invite")
+            }),
+            success: function(d) {
+              if (d.success) {
+                console.log("fsf");
+                window.location.href = 'appdown.php';
+              } else {
+                oP.show(d.msg || "错误")
+              }
+            },
+            fail: function(xhr) {
+              oP.show(xhr || "错误")
+            }
+          })
+        }
+      }
     })
   }
   init();

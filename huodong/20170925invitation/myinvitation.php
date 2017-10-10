@@ -12,43 +12,25 @@
 
 <body>
   <div class="wp" :class="{'show': init}">
-    <div class="content">
+    <div class="content" v-if="page && page.info">
       <div class="banner-wrap">
         <img src="//r.51gjj.com/act/release/img/20170925invitation_myinvitation_bg.jpg" alt="">
         <div class="money-wrap">
           <span class="desc">已获返佣奖金</span>
-          <h6>800<span class="unit"> 元</span></h6>
+          <h6>{{page.info.current_reward}}<span class="unit"> 元</span></h6>
         </div>
-        <div class="drawing">立即提现</div>
+        <div class="drawing" @click="withdraw">立即提现</div>
       </div>
       <div class="invitation" ref="invitation">
         <ul class="invitation-list" ref="list">
-          <li class="item" @click="active">
+          <li class="item" @click="active" v-for="item in page.info.data">
             <span class="arrow"></span>
-            <p class="desc">13756412646用户已接受你的邀请</p>
-            <p class="time">2017-09-19 21:32:20</p>
+            <p class="desc">{{item.phone}}用户已接受你的邀请</p>
+            <p class="time">{{item.log_time}}</p>
             <div class="detail">
               <div class="decoration"></div>
-              <p class="detail-desc">13756412646用户放款成功返佣奖金XX元将于次月15日发放至您的账户中</p>
-              <p class="detail-time">2017-09-20 05:32:20</p>
-            </div>
-          </li>
-          <li class="item" @click="active">
-            <span class="arrow"></span>
-            <p class="desc">13756412646用户已接受你的邀请</p>
-            <p class="time">2017-09-19 21:32:20</p>
-            <div class="detail">
-              <p class="detail-desc">13756412646用户放款成功返佣奖金XX元将于次月15日发放至您的账户中</p>
-              <p class="detail-time">2017-09-20 05:32:20</p>
-            </div>
-          </li>
-          <li class="item" @click="active">
-            <span class="arrow"></span>
-            <p class="desc">13756412646用户已接受你的邀请</p>
-            <p class="time">2017-09-19 21:32:20</p>
-            <div class="detail">
-              <p class="detail-desc">13756412646用户放款成功返佣奖金XX元将于次月15日发放至您的账户中</p>
-              <p class="detail-time">2017-09-20 05:32:20</p>
+              <p class="detail-desc">{{item.phone}}用户放款成功返佣奖金{{item.reward}}元将于次月15日发放至您的账户中</p>
+              <!-- <p class="detail-time">2017-09-20 05:32:20</p> -->
             </div>
           </li>
         </ul>      
@@ -60,6 +42,23 @@
         </div>      
       </transition>
     </div>
+    <template v-if="maskShow">
+      <my-mask :show="maskShow"></my-mask>
+    </template>
+    <transition name="opacity">
+      <template v-if="draw">
+        <div class="rule">
+          <div class="title">奖励说明</div>
+          <div class="close-btn" @click="toggleRule"></div>
+          <div class="input-wrap">
+            <input type="text" class="name" placeholder="请输入姓名" v-model="username">
+            <input type="text" class="alipay" placeholder="请输入支付宝账号" v-model="useralipay"> 
+            <div class="enter-alipay">确认</div>  
+            <p class="prompt">提现金额将于次月15日发放到您所填写的支付宝账号。</p>         
+          </div>
+        </div>     
+      </template>   
+    </transition>    
   </div>
   <div class="vue-loading-wrap">
     <div class="vue-loading-ele"></div>

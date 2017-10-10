@@ -552,27 +552,43 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
 }
-.wp .rule ul {
+.wp .rule .input-wrap {
   background: #fff;
-  padding: .24rem;
   border-radius: 0 0 5px 5px;
+  text-align: center;
+  padding-bottom: .48rem;
+  font-size: 0;
+}
+.wp .rule .input-wrap input {
+  width: 80%;
+  height: .72rem;
+  border-radius: .72rem;
+  list-style-position: .72rem;
+  font-size: 14px;
+  border: 1px solid #eee;
+  padding: 0 .24rem;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
-}
-.wp .rule ul .item {
-  font-size: .22rem;
-  color: #6f7b8c;
-  line-height: .3rem;
-  position: relative;
-  padding-left: .24rem;
-}
-.wp .rule ul .item + .item {
   margin-top: .24rem;
 }
-.wp .rule ul .item span {
-  position: absolute;
-  top: 0;
-  left: 0;
+.wp .rule .input-wrap .enter-alipay {
+  width: 80%;
+  height: .72rem;
+  line-height: .72rem;
+  border-radius: .72rem;
+  margin: .24rem auto 0;
+  font-size: 16px;
+  color: #fff;
+  background: -webkit-linear-gradient(left, #2fb9ff, #1ad9aa);
+  background: -o-linear-gradient(right, #2fb9ff, #1ad9aa);
+  background: -moz-linear-gradient(right, #2fb9ff, #1ad9aa);
+  background: linear-gradient(to right, #2fb9ff, #1ad9aa);
+}
+.wp .rule .input-wrap .prompt {
+  font-size: .24rem;
+  color: #6f7b8c;
+  width: 80%;
+  margin: .24rem auto 0;
 }
