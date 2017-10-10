@@ -187,6 +187,10 @@
           _this.type = 10;
           _this.title = "51公积金管家-累计注册用户数";
           break;
+        case "daikuanzonge":
+          _this.type = 11;
+          _this.title = "51公积金管家-贷款总额度";
+          break;
       }
     },
     getData: function() {
@@ -229,6 +233,7 @@
               }, 5000);
             }
             var interval = _this.genStartTime(1435, 1440);
+            console.log(interval)
             clearTimeout(_this.startTimer);
             _this.startTimer = setTimeout(_this.start.bind(window.init),interval)
           }
