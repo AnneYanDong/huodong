@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["ct", "Vue", "jquerynstSlider"], function(ct, Vue, _) {
+require(["ct", "Vue", "bridge", "jquerynstSlider"], function(ct, Vue, Bridge, _) {
   ct.Tool.setFont();
   var app = ct.Tool.userAgent();
   var platform = ct.Tool.userAgent();
@@ -146,7 +146,7 @@ require(["ct", "Vue", "jquerynstSlider"], function(ct, Vue, _) {
                         "title": "您的好友邀请您一起来查公积金",
                         'desc': '实时了解你的公积金账户动况，激活您的潜在财富！',
                         "thumb": "https://r.51gjj.com/image/static/invitation.png",
-                        "link": "https://b.jianbing.com/act/home/20170925invitation/regist.php?invite=" + d.ret.invite + "&phone=" + d.ret.inviter
+                        "link": ct.Tool.url("/act/home/huodong/20170925invitation/regist.php?invite=" + d.ret.invite + "&inviter=" + d.ret.inviter)
                     });
                   }
                 }else{

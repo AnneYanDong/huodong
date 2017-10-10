@@ -1,12 +1,12 @@
 fis.set("project.ignore", ['node_modules/**', 'output/**', '.git/**', 'fis-conf.js', "img/**", "less/**", "vue_webpack/**"])
 
-fis.match("js/(*.js)",{
+fis.match("js/(**.js)",{
 	useHash: true,
 	optimizer: fis.plugin('uglify-js'),
 	url: 'r.51gjj.com/act/release/js/$1'
 })
 
-fis.match("css/(*.css)",{
+fis.match("css/(**.css)",{
 	useHash: true,
 	optimizer: fis.plugin('clean-css'),
 	url: 'r.51gjj.com/act/release/css/$1'

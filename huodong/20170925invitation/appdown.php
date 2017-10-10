@@ -18,13 +18,17 @@
       </div>
       <div class="loan">精选借款</div>
       <div class="loan-item">
-        <img src="//r.51gjj.com/act/release/img/20170925invitation_loan1.jpg" alt="">
+        <a href="https://b.jianbing.com/business/home/h5/wolaidai/index.php"><img src="//r.51gjj.com/act/release/img/20170925invitation_loan1.jpg" alt=""></a>
       </div>
       <div class="loan-item">
-        <img src="//r.51gjj.com/act/release/img/20170925invitation_loan2.jpg" alt="">
+        <a href="https://b.jianbing.com/business/home/h5/zhongtengxin/index.php">
+          <img src="//r.51gjj.com/act/release/img/20170925invitation_loan2.jpg" alt="">
+        </a>
       </div>
       <div class="loan-item">
-        <img src="//r.51gjj.com/act/release/img/20170925invitation_loan3.jpg" alt="">
+        <a href="https://b.jianbing.com/business/home/h5/xiaohua/index.php">
+          <img src="//r.51gjj.com/act/release/img/20170925invitation_loan3.jpg" alt="">
+        </a>
       </div>
       <div class="appdown">
         <p class="button" @click="appdown"><span class="txt">更多借款，前往APP申请</span><span class="icon"></span></p>

@@ -1,5 +1,5 @@
 require.config(requireConfig);
-require(["ct", "Vue"], function(ct, Vue) {
+require(["ct", "Vue", "bridge"], function(ct, Vue, Bridge) {
   ct.Tool.setFont();
   var platform = ct.Tool.userAgent();
   window.addEventListener("resize", ct.Tool.debounce(ct.Tool.setFont));
