@@ -64,7 +64,7 @@ require(["ct", "Vue", "bridge"], function(ct, Vue, Bridge) {
     var tplArr = [
       '<div class="phonecode-wrap" :class="stylecls">',
       '<input class="code" placeholder="请输入验证码">',
-      '<div class="get-code" @click="getCode"><span class="code-txt" v-text="codeTxt"></span></div>',
+      '<div class="get-code" bp="91_2_2_0_验证码" @click="getCode"><span class="code-txt" v-text="codeTxt"></span></div>',
       '</div>'
     ];
     return {
@@ -187,7 +187,9 @@ require(["ct", "Vue", "bridge"], function(ct, Vue, Bridge) {
         });
         this.inviter = ct.Tool.getUrlData("inviter")
       },
-      mounted: function() {},
+      mounted: function() {
+        ct.Tool.buryPoint_v2();
+      },
       methods: {
         apply: function(){
           $.ajax({

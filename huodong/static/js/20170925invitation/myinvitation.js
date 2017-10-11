@@ -72,6 +72,7 @@ require(['ct', 'Vue', 'bridge'], function(ct, Vue, Bridge) {
       },
       mounted: function() {
         this.getProcess();
+        ct.Tool.buryPoint_v2();
       },
       computed: {
         maskShow: function() {

@@ -69,6 +69,7 @@ require(["ct", "Vue", "bridge", "jquerynstSlider"], function(ct, Vue, Bridge, _)
       },
       mounted: function() {
         this.setSlider();
+        ct.Tool.buryPoint_v2();
       },
       computed: {
         moneyDesc: function() {

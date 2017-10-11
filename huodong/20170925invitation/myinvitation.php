@@ -19,7 +19,7 @@
           <span class="desc">已获返佣奖金</span>
           <h6>{{page.info.current_reward}}<span class="unit"> 元</span></h6>
         </div>
-        <div class="drawing" @click="withdraw">立即提现</div>
+        <div class="drawing" bp="91_4_1_0_立即提现" @click="withdraw">立即提现</div>
       </div>
       <p class="drawed" v-if="page.info && page.info.total_reward > 0">已提现金额{{page.info.total_reward}}</p>      
       <div class="invitation" ref="invitation">
@@ -36,7 +36,7 @@
           </li>
         </ul>      
       </div>
-      <div class="invite" @click="invite">继续去赚奖金</div>
+      <div class="invite" @click="invite" bp="91_4_2_0_去赚奖金">继续去赚奖金</div>
       <transition name="opacity">
         <div class="line" ref="line" v-if="scrollShow">
           <span class="process" ref="process"></span>
@@ -54,7 +54,7 @@
           <div class="input-wrap">
             <input type="text" class="name" placeholder="请输入姓名" v-model="username">
             <input type="text" class="alipay" placeholder="请输入支付宝账号" v-model="useralipay"> 
-            <div class="enter-alipay" @click="enterAlipay">确认</div>  
+            <div class="enter-alipay" @click="enterAlipay" bp="91_4_3_0_确认淘宝账号">确认</div>  
             <p class="prompt">提现金额将于次月15日发放到您所填写的支付宝账号。</p>         
           </div>
         </div>     

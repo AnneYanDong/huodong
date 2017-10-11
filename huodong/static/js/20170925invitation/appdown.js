@@ -26,7 +26,9 @@ require(["ct", "Vue", "bridge"], function(ct, Vue, Bridge) {
           vm.init = true;
         });
       },
-      mounted: function() {},
+      mounted: function() {
+        ct.Tool.buryPoint_v2();
+      },
       methods: {
         appdown: function(){
           if (platform.isWeixin) {

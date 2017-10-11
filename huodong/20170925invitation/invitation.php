@@ -15,8 +15,8 @@
     <div class="content">
       <div class="banner-wrap">
         <img src="//r.51gjj.com/act/release/img/20170925invitation_invite_bg.jpg" alt="">
-        <div class="instruction award-desc" @click="toggleRule">奖励说明</div>
-        <div class="instruction invite-process" @click="process">邀请进度</div>
+        <div class="instruction award-desc" bp="91_1_1_0_奖励说明" @click="toggleRule">奖励说明</div>
+        <div class="instruction invite-process" bp="91_1_2_0_奖励说明" @click="process">邀请进度</div>
       </div>
       <div class="money">
         <div class="desc">你的返佣奖金</div>
@@ -37,7 +37,7 @@
       </div>
       <div class="footer">
         <img src="//r.51gjj.com/act/release/img/20170925invitation_invite_bottom.jpg" alt="">
-        <div class="button" @click="invite">立即去赚奖金</div>
+        <div class="button" bp="91_1_3_0_立即去赚奖金" @click="invite">立即去赚奖金</div>
       </div>
     </div>
     <template v-if="maskShow">
