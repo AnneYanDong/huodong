@@ -1,6 +1,7 @@
 @import url('basicFullPage.css');
 @import url('mtool.css');
-@import url('https://r.51gjj.com/act/release/css/lib/swiper-3.4.2.min.css');
+// @import url('https://r.51gjj.com/act/release/css/lib/swiper-3.4.2.min.css');
+@import url('swiper-3.4.2.min.css');
 .swiper-container {
     width: 100%;
     height: 100%;
