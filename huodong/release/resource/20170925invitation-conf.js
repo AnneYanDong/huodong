@@ -1,18 +1,18 @@
 {
     "regist": {
-      "js": ["/js/20170925invitation/regist.js"],
-      "css": ["/css/20170925invitation/regist.css"]
+      "js": ["r.51gjj.com/act/release/js/20170925invitation/regist_f20c588.js"],
+      "css": ["r.51gjj.com/act/release/css/20170925invitation/regist_9092e4d.css"]
     },
     "appdown": {
-    	"js": ["/js/20170925invitation/appdown.js"],
-      "css": ["/css/20170925invitation/appdown.css"]
+    	"js": ["r.51gjj.com/act/release/js/20170925invitation/appdown_3eabf19.js"],
+      "css": ["r.51gjj.com/act/release/css/20170925invitation/appdown_d6099f3.css"]
     },
     "invite": {
-    	"js": ["/js/20170925invitation/invite.js"],
-      "css": ["/css/20170925invitation/invite.css"]
+    	"js": ["r.51gjj.com/act/release/js/20170925invitation/invite_b4effcd.js"],
+      "css": ["r.51gjj.com/act/release/css/20170925invitation/invite_768ee7e.css"]
     },
     "myinvitation": {
-      "js": ["/js/20170925invitation/myinvitation.js"],
-      "css": ["/css/20170925invitation/myinvitation.css"]
+      "js": ["r.51gjj.com/act/release/js/20170925invitation/myinvitation_0570291.js"],
+      "css": ["r.51gjj.com/act/release/css/20170925invitation/myinvitation_4ba5868.css"]
     }
 }

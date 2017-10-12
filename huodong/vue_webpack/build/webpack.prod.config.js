@@ -32,6 +32,7 @@ module.exports = merge(baseWebpackConfig, {
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
 			minChunks: function(module, count){
+				console.log(count);
 				return module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
 			}
 		}),

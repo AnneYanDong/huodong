@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>51公积金管家</title>
+  <style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  html,
+  body {
+    height: 100%;
+    position: relative;
+    font-family: "Arial", Verdana, Sans-serif;
+    background: #022b83;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url('https://r.51gjj.com/act/release/img/20170930_tvshow_bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .content {
+    height: 100%;
+    width: 100%;
+    padding-top: 1.74rem;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    position: relative;
+    z-index: 3;
+  }
+
+  .logo {
+    width: 3.03rem;
+    height: .84rem;
+    margin: 0 auto;
+  }
+
+  .business-title {
+    font-size: .57rem;
+    color: #fff;
+    text-align: center;
+    margin-top: .9rem;
+  }
+
+  .number {
+    text-align: center;
+    position: relative;
+    height: 3.3rem;
+  }
+
+  .number .amount-wrap .amount {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 2.54rem;
+    letter-spacing: -4px;
+    text-shadow: 4px 4px 0px #e6d384, 8px 8px 0px rgba(255, 255, 255, 0.1);
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .number .amount-wrap .amount {
+      background: -webkit-gradient(linear, left top, left bottom, from(#efe894), to(#dab556));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none !important;
+    }
+    .number .amount-wrap .amount-shadow {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 3%);
+      -webkit-transform: translate(-50%, 3%);
+      color: rgba(0, 0, 0, .5);
+      font-weight: bold;
+      letter-spacing: -4px;
+      font-size: 2.54rem;
+    }
+  }
+
+  .number .unit {
+    font-size: 1.04rem;
+    line-height: 1.04rem;
+    vertical-align: super;
+    -webkit-background-clip: text;
+  }
+
+  .time {
+    text-align: center;
+    font-size: .47rem;
+    color: #fff;
+    font-weight: bold;
+  }
+  </style>
+  <script src="//r.51gjj.com/act/release/js/lib/jQuery.min.js"></script>
+  <script src="//r.51gjj.com/act/release/js/lib/jquery.easing.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery-animateNumber/0.0.14/jquery.animateNumber.min.js"></script>
+  <script src=""></script>
+  <script>
+  (function(rate) {
+    var rate = rate || 7.5;
+    var w = document.documentElement.clientWidth;
+    $("html")[0].style.fontSize = w / rate + "px";
+  })(19.2)
+  </script>
+</head>
+
+<body title="guangfa">
+  <div class="bg"></div>
+  <div class="content">
+    <div class="logo">
+      <img src="https://r.51gjj.com/act/release/img/20170930_tvshow_logo.png">
+    </div>
+    <div class="business-title"></div>
+    <div class="number">
+      <div class="amount-wrap">
+        <span class="amount-shadow"><span class="unit">￥</span><span class="val"></span></span>
+        <span class="amount"><span class="unit">￥</span><span class="val"></span></span>
+      </div>
+    </div>
+    <div class="time"></div>
+  </div>
+  <script>
+  var init = {
+    title: "",
+    type: "",
+    startTimer: null,
+    first: true,
+    businessCharge: function() {
+      var _this = this;
+      var t = $("body").attr("title");
+      switch (t) {
+        case "zhongtengxin":
+          _this.type = 1;
+          _this.title = "51公积金管家-中腾信实时累计放款量";
+          break;
+        case "wolaidai":
+          _this.type = 2;
+          _this.title = "51公积金管家-我来贷实时累计放款量";
+          break;
+        case "paipaidai":
+          _this.type = 3;
+          _this.title = "51公积金管家-拍拍贷实时累计放款量";
+          break;
+        case "guangfa":
+          _this.type = 4;
+          _this.title = "51公积金管家-广发实时累计放款量";
+          break;
+        case "pufa":
+          _this.type = 5;
+          _this.title = "51公积金管家-浦发实时累计放款量";
+          break;
+        case "zhongan":
+          _this.type = 6;
+          _this.title = "51公积金管家-众安实时累计放款量";
+          break;
+        case "mashang":
+          _this.type = 7;
+          _this.title = "51公积金管家-马上实时累计放款量";
+          break;
+        case "fengedai":
+          _this.type = 8;
+          _this.title = "51公积金管家-蜂e贷实时累计放款量";
+          break;
+        case "licai":
+          _this.type = 9;
+          _this.title = "51公积金管家-理财实时累计放款量";
+          break;
+        case "leijizhuceyonghushu":
+          _this.type = 10;
+          _this.title = "51公积金管家-累计注册用户数";
+          break;
+      }
+    },
+    getData: function() {
+      var _this = this;
+      _this.start();
+    },
+    genStartTime: function(min, max) {
+      var range = (max - min) * 60;
+      var rand = Math.random();
+      var num = min * 60 + Math.round(rand * range);
+      return num * 1000;
+    },
+    start: function() {
+      var _this = this;
+      $.ajax({
+        url: "https://b.jianbing.com/act/statistics/get_loan_total",
+        type: "POST",
+        dataType: "JSON",
+        data: JSON.stringify({
+          type: _this.type
+        }),
+        success: function(d) {
+          if (d.success) {
+            var decimal_places = 0;
+            var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
+            var nowAmount = $(".amount .val").text().replace(/,/g, "");
+            if (nowAmount != d.ret.total) {
+              $('.amount-shadow .val, .amount .val').prop('number', Number(nowAmount)).animateNumber({
+                easing: "easeInQuad",
+                number: d.ret.total * decimal_factor,
+                numberStep: function(now, tween) {
+                  var floored_number = Math.floor(now) / decimal_factor,
+                    target = $(tween.elem);
+                  if (decimal_places > 0) {
+                    floored_number = floored_number.toFixed(decimal_places);
+                    floored_number = floored_number.toString().replace('.', ',');
+                  }
+                  target.text(_this.setNum(floored_number));
+                }
+              }, 5000);
+            }
+            var interval = _this.genStartTime(1435, 1440);
+            clearTimeout(_this.startTimer);
+            _this.startTimer = setTimeout(_this.start.bind(window.init),interval)
+          }
+        },
+        error: function() {
+          console.log("error")
+          clearTimeout(_this.startTimer);
+          _this.startTimer = setTimeout(_this.start.bind(window.init),interval)
+        } 
+      })
+    },
+    setNum: function(n) {
+      var arr = (n + "").split("").reverse();
+      var newArr = [];
+      for (k in arr) {
+        if (k % 3 == 0 && k != 0) {
+          newArr.push(",")
+        }
+        newArr.push(arr[k]);
+      }
+      return newArr.reverse().join("");
+    },
+    setTitle: function() {
+      var _this = this;
+      $(".business-title").text(_this.title);
+    },
+    showLeftTime: function() {
+      function timedown() {
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        if (month < 10) {
+          month = '0' + month;
+        }
+        var day = now.getDate();
+        if (day < 10) {
+          day = '0' + day;
+        }
+        var hours = now.getHours();
+        if (hours < 10) {
+          hours = '0' + hours;
+        }
+        var minutes = now.getMinutes();
+        if (minutes < 10) {
+          minutes = '0' + minutes;
+        }
+        var seconds = now.getSeconds();
+        if (seconds < 10) {
+          seconds = '0' + seconds;
+        }
+        var showTime = year + "年" + month + "月" + day + "日 " + hours + ":" + minutes + ":" + seconds + "";
+        $('.time').html(showTime);
+        //一秒刷新一次显示时间
+        var timer = setTimeout(timedown, 1000);
+      }
+      timedown();
+    }
+  }
+  init.businessCharge();
+  init.showLeftTime();
+  init.setTitle();
+  init.getData();
+  </script>
+</body>
+
+</html>
